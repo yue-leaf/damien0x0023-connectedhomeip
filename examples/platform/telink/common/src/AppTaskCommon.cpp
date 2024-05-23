@@ -38,6 +38,11 @@
 #include <OTAUtil.h>
 #endif
 
+#include <zephyr/device.h>
+#include <zephyr/drivers/flash.h>
+#include <zephyr/storage/flash_map.h>
+#include <zephyr/sys/reboot.h>
+
 #if CONFIG_CHIP_OTA_REQUESTOR
 #include <app/clusters/ota-requestor/OTARequestorInterface.h>
 #endif
@@ -76,6 +81,16 @@ bool sIsNetworkProvisioned  = false;
 bool sIsNetworkEnabled      = false;
 bool sIsThreadAttached      = false;
 bool sHaveBLEConnections    = false;
+
+#define USER_INIT_VAL 0xff
+#define USER_ZB_SW_VAL 0xaa
+#define USER_MATTER_PAIR_VAL 0x55
+#define USER_PARTITION user_para_partition
+#define USER_PARTITION_DEVICE FIXED_PARTITION_DEVICE(USER_PARTITION)
+#define USER_PARTITION_OFFSET FIXED_PARTITION_OFFSET(USER_PARTITION)
+#define USER_PARTITION_SIZE FIXED_PARTITION_SIZE(USER_PARTITION)
+
+const struct device * flash_para_dev = USER_PARTITION_DEVICE;
 
 #if APP_SET_DEVICE_INFO_PROVIDER
 chip::DeviceLayer::DeviceInfoProviderImpl gExampleDeviceInfoProvider;
@@ -129,6 +144,10 @@ class AppFabricTableDelegate : public FabricTable::Delegate
         {
             ChipLogProgress(DeviceLayer, "Performing erasing of settings partition");
 
+            // Erase the user parameters partition to reset mode settings
+            flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+            printk("Erasing user parameters and resetting to Zigbee mode");
+
             // Do FactoryReset in case of failed commissioning to allow new pairing via BLE
             if (sIsCommissioningFailed)
             {
@@ -154,6 +173,8 @@ class AppFabricTableDelegate : public FabricTable::Delegate
                 {
                     ChipLogError(DeviceLayer, "Storage clearance failed: %d", status);
                 }
+
+                chip::Server::GetInstance().ScheduleFactoryReset();
             }
         }
     }
@@ -550,6 +571,10 @@ void AppTaskCommon::FactoryResetHandler(AppEvent * aEvent)
         k_timer_stop(&sFactoryResetTimer);
         sFactoryResetCntr = 0;
 
+        // Erase user parameters partition and reset to Zigbee mode upon factory reset
+        flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+        printk("Factory reset triggered by button, resetting to Zigbee mode");
+
         chip::Server::GetInstance().ScheduleFactoryReset();
     }
 }
@@ -655,6 +680,26 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
             NFCMgr().StopTagEmulation();
         }
 #endif
+        break;
+     case DeviceEventType::kCommissioningComplete: {
+        unsigned char val = USER_MATTER_PAIR_VAL;
+        flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+        flash_write(flash_para_dev, USER_PARTITION_OFFSET, &val, 1);
+        printk("Commissioning complete, set Matter commissionined flag");
+   }
+        break;
+    case DeviceEventType::kFailSafeTimerExpired: {
+        uint8_t val = 0;
+        flash_read(flash_para_dev, USER_PARTITION_OFFSET, &val, 1);
+        /* Erase and reset to Zigbee mode if commission fail */
+        if (val == USER_ZB_SW_VAL)
+        {
+            flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+            printk("commission FailSafeTimerExpired, rebooting");
+            sys_reboot(0);
+        }
+        printk("matter commission FailSafeTimerExpired");
+   }
         break;
 #if CHIP_DEVICE_CONFIG_ENABLE_THREAD
     case DeviceEventType::kDnssdInitialized:

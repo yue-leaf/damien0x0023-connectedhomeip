@@ -296,6 +296,7 @@ CHIP_ERROR BLEManagerImpl::StartAdvertising(void)
 
         return CHIP_ERROR_INCORRECT_STATE;
     }
+    // avoid thread scan to make init faster .
     else if (!mBLERadioInitialized)
     {
         ThreadStackMgrImpl().StartThreadScan(mInternalScanCallback);
