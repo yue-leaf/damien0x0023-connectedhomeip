@@ -95,6 +95,7 @@ protected:
     virtual void LinkButtons(ButtonManager & buttonManager);
 
     static void FactoryResetTimerTimeoutCallback(k_timer * timer);
+    static void DnssTimerTimeoutCallback(k_timer * timer);
     static void FactoryResetTimerEventHandler(AppEvent * aEvent);
     static void FactoryResetButtonEventHandler(void);
     static void FactoryResetHandler(AppEvent * aEvent);

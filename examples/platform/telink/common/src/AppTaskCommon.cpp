@@ -58,6 +58,7 @@ namespace {
 constexpr int kFactoryResetCalcTimeout = 3000;
 constexpr int kFactoryResetTriggerCntr = 3;
 constexpr int kAppEventQueueSize       = 10;
+constexpr int kDnssTimeout = 60000;
 
 constexpr uint32_t kIdentifyBlinkRateMs         = 200;
 constexpr uint32_t kIdentifyOkayOnRateMs        = 50;
@@ -91,6 +92,10 @@ bool sHaveBLEConnections    = false;
 #define USER_PARTITION_SIZE FIXED_PARTITION_SIZE(USER_PARTITION)
 
 const struct device * flash_para_dev = USER_PARTITION_DEVICE;
+
+k_timer sDnssTimer;
+
+uint8_t sBoot_zb = 0;
 
 #if APP_SET_DEVICE_INFO_PROVIDER
 chip::DeviceLayer::DeviceInfoProviderImpl gExampleDeviceInfoProvider;
@@ -246,6 +251,18 @@ CHIP_ERROR AppTaskCommon::StartApp(void)
         OtaConfirmNewImage();
     }
 #endif /* CONFIG_BOOTLOADER_MCUBOOT */
+
+    /* Proc ota boot flag , and erase flag */
+    uint8_t val = 0;
+    flash_read(flash_para_dev, USER_PARTITION_OFFSET, &val, 1);
+    /* Boot from zibee , need clean the user-para sector first and set a flag */
+    if (val == USER_ZB_SW_VAL){
+        flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+        sBoot_zb = 1;
+        k_timer_init(&sDnssTimer, &AppTask::DnssTimerTimeoutCallback, nullptr);
+        k_timer_start(&sDnssTimer, K_MSEC(kDnssTimeout), K_NO_WAIT);
+        printk("matter: start timer to protect dnss initialized \r\n");
+    }
 
     while (true)
     {
@@ -592,6 +609,18 @@ void AppTaskCommon::FactoryResetTimerTimeoutCallback(k_timer * timer)
     GetAppTask().PostEvent(&event);
 }
 
+void AppTaskCommon::DnssTimerTimeoutCallback(k_timer * timer)
+{
+    if (!timer)
+    {
+        return;
+    }
+    /*if from init to dnss cost large than 60s , it will reboot and back to zigbee mode*/
+    printk("matter: dnss initialize timeout .\r\n");
+    sys_reboot(0);
+}
+
+
 void AppTaskCommon::FactoryResetTimerEventHandler(AppEvent * aEvent)
 {
     if (aEvent->Type != AppEvent::kEventType_Timer)
@@ -689,13 +718,11 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
    }
         break;
     case DeviceEventType::kFailSafeTimerExpired: {
-        uint8_t val = 0;
-        flash_read(flash_para_dev, USER_PARTITION_OFFSET, &val, 1);
         /* Erase and reset to Zigbee mode if commission fail */
-        if (val == USER_ZB_SW_VAL)
+        if (sBoot_zb)
         {
             flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
-            printk("commission FailSafeTimerExpired, rebooting");
+            printk("matter commission FailSafeTimerExpired, will back to zigbee ,rebooting \r\n");
             sys_reboot(0);
         }
         printk("matter commission FailSafeTimerExpired");
@@ -714,6 +741,10 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
 #if CONFIG_CHIP_OTA_REQUESTOR
         }
 #endif
+    if(sBoot_zb){
+            k_timer_stop(&sDnssTimer);
+            printk("matter commission kDnssdInitialized \r\n");
+    }
         break;
     case DeviceEventType::kThreadStateChange:
         sIsNetworkProvisioned = ConnectivityMgr().IsThreadProvisioned();
