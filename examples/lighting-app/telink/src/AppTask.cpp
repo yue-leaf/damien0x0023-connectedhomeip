@@ -59,11 +59,11 @@ CHIP_ERROR AppTask::Init(void)
     SetExampleButtonCallbacks(LightingActionEventHandler);
     InitCommonParts();
     if(user_para.val == USER_ZB_SW_VAL){
-        /* switch from the touch link , need to restore the value */ 
+        /* Switch from the touch link, need to restore previous values */ 
         sfixture_on = user_para.onoff;
         sBrightness = user_para.lightness;
         sAppTask.UpdateClusterState();
-        printk("matter update zb onoff and lightness \n");
+        printk("Matter: Updated ZB On/Off state and brightness.\n");
     }
     Protocols::InteractionModel::Status status;
 

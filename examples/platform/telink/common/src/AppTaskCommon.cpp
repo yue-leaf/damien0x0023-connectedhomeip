@@ -226,21 +226,21 @@ CHIP_ERROR AppTaskCommon::StartApp(void)
 {
      /* Proc ota boot flag , and erase flag */
     flash_read(flash_para_dev, USER_PARTITION_OFFSET, &user_para, sizeof(user_para));
-    /* Boot from zibee , need clean the user-para sector first and set a flag */
+    /* Boot from Zigbee , need to clean the user parameters sector first and set a flag */
     if (user_para.val == USER_ZB_SW_VAL){
         flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
         sBoot_zb = 1;
-        /*if the lightness below 2, the display in homepod mini will have error*/
+        /* Ensure lightness is at least 2 to avoid display error on HomePod Mini */
         if(user_para.lightness < 2){
             user_para.lightness = 2;
         }
-        /*pass the value to init part , to avoid gap in the pwm_pool init*/
+        /* Pass the value to the init part to avoid gaps in pwm_pool init */
         if(user_para.onoff){
             para_lightness = user_para.lightness;
         }
         k_timer_init(&sDnssTimer, &AppTask::DnssTimerTimeoutCallback, nullptr);
         k_timer_start(&sDnssTimer, K_MSEC(kDnssTimeout), K_NO_WAIT);
-        printk("matter: start timer to protect dnss initialized %x \r\n",*(int *)(&user_para));
+        printk("Matter: start timer to protect Dnss initialized %x \r\n",*(int *)(&user_para));
     }
 
     CHIP_ERROR err = GetAppTask().Init();
@@ -617,8 +617,8 @@ void AppTaskCommon::DnssTimerTimeoutCallback(k_timer * timer)
     {
         return;
     }
-    /*if from init to dnss cost large than 60s , it will reboot and back to zigbee mode*/
-    printk("matter: dnss initialize timeout .\r\n");
+    /*If initialization of Dnss takes longer than 60 seconds, the device will reboot and revert to Zigbee mode*/
+    printk("Matter: DnssTimer expired.\r\n");
     sys_reboot(0);
 }
 
@@ -720,14 +720,14 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
    }
         break;
     case DeviceEventType::kFailSafeTimerExpired: {
-        /* Erase and reset to Zigbee mode if commission fail */
+        /* Erase and reset to Zigbee mode if commissioning fails */
         if (sBoot_zb)
         {
             flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
-            printk("matter commission FailSafeTimerExpired, will back to zigbee ,rebooting \r\n");
+            printk("FailSafeTimer expired, Matter commissioning failed, rebooting to Zigbee mode.\r\n");
             sys_reboot(0);
         }
-        printk("matter commission FailSafeTimerExpired");
+        printk("FailSafeTimer expired, Matter commissioning failed.\r\n");
    }
         break;
 #if CHIP_DEVICE_CONFIG_ENABLE_THREAD
@@ -745,7 +745,7 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
 #endif
     if(sBoot_zb){
             k_timer_stop(&sDnssTimer);
-            printk("matter commission kDnssdInitialized \r\n");
+            printk("Dnss Timer stopped, Matter commissioning kDnssdInitialized.\r\n");
     }
         break;
     case DeviceEventType::kThreadStateChange:
