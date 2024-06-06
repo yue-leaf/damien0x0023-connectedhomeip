@@ -39,6 +39,9 @@
 
 #include <cstdint>
 
+#include <zephyr/fs/nvs.h>
+#include <zephyr/settings/settings.h>
+
 using namespace ::chip;
 using namespace ::chip::app;
 using namespace ::chip::Credentials;
@@ -126,3 +129,21 @@ protected:
     static void ButtonEventHandler(ButtonId_t btnId, bool btnPressed);
 #endif
 };
+
+#define USER_INIT_VAL 0xff
+#define USER_ZB_SW_VAL 0xaa
+#define USER_MATTER_PAIR_VAL 0x55
+#define USER_PARTITION user_para_partition
+#define USER_PARTITION_DEVICE FIXED_PARTITION_DEVICE(USER_PARTITION)
+#define USER_PARTITION_OFFSET FIXED_PARTITION_OFFSET(USER_PARTITION)
+#define USER_PARTITION_SIZE FIXED_PARTITION_SIZE(USER_PARTITION)
+
+typedef struct{
+    uint8_t val ;
+    uint8_t rfu;
+    uint8_t onoff;
+    uint8_t lightness;
+}user_para_t;
+
+extern user_para_t user_para;
+extern unsigned char para_lightness;

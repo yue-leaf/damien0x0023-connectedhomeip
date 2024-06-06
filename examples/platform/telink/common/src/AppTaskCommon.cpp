@@ -47,8 +47,7 @@
 #include <app/clusters/ota-requestor/OTARequestorInterface.h>
 #endif
 
-#include <zephyr/fs/nvs.h>
-#include <zephyr/settings/settings.h>
+
 
 using namespace chip::app;
 
@@ -83,13 +82,7 @@ bool sIsNetworkEnabled      = false;
 bool sIsThreadAttached      = false;
 bool sHaveBLEConnections    = false;
 
-#define USER_INIT_VAL 0xff
-#define USER_ZB_SW_VAL 0xaa
-#define USER_MATTER_PAIR_VAL 0x55
-#define USER_PARTITION user_para_partition
-#define USER_PARTITION_DEVICE FIXED_PARTITION_DEVICE(USER_PARTITION)
-#define USER_PARTITION_OFFSET FIXED_PARTITION_OFFSET(USER_PARTITION)
-#define USER_PARTITION_SIZE FIXED_PARTITION_SIZE(USER_PARTITION)
+
 
 const struct device * flash_para_dev = USER_PARTITION_DEVICE;
 
@@ -227,8 +220,29 @@ void AppTaskCommon::PowerOnFactoryReset(void)
 }
 #endif /* CONFIG_CHIP_ENABLE_POWER_ON_FACTORY_RESET */
 
+user_para_t user_para;
+unsigned char para_lightness = 0;
 CHIP_ERROR AppTaskCommon::StartApp(void)
 {
+     /* Proc ota boot flag , and erase flag */
+    flash_read(flash_para_dev, USER_PARTITION_OFFSET, &user_para, sizeof(user_para));
+    /* Boot from zibee , need clean the user-para sector first and set a flag */
+    if (user_para.val == USER_ZB_SW_VAL){
+        flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+        sBoot_zb = 1;
+        /*if the lightness below 2, the display in homepod mini will have error*/
+        if(user_para.lightness < 2){
+            user_para.lightness = 2;
+        }
+        /*pass the value to init part , to avoid gap in the pwm_pool init*/
+        if(user_para.onoff){
+            para_lightness = user_para.lightness;
+        }
+        k_timer_init(&sDnssTimer, &AppTask::DnssTimerTimeoutCallback, nullptr);
+        k_timer_start(&sDnssTimer, K_MSEC(kDnssTimeout), K_NO_WAIT);
+        printk("matter: start timer to protect dnss initialized %x \r\n",*(int *)(&user_para));
+    }
+
     CHIP_ERROR err = GetAppTask().Init();
 
     if (err != CHIP_NO_ERROR)
@@ -251,18 +265,6 @@ CHIP_ERROR AppTaskCommon::StartApp(void)
         OtaConfirmNewImage();
     }
 #endif /* CONFIG_BOOTLOADER_MCUBOOT */
-
-    /* Proc ota boot flag , and erase flag */
-    uint8_t val = 0;
-    flash_read(flash_para_dev, USER_PARTITION_OFFSET, &val, 1);
-    /* Boot from zibee , need clean the user-para sector first and set a flag */
-    if (val == USER_ZB_SW_VAL){
-        flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
-        sBoot_zb = 1;
-        k_timer_init(&sDnssTimer, &AppTask::DnssTimerTimeoutCallback, nullptr);
-        k_timer_start(&sDnssTimer, K_MSEC(kDnssTimeout), K_NO_WAIT);
-        printk("matter: start timer to protect dnss initialized \r\n");
-    }
 
     while (true)
     {
