@@ -48,7 +48,7 @@ private:
     friend class AppTaskCommon;
 
     CHIP_ERROR Init(void);
-
+    void Init_cluster_info(void);
     static void LightingActionEventHandler(AppEvent * aEvent);
 #ifdef CONFIG_CHIP_ENABLE_POWER_ON_FACTORY_RESET
     static void PowerOnFactoryResetEventHandler(AppEvent * aEvent);

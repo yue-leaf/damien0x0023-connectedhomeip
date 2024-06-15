@@ -17,6 +17,7 @@
  */
 
 #include "AppTask.h"
+#include "AppConfig.h"
 #include <app/server/Server.h>
 
 #include "ColorFormat.h"
@@ -24,6 +25,10 @@
 
 #include <app-common/zap-generated/attributes/Accessors.h>
 
+
+#include <zephyr/drivers/i2c.h>
+#include <zephyr/kernel.h>
+#include <zephyr/device.h>
 LOG_MODULE_DECLARE(app, CONFIG_CHIP_APP_LOG_LEVEL);
 
 namespace {
@@ -53,18 +58,97 @@ void AppTask::PowerOnFactoryReset(void)
     GetAppTask().PostEvent(&event);
 }
 #endif /* CONFIG_CHIP_ENABLE_POWER_ON_FACTORY_RESET */
+ 
+
+void i2c_demo_proc()
+{
+    const uint8_t tx_buf[23]= { 0xc0,0x63,0x3f,0x63,    0x63,0x63,0x22,0x22,
+                                0x00,0x00,0x00,0x00,    0x3f,0x3f,0x00,0x00,
+                                0x00,0x00,0xff,0xff,    0x2b,0x06,0xbe};
+    /* add the i2c module here */
+    printk("i2c demo start \n.");
+    uint32_t i2c_cfg = I2C_SPEED_SET(I2C_SPEED_FAST) | I2C_MODE_CONTROLLER;
+    /* get i2c device */
+    int rc;
+	const struct i2c_dt_spec i2c = I2C_DT_SPEC_GET(DT_COMPAT_GET_ANY_STATUS_OKAY(ledcontrol_i2c));
+    if (!device_is_ready(i2c.bus)) {
+		printf("Device %s is not ready\n", i2c.bus->name);
+		return ;
+	}
+    rc = i2c_configure(i2c.bus, i2c_cfg);
+	if(rc != 0){
+		printf("Failed to configure i2c device\n");
+		return ;
+	}
+    i2c_write(i2c.bus, tx_buf+1, sizeof(tx_buf)-1,tx_buf[0]);
+    printk("i2c demo stop ,finish transfer\n");
+}
+
+
+void AppTask::Init_cluster_info(void)
+{
+    light_para_t *p_para = &light_para;
+    Protocols::InteractionModel::Status status;
+    bool onoff_sts;
+    status = Clusters::OnOff::Attributes::OnOff::Get(1, &(onoff_sts));
+    p_para->onoff = (uint8_t)onoff_sts;
+    app::DataModel::Nullable<uint8_t> brightness;
+    // Read brightness value
+    status = Clusters::LevelControl::Attributes::CurrentLevel::Get(kExampleEndpointId, brightness);
+    if (status == Protocols::InteractionModel::Status::Success && !brightness.IsNull())
+    {
+        p_para->level = brightness.Value();
+    }
+    // Read ColorMode value
+    status = Clusters::ColorControl::Attributes::ColorMode::Get(1, &(p_para->color_mode));
+
+    // Read ColorTemperatureMireds value
+    status = Clusters::ColorControl::Attributes::ColorTemperatureMireds::Get(1, &(p_para->color_temp_mireds));
+
+    // Read CurrentX value
+    status = Clusters::ColorControl::Attributes::CurrentX::Get(1, &(p_para->currentx));
+
+    // Read CurrentY value
+    status = Clusters::ColorControl::Attributes::CurrentY::Get(1, &(p_para->currenty));
+
+    // Read EnhancedCurrentHue value
+    status = Clusters::ColorControl::Attributes::EnhancedCurrentHue::Get(1, &(p_para->enhanced_current_hue));
+ 
+    // Read CurrentHue value
+    status = Clusters::ColorControl::Attributes::CurrentHue::Get(1, &(p_para->cur_hue));
+
+    // Read CurrentSaturation value
+    status = Clusters::ColorControl::Attributes::CurrentSaturation::Get(1, &(p_para->cur_saturation));
+
+    // Read OnOffTransitionTime value
+    status = Clusters::LevelControl::Attributes::OnOffTransitionTime::Get(1, &(p_para->onoff_transition));
+
+}
 
 CHIP_ERROR AppTask::Init(void)
 {
     SetExampleButtonCallbacks(LightingActionEventHandler);
     InitCommonParts();
-    if(user_para.val == USER_ZB_SW_VAL){
-        /* Switch from the touch link, need to restore previous values */ 
-        sfixture_on = user_para.onoff;
-        sBrightness = user_para.lightness;
-        sAppTask.UpdateClusterState();
-        printk("Matter: Updated ZB On/Off state and brightness.\n");
+    /*user mode means led control by the customer*/
+#if APP_LIGHT_USER_MODE_EN 
+    /* switch from zigbee , which means uncommission state .*/
+    if (user_para.val == USER_ZB_SW_VAL){
+        // read from flash , already proced in the AppTaskCommon::StartApp .
+        
+    }else if (user_para.val == USER_MATTER_PAIR_VAL){
+        // need to get the para from the flash , which means commissioned 
+        Init_cluster_info();
+    }else{
+        // will not proc .
+
     }
+    #if (APP_LIGHT_MODE == APP_LIGHT_I2C)
+        i2c_demo_proc();// add i2c demo code to show the para part .
+    #elif (APP_LIGHT_MODE == APP_LIGHT_PWM)
+        /*add pwm proc here */
+    #endif
+    
+#else
     Protocols::InteractionModel::Status status;
 
     app::DataModel::Nullable<uint8_t> brightness;
@@ -85,7 +169,7 @@ CHIP_ERROR AppTask::Init(void)
         // Set actual state to stored before reboot
         SetInitiateAction(storedValue ? ON_ACTION : OFF_ACTION, static_cast<int32_t>(AppEvent::kEventType_DeviceAction), nullptr);
     }
-
+#endif
     return CHIP_NO_ERROR;
 }
 

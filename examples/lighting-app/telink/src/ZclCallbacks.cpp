@@ -17,6 +17,7 @@
  */
 
 #include "AppTask.h"
+#include "AppConfig.h"
 #include "ColorFormat.h"
 
 #include <app-common/zap-generated/attributes/Accessors.h>
@@ -27,6 +28,21 @@
 
 LOG_MODULE_DECLARE(app, CONFIG_CHIP_APP_LOG_LEVEL);
 
+
+
+#if  APP_LIGHT_USER_MODE_EN         
+using namespace chip;
+using namespace chip::app::Clusters;
+
+void MatterPostAttributeChangeCallback(const chip::app::ConcreteAttributePath & attributePath, uint8_t type, uint16_t size,
+                                       uint8_t * value)
+{
+    /* user mode , add the customer code here for cb*/
+   return ;
+}
+
+
+#else
 using namespace chip;
 using namespace chip::app::Clusters;
 
@@ -117,3 +133,4 @@ void MatterPostAttributeChangeCallback(const chip::app::ConcreteAttributePath & 
         }
     }
 }
+#endif

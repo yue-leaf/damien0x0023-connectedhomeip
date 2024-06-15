@@ -138,12 +138,28 @@ protected:
 #define USER_PARTITION_OFFSET FIXED_PARTITION_OFFSET(USER_PARTITION)
 #define USER_PARTITION_SIZE FIXED_PARTITION_SIZE(USER_PARTITION)
 
+#define ZB_NVS_START_ADR    0x1b2000
+#define ZB_NVS_SEC_SIZE     0x18000
+
+
 typedef struct{
     uint8_t val ;
-    uint8_t rfu;
-    uint8_t onoff;
-    uint8_t lightness;
+    uint8_t on_net;
 }user_para_t;
 
+typedef struct{
+    uint8_t     onoff;
+    uint8_t     level;
+    uint16_t    color_temp_mireds;
+    uint16_t    currentx;
+    uint16_t    currenty;
+    uint16_t    enhanced_current_hue;
+    uint16_t    onoff_transition;
+    uint8_t     cur_hue;
+    uint8_t     cur_saturation;
+    uint8_t     color_mode;
+}light_para_t;
+
 extern user_para_t user_para;
+extern light_para_t  light_para;
 extern unsigned char para_lightness;

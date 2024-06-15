@@ -18,7 +18,7 @@
 
 #include "AppTaskCommon.h"
 #include "AppTask.h"
-
+#include "AppConfig.h"
 #include "BLEManagerImpl.h"
 #include "ButtonManager.h"
 #include "LEDManager.h"
@@ -47,7 +47,7 @@
 #include <app/clusters/ota-requestor/OTARequestorInterface.h>
 #endif
 
-
+#include <app-common/zap-generated/attributes/Accessors.h>
 
 using namespace chip::app;
 
@@ -144,6 +144,9 @@ class AppFabricTableDelegate : public FabricTable::Delegate
 
             // Erase the user parameters partition to reset mode settings
             flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+            // Need to erase zb nvs part 
+            flash_erase(flash_para_dev, ZB_NVS_START_ADR, ZB_NVS_SEC_SIZE);
+
             printk("Erasing user parameters and resetting to Zigbee mode");
 
             // Do FactoryReset in case of failed commissioning to allow new pairing via BLE
@@ -220,6 +223,8 @@ void AppTaskCommon::PowerOnFactoryReset(void)
 }
 #endif /* CONFIG_CHIP_ENABLE_POWER_ON_FACTORY_RESET */
 
+
+light_para_t  light_para;
 user_para_t user_para;
 unsigned char para_lightness = 0;
 CHIP_ERROR AppTaskCommon::StartApp(void)
@@ -228,19 +233,21 @@ CHIP_ERROR AppTaskCommon::StartApp(void)
     flash_read(flash_para_dev, USER_PARTITION_OFFSET, &user_para, sizeof(user_para));
     /* Boot from Zigbee , need to clean the user parameters sector first and set a flag */
     if (user_para.val == USER_ZB_SW_VAL){
+        // if switch from zb , need to get all the cluster info from zb
+        flash_read(flash_para_dev, USER_PARTITION_OFFSET+sizeof(user_para), &light_para, sizeof(light_para));
         flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
         sBoot_zb = 1;
         /* Ensure lightness is at least 2 to avoid display error on HomePod Mini */
-        if(user_para.lightness < 2){
-            user_para.lightness = 2;
+        if(light_para.level < 2){
+            light_para.level = 2;
         }
         /* Pass the value to the init part to avoid gaps in pwm_pool init */
-        if(user_para.onoff){
-            para_lightness = user_para.lightness;
+        if(light_para.onoff){
+            para_lightness = light_para.level;
         }
         k_timer_init(&sDnssTimer, &AppTask::DnssTimerTimeoutCallback, nullptr);
         k_timer_start(&sDnssTimer, K_MSEC(kDnssTimeout), K_NO_WAIT);
-        printk("Matter: start timer to protect Dnss initialized %x \r\n",*(int *)(&user_para));
+        printk("Matter: start timer to protect Dnss initialized \r\n");
     }
 
     CHIP_ERROR err = GetAppTask().Init();
@@ -278,12 +285,16 @@ CHIP_ERROR AppTaskCommon::InitCommonParts(void)
     CHIP_ERROR err;
     LOG_INF("SW Version: %u, %s", CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION, CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING);
 
+/* if use user mode ,should disable the hardware init to avoid conflict*/
+#if APP_LIGHT_USER_MODE_EN 
+#else
     InitLeds();
     UpdateStatusLED();
 
     InitPwms();
 
     InitButtons();
+#endif    
 
     // Initialize function button timer
     k_timer_init(&sFactoryResetTimer, &AppTask::FactoryResetTimerTimeoutCallback, nullptr);
@@ -592,6 +603,9 @@ void AppTaskCommon::FactoryResetHandler(AppEvent * aEvent)
 
         // Erase user parameters partition and reset to Zigbee mode upon factory reset
         flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+        // Need to erase zb nvs part 
+        flash_erase(flash_para_dev, ZB_NVS_START_ADR, ZB_NVS_SEC_SIZE);
+        
         printk("Factory reset triggered by button, resetting to Zigbee mode");
 
         chip::Server::GetInstance().ScheduleFactoryReset();
@@ -714,6 +728,20 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
         break;
      case DeviceEventType::kCommissioningComplete: {
         unsigned char val = USER_MATTER_PAIR_VAL;
+        /* need to add here to update the cluster information , only in the zb switch and touchlink is paired*/
+        if(user_para.val == USER_ZB_SW_VAL && user_para.on_net ){
+            Protocols::InteractionModel::Status status;
+            /* Switch from the touch link, need to restore previous values */ 
+            status = Clusters::OnOff::Attributes::OnOff::Set(kExampleEndpointId, light_para.onoff);
+            if (status != Protocols::InteractionModel::Status::Success)
+            {
+                LOG_ERR("Update OnOff fail: %x", to_underlying(status));
+            }
+            status = Clusters::LevelControl::Attributes::CurrentLevel::Set(kExampleEndpointId, light_para.level);
+            {
+                LOG_ERR("Update brightness fail: %x", to_underlying(status));
+            }
+        }
         flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
         flash_write(flash_para_dev, USER_PARTITION_OFFSET, &val, 1);
         printk("Commissioning complete, set Matter commissionined flag");

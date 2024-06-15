@@ -22,3 +22,11 @@
 
 #define APP_SET_DEVICE_INFO_PROVIDER 1
 #define APP_SET_NETWORK_COMM_ENDPOINT_SEC 0
+
+
+// -----User setting part 
+#define APP_LIGHT_USER_MODE_EN         1
+
+#define APP_LIGHT_PWM       0
+#define APP_LIGHT_I2C       1
+#define APP_LIGHT_MODE      APP_LIGHT_I2C
