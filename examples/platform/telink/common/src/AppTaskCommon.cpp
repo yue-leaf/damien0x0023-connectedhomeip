@@ -57,7 +57,7 @@ namespace {
 constexpr int kFactoryResetCalcTimeout = 3000;
 constexpr int kFactoryResetTriggerCntr = 3;
 constexpr int kAppEventQueueSize       = 10;
-constexpr int kDnssTimeout = 60000;
+constexpr int kDnssTimeout = 60000; // for init will cost for about 5s
 
 constexpr uint32_t kIdentifyBlinkRateMs         = 200;
 constexpr uint32_t kIdentifyOkayOnRateMs        = 50;
@@ -235,7 +235,7 @@ CHIP_ERROR AppTaskCommon::StartApp(void)
     if (user_para.val == USER_ZB_SW_VAL){
         // if switch from zb , need to get all the cluster info from zb
         flash_read(flash_para_dev, USER_PARTITION_OFFSET+sizeof(user_para), &light_para, sizeof(light_para));
-        flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+        //flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
         sBoot_zb = 1;
         /* Ensure lightness is at least 2 to avoid display error on HomePod Mini */
         if(light_para.level < 2){
@@ -625,15 +625,26 @@ void AppTaskCommon::FactoryResetTimerTimeoutCallback(k_timer * timer)
     GetAppTask().PostEvent(&event);
 }
 
+
+void SwitchBackToZigbee()
+{
+    uint8_t switch_flag  = USER_MATTER_BACK_ZB;
+    //flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
+    flash_write(flash_para_dev,USER_PARTITION_OFFSET,&switch_flag,1);
+    sys_reboot(0);
+}
+
 void AppTaskCommon::DnssTimerTimeoutCallback(k_timer * timer)
 {
     if (!timer)
     {
         return;
     }
-    /*If initialization of Dnss takes longer than 60 seconds, the device will reboot and revert to Zigbee mode*/
     printk("Matter: DnssTimer expired.\r\n");
-    sys_reboot(0);
+    /*If initialization of Dnss takes longer than 90 seconds, the device will reboot and revert to Zigbee mode*/
+    if (sBoot_zb){
+         SwitchBackToZigbee();
+    }
 }
 
 
@@ -751,9 +762,8 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
         /* Erase and reset to Zigbee mode if commissioning fails */
         if (sBoot_zb)
         {
-            flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
             printk("FailSafeTimer expired, Matter commissioning failed, rebooting to Zigbee mode.\r\n");
-            sys_reboot(0);
+            SwitchBackToZigbee();
         }
         printk("FailSafeTimer expired, Matter commissioning failed.\r\n");
    }

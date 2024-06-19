@@ -130,13 +130,19 @@ protected:
 #endif
 };
 
-#define USER_INIT_VAL 0xff
-#define USER_ZB_SW_VAL 0xaa
-#define USER_MATTER_PAIR_VAL 0x55
+#define USER_MATTER_PAIR_VAL    0x55  // jump to matter
+
+#define USER_INIT_VAL           0xff  // init state or others will go into zb 
+#define USER_ZB_SW_VAL          0xaa  // jump to matter,use XIP
+#define USER_MATTER_BACK_ZB     0xa0  // only commisiion fail will back to zb 
 #define USER_PARTITION user_para_partition
 #define USER_PARTITION_DEVICE FIXED_PARTITION_DEVICE(USER_PARTITION)
 #define USER_PARTITION_OFFSET FIXED_PARTITION_OFFSET(USER_PARTITION)
 #define USER_PARTITION_SIZE FIXED_PARTITION_SIZE(USER_PARTITION)
+
+#define USER_PARA_MAC_OFFSET            0x100
+
+
 
 #define ZB_NVS_START_ADR    0x1b2000
 #define ZB_NVS_SEC_SIZE     0x18000

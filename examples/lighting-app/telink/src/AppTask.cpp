@@ -59,13 +59,12 @@ void AppTask::PowerOnFactoryReset(void)
 }
 #endif /* CONFIG_CHIP_ENABLE_POWER_ON_FACTORY_RESET */
  
-
+#if (APP_LIGHT_MODE == APP_LIGHT_I2C)
 void i2c_demo_proc()
 {
     const uint8_t tx_buf[23]= { 0xc0,0x63,0x3f,0x63,    0x63,0x63,0x22,0x22,
                                 0x00,0x00,0x00,0x00,    0x3f,0x3f,0x00,0x00,
                                 0x00,0x00,0xff,0xff,    0x2b,0x06,0xbe};
-    /* add the i2c module here */
     printk("i2c demo start \n.");
     uint32_t i2c_cfg = I2C_SPEED_SET(I2C_SPEED_FAST) | I2C_MODE_CONTROLLER;
     /* get i2c device */
@@ -83,7 +82,7 @@ void i2c_demo_proc()
     i2c_write(i2c.bus, tx_buf+1, sizeof(tx_buf)-1,tx_buf[0]);
     printk("i2c demo stop ,finish transfer\n");
 }
-
+#endif
 
 void AppTask::Init_cluster_info(void)
 {
@@ -143,9 +142,11 @@ CHIP_ERROR AppTask::Init(void)
 
     }
     #if (APP_LIGHT_MODE == APP_LIGHT_I2C)
+        printk("app light mode is i2c\n");
         i2c_demo_proc();// add i2c demo code to show the para part .
     #elif (APP_LIGHT_MODE == APP_LIGHT_PWM)
         /*add pwm proc here */
+        printk("app light mode is pwm\n");
     #endif
     
 #else
