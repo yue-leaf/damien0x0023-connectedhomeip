@@ -15,7 +15,11 @@
 #define ZCL_USING_{{as_delimited_macro define}}_{{as_delimited_macro side}}
 #define MATTER_DM_PLUGIN_{{as_delimited_macro name}}_{{as_delimited_macro side}}
 {{#if (is_server side)}}
-#define MATTER_DM_PLUGIN_{{as_delimited_macro name}}
+  {{#if (is_str_equal name "Level Control")}}
+    //#define MATTER_DM_PLUGIN_{{as_delimited_macro name}}
+  {{else}}
+    #define MATTER_DM_PLUGIN_{{as_delimited_macro name}}
+  {{/if}} 
 {{/if}}
 {{#if (is_str_equal name "Color Control")}}
 {{#if (is_server side)}}
