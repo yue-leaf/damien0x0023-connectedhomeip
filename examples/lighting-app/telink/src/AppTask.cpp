@@ -124,6 +124,43 @@ void AppTask::Init_cluster_info(void)
 
 }
 
+void AppTask::Set_cluster_info(void)
+{
+    printk("%%%%%%Set_cluster_info!!!!%%%%%%\n");
+    light_para_t *p_para = &light_para;
+    Protocols::InteractionModel::Status status;
+    printk("%%%%%%Set_cluster_info:p_para->onoff:%d!!!!%%%%%%\n",p_para->onoff);
+    status = Clusters::OnOff::Attributes::OnOff::Set(1, p_para->onoff);
+    // Set brightness value
+    printk("%%%%%%Set_cluster_info:p_para->level:%d!!!!%%%%%%\n",p_para->level);
+    status = Clusters::LevelControl::Attributes::CurrentLevel::Set(kExampleEndpointId, p_para->level);
+    // Set ColorMode value
+    printk("%%%%%%Set_cluster_info:p_para->color_mode:%d!!!!%%%%%%\n",p_para->color_mode);
+    status = Clusters::ColorControl::Attributes::ColorMode::Set(1, p_para->color_mode);
+
+    // Set ColorTemperatureMireds value
+    status = Clusters::ColorControl::Attributes::ColorTemperatureMireds::Set(1, p_para->color_temp_mireds);
+
+    // Set CurrentX value
+    status = Clusters::ColorControl::Attributes::CurrentX::Set(1, p_para->currentx);
+
+    // Set CurrentY value
+    status = Clusters::ColorControl::Attributes::CurrentY::Set(1, p_para->currenty);
+
+    // Set EnhancedCurrentHue value
+    status = Clusters::ColorControl::Attributes::EnhancedCurrentHue::Set(1, p_para->enhanced_current_hue);
+ 
+    // Set CurrentHue value
+    status = Clusters::ColorControl::Attributes::CurrentHue::Set(1, p_para->cur_hue);
+
+    // Set CurrentSaturation value
+    status = Clusters::ColorControl::Attributes::CurrentSaturation::Set(1, p_para->cur_saturation);
+
+    // Set OnOffTransitionTime value
+    status = Clusters::LevelControl::Attributes::OnOffTransitionTime::Set(1, p_para->onoff_transition);
+}
+
+
 CHIP_ERROR AppTask::Init(void)
 {
     SetExampleButtonCallbacks(LightingActionEventHandler);
@@ -133,7 +170,7 @@ CHIP_ERROR AppTask::Init(void)
     /* switch from zigbee , which means uncommission state .*/
     if (user_para.val == USER_ZB_SW_VAL){
         // read from flash , already proced in the AppTaskCommon::StartApp .
-        
+        Set_cluster_info();
     }else if (user_para.val == USER_MATTER_PAIR_VAL){
         // need to get the para from the flash , which means commissioned 
         Init_cluster_info();

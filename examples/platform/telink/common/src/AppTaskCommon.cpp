@@ -739,7 +739,8 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
         break;
      case DeviceEventType::kCommissioningComplete: {
         unsigned char val = USER_MATTER_PAIR_VAL;
-        /* need to add here to update the cluster information , only in the zb switch and touchlink is paired*/
+        /* just a demo to show how to change the cluster after commission , only in the zb switch and touchlink is paired*/
+        #if 0
         if(user_para.val == USER_ZB_SW_VAL && user_para.on_net ){
             Protocols::InteractionModel::Status status;
             /* Switch from the touch link, need to restore previous values */ 
@@ -753,6 +754,7 @@ void AppTaskCommon::ChipEventHandler(const ChipDeviceEvent * event, intptr_t /* 
                 LOG_ERR("Update brightness fail: %x", to_underlying(status));
             }
         }
+        #endif
         flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
         flash_write(flash_para_dev, USER_PARTITION_OFFSET, &val, 1);
         printk("Commissioning complete, set Matter commissionined flag");
