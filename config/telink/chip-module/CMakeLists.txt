@@ -192,6 +192,19 @@ if (CONFIG_CHIP_OTA_IMAGE_BUILD)
 endif()
 endif()
 
+# generate token.bin based on custom json data
+# The basic working directory in \
+# 'examples/lighting-app/telink/...' for gen_token.py
+add_custom_target(gen_token_bin ALL
+    COMMAND
+    cd ${CHIP_ROOT}/examples/lighting-app/telink/ && python3 gen_token.py
+
+    COMMAND
+    mv ${CHIP_ROOT}/examples/lighting-app/telink/token.bin ${PROJECT_BINARY_DIR}/token.bin
+)
+
+add_dependencies(gen_token_bin ${ZEPHYR_FINAL_EXECUTABLE})
+
 # get code-partition factory_partition address
 dt_nodelabel(dts_partition_path NODELABEL "factory_partition")
 dt_reg_addr(factory_size PATH ${dts_partition_path})
