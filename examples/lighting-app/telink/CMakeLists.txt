@@ -51,10 +51,26 @@ target_sources(app PRIVATE
                ${TELINK_COMMON}/zephyr_ext/zephyr_pwm_pool.c
                ${TELINK_COMMON}/zephyr_ext/zephyr_ws2812.c)
 
+if(CONFIG_DeviceType_DimmableLight)
 chip_configure_data_model(app
     INCLUDE_SERVER
     ZAP_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../lighting-common/lighting-app.zap
 )
+endif()
+
+if(CONFIG_DeviceType_ColorTemperatureLight)
+chip_configure_data_model(app
+    INCLUDE_SERVER
+    ZAP_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../lighting-common/colortemperaturelight-lighting-app.zap
+)
+endif()
+
+if(CONFIG_DeviceType_ExtendedColorLight)
+chip_configure_data_model(app
+    INCLUDE_SERVER
+    ZAP_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../lighting-common/extendedcolorlight-lighting-app.zap
+)
+endif()
 
 if(CONFIG_BOOTLOADER_MCUBOOT)
   target_sources(app PRIVATE ${TELINK_COMMON}/util/src/OTAUtil.cpp)
