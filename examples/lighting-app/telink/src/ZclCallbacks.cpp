@@ -38,6 +38,10 @@ void MatterPostAttributeChangeCallback(const chip::app::ConcreteAttributePath & 
                                        uint8_t * value)
 {
     /* user mode , add the customer code here for cb*/
+    ClusterId clusterId     = attributePath.mClusterId;
+    AttributeId attributeId = attributePath.mAttributeId;
+ 
+    ChipLogProgress(Zcl, "========MatterPostAttributeChangeCallback:clusterId=0x%x,AttributeId=0x%x,value=0x%x", clusterId,attributeId, *value);
    return ;
 }
 
