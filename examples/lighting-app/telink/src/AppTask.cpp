@@ -166,18 +166,83 @@ void adc_demo_proc(void)
 }
 #endif
 
-#if 0
+#if (0)
+// we need to add ledtest in DTS
+// diff --git a/boards/riscv/tlsr9528a/tlsr9528a-common.dtsi b/boards/riscv/tlsr9528a/tlsr9528a-common.dtsi
+// index fecd75463d0..d22ded6a9c2 100644
+// --- a/boards/riscv/tlsr9528a/tlsr9528a-common.dtsi
+// +++ b/boards/riscv/tlsr9528a/tlsr9528a-common.dtsi
+// @@ -19,6 +19,7 @@
+//                 led1 = &led_green;
+//                 led2 = &led_white;
+//                 led3 = &led_red;
+// +               ledtest = &led_timer;
+//                 sw0 = &key_1;
+//                 sw1 = &key_2;
+//                 sw2 = &key_3;
+// @@ -52,6 +53,11 @@
+//                         gpios = <&gpioe 7 GPIO_ACTIVE_HIGH>;
+//                         label = "LED Red";
+//                 };
+// +
+// +               led_timer: led_4 {
+// +                       gpios = <&gpiob 1 GPIO_ACTIVE_HIGH>;
+// +                       label = "LED Timer";
+// +               };
+//         };
+//=========================================
+
+/* The devicetree node identifier for the "led0" alias. */
+#define LED_TIMER_NODE DT_ALIAS(ledtest)
+
+/*
+ * A build error on this line means your board is unsupported.
+ * See the sample documentation for information on how to fix this.
+ */
+static const struct gpio_dt_spec ledtimer = GPIO_DT_SPEC_GET(LED_TIMER_NODE, gpios);
+
 k_timer stestTimer;
-constexpr int kTestTimeout = 5000; // for init will cost for about 5s
+constexpr int kTestInitTimeout   = 5000; // for init will cost for about 5s
+constexpr int kTestPeriodTimeout = 10;   // for period will cost for about 10ms
 void TestTimerTimeoutCallback(k_timer * timer)
 {
-    LOG_INF("=======Matter: Test Timer expired.\r\n");
+    static int i_cnt = 0;
+    // LOG_INF("=======Matter: Test Timer expired %d.\r\n", i_cnt);
+
+    if (i_cnt > 200)
+    {
+        k_timer_stop(&stestTimer);
+    }
+
+    int ret;
+    ret = gpio_pin_toggle_dt(&ledtimer);
+    if (ret < 0)
+    {
+        return;
+    }
+
+    i_cnt++;
 }
-void timer_demo_proc(void)
+
+int timer_demo_proc(void)
 {
     k_timer_init(&stestTimer, &TestTimerTimeoutCallback, nullptr);
-    k_timer_start(&stestTimer, K_MSEC(kTestTimeout), K_NO_WAIT);
+    k_timer_start(&stestTimer, K_MSEC(kTestInitTimeout), K_MSEC(kTestPeriodTimeout));
     LOG_INF("=======Matter:Test Timer start\n");
+
+    if (!gpio_is_ready_dt(&ledtimer))
+    {
+        return 0;
+    }
+
+    int ret;
+    ret = gpio_pin_configure_dt(&ledtimer, GPIO_OUTPUT_ACTIVE);
+    if (ret < 0)
+    {
+        return 0;
+    }
+
+    return 1;
 }
 #endif
 
@@ -371,6 +436,8 @@ CHIP_ERROR AppTask::Init(void)
 #else
     printk("Function expansion preset position\n");
 #endif
+
+    // timer_demo_proc();
 
 #else
     Protocols::InteractionModel::Status status;
