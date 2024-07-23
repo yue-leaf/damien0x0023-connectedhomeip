@@ -38,3 +38,6 @@
 #else
 #define APP_LIGHT_MODE      APP_LIGHT_PWM
 #endif
+
+// Independent Factory Reset Button
+#define INDEPENDENT_FACTORY_RESET_BUTTON     0

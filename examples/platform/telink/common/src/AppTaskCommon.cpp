@@ -280,13 +280,34 @@ CHIP_ERROR AppTaskCommon::StartApp(void)
     }
 }
 
+#if INDEPENDENT_FACTORY_RESET_BUTTON
+void AppTaskCommon::IndependentFactoryReset(void)
+{
+    // Get Button Instance
+    ButtonManager & buttonManager = ButtonManager::getInstance();
+    // Button binding to factory_reset and add callback
+    buttonManager.addCallback(FactoryResetButtonEventHandler, 0, true);
+
+#if CONFIG_CHIP_BUTTON_MANAGER_IRQ_MODE  // Independent Button Mode
+    buttonManager.linkBackend(ButtonPool::getInstance());
+#else
+    buttonManager.linkBackend(ButtonMatrix::getInstance());
+#endif // CONFIG_CHIP_BUTTON_MANAGER_IRQ_MODE
+}
+#endif
+
 CHIP_ERROR AppTaskCommon::InitCommonParts(void)
 {
     CHIP_ERROR err;
     LOG_INF("SW Version: %u, %s", CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION, CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING);
 
 /* if use user mode ,should disable the hardware init to avoid conflict*/
-#if APP_LIGHT_USER_MODE_EN 
+#if APP_LIGHT_USER_MODE_EN
+
+#if INDEPENDENT_FACTORY_RESET_BUTTON
+    IndependentFactoryReset();  // Open the factory_reset button separately.
+#endif
+
 #else
     InitLeds();
     UpdateStatusLED();
