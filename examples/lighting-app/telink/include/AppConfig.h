@@ -29,9 +29,12 @@
 
 #define APP_LIGHT_PWM       0
 #define APP_LIGHT_I2C       1
+#define APP_LIGHT_ADC       2
 
 #if CONFIG_I2C
 #define APP_LIGHT_MODE      APP_LIGHT_I2C
+#elif CONFIG_ADC
+#define APP_LIGHT_MODE      APP_LIGHT_ADC
 #else
 #define APP_LIGHT_MODE      APP_LIGHT_PWM
 #endif
