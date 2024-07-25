@@ -25,7 +25,7 @@
 
 
 // -----User setting part 
-#define APP_LIGHT_USER_MODE_EN         1
+#define APP_LIGHT_USER_MODE_EN         0
 
 #define APP_LIGHT_PWM       0
 #define APP_LIGHT_I2C       1
