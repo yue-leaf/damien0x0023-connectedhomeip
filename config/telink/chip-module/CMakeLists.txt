@@ -173,6 +173,20 @@ if (CONFIG_BOOTLOADER_MCUBOOT)
         cp ${PROJECT_BINARY_DIR}/../modules/chip-module/build_mcuboot/zephyr/zephyr.bin ${PROJECT_BINARY_DIR}/zephyr.mcuboot.bin
     )
 
+    add_custom_target(merge_zigbee ALL
+    COMMAND
+    dd if=${PROJECT_BINARY_DIR}/zephyr.bin of=${PROJECT_BINARY_DIR}/zephyrzb.bin
+    COMMAND
+    dd if=${ZEPHYR_BASE}/concurrent_sampleLight_b92.bin of=${PROJECT_BINARY_DIR}/zephyrzb.bin bs=${BLOCK_SIZE} seek=1280
+    COMMAND
+    cp ${PROJECT_BINARY_DIR}/zephyrzb.bin ${PROJECT_BINARY_DIR}/zephyr.bin
+    )
+
+    add_custom_target(west_sign ALL
+        COMMAND
+        west sign -t imgtool -p ${ZEPHYR_BASE}/../bootloader/mcuboot/scripts/imgtool.py -d ${PROJECT_BINARY_DIR}/.. -- --key ${ZEPHYR_BASE}/../bootloader/mcuboot/root-rsa-2048.pem
+    )
+
     add_custom_target(merge_mcuboot ALL
         COMMAND
         dd if=${PROJECT_BINARY_DIR}/zephyr.mcuboot.bin of=${PROJECT_BINARY_DIR}/zephyr.bin
@@ -180,7 +194,9 @@ if (CONFIG_BOOTLOADER_MCUBOOT)
         dd if=${PROJECT_BINARY_DIR}/zephyr.signed.bin of=${PROJECT_BINARY_DIR}/zephyr.bin bs=${BLOCK_SIZE} seek=${boot_blocks}
     )
 
-    add_dependencies(merge_mcuboot ${ZEPHYR_FINAL_EXECUTABLE})
+    add_dependencies(merge_zigbee ${ZEPHYR_FINAL_EXECUTABLE})
+    add_dependencies(west_sign merge_zigbee)
+    add_dependencies(merge_mcuboot west_sign)
 
 if (CONFIG_CHIP_OTA_IMAGE_BUILD)
     chip_ota_image(chip-ota-image
@@ -188,7 +204,7 @@ if (CONFIG_CHIP_OTA_IMAGE_BUILD)
         OUTPUT_FILE ${PROJECT_BINARY_DIR}/zephyr-ota.bin
     )
 
-    add_dependencies(chip-ota-image ${ZEPHYR_FINAL_EXECUTABLE})
+    add_dependencies(chip-ota-image west_sign)
 endif()
 endif()
 
