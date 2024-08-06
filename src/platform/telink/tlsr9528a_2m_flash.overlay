@@ -10,28 +10,24 @@
 		/delete-node/ partition@fe000;
 		boot_partition: partition@0 {
 			label = "mcuboot";
-			reg = <0x00000000 0x13000>;
+			reg = <0x00000000 0x16000>;
 		};
-		slot0_partition: partition@13000 {
+		slot0_partition: partition@19000 {
 			label = "image-0";
-			reg = <0x13000 0xec000>;
+			reg = <0x16000 0xef000>;
 		};
-		factory_partition: partition@ff000 {
+		factory_partition: partition@105000 {
 			label = "factory-data";
-			reg = <0xff000 0x1000>;
+			reg = <0x105000 0x1000>;
 		};
-		dac_keypair_partition: partition@100000 {
- 			label = "dac-keypair";
-			reg = <0x100000 0x1000>; //store dac and key pair.
- 		};
-		descriptor_partition: partition@101000 {
-			label = "sboot-descriptor";
-			reg = <0x101000 0x2000>;
-		};
-		storage_partition: partition@103000 {
+		storage_partition: partition@106000 {
 			label = "storage";
-			reg = <0x103000 0xf000>;
+			reg = <0x106000 0xb000>;
 		};
+		user_para_partition: partition@111000 {
+ 			label = "user-para";
+			reg = <0x111000 0x1000>; //store the mode info and the key info part.
+ 		};
 		slot1_partition: partition@112000 {
 			label = "image-1";
 			reg = <0x112000 0xec000>;
