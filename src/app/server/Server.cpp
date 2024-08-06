@@ -182,6 +182,10 @@ CHIP_ERROR Server::Init(const ServerInitParams & initParams)
     mReportScheduler = initParams.reportScheduler;
 
     mTestEventTriggerDelegate = initParams.testEventTriggerDelegate;
+    if (mTestEventTriggerDelegate == nullptr)
+    {
+        ChipLogProgress(AppServer, "WARNING: mTestEventTriggerDelegate is null");
+    }
 
     deviceInfoprovider = DeviceLayer::GetDeviceInfoProvider();
     if (deviceInfoprovider)
@@ -359,7 +363,10 @@ CHIP_ERROR Server::Init(const ServerInitParams & initParams)
                      chip::app::InteractionModelEngine::GetInstance());
 
     // Register Test Event Trigger Handler
-    mTestEventTriggerDelegate->AddHandler(&mICDManager);
+    if (mTestEventTriggerDelegate != nullptr)
+    {
+        mTestEventTriggerDelegate->AddHandler(&mICDManager);
+    }
 
 #endif // CHIP_CONFIG_ENABLE_ICD_SERVER
 
@@ -596,6 +603,12 @@ void Server::Shutdown()
 #if CHIP_CONFIG_ENABLE_ICD_SERVER
     app::InteractionModelEngine::GetInstance()->SetICDManager(nullptr);
 #endif // CHIP_CONFIG_ENABLE_ICD_SERVER
+    // Shut down any remaining sessions (and hence exchanges) before we do any
+    // futher teardown.  CASE handshakes have been shut down already via
+    // shutting down mCASESessionManager and mCASEServer above; shutting
+    // down mCommissioningWindowManager will shut down any PASE handshakes we
+    // have going on.
+    mSessions.ExpireAllSecureSessions();
     mCommissioningWindowManager.Shutdown();
     mMessageCounterManager.Shutdown();
     mExchangeMgr.Shutdown();
@@ -606,7 +619,10 @@ void Server::Shutdown()
     Credentials::SetGroupDataProvider(nullptr);
 #if CHIP_CONFIG_ENABLE_ICD_SERVER
     // Remove Test Event Trigger Handler
-    mTestEventTriggerDelegate->RemoveHandler(&mICDManager);
+    if (mTestEventTriggerDelegate != nullptr)
+    {
+        mTestEventTriggerDelegate->RemoveHandler(&mICDManager);
+    }
     mICDManager.Shutdown();
 #endif // CHIP_CONFIG_ENABLE_ICD_SERVER
     mAttributePersister.Shutdown();
@@ -628,23 +644,27 @@ CHIP_ERROR Server::SendUserDirectedCommissioningRequest(chip::Transport::PeerAdd
     // only populate fields left blank by the client
     if (strlen(id.GetInstanceName()) == 0)
     {
+        ChipLogDetail(AppServer, "Server::SendUserDirectedCommissioningRequest() Instance Name not known");
         char nameBuffer[chip::Dnssd::Commission::kInstanceNameMaxLength + 1];
         err = app::DnssdServer::Instance().GetCommissionableInstanceName(nameBuffer, sizeof(nameBuffer));
         if (err != CHIP_NO_ERROR)
         {
-            ChipLogError(AppServer, "Failed to get mdns instance name error: %" CHIP_ERROR_FORMAT, err.Format());
+            ChipLogError(
+                AppServer,
+                "Server::SendUserDirectedCommissioningRequest() Failed to get mdns instance name error: %" CHIP_ERROR_FORMAT,
+                err.Format());
             return err;
         }
         id.SetInstanceName(nameBuffer);
+        ChipLogDetail(AppServer, "Server::SendUserDirectedCommissioningRequest() Instance Name set to %s", nameBuffer);
     }
-    ChipLogDetail(AppServer, "instanceName=%s", id.GetInstanceName());
 
     if (id.GetVendorId() == 0)
     {
         uint16_t vendorId = 0;
         if (DeviceLayer::GetDeviceInstanceInfoProvider()->GetVendorId(vendorId) != CHIP_NO_ERROR)
         {
-            ChipLogDetail(Discovery, "Vendor ID not known");
+            ChipLogDetail(AppServer, "Server::SendUserDirectedCommissioningRequest() Vendor ID not known");
         }
         else
         {
@@ -657,7 +677,7 @@ CHIP_ERROR Server::SendUserDirectedCommissioningRequest(chip::Transport::PeerAdd
         uint16_t productId = 0;
         if (DeviceLayer::GetDeviceInstanceInfoProvider()->GetProductId(productId) != CHIP_NO_ERROR)
         {
-            ChipLogDetail(Discovery, "Product ID not known");
+            ChipLogDetail(AppServer, "Server::SendUserDirectedCommissioningRequest() Product ID not known");
         }
         else
         {
@@ -671,7 +691,7 @@ CHIP_ERROR Server::SendUserDirectedCommissioningRequest(chip::Transport::PeerAdd
         if (!chip::DeviceLayer::ConfigurationMgr().IsCommissionableDeviceNameEnabled() ||
             chip::DeviceLayer::ConfigurationMgr().GetCommissionableDeviceName(deviceName, sizeof(deviceName)) != CHIP_NO_ERROR)
         {
-            ChipLogDetail(Discovery, "Device Name not known");
+            ChipLogDetail(AppServer, "Server::SendUserDirectedCommissioningRequest() Device Name not known");
         }
         else
         {
@@ -710,11 +730,12 @@ CHIP_ERROR Server::SendUserDirectedCommissioningRequest(chip::Transport::PeerAdd
 
     if (err == CHIP_NO_ERROR)
     {
-        ChipLogDetail(AppServer, "Send UDC request success");
+        ChipLogDetail(AppServer, "Server::SendUserDirectedCommissioningRequest() Send UDC request success");
     }
     else
     {
-        ChipLogError(AppServer, "Send UDC request failed, err: %" CHIP_ERROR_FORMAT, err.Format());
+        ChipLogError(AppServer, "Server::SendUserDirectedCommissioningRequest() Send UDC request failed, err: %" CHIP_ERROR_FORMAT,
+                     err.Format());
     }
     return err;
 }

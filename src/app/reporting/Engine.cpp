@@ -31,6 +31,7 @@
 #include <app/InteractionModelEngine.h>
 #include <app/RequiredPrivilege.h>
 #include <app/reporting/Engine.h>
+#include <app/reporting/Read.h>
 #include <app/util/MatterCallbacks.h>
 #include <app/util/ember-compatibility-functions.h>
 
@@ -77,25 +78,6 @@ bool Engine::IsClusterDataVersionMatch(const SingleLinkedListNode<DataVersionFil
         }
     }
     return existPathMatch && !existVersionMismatch;
-}
-
-CHIP_ERROR
-Engine::RetrieveClusterData(const SubjectDescriptor & aSubjectDescriptor, bool aIsFabricFiltered,
-                            AttributeReportIBs::Builder & aAttributeReportIBs, const ConcreteReadAttributePath & aPath,
-                            AttributeEncodeState * aEncoderState)
-{
-    ChipLogDetail(DataManagement, "<RE:Run> Cluster %" PRIx32 ", Attribute %" PRIx32 " is dirty", aPath.mClusterId,
-                  aPath.mAttributeId);
-
-    DataModelCallbacks::GetInstance()->AttributeOperation(DataModelCallbacks::OperationType::Read,
-                                                          DataModelCallbacks::OperationOrder::Pre, aPath);
-
-    ReturnErrorOnFailure(ReadSingleClusterData(aSubjectDescriptor, aIsFabricFiltered, aPath, aAttributeReportIBs, aEncoderState));
-
-    DataModelCallbacks::GetInstance()->AttributeOperation(DataModelCallbacks::OperationType::Read,
-                                                          DataModelCallbacks::OperationOrder::Post, aPath);
-
-    return CHIP_NO_ERROR;
 }
 
 static bool IsOutOfWriterSpaceError(CHIP_ERROR err)
@@ -200,8 +182,8 @@ CHIP_ERROR Engine::BuildSingleReportDataAttributeReportIBs(ReportDataMessage::Bu
             ConcreteReadAttributePath pathForRetrieval(readPath);
             // Load the saved state from previous encoding session for chunking of one single attribute (list chunking).
             AttributeEncodeState encodeState = apReadHandler->GetAttributeEncodeState();
-            err = RetrieveClusterData(apReadHandler->GetSubjectDescriptor(), apReadHandler->IsFabricFiltered(), attributeReportIBs,
-                                      pathForRetrieval, &encodeState);
+            err = Impl::RetrieveClusterData(mpImEngine->GetDataModel(), apReadHandler->GetSubjectDescriptor(),
+                                            apReadHandler->IsFabricFiltered(), attributeReportIBs, pathForRetrieval, &encodeState);
             if (err != CHIP_NO_ERROR)
             {
                 // If error is not an "out of writer space" error, rollback and encode status.
@@ -492,10 +474,11 @@ CHIP_ERROR Engine::BuildAndSendSingleReportData(ReadHandler * apReadHandler)
     CHIP_ERROR err = CHIP_NO_ERROR;
     chip::System::PacketBufferTLVWriter reportDataWriter;
     ReportDataMessage::Builder reportDataBuilder;
-    chip::System::PacketBufferHandle bufHandle = System::PacketBufferHandle::New(chip::app::kMaxSecureSduLengthBytes);
+    chip::System::PacketBufferHandle bufHandle = nullptr;
     uint16_t reservedSize                      = 0;
     bool hasMoreChunks                         = false;
     bool needCloseReadHandler                  = false;
+    size_t reportBufferMaxSize                 = 0;
 
     // Reserved size for the MoreChunks boolean flag, which takes up 1 byte for the control tag and 1 byte for the context tag.
     const uint32_t kReservedSizeForMoreChunksFlag = 1 + 1;
@@ -512,11 +495,15 @@ CHIP_ERROR Engine::BuildAndSendSingleReportData(ReadHandler * apReadHandler)
 
     VerifyOrExit(apReadHandler != nullptr, err = CHIP_ERROR_INVALID_ARGUMENT);
     VerifyOrExit(apReadHandler->GetSession() != nullptr, err = CHIP_ERROR_INCORRECT_STATE);
+
+    reportBufferMaxSize = apReadHandler->GetReportBufferMaxSize();
+
+    bufHandle = System::PacketBufferHandle::New(reportBufferMaxSize);
     VerifyOrExit(!bufHandle.IsNull(), err = CHIP_ERROR_NO_MEMORY);
 
-    if (bufHandle->AvailableDataLength() > kMaxSecureSduLengthBytes)
+    if (bufHandle->AvailableDataLength() > reportBufferMaxSize)
     {
-        reservedSize = static_cast<uint16_t>(bufHandle->AvailableDataLength() - kMaxSecureSduLengthBytes);
+        reservedSize = static_cast<uint16_t>(bufHandle->AvailableDataLength() - reportBufferMaxSize);
     }
 
     reportDataWriter.Init(std::move(bufHandle));
@@ -525,8 +512,8 @@ CHIP_ERROR Engine::BuildAndSendSingleReportData(ReadHandler * apReadHandler)
     reportDataWriter.ReserveBuffer(mReservedSize);
 #endif
 
-    // Always limit the size of the generated packet to fit within kMaxSecureSduLengthBytes regardless of the available buffer
-    // capacity.
+    // Always limit the size of the generated packet to fit within the max size returned by the ReadHandler regardless
+    // of the available buffer capacity.
     // Also, we need to reserve some extra space for the MIC field.
     reportDataWriter.ReserveBuffer(static_cast<uint32_t>(reservedSize + chip::Crypto::CHIP_CRYPTO_AEAD_MIC_LENGTH_BYTES));
 

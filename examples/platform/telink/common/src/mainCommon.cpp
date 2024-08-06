@@ -198,7 +198,8 @@ int main(void)
 #elif CHIP_DEVICE_CONFIG_ENABLE_WIFI
     sWiFiCommissioningInstance.Init();
 #else
-    return CHIP_ERROR_INTERNAL;
+    err = CHIP_ERROR_INTERNAL;
+    goto exit;
 #endif /* CHIP_DEVICE_CONFIG_ENABLE_THREAD */
 
 #if  MATTER_NVS_DEMO_EN
