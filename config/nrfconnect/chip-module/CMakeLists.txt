@@ -129,7 +129,7 @@ matter_add_gn_arg_bool  ("chip_enable_nfc"                        CONFIG_CHIP_NF
 matter_add_gn_arg_bool  ("chip_enable_ota_requestor"              CONFIG_CHIP_OTA_REQUESTOR)
 matter_add_gn_arg_bool  ("chip_persist_subscriptions"             CONFIG_CHIP_PERSISTENT_SUBSCRIPTIONS)
 matter_add_gn_arg_bool  ("chip_monolithic_tests"                  CONFIG_CHIP_BUILD_TESTS)
-matter_add_gn_arg_bool  ("chip_inet_config_enable_tcp_endpoint"   CONFIG_CHIP_BUILD_TESTS)
+matter_add_gn_arg_bool  ("chip_inet_config_enable_tcp_endpoint"   FALSE)
 matter_add_gn_arg_bool  ("chip_error_logging"                     CONFIG_MATTER_LOG_LEVEL GREATER_EQUAL 1)
 matter_add_gn_arg_bool  ("chip_progress_logging"                  CONFIG_MATTER_LOG_LEVEL GREATER_EQUAL 3)
 matter_add_gn_arg_bool  ("chip_detail_logging"                    CONFIG_MATTER_LOG_LEVEL GREATER_EQUAL 4)
@@ -229,7 +229,7 @@ endif()
 # Define 'chip-ota-image' target for building CHIP OTA image
 # ==============================================================================
 
-if (CONFIG_CHIP_OTA_IMAGE_BUILD)
+if (CONFIG_CHIP_OTA_IMAGE_BUILD AND NOT SYSBUILD)
     chip_ota_image(chip-ota-image
         INPUT_FILES ${PROJECT_BINARY_DIR}/dfu_multi_image.bin
         OUTPUT_FILE ${PROJECT_BINARY_DIR}/${CONFIG_CHIP_OTA_IMAGE_FILE_NAME}
@@ -240,7 +240,7 @@ endif()
 # Define 'factory_data' target for generating a factory data partition
 # ==============================================================================
 
-if (CONFIG_CHIP_FACTORY_DATA_BUILD)
+if(CONFIG_CHIP_FACTORY_DATA_BUILD AND (NOT SYSBUILD OR NOT CONFIG_PARTITION_MANAGER_ENABLED))
     nrfconnect_generate_factory_data()
 endif()
 

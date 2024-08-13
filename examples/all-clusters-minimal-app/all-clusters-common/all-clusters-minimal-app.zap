@@ -1,6 +1,6 @@
 {
   "fileFormat": 2,
-  "featureLevel": 100,
+  "featureLevel": 103,
   "creator": "zap",
   "keyValuePairs": [
     {
@@ -29,6 +29,7 @@
       "pathRelativity": "relativeToZap",
       "path": "../../../src/app/zap-templates/app-templates.json",
       "type": "gen-templates-json",
+      "category": "matter",
       "version": "chip-v1"
     }
   ],
@@ -897,6 +898,22 @@
               "reportable": 1,
               "minInterval": 0,
               "maxInterval": 65344,
+              "reportableChange": 0
+            },
+            {
+              "name": "UniqueID",
+              "code": 18,
+              "mfgCode": null,
+              "side": "server",
+              "type": "char_string",
+              "included": 1,
+              "storageOption": "External",
+              "singleton": 1,
+              "bounded": 0,
+              "defaultValue": null,
+              "reportable": 1,
+              "minInterval": 1,
+              "maxInterval": 65534,
               "reportableChange": 0
             },
             {
@@ -3002,7 +3019,7 @@
           ]
         },
         {
-          "name": "WiFi Network Diagnostics",
+          "name": "Wi-Fi Network Diagnostics",
           "code": 54,
           "mfgCode": null,
           "define": "WIFI_NETWORK_DIAGNOSTICS_CLUSTER",
@@ -5030,7 +5047,7 @@
               "storageOption": "RAM",
               "singleton": 0,
               "bounded": 0,
-              "defaultValue": "5",
+              "defaultValue": "6",
               "reportable": 1,
               "minInterval": 0,
               "maxInterval": 65344,
@@ -7286,7 +7303,7 @@
               "storageOption": "RAM",
               "singleton": 0,
               "bounded": 0,
-              "defaultValue": "6",
+              "defaultValue": "7",
               "reportable": 1,
               "minInterval": 0,
               "maxInterval": 65344,
@@ -9049,6 +9066,14 @@
               "isEnabled": 1
             },
             {
+              "name": "StringEchoResponse",
+              "code": 13,
+              "mfgCode": null,
+              "source": "server",
+              "isIncoming": 0,
+              "isEnabled": 1
+            },
+            {
               "name": "TestEnumsRequest",
               "code": 14,
               "mfgCode": null,
@@ -9115,6 +9140,14 @@
             {
               "name": "TestSecondBatchHelperRequest",
               "code": 23,
+              "mfgCode": null,
+              "source": "client",
+              "isIncoming": 1,
+              "isEnabled": 1
+            },
+            {
+              "name": "StringEchoRequest",
+              "code": 24,
               "mfgCode": null,
               "source": "client",
               "isIncoming": 1,
@@ -11837,27 +11870,27 @@
       "id": 4,
       "name": "Anonymous Endpoint Type",
       "deviceTypeRef": {
-        "code": 4293984258,
+        "code": 25,
         "profileId": 259,
-        "label": "MA-secondary-network-commissioning",
-        "name": "MA-secondary-network-commissioning"
+        "label": "MA-secondary-network-interface",
+        "name": "MA-secondary-network-interface"
       },
       "deviceTypes": [
         {
-          "code": 4293984258,
+          "code": 25,
           "profileId": 259,
-          "label": "MA-secondary-network-commissioning",
-          "name": "MA-secondary-network-commissioning"
+          "label": "MA-secondary-network-interface",
+          "name": "MA-secondary-network-interface"
         }
       ],
       "deviceVersions": [
         1
       ],
       "deviceIdentifiers": [
-        4293984258
+        25
       ],
-      "deviceTypeName": "MA-secondary-network-commissioning",
-      "deviceTypeCode": 4293984258,
+      "deviceTypeName": "MA-secondary-network-interface",
+      "deviceTypeCode": 25,
       "deviceTypeProfileId": 259,
       "clusters": [
         {

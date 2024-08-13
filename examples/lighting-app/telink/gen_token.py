@@ -43,20 +43,128 @@ def get_json_data(json_data):
     return [ startAddr, sizeByte, writeData ]
 
 
-def covertData(sizeB, data):
-    _TMP_ = data.split("0x")
+def intervals_intersect(interval1, interval2):
+    if interval1[1] <= interval2[0] or interval1[0] >= interval2[1]:
+        return False  # no intersection return false
+    else:
+        return True
+ 
 
+def find_intersection(interval1, interval2):
+    if not intervals_intersect(interval1, interval2):
+        return []
+    
+    start = max(interval1[0], interval2[0])
+    end = min(interval1[1], interval2[1])
+
+    return [hex(start), hex(end)]
+
+
+def two_find_intersection(intervalArry, interval):
+    for inter in intervalArry:
+        intersection = find_intersection(inter, interval)
+        if len(intersection) != 0:  # has intersection
+            print("Intersection: ", end="\n")
+            print(intersection, end="\n")
+            return -1
+    return 0
+
+
+def curOffsetAddrCheck(preOffset, preSizeB, curOffset, curSizeB, intervalArry, token_bin_size):
+    preOffset_INT = int(preOffset, 16)
+    curOffset_INT = int(curOffset, 16)
+
+    """
+    # # Intersection verification
+    # intersection = find_intersection(
+    #     [preOffset_INT + 0, preOffset_INT + preSizeB], 
+    #     [curOffset_INT + 0, curOffset_INT + curSizeB]
+    # )
+    # if intersection != None:
+    #     print("preOffset: " + str(preOffset) + ",preSizeB: " + str(preSizeB), end="\n")
+    #     print("curOffset: " + str(curOffset) + ",curSizeB: " + str(curSizeB), end="\n")
+
+    #     print("\nIntersection: ", end="\n")
+    #     print(intersection, end="\n")
+
+    #     print("\nThe current write offset address is invalid,", end="\n")
+    #     print("there is an intersection between the current offset and the previous offset,", end="\n")
+    #     print("abort!", end="\n")
+
+    #     exit(1)
+
+    # # Upward interval verification
+    # if curOffset_INT < (preOffset_INT + preSizeB):
+    #     print("preOffset: " + str(preOffset) + ",preSizeB: " + str(preSizeB), end="\n")
+    #     print("curOffset: " + str(curOffset) + ",curSizeB: " + str(curSizeB), end="\n")
+
+    #     print("\nThe current write offset address is invalid,", end="\n")
+    #     print("there is a risk of overwriting the previous write interval,", end="\n")
+    #     print("abort!", end="\n")
+
+    #     exit(1)
+    """
+
+    # two way interval verification
+    result = two_find_intersection(
+        intervalArry, 
+        [curOffset_INT + 0, curOffset_INT + curSizeB]
+    )
+    if result == (-1):
+        print("\ncurOffset: " + str(curOffset) + ",curSizeB: " + str(curSizeB), end="\n")
+
+        print("\nThe current write offset address is invalid,", end="\n")
+        print("there is a risk of overwriting the previous write interval,", end="\n")
+        print("abort!", end="\n")
+
+        exit(1)
+
+    # Is or not exceed token.bin verification
+    if (curOffset_INT + curSizeB) >= token_bin_size:
+        print("curOffset: " + curOffset + ",curSizeB: " + curSizeB, end="\n")
+
+        print("The current write offset address is invalid,", end="\n")
+        print("exceed the write range of the token.bin,", end="\n")
+        print("abort!", end="\n")
+
+        exit(1)
+
+
+def offsetNewSet(preOffset, preSizeB, curOffset):
+    _TMP_ = curOffset.split("0x")
+
+    if len(_TMP_) == 1:  # use pre offset + pre sizeB to calculate cur offset
+        curOffset = hex(
+            int(preOffset, 16) + preSizeB
+        )
+    
+    return curOffset
+
+
+def covertData(data):
+    _TMP_ = data.split("0x")
+    
     if len(_TMP_) == 1:
         return [format(ord(char), '02x') for char in _TMP_[0]]
     else:
-        if (len(_TMP_[1:]) != sizeB):  # Check if the sizeB matches the length of the data.
-            print("The len of data do not match the input sizeB, abort.")
-            exit(1)
-        
-        return [Str.replace(',', '') for Str in _TMP_[1:]]
+        return [Str.strip().replace(',', '') for Str in _TMP_[1:]]
 
 
-def gen_token_bin(token_bin_path, addr, sizeB, data):
+def adjustWriteData(sizeB, data, offset, baseVAL="ff"):
+    dataLen = len(data)
+
+    if sizeB == dataLen:
+        return data
+    elif sizeB > dataLen:
+        return (data + ([baseVAL] * (sizeB - dataLen))) 
+    elif sizeB < dataLen:
+        print("offset: " + str(offset) + ", sizeB: " + str(sizeB) + ", dataLen: " + str(dataLen), end="\n")
+        print("sizeB < len(data), illegal operation, abort!", end="\n")
+        exit(1)
+        # return data[0:(dataLen - sizeB)]
+
+
+def gen_token_bin(token_bin_path, offset, sizeB, data):
     """
     Generate token.bin according to the data of token.json.
 
@@ -67,10 +175,9 @@ def gen_token_bin(token_bin_path, addr, sizeB, data):
     """
     try:
         with open(token_bin_path, 'r+b') as f:
-            f.seek(addr)
+            f.seek(int(offset, 16))
 
-            covertArray = covertData(sizeB, data)
-            for val in covertArray:
+            for val in data:
                 f.write(bytes.fromhex(val))
 
     except IOError:
@@ -86,7 +193,6 @@ def main():
     """
 
     token_json_path = "./token.json"
-
     token_bin_path = "./token.bin"
 
     token_bin_size = 4096  # 4KB
@@ -100,42 +206,63 @@ def main():
         token_json_path
     )
 
-    for json_data in _JSON_DATA_:
+    preOffset = "null"
+    preSizeB = -1
 
+    intervalArry = []
+
+    for json_data in _JSON_DATA_:
         # Get the json data.
-        _WRITE_BIN_ = get_json_data(
-            json_data
+        offset, sizeB, data = get_json_data(json_data)
+
+        # Init preOffset and preSizeB.
+        if (preOffset == "null") or (preSizeB == -1):
+            preOffset = offset
+            preSizeB = sizeB
+
+        # Get a new offset addr base on rule.
+        newOffset = offsetNewSet(
+            preOffset, 
+            preSizeB, 
+            offset
+        )
+        # print(newOffset, end = "\t")
+        # print(sizeB, end = "\n")
+
+        # Check if the current write offset address is valid.
+        curOffsetAddrCheck(
+            preOffset, 
+            preSizeB, 
+            newOffset,
+            sizeB,
+            intervalArry,
+            token_bin_size
         )
 
-        # Check the legitimacy of input parameters.
-        addr_len = len(_WRITE_BIN_[0])
-        data_len = len(_WRITE_BIN_[2])
+        # Covert input data and get the new write data base on rule.
+        covertArray = covertData(data)
+        newData = adjustWriteData(sizeB, covertArray, newOffset, "ff")  # default supplement 0xff.
+        # print(covertArray, end = "\n")
+        # print(newData, end = "\n\n")
 
-        if (addr_len == 0) or (_WRITE_BIN_[1] == 0) or (data_len == 0):  # Ensure input has value.
-            print(
-                "There is a null for write_addr_len(%d) or sizeB(%d) or json_data_len(%d), continue."
-                % (addr_len, _WRITE_BIN_[1], data_len)
-            )
-            continue
-        
-
-        write_addr = int(_WRITE_BIN_[0], 0)
-        if (write_addr < 0) or (write_addr > token_bin_size):  # Ensure the write addr for input has valid.
-            print(
-                "The write_addr(0x%X) exceeds the size of bin(%dB)." 
-                % (write_addr, token_bin_size)
-            )
-            continue
-
-        # Generate token bin according to the json
+        # Generate token bin.
         gen_token_bin(
             token_bin_path, 
-            write_addr, 
-            _WRITE_BIN_[1], 
-            _WRITE_BIN_[2]
+            newOffset, 
+            sizeB, 
+            newData
         )
 
-
+        # Update preOffset and preSizeB.
+        preOffset = newOffset
+        preSizeB = sizeB
+        # Use to two way find intersection.
+        intervalArry.append([
+            int(preOffset, 16) + 0, 
+            int(preOffset, 16) + preSizeB
+        ])
+        # print(intervalArry, end="\n\n")
+    
     print("Generate successfully for the token.bin.")
 
 

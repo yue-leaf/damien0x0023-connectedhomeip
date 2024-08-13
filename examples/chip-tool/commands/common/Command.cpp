@@ -171,7 +171,7 @@ bool HandleNullableOptional(Argument & arg, char * argValue, std::function<bool(
     if (arg.isNullable())
     {
         auto * nullable = reinterpret_cast<chip::app::DataModel::Nullable<T> *>(arg.value);
-        if (argValue != nullptr && strncmp(argValue, "null", 4) == 0)
+        if (strcmp(argValue, "null") == 0)
         {
             nullable->SetNull();
             return true;
@@ -1068,6 +1068,11 @@ void Command::ResetArguments()
             {
                 auto vectorArgument = static_cast<std::vector<uint32_t> *>(arg.value);
                 vectorArgument->clear();
+            }
+            else if (type == ArgumentType::Custom)
+            {
+                auto argument = static_cast<CustomArgument *>(arg.value);
+                argument->Reset();
             }
             else if (type == ArgumentType::VectorCustom)
             {
