@@ -91,6 +91,7 @@ bool sHaveBLEConnections    = false;
 
 
 const struct device * flash_para_dev = USER_PARTITION_DEVICE;
+const struct device * zb_para_dev = ZB_NVS_PARTITION_DEVICE;
 
 k_timer sDnssTimer;
 
@@ -172,7 +173,7 @@ class AppFabricTableDelegate : public FabricTable::Delegate
             // Erase the user parameters partition to reset mode settings
             flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
             // Need to erase zb nvs part 
-            flash_erase(flash_para_dev, ZB_NVS_START_ADR, ZB_NVS_SEC_SIZE);
+            flash_erase(zb_para_dev, ZB_NVS_START_ADR, ZB_NVS_SEC_SIZE);
 
             printk("Erasing user parameters and resetting to Zigbee mode");
 
@@ -661,7 +662,7 @@ void AppTaskCommon::FactoryResetHandler(AppEvent * aEvent)
         // Erase user parameters partition and reset to Zigbee mode upon factory reset
         flash_erase(flash_para_dev, USER_PARTITION_OFFSET, USER_PARTITION_SIZE);
         // Need to erase zb nvs part 
-        flash_erase(flash_para_dev, ZB_NVS_START_ADR, ZB_NVS_SEC_SIZE);
+        flash_erase(zb_para_dev, ZB_NVS_START_ADR, ZB_NVS_SEC_SIZE);
         
         printk("Factory reset triggered by button, resetting to Zigbee mode");
 
