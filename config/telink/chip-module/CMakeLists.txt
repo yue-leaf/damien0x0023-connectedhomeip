@@ -179,11 +179,13 @@ if (CONFIG_BOOTLOADER_MCUBOOT)
     if(EXISTS ${ZB_FILE_PATH})
         add_custom_target(merge_zigbee ALL
             COMMAND
-            dd if=${PROJECT_BINARY_DIR}/zephyr.bin of=${PROJECT_BINARY_DIR}/zephyrzb.bin
+            dd if=/dev/zero bs=${BLOCK_SIZE} count=1280 | tr '\\000' '\\377' > ${PROJECT_BINARY_DIR}/dm_merged.bin
             COMMAND
-            dd if=${ZEPHYR_BASE}/concurrent_sampleLight_b92.bin of=${PROJECT_BINARY_DIR}/zephyrzb.bin bs=${BLOCK_SIZE} seek=1280
+            dd if=${PROJECT_BINARY_DIR}/zephyr.bin of=${PROJECT_BINARY_DIR}/dm_merged.bin conv=notrunc
             COMMAND
-            cp ${PROJECT_BINARY_DIR}/zephyrzb.bin ${PROJECT_BINARY_DIR}/zephyr.bin
+            dd if=${ZEPHYR_BASE}/concurrent_sampleLight_b92.bin of=${PROJECT_BINARY_DIR}/dm_merged.bin bs=${BLOCK_SIZE} seek=1280 conv=notrunc
+            COMMAND
+            cp ${PROJECT_BINARY_DIR}/dm_merged.bin ${PROJECT_BINARY_DIR}/zephyr.bin
         )
         add_custom_target(west_sign ALL
             COMMAND
