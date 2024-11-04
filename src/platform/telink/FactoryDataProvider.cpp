@@ -58,6 +58,8 @@ CHIP_ERROR FactoryDataProvider<FlashFactoryData>::Init()
 {
     uint8_t * factoryData = nullptr;
     size_t factoryDataSize;
+    uint8_t * DACData = nullptr;
+    size_t DACDataSize;
 
     CHIP_ERROR error = mFlashFactoryData.ProtectFactoryDataPartitionAgainstWrite();
 
@@ -81,9 +83,23 @@ CHIP_ERROR FactoryDataProvider<FlashFactoryData>::Init()
         return error;
     }
 
+    error = mFlashFactoryData.GetDACDataPartition(DACData, DACDataSize);
+
+    if (error != CHIP_NO_ERROR)
+    {
+        ChipLogError(DeviceLayer, "Failed to read DAC data partition");
+        return error;
+    }
+
     if (!ParseFactoryData(factoryData + kFactoryDataOffset, factoryDataSize-kFactoryDataOffset, &mFactoryData))
     {
         ChipLogError(DeviceLayer, "Failed to parse factory data");
+        return CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
+    }
+
+    if (!LoadDACCertandKey(DACData, &mFactoryData))
+    {
+        ChipLogError(DeviceLayer, "Failed to inject dac data");
         return CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
     }
 
