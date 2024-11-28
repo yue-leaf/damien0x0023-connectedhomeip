@@ -34,13 +34,76 @@ LOG_MODULE_DECLARE(app, CONFIG_CHIP_APP_LOG_LEVEL);
 using namespace chip;
 using namespace chip::app::Clusters;
 
+#if CONFIG_STARTUP_OPTIMIZATE
+#include "AppTaskCommon.h"
+
+static uint8_t latest_level;
+#define CLUTER_SOTRE_TIMEOUT 500
+#define TRANSTION_TIMER_INIT_FLAG 0x55
+#define TRANSTION_TIMER_DEINIT_FLAG 0x00
+
+struct k_timer LevelChangeTimer;
+static int timer_period = CLUTER_SOTRE_TIMEOUT;
+static uint8_t init_timer = TRANSTION_TIMER_INIT_FLAG;
+
+static void LevelTimeoutCallback(struct k_timer *timer)
+{
+    if (!timer) {
+        return;
+    }
+
+    cluster_startup_para cluster_para;
+    if (read_cluster_para(&cluster_para) != 0) {
+        printk("[LevelTimeoutCallback] Fail read startup cluster para\n");
+    }
+    if (cluster_para.level != latest_level) {
+        cluster_para.level = latest_level;
+        if (store_cluster_para(&cluster_para) != 0) {
+            printk("[LevelTimeoutCallback] Fail store startup cluster para\n");
+        }
+    }
+}
+
+void MatterPostAttributeChangeCallback(const chip::app::ConcreteAttributePath & attributePath, uint8_t type, uint16_t size,
+                                       uint8_t * value)
+{
+    /* user mode , add the customer code here for cb*/
+    ClusterId clusterId     = attributePath.mClusterId;
+    AttributeId attributeId = attributePath.mAttributeId;
+
+    if (init_timer == TRANSTION_TIMER_INIT_FLAG) {
+        k_timer_init(&LevelChangeTimer, &LevelTimeoutCallback, nullptr);
+        init_timer = TRANSTION_TIMER_DEINIT_FLAG;
+    }
+
+    if (clusterId == OnOff::Id && attributeId == OnOff::Attributes::OnOff::Id)
+    {
+        cluster_startup_para cluster_para;
+        if (read_cluster_para(&cluster_para) != 0) {
+            printk("[clusterId:OnOff] Fail read startup cluster para\n");
+        }
+        if (cluster_para.onoff != *value) {
+            cluster_para.onoff = *value;
+            if (store_cluster_para(&cluster_para) != 0) {
+                printk("[clusterId:OnOff] Fail store startup cluster para\n");
+            }
+        }
+    }
+    else if (clusterId == LevelControl::Id && attributeId == LevelControl::Attributes::CurrentLevel::Id)
+    {
+        latest_level = *value;
+        k_timer_stop(&LevelChangeTimer);
+        k_timer_start(&LevelChangeTimer, K_MSEC(timer_period), K_NO_WAIT);
+    }
+}
+#else
 void MatterPostAttributeChangeCallback(const chip::app::ConcreteAttributePath & attributePath, uint8_t type, uint16_t size,
                                        uint8_t * value)
 {
     /* user mode , add the customer code here for cb*/
    return ;
 }
-
+#endif
 
 #else
 using namespace chip;
