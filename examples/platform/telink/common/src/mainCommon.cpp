@@ -135,9 +135,99 @@ void matter_nvs_demo(void)
 }
 #endif
 
+#if APP_LIGHT_USER_MODE_EN
+#if CONFIG_STARTUP_OPTIMIZATE
+#include "AppTaskCommon.h"
+
+#include <zephyr/drivers/flash.h>
+#include <zephyr/storage/flash_map.h>
+
+#include <zephyr/drivers/pwm.h>
+#include <zephyr_pwm_pool.h>
+#include <PWMManager.h>
+#include <pwm.h>
+
+struct k_timer PwmChangeTimer;
+static PWM_POOL_DEFINE(pwm_pool);
+struct pwm_pool_data *pwm_data = &pwm_pool;
+static const struct device *flash_para_dev = USER_PARTITION_DEVICE;
+
+#define ENUM_BLUE           (PwmManager::EAppPwm_Blue)
+/* EAppPwm_Blue enum is 4, corresponds to channel 2 in dts */
+#define PWM_CHANNEL_BLUE    ((uint32_t)ENUM_BLUE - 2)
+/* pwm channel 0 is BIT(8) in driver */
+#define PWM_CHANNEL_TO_BIT(CHANNEL) (   \
+    (CHANNEL == 0)?FLD_PWM0_EN:BIT(CHANNEL))
+#define BIT_PWM_CHANNEL_BLUE  PWM_CHANNEL_TO_BIT(PWM_CHANNEL_BLUE)
+
+#define PWM_CHANGE_TOTAL_TIME_MS 400
+#define PWM_CHANGE_PRE_STEP_MS   8
+#define PWM_STEP_CNT_MAX (  \
+    PWM_CHANGE_TOTAL_TIME_MS / PWM_CHANGE_PRE_STEP_MS)
+#define PWM_DUTY_RATE(level, cnt) \
+    (level) * (cnt) / (255 * PWM_STEP_CNT_MAX)
+
+static uint32_t cnt = 1;
+static uint8_t cur_level = 0;
+static uint32_t timer_period = PWM_CHANGE_PRE_STEP_MS;
+
+static void init_startup_para(void)
+{
+    cluster_startup_para light_cluster_para;
+    if (read_cluster_para(&light_cluster_para) != 0) {
+        printk("[init_startup_para] Fail read startup cluster para\n");
+    }
+
+    if (light_cluster_para.onoff == 1) {
+        cur_level = light_cluster_para.level;
+    }
+    else { // OFF || ERROR
+        cur_level = 0;
+        timer_period = 0;
+    }
+
+    printk("[init_startup_para] onoff:%d, cur_level:%d, timer_period:%d\n", 
+        light_cluster_para.onoff, cur_level, timer_period);
+}
+
+static void PwmSetTimeoutCallback(struct k_timer *timer)
+{
+    if (!timer) {
+        return;
+    }
+
+    pwm_set_dt(&pwm_data->out[ENUM_BLUE], pwm_data->out[ENUM_BLUE].period, 
+        (pwm_data->out[ENUM_BLUE].period * PWM_DUTY_RATE(cur_level, cnt)));
+    pwm_set_start((pwm_en_e)(BIT_PWM_CHANNEL_BLUE));
+
+    if (cnt >= PWM_STEP_CNT_MAX) {
+        k_timer_stop(timer);
+        printk("[PwmSetTimeoutCallback] The current pulse cycle after change: %d\n", 
+            (pwm_data->out[ENUM_BLUE].period * PWM_DUTY_RATE(cur_level, cnt)));
+    }
+
+    cnt++;
+}
+#endif
+#endif
 
 int main(void)
 {
+#if APP_LIGHT_USER_MODE_EN
+#if CONFIG_STARTUP_OPTIMIZATE
+    unsigned char val;
+    flash_read(flash_para_dev, USER_PARTITION_OFFSET, &val, 1);
+    if (val == USER_MATTER_PAIR_VAL) {
+        init_cluster_partition();
+        init_startup_para();
+        if (timer_period != 0) {
+            k_timer_init(&PwmChangeTimer, &PwmSetTimeoutCallback, nullptr);
+            k_timer_start(&PwmChangeTimer, K_MSEC(timer_period), K_MSEC(timer_period));
+        }
+    }
+#endif
+#endif
+
 #if defined(CONFIG_USB_DEVICE_STACK) && !defined(CONFIG_CHIP_PW_RPC)
     usb_enable(NULL);
 #endif /* CONFIG_USB_DEVICE_STACK */
