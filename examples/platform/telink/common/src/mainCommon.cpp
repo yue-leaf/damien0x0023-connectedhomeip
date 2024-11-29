@@ -164,8 +164,8 @@ static const struct device *flash_para_dev = USER_PARTITION_DEVICE;
 #define PWM_CHANGE_PRE_STEP_MS   8
 #define PWM_STEP_CNT_MAX (  \
     PWM_CHANGE_TOTAL_TIME_MS / PWM_CHANGE_PRE_STEP_MS)
-#define PWM_DUTY_RATE(level, cnt) \
-    (level) * (cnt) / (255 * PWM_STEP_CNT_MAX)
+#define PWM_PULSE_CYCLE(period, level, cnt) ( \
+    (period / (255 * PWM_STEP_CNT_MAX)) * (level) * (cnt))
 
 static uint32_t cnt = 1;
 static uint8_t cur_level = 0;
@@ -197,13 +197,13 @@ static void PwmSetTimeoutCallback(struct k_timer *timer)
     }
 
     pwm_set_dt(&pwm_data->out[ENUM_BLUE], pwm_data->out[ENUM_BLUE].period, 
-        (pwm_data->out[ENUM_BLUE].period * PWM_DUTY_RATE(cur_level, cnt)));
+        PWM_PULSE_CYCLE(pwm_data->out[ENUM_BLUE].period, cur_level, cnt));
     pwm_set_start((pwm_en_e)(BIT_PWM_CHANNEL_BLUE));
 
     if (cnt >= PWM_STEP_CNT_MAX) {
         k_timer_stop(timer);
         printk("[PwmSetTimeoutCallback] The current pulse cycle after change: %d\n", 
-            (pwm_data->out[ENUM_BLUE].period * PWM_DUTY_RATE(cur_level, cnt)));
+            PWM_PULSE_CYCLE(pwm_data->out[ENUM_BLUE].period, cur_level, cnt));
     }
 
     cnt++;
