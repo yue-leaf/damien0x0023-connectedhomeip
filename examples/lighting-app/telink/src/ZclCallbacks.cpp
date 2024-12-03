@@ -54,12 +54,10 @@ static void LevelTimeoutCallback(struct k_timer *timer)
 
     cluster_startup_para cluster_para;
     if (read_cluster_para(&cluster_para) != 0) {
-        printk("[LevelTimeoutCallback] Fail read startup cluster para\n");
     }
     if (cluster_para.level != latest_level) {
         cluster_para.level = latest_level;
         if (store_cluster_para(&cluster_para) != 0) {
-            printk("[LevelTimeoutCallback] Fail store startup cluster para\n");
         }
     }
 }
@@ -80,12 +78,10 @@ void MatterPostAttributeChangeCallback(const chip::app::ConcreteAttributePath & 
     {
         cluster_startup_para cluster_para;
         if (read_cluster_para(&cluster_para) != 0) {
-            printk("[clusterId:OnOff] Fail read startup cluster para\n");
         }
         if (cluster_para.onoff != *value) {
             cluster_para.onoff = *value;
             if (store_cluster_para(&cluster_para) != 0) {
-                printk("[clusterId:OnOff] Fail store startup cluster para\n");
             }
         }
     }

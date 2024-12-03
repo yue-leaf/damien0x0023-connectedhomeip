@@ -169,7 +169,6 @@ void init_cluster_partition(void)
         if (cur_addr >= USER_CLUSTER_PARTITION_END)
         {
             clear_cluster_para();
-            printk("[ERROR] Fail init cluster partition\n");
             break;
         }
 
@@ -177,7 +176,6 @@ void init_cluster_partition(void)
         if (memcmp(&t_cmp, &t_cmp_back, CLUSTER_PARA_LEN) == 0) // read t_cmp is 0xff
         {
             cluster_para_addr = cur_addr;
-            printk("[SUCCESS] Init cluster partition:0x%x successful\n", cluster_para_addr);
             return;
         }
     }
@@ -187,7 +185,6 @@ int store_cluster_para(cluster_startup_para *data)
 {
     if (data == NULL)
     {
-        printk("[ERROR] The data is NULL\n");
         return -1;
     }
     if (cluster_para_addr >= (USER_CLUSTER_PARTITION_END - CLUSTER_PARA_LEN))
@@ -204,18 +201,15 @@ int read_cluster_para(cluster_startup_para *data)
 {
     if (data == NULL)
     {
-        printk("[ERROR] The data is NULL\n");
         return -1;
     }
     if (cluster_para_addr >= USER_CLUSTER_PARTITION_END)
     {
         clear_cluster_para();
-        printk("[ERROR] The read address exceeds partition\n");
         return -1;
     }
     if ((cluster_para_addr - CLUSTER_PARA_LEN) < USER_CLUSTER_PARTITION_OFFSET)
     {
-        printk("[ERROR] The cluster para parition area all NULL\n");
         return -1;
     }
 
@@ -227,7 +221,6 @@ int read_cluster_para(cluster_startup_para *data)
     if (memcmp(&t_cmp, &t_cmp_back, CLUSTER_PARA_LEN) == 0) // read t_cmp is 0xff, error
     {
         clear_cluster_para();
-        printk("[ERROR] The previous data was not successfully written\n");
         return -1;
     }
     memcpy(data, &t_cmp, CLUSTER_PARA_LEN);
