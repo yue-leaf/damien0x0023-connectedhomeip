@@ -175,7 +175,6 @@ static void init_startup_para(void)
 {
     cluster_startup_para light_cluster_para;
     if (read_cluster_para(&light_cluster_para) != 0) {
-        printk("[init_startup_para] Fail read startup cluster para\n");
     }
 
     if (light_cluster_para.onoff == 1) {
@@ -185,9 +184,6 @@ static void init_startup_para(void)
         cur_level = 0;
         timer_period = 0;
     }
-
-    printk("[init_startup_para] onoff:%d, cur_level:%d, timer_period:%d\n", 
-        light_cluster_para.onoff, cur_level, timer_period);
 }
 
 static void PwmSetTimeoutCallback(struct k_timer *timer)
@@ -202,8 +198,6 @@ static void PwmSetTimeoutCallback(struct k_timer *timer)
 
     if (cnt >= PWM_STEP_CNT_MAX) {
         k_timer_stop(timer);
-        printk("[PwmSetTimeoutCallback] The current pulse cycle after change: %d\n", 
-            PWM_PULSE_CYCLE(pwm_data->out[ENUM_BLUE].period, cur_level, cnt));
     }
 
     cnt++;
@@ -211,7 +205,7 @@ static void PwmSetTimeoutCallback(struct k_timer *timer)
 #endif
 #endif
 
-int main(void)
+void early_proc_cluster(void)
 {
 #if APP_LIGHT_USER_MODE_EN
 #if CONFIG_STARTUP_OPTIMIZATE
@@ -225,6 +219,19 @@ int main(void)
             k_timer_start(&PwmChangeTimer, K_MSEC(timer_period), K_MSEC(timer_period));
         }
     }
+#endif
+#endif
+}
+
+typedef void (*p_early_proc)(void);
+p_early_proc early_proc_cluster_f = early_proc_cluster;
+
+int main(void)
+{
+#if APP_LIGHT_USER_MODE_EN
+#if CONFIG_STARTUP_OPTIMIZATE
+printk("[init_startup_para] cur_level:%d, timer_period:%d\n", 
+        cur_level, timer_period);
 #endif
 #endif
 
