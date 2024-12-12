@@ -35,11 +35,18 @@ def main():
 
         parser = argparse.ArgumentParser(
             description='Script helping to update Telink Zephyr to specific revision.')
+        parser.add_argument("remote", default="https://github.com/telink-semi/zephyr",
+                            help="New remote URL for the Zephyr repository.")
         parser.add_argument("hash", help="Update Telink Zephyr to specific revision.")
 
         args = parser.parse_args()
 
-        command = ['git', '-C', zephyr_base, 'fetch']
+        remote_name='custom'
+
+        command = ['git', '-C', zephyr_base, 'remote', 'add', remote_name, args.remote]
+        subprocess.run(command, check=True)
+
+        command = ['git', '-C', zephyr_base, 'fetch', remote_name]
         subprocess.run(command, check=True)
 
         command = ['git', '-C', zephyr_base, 'reset', args.hash, '--hard']
