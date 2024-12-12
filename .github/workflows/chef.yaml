@@ -19,7 +19,7 @@ on:
         branches:
             - master
             - 'v*-branch'
-            - code_base_ci
+            # - code_base_ci
     pull_request:
     merge_group:
 
@@ -102,6 +102,8 @@ jobs:
         container:
             image: ghcr.io/project-chip/chip-build-telink:66
             options: --user root
+            volumes:
+                - "/tmp/telink_build_artifacts:/tmp/telink_build_artifacts"
 
         steps:
             - name: Checkout
@@ -117,3 +119,11 @@ jobs:
               shell: bash
               run: |
                   ./scripts/run_in_build_env.sh "./examples/chef/chef.py --ci -t telink"
+                  /opt/telink/zephyr-sdk-0.16.1/riscv64-zephyr-elf/bin/riscv64-zephyr-elf-objcopy \
+                    -O binary ./examples/chef/telink/build/zephyr/zephyr.elf /tmp/telink_build_artifacts/chef.bin
+            - name: Publish artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                name: telink-examples,${{ github.event_name }}
+                path: |
+                  /tmp/telink_build_artifacts/*

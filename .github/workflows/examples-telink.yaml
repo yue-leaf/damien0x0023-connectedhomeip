@@ -43,6 +43,7 @@ jobs:
             image: ghcr.io/project-chip/chip-build-telink:66
             volumes:
                 - "/tmp/bloat_reports:/tmp/bloat_reports"
+                - "/tmp/telink_build_artifacts:/tmp/telink_build_artifacts"
 
         steps:
             - name: Checkout
@@ -69,73 +70,60 @@ jobs:
                     telink tlsr9528a all-clusters-app \
                     out/telink-tlsr9528a-all-clusters/zephyr/zephyr.elf \
                     /tmp/bloat_reports/
+                  cp out/telink-tlsr9528a-all-clusters/zephyr/zephyr.bin \
+                    /tmp/telink_build_artifacts/telink-tlsr9528a-all-clusters.bin
 
             - name: clean out build output
               run: rm -rf ./out
 
-            - name: Build example Telink (B92) All Clusters Minimal App
+            # - name: Build tools required for Factory Data
+            #   run: |
+            #       ./scripts/checkout_submodules.py --allow-changing-global-git-config --shallow --platform linux
+            #       ./scripts/build/gn_gen.sh
+            #       ./scripts/run_in_build_env.sh "ninja -C ./out/$BUILD_TYPE chip-cert chip-tool spake2p"
+            #       mv ./out/$BUILD_TYPE/chip-cert ./out/$BUILD_TYPE/chip-tool ./out/$BUILD_TYPE/spake2p ./out
+
+            # - name: clean out build output (keep tools)
+            #   run: rm -rf ./out/telink*
+
+            # - name: Build example Telink (B92) Lighting App with OTA, Factory Data
+            #   run: |
+            #       ./scripts/run_in_build_env.sh \
+            #         "./scripts/build/build_examples.py --target 'telink-tlsr9528a-light-ota-factory-data' build"
+            #       .environment/pigweed-venv/bin/python3 scripts/tools/memory/gh_sizes.py \
+            #         telink tlsr9528a lighting-app-ota-factory-data \
+            #         out/telink-tlsr9528a-light-ota-factory-data/zephyr/zephyr.elf \
+            #         /tmp/bloat_reports/
+            #       cp out/telink-tlsr9528a-light-ota-factory-data/zephyr/zephyr.bin \
+            #         /tmp/telink_build_artifacts/telink-tlsr9528a-light-ota-factory-data.bin
+
+            # - name: clean out build output (keep tools)
+            #   run: rm -rf ./out/telink*
+
+            # - name: Build example Telink (B92) Lighting App with OTA, RPC, Factory Data and 4Mb flash
+            #   run: |
+            #       ./scripts/run_in_build_env.sh \
+            #         "./scripts/build/build_examples.py --target 'telink-tlsr9528a-light-ota-rpc-factory-data-4mb' build"
+            #       .environment/pigweed-venv/bin/python3 scripts/tools/memory/gh_sizes.py \
+            #         telink tlsr9528a lighting-app-ota-rpc-factory-data-4mb \
+            #         out/telink-tlsr9528a-light-ota-rpc-factory-data-4mb/zephyr/zephyr.elf \
+            #         /tmp/bloat_reports/
+            #       cp out/telink-tlsr9528a-light-ota-rpc-factory-data-4mb/zephyr/zephyr.bin \
+            #         /tmp/telink_build_artifacts/telink-tlsr9528a-light-ota-rpc-factory-data-4mb.bin
+
+            # - name: clean out build output
+            #   run: rm -rf ./out
+
+            - name: Build example Telink (B92) Lighting App with OTA and 4Mb flash
               run: |
                   ./scripts/run_in_build_env.sh \
-                    "./scripts/build/build_examples.py --target 'telink-tlsr9528a-all-clusters-minimal' build"
+                    "./scripts/build/build_examples.py --target 'telink-tlsr9528a-light-ota-4mb' build"
                   .environment/pigweed-venv/bin/python3 scripts/tools/memory/gh_sizes.py \
-                    telink tlsr9528a all-clusters-minimal-app \
-                    out/telink-tlsr9528a-all-clusters-minimal/zephyr/zephyr.elf \
+                    telink tlsr9528a lighting-app-ota-4mb \
+                    out/telink-tlsr9528a-light-ota-4mb/zephyr/zephyr.elf \
                     /tmp/bloat_reports/
-
-            - name: clean out build output
-              run: rm -rf ./out
-
-            - name: Build tools required for Factory Data
-              run: |
-                  ./scripts/checkout_submodules.py --allow-changing-global-git-config --shallow --platform linux
-                  ./scripts/build/gn_gen.sh
-                  ./scripts/run_in_build_env.sh "ninja -C ./out/$BUILD_TYPE chip-cert chip-tool spake2p"
-                  mv ./out/$BUILD_TYPE/chip-cert ./out/$BUILD_TYPE/chip-tool ./out/$BUILD_TYPE/spake2p ./out
-
-            - name: clean out build output (keep tools)
-              run: rm -rf ./out/telink*
-
-            - name: Build example Telink (B92) Lighting App with OTA, Factory Data
-              run: |
-                  ./scripts/run_in_build_env.sh \
-                    "./scripts/build/build_examples.py --target 'telink-tlsr9528a-light-ota-factory-data' build"
-                  .environment/pigweed-venv/bin/python3 scripts/tools/memory/gh_sizes.py \
-                    telink tlsr9528a lighting-app-ota-factory-data \
-                    out/telink-tlsr9528a-light-ota-factory-data/zephyr/zephyr.elf \
-                    /tmp/bloat_reports/
-
-            - name: clean out build output (keep tools)
-              run: rm -rf ./out/telink*
-
-            - name: Build example Telink (B92) Lighting App with OTA, RPC, Factory Data and 4Mb flash
-              run: |
-                  ./scripts/run_in_build_env.sh \
-                    "./scripts/build/build_examples.py --target 'telink-tlsr9528a-light-ota-rpc-factory-data-4mb' build"
-                  .environment/pigweed-venv/bin/python3 scripts/tools/memory/gh_sizes.py \
-                    telink tlsr9528a lighting-app-ota-rpc-factory-data-4mb \
-                    out/telink-tlsr9528a-light-ota-rpc-factory-data-4mb/zephyr/zephyr.elf \
-                    /tmp/bloat_reports/
-
-            - name: Build example Telink (B92) OTA Requestor App
-              run: |
-                  ./scripts/run_in_build_env.sh \
-                    "./scripts/build/build_examples.py --target 'telink-tlsr9528a-ota-requestor' build"
-                  .environment/pigweed-venv/bin/python3 scripts/tools/memory/gh_sizes.py \
-                    telink tlsr9528a ota-requestor-app \
-                    out/telink-tlsr9528a-ota-requestor/zephyr/zephyr.elf \
-                    /tmp/bloat_reports/
-
-            - name: clean out build output
-              run: rm -rf ./out
-
-            - name: Build example Telink (B92) Shell App
-              run: |
-                  ./scripts/run_in_build_env.sh \
-                    "./scripts/build/build_examples.py --target 'telink-tlsr9528a-shell' build"
-                  .environment/pigweed-venv/bin/python3 scripts/tools/memory/gh_sizes.py \
-                    telink tlsr9528a shell \
-                    out/telink-tlsr9528a-shell/zephyr/zephyr.elf \
-                    /tmp/bloat_reports/
+                  cp out/telink-tlsr9528a-light-ota-4mb/zephyr/zephyr.bin \
+                    /tmp/telink_build_artifacts/telink-tlsr9528a-light-ota-4mb.bin
 
             - name: clean out build output
               run: rm -rf ./out
@@ -145,3 +133,10 @@ jobs:
               if: ${{ !env.ACT }}
               with:
                 platform-name: Telink
+
+            - name: Publish artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                name: telink-examples,${{ github.event_name }}
+                path: |
+                  /tmp/telink_build_artifacts/*
