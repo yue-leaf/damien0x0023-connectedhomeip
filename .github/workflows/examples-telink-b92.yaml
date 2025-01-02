@@ -38,7 +38,6 @@ jobs:
       snbAccessKey: ${{ secrets.IOT_ACCESS_KEY }}
       snbSecretKey: ${{ secrets.IOT_SECRET_KEY }}
       snbSignDataKey: ${{ secrets.IOT_SIGN_DATA_KEY_ID }}
-      snbProductCode: ${{ secrets.PRODUCT_CODE }}
 
     runs-on: ubuntu-20.04
     if: github.actor != 'restyled-io[bot]'
@@ -108,4 +107,4 @@ jobs:
         run: |
           DOWNLOAD_URL="${{ steps.upload_artifact.outputs.artifact-url }}"
           echo "Artifact download URL: $DOWNLOAD_URL"
-          ./third_party/snb-iot/snb iot notify -p $snbProductCode -u $DOWNLOAD_URL
+          ./third_party/snb-iot/snb iot notify -u $DOWNLOAD_URL
