@@ -83,6 +83,7 @@ jobs:
       - name: Sign firmware
         run: |
           echo "Sign firmware..."
+          cat /tmp/telink_build_artifacts/telink-tlsr9528a-light-ota-4mb.bin
           ./third_party/snb-iot/snb kms sign -k $snbSignDataKey -f /tmp/telink_build_artifacts/telink-tlsr9528a-light-ota-4mb.bin -o /tmp/telink_build_artifacts/telink-tlsr9528a-light-ota-4mb-signature.bin
 
       - name: clean out build output
