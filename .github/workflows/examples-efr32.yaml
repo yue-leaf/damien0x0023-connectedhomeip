@@ -60,9 +60,18 @@ jobs:
         run: |
           scripts/examples/gn_silabs_example.sh examples/lighting-app/silabs ./out/light-app BRD2703A  --slc_generate --docker
           echo "=========================1======================"
-          ls out/
+          ls out/light-app/
           echo "=========================2======================"
-          rm -rf ./out/
+
+      - name: Publish artifacts 1
+        uses: actions/upload-artifact@v4
+        with:
+          name: light-app,${{ github.event_name }}
+          path: |
+            out/light-app/*
+
+      - name: clean out build output
+        run: rm -rf ./out
 
       - name: Build light
         run: |
@@ -76,11 +85,11 @@ jobs:
           echo "=========================3======================"
           pwd
           echo "=========================4======================"
-          ls out/artifacts
-          echo "=========================4======================"
+          ls out/artifacts/
+          echo "=========================5======================"
       
 
-      - name: Publish artifacts
+      - name: Publish artifacts 2
         uses: actions/upload-artifact@v4
         with:
           name: light-examples,${{ github.event_name }}
