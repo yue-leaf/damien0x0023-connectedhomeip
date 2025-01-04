@@ -59,7 +59,9 @@ jobs:
         timeout-minutes: 30
         run: |
           scripts/examples/gn_silabs_example.sh examples/lighting-app/silabs ./out/light-app BRD2703A  --slc_generate --docker
+          echo "=========================1======================
           ls ./out/
+          echo "=========================2======================
           rm -rf ./out/
 
       - name: Build light
@@ -71,8 +73,10 @@ jobs:
                 build \
                 --copy-artifacts-to out/artifacts \
              "
-          echo pwd
-          echo ls out/artifacts
+          echo "=========================3======================
+          pwd
+          echo "=========================4======================
+          ls out/artifacts
           
 
       - name: Publish artifacts
