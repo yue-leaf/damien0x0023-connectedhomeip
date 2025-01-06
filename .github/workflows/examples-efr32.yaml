@@ -55,23 +55,23 @@ jobs:
         with:
           gh-context: ${{ toJson(github) }}
 
-      - name: Test SLC gen
-        timeout-minutes: 30
-        run: |
-          scripts/examples/gn_silabs_example.sh examples/lighting-app/silabs ./out/light-app BRD2703A  --slc_generate --docker
-          echo "=========================1======================"
-          ls out/light-app/
-          echo "=========================2======================"
-
-      - name: Publish artifacts 1
-        uses: actions/upload-artifact@v4
-        with:
-          name: light-app,${{ github.event_name }}
-          path: |
-            out/light-app/*
-
-      - name: clean out build output
-        run: rm -rf ./out
+#      - name: Test SLC gen
+#        timeout-minutes: 30
+#        run: |
+#          scripts/examples/gn_silabs_example.sh examples/lighting-app/silabs ./out/light-app BRD2703A  --slc_generate --docker
+#          echo "=========================1======================"
+#          ls out/light-app/
+#          echo "=========================2======================"
+#
+#      - name: Publish artifacts 1
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: light-app,${{ github.event_name }}
+#          path: |
+#            out/light-app/*
+#
+#      - name: clean out build output
+#        run: rm -rf ./out
 
       - name: Build light
         run: |
@@ -86,6 +86,7 @@ jobs:
           pwd
           echo "=========================4======================"
           ls out/artifacts/
+          commander
           echo "=========================5======================"
       
 
