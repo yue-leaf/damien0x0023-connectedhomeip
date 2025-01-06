@@ -86,12 +86,11 @@ jobs:
 
       - name: Set up commander
         run: |
-          apt install -y unzip libkrb5-3 libgssapi-krb5-2 libglib2.0-0 libgl1 && \
+          DEBIAN_FRONTEND=noninteractive apt install -y unzip libkrb5-3 libgssapi-krb5-2 libglib2.0-0 libgl1 wget bzip2 && \
           wget https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip && \
           unzip SimplicityCommander-Linux.zip && \
-          cd SimplicityCommander-Linux && \
-          tar -xjf Commander_linux_x86_64_1v17p0b1771.tar.bz && \
-          ln -s $(pwd)/SimplicityCommander/commander/commander /usr/local/bin/commander
+          tar -xjf SimplicityCommander-Linux/Commander_linux_x86_64_1v17p0b1771.tar.bz  && \
+          ln -s $(pwd)/commander/commander /usr/local/bin/commander && \
           commander --help
       
       
