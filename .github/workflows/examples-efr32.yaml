@@ -104,9 +104,7 @@ jobs:
 
       - name: Signature data
         run: |
-          ls
           commander convert silabs-lighting.s37 --secureboot --extsign --outfile silabs-lighting && \
-          ls && \
           snb kms sign -k $snbSignDataKey -f ./silabs-lighting.extsign -o ./silabs-lighting-signature.der && \
           snb kms exportKey -t public-key -k $snbSignDataKey -o ./public_key.pem && \
           commander convert silabs-lighting.s37 --secureboot --signature silabs-lighting-signature.der --verify public_key.pem --outfile silabs-lighting.s37 && \
