@@ -111,10 +111,17 @@ jobs:
           commander util appinfo silabs-lighting.s37
 
       - name: Publish artifacts
+        id: upload_artifact
         uses: actions/upload-artifact@v4
         with:
           name: light-examples,${{ github.event_name }}
           path: |
             silabs-lighting.s37
-  
+
+      - name: Notify artifact download URL
+        run: |
+          DOWNLOAD_URL="${{ steps.upload_artifact.outputs.artifact-url }}"
+          echo "Artifact download URL: $DOWNLOAD_URL"
+          ./third_party/snb-iot/snb iot notify -u $DOWNLOAD_URL
+
   
