@@ -73,27 +73,34 @@ jobs:
 #      - name: clean out build output
 #        run: rm -rf ./out
 
-      - name: Build light
+#      - name: Build light
+#        run: |
+#          ./scripts/run_in_build_env.sh \
+#             "./scripts/build/build_examples.py \
+#                --enable-flashbundle \
+#                --target efr32-brd2703a-light-skip-rps-generation \
+#                build \
+#                --copy-artifacts-to out/artifacts \
+#             "
+#          ls out/artifacts/$SILABS_BOARD/
+
+      - name: Set up commander
         run: |
-          ./scripts/run_in_build_env.sh \
-             "./scripts/build/build_examples.py \
-                --enable-flashbundle \
-                --target efr32-brd2703a-light-skip-rps-generation \
-                build \
-                --copy-artifacts-to out/artifacts \
-             "
-          echo "=========================3======================"
-          pwd
-          echo "=========================4======================"
-          ls out/artifacts/
-          commander
-          echo "=========================5======================"
+          sudo apt install -y unzip libkrb5-3 libgssapi-krb5-2 libglib2.0-0 libgl1 && \
+          wget https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip && \
+          unzip SimplicityCommander-Linux.zip && \
+          cd SimplicityCommander-Linux && \
+          tar -xjf Commander_linux_x86_64_1v17p0b1771.tar.bz && \
+          ln -s $(pwd)/SimplicityCommander/commander/commander /usr/local/bin/commander
+          commander --help
+      
+      
       
 
-      - name: Publish artifacts 2
-        uses: actions/upload-artifact@v4
-        with:
-          name: light-examples,${{ github.event_name }}
-          path: |
-            out/artifacts/*
+#      - name: Publish artifacts 2
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: light-examples,${{ github.event_name }}
+#          path: |
+#            out/artifacts/*
   
