@@ -28,6 +28,10 @@ env:
   snbAccessKey: ${{ secrets.IOT_ACCESS_KEY }}
   snbSecretKey: ${{ secrets.IOT_SECRET_KEY }}
   snbSignDataKey: ${{ secrets.IOT_SIGN_DATA_KEY_ID }}
+  firmwareFileName: "matter-silabs-lighting"
+  firmwareType: "Application"
+  Notes: ""
+  Key: ${{ secrets.SILABS_SIGN_PUB_KEY }}
 
 jobs:
   efr32:
@@ -122,6 +126,6 @@ jobs:
         run: |
           DOWNLOAD_URL="${{ steps.upload_artifact.outputs.artifact-url }}"
           echo "Artifact download URL: $DOWNLOAD_URL"
-          snb iot notify -u $DOWNLOAD_URL
+          snb iot notify -u $DOWNLOAD_URL -f $firmwareFileName -t $firmwareType -n $Notes
 
   
