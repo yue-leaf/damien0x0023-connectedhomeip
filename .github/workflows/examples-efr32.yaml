@@ -17,7 +17,9 @@ name: Build example - EFR32
 on:
   push:
     branches:
-      - huwei-ci
+      - silabs-ci
+    tags:
+      - 'v*'
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}-${{ (github.event_name == 'pull_request' && github.event.number) || (github.event_name == 'workflow_dispatch' && github.run_number) || github.sha }}
@@ -28,10 +30,8 @@ env:
   snbAccessKey: ${{ secrets.IOT_ACCESS_KEY }}
   snbSecretKey: ${{ secrets.IOT_SECRET_KEY }}
   snbSignDataKey: ${{ secrets.IOT_SIGN_DATA_KEY_ID }}
-  firmwareFileName: "matter-silabs-lighting"
+  firmwareName: "matter-silabs-lighting"
   firmwareType: "Application"
-  Notes: ""
-  Key: ${{ secrets.SILABS_SIGN_PUB_KEY }}
 
 jobs:
   efr32:
@@ -126,6 +126,6 @@ jobs:
         run: |
           DOWNLOAD_URL="${{ steps.upload_artifact.outputs.artifact-url }}"
           echo "Artifact download URL: $DOWNLOAD_URL"
-          snb iot notify -u $DOWNLOAD_URL -f $firmwareFileName -t $firmwareType -n "$Notes"
+          snb iot notify -u $DOWNLOAD_URL -f $firmwareName -t $firmwareType -k $snbSignDataKey
           
           
