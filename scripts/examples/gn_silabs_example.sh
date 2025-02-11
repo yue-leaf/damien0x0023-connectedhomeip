@@ -43,7 +43,7 @@ USE_DOCKER=false
 USE_GIT_SHA_FOR_VERSION=true
 USE_SLC=false
 GN_PATH="$PW_PATH/gn"
-USE_BOOTLOADER=false
+USE_BOOTLOADER=true
 DOTFILE=".gn"
 
 SILABS_THREAD_TARGET=\""../silabs:ot-efr32-cert"\"
