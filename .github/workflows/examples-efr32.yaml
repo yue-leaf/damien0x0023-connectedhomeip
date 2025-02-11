@@ -115,7 +115,7 @@ jobs:
           commander util appinfo silabs-lighting.s37
 
       - name: Publish light-application-firmware
-        id: upload_artifact
+        id: upload_light-application-firmware
         uses: actions/upload-artifact@v4
         with:
           name: light-application-firmware
@@ -134,7 +134,7 @@ jobs:
           commander util appinfo signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
 
       - name: Publish bootloader
-        id: upload_artifact
+        id: upload_bootloader
         uses: actions/upload-artifact@v4
         with:
           name: bootloader
@@ -143,7 +143,7 @@ jobs:
 
       - name: Notify artifact download URL
         run: |
-          DOWNLOAD_URL="${{ steps.upload_artifact.outputs.artifact-url }}"
+          DOWNLOAD_URL="${{ steps.upload_bootloader.outputs.artifact-url }}"
           echo "Artifact download URL: $DOWNLOAD_URL"
           snb iot notify -u $DOWNLOAD_URL -f $firmwareName -t $firmwareType -k $snbSignDataKey
           
