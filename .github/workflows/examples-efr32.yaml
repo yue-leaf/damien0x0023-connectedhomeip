@@ -116,6 +116,7 @@ jobs:
           snb kms exportKey -t public-key -k $snbSignDataKey -o ./public_key.pem && \
           commander convert silabs-lighting.s37 --secureboot --signature silabs-lighting-signature.der --verify public_key.pem --outfile silabs-lighting.s37 && \
           commander util appinfo silabs-lighting.s37
+          snb iot push -f silabs-lighting.s37 -t $appFirmwareType -k $snbSignDataKey -n silabs-lighting.s37
 
       - name: Publish light-application-firmware
         id: upload_light-application-firmware
@@ -134,7 +135,8 @@ jobs:
           snb kms sign -k $snbSignDataKey -f ./bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.extsign -o ./bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.der && \
           snb kms exportKey -t public-key -k $snbSignDataKey -o ./public_key.pem && \
           commander convert bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 --secureboot --signature bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.der --verify public_key.pem --outfile signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 && \
-          commander util appinfo signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
+          commander util appinfo signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 && \
+          snb iot push -f signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 -t $bootloaderFirmwareType -k $snbSignDataKey -n signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
 
       - name: Publish bootloader
         id: upload_bootloader
@@ -144,15 +146,12 @@ jobs:
           path: |
             bootloader_binaries/signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
 
-      - name: Notify artifact download URL
+      - name: Echo artifact download URL
         run: |
           APPLICATION_DOWNLOAD_URL="${{ steps.upload_light-application-firmware.outputs.artifact-url }}"
           echo "Artifact application download URL: $APPLICATION_DOWNLOAD_URL"
-          snb iot notify -u $APPLICATION_DOWNLOAD_URL -f $firmwareName -t $appFirmwareType -k $snbSignDataKey
-
-          BOOTLOADER_DOWNLOAD_URL="${{ steps.upload_bootloader.outputs.artifact-url }}"
-          echo "Artifact bootloader download URL: $BOOTLOADER_DOWNLOAD_URL"
-          snb iot notify -u $BOOTLOADER_DOWNLOAD_URL -f $firmwareName -t $bootloaderFirmwareType -k $snbSignDataKey
           
+          BOOTLOADER_DOWNLOAD_URL="${{ steps.upload_bootloader.outputs.artifact-url }}"
+          echo "Artifact bootloader download URL: $BOOTLOADER_DOWNLOAD_URL"          
           
           
