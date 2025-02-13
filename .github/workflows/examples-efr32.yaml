@@ -133,7 +133,7 @@ jobs:
           cd bootloader_binaries && \
           commander convert bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 --secureboot --extsign --outfile bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1 && \
           snb kms sign -k $snbSignDataKey -f ./bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.extsign -o ./bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.der && \
-          snb kms exportKey -t public-key -k $snbSignDataKey -o ./public_key.pem && \
+          snb kms exportKey -k $snbSignDataKey -o ./public_key.pem && \
           commander convert bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 --secureboot --signature bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.der --verify public_key.pem --outfile signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 && \
           commander util appinfo signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 && \
           snb iot push -f signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 -t $bootloaderFirmwareType -k $snbSignDataKey -n signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
