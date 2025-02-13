@@ -113,7 +113,7 @@ jobs:
         run: |
           commander convert silabs-lighting.s37 --secureboot --extsign --outfile silabs-lighting && \
           snb kms sign -k $snbSignDataKey -f ./silabs-lighting.extsign -o ./silabs-lighting-signature.der && \
-          snb kms exportKey -t public-key -k $snbSignDataKey -o ./public_key.pem && \
+          snb kms exportKey -k $snbSignDataKey -o ./public_key.pem && \
           commander convert silabs-lighting.s37 --secureboot --signature silabs-lighting-signature.der --verify public_key.pem --outfile silabs-lighting.s37 && \
           commander util appinfo silabs-lighting.s37
           snb iot push -f silabs-lighting.s37 -t $appFirmwareType -k $snbSignDataKey -n silabs-lighting.s37
