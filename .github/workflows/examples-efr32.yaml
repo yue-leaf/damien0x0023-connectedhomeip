@@ -95,7 +95,7 @@ jobs:
           ls out/artifacts/efr32-brd2703a-light-skip-rps-generation
           ls out/artifacts/efr32-brd2703a-light-skip-rps-generation/flashbundle/
           cp out/artifacts/efr32-brd2703a-light-skip-rps-generation/flashbundle/matter-silabs-lighting-example.s37 \
-            ./silabs-lighting.s37
+            ./raw-silabs-lighting.s37
 
       - name: Set up commander and snb-command
         run: |
@@ -106,17 +106,17 @@ jobs:
           ln -s $(pwd)/commander/commander /usr/local/bin/commander && \
           commander --help
           wget https://github.com/yue-leaf/cli-test/releases/download/v0.0.2-alpha/snb && chmod +x snb && \
-          ln -s $(pwd)/snb /usr/local/bin/snb
+          ln -s $(pwd)/snb /usr/local/bin/snb && \
           snb config --serviceAddress $serviceAddress -a $snbAccessKey -s $snbSecretKey
 
       - name: Signature application firmware
         run: |
-          commander convert silabs-lighting.s37 --secureboot --extsign --outfile silabs-lighting && \
+          commander convert raw-silabs-lighting.s37 --secureboot --extsign --outfile silabs-lighting && \
           snb kms sign -k $snbSignDataKey -f ./silabs-lighting.extsign -o ./silabs-lighting-signature.der && \
           snb kms exportKey -k $snbSignDataKey -o ./public_key.pem && \
-          commander convert silabs-lighting.s37 --secureboot --signature silabs-lighting-signature.der --verify public_key.pem --outfile silabs-lighting.s37 && \
-          commander util appinfo silabs-lighting.s37
-          snb iot push -f silabs-lighting.s37 -t $appFirmwareType -k $snbSignDataKey -n silabs-lighting.s37
+          commander convert raw-silabs-lighting.s37 --secureboot --signature silabs-lighting-signature.der --verify public_key.pem --outfile signed-silabs-lighting.s37 && \
+          commander util appinfo signed-silabs-lighting.s37
+          snb iot push -f signed-silabs-lighting.s37 -t $appFirmwareType -k $snbSignDataKey -n signed-silabs-lighting.s37
 
       - name: Publish light-application-firmware
         id: upload_light-application-firmware
@@ -124,7 +124,8 @@ jobs:
         with:
           name: light-application-firmware
           path: |
-            silabs-lighting.s37
+            signed-silabs-lighting.s37
+            raw-silabs-lighting.s37
 
       - name: Signature bootloader
         run: |
