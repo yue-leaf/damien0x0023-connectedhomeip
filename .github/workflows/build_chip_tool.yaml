@@ -18,18 +18,22 @@ jobs:
     runs-on: ubuntu-latest
     if: github.actor != 'restyled-io[bot]'
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout submodules & Bootstrap
+        uses: ./.github/actions/checkout-submodules-and-bootstrap
+        with:
+          platform: linux
       - name: Check code path
         run: |
-          echo ls && \
-          echo pwd
+          ls -lah && \
+          pwd
       - name: Build
         run: |
           source scripts/activate.sh && \
           gn gen out/host && \
           ninja -C out/host chip-cert && \
-          echo ls out/host
+          ls -lah out/host
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
