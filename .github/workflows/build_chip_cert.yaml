@@ -1,4 +1,4 @@
-name: Build chip-tool
+name: Build chip-cert
 
 on:
   push:
@@ -13,8 +13,8 @@ concurrency:
 
 
 jobs:
-  chip_tool:
-    name: chip_tool
+  chip_cert:
+    name: chip_cert
     runs-on: ubuntu-latest
     if: github.actor != 'restyled-io[bot]'
     steps:
@@ -41,5 +41,5 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: chip-tool
+          name: chip-cert
           path: ./out/host/chip-cert
