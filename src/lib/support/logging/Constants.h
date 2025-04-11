@@ -252,6 +252,10 @@ enum LogModule
 #define CHIP_CONFIG_LOG_MODULE_Camera 1
 #endif
 
+#ifndef CHIP_CONFIG_LOG_MODULE_Credentials
+#define CHIP_CONFIG_LOG_MODULE_Credentials 1
+#endif
+
 /**
  *  @enum LogCategory
  *
