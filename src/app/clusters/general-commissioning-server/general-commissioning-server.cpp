@@ -107,6 +107,14 @@ CHIP_ERROR GeneralCommissioningGlobalInstance::Read(const ConcreteReadAttributeP
 
     switch (aPath.mAttributeId)
     {
+    case FeatureMap::Id: {
+        BitFlags<GeneralCommissioning::Feature> features;
+#if CHIP_CONFIG_TERMS_AND_CONDITIONS_REQUIRED
+        features.Set(GeneralCommissioning::Feature::kTermsAndConditions);
+#endif // CHIP_CONFIG_TERMS_AND_CONDITIONS_REQUIRED
+        return aEncoder.Encode(features);
+    }
+
     case RegulatoryConfig::Id: {
         return ReadIfSupported(&ConfigurationManager::GetRegulatoryLocation, aEncoder);
     }
@@ -385,6 +393,7 @@ void GeneralCommissioningGlobalInstance::HandleCommissioningComplete(
     ChipLogProgress(FailSafe, "GeneralCommissioning: Received CommissioningComplete");
 
     Commands::CommissioningCompleteResponse::Type response;
+    CHIP_ERROR err;
 
     // Fail-safe must be armed
     if (!failSafe.IsFailSafeArmed())
@@ -452,7 +461,6 @@ void GeneralCommissioningGlobalInstance::HandleCommissioningComplete(
 #endif // CHIP_CONFIG_TERMS_AND_CONDITIONS_REQUIRED
 
     SessionHandle handle = ctx.mCommandHandler.GetExchangeContext()->GetSessionHandle();
-    CHIP_ERROR err       = CHIP_NO_ERROR;
 
     // Ensure it's a valid CASE session
     if (handle->GetSessionType() != Session::SessionType::kSecure ||
@@ -655,6 +663,10 @@ public:
     }
 };
 
+namespace {
+static GeneralCommissioningFabricTableDelegate fabricDelegate;
+}
+
 void MatterGeneralCommissioningPluginServerInitCallback()
 {
     Breadcrumb::Set(0, 0);
@@ -662,8 +674,16 @@ void MatterGeneralCommissioningPluginServerInitCallback()
     ReturnOnFailure(CommandHandlerInterfaceRegistry::Instance().RegisterCommandHandler(&gGeneralCommissioningInstance));
     DeviceLayer::PlatformMgrImpl().AddEventHandler(OnPlatformEventHandler);
 
-    static GeneralCommissioningFabricTableDelegate fabricDelegate;
     Server::GetInstance().GetFabricTable().AddFabricDelegate(&fabricDelegate);
+}
+
+void MatterGeneralCommissioningPluginServerShutdownCallback()
+{
+    Server::GetInstance().GetFabricTable().RemoveFabricDelegate(&fabricDelegate);
+
+    DeviceLayer::PlatformMgrImpl().RemoveEventHandler(OnPlatformEventHandler);
+    AttributeAccessInterfaceRegistry::Instance().Unregister(&gGeneralCommissioningInstance);
+    ReturnOnFailure(CommandHandlerInterfaceRegistry::Instance().UnregisterCommandHandler(&gGeneralCommissioningInstance));
 }
 
 namespace chip {

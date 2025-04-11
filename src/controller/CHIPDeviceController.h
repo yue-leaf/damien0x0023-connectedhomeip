@@ -478,7 +478,7 @@ class DLL_EXPORT DeviceCommissioner : public DeviceController,
 {
 public:
     DeviceCommissioner();
-    ~DeviceCommissioner() override;
+    ~DeviceCommissioner() override {}
 
 #if CHIP_DEVICE_CONFIG_ENABLE_COMMISSIONER_DISCOVERY // make this commissioner discoverable
     /**
@@ -730,6 +730,7 @@ public:
      */
     void CloseBleConnection();
 #endif
+
     /**
      * @brief
      *   Discover all devices advertising as commissionable.
@@ -816,6 +817,7 @@ public:
 
     Optional<CommissioningParameters> GetCommissioningParameters()
     {
+        // TODO: Return a non-optional const & to avoid a copy, mDefaultCommissioner is never null
         return mDefaultCommissioner == nullptr ? NullOptional : MakeOptional(mDefaultCommissioner->GetCommissioningParameters());
     }
 
