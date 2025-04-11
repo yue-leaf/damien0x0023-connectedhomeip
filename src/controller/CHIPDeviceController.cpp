@@ -3316,12 +3316,14 @@ void DeviceCommissioner::PerformCommissioningStep(DeviceProxy * proxy, Commissio
             CommissioningStageComplete(CHIP_ERROR_INVALID_ARGUMENT);
             return;
         }
+        ChipLogError(Controller, "=============params check success================");
 
         DeviceAttestationVerifier::AttestationInfo info(
             params.GetAttestationElements().Value(),
             proxy->GetSecureSession().Value()->AsSecureSession()->GetCryptoContext().GetAttestationChallenge(),
             params.GetAttestationSignature().Value(), params.GetPAI().Value(), params.GetDAC().Value(),
             params.GetAttestationNonce().Value(), params.GetRemoteVendorId().Value(), params.GetRemoteProductId().Value());
+        ChipLogError(Controller, "=============start ValidateAttestationInfo================");
 
         if (ValidateAttestationInfo(info) != CHIP_NO_ERROR)
         {
@@ -3329,6 +3331,8 @@ void DeviceCommissioner::PerformCommissioningStep(DeviceProxy * proxy, Commissio
             CommissioningStageComplete(CHIP_ERROR_FAILED_DEVICE_ATTESTATION);
             return;
         }
+        ChipLogError(Controller, "=============end ValidateAttestationInfo================");
+
     }
     break;
     case CommissioningStage::kAttestationRevocationCheck: {
