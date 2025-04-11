@@ -29,6 +29,8 @@
 #include <lib/support/CodeUtils.h>
 #include <lib/support/ScopedBuffer.h>
 #include <lib/support/Span.h>
+#include <lib/support/logging/CHIPLogging.h>
+
 
 using namespace chip::Crypto;
 using chip::TestCerts::GetTestPaaRootStore;
@@ -313,6 +315,7 @@ AttestationVerificationResult MapError(CertificateChainValidationResult certific
 void DefaultDACVerifier::VerifyAttestationInformation(const DeviceAttestationVerifier::AttestationInfo & info,
                                                       Callback::Callback<OnAttestationInformationVerification> * onCompletion)
 {
+    ChipLogError(Credentials, "--------------start VerifyAttestationInformation-------------");
     AttestationVerificationResult attestationError = AttestationVerificationResult::kSuccess;
 
     Platform::ScopedMemoryBuffer<uint8_t> paaCert;

@@ -488,6 +488,7 @@ CHIP_ERROR DeviceCommissioner::Init(CommissionerInitParams params)
     mDeviceAttestationVerifier = params.deviceAttestationVerifier;
     if (mDeviceAttestationVerifier == nullptr)
     {
+        ChipLogError(Controller,"===========mDeviceAttestationVerifier init is null=================");
         mDeviceAttestationVerifier = Credentials::GetDeviceAttestationVerifier();
         if (mDeviceAttestationVerifier == nullptr)
         {
@@ -505,6 +506,7 @@ CHIP_ERROR DeviceCommissioner::Init(CommissionerInitParams params)
 
     if (params.defaultCommissioner != nullptr)
     {
+        ChipLogError(Controller,"===========mDeviceAttestationVerifier use defaultCommissioner=================");
         mDefaultCommissioner = params.defaultCommissioner;
     }
     else
@@ -1288,7 +1290,7 @@ void DeviceCommissioner::OnDeviceAttestationInformationVerification(
     if (commissioner->mCommissioningStage == CommissioningStage::kAttestationVerification)
     {
         // Check for revoked DAC Chain before calling delegate. Enter next stage.
-
+        ChipLogError(Controller,"===========Check for revoked DAC Chain before calling delegate. Enter next stage=================");
         CommissioningDelegate::CommissioningReport report;
         report.Set<AttestationErrorInfo>(result);
 
@@ -1519,9 +1521,12 @@ void DeviceCommissioner::ExtendArmFailSafeForDeviceAttestation(const Credentials
 
 CHIP_ERROR DeviceCommissioner::ValidateAttestationInfo(const Credentials::DeviceAttestationVerifier::AttestationInfo & info)
 {
+    ChipLogError(Controller, "=============enter ValidateAttestationInfo================");
     MATTER_TRACE_SCOPE("ValidateAttestationInfo", "DeviceCommissioner");
     VerifyOrReturnError(mState == State::Initialized, CHIP_ERROR_INCORRECT_STATE);
+    ChipLogError(Controller, "=============mState == State::Initialized================");
     VerifyOrReturnError(mDeviceAttestationVerifier != nullptr, CHIP_ERROR_INCORRECT_STATE);
+    ChipLogError(Controller, "=============mDeviceAttestationVerifier != nullptr================");
 
     mDeviceAttestationVerifier->VerifyAttestationInformation(info, &mDeviceAttestationInformationVerificationCallback);
 
@@ -3324,7 +3329,8 @@ void DeviceCommissioner::PerformCommissioningStep(DeviceProxy * proxy, Commissio
             params.GetAttestationSignature().Value(), params.GetPAI().Value(), params.GetDAC().Value(),
             params.GetAttestationNonce().Value(), params.GetRemoteVendorId().Value(), params.GetRemoteProductId().Value());
         ChipLogError(Controller, "=============start ValidateAttestationInfo================");
-
+        CHIP_ERROR resultStatus = ValidateAttestationInfo(info);
+        ChipLogError(Controller, "ValidateAttestationInfo resultStatus:%d", resultStatus.AsInteger() );
         if (ValidateAttestationInfo(info) != CHIP_NO_ERROR)
         {
             ChipLogError(Controller, "Error validating attestation information");
