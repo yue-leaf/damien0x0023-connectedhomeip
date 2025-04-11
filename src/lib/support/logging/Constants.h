@@ -53,7 +53,7 @@ namespace Logging {
     X(ICD, "ICD")                                                                                                                  \
     X(FabricSync, "FS")                                                                                                            \
     X(WiFiPAF, "PAF")                                                                                                              \
-    X(Credentials, "CTLS")                                                                                                              \
+    X(Credentials, "CLs")                                                                                                              \
     X(Camera, "CAM")
 
 /**
