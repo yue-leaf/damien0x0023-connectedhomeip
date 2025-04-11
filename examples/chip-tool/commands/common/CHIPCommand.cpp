@@ -76,7 +76,7 @@ CHIP_ERROR GetAttestationTrustStore(const char * paaTrustStorePath, const chip::
 
     static chip::Credentials::FileAttestationTrustStore attestationTrustStore{ paaTrustStorePath };
     ChipLogError(chipTool, "PAAs  path: %s", paaTrustStorePath);
-    ChipLogError(chipTool, "paaCount: %s", attestationTrustStore.paaCount());
+    ChipLogError(chipTool, "paaCount: %d", attestationTrustStore.paaCount());
     if (paaTrustStorePath != nullptr && attestationTrustStore.paaCount() == 0)
     {
         ChipLogError(chipTool, "No PAAs found in path: %s", paaTrustStorePath);
