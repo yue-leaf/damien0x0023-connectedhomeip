@@ -38,9 +38,10 @@ jobs:
           gn gen out/host && \
           ninja -C out/host chip-cert && \
           ./scripts/examples/gn_build_example.sh examples/chip-tool out/host
-          ls -lah out/host
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: chip-cert
-          path: ./out/host/
+          path: |
+            ./out/host/chip-cert
+            ./out/host/chip-tool

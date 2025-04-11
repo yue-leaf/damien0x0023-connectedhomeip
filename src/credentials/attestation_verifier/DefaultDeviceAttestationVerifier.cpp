@@ -613,6 +613,7 @@ CHIP_ERROR DefaultDACVerifier::VerifyNodeOperationalCSRInformation(const ByteSpa
 void DefaultDACVerifier::CheckForRevokedDACChain(const AttestationInfo & info,
                                                  Callback::Callback<OnAttestationInformationVerification> * onCompletion)
 {
+    ChipLogError(Credentials, "--------------start DefaultDACVerifier CheckForRevokedDACChain-------------");
     if (mRevocationDelegate != nullptr)
     {
         mRevocationDelegate->CheckForRevokedDACChain(info, onCompletion);

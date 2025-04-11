@@ -303,6 +303,7 @@ void TestDACRevocationDelegateImpl::CheckForRevokedDACChain(
     const DeviceAttestationVerifier::AttestationInfo & info,
     Callback::Callback<DeviceAttestationVerifier::OnAttestationInformationVerification> * onCompletion)
 {
+    ChipLogDetail(NotSpecified, "TestDACRevocationDelegateImpl Checking for revoked DAC");
     AttestationVerificationResult attestationError = AttestationVerificationResult::kSuccess;
 
     if (mDeviceAttestationRevocationSetPath.empty() && mRevocationData.empty())
