@@ -328,34 +328,45 @@ void DefaultDACVerifier::VerifyAttestationInformation(const DeviceAttestationVer
                      !info.attestationSignatureBuffer.empty() && !info.dacDerBuffer.empty() &&
                      !info.attestationNonceBuffer.empty() && onCompletion != nullptr,
                  attestationError = AttestationVerificationResult::kInvalidArgument);
+    ChipLogError(Credentials, "--------------1-------------");
 
     VerifyOrExit(info.attestationElementsBuffer.size() <= kMaxResponseLength,
                  attestationError = AttestationVerificationResult::kInvalidArgument);
+    ChipLogError(Credentials, "--------------2-------------");
 
     // Ensure PAI is present
     VerifyOrExit(!info.paiDerBuffer.empty(), attestationError = AttestationVerificationResult::kPaiMissing);
+    ChipLogError(Credentials, "--------------3-------------");
 
     // Validate Proper Certificate Format
     {
         VerifyOrExit(VerifyAttestationCertificateFormat(info.paiDerBuffer, AttestationCertType::kPAI) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kPaiFormatInvalid);
+        ChipLogError(Credentials, "--------------3-------------");
         VerifyOrExit(VerifyAttestationCertificateFormat(info.dacDerBuffer, AttestationCertType::kDAC) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kDacFormatInvalid);
+        ChipLogError(Credentials, "--------------4-------------");
     }
 
     // match DAC and PAI VIDs
     {
         VerifyOrExit(ExtractVIDPIDFromX509Cert(info.dacDerBuffer, dacVidPid) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kDacFormatInvalid);
+        ChipLogError(Credentials, "--------------5-------------");
         VerifyOrExit(ExtractVIDPIDFromX509Cert(info.paiDerBuffer, paiVidPid) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kPaiFormatInvalid);
+        ChipLogError(Credentials, "--------------6-------------");
         VerifyOrExit(paiVidPid.mVendorId.HasValue() && paiVidPid.mVendorId == dacVidPid.mVendorId,
                      attestationError = AttestationVerificationResult::kDacVendorIdMismatch);
+        ChipLogError(Credentials, "--------------7-------------");
         VerifyOrExit(dacVidPid.mProductId.HasValue(), attestationError = AttestationVerificationResult::kDacProductIdMismatch);
+        ChipLogError(Credentials, "--------------8-------------");
         if (paiVidPid.mProductId.HasValue())
         {
+            ChipLogError(Credentials, "--------------8-1-------------");
             VerifyOrExit(paiVidPid.mProductId == dacVidPid.mProductId,
                          attestationError = AttestationVerificationResult::kDacProductIdMismatch);
+            ChipLogError(Credentials, "--------------8-2-------------");
         }
     }
 
@@ -365,15 +376,18 @@ void DefaultDACVerifier::VerifyAttestationInformation(const DeviceAttestationVer
 
         VerifyOrExit(ExtractPubkeyFromX509Cert(info.dacDerBuffer, remoteManufacturerPubkey) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kDacFormatInvalid);
+        ChipLogError(Credentials, "--------------9-------------");
 
         // Validate overall attestation signature on attestation information
         // SetLength will fail if signature doesn't fit
         VerifyOrExit(deviceSignature.SetLength(info.attestationSignatureBuffer.size()) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kAttestationSignatureInvalidFormat);
+        ChipLogError(Credentials, "--------------10-------------");
         memcpy(deviceSignature.Bytes(), info.attestationSignatureBuffer.data(), info.attestationSignatureBuffer.size());
         VerifyOrExit(ValidateAttestationSignature(remoteManufacturerPubkey, info.attestationElementsBuffer,
                                                   info.attestationChallengeBuffer, deviceSignature) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kAttestationSignatureInvalid);
+        ChipLogError(Credentials, "--------------11-------------");
     }
 
     {
@@ -384,18 +398,20 @@ void DefaultDACVerifier::VerifyAttestationInformation(const DeviceAttestationVer
 
         VerifyOrExit(ExtractAKIDFromX509Cert(info.paiDerBuffer, akid) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kPaiFormatInvalid);
-
+        ChipLogError(Credentials, "--------------12-------------");
         VerifyOrExit(paaCert.Alloc(paaCertAllocatedLen), attestationError = AttestationVerificationResult::kNoMemory);
-
+        ChipLogError(Credentials, "--------------13-------------");
         paaDerBuffer = MutableByteSpan(paaCert.Get(), paaCertAllocatedLen);
         err          = mAttestationTrustStore->GetProductAttestationAuthorityCert(akid, paaDerBuffer);
         VerifyOrExit(err == CHIP_NO_ERROR || err == CHIP_ERROR_NOT_IMPLEMENTED,
                      attestationError = AttestationVerificationResult::kPaaNotFound);
+        ChipLogError(Credentials, "--------------14-------------");
 
         if (err == CHIP_ERROR_NOT_IMPLEMENTED)
         {
             VerifyOrExit(gTestAttestationTrustStore->GetProductAttestationAuthorityCert(akid, paaDerBuffer) == CHIP_NO_ERROR,
                          attestationError = AttestationVerificationResult::kPaaNotFound);
+            ChipLogError(Credentials, "--------------15-------------");
         }
 
         VerifyOrExit(ExtractVIDPIDFromX509Cert(paaDerBuffer, paaVidPid) == CHIP_NO_ERROR,
@@ -405,12 +421,15 @@ void DefaultDACVerifier::VerifyAttestationInformation(const DeviceAttestationVer
         {
             VerifyOrExit(paaVidPid.mVendorId == paiVidPid.mVendorId,
                          attestationError = AttestationVerificationResult::kPaiVendorIdMismatch);
+            ChipLogError(Credentials, "--------------16-------------");
         }
 
         VerifyOrExit(!paaVidPid.mProductId.HasValue(), attestationError = AttestationVerificationResult::kPaaFormatInvalid);
+        ChipLogError(Credentials, "--------------17-------------");
     }
 
 #if !defined(CURRENT_TIME_NOT_IMPLEMENTED)
+    ChipLogError(Credentials, "--------------18-------------");
     VerifyOrExit(IsCertificateValidAtCurrentTime(info.dacDerBuffer) == CHIP_NO_ERROR,
                  attestationError = AttestationVerificationResult::kDacExpired);
 #endif
@@ -420,6 +439,7 @@ void DefaultDACVerifier::VerifyAttestationInformation(const DeviceAttestationVer
                                           info.paiDerBuffer.size(), info.dacDerBuffer.data(), info.dacDerBuffer.size(),
                                           chainValidationResult) == CHIP_NO_ERROR,
                  attestationError = MapError(chainValidationResult));
+    ChipLogError(Credentials, "--------------19-------------");
 
     {
         ByteSpan certificationDeclarationSpan;
@@ -442,23 +462,30 @@ void DefaultDACVerifier::VerifyAttestationInformation(const DeviceAttestationVer
         MutableByteSpan paaSKID(deviceInfo.paaSKID);
         VerifyOrExit(ExtractSKIDFromX509Cert(paaDerBuffer, paaSKID) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kPaaFormatInvalid);
+        ChipLogError(Credentials, "--------------20-------------");
         VerifyOrExit(paaSKID.size() == sizeof(deviceInfo.paaSKID),
                      attestationError = AttestationVerificationResult::kPaaFormatInvalid);
-
+        ChipLogError(Credentials, "--------------21-------------");
         VerifyOrExit(DeconstructAttestationElements(info.attestationElementsBuffer, certificationDeclarationSpan,
                                                     attestationNonceSpan, timestampDeconstructed, firmwareInfoSpan,
                                                     vendorReserved) == CHIP_NO_ERROR,
                      attestationError = AttestationVerificationResult::kAttestationElementsMalformed);
-
+        ChipLogError(Credentials, "--------------22-------------");
         // Verify that Nonce matches with what we sent
         VerifyOrExit(attestationNonceSpan.data_equal(info.attestationNonceBuffer),
                      attestationError = AttestationVerificationResult::kAttestationNonceMismatch);
+        ChipLogError(Credentials, "--------------23-------------");
 
         attestationError = ValidateCertificationDeclarationSignature(certificationDeclarationSpan, certificationDeclarationPayload);
+        ChipLogError(Credentials, "--------------24-------------");
         VerifyOrExit(attestationError == AttestationVerificationResult::kSuccess, attestationError = attestationError);
+        ChipLogError(Credentials, "--------------25-------------");
 
         attestationError = ValidateCertificateDeclarationPayload(certificationDeclarationPayload, firmwareInfoSpan, deviceInfo);
+        ChipLogError(Credentials, "--------------26-------------");
         VerifyOrExit(attestationError == AttestationVerificationResult::kSuccess, attestationError = attestationError);
+        ChipLogError(Credentials, "--------------27-------------");
+
     }
 
 exit:
