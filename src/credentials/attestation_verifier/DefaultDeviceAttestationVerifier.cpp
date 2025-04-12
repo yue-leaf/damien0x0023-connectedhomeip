@@ -30,6 +30,7 @@
 #include <lib/support/ScopedBuffer.h>
 #include <lib/support/Span.h>
 #include <lib/support/logging/CHIPLogging.h>
+#include <lib/support/BytesToHex.h>
 
 
 using namespace chip::Crypto;
@@ -683,7 +684,15 @@ CHIP_ERROR CsaCdKeysTrustStore::AddTrustedKey(const ByteSpan & derCertBytes)
 
     VerifyOrReturnError(CHIP_NO_ERROR == Crypto::ExtractSKIDFromX509Cert(derCertBytes, kidSpan), CHIP_ERROR_INVALID_ARGUMENT);
     VerifyOrReturnError(CHIP_NO_ERROR == Crypto::ExtractPubkeyFromX509Cert(derCertBytes, pubKey), CHIP_ERROR_INVALID_ARGUMENT);
+    // 分配缓冲区，十六进制需要 2 字节表示每个字节
+    size_t hexLen = kidSpan.size() * 2 + 1; // +1 用于空终止符
+    char* hexBuf = new char[hexLen];
 
+    // 转换为十六进制字符串
+    chip::Encoding::BytesToHex(kidSpan.data(), kidSpan.size(), hexBuf, hexLen, chip::Encoding::HexFlags::kUppercase);
+
+    ChipLogError(Credentials,  "KID (hex): %s", hexBuf);
+    delete[] hexBuf;
     if (!IsCdTestKey(kidSpan))
     {
         // Verify cert against CSA CD root of trust.
