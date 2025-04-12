@@ -495,20 +495,23 @@ exit:
 AttestationVerificationResult DefaultDACVerifier::ValidateCertificationDeclarationSignature(const ByteSpan & cmsEnvelopeBuffer,
                                                                                             ByteSpan & certDeclBuffer)
 {
+    ChipLogError(Credentials, "--------------enter ValidateCertificationDeclarationSignature-------------");
     ByteSpan kid;
     VerifyOrReturnError(CMS_ExtractKeyId(cmsEnvelopeBuffer, kid) == CHIP_NO_ERROR,
                         AttestationVerificationResult::kCertificationDeclarationNoKeyId);
-
+    ChipLogError(Credentials, "--------------ValidateCertificationDeclarationSignature 1-------------");
     Crypto::P256PublicKey verifyingKey;
     CHIP_ERROR err = mCdKeysTrustStore.LookupVerifyingKey(kid, verifyingKey);
     VerifyOrReturnError(err == CHIP_NO_ERROR, AttestationVerificationResult::kCertificationDeclarationNoCertificateFound);
+    ChipLogError(Credentials, "--------------ValidateCertificationDeclarationSignature 2-------------");
 
     // Disallow test key if support not enabled
     if (mCdKeysTrustStore.IsCdTestKey(kid) && !IsCdTestKeySupported())
     {
+        ChipLogError(Credentials, "--------------ValidateCertificationDeclarationSignature 3-------------");
         return AttestationVerificationResult::kCertificationDeclarationNoCertificateFound;
     }
-
+    ChipLogError(Credentials, "--------------ValidateCertificationDeclarationSignature 4-------------");
     VerifyOrReturnError(CMS_Verify(cmsEnvelopeBuffer, verifyingKey, certDeclBuffer) == CHIP_NO_ERROR,
                         AttestationVerificationResult::kCertificationDeclarationInvalidSignature);
 
