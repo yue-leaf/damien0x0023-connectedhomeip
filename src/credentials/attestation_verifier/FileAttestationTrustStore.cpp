@@ -20,6 +20,8 @@
 #include <cstdio>
 #include <cstring>
 #include <string>
+#include <lib/support/logging/CHIPLogging.h>
+
 
 extern "C" {
 #include <dirent.h>
@@ -55,28 +57,36 @@ FileAttestationTrustStore::FileAttestationTrustStore(const char * paaTrustStoreP
 
 std::vector<std::vector<uint8_t>> LoadAllX509DerCerts(const char * trustStorePath, CertificateValidationMode validationMode)
 {
+    ChipLogError(Credentials, "--------------enter LoadAllX509DerCerts-------------");
     std::vector<std::vector<uint8_t>> certs;
     if (trustStorePath == nullptr)
     {
+        ChipLogError(Credentials, "--------------trustStorePath is null-------------");
         return certs;
     }
 
     DIR * dir;
-
+    ChipLogError(Credentials, "--------------trustStorePath:%s-------------", trustStorePath);
     dir = opendir(trustStorePath);
     if (dir != nullptr)
     {
+        ChipLogError(Credentials, "--------------dir is not null-------------");
+
         // Nested directories are not handled.
         dirent * entry;
         while ((entry = readdir(dir)) != nullptr)
         {
             const char * fileExtension = GetFilenameExtension(entry->d_name);
+            ChipLogError(Credentials, "--------------fileExtension:%s-------------", fileExtension);
+
             if (strncmp(fileExtension, "der", strlen("der")) == 0)
             {
+                ChipLogError(Credentials, "------------fileExtension der---------------");
                 std::vector<uint8_t> certificate(kMaxDERCertLength + 1);
                 std::string filename(trustStorePath);
 
                 filename += std::string("/") + std::string(entry->d_name);
+                ChipLogError(Credentials, "------------filename:%s---------------", filename.c_str());
 
                 FILE * file = fopen(filename.c_str(), "rb");
                 if (file == nullptr)

@@ -149,7 +149,9 @@ CHIP_ERROR CHIPCommand::MaybeSetUpStack()
         const char * cdTrustStorePath = mCDTrustStorePath.ValueOr(nullptr);
         if (cdTrustStorePath == nullptr)
         {
+            ChipLogError(NotSpecified, "cdTrustStorePath is null");
             cdTrustStorePath = getenv(kCDTrustStorePathVariable);
+            ChipLogError(NotSpecified, "cdTrustStorePath path:%s", cdTrustStorePath);
         }
 
         auto additionalCdCerts =
