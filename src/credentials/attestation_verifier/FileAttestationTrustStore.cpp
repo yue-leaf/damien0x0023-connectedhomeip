@@ -74,8 +74,10 @@ std::vector<std::vector<uint8_t>> LoadAllX509DerCerts(const char * trustStorePat
 
         // Nested directories are not handled.
         dirent * entry;
+        int count = 1;
         while ((entry = readdir(dir)) != nullptr)
         {
+            ChipLogError(Credentials, "--------------count:%d-------------", count);
             const char * fileExtension = GetFilenameExtension(entry->d_name);
             ChipLogError(Credentials, "--------------fileExtension:%s-------------", fileExtension);
 
@@ -91,6 +93,7 @@ std::vector<std::vector<uint8_t>> LoadAllX509DerCerts(const char * trustStorePat
                 FILE * file = fopen(filename.c_str(), "rb");
                 if (file == nullptr)
                 {
+                    ChipLogError(Credentials, "------------file is null---------------");
                     // On bad files, just skip.
                     continue;
                 }
@@ -98,6 +101,7 @@ std::vector<std::vector<uint8_t>> LoadAllX509DerCerts(const char * trustStorePat
                 size_t certificateLength = fread(certificate.data(), sizeof(uint8_t), certificate.size(), file);
                 if ((certificateLength > 0) && (certificateLength <= kMaxDERCertLength))
                 {
+                    ChipLogError(Credentials, "------------+++++++++---------------");
                     certificate.resize(certificateLength);
                     ByteSpan certSpan{ certificate.data(), certificate.size() };
 
@@ -106,6 +110,7 @@ std::vector<std::vector<uint8_t>> LoadAllX509DerCerts(const char * trustStorePat
                     switch (validationMode)
                     {
                     case CertificateValidationMode::kPAA: {
+                        ChipLogError(Credentials, "------------CertificateValidationMode kPAA---------------");
                         if (CHIP_NO_ERROR != VerifyAttestationCertificateFormat(certSpan, Crypto::AttestationCertType::kPAA))
                         {
                             break;
@@ -120,6 +125,7 @@ std::vector<std::vector<uint8_t>> LoadAllX509DerCerts(const char * trustStorePat
                         break;
                     }
                     case CertificateValidationMode::kPublicKeyOnly: {
+                        ChipLogError(Credentials, "------------CertificateValidationMode kPublicKeyOnly---------------");
                         Crypto::P256PublicKey publicKey;
                         if (CHIP_NO_ERROR == Crypto::ExtractPubkeyFromX509Cert(certSpan, publicKey))
                         {
@@ -128,7 +134,7 @@ std::vector<std::vector<uint8_t>> LoadAllX509DerCerts(const char * trustStorePat
                         break;
                     }
                     }
-
+                    ChipLogError(Credentials, "------------isValid:%d---------------", isValid);
                     if (isValid)
                     {
                         certs.push_back(certificate);
@@ -136,6 +142,7 @@ std::vector<std::vector<uint8_t>> LoadAllX509DerCerts(const char * trustStorePat
                 }
                 fclose(file);
             }
+            count += 1;
         }
         closedir(dir);
     }
