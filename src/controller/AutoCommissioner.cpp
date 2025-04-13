@@ -262,7 +262,9 @@ const CommissioningParameters & AutoCommissioner::GetCommissioningParameters() c
 
 CommissioningStage AutoCommissioner::GetNextCommissioningStage(CommissioningStage currentStage, CHIP_ERROR & lastErr)
 {
+    ChipLogError(Controller, "===============enter GetNextCommissioningStage=================");
     auto nextStage = GetNextCommissioningStageInternal(currentStage, lastErr);
+    ChipLogError(Controller, "===============GetNextCommissioningStage 1=================");
     if (lastErr == CHIP_NO_ERROR)
     {
         ChipLogProgress(Controller, "Commissioning stage next step: '%s' -> '%s'", StageToString(currentStage),
@@ -672,6 +674,7 @@ CHIP_ERROR AutoCommissioner::NOCChainGenerated(ByteSpan noc, ByteSpan icac, Byte
 
 CHIP_ERROR AutoCommissioner::CommissioningStepFinished(CHIP_ERROR err, CommissioningDelegate::CommissioningReport report)
 {
+    ChipLogError(Controller, "-----------------------enter CommissioningStepFinished--------------------------");
     CompletionStatus completionStatus;
     completionStatus.err = err;
     if (err != CHIP_NO_ERROR)
@@ -827,10 +830,14 @@ CHIP_ERROR AutoCommissioner::CommissioningStepFinished(CHIP_ERROR err, Commissio
             break;
         }
         case CommissioningStage::kSendOpCertSigningRequest: {
+            ChipLogError(Controller, "===============SendOpCertSigningRequest 1=================");
             NOCChainGenerationParameters nocParams;
             nocParams.nocsrElements = report.Get<CSRResponse>().nocsrElements;
+            ChipLogError(Controller, "===============SendOpCertSigningRequest 2=================");
             nocParams.signature     = report.Get<CSRResponse>().signature;
+            ChipLogError(Controller, "===============SendOpCertSigningRequest 3=================");
             mParams.SetNOCChainGenerationParameters(nocParams);
+            ChipLogError(Controller, "===============SendOpCertSigningRequest 4=================");
         }
         break;
         case CommissioningStage::kGenerateNOCChain:
@@ -866,6 +873,7 @@ CHIP_ERROR AutoCommissioner::CommissioningStepFinished(CHIP_ERROR err, Commissio
     }
 
     CommissioningStage nextStage = GetNextCommissioningStage(report.stageCompleted, err);
+    ChipLogError(Controller, "===============SendOpCertSigningRequest 5=================");
     if (nextStage == CommissioningStage::kError)
     {
         return CHIP_ERROR_INCORRECT_STATE;
