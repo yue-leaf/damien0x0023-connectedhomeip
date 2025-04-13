@@ -314,6 +314,7 @@ CommissioningStage AutoCommissioner::GetNextCommissioningStageNetworkSetup(Commi
 
 CommissioningStage AutoCommissioner::GetNextCommissioningStageInternal(CommissioningStage currentStage, CHIP_ERROR & lastErr)
 {
+    ChipLogError(Controller, "===============enter GetNextCommissioningStageInternal=================");
     if (mStopCommissioning)
     {
         return CommissioningStage::kCleanup;
@@ -322,7 +323,7 @@ CommissioningStage AutoCommissioner::GetNextCommissioningStageInternal(Commissio
     {
         return CommissioningStage::kCleanup;
     }
-
+    ChipLogError(Controller, "===============GetNextCommissioningStageInternal currentStage:%s=================", StageToString(currentStage));
     switch (currentStage)
     {
     case CommissioningStage::kSecurePairing:
@@ -832,9 +833,14 @@ CHIP_ERROR AutoCommissioner::CommissioningStepFinished(CHIP_ERROR err, Commissio
         case CommissioningStage::kSendOpCertSigningRequest: {
             ChipLogError(Controller, "===============SendOpCertSigningRequest 1=================");
             NOCChainGenerationParameters nocParams;
-            nocParams.nocsrElements = report.Get<CSRResponse>().nocsrElements;
+//            nocParams.nocsrElements = report.Get<CSRResponse>().nocsrElements;
             ChipLogError(Controller, "===============SendOpCertSigningRequest 2=================");
-            nocParams.signature     = report.Get<CSRResponse>().signature;
+//            nocParams.signature     = report.Get<CSRResponse>().signature;
+
+            auto csr = report.Get<CSRResponse>();
+            nocParams.nocsrElements = csr.nocsrElements;
+            ChipLogError(Controller, "===============SendOpCertSigningRequest 3=================");
+            nocParams.signature = csr.signature;
             ChipLogError(Controller, "===============SendOpCertSigningRequest 3=================");
             mParams.SetNOCChainGenerationParameters(nocParams);
             ChipLogError(Controller, "===============SendOpCertSigningRequest 4=================");
