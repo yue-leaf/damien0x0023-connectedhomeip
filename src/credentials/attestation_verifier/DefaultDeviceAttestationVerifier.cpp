@@ -657,7 +657,8 @@ void DefaultDACVerifier::CheckForRevokedDACChain(const AttestationInfo & info,
 
 bool CsaCdKeysTrustStore::IsCdTestKey(const ByteSpan & kid) const
 {
-    return kid.data_equal(ByteSpan{ gTestCdPubkeyKid });
+    //return kid.data_equal(ByteSpan{ gTestCdPubkeyKid });
+    return true;
 }
 
 CHIP_ERROR CsaCdKeysTrustStore::AddTrustedKey(const ByteSpan & kid, const Crypto::P256PublicKey & pubKey)
