@@ -1284,6 +1284,7 @@ void DeviceCommissioner::OnAttestationResponse(void * context,
 void DeviceCommissioner::OnDeviceAttestationInformationVerification(
     void * context, const Credentials::DeviceAttestationVerifier::AttestationInfo & info, AttestationVerificationResult result)
 {
+    ChipLogError(Controller,"===========OnDeviceAttestationInformationVerification=================");
     MATTER_TRACE_SCOPE("OnDeviceAttestationInformationVerification", "DeviceCommissioner");
     DeviceCommissioner * commissioner = reinterpret_cast<DeviceCommissioner *>(context);
 
@@ -1356,7 +1357,9 @@ void DeviceCommissioner::OnDeviceAttestationInformationVerification(
         else
         {
             ChipLogProgress(Controller, "Successfully validated 'Attestation Information' command received from the device.");
+            ChipLogError(Controller, "+++++++++++++++start++++++++++++++++");
             commissioner->CommissioningStageComplete(CHIP_NO_ERROR);
+            ChipLogError(Controller, "+++++++++++++++end++++++++++++++++");
         }
     }
 }
@@ -1529,6 +1532,7 @@ CHIP_ERROR DeviceCommissioner::ValidateAttestationInfo(const Credentials::Device
     ChipLogError(Controller, "=============mDeviceAttestationVerifier != nullptr================");
 
     mDeviceAttestationVerifier->VerifyAttestationInformation(info, &mDeviceAttestationInformationVerificationCallback);
+    ChipLogError(Controller, "=============VerifyAttestationInformation end================");
 
     // TODO: Validate Firmware Information
 
@@ -2074,10 +2078,13 @@ void DeviceCommissioner::SendCommissioningCompleteCallbacks(NodeId nodeId, const
 
 void DeviceCommissioner::CommissioningStageComplete(CHIP_ERROR err, CommissioningDelegate::CommissioningReport report)
 {
+    ChipLogError(Controller, "=================enter CommissioningStageComplete=============");
     // Once this stage is complete, reset mDeviceBeingCommissioned - this will be reset when the delegate calls the next step.
     MATTER_TRACE_SCOPE("CommissioningStageComplete", "DeviceCommissioner");
     MATTER_LOG_METRIC_END(MetricKeyForCommissioningStage(mCommissioningStage), err);
+    ChipLogError(Controller, "=================CommissioningStageComplete 1=============");
     VerifyOrDie(mDeviceBeingCommissioned);
+    ChipLogError(Controller, "=================CommissioningStageComplete 2=============");
 
     NodeId nodeId            = mDeviceBeingCommissioned->GetDeviceId();
     DeviceProxy * proxy      = mDeviceBeingCommissioned;
@@ -2087,7 +2094,9 @@ void DeviceCommissioner::CommissioningStageComplete(CHIP_ERROR err, Commissionin
 
     if (mPairingDelegate != nullptr)
     {
+        ChipLogError(Controller, "=================CommissioningStageComplete mPairingDelegate is not null=============");
         mPairingDelegate->OnCommissioningStatusUpdate(PeerId(GetCompressedFabricId(), nodeId), mCommissioningStage, err);
+        ChipLogError(Controller, "=================CommissioningStageComplete 3=============");
     }
 
     if (mCommissioningDelegate == nullptr)
@@ -2096,6 +2105,7 @@ void DeviceCommissioner::CommissioningStageComplete(CHIP_ERROR err, Commissionin
     }
     report.stageCompleted = mCommissioningStage;
     CHIP_ERROR status     = mCommissioningDelegate->CommissioningStepFinished(err, report);
+    ChipLogError(Controller, "=================CommissioningStageComplete 4=============");
     if (status != CHIP_NO_ERROR && mCommissioningStage != CommissioningStage::kCleanup)
     {
         // Commissioning delegate will only return error if it failed to perform the appropriate commissioning step.
