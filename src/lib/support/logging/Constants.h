@@ -54,6 +54,7 @@ namespace Logging {
     X(FabricSync, "FS")                                                                                                            \
     X(WiFiPAF, "PAF")                                                                                                              \
     X(Credentials, "CLs")                                                                                                              \
+    X(VariantInternal, "VI")                                                                                                              \
     X(Camera, "CAM")
 
 /**
@@ -255,6 +256,10 @@ enum LogModule
 
 #ifndef CHIP_CONFIG_LOG_MODULE_Credentials
 #define CHIP_CONFIG_LOG_MODULE_Credentials 1
+#endif
+
+#ifndef CHIP_CONFIG_LOG_MODULE_VariantInternal
+#define CHIP_CONFIG_LOG_MODULE_VariantInternal 1
 #endif
 
 /**
