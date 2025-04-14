@@ -223,10 +223,10 @@ public:
     template <typename T>
     const T & Get() const
     {
-        ChipLogError(Controller, "------mTypeId:%zu", mTypeId);
+        ChipLogError(VariantInternal, "------mTypeId:%zu", mTypeId);
         unsigned expectedTypeId = VariantInternal::TupleIndexOfType<T, std::tuple<Ts...>>::value;
         ChipLogError(Controller, "------expectedTypeId:%u", expectedTypeId);
-        VerifyOrDie((mTypeId == VariantInternal::TupleIndexOfType<T, std::tuple<Ts...>>::value));
+        VerifyOrDie((VariantInternal == VariantInternal::TupleIndexOfType<T, std::tuple<Ts...>>::value));
         return *reinterpret_cast<const T *>(&mData);
     }
 
