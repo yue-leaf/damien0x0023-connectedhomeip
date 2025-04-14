@@ -3389,6 +3389,7 @@ void DeviceCommissioner::PerformCommissioningStep(DeviceProxy * proxy, Commissio
             CommissioningStageComplete(CHIP_ERROR_INVALID_ARGUMENT);
             return;
         }
+        ChipLogError(Controller, "-------------------SendOperationalCertificateSigningRequestCommand-------------");
         CHIP_ERROR err = SendOperationalCertificateSigningRequestCommand(proxy, params.GetCSRNonce().Value(), timeout);
         if (err != CHIP_NO_ERROR)
         {
