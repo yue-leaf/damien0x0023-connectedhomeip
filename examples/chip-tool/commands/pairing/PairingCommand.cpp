@@ -247,6 +247,7 @@ CHIP_ERROR PairingCommand::PairWithCode(NodeId remoteId)
 
 CHIP_ERROR PairingCommand::Pair(NodeId remoteId, PeerAddress address)
 {
+    ChipLogProgress(chipTool, "=============enter Pair============");
     VerifyOrDieWithMsg(mSetupPINCode.has_value(), chipTool, "Using mSetupPINCode in a mode when we have not gotten one");
     auto params = RendezvousParameters().SetSetupPINCode(mSetupPINCode.value()).SetPeerAddress(address);
     if (mDiscriminator.has_value())
@@ -262,6 +263,7 @@ CHIP_ERROR PairingCommand::Pair(NodeId remoteId, PeerAddress address)
     else
     {
         auto commissioningParams = GetCommissioningParameters();
+        ChipLogProgress(chipTool, "=============PairDevice============");
         err                      = CurrentCommissioner().PairDevice(remoteId, params, commissioningParams);
     }
     return err;

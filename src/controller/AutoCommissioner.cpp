@@ -833,14 +833,9 @@ CHIP_ERROR AutoCommissioner::CommissioningStepFinished(CHIP_ERROR err, Commissio
         case CommissioningStage::kSendOpCertSigningRequest: {
             ChipLogError(Controller, "===============SendOpCertSigningRequest 1=================");
             NOCChainGenerationParameters nocParams;
-//            nocParams.nocsrElements = report.Get<CSRResponse>().nocsrElements;
+            nocParams.nocsrElements = report.Get<CSRResponse>().nocsrElements;
             ChipLogError(Controller, "===============SendOpCertSigningRequest 2=================");
-//            nocParams.signature     = report.Get<CSRResponse>().signature;
-
-            auto csr = report.Get<CSRResponse>();
-            nocParams.nocsrElements = csr.nocsrElements;
-            ChipLogError(Controller, "===============SendOpCertSigningRequest 3=================");
-            nocParams.signature = csr.signature;
+            nocParams.signature     = report.Get<CSRResponse>().signature;
             ChipLogError(Controller, "===============SendOpCertSigningRequest 3=================");
             mParams.SetNOCChainGenerationParameters(nocParams);
             ChipLogError(Controller, "===============SendOpCertSigningRequest 4=================");

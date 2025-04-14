@@ -694,6 +694,8 @@ CHIP_ERROR DeviceCommissioner::PairDevice(NodeId remoteDeviceId, RendezvousParam
 CHIP_ERROR DeviceCommissioner::PairDevice(NodeId remoteDeviceId, RendezvousParameters & rendezvousParams,
                                           CommissioningParameters & commissioningParams)
 {
+    ChipLogProgress(Controller,
+                        "==========enter PairDevice==========");
     MATTER_TRACE_SCOPE("PairDevice", "DeviceCommissioner");
     ReturnErrorOnFailureWithMetric(kMetricDeviceCommissionerCommission, EstablishPASEConnection(remoteDeviceId, rendezvousParams));
     auto errorCode = Commission(remoteDeviceId, commissioningParams);
@@ -711,6 +713,8 @@ CHIP_ERROR DeviceCommissioner::EstablishPASEConnection(NodeId remoteDeviceId, co
 
 CHIP_ERROR DeviceCommissioner::EstablishPASEConnection(NodeId remoteDeviceId, RendezvousParameters & params)
 {
+    ChipLogProgress(Controller,
+        "==========enter EstablishPASEConnection==========");
     MATTER_TRACE_SCOPE("EstablishPASEConnection", "DeviceCommissioner");
     MATTER_LOG_METRIC_BEGIN(kMetricDeviceCommissionerPASESession);
 
@@ -752,10 +756,11 @@ CHIP_ERROR DeviceCommissioner::EstablishPASEConnection(NodeId remoteDeviceId, Re
         peerAddress = Transport::PeerAddress::WiFiPAF(remoteDeviceId);
     }
 #endif // CHIP_DEVICE_CONFIG_ENABLE_WIFIPAF
-
+    ChipLogProgress(Controller, "==========FindCommissioneeDevice==========");
     current = FindCommissioneeDevice(peerAddress);
     if (current != nullptr)
     {
+        ChipLogProgress(Controller, "==========current != null ==========");
         if (current->GetDeviceId() == remoteDeviceId)
         {
             // We might be able to just reuse its connection if it has one or is
@@ -785,7 +790,7 @@ CHIP_ERROR DeviceCommissioner::EstablishPASEConnection(NodeId remoteDeviceId, Re
         ChipLogError(Controller, "Found unconnected device, removing");
         ReleaseCommissioneeDevice(current);
     }
-
+    ChipLogProgress(Controller, "==========mCommissioneeDevicePool.CreateObject==========");
     device = mCommissioneeDevicePool.CreateObject();
     VerifyOrExit(device != nullptr, err = CHIP_ERROR_NO_MEMORY);
 
@@ -3036,6 +3041,7 @@ void DeviceCommissioner::PerformCommissioningStep(DeviceProxy * proxy, Commissio
                                                   Optional<System::Clock::Timeout> timeout)
 
 {
+    ChipLogError(Controller, "PerformCommissioningStep: %s", StageToString(step));
     MATTER_LOG_METRIC(kMetricDeviceCommissionerCommissionStage, step);
     MATTER_LOG_METRIC_BEGIN(MetricKeyForCommissioningStage(step));
 
@@ -3375,6 +3381,8 @@ void DeviceCommissioner::PerformCommissioningStep(DeviceProxy * proxy, Commissio
     }
     break;
     case CommissioningStage::kSendOpCertSigningRequest: {
+        ChipLogError(Controller, "-------------------kSendOpCertSigningRequest-------------");
+
         if (!params.GetCSRNonce().HasValue())
         {
             ChipLogError(Controller, "No CSR nonce found");
