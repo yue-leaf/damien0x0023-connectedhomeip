@@ -216,6 +216,9 @@ public:
     template <typename T>
     T & Get()
     {
+        ChipLogError(VariantInternal, "------mTypeId:%zu", mTypeId);
+        unsigned expectedTypeId = VariantInternal::TupleIndexOfType<T, std::tuple<Ts...>>::value;
+        ChipLogError(VariantInternal, "------expectedTypeId:%u", expectedTypeId);
         VerifyOrDie((mTypeId == VariantInternal::TupleIndexOfType<T, std::tuple<Ts...>>::value));
         return *reinterpret_cast<T *>(&mData);
     }
