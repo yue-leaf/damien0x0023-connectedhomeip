@@ -31,8 +31,9 @@ jobs:
           platform: linux
 
       - name: Build
+        shell: bash
         run: |
-          bash  scripts/bootstrap.sh && \
+          source  scripts/bootstrap.sh && \
           ./scripts/build/build_examples.py --target android-arm64-chip-tool build out/host
 
       - name: Upload build artifacts
