@@ -1,0 +1,43 @@
+name: Build chip-tool-android
+
+on:
+  push:
+    branches:
+      - chip-tool-android
+    tags:
+      - 'v*'
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}-${{ (github.event_name == 'pull_request' && github.event.number) || (github.event_name == 'workflow_dispatch' && github.run_number) || github.sha }}
+  cancel-in-progress: true
+
+
+jobs:
+  chip_cert:
+    name: chip_cert
+    runs-on: ubuntu-24.04
+    if: github.actor != 'restyled-io[bot]'
+    container:
+      image: ghcr.io/project-chip/chip-build-android:latest
+      volumes:
+        - "/tmp/bloat_reports:/tmp/bloat_reports"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Checkout submodules & Bootstrap
+        uses: ./.github/actions/checkout-submodules-and-bootstrap
+        with:
+          platform: linux
+
+      - name: Build
+        run: |
+          source scripts/bootstrap.sh && \
+          ./scripts/build/build_examples.py --target android-arm64-chip-tool build out/host
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: chip-cert
+          path: |
+            ./out/host/

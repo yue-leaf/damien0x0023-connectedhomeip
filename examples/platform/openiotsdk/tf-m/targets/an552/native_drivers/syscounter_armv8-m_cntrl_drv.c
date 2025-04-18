@@ -33,7 +33,7 @@
  *        - When counter scaling is enabled, ScaleVal is the amount added to the
  *          Counter Count Value for every period of the counter as determined
  *          by 1/Frequency from the current operating frequency of the system
- *          counter (the “counter tick”).
+ *          counter (the ï¿½counter tickï¿½).
  *        - ScaleVal is expressed as an unsigned fixed-point number with
  *          a 8 bit integer value and a 24-bit fractional value
  *   - Interrupt for error detection
