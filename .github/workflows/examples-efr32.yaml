@@ -34,6 +34,8 @@ env:
   firmwareName: "matter-silabs-lighting"
   appFirmwareType: "Application"
   bootloaderFirmwareType: "Bootloader"
+  appFirmwareResourcePackageId: ${{ secrets.APPFIRMWARERESOURCEPACKAGEID }}
+  bootloaderResourcePackageId: ${{ secrets.BOOTLOADERRESOURCEPACKAGEID }}
 
 jobs:
   efr32:
@@ -105,18 +107,18 @@ jobs:
           tar -xjf SimplicityCommander-Linux/Commander_linux_x86_64_*.tar.bz  && \
           ln -s $(pwd)/commander/commander /usr/local/bin/commander && \
           commander --help
-          wget https://github.com/yue-leaf/cli-test/releases/download/v0.0.2-alpha/snb && chmod +x snb && \
+          wget https://github.com/yue-leaf/cli-test/releases/download/v0.0.4/snb && chmod +x snb && \
           ln -s $(pwd)/snb /usr/local/bin/snb && \
-          snb config --serviceAddress $serviceAddress -a $snbAccessKey -s $snbSecretKey
+          snb config --serviceAddress $serviceAddress --accessKey $snbAccessKey --secretKey $snbSecretKey
 
       - name: Signature application firmware
         run: |
           commander convert raw-silabs-lighting.s37 --secureboot --extsign --outfile silabs-lighting && \
-          snb kms sign -k $snbSignDataKey -f ./silabs-lighting.extsign -o ./silabs-lighting-signature.der && \
-          snb kms exportKey -k $snbSignDataKey -o ./public_key.pem && \
+          snb kms sign --keyId $snbSignDataKey --inputFile ./silabs-lighting.extsign --outputFile ./silabs-lighting-signature.der && \
+          snb kms exportPubKey --keyId $snbSignDataKey --outputFile ./public_key.pem && \
           commander convert raw-silabs-lighting.s37 --secureboot --signature silabs-lighting-signature.der --verify public_key.pem --outfile signed-silabs-lighting.s37 && \
           commander util appinfo signed-silabs-lighting.s37
-          snb iot push -f signed-silabs-lighting.s37 -t $appFirmwareType -k $snbSignDataKey -n signed-silabs-lighting.s37
+          snb obis push --file signed-silabs-lighting.s37 --fileType $appFirmwareType --resourcePackageId $appFirmwareResourcePackageId --env TEST
 
       - name: Publish light-application-firmware
         id: upload_light-application-firmware
@@ -133,11 +135,11 @@ jobs:
           unzip bootloader_binaries_matter_extension_v2.5.0-1.4.zip && \
           cd bootloader_binaries && \
           commander convert bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 --secureboot --extsign --outfile bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1 && \
-          snb kms sign -k $snbSignDataKey -f ./bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.extsign -o ./bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.der && \
-          snb kms exportKey -k $snbSignDataKey -o ./public_key.pem && \
+          snb kms sign -keyId $snbSignDataKey --inputFile ./bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.extsign --outputFile ./bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.der && \
+          snb kms exportPubKey --keyId $snbSignDataKey --outputFile ./public_key.pem && \
           commander convert bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 --secureboot --signature bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.der --verify public_key.pem --outfile signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 && \
           commander util appinfo signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 && \
-          snb iot push -f signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 -t $bootloaderFirmwareType -k $snbSignDataKey -n signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
+          snb obis push --file signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37 --fileType $bootloaderFirmwareType --resourcePackageId $bootloaderResourcePackageId --env TEST
 
       - name: Publish bootloader
         id: upload_bootloader
