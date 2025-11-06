@@ -101,12 +101,12 @@ jobs:
           cp out/artifacts/efr32-brd2703a-light-skip-rps-generation/flashbundle/matter-silabs-lighting-example.s37 \
             ./raw-silabs-lighting.s37
 
-      - name: Set up commander and snb-command
-        run: |
-          wget https://github.com/yue-leaf/cli-test/releases/download/$cliVersion/snb && chmod +x snb && \
-          ln -s $(pwd)/snb /usr/local/bin/snb && \
-          snb config --serviceAddress $serviceAddress --accessKey $snbAccessKey --secretKey $snbSecretKey && \
-          snb obis push --fileType $appFirmwareType --file raw-silabs-lighting.s37 --env $obisEnv --resourcePackageId $appFirmwareResourcePackageId
+#      - name: Set up commander and snb-command
+#        run: |
+#          wget https://github.com/yue-leaf/cli-test/releases/download/$cliVersion/snb && chmod +x snb && \
+#          ln -s $(pwd)/snb /usr/local/bin/snb && \
+#          snb config --serviceAddress $serviceAddress --accessKey $snbAccessKey --secretKey $snbSecretKey && \
+#          snb obis push --fileType $appFirmwareType --file raw-silabs-lighting.s37 --env $obisEnv --resourcePackageId $appFirmwareResourcePackageId
 
 #      - name: Signature application firmware
 #        run: |
