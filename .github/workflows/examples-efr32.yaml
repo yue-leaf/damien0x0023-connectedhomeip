@@ -103,12 +103,6 @@ jobs:
 
       - name: Set up commander and snb-command
         run: |
-#          DEBIAN_FRONTEND=noninteractive apt install -y unzip libkrb5-3 libgssapi-krb5-2 libglib2.0-0 libgl1 wget bzip2 && \
-#          wget https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip && \
-#          unzip SimplicityCommander-Linux.zip && \
-#          tar -xjf SimplicityCommander-Linux/Commander_linux_x86_64_*.tar.bz  && \
-#          ln -s $(pwd)/commander/commander /usr/local/bin/commander && \
-#          commander --help
           wget https://github.com/yue-leaf/cli-test/releases/download/$cliVersion/snb && chmod +x snb && \
           ln -s $(pwd)/snb /usr/local/bin/snb && \
           snb config --serviceAddress $serviceAddress --accessKey $snbAccessKey --secretKey $snbSecretKey && \
