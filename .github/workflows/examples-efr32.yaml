@@ -55,6 +55,28 @@ jobs:
       volumes:
         - "/tmp/bloat_reports:/tmp/bloat_reports"
     steps:
+      - name: Get tag or commit hash
+        run: |
+          echo "Full ref: ${{ github.ref }}"
+          echo "Ref name: ${{ github.ref_name }}"
+
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            # 如果是 tag 触发
+            VERSION="${{ github.ref_name }}"
+            echo "Triggered by tag: $VERSION"
+          else
+            # 如果是分支触发，获取短 hash
+            VERSION="${{ github.sha }}"
+            # 或者获取短 hash（前7位）
+            #SHORT_SHA="${GITHUB_SHA:0:7}"
+            SHORT_SHA="${GITHUB_SHA}"
+            VERSION="$SHORT_SHA"
+            echo "Triggered by branch, using commit hash: $VERSION"
+          fi
+
+          echo "Final version: $VERSION"
+          # 将 VERSION 写入 GITHUB_ENV，供后续步骤使用
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v4
       - name: Checkout submodules & Bootstrap
@@ -106,7 +128,7 @@ jobs:
           wget https://github.com/yue-leaf/cli-test/releases/download/$cliVersion/snb && chmod +x snb && \
           ln -s $(pwd)/snb /usr/local/bin/snb && \
           snb config --serviceAddress $serviceAddress --accessKey $snbAccessKey --secretKey $snbSecretKey && \
-          snb obis push --fileType $appFirmwareType --file raw-silabs-lighting.s37 --env $obisEnv --resourcePackageId $appFirmwareResourcePackageId
+          snb obis push --fileType $appFirmwareType --file raw-silabs-lighting.s37 --env $obisEnv --resourcePackageId $appFirmwareResourcePackageId --version $VERSION
 
 #      - name: Signature application firmware
 #        run: |
