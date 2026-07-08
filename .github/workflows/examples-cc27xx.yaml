@@ -42,6 +42,50 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+
+            - name: Install ZAP
+              shell: bash
+              run: |
+                  ZAP_VERSION="$(cat scripts/setup/zap.version)"
+                  case "$(uname -m)" in
+                      x86_64) ZAP_FLAVOR=linux-x64 ;;
+                      aarch64 | arm64) ZAP_FLAVOR=linux-arm64 ;;
+                      *) echo "Unsupported ZAP platform: $(uname -sm)" && exit 1 ;;
+                  esac
+
+                  ZAP_ROOT="${RUNNER_TEMP:-/tmp}/zap"
+                  ZAP_ARCHIVE="${RUNNER_TEMP:-/tmp}/zap.zip"
+                  rm -rf "$ZAP_ROOT"
+                  mkdir -p "$ZAP_ROOT"
+                  wget -q -O "$ZAP_ARCHIVE" "https://github.com/project-chip/zap/releases/download/${ZAP_VERSION}/zap-${ZAP_FLAVOR}.zip"
+                  python3 - "$ZAP_ARCHIVE" "$ZAP_ROOT" <<'PY'
+                  import sys
+                  import zipfile
+
+                  archive, output = sys.argv[1:]
+                  with zipfile.ZipFile(archive) as zap:
+                      zap.extractall(output)
+                  PY
+                  chmod +x "$ZAP_ROOT/zap-cli"
+                  echo "ZAP_INSTALL_PATH=$ZAP_ROOT" >> "$GITHUB_ENV"
+
+                  python3 - <<'PY'
+                  import json
+
+                  path = "scripts/setup/environment.json"
+                  with open(path, encoding="utf-8") as f:
+                      config = json.load(f)
+
+                  config["cipd_package_files"] = [
+                      package for package in config["cipd_package_files"]
+                      if package != "scripts/setup/zap.json"
+                  ]
+
+                  with open(path, "w", encoding="utf-8") as f:
+                      json.dump(config, f, indent=4)
+                      f.write("\n")
+                  PY
+
             - name: Checkout submodules & Bootstrap
               uses: ./.github/actions/checkout-submodules-and-bootstrap
               with:
