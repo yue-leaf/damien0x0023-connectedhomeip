@@ -61,16 +61,21 @@ class TIApp(Enum):
 
 class TIBoard(Enum):
     LP_EM_CC1354P10_6 = auto()
+    LP_EM_CC2745R10_Q1 = auto()
 
     def BoardName(self):
         if self == TIBoard.LP_EM_CC1354P10_6:
             return 'LP_EM_CC1354P10_6'
+        elif self == TIBoard.LP_EM_CC2745R10_Q1:
+            return 'LP_EM_CC2745R10_Q1'
         else:
             raise Exception('Unknown board type: %r' % self)
 
     def FamilyName(self):
         if self == TIBoard.LP_EM_CC1354P10_6:
             return 'cc13x4_26x4'
+        elif self == TIBoard.LP_EM_CC2745R10_Q1:
+            return 'cc27xx'
         else:
             raise Exception('Unknown board type: %r' % self)
 

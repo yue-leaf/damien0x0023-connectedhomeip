@@ -581,6 +581,28 @@ def BuildCC13x4Target():
     return target
 
 
+def BuildCC27xxTarget():
+    target = BuildTarget('ti', TIBuilder)
+
+    # board
+    target.AppendFixedTargets([
+        TargetPart('cc27xx', board=TIBoard.LP_EM_CC2745R10_Q1)
+    ])
+
+    target.AppendFixedTargets([
+        TargetPart('lighting', app=TIApp.LIGHTING),
+        TargetPart('lock', app=TIApp.LOCK, openthread_ftd=True),
+        TargetPart('pump', app=TIApp.PUMP, openthread_ftd=False),
+        TargetPart('pump-controller', app=TIApp.PUMP_CONTROLLER,
+                   openthread_ftd=False),
+    ])
+
+    target.AppendModifier(name="mtd", openthread_ftd=False)
+    target.AppendModifier(name="ftd", openthread_ftd=True)
+
+    return target
+
+
 def Buildcc32xxTarget():
     target = BuildTarget('cc32xx', cc32xxBuilder)
 
@@ -827,6 +849,7 @@ BUILD_TARGETS = [
     BuildBouffalolabTarget(),
     Buildcc32xxTarget(),
     BuildCC13x4Target(),
+    BuildCC27xxTarget(),
     BuildCyw30739Target(),
     BuildEfr32Target(),
     BuildEsp32Target(),
