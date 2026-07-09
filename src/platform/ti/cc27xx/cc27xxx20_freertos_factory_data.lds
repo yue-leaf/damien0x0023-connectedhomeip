@@ -41,13 +41,16 @@ STACKSIZE = 3096;
 /* Factory data start: 0x1E7000 */
 /*Factory data length: 0x1000 */
 /* NVS Start 0x1E1000*/
+_matter_app_flash_base = DEFINED(MATTER_APP_FLASH_BASE) ? MATTER_APP_FLASH_BASE : ti_utils_build_GenMap_FLASH0_BASE;
+_matter_app_flash_length = DEFINED(MATTER_APP_FLASH_LENGTH) ? MATTER_APP_FLASH_LENGTH : 0x1E7000;
+_matter_app_reset_vecs_base = DEFINED(MATTER_APP_RESET_VECS_BASE) ? MATTER_APP_RESET_VECS_BASE : 0x0;
 
 MEMORY
 {
 
 
     /* If device has HSM FW the last part of Flash is reserved for it */
-    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0x1E7000
+    FLASH (RX) : ORIGIN = _matter_app_flash_base, LENGTH = _matter_app_flash_length
 
     FLASH_FACTORY_DATA (R) : ORIGIN = 0x1E7000, LENGTH = 0x1000
     /*
@@ -89,7 +92,7 @@ REGION_ALIAS("REGION_ARM_EXTAB", FLASH);
 SECTIONS {
 
     PROVIDE (_resetVecs_base_address =
-        DEFINED(_resetVecs_base_address) ? _resetVecs_base_address : 0x0);
+        DEFINED(_resetVecs_base_address) ? _resetVecs_base_address : _matter_app_reset_vecs_base);
 
     .resetVecs (_resetVecs_base_address) : AT (_resetVecs_base_address) {
         KEEP (*(.resetVecs))

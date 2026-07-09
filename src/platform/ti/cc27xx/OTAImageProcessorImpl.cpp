@@ -165,8 +165,12 @@ static bool writeExtFlashImgPages(NVS_Handle handle, ssize_t offset, MutableByte
     return true;
 }
 
-/* Erase the MCUBoot slot */
-#define BOOT_SLOT_SIZE (0x000F2000) /* must match flash_map_backend */
+/* Erase the MCUBoot slot. This must match flash_map_backend. */
+#if defined(DeviceFamily_CC27XXX20)
+#define BOOT_SLOT_SIZE (0x001DB000)
+#else
+#define BOOT_SLOT_SIZE (0x000DB000)
+#endif
 static bool eraseExtSlot(NVS_Handle handle)
 {
     int_fast16_t status;

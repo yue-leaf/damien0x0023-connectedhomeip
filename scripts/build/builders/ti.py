@@ -87,7 +87,8 @@ class TIBuilder(GnBuilder):
                  runner,
                  board=TIBoard.LP_EM_CC1354P10_6,
                  app: TIApp = TIApp.LOCK,
-                 openthread_ftd: Optional[bool] = None):
+                 openthread_ftd: Optional[bool] = None,
+                 enable_ota: bool = False):
         super(TIBuilder, self).__init__(
             root=app.BuildRoot(root, board),
             runner=runner)
@@ -95,6 +96,7 @@ class TIBuilder(GnBuilder):
         self.app = app
         self.board = board
         self.openthread_ftd = openthread_ftd
+        self.enable_ota = enable_ota
 
     def GnBuildArgs(self):
         args = [
@@ -111,10 +113,15 @@ class TIBuilder(GnBuilder):
         elif self.openthread_ftd is not None:
             args.append('chip_openthread_ftd=false')
 
+        if self.enable_ota:
+            args.append('chip_enable_ota_requestor=true')
+
         return args
 
     def build_outputs(self):
-        if self.board == TIBoard.LP_EM_CC1354P10_6:
+        if self.enable_ota:
+            suffixes = [".out", ".mcubootloader.hex", "-mcuboot.hex", ".ota"]
+        elif self.board == TIBoard.LP_EM_CC1354P10_6:
             if self.app in [TIApp.LOCK,
                             TIApp.LIGHTING,
                             TIApp.PUMP_CONTROLLER]:
