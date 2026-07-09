@@ -36,14 +36,11 @@ STACKSIZE = 3096;
 /*0x18000 HSM FW Size*/
 
 /* FLASH END WITH HSM: 0x1E8000*/
-_matter_app_flash_base = DEFINED(MATTER_APP_FLASH_BASE) ? MATTER_APP_FLASH_BASE : ti_utils_build_GenMap_FLASH0_BASE;
-_matter_app_flash_length = DEFINED(MATTER_APP_FLASH_LENGTH) ? MATTER_APP_FLASH_LENGTH : 0x1E8000;
-_matter_app_reset_vecs_base = DEFINED(MATTER_APP_RESET_VECS_BASE) ? MATTER_APP_RESET_VECS_BASE : 0x0;
 
 MEMORY
 {
     /* If device has HSM FW the last part of Flash is reserved for it */
-    FLASH (RX) : ORIGIN = _matter_app_flash_base, LENGTH = _matter_app_flash_length
+    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0x1E8000
 
     /*
      * Customer Configuration Area and Bootloader Backdoor configuration in
@@ -83,7 +80,7 @@ REGION_ALIAS("REGION_ARM_EXTAB", FLASH);
 SECTIONS {
 
     PROVIDE (_resetVecs_base_address =
-        DEFINED(_resetVecs_base_address) ? _resetVecs_base_address : _matter_app_reset_vecs_base);
+        DEFINED(_resetVecs_base_address) ? _resetVecs_base_address : 0x0);
 
     .resetVecs (_resetVecs_base_address) : AT (_resetVecs_base_address) {
         KEEP (*(.resetVecs))

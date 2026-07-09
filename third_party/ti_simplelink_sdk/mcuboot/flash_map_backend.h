@@ -91,24 +91,6 @@
 #define BOOT_SECONDARY_1_SIZE BOOT_SLOT_1_SIZE
 #endif
 
-#elif defined(DeviceFamily_PARENT_CC27XX) || defined(DeviceFamily_CC27XXX10) || defined(DeviceFamily_CC27XXX20)
-#if defined(DeviceFamily_CC27XXX20)
-#define BOOT_SLOT_1_SIZE 0x001DB000
-#else
-#define BOOT_SLOT_1_SIZE 0x000DB000
-#endif
-
-/* Internal Flash locations */
-#define BOOTLOADER_BASE_ADDRESS 0x00000000
-#define BOOT_BOOTLOADER_SIZE 0x00006000
-
-#define BOOT_PRIMARY_1_BASE_ADDRESS (BOOTLOADER_BASE_ADDRESS + BOOT_BOOTLOADER_SIZE)
-#define BOOT_PRIMARY_1_SIZE BOOT_SLOT_1_SIZE
-
-/* EXT Flash locations */
-#define BOOT_SECONDARY_1_BASE_ADDRESS 0x00000000
-#define BOOT_SECONDARY_1_SIZE BOOT_SLOT_1_SIZE
-
 #else
 #error "DeviceFamily not recognized, is MCUBoot meant to be used?"
 

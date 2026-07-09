@@ -599,7 +599,6 @@ def BuildCC27xxTarget():
 
     target.AppendModifier(name="mtd", openthread_ftd=False)
     target.AppendModifier(name="ftd", openthread_ftd=True)
-    target.AppendModifier(name="ota", enable_ota=True)
 
     return target
 
