@@ -446,6 +446,8 @@ template("ti_simplelink_executable") {
           "-T" + rebase_path(ldscript, root_build_dir),
         ]
 
+        cflags_c = [ "-Wno-incompatible-pointer-types" ]
+
         if (ti_simplelink_device_family == "cc27xx") {
           ldflags += [
             "-nostartfiles",
@@ -459,9 +461,9 @@ template("ti_simplelink_executable") {
             "-flto=none",
             "--specs=nosys.specs",
           ]
-        }
 
-        cflags_c = [ "-Wno-incompatible-pointer-types" ]
+          cflags_c += [ "-Wno-shadow" ]
+        }
       }
 
       action("${simplelink_target_name}-mcuboot.hex") {
