@@ -29,7 +29,7 @@
 // clang-format off
 /* driverlib header for resetting the SoC */
 #include <ti/devices/DeviceFamily.h>
-#include DeviceFamily_constructPath(driverlib/sys_ctrl.h)
+#include DeviceFamily_constructPath(driverlib/pmctl.h)
 // clang-format on
 
 using namespace chip::DeviceLayer;
@@ -288,7 +288,7 @@ void OTAImageProcessorImpl::HandleApply(intptr_t context)
 
     /* reset SoC to kick MCUBoot */
     ChipLogProgress(SoftwareUpdate, "Resetting device to kick off MCUBoot");
-    SysCtrlSystemReset();
+    PMCTLResetSystem();
 }
 
 void OTAImageProcessorImpl::HandleAbort(intptr_t context)
