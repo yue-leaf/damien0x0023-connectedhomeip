@@ -440,6 +440,9 @@ template("ti_simplelink_executable") {
               rebase_path(ti_simplelink_sdk_root + "/source", root_build_dir),
           "-L" + rebase_path(ti_simplelink_sdk_root + "/kernel/nortos",
                              root_build_dir),
+          "-L" + rebase_path(
+                  "${target_gen_dir}/${simplelink_target_name}_mcuboot.syscfg",
+                  root_build_dir),
           rebase_path(
               "${target_gen_dir}/${simplelink_target_name}_mcuboot.syscfg/ti_utils_build_linker.cmd.genlibs",
               root_build_dir),
