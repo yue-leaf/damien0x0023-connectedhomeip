@@ -18,7 +18,7 @@ on:
     workflow_dispatch:
     push:
         branches:
-            - ti-cc2745
+            - ti-cc2745-ota
 
 concurrency:
     group: ${{ github.ref }}-${{ github.workflow }}-${{ (github.event_name == 'workflow_dispatch' && github.run_number) || github.sha }}
@@ -95,18 +95,25 @@ jobs:
             - name: Install TI SysConfig
               shell: bash
               run: |
-                  if [ ! -d /opt/ti/sysconfig_1.23.2 ]; then
-                      wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-nsUM6f7Vvb/1.23.2.4156/sysconfig-1.23.2_4156-setup.run
-                      chmod +x sysconfig-1.23.2_4156-setup.run
-                      ./sysconfig-1.23.2_4156-setup.run --mode unattended
+                  if [ ! -d /opt/ti/sysconfig_1.26.3 ]; then
+                      wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-nsUM6f7Vvb/1.26.3.4558/sysconfig-1.26.3_4558-setup.run
+                      chmod +x sysconfig-1.26.3_4558-setup.run
+                      ./sysconfig-1.26.3_4558-setup.run --mode unattended
                   fi
-                  echo "TI_SYSCONFIG_ROOT=/opt/ti/sysconfig_1.23.2" >> "$GITHUB_ENV"
+                  echo "TI_SYSCONFIG_ROOT=/opt/ti/sysconfig_1.26.3" >> "$GITHUB_ENV"
+
+            - name: Configure OTA software version
+              shell: bash
+              run: |
+                  OTA_VERSION=$((GITHUB_RUN_NUMBER + 1))
+                  printf 'TI_MATTER_SOFTWARE_VER=0x%08X\n' "${OTA_VERSION}" >> "$GITHUB_ENV"
+                  echo "TI_MATTER_SOFTWARE_VER_STR=1.0.${OTA_VERSION}+${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
 
             - name: Build examples
               run: |
                   scripts/run_in_build_env.sh "\
                       ./scripts/build/build_examples.py \
-                      --target ti-cc27xx-lighting-ftd \
+                      --target ti-cc27xx-lighting-ftd-ota \
                       build \
                       --copy-artifacts-to out/artifacts \
                   "
@@ -116,4 +123,4 @@ jobs:
               if: ${{ !env.ACT }}
               with:
                   name: cc27xx-lighting
-                  path: out/artifacts/ti-cc27xx-lighting-ftd/
+                  path: out/artifacts/ti-cc27xx-lighting-ftd-ota/

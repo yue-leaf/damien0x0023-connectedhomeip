@@ -27,7 +27,6 @@ var RNG        = scripting.addModule("/ti/drivers/RNG");
 var SHA2        = scripting.addModule("/ti/drivers/SHA2");
 var UART2       = scripting.addModule("/ti/drivers/UART2");
 var ble         = scripting.addModule("/ti/ble/ble");
-var AESCTRDRBG  = scripting.addModule("/ti/drivers/AESCTRDRBG");
 var ECDH        = scripting.addModule("/ti/drivers/ECDH");
 
 /* Instances */
@@ -44,10 +43,7 @@ var LED2        = LED.addInstance();
 var RNG1        = RNG.addInstance();
 var RNG2        = RNG.addInstance();
 var RNG3        = RNG.addInstance();
-var AESCTRDRBG1 = AESCTRDRBG.addInstance();
 var ECDH1       = ECDH.addInstance();
-
-AESCTRDRBG1.$name              = "CONFIG_AESCTRDRBG_0";
 
 AESCCM1.$name = "CONFIG_AESCCM0";
 
@@ -131,6 +127,7 @@ LED2.gpioPin.$name              = "CONFIG_GPIO_GLED";
 LED2.gpioPin.mode               = "Output";
 
 /* RNG */
+RNG.rngReturnBehavior = "RNG_RETURN_BEHAVIOR_BLOCKING";
 RNG1.$name        = "CONFIG_RNG_BLE";
 RNG2.$name        = "CONFIG_RNG_THREAD";
 RNG3.$name        = "CONFIG_RNG_APP";
@@ -139,7 +136,6 @@ RNG3.$name        = "CONFIG_RNG_APP";
 ble.addressMode                                           = "ADDRMODE_RP_WITH_PUBLIC_ID";
 ble.maxConnNum                                            = 1;
 ble.numOfAdvSets                                          = 1;
-ble.numOfDefAdvSets                       = 1;
 ble.lockProject                                           = true;
 ble.maxPDUSize                                            = 255;
 ble.radioConfig.codeExportConfig.$name                    = "ti_devices_radioconfig_code_export_param3";

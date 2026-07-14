@@ -166,7 +166,11 @@ static bool writeExtFlashImgPages(NVS_Handle handle, ssize_t offset, MutableByte
 }
 
 /* Erase the MCUBoot slot */
-#define BOOT_SLOT_SIZE (0x000F2000) /* must match flash_map_backend */
+#ifndef TI_OTA_BOOT_SLOT_SIZE
+#define TI_OTA_BOOT_SLOT_SIZE 0x000F2000
+#endif
+
+#define BOOT_SLOT_SIZE (TI_OTA_BOOT_SLOT_SIZE) /* must match flash_map_backend */
 static bool eraseExtSlot(NVS_Handle handle)
 {
     int_fast16_t status;

@@ -117,9 +117,16 @@ template("ti_sysconfig") {
          "ti_simplelink_sdk_root must be specified")
 
   output_dir = "${target_gen_dir}/${target_name}"
-  gen_outputs = []
+  source_outputs = []
   foreach(output, invoker.outputs) {
-    gen_outputs += [ output_dir + "/" + output ]
+    source_outputs += [ output_dir + "/" + output ]
+  }
+
+  gen_outputs = source_outputs
+  if (defined(invoker.extra_outputs)) {
+    foreach(output, invoker.extra_outputs) {
+      gen_outputs += [ output_dir + "/" + output ]
+    }
   }
 
   config("cc13x4_26x4_${target_name}_config") {
@@ -268,7 +275,7 @@ template("ti_sysconfig") {
   }
 
   source_set(target_name) {
-    sources = gen_outputs
+    sources = source_outputs
 
     public_configs = [ ":${target_name}_config" ]
     public_deps = [ ":${target_name}_gen" ]

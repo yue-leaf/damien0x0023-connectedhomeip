@@ -87,7 +87,8 @@ class TIBuilder(GnBuilder):
                  runner,
                  board=TIBoard.LP_EM_CC1354P10_6,
                  app: TIApp = TIApp.LOCK,
-                 openthread_ftd: Optional[bool] = None):
+                 openthread_ftd: Optional[bool] = None,
+                 ota_requestor: bool = False):
         super(TIBuilder, self).__init__(
             root=app.BuildRoot(root, board),
             runner=runner)
@@ -95,6 +96,7 @@ class TIBuilder(GnBuilder):
         self.app = app
         self.board = board
         self.openthread_ftd = openthread_ftd
+        self.ota_requestor = ota_requestor
 
     def GnBuildArgs(self):
         args = [
@@ -111,6 +113,16 @@ class TIBuilder(GnBuilder):
         elif self.openthread_ftd is not None:
             args.append('chip_openthread_ftd=false')
 
+        if self.ota_requestor:
+            args.append('chip_enable_ota_requestor=true')
+
+        matter_software_ver = os.environ.get('TI_MATTER_SOFTWARE_VER')
+        matter_software_ver_str = os.environ.get('TI_MATTER_SOFTWARE_VER_STR')
+        if matter_software_ver:
+            args.append('matter_software_ver="%s"' % matter_software_ver)
+        if matter_software_ver_str:
+            args.append('matter_software_ver_str="%s"' % matter_software_ver_str)
+
         return args
 
     def build_outputs(self):
@@ -121,6 +133,8 @@ class TIBuilder(GnBuilder):
                 suffixes = [".out", "-mcuboot.hex"]
             else:
                 suffixes = [".out"]
+        elif self.board == TIBoard.LP_EM_CC2745R10_Q1 and self.ota_requestor:
+            suffixes = [".out", ".mcubootloader.hex", "-mcuboot.hex", ".ota"]
         else:
             suffixes = [".out"]
         if self.options.enable_link_map_file:

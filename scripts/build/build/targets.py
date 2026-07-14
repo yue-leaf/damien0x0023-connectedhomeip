@@ -599,6 +599,7 @@ def BuildCC27xxTarget():
 
     target.AppendModifier(name="mtd", openthread_ftd=False)
     target.AppendModifier(name="ftd", openthread_ftd=True)
+    target.AppendModifier(name="ota", ota_requestor=True).OnlyIfRe(r"^ti-cc27xx-lighting-")
 
     return target
 
