@@ -309,6 +309,10 @@ template("ti_simplelink_executable") {
         rtos = "nortos"
         outputs = mcuboot_sysconfig_outputs
         extra_outputs = mcuboot_sysconfig_extra_outputs
+
+        if (ti_simplelink_device_family == "cc27xx") {
+          cflags_c = [ "-Wno-override-init" ]
+        }
       }
 
       # build MCUBoot bootloader
