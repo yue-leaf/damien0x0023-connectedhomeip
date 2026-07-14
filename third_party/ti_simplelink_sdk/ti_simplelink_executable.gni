@@ -276,12 +276,7 @@ template("ti_simplelink_executable") {
       # Generate MCUBoot sysconfig
       mcuboot_sysconfig =
           "${ti_simplelink_sdk_build_root}/mcuboot/mcuboot.syscfg"
-      mcuboot_sysconfig_outputs = [
-        "ti_drivers_config.c",
-        "ti_drivers_config.h",
-        "ti_devices_config.c",
-        "ti_devices_config.h",
-      ]
+      mcuboot_sysconfig_outputs = []
       mcuboot_sysconfig_extra_outputs = []
       if (ti_simplelink_device_family == "cc27xx") {
         mcuboot_sysconfig =
@@ -300,6 +295,13 @@ template("ti_simplelink_executable") {
           "ti_utils_build_compiler.opt",
           "ti_utils_build_linker.cmd.genlibs",
           "ti_utils_build_linker.cmd.genmap",
+        ]
+      } else {
+        mcuboot_sysconfig_outputs = [
+          "ti_drivers_config.c",
+          "ti_drivers_config.h",
+          "ti_devices_config.c",
+          "ti_devices_config.h",
         ]
       }
       ti_sysconfig("${simplelink_target_name}_mcuboot.syscfg") {
