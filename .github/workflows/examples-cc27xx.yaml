@@ -104,12 +104,31 @@ jobs:
 
             - name: Build examples
               run: |
-                  scripts/run_in_build_env.sh "\
-                      ./scripts/build/build_examples.py \
-                      --target ti-cc27xx-lighting-ftd \
-                      build \
-                      --copy-artifacts-to out/artifacts \
-                  "
+                  scripts/run_in_build_env.sh '
+                      set -euo pipefail
+
+                      BUILD_DIR=out/ti-cc27xx-lighting-ftd
+                      ARTIFACT_DIR=out/artifacts/ti-cc27xx-lighting-ftd
+                      APP_NAME=chip-LP_EM_CC2745R10_Q1-lighting-example
+
+                      gn gen "$BUILD_DIR" --root=examples/lighting-app/ti/cc27xx --args="
+                          ti_sysconfig_root=\"${TI_SYSCONFIG_ROOT}\"
+                          ti_simplelink_board=\"LP_EM_CC2745R10_Q1\"
+                          chip_generate_link_map_file=true
+                          chip_openthread_ftd=true
+                          chip_progress_logging=false
+                          custom_factory_data=true
+                          ti_dac_key_use_psa_hsm=true
+                          target_defines=[\"TI_ATTESTATION_CREDENTIALS=1\"]
+                      "
+                      ninja -C "$BUILD_DIR" \
+                          "${APP_NAME}.out" \
+                          "${APP_NAME}-without-factory-data.hex"
+
+                      mkdir -p "$ARTIFACT_DIR"
+                      cp "$BUILD_DIR/${APP_NAME}.out" "$ARTIFACT_DIR/"
+                      cp "$BUILD_DIR/${APP_NAME}-without-factory-data.hex" "$ARTIFACT_DIR/"
+                  '
 
             - name: Uploading build artifacts
               uses: actions/upload-artifact@v4
