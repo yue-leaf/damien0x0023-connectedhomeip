@@ -34,6 +34,15 @@ assert(matter_device_pid != "", "matter_device_pid must be specified")
 assert(matter_software_ver != "", "matter_software_ver must be specified")
 assert(matter_software_ver_str != "",
        "matter_software_ver_str must be specified")
+if (ti_dac_key_use_psa_hsm) {
+  assert(ti_simplelink_device_family == "cc27xx",
+         "ti_dac_key_use_psa_hsm is only supported on cc27xx")
+}
+if (ti_simplelink_device_family == "cc27xx" && custom_factory_data &&
+    !ti_dac_key_use_psa_hsm) {
+  assert(ti_allow_factory_data_dac_private_key,
+         "cc27xx custom_factory_data requires ti_dac_key_use_psa_hsm=true unless ti_allow_factory_data_dac_private_key=true is set for a legacy development image")
+}
 
 template("ti_simplelink_executable") {
   simplelink_target_name = target_name
@@ -492,6 +501,19 @@ template("ti_simplelink_executable") {
         "-device",
         ti_simplelink_device_family,
       ]
+
+      if (ti_simplelink_device_family == "cc27xx" &&
+          ti_dac_key_use_psa_hsm) {
+        args += [
+          "--dac_key_storage",
+          "hsm",
+        ]
+      } else {
+        args += [
+          "--dac_key_storage",
+          "factory_data",
+        ]
+      }
     }
     pw_python_action("${simplelink_target_name}-and-factory-data.hex") {
       public_deps = [

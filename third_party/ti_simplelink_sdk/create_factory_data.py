@@ -23,6 +23,75 @@ import re
 import intelhex
 from jsonschema import validate
 
+FACTORY_DATA_FIELD_ORDER = [
+    "serial_number",
+    "vendor_id",
+    "product_id",
+    "vendor_name",
+    "product_name",
+    "manufacturing_date",
+    "hw_ver",
+    "hw_ver_str",
+    "dac_cert",
+    "dac_priv_key",
+    "pai_cert",
+    "rd_uniqueid",
+    "spake2_it",
+    "spake2_salt",
+    "spake2_verifier",
+    "discriminator",
+    "passcode",
+    "certification_declaration",
+]
+
+FACTORY_DATA_FIELD_ALIASES = {
+    "rd_uid": "rd_uniqueid",
+}
+
+REQUIRED_FACTORY_DATA_FIELDS = [
+    key for key in FACTORY_DATA_FIELD_ORDER if key != "dac_priv_key"
+]
+
+
+def _element_key(element):
+    keys = [key for key in element.keys() if key != "len"]
+    if len(keys) != 1:
+        raise ValueError("Each factory data element must contain exactly one value key and one len key")
+    return FACTORY_DATA_FIELD_ALIASES.get(keys[0], keys[0])
+
+
+def _normalize_element(key, element):
+    if key in element:
+        return element
+
+    raw_key = next(raw_key for raw_key in element.keys() if raw_key != "len")
+    return {key: element[raw_key], "len": element["len"]}
+
+
+def _empty_element(key):
+    return {key: "hex:", "len": 0}
+
+
+def _element_bytes(key, element):
+    len_integer = element["len"]
+    value = element[key]
+
+    if isinstance(value, str):
+        value = value.strip(" ")
+        if value.startswith("hex:"):
+            hex_value = value[4:]
+            if len(hex_value) % 2 != 0:
+                raise ValueError(f"Factory data element {key} has an odd number of hex characters")
+            data = bytes.fromhex(hex_value)
+        else:
+            data = value.encode("ascii")
+    else:
+        data = int(value).to_bytes(len_integer, "little")
+
+    if len(data) != len_integer:
+        raise ValueError(f"Factory data element {key} length is {len_integer}, but value has {len(data)} bytes")
+    return data
+
 
 def create_hex_file(args):
     # create empty factory data file
@@ -30,25 +99,50 @@ def create_hex_file(args):
     factory_data_struct_intelhex = intelhex.IntelHex()
 
     device_family = args.device_family
+    dac_key_storage = getattr(args, "dac_key_storage", None)
+    if dac_key_storage is None:
+        if device_family == "cc27xx":
+            raise ValueError("cc27xx factory data generation requires explicit --dac_key_storage hsm or factory_data")
+        dac_key_storage = "factory_data"
     matter_app_map_file = args.matter_app_map_file
     factory_data_base_address = 0
+    factory_data_length = None
 
-    # there are 17 elements, each element will need 8 bytes in the struct
-    # 4 for length of the element, and 4 for the pointer to the element
-    # factory data starts at 0xFE800, so the elements will
-    # start 136 bytes after the start address
+    # Each element in the struct uses 8 bytes: 4 for the element length and
+    # 4 for the pointer to the element data.
     factory_data_dict = json.load(args.factory_data_json_file[0])
     factory_data_schema = json.load(args.factory_data_schema[0])
 
     validate(factory_data_dict, factory_data_schema)
-    factory_data = factory_data_dict['elements']
+    factory_data_elements = {}
+    for element in factory_data_dict['elements']:
+        key = _element_key(element)
+        if key in factory_data_elements:
+            raise ValueError(f"Factory data element {key} is duplicated")
+        factory_data_elements[key] = _normalize_element(key, element)
+
+    unknown_keys = set(factory_data_elements.keys()) - set(FACTORY_DATA_FIELD_ORDER)
+    if unknown_keys:
+        raise ValueError(f"Unknown factory data elements: {', '.join(sorted(unknown_keys))}")
+
+    for key in REQUIRED_FACTORY_DATA_FIELDS:
+        element = factory_data_elements.get(key)
+        if element is None or len(_element_bytes(key, element)) == 0:
+            raise ValueError(f"Factory data element {key} is required and must not be empty")
+
+    if dac_key_storage == "hsm":
+        factory_data_elements["dac_priv_key"] = _empty_element("dac_priv_key")
+    elif len(_element_bytes("dac_priv_key", factory_data_elements.get("dac_priv_key", _empty_element("dac_priv_key")))) == 0:
+        raise ValueError("Factory data element dac_priv_key is required when DAC signing does not use HSM")
+
+    factory_data = [factory_data_elements.get(key, _empty_element(key)) for key in FACTORY_DATA_FIELD_ORDER]
 
     struct_idx = 0
     values_idx = 0
 
     # Retrieve Factory Data base address and length from Map file
     with open(matter_app_map_file, "r") as map_file:
-        pattern = ".*\.factory_data.*(0x.*)\s*(0x.*)"
+        pattern = r".*\.factory_data.*(0x.*)\s*(0x.*)"
 
         for line in map_file:
             factoryDataResult = re.search(pattern, line)
@@ -56,6 +150,9 @@ def create_hex_file(args):
                 factory_data_base_address = int(factoryDataResult.group(1), 16)
                 factory_data_length = int(factoryDataResult.group(2), 16)
                 break
+
+    if factory_data_length is None:
+        raise ValueError("Could not find .factory_data section in Matter application map file")
 
     value_address = factory_data_base_address + factory_data_length
 
@@ -79,64 +176,19 @@ def create_hex_file(args):
         struct_idx += 4
         value_address += len_integer
 
-        # convert the value to hex and write to the second file
-        key = list(element.keys())[0]
-        if type(element[key]) == str:
-            list_value = list(element[key].strip(" "))
-            hex_check = ''.join(list_value[0:4])
-            if hex_check == "hex:":
-                list_value = list_value[4:]
-                idx = 0
-                list_len = len(list_value)
-                while idx < list_len:
-                    hex_list = []
-                    hex_str_1 = list_value[idx]
+        key = _element_key(element)
+        for value_byte in _element_bytes(key, element):
+            factory_data_intelhex[values_idx] = value_byte
+            values_idx += 1
 
-                    hex_list.append(hex_str_1)
-                    hex_str_2 = list_value[idx+1]
+    if struct_idx > factory_data_length:
+        raise ValueError("Factory data JSON contains more elements than the firmware factoryData struct")
 
-                    hex_list.append(hex_str_2)
-                    final_hex_str = ''.join(hex_list)
-
-                    factory_data_intelhex[values_idx] = int(final_hex_str, 16)
-                    values_idx += 1
-                    idx += 2
-            else:
-                for ele in list_value:
-                    factory_data_intelhex[values_idx] = ord(ele)
-                    values_idx += 1
-        else:
-            if key != "spake2_it" and key != "passcode":
-                factory_data_intelhex[values_idx] = (element[key] & 0x00FF)
-                factory_data_intelhex[values_idx + 1] = (element[key] & 0xFF00) >> 8
-
-                values_idx += 2
-            elif key == "spake2_it":
-                if len_integer == 2:
-                    factory_data_intelhex[values_idx] = (element[key] & 0x00FF)
-                    factory_data_intelhex[values_idx + 1] = (element[key] & 0xFF00) >> 8
-
-                    values_idx += 2
-                elif len_integer == 3:
-                    factory_data_intelhex[values_idx] = (element[key] & 0x0000FF)
-                    factory_data_intelhex[values_idx + 1] = (element[key] & 0x00FF00) >> 8
-                    factory_data_intelhex[values_idx + 2] = (element[key] & 0xFF0000) >> 16
-
-                    values_idx += 3
-                else:
-                    factory_data_intelhex[values_idx] = (element[key] & 0x000000FF)
-                    factory_data_intelhex[values_idx + 1] = (element[key] & 0x0000FF00) >> 8
-                    factory_data_intelhex[values_idx + 2] = (element[key] & 0x00FF0000) >> 16
-                    factory_data_intelhex[values_idx + 3] = (element[key] & 0xFF000000) >> 24
-
-                    values_idx += 4
-            else:
-                factory_data_intelhex[values_idx] = (element[key] & 0x000000FF)
-                factory_data_intelhex[values_idx + 1] = (element[key] & 0x0000FF00) >> 8
-                factory_data_intelhex[values_idx + 2] = (element[key] & 0x00FF0000) >> 16
-                factory_data_intelhex[values_idx + 3] = (element[key] & 0xFF000000) >> 24
-
-                values_idx += 4
+    # Pad any optional struct entries that were not present in the JSON. This
+    # keeps element data from overwriting trailing struct fields.
+    while struct_idx < factory_data_length:
+        factory_data_struct_intelhex[struct_idx] = 0
+        struct_idx += 1
 
     # merge both hex files
     idx = 0
@@ -166,6 +218,8 @@ def main():
     parser.add_argument('-o', '--factory_data_hex_file', required=True)
     parser.add_argument('-m', '--matter_app_map_file', required=True)
     parser.add_argument('-device', '--device_family', required=True)
+    parser.add_argument('--dac_key_storage', choices=['factory_data', 'hsm'],
+                        help="Where the DAC private key is stored. Use 'hsm' to omit dac_priv_key from factory data.")
 
     args = parser.parse_args()
     create_hex_file(args)

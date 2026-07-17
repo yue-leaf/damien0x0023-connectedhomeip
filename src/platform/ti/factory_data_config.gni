@@ -14,4 +14,14 @@
 
 declare_args() {
   custom_factory_data = ""
+
+  # When enabled, the TI factory data generator omits dac_priv_key from factory
+  # data and the TI factory data provider signs DAC challenges using a PSA/HSM
+  # persistent key instead.
+  ti_dac_key_use_psa_hsm = false
+
+  # CC27xx custom factory data should use PSA/HSM DAC key storage by default.
+  # Set this only for legacy development images that intentionally keep the DAC
+  # private key in factory data.
+  ti_allow_factory_data_dac_private_key = false
 }

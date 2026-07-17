@@ -50,6 +50,7 @@ static_library("cc27xx") {
   ]
 
   cflags = [ "-Wno-error=missing-declarations" ]
+  defines = []
   deps = [ "${chip_root}/src/platform/logging:headers" ]
 
   public = [
@@ -71,6 +72,16 @@ static_library("cc27xx") {
     ]
   }
 
+  if (ti_dac_key_use_psa_hsm) {
+    assert(custom_factory_data,
+           "ti_dac_key_use_psa_hsm requires custom_factory_data")
+    defines += [ "TI_DAC_KEY_USE_PSA_HSM" ]
+    public_deps += [
+      "${chip_root}/third_party/ti_simplelink_sdk:mbedtls",
+      "${chip_root}/third_party/ti_simplelink_sdk:ti_simplelink_sdk",
+    ]
+  }
+
   if (custom_factory_data) {
     sources += [
       "../../ti/FactoryDataProvider.cpp",
@@ -86,10 +97,15 @@ static_library("cc27xx") {
     public_deps += [
       "${chip_root}/third_party/openthread:openthread",
       "${chip_root}/third_party/openthread/platforms/ti:libopenthread-ti",
-      "${chip_root}/third_party/ti_simplelink_sdk:mbedtls",
-      "${chip_root}/third_party/ti_simplelink_sdk:ti_simplelink_sdk",
       "${chip_root}/third_party/ti_simplelink_sdk:ti_simplelink_sysconfig",
     ]
+
+    if (!ti_dac_key_use_psa_hsm) {
+      public_deps += [
+        "${chip_root}/third_party/ti_simplelink_sdk:mbedtls",
+        "${chip_root}/third_party/ti_simplelink_sdk:ti_simplelink_sdk",
+      ]
+    }
 
     sources += [
       "../../OpenThread/OpenThreadUtils.cpp",

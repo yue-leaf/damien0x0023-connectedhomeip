@@ -10,6 +10,11 @@
                 "description":"Factory data elements",
                 "type": "object",
                 "properties": {
+                    "len": {
+                        "description": "Length in bytes of this factory data element",
+                        "type": "integer",
+                        "minimum": 0
+                    },
                     "serial_number": {
                         "description": "Serial number of device",
                         "type": "string",
@@ -64,6 +69,13 @@
                         "minLength": 36,
                         "maxLength": 68
                     },
+                    "rd_uniqueid": {
+                        "description": "A randomly-generated 128-bit or longer octet string. Length has been expanded with 'hex:' prefix",
+                        "type": "string",
+                        "pattern": "^hex:([0-9A-Fa-f]{2}){16,}$",
+                        "minLength": 36,
+                        "maxLength": 68
+                    },
                     "dac_cert": {
                         "description": "DAC certificate string",
                         "type": "string"
@@ -91,6 +103,23 @@
                         "description": "A verifier for the Symmetric Password-Authenticated Key Exchange",
                         "type": "string",
                         "pattern": "^hex:([0-9A-Fa-f]{2}){16,}$"
+                    },
+                    "discriminator": {
+                        "description": "Setup discriminator",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 4095
+                    },
+                    "passcode": {
+                        "description": "Setup passcode",
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 99999998
+                    },
+                    "certification_declaration": {
+                        "description": "Certification Declaration CMS DER bytes, using the 'hex:' prefix",
+                        "type": "string",
+                        "pattern": "^hex:([0-9A-Fa-f]{2})*$"
                     }
                 }
             }

@@ -305,18 +305,26 @@
              ;
      }
  
-     // Initialize device attestation config
- #ifdef TI_ATTESTATION_CREDENTIALS
- #ifdef TI_FACTORY_DATA
-     SetDeviceInstanceInfoProvider(&mFactoryDataProvider);
-     SetDeviceAttestationCredentialsProvider(&mFactoryDataProvider);
-     SetCommissionableDataProvider(&mFactoryDataProvider);
- #else
-     SetDeviceAttestationCredentialsProvider(TI::GetTIDacProvider());
- #endif
- #else
-     SetDeviceAttestationCredentialsProvider(Examples::GetExampleDACProvider());
- #endif
+    // Initialize device attestation config
+#ifdef TI_ATTESTATION_CREDENTIALS
+#ifdef TI_FACTORY_DATA
+    ret = mFactoryDataProvider.Init();
+    if (ret != CHIP_NO_ERROR)
+    {
+        PLAT_LOG("FactoryDataProvider.Init() failed");
+        while (1)
+            ;
+    }
+
+    SetDeviceInstanceInfoProvider(&mFactoryDataProvider);
+    SetDeviceAttestationCredentialsProvider(&mFactoryDataProvider);
+    SetCommissionableDataProvider(&mFactoryDataProvider);
+#else
+    SetDeviceAttestationCredentialsProvider(TI::GetTIDacProvider());
+#endif
+#else
+    SetDeviceAttestationCredentialsProvider(Examples::GetExampleDACProvider());
+#endif
  
      // Init ZCL Data Model and start server
      PLAT_LOG("Initialize Server");
@@ -819,4 +827,3 @@
      Button_setCallback(sAppRightHandle, ButtonRightEventHandler);
  #endif // BUTTON ENABLE
  }
- 

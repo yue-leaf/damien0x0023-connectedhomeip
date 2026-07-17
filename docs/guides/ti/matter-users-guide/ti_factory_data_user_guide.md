@@ -75,6 +75,14 @@ FLASH_FACTORY_DATA (R)  : ORIGIN = 0x000fe800, LENGTH = 0x00000900
 
 2. In the example's args.gni file, set 'custom_factory_data' to true
 
+For CC27xx builds that provision the DAC private key into PSA/HSM storage, set
+both `custom_factory_data` and `ti_dac_key_use_psa_hsm` to true. In this mode,
+DAC, PAI and Certification Declaration certificates are kept in factory data,
+while the DAC private key is omitted from the generated factory data image and
+is accessed by the application through the PSA/HSM persistent key id. The
+provisioning flow must preserve the PSA/HSM key storage when flashing the final
+Matter firmware.
+
 It is recommended to keep 2 dedicated pages for CC13x4_CC26x4/CC27xx for factory
 data.
 
@@ -87,6 +95,23 @@ output format. These strings can then be copied into the JSON file.
 
 The SPAKE parameters should be converted from base-64 to hex as well before
 being copied into the JSON file.
+
+For CC27xx PSA/HSM DAC key storage, the shared example JSON may still contain a
+sample `dac_priv_key` for legacy non-HSM devices. When
+`ti_dac_key_use_psa_hsm=true`, the factory data generator is invoked with
+`--dac_key_storage hsm` and writes an empty `dac_priv_key` field into the
+generated factory data hex. The final Matter firmware will use the PSA/HSM DAC
+key instead of a private key from factory data. If `create_factory_data.py` is
+called directly for CC27xx, `--dac_key_storage hsm` or
+`--dac_key_storage factory_data` must be specified explicitly.
+
+CC27xx custom factory data builds fail if `ti_dac_key_use_psa_hsm` is false.
+Set `ti_allow_factory_data_dac_private_key=true` only for legacy development
+images that intentionally keep the DAC private key in factory data.
+
+The Certification Declaration field must be present in the JSON file. The
+firmware returns an error if the field is missing from factory data; it does not
+fall back to a built-in example CD.
 
 ### Creating images
 

@@ -72,6 +72,15 @@ matter_software_ver_str = "1.0.1+1"
 
 custom_factory_data = false
 
+# CC27xx production provisioning stores the DAC private key in PSA/HSM and keeps
+# only DAC/PAI/CD certificates in factory data. Enable this together with
+# custom_factory_data for that flow.
+ti_dac_key_use_psa_hsm = false
+
+# Leave this false for production. Setting it true allows legacy development
+# builds to keep the DAC private key in factory data.
+ti_allow_factory_data_dac_private_key = false
+
 # NOTE: LwIP is no longer supported, these options must stay the same
 chip_system_config_use_open_thread_inet_endpoints = true
 chip_inet_config_enable_tcp_endpoint = false
