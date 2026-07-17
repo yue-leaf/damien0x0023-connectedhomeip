@@ -263,7 +263,7 @@ SECTIONS {
     } > REGION_ARM_EXTAB AT> REGION_ARM_EXTAB
 
     /* 12 pages of NV Memory (0x800 each)  */
-    .nvs (NVS_START_ADDRESS) (NOLOAD) : AT (NVS_START_ADDRESS) ALIGN(0x800) {  
+    .nvs (0xE1000) (NOLOAD) : AT (0xE1000) ALIGN(0x800) {
         *(.nvs)
     } > REGION_TEXT
 
