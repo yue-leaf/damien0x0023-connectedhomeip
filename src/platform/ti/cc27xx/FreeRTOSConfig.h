@@ -51,7 +51,10 @@
 
 /* General options */
 #define configCPU_CLOCK_HZ ((unsigned long) (96000000))
-#define configTOTAL_HEAP_SIZE ((size_t) (44900))
+#ifndef TI_CC27XX_FREERTOS_HEAP_SIZE
+#define TI_CC27XX_FREERTOS_HEAP_SIZE (44900)
+#endif
+#define configTOTAL_HEAP_SIZE ((size_t) (TI_CC27XX_FREERTOS_HEAP_SIZE))
 #define configCHECK_FOR_STACK_OVERFLOW 2
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION 0
 #define configEXPECTED_IDLE_TIME_BEFORE_SLEEP 2

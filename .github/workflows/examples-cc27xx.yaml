@@ -119,7 +119,10 @@ jobs:
                           chip_progress_logging=false
                           custom_factory_data=true
                           ti_dac_key_use_psa_hsm=true
-                          target_defines=[\"TI_ATTESTATION_CREDENTIALS=1\"]
+                          target_defines=[
+                              \"TI_ATTESTATION_CREDENTIALS=1\",
+                              \"TI_CC27XX_FREERTOS_HEAP_SIZE=43008\",
+                          ]
                       "
                       ninja -C "$BUILD_DIR" \
                           "${APP_NAME}.out" \
