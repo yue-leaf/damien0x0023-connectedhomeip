@@ -25,6 +25,31 @@
 
 #if defined(TI_DAC_KEY_USE_PSA_HSM)
 #include <psa/crypto.h>
+#include <third_party/hsmddk/include/Integration/Adapter_ITS/incl/tfm_hal_its.h>
+
+namespace {
+constexpr uint32_t kTiPsaItsBase = 0x000DF000u;
+constexpr size_t kTiPsaItsSize   = 0x00002000u;
+constexpr uint32_t kTiNvsBase    = 0x000E1000u;
+
+static_assert(kTiPsaItsBase + kTiPsaItsSize == kTiNvsBase, "PSA ITS must end immediately before Matter NVS");
+} // namespace
+
+extern "C" enum tfm_hal_status_t tfm_hal_its_fs_info(struct tfm_hal_its_fs_info_t * fsInfo)
+{
+    if (fsInfo == nullptr)
+    {
+        return TFM_HAL_ERROR_INVALID_INPUT;
+    }
+
+    // TI's GCC fallback places ITS immediately below HSM firmware, which
+    // overlaps CC27xx factory data. Match the SysConfig KeyStore region used
+    // by the temporary provisioning firmware instead.
+    fsInfo->flash_area_addr   = kTiPsaItsBase;
+    fsInfo->flash_area_size   = kTiPsaItsSize;
+    fsInfo->sectors_per_block = 1;
+    return TFM_HAL_SUCCESS;
+}
 #endif
 
 namespace chip {
