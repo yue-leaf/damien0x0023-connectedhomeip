@@ -86,6 +86,9 @@ source_set("libopenthread-ti") {
   ]
 
   if (ti_simplelink_device_family == "cc27xx") {
+    # ot-ti still includes the SDK's deprecated RCL compatibility header.
+    cflags += [ "-Wno-error=cpp" ]
+
     sources += [
       "${openthread_ti_root}/src/cc23xx_cc27xx/entropy.c",
       "${openthread_ti_root}/src/cc23xx_cc27xx/radio.c",
