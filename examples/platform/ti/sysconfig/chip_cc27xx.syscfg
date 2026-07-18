@@ -29,6 +29,7 @@ var UART2       = scripting.addModule("/ti/drivers/UART2");
 var ble         = scripting.addModule("/ti/ble/ble");
 var AESCTRDRBG  = scripting.addModule("/ti/drivers/AESCTRDRBG");
 var ECDH        = scripting.addModule("/ti/drivers/ECDH");
+var CryptoKeyKeyStore_PSA = scripting.addModule("/ti/drivers/CryptoKeyKeyStore_PSA");
 
 /* Instances */
 var AESCCM1     = AESCCM.addInstance();
@@ -48,6 +49,8 @@ var AESCTRDRBG1 = AESCTRDRBG.addInstance();
 var ECDH1       = ECDH.addInstance();
 
 AESCTRDRBG1.$name              = "CONFIG_AESCTRDRBG_0";
+
+CryptoKeyKeyStore_PSA.flashOffset = 0x0007C000;
 
 AESCCM1.$name = "CONFIG_AESCCM0";
 
