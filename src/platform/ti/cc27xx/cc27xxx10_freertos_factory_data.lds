@@ -267,7 +267,7 @@ SECTIONS {
     /* 12 pages of NV Memory (0x800 each)  */
     .nvs (0xE1000) (NOLOAD) : AT (0xE1000) ALIGN(0x800) {
         *(.nvs)
-    } > FLASH_NVS AT> FLASH_NVS
+    } > FLASH_NVS
 
     .ccfg : {
         KEEP (*(.ccfg))
