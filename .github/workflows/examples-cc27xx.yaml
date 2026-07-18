@@ -116,7 +116,7 @@ jobs:
                           ti_simplelink_board=\"LP_EM_CC2745R10_Q1\"
                           chip_generate_link_map_file=true
                           chip_openthread_ftd=true
-                          chip_progress_logging=false
+                          chip_progress_logging=true
                           custom_factory_data=true
                           ti_dac_key_use_psa_hsm=true
                           target_defines=[
@@ -130,6 +130,7 @@ jobs:
 
                       mkdir -p "$ARTIFACT_DIR"
                       cp "$BUILD_DIR/${APP_NAME}.out" "$ARTIFACT_DIR/"
+                      cp "$BUILD_DIR/${APP_NAME}.out.map" "$ARTIFACT_DIR/"
                       cp "$BUILD_DIR/${APP_NAME}-without-factory-data.hex" "$ARTIFACT_DIR/"
                   '
 
