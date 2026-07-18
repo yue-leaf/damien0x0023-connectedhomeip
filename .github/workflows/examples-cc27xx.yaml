@@ -119,6 +119,35 @@ jobs:
                           exit 1
                       fi
 
+                      GCC_BIN=$(command -v arm-none-eabi-gcc)
+                      GCC_ARMCOMPILER=$(dirname "$(dirname "$(readlink -f "$GCC_BIN")")")
+                      CMAKE_BIN=$(command -v cmake)
+                      export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
+
+                      make -C "$TI_SDK_DIR" build-gcc \
+                          CMAKE="$CMAKE_BIN" \
+                          GCC_ARMCOMPILER="$GCC_ARMCOMPILER" \
+                          TICLANG_ARMCOMPILER= \
+                          IAR_ARMCOMPILER=
+
+                      REQUIRED_TI_LIBRARIES=(
+                          source/ti/drivers/lib/gcc/m33f/drivers_cc27xxx10.a
+                          source/ti/devices/cc27xxx10/driverlib/lib/gcc/driverlib.a
+                          source/ti/drivers/secure/lib/gcc/m33f/secure_drivers_cc27xxx10.a
+                          source/third_party/hsmddk/lib/gcc/m33f/hsmddk_cc27xxx10_its.a
+                          source/ti/drivers/rcl/lib/gcc/m33f/rcl_cc27xxx10.a
+                          source/ti/devices/cc27xxx10/rf_patches/lib/gcc/m33f/lrf_cc27xxx10.a
+                          source/third_party/psa_crypto/lib/gcc/m33f/psa_crypto_cc27xx.a
+                          source/ti/ble/lib/CC27XXX10/OneLib/lib/ticlang/m33f/OneLib.a
+                          source/ti/ble/lib/CC27XXX10/StackWrapper/lib/ticlang/m33f/StackWrapper.a
+                      )
+                      for library in "${REQUIRED_TI_LIBRARIES[@]}"; do
+                          if [ ! -s "$TI_SDK_DIR/$library" ]; then
+                              echo "Required TI SDK library is missing: $library" >&2
+                              exit 1
+                          fi
+                      done
+
                       gn gen "$BUILD_DIR" --root=examples/lighting-app/ti/cc27xx --args="
                           ti_sysconfig_root=\"${TI_SYSCONFIG_ROOT}\"
                           ti_simplelink_board=\"LP_EM_CC2745R10_Q1\"
