@@ -50,7 +50,11 @@ var ECDH1       = ECDH.addInstance();
 
 AESCTRDRBG1.$name              = "CONFIG_AESCTRDRBG_0";
 
-CryptoKeyKeyStore_PSA.flashOffset = 0x0007C000;
+/* The provisioning flow stores the DAC private key in the persistent PSA
+ * KeyStore. Keep this offset aligned with the temporary provisioning firmware
+ * and the PC tool Matter memory map so final app flashing does not erase it.
+ */
+CryptoKeyKeyStore_PSA.flashOffset = 0x000DF000;
 
 AESCCM1.$name = "CONFIG_AESCCM0";
 

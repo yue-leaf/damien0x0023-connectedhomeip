@@ -37,7 +37,7 @@ FLASH_FACTORY_DATA_LENGTH = 0x1000;
 
 /*0x18000 HSM FW Size*/
 
-/* FLASH END WITH HSM: 0xE8000*/
+/* FLASH END WITH PSA KeyStore, factory data, and HSM: 0xDF000*/
 /* Factory data start: 0xE7000  */
 /* NVS Start 0xE1000*/
     
@@ -49,8 +49,10 @@ MEMORY
 
 
     /* If device has HSM FW the last part of Flash is reserved for it */
-    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0xE7000
+    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0xDF000
 
+    FLASH_PSA_KEYSTORE (R) : ORIGIN = 0xDF000, LENGTH = 0x2000
+    FLASH_NVS (R) : ORIGIN = 0xE1000, LENGTH = 0x6000
     FLASH_FACTORY_DATA (R) : ORIGIN = 0xE7000, LENGTH = 0x1000
     /*
      * Customer Configuration Area and Bootloader Backdoor configuration in
@@ -265,7 +267,7 @@ SECTIONS {
     /* 12 pages of NV Memory (0x800 each)  */
     .nvs (0xE1000) (NOLOAD) : AT (0xE1000) ALIGN(0x800) {
         *(.nvs)
-    } > REGION_TEXT
+    } > FLASH_NVS AT> FLASH_NVS
 
     .ccfg : {
         KEEP (*(.ccfg))
