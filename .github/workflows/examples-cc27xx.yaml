@@ -95,12 +95,12 @@ jobs:
             - name: Install TI SysConfig
               shell: bash
               run: |
-                  if [ ! -d /opt/ti/sysconfig_1.23.2 ]; then
-                      wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-nsUM6f7Vvb/1.23.2.4156/sysconfig-1.23.2_4156-setup.run
-                      chmod +x sysconfig-1.23.2_4156-setup.run
-                      ./sysconfig-1.23.2_4156-setup.run --mode unattended
+                  if [ ! -d /opt/ti/sysconfig_1.26.3 ]; then
+                      wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-nsUM6f7Vvb/1.26.3.4558/sysconfig-1.26.3_4558-setup.run
+                      chmod +x sysconfig-1.26.3_4558-setup.run
+                      ./sysconfig-1.26.3_4558-setup.run --mode unattended
                   fi
-                  echo "TI_SYSCONFIG_ROOT=/opt/ti/sysconfig_1.23.2" >> "$GITHUB_ENV"
+                  echo "TI_SYSCONFIG_ROOT=/opt/ti/sysconfig_1.26.3" >> "$GITHUB_ENV"
 
             - name: Build examples
               run: |
@@ -110,6 +110,14 @@ jobs:
                       BUILD_DIR=out/ti-cc27xx-lighting-ftd
                       ARTIFACT_DIR=out/artifacts/ti-cc27xx-lighting-ftd
                       APP_NAME=chip-LP_EM_CC2745R10_Q1-lighting-example
+                      TI_SDK_DIR=third_party/ti_simplelink_sdk/repo_cc23xx_cc27xx
+                      EXPECTED_TI_SDK_COMMIT=68ca021502383f367d0bf2a5517fdd0dcb0ef909
+
+                      ACTUAL_TI_SDK_COMMIT=$(git -C "$TI_SDK_DIR" rev-parse HEAD)
+                      if [ "$ACTUAL_TI_SDK_COMMIT" != "$EXPECTED_TI_SDK_COMMIT" ]; then
+                          echo "Unexpected TI SDK commit: $ACTUAL_TI_SDK_COMMIT" >&2
+                          exit 1
+                      fi
 
                       gn gen "$BUILD_DIR" --root=examples/lighting-app/ti/cc27xx --args="
                           ti_sysconfig_root=\"${TI_SYSCONFIG_ROOT}\"

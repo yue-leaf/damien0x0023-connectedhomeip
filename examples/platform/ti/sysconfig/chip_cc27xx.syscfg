@@ -27,9 +27,10 @@ var RNG        = scripting.addModule("/ti/drivers/RNG");
 var SHA2        = scripting.addModule("/ti/drivers/SHA2");
 var UART2       = scripting.addModule("/ti/drivers/UART2");
 var ble         = scripting.addModule("/ti/ble/ble");
-var AESCTRDRBG  = scripting.addModule("/ti/drivers/AESCTRDRBG");
 var ECDH        = scripting.addModule("/ti/drivers/ECDH");
 var CryptoKeyKeyStore_PSA = scripting.addModule("/ti/drivers/CryptoKeyKeyStore_PSA");
+
+RNG.rngReturnBehavior = "RNG_RETURN_BEHAVIOR_BLOCKING";
 
 /* Instances */
 var AESCCM1     = AESCCM.addInstance();
@@ -45,10 +46,7 @@ var LED2        = LED.addInstance();
 var RNG1        = RNG.addInstance();
 var RNG2        = RNG.addInstance();
 var RNG3        = RNG.addInstance();
-var AESCTRDRBG1 = AESCTRDRBG.addInstance();
 var ECDH1       = ECDH.addInstance();
-
-AESCTRDRBG1.$name              = "CONFIG_AESCTRDRBG_0";
 
 /* The provisioning flow stores the DAC private key in the persistent PSA
  * KeyStore. Keep this offset aligned with the temporary provisioning firmware
@@ -146,7 +144,6 @@ RNG3.$name        = "CONFIG_RNG_APP";
 ble.addressMode                                           = "ADDRMODE_RP_WITH_PUBLIC_ID";
 ble.maxConnNum                                            = 1;
 ble.numOfAdvSets                                          = 1;
-ble.numOfDefAdvSets                       = 1;
 ble.lockProject                                           = true;
 ble.maxPDUSize                                            = 255;
 ble.radioConfig.codeExportConfig.$name                    = "ti_devices_radioconfig_code_export_param3";
