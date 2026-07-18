@@ -128,10 +128,9 @@ jobs:
                           "${APP_NAME}.out" \
                           "${APP_NAME}-without-factory-data.hex"
 
-                      ITS_SYMBOL_TYPE=$(arm-none-eabi-nm "$BUILD_DIR/${APP_NAME}.out" |
-                          awk '$3 == "tfm_hal_its_fs_info" { print $2 }')
-                      if [ "$ITS_SYMBOL_TYPE" != "T" ]; then
-                          echo "Expected strong tfm_hal_its_fs_info override, got: ${ITS_SYMBOL_TYPE:-missing}" >&2
+                      if ! arm-none-eabi-nm "$BUILD_DIR/${APP_NAME}.out" |
+                          grep -E "^[0-9a-fA-F]+[[:space:]]+T[[:space:]]+tfm_hal_its_fs_info$" > /dev/null; then
+                          echo "Expected strong tfm_hal_its_fs_info override" >&2
                           exit 1
                       fi
 
