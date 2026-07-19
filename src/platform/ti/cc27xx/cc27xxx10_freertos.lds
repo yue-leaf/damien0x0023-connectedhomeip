@@ -35,12 +35,13 @@ INCLUDE ti_utils_build_linker.cmd.genmap
 STACKSIZE = 3096;
 /*0x18000 HSM FW Size*/
 
-/* FLASH END WITH PSA KeyStore and HSM: 0xDF000*/
+/* FLASH END before the CCFG erase-retain block: 0xDC000 */
+/* PSA KeyStore start: 0xDF000 */
 
 MEMORY
 {
     /* If device has HSM FW the last part of Flash is reserved for it */
-    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0xDF000
+    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0xDC000
     FLASH_PSA_KEYSTORE (R) : ORIGIN = 0xDF000, LENGTH = 0x2000
     FLASH_NVS (R) : ORIGIN = 0xE1000, LENGTH = 0x6000
     /*

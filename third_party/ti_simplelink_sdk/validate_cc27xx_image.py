@@ -26,8 +26,10 @@ from intelhex import IntelHex
 
 FACTORY_DATA_ADDRESS = 0x000E7000
 FACTORY_DATA_MAX_SIZE = 0x1000
-PROTECTED_FLASH_START = 0x000DF000
+PROTECTED_FLASH_START = 0x000DC000
 PROTECTED_FLASH_END = 0x00100000
+CCFG_CHIP_ERASE_RETAIN_ADDRESS = 0x4E02003C
+EXPECTED_CHIP_ERASE_RETAIN = 0xFF800000
 EXPECTED_PSA_KEY_CONTEXT_SIZE = 0x1C0
 EXPECTED_PSA_ARCHIVE = "/third_party/psa_crypto/lib/ticlang/m33f/psa_crypto_cc27xx.a"
 
@@ -81,7 +83,8 @@ def validate_image(map_path: Path, hex_path: Path) -> None:
         )
     validate_psa_archive(map_path)
 
-    addresses = IntelHex(str(hex_path)).addresses()
+    image = IntelHex(str(hex_path))
+    addresses = image.addresses()
     if not addresses:
         raise ValueError("Matter application HEX is empty")
 
@@ -90,6 +93,18 @@ def validate_image(map_path: Path, hex_path: Path) -> None:
         raise ValueError(
             "Matter application HEX contains PSA/NVS/factory/HSM data: "
             f"{min(protected):#x}-{max(protected):#x}"
+        )
+
+    retain_bytes = bytes(image[address] for address in range(
+        CCFG_CHIP_ERASE_RETAIN_ADDRESS,
+        CCFG_CHIP_ERASE_RETAIN_ADDRESS + 4,
+    ))
+    retain_value = int.from_bytes(retain_bytes, "little")
+    if retain_value != EXPECTED_CHIP_ERASE_RETAIN:
+        raise ValueError(
+            "Matter CCFG does not retain the PSA/NVS/factory/HSM flash block: "
+            f"chipEraseRetain.mainSectors256_511={retain_value:#010x}, "
+            f"expected={EXPECTED_CHIP_ERASE_RETAIN:#010x}"
         )
 
 

@@ -85,6 +85,16 @@ for(var setting in ccfgSettings)
     CCFG[setting] = ccfgSettings[setting];
 }
 
+if (system.deviceData.deviceId.match(/cc2745r10/i))
+{
+    /* Retain the flash tail containing PSA ITS and the remaining persistent
+     * Matter/HSM data during a program load. Sectors 256-511 use one retain
+     * bit per eight 2 KiB sectors, so the first retained address is
+     * 0x000DC000 even though PSA ITS starts at 0x000DF000.
+     */
+    CCFG.chipEraseRetain_mainSectors256_511 = 0xFF800000;
+}
+
 /* disable CCFG for OTA-able application */
 //CCFG.enableCodeGeneration = false;
 

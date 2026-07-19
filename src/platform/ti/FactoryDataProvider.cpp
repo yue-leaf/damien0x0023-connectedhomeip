@@ -103,7 +103,32 @@ CHIP_ERROR LogPsaFailure(const char * operation, psa_status_t status)
 
     return CHIP_NO_ERROR;
 }
+
+psa_status_t ComputeSha256(const uint8_t * message, size_t messageLen, uint8_t * digest, size_t digestSize)
+{
+    size_t digestLen = 0;
+    psa_status_t status = psa_hash_compute(PSA_ALG_SHA_256, message, messageLen, digest, digestSize, &digestLen);
+    if (status == PSA_SUCCESS && digestLen != Crypto::kSHA256_Hash_Length)
+    {
+        status = PSA_ERROR_GENERIC_ERROR;
+    }
+    return status;
 }
+
+psa_status_t SignPsaDacMessage(const uint8_t * message, size_t messageLen, uint8_t * signature, size_t signatureSize,
+                               size_t * signatureLen)
+{
+    uint8_t digest[Crypto::kSHA256_Hash_Length];
+    psa_status_t status = ComputeSha256(message, messageLen, digest, sizeof(digest));
+    if (status == PSA_SUCCESS)
+    {
+        status = psa_sign_hash(kTiDacPsaKeyId, PSA_ALG_ECDSA(PSA_ALG_SHA_256), digest, sizeof(digest), signature,
+                               signatureSize, signatureLen);
+    }
+    memset(digest, 0, sizeof(digest));
+    return status;
+}
+} // namespace
 #endif
 
 typedef struct
@@ -173,7 +198,7 @@ CHIP_ERROR ValidatePsaDacKey()
         goto exit;
     }
 
-    if ((psa_get_key_usage_flags(&attributes) & PSA_KEY_USAGE_SIGN_MESSAGE) == 0 ||
+    if ((psa_get_key_usage_flags(&attributes) & PSA_KEY_USAGE_SIGN_HASH) == 0 ||
         psa_get_key_algorithm(&attributes) == PSA_ALG_NONE)
     {
         status = PSA_ERROR_NOT_PERMITTED;
@@ -189,28 +214,41 @@ CHIP_ERROR ValidatePsaDacKey()
     if (hsmPublicKeyLen != hsmPublicKey.Length() ||
         memcmp(hsmPublicKey.ConstBytes(), certPublicKey.ConstBytes(), certPublicKey.Length()) != 0)
     {
+        ChipLogError(DeviceLayer, "DAC certificate public key does not match HSM key");
         status = PSA_ERROR_INVALID_SIGNATURE;
         goto exit;
     }
 
     {
         static const uint8_t kValidationMessage[] = { 'T', 'I', ' ', 'D', 'A', 'C', ' ', 'H', 'S', 'M' };
+        uint8_t validationDigest[Crypto::kSHA256_Hash_Length];
         Crypto::P256ECDSASignature validationSignature;
         size_t validationSignatureLen = 0;
 
-        status = psa_sign_message(kTiDacPsaKeyId, PSA_ALG_ECDSA(PSA_ALG_SHA_256), kValidationMessage,
-                                  sizeof(kValidationMessage), validationSignature.Bytes(), validationSignature.Capacity(),
-                                  &validationSignatureLen);
+        status =
+            ComputeSha256(kValidationMessage, sizeof(kValidationMessage), validationDigest, sizeof(validationDigest));
+        if (status == PSA_SUCCESS)
+        {
+            status =
+                psa_sign_hash(kTiDacPsaKeyId, PSA_ALG_ECDSA(PSA_ALG_SHA_256), validationDigest, sizeof(validationDigest),
+                              validationSignature.Bytes(), validationSignature.Capacity(), &validationSignatureLen);
+        }
         if (status != PSA_SUCCESS)
         {
+            memset(validationDigest, 0, sizeof(validationDigest));
             goto exit;
         }
 
         if (validationSignature.SetLength(validationSignatureLen) != CHIP_NO_ERROR ||
-            certPublicKey.ECDSA_validate_msg_signature(kValidationMessage, sizeof(kValidationMessage),
-                                                       validationSignature) != CHIP_NO_ERROR)
+            certPublicKey.ECDSA_validate_hash_signature(validationDigest, sizeof(validationDigest),
+                                                        validationSignature) != CHIP_NO_ERROR)
         {
+            ChipLogError(DeviceLayer, "DAC HSM hash-signature self-test failed");
             status = PSA_ERROR_INVALID_SIGNATURE;
+        }
+        memset(validationDigest, 0, sizeof(validationDigest));
+        if (status != PSA_SUCCESS)
+        {
             goto exit;
         }
     }
@@ -286,9 +324,9 @@ CHIP_ERROR FactoryDataProvider::SignWithDeviceAttestationKey(const ByteSpan & me
     ReturnErrorOnFailure(EnsurePsaInitialized());
     VerifyOrReturnError(outSignBuffer.size() >= Crypto::kP256_ECDSA_Signature_Length_Raw, CHIP_ERROR_BUFFER_TOO_SMALL);
 
-    size_t signatureLen  = 0;
-    psa_status_t status = psa_sign_message(kTiDacPsaKeyId, PSA_ALG_ECDSA(PSA_ALG_SHA_256), messageToSign.data(),
-                                           messageToSign.size(), outSignBuffer.data(), outSignBuffer.size(), &signatureLen);
+    size_t signatureLen = 0;
+    psa_status_t status = SignPsaDacMessage(messageToSign.data(), messageToSign.size(), outSignBuffer.data(),
+                                            outSignBuffer.size(), &signatureLen);
     ReturnErrorOnFailure(PsaStatusToChipError(status));
     VerifyOrReturnError(signatureLen == Crypto::kP256_ECDSA_Signature_Length_Raw, CHIP_ERROR_INTERNAL,
                         ChipLogError(DeviceLayer, "DAC PSA signature length is %u", static_cast<unsigned>(signatureLen)));
