@@ -198,13 +198,6 @@ CHIP_ERROR ValidatePsaDacKey()
         goto exit;
     }
 
-    if ((psa_get_key_usage_flags(&attributes) & PSA_KEY_USAGE_SIGN_HASH) == 0 ||
-        psa_get_key_algorithm(&attributes) == PSA_ALG_NONE)
-    {
-        status = PSA_ERROR_NOT_PERMITTED;
-        goto exit;
-    }
-
     status = psa_export_public_key(kTiDacPsaKeyId, hsmPublicKey.Bytes(), hsmPublicKey.Length(), &hsmPublicKeyLen);
     if (status != PSA_SUCCESS)
     {
