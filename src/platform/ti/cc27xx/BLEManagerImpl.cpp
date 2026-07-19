@@ -45,7 +45,7 @@
 #include <dmm/dmm_scheduler.h>
 #elif defined(DeviceFamily_CC27XXX10) || defined(DeviceFamily_CC27XXX20)
 #include <ti/drivers/dpl/EventP.h>
-#include <ti/drivers/rcl/RCL.h>
+#include <ti/drivers/RCL.h>
 #endif
 #include "chipOBleProfile.h"
 #include "ti/ble/stack_util/comdef.h"
