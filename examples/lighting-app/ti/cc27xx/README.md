@@ -67,9 +67,9 @@ guide assumes that the environment is linux based, and recommends Ubuntu 20.04.
 
     ```
     $ cd ~
-    $ wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-nsUM6f7Vvb/1.23.2.4156/sysconfig-1.23.2_4156-setup.run
-    $ chmod +x sysconfig-1.23.2_4156-setup.run
-    $ ./sysconfig-1.23.2_4156-setup.run
+    $ wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-nsUM6f7Vvb/1.26.3.4558/sysconfig-1.26.3_4558-setup.run
+    $ chmod +x sysconfig-1.26.3_4558-setup.run
+    $ ./sysconfig-1.26.3_4558-setup.run
     ```
 
 -   Run the bootstrap script to setup the build environment.

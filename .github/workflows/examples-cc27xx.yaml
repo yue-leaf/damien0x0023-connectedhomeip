@@ -102,10 +102,34 @@ jobs:
                   fi
                   echo "TI_SYSCONFIG_ROOT=/opt/ti/sysconfig_1.26.3" >> "$GITHUB_ENV"
 
+            - name: Install TI-validated Arm GCC
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  TOOLCHAIN_NAME=arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi
+                  TOOLCHAIN_ROOT="${RUNNER_TEMP:-/tmp}/${TOOLCHAIN_NAME}"
+                  TOOLCHAIN_ARCHIVE="${RUNNER_TEMP:-/tmp}/${TOOLCHAIN_NAME}.tar.xz"
+                  TOOLCHAIN_URL="https://developer.arm.com/-/media/Files/downloads/gnu/12.3.rel1/binrel/${TOOLCHAIN_NAME}.tar.xz"
+                  TOOLCHAIN_SHA256=12a2815644318ebcceaf84beabb665d0924b6e79e21048452c5331a56332b309
+
+                  if [ ! -x "$TOOLCHAIN_ROOT/bin/arm-none-eabi-gcc" ]; then
+                      wget -q -O "$TOOLCHAIN_ARCHIVE" "$TOOLCHAIN_URL"
+                      echo "$TOOLCHAIN_SHA256  $TOOLCHAIN_ARCHIVE" | sha256sum --check --strict
+                      tar -xJf "$TOOLCHAIN_ARCHIVE" -C "${RUNNER_TEMP:-/tmp}"
+                  fi
+                  echo "TI_ARM_GCC_ROOT=$TOOLCHAIN_ROOT" >> "$GITHUB_ENV"
+
             - name: Build examples
               run: |
                   scripts/run_in_build_env.sh '
                       set -euo pipefail
+
+                      export PATH="${TI_ARM_GCC_ROOT}/bin:$PATH"
+                      GCC_VERSION=$(arm-none-eabi-gcc -dumpfullversion)
+                      if [[ "$GCC_VERSION" != 12.3.1* ]]; then
+                          echo "Expected Arm GCC 12.3.1, found: $GCC_VERSION" >&2
+                          exit 1
+                      fi
 
                       BUILD_DIR=out/ti-cc27xx-lighting-ftd
                       ARTIFACT_DIR=out/artifacts/ti-cc27xx-lighting-ftd
@@ -170,6 +194,10 @@ jobs:
                           echo "Expected strong tfm_hal_its_fs_info override" >&2
                           exit 1
                       fi
+
+                      python3 third_party/ti_simplelink_sdk/validate_cc27xx_image.py \
+                          --map "$BUILD_DIR/${APP_NAME}.out.map" \
+                          --hex "$BUILD_DIR/${APP_NAME}-without-factory-data.hex"
 
                       mkdir -p "$ARTIFACT_DIR"
                       cp "$BUILD_DIR/${APP_NAME}.out" "$ARTIFACT_DIR/"
