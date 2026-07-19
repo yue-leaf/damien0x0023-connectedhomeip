@@ -157,11 +157,11 @@ jobs:
                       REQUIRED_TI_LIBRARIES=(
                           source/ti/drivers/lib/gcc/m33f/drivers_cc27xxx10.a
                           source/ti/devices/cc27xxx10/driverlib/lib/gcc/driverlib.a
-                          source/ti/drivers/secure/lib/gcc/m33f/secure_drivers_cc27xxx10.a
-                          source/third_party/hsmddk/lib/gcc/m33f/hsmddk_cc27xxx10_its.a
+                          source/ti/drivers/secure/lib/ticlang/m33f/secure_drivers_cc27xxx10.a
+                          source/third_party/hsmddk/lib/ticlang/m33f/hsmddk_cc27xxx10_its.a
                           source/ti/drivers/rcl/lib/gcc/m33f/rcl_cc27xxx10.a
                           source/ti/devices/cc27xxx10/rf_patches/lib/gcc/m33f/lrf_cc27xxx10.a
-                          source/third_party/psa_crypto/lib/gcc/m33f/psa_crypto_cc27xx.a
+                          source/third_party/psa_crypto/lib/ticlang/m33f/psa_crypto_cc27xx.a
                           source/ti/ble/lib/CC27XXX10/OneLib/lib/ticlang/m33f/OneLib.a
                           source/ti/ble/lib/CC27XXX10/StackWrapper/lib/ticlang/m33f/StackWrapper.a
                       )
@@ -188,6 +188,11 @@ jobs:
                       ninja -C "$BUILD_DIR" \
                           "${APP_NAME}.out" \
                           "${APP_NAME}-without-factory-data.hex"
+
+                      cmp "$BUILD_DIR/gen/secure_drivers_cc27xxx10.a" \
+                          "$TI_SDK_DIR/source/ti/drivers/secure/lib/ticlang/m33f/secure_drivers_cc27xxx10.a"
+                      cmp "$BUILD_DIR/gen/hsmddk_cc27xxx10_its.a" \
+                          "$TI_SDK_DIR/source/third_party/hsmddk/lib/ticlang/m33f/hsmddk_cc27xxx10_its.a"
 
                       if ! arm-none-eabi-nm "$BUILD_DIR/${APP_NAME}.out" |
                           grep -E "^[0-9a-fA-F]+[[:space:]]+T[[:space:]]+tfm_hal_its_fs_info$" > /dev/null; then

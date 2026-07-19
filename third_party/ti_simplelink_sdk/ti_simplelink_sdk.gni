@@ -317,11 +317,14 @@ template("ti_simplelink_sdk") {
 
         outputs += [ "${target_gen_dir}/secure_drivers_cc27xxx10.a" , "${target_gen_dir}/hsmddk_cc27xxx10_its.a" ]
 
+        # The CCS provisioning firmware uses the TI Clang PSA stack. Use the
+        # same secure driver and ITS archives here so both applications share
+        # one persistent-key storage format.
         args += [
             "--src-path-hsm",
-         "/source/third_party/hsmddk/lib/gcc/m33f/hsmddk_cc27xxx10_its.a",
+         "/source/third_party/hsmddk/lib/ticlang/m33f/hsmddk_cc27xxx10_its.a",
           "--secure-src-file",
-          "/source/ti/drivers/secure/lib/gcc/${ti_simplelink_isa}/secure_drivers_cc27xxx10.a",
+          "/source/ti/drivers/secure/lib/ticlang/${ti_simplelink_isa}/secure_drivers_cc27xxx10.a",
           "--secure-dest-path",
           rebase_path(target_gen_dir),
         ]
@@ -842,15 +845,16 @@ template("ti_simplelink_sdk") {
       libs += [
         "${ti_simplelink_sdk_root}/source/ti/drivers/rcl/lib/gcc/m33f/rcl_cc27xxx10.a",
         "${ti_simplelink_sdk_root}/source/ti/devices/cc27xxx10/rf_patches/lib/gcc/m33f/lrf_cc27xxx10.a",
+        "${ti_simplelink_sdk_root}/source/third_party/psa_crypto/lib/ticlang/m33f/psa_crypto_cc27xx.a",
         ]
     } else if (ti_simplelink_board == "LP_EM_CC2755P20"){
       libs += [
         "${ti_simplelink_sdk_root}/source/ti/drivers/rcl/lib/gcc/m33f/rcl_cc27xxx20.a",
         "${ti_simplelink_sdk_root}/source/ti/devices/cc27xxx20/rf_patches/lib/gcc/m33f/lrf_cc27xxx20.a",
+        "${ti_simplelink_sdk_root}/source/third_party/psa_crypto/lib/gcc/m33f/psa_crypto_cc27xx.a",
       ]
     }
     libs += [
-      "${ti_simplelink_sdk_root}/source/third_party/psa_crypto/lib/gcc/m33f/psa_crypto_cc27xx.a",
       "${ti_simplelink_sdk_root}/source/ti/ble/lib/CC27XXX10/OneLib/lib/ticlang/m33f/OneLib.a",
       "${ti_simplelink_sdk_root}/source/ti/ble/lib/CC27XXX10/StackWrapper/lib/ticlang/m33f/StackWrapper.a",
     ]

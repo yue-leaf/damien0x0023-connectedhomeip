@@ -29,6 +29,7 @@ FACTORY_DATA_MAX_SIZE = 0x1000
 PROTECTED_FLASH_START = 0x000DF000
 PROTECTED_FLASH_END = 0x00100000
 EXPECTED_PSA_KEY_CONTEXT_SIZE = 0x1C0
+EXPECTED_PSA_ARCHIVE = "/third_party/psa_crypto/lib/ticlang/m33f/psa_crypto_cc27xx.a"
 
 
 def parse_factory_section(map_path: Path) -> Tuple[int, int]:
@@ -57,6 +58,14 @@ def parse_psa_key_context_size(map_path: Path) -> int:
     raise ValueError("Missing gl_PSA_Key allocation in Matter map file")
 
 
+def validate_psa_archive(map_path: Path) -> None:
+    map_text = map_path.read_text(encoding="utf-8", errors="replace").replace("\\", "/")
+    if EXPECTED_PSA_ARCHIVE not in map_text:
+        raise ValueError(
+            "Matter application must link the TI Clang PSA archive used by the provisioning firmware"
+        )
+
+
 def validate_image(map_path: Path, hex_path: Path) -> None:
     factory_address, factory_size = parse_factory_section(map_path)
     if factory_address != FACTORY_DATA_ADDRESS or not 0 < factory_size <= FACTORY_DATA_MAX_SIZE:
@@ -70,6 +79,7 @@ def validate_image(map_path: Path, hex_path: Path) -> None:
             "Matter PSA KeyStore slot layout does not match the provisioning firmware: "
             f"gl_PSA_Key size={psa_key_context_size:#x}, expected={EXPECTED_PSA_KEY_CONTEXT_SIZE:#x}"
         )
+    validate_psa_archive(map_path)
 
     addresses = IntelHex(str(hex_path)).addresses()
     if not addresses:
