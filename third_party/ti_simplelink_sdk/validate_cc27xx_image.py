@@ -28,6 +28,7 @@ FACTORY_DATA_ADDRESS = 0x000E7000
 FACTORY_DATA_MAX_SIZE = 0x1000
 PROTECTED_FLASH_START = 0x000DF000
 PROTECTED_FLASH_END = 0x00100000
+EXPECTED_PSA_KEY_CONTEXT_SIZE = 0x1C0
 
 
 def parse_factory_section(map_path: Path) -> Tuple[int, int]:
@@ -40,11 +41,34 @@ def parse_factory_section(map_path: Path) -> Tuple[int, int]:
     raise ValueError("Missing .factory_data section in Matter map file")
 
 
+def parse_psa_key_context_size(map_path: Path) -> int:
+    pattern = re.compile(r"^\s*\.bss\.gl_PSA_Key\s*$")
+    size_pattern = re.compile(r"^\s*0x[0-9a-fA-F]+\s+0x([0-9a-fA-F]+)\s+")
+    with map_path.open(encoding="utf-8", errors="replace") as map_file:
+        lines = iter(map_file)
+        for line in lines:
+            if not pattern.match(line):
+                continue
+            details = next(lines, "")
+            match = size_pattern.match(details)
+            if match:
+                return int(match.group(1), 16)
+            break
+    raise ValueError("Missing gl_PSA_Key allocation in Matter map file")
+
+
 def validate_image(map_path: Path, hex_path: Path) -> None:
     factory_address, factory_size = parse_factory_section(map_path)
     if factory_address != FACTORY_DATA_ADDRESS or not 0 < factory_size <= FACTORY_DATA_MAX_SIZE:
         raise ValueError(
             f"Unsafe .factory_data section: address={factory_address:#x}, size={factory_size:#x}"
+        )
+
+    psa_key_context_size = parse_psa_key_context_size(map_path)
+    if psa_key_context_size != EXPECTED_PSA_KEY_CONTEXT_SIZE:
+        raise ValueError(
+            "Matter PSA KeyStore slot layout does not match the provisioning firmware: "
+            f"gl_PSA_Key size={psa_key_context_size:#x}, expected={EXPECTED_PSA_KEY_CONTEXT_SIZE:#x}"
         )
 
     addresses = IntelHex(str(hex_path)).addresses()

@@ -49,10 +49,12 @@ var RNG3        = RNG.addInstance();
 var ECDH1       = ECDH.addInstance();
 
 /* The provisioning flow stores the DAC private key in the persistent PSA
- * KeyStore. Keep this offset aligned with the temporary provisioning firmware
- * and the PC tool Matter memory map so final app flashing does not erase it.
+ * KeyStore. Keep its flash and slot layout aligned with the temporary
+ * provisioning firmware so the final application can restore the same key.
  */
 CryptoKeyKeyStore_PSA.flashOffset = 0x000DF000;
+CryptoKeyKeyStore_PSA.ecc256PlaintextNumVolatile = 1;
+CryptoKeyKeyStore_PSA.ecc256EncryptedNumVolatile = 1;
 
 AESCCM1.$name = "CONFIG_AESCCM0";
 
