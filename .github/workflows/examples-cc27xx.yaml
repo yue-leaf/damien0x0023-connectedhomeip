@@ -119,15 +119,38 @@ jobs:
                   fi
                   echo "TI_ARM_GCC_ROOT=$TOOLCHAIN_ROOT" >> "$GITHUB_ENV"
 
+            - name: Install TI Arm Clang
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  TOOLCHAIN_NAME=ti-cgt-armllvm_4.0.4.LTS
+                  TOOLCHAIN_ROOT="${RUNNER_TEMP:-/tmp}/${TOOLCHAIN_NAME}"
+                  TOOLCHAIN_INSTALLER="${RUNNER_TEMP:-/tmp}/ti_cgt_armllvm_4.0.4.LTS_linux-x64_installer.bin"
+                  TOOLCHAIN_URL="https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-ayxs93eZNN/4.0.4.LTS/ti_cgt_armllvm_4.0.4.LTS_linux-x64_installer.bin"
+                  TOOLCHAIN_SHA256=98c60ecc259a07a54be6fcc0f55990332f493bfe5dad460c0ba83963f5dcb06f
+
+                  if [ ! -x "$TOOLCHAIN_ROOT/bin/tiarmclang" ]; then
+                      wget -q -O "$TOOLCHAIN_INSTALLER" "$TOOLCHAIN_URL"
+                      echo "$TOOLCHAIN_SHA256  $TOOLCHAIN_INSTALLER" | sha256sum --check --strict
+                      chmod +x "$TOOLCHAIN_INSTALLER"
+                      "$TOOLCHAIN_INSTALLER" --mode unattended --prefix "$TOOLCHAIN_ROOT"
+                  fi
+                  echo "TI_ARMCLANG_ROOT=$TOOLCHAIN_ROOT" >> "$GITHUB_ENV"
+
             - name: Build examples
               run: |
                   scripts/run_in_build_env.sh '
                       set -euo pipefail
 
-                      export PATH="${TI_ARM_GCC_ROOT}/bin:$PATH"
+                      export PATH="${TI_ARM_GCC_ROOT}/bin:${TI_ARMCLANG_ROOT}/bin:$PATH"
                       GCC_VERSION=$(arm-none-eabi-gcc -dumpfullversion)
                       if [[ "$GCC_VERSION" != 12.3.1* ]]; then
                           echo "Expected Arm GCC 12.3.1, found: $GCC_VERSION" >&2
+                          exit 1
+                      fi
+                      TI_ARMCLANG_VERSION=$(tiarmclang --version)
+                      if [[ "$TI_ARMCLANG_VERSION" != *"4.0.4.LTS"* ]]; then
+                          echo "Expected TI Arm Clang 4.0.4.LTS, found: $TI_ARMCLANG_VERSION" >&2
                           exit 1
                       fi
 
@@ -152,6 +175,12 @@ jobs:
                           CMAKE="$CMAKE_BIN" \
                           GCC_ARMCOMPILER="$GCC_ARMCOMPILER" \
                           TICLANG_ARMCOMPILER= \
+                          IAR_ARMCOMPILER=
+
+                      make -C "$TI_SDK_DIR" build-ticlang \
+                          CMAKE="$CMAKE_BIN" \
+                          GCC_ARMCOMPILER= \
+                          TICLANG_ARMCOMPILER="$TI_ARMCLANG_ROOT" \
                           IAR_ARMCOMPILER=
 
                       REQUIRED_TI_LIBRARIES=(
