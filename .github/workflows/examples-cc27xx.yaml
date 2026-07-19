@@ -135,6 +135,15 @@ jobs:
                       chmod +x "$TOOLCHAIN_INSTALLER"
                       "$TOOLCHAIN_INSTALLER" --mode unattended --prefix "$TOOLCHAIN_ROOT"
                   fi
+
+                  TI_ARMCLANG_BIN=$(find "$TOOLCHAIN_ROOT" -type f -path '*/bin/tiarmclang' -perm -u+x -print -quit)
+                  if [ -z "$TI_ARMCLANG_BIN" ]; then
+                      echo "TI Arm Clang installation did not produce bin/tiarmclang under $TOOLCHAIN_ROOT" >&2
+                      find "$TOOLCHAIN_ROOT" -maxdepth 3 -type f -print >&2
+                      exit 1
+                  fi
+                  TOOLCHAIN_ROOT=$(dirname "$(dirname "$(readlink -f "$TI_ARMCLANG_BIN")")")
+                  "$TOOLCHAIN_ROOT/bin/tiarmclang" --version
                   echo "TI_ARMCLANG_ROOT=$TOOLCHAIN_ROOT" >> "$GITHUB_ENV"
 
             - name: Build examples
@@ -148,7 +157,11 @@ jobs:
                           echo "Expected Arm GCC 12.3.1, found: $GCC_VERSION" >&2
                           exit 1
                       fi
-                      TI_ARMCLANG_VERSION=$(tiarmclang --version)
+                      if [ ! -x "$TI_ARMCLANG_ROOT/bin/tiarmclang" ]; then
+                          echo "TI Arm Clang executable is missing: $TI_ARMCLANG_ROOT/bin/tiarmclang" >&2
+                          exit 1
+                      fi
+                      TI_ARMCLANG_VERSION=$("$TI_ARMCLANG_ROOT/bin/tiarmclang" --version)
                       if [[ "$TI_ARMCLANG_VERSION" != *"4.0.4.LTS"* ]]; then
                           echo "Expected TI Arm Clang 4.0.4.LTS, found: $TI_ARMCLANG_VERSION" >&2
                           exit 1
