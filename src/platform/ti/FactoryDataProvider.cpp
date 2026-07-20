@@ -106,13 +106,20 @@ CHIP_ERROR LogPsaFailure(const char * operation, psa_status_t status)
 
 psa_status_t ComputeSha256(const uint8_t * message, size_t messageLen, uint8_t * digest, size_t digestSize)
 {
-    size_t digestLen = 0;
-    psa_status_t status = psa_hash_compute(PSA_ALG_SHA_256, message, messageLen, digest, digestSize, &digestLen);
-    if (status == PSA_SUCCESS && digestLen != Crypto::kSHA256_Hash_Length)
+    if (message == nullptr || digest == nullptr)
     {
-        status = PSA_ERROR_GENERIC_ERROR;
+        return PSA_ERROR_INVALID_ARGUMENT;
     }
-    return status;
+    if (digestSize < Crypto::kSHA256_Hash_Length)
+    {
+        return PSA_ERROR_BUFFER_TOO_SMALL;
+    }
+
+    // Hash with Matter's software Crypto PAL before asking the HSM to sign the
+    // digest. This keeps the attestation TBS digest identical to the
+    // commissioner path, including for messages spanning many SHA-256 blocks.
+    return Crypto::Hash_SHA256(message, messageLen, digest) == CHIP_NO_ERROR ? PSA_SUCCESS
+                                                                            : PSA_ERROR_GENERIC_ERROR;
 }
 
 psa_status_t SignPsaDacMessage(const uint8_t * message, size_t messageLen, uint8_t * signature, size_t signatureSize,
