@@ -246,6 +246,22 @@ jobs:
                           --map "$BUILD_DIR/${APP_NAME}.out.map" \
                           --hex "$BUILD_DIR/${APP_NAME}-without-factory-data.hex"
 
+                      if ! grep -Eq "^\\.resetVecs[[:space:]]+0x0*80[[:space:]]" "$BUILD_DIR/${APP_NAME}.out.map"; then
+                          echo "Matter vector table is not linked at the TI ROM Secure Boot load address 0x80" >&2
+                          exit 1
+                      fi
+                      if ! grep -Eq "^FLASH[[:space:]]+0x0*80[[:space:]]+0x0*db940[[:space:]]" "$BUILD_DIR/${APP_NAME}.out.map"; then
+                          echo "Matter FLASH region does not reserve the TI ROM Secure Boot header and trailer" >&2
+                          exit 1
+                      fi
+
+                      arm-none-eabi-objcopy -O binary --only-section=.ccfg \
+                          "$BUILD_DIR/${APP_NAME}.out" "$BUILD_DIR/${APP_NAME}-ccfg.bin"
+                      arm-none-eabi-objcopy -O binary --only-section=.scfg \
+                          "$BUILD_DIR/${APP_NAME}.out" "$BUILD_DIR/${APP_NAME}-scfg.bin"
+                      python3 -c "import sys; from pathlib import Path; ccfg=Path(sys.argv[1]).read_bytes(); scfg=Path(sys.argv[2]).read_bytes(); assert len(ccfg)==2048; assert len(scfg)==1024; assert int.from_bytes(ccfg[8:12], byteorder=\"little\")==128" \
+                          "$BUILD_DIR/${APP_NAME}-ccfg.bin" "$BUILD_DIR/${APP_NAME}-scfg.bin"
+
                       mkdir -p "$ARTIFACT_DIR"
                       cp "$BUILD_DIR/${APP_NAME}.out" "$ARTIFACT_DIR/"
                       cp "$BUILD_DIR/${APP_NAME}.out.map" "$ARTIFACT_DIR/"
@@ -258,4 +274,3 @@ jobs:
               with:
                   name: cc27xx-lighting
                   path: out/artifacts/ti-cc27xx-lighting-ftd/
-

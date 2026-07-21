@@ -34,6 +34,9 @@ INCLUDE ti_utils_build_linker.cmd.genmap
 
 STACKSIZE = 3096;
 FLASH_FACTORY_DATA_LENGTH = 0x1000;
+ROM_SECURE_BOOT_HEADER_SIZE = 0x80;
+ROM_SECURE_BOOT_TRAILER_SIZE = 0x640;
+ROM_SECURE_BOOT_SLOT_SIZE = 0xDC000;
 
 /*0x18000 HSM FW Size*/
 
@@ -50,7 +53,8 @@ MEMORY
 
 
     /* If device has HSM FW the last part of Flash is reserved for it */
-    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0xDC000
+    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE + ROM_SECURE_BOOT_HEADER_SIZE,
+                 LENGTH = ROM_SECURE_BOOT_SLOT_SIZE - ROM_SECURE_BOOT_HEADER_SIZE - ROM_SECURE_BOOT_TRAILER_SIZE
 
     FLASH_PSA_KEYSTORE (R) : ORIGIN = 0xDF000, LENGTH = 0x2000
     FLASH_NVS (R) : ORIGIN = 0xE1000, LENGTH = 0x6000
@@ -94,7 +98,7 @@ REGION_ALIAS("REGION_ARM_EXTAB", FLASH);
 SECTIONS {
 
     PROVIDE (_resetVecs_base_address =
-        DEFINED(_resetVecs_base_address) ? _resetVecs_base_address : 0x0);
+        DEFINED(_resetVecs_base_address) ? _resetVecs_base_address : ORIGIN(FLASH));
 
     .resetVecs (_resetVecs_base_address) : AT (_resetVecs_base_address) {
         KEEP (*(.resetVecs))
