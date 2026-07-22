@@ -268,9 +268,82 @@ jobs:
                       cp "$BUILD_DIR/${APP_NAME}-without-factory-data.hex" "$ARTIFACT_DIR/"
                   '
 
-            - name: Uploading build artifacts
+            - name: Upload unsigned build artifacts
               uses: actions/upload-artifact@v4
               if: ${{ !env.ACT }}
               with:
-                  name: cc27xx-lighting
+                  name: cc27xx-lighting-unsigned
                   path: out/artifacts/ti-cc27xx-lighting-ftd/
+
+            - name: Set up snb-command
+              if: ${{ !env.ACT }}
+              env:
+                  snbAccessKey: ${{ secrets.IOT_ACCESS_KEY }}
+                  snbSecretKey: ${{ secrets.IOT_SECRET_KEY }}
+                  serviceAddress: ${{ secrets.IOT_SERVICE_ADDRESS }}
+              run: |
+                  wget https://github.com/yue-leaf/cli-test/releases/download/v0.0.2-alpha/snb
+                  chmod +x snb
+                  ln -s "$(pwd)/snb" /usr/local/bin/snb
+                  snb config --serviceAddress "$serviceAddress" -a "$snbAccessKey" -s "$snbSecretKey"
+
+            - name: Sign application firmware with SNB KMS
+              if: ${{ !env.ACT }}
+              env:
+                  snbSignDataKey: ${{ secrets.IOT_SIGN_DATA_KEY_ID }}
+              run: |
+                  scripts/run_in_build_env.sh '
+                      set -euo pipefail
+
+                      BUILD_DIR=out/ti-cc27xx-lighting-ftd
+                      APP_NAME=chip-LP_EM_CC2745R10_Q1-lighting-example
+                      TI_SDK_DIR=third_party/ti_simplelink_sdk/repo_cc23xx_cc27xx
+                      IMGTOOL_DIR="$TI_SDK_DIR/source/third_party/mcuboot/scripts"
+                      PROPERTIES=scripts/tools/ti/cc2745_secure_boot_properties.json
+                      SECURE_BOOT_DIR=out/artifacts/ti-cc27xx-lighting-secure-boot
+
+                      export PATH="${TI_ARM_GCC_ROOT}/bin:$PATH"
+                      command -v arm-none-eabi-objcopy > /dev/null
+                      command -v snb > /dev/null
+                      test -n "$snbSignDataKey"
+                      test -f "$IMGTOOL_DIR/imgtool.py"
+
+                      rm -rf "$SECURE_BOOT_DIR"
+                      mkdir -p "$SECURE_BOOT_DIR"
+
+                      python3 scripts/tools/ti/cc2745_secure_boot.py prepare \
+                          --input "$BUILD_DIR/${APP_NAME}.out" \
+                          --reference-hex "$BUILD_DIR/${APP_NAME}-without-factory-data.hex" \
+                          --objcopy arm-none-eabi-objcopy \
+                          --imgtool-dir "$IMGTOOL_DIR" \
+                          --properties "$PROPERTIES" \
+                          --output-dir "$SECURE_BOOT_DIR"
+
+                      snb kms sign \
+                          --keyId "$snbSignDataKey" \
+                          --inputFile "$SECURE_BOOT_DIR/ti-cc27xx-imgtool-to-sign.sha256" \
+                          --outputFile "$SECURE_BOOT_DIR/ti-cc27xx-signature.der"
+
+                      snb kms exportPubKey \
+                          --keyId "$snbSignDataKey" \
+                          --outputFormat PEM \
+                          --outputFile "$SECURE_BOOT_DIR/public_key.pem"
+
+                      python3 scripts/tools/ti/cc2745_secure_boot.py finalize \
+                          --signature "$SECURE_BOOT_DIR/ti-cc27xx-signature.der" \
+                          --public-key "$SECURE_BOOT_DIR/public_key.pem" \
+                          --imgtool-dir "$IMGTOOL_DIR" \
+                          --properties "$PROPERTIES" \
+                          --output-dir "$SECURE_BOOT_DIR"
+
+                      test -s "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting.bin"
+                      test -s "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting-without-factory-data.hex"
+                      test -s "$SECURE_BOOT_DIR/manifest.json"
+                  '
+
+            - name: Upload signed build artifacts
+              uses: actions/upload-artifact@v4
+              if: ${{ !env.ACT }}
+              with:
+                  name: cc27xx-lighting-signed
+                  path: out/artifacts/ti-cc27xx-lighting-secure-boot/
