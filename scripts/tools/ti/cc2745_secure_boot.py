@@ -31,8 +31,9 @@ import zlib
 from dataclasses import dataclass
 from pathlib import Path
 
-from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import ec, utils
 from intelhex import IntelHex
 
 
@@ -81,7 +82,7 @@ PROTECTED_FLASH_END = 0x00100000
 
 UNSIGNED_BIN_NAME = "unsigned-ti-cc27xx-lighting.bin"
 XCFG_HEX_NAME = "xcfg.hex"
-DIGEST_NAME = "ti-cc27xx-imgtool-to-sign.sha256"
+SIGNING_PAYLOAD_NAME = "ti-cc27xx-imgtool-to-sign.bin"
 SIGNATURE_DER_NAME = "ti-cc27xx-signature.der"
 SIGNATURE_B64_NAME = "ti-cc27xx-signature.b64"
 PUBLIC_KEY_NAME = "public_key.pem"
@@ -330,14 +331,14 @@ def prepare(args: argparse.Namespace) -> None:
     ti_main = _load_imgtool(args.imgtool_dir.resolve())
 
     unsigned_bin = output_dir / UNSIGNED_BIN_NAME
-    digest_path = output_dir / DIGEST_NAME
+    signing_payload_path = output_dir / SIGNING_PAYLOAD_NAME
     _run_imgtool(
         ti_main,
-        _imgtool_sign_args(properties) + ["--vector-to-sign", "digest", str(unsigned_bin), str(digest_path)],
+        _imgtool_sign_args(properties) + ["--vector-to-sign", "payload", str(unsigned_bin), str(signing_payload_path)],
     )
-    digest = digest_path.read_bytes()
-    if len(digest) != hashlib.sha256().digest_size:
-        raise SecureBootError(f"imgtool digest is {len(digest)} bytes; expected 32")
+    signing_payload = signing_payload_path.read_bytes()
+    if not signing_payload:
+        raise SecureBootError("imgtool signing payload is empty")
 
     manifest = {
         "phase": "prepared-for-external-signing",
@@ -351,14 +352,14 @@ def prepare(args: argparse.Namespace) -> None:
             "reference_hex": _file_sha256(reference_hex),
             "unsigned_bin": _file_sha256(unsigned_bin),
             "xcfg_hex": _file_sha256(output_dir / XCFG_HEX_NAME),
-            "imgtool_digest": digest.hex(),
+            "imgtool_signing_payload": _file_sha256(signing_payload_path),
         },
     }
     _write_json(output_dir / PREPARE_MANIFEST_NAME, manifest)
-    print(f"Prepared TI imgtool digest: {digest_path}")
+    print(f"Prepared TI imgtool signing payload: {signing_payload_path}")
 
 
-def _load_p256_public_key(path: Path) -> tuple[bytes, bytes]:
+def _load_p256_public_key(path: Path) -> tuple[bytes, bytes, ec.EllipticCurvePublicKey]:
     pem = path.read_bytes()
     try:
         key = serialization.load_pem_public_key(pem)
@@ -374,7 +375,7 @@ def _load_p256_public_key(path: Path) -> tuple[bytes, bytes]:
         encoding=serialization.Encoding.DER,
         format=serialization.PublicFormat.SubjectPublicKeyInfo,
     )
-    return canonical_pem, der
+    return canonical_pem, der, key
 
 
 def _configure_secure_boot(memory: dict[int, int], app_public_key_der: bytes, properties: SecureBootProperties) -> dict[int, int]:
@@ -524,20 +525,25 @@ def finalize(args: argparse.Namespace) -> None:
     properties = load_properties(args.properties.resolve())
     unsigned_bin = output_dir / UNSIGNED_BIN_NAME
     xcfg_hex = output_dir / XCFG_HEX_NAME
-    digest_path = output_dir / DIGEST_NAME
-    for path in (unsigned_bin, xcfg_hex, digest_path, args.signature, args.public_key):
+    signing_payload_path = output_dir / SIGNING_PAYLOAD_NAME
+    for path in (unsigned_bin, xcfg_hex, signing_payload_path, args.signature, args.public_key):
         if not path.is_file():
             raise SecureBootError(f"required signing input does not exist: {path}")
 
-    canonical_pem, public_key_der = _load_p256_public_key(args.public_key.resolve())
+    canonical_pem, public_key_der, public_key = _load_p256_public_key(args.public_key.resolve())
     public_key_path = output_dir / PUBLIC_KEY_NAME
     public_key_path.write_bytes(canonical_pem)
-    digest = digest_path.read_bytes()
-    if len(digest) != hashlib.sha256().digest_size:
-        raise SecureBootError("imgtool digest must be 32 bytes")
+    signing_payload = signing_payload_path.read_bytes()
+    digest = hashlib.sha256(signing_payload).digest()
     signature_der = args.signature.resolve().read_bytes()
     if not signature_der:
         raise SecureBootError("SNB signature output is empty")
+    try:
+        public_key.verify(signature_der, digest, ec.ECDSA(utils.Prehashed(hashes.SHA256())))
+    except InvalidSignature as error:
+        raise SecureBootError(
+            "SNB signature does not match the TI imgtool payload digest; the signer must hash the exported payload exactly once"
+        ) from error
 
     signature_path = output_dir / SIGNATURE_DER_NAME
     if args.signature.resolve() != signature_path:
