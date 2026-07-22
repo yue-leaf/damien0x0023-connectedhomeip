@@ -19,6 +19,8 @@ on:
     push:
         branches:
             - ti-cc2745-self
+        tags:
+            - 'v*'
 
 concurrency:
     group: ${{ github.ref }}-${{ github.workflow }}-${{ (github.event_name == 'workflow_dispatch' && github.run_number) || github.sha }}
