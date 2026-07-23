@@ -23,9 +23,21 @@ jobs:
   check-submodule-update-label:
     name: Check for changes to data_model directory without a sha update
     runs-on: ubuntu-latest
-    if: "git diff --name-only HEAD^..HEAD data_model/ | grep -q spec_sha"
     steps:
-      - name: Error Message
-        run: echo This pull request attempts to update data_model directory, but is missing updates to spec_sha file with the latest version of the sha. Files in the data_model directory are generated automatically and should not be updated manually.
-      - name: Fail Job
-        run: exit 1
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require spec_sha update
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          changed_files="$(git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD -- data_model/)"
+          echo "$changed_files"
+
+          if ! printf '%s\n' "$changed_files" | grep -Eq '^data_model/[^/]+/spec_sha$'; then
+            echo "This pull request attempts to update data_model directory, but is missing updates to spec_sha file with the latest version of the sha. Files in the data_model directory are generated automatically and should not be updated manually."
+            exit 1
+          fi
