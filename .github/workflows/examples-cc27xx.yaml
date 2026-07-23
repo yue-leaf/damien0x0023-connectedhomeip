@@ -343,6 +343,36 @@ jobs:
                       test -s "$SECURE_BOOT_DIR/manifest.json"
                   '
 
+            - name: Push signed application firmware
+              if: ${{ !env.ACT }}
+              env:
+                  PRODUCT_ID: ${{ secrets.PRODUCT_ID }}
+                  MODULE_NAME: ${{ secrets.MODULE_NAME }}
+                  ENV: ${{ secrets.ENV }}
+              run: |
+                  set -euo pipefail
+
+                  SECURE_BOOT_DIR=out/artifacts/ti-cc27xx-lighting-secure-boot
+                  FIRMWARE="$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting-without-factory-data.hex"
+                  test -s "$FIRMWARE"
+                  test -n "$PRODUCT_ID"
+                  test -n "$MODULE_NAME"
+                  test -n "$ENV"
+
+                  if [ "${GITHUB_REF_TYPE:-}" = "tag" ]; then
+                      VERSION="$GITHUB_REF_NAME"
+                  else
+                      VERSION="$GITHUB_SHA"
+                  fi
+
+                  snb obis push \
+                      --file "$FIRMWARE" \
+                      --fileType Application \
+                      --productId "$PRODUCT_ID" \
+                      --moduleName "$MODULE_NAME" \
+                      --env "$ENV" \
+                      --version "$VERSION"
+
             - name: Upload signed build artifacts
               uses: actions/upload-artifact@v4
               if: ${{ !env.ACT }}
