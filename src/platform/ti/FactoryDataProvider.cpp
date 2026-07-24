@@ -353,14 +353,6 @@ CHIP_ERROR ValidateFactoryDataAttestationData()
     ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.dac_cert, "dac_cert", 1, Credentials::kMaxDERCertLength));
     ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.pai_cert, "pai_cert", 1, Credentials::kMaxDERCertLength));
 
-    Crypto::P256PublicKey dacPublicKey;
-    ReturnErrorOnFailure(
-        Crypto::ExtractPubkeyFromX509Cert(ByteSpan{ mFactoryData.dac_cert.data, mFactoryData.dac_cert.len }, dacPublicKey));
-
-    Crypto::P256PublicKey paiPublicKey;
-    ReturnErrorOnFailure(
-        Crypto::ExtractPubkeyFromX509Cert(ByteSpan{ mFactoryData.pai_cert.data, mFactoryData.pai_cert.len }, paiPublicKey));
-
 #if !defined(TI_DAC_KEY_USE_PSA_HSM)
     ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.dac_priv_key, "dac_priv_key", Crypto::kP256_PrivateKey_Length,
                                               Crypto::kP256_PrivateKey_Length));
