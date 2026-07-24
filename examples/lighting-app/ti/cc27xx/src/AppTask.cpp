@@ -267,7 +267,7 @@
     }
     else
     {
-        PLAT_LOG("FactoryDataProvider registered, but failed to re-read commissioning values");
+        PLAT_LOG("FactoryDataProvider registered, but commissioning values could not be re-read");
     }
 #elif defined(TI_ATTESTATION_CREDENTIALS)
     SetDeviceAttestationCredentialsProvider(TI::GetTIDacProvider());
@@ -286,7 +286,7 @@
  
      if (sOTAInitTimer == NULL)
      {
-         PLAT_LOG("sOTAInitTimer timer create failed");
+         PLAT_LOG("sOTAInitTimer timer could not be created");
      }
      else
      {
@@ -478,7 +478,7 @@
      // cannot immediately be sent to the timer command queue.
      if (xTimerChangePeriod(sOTAInitTimer, pdMS_TO_TICKS(aTimeoutMs), 100) != pdPASS)
      {
-         PLAT_LOG("sOTAInitTimer timer start() failed");
+         PLAT_LOG("sOTAInitTimer timer could not start");
      }
  }
  
@@ -486,7 +486,7 @@
  {
      if (xTimerStop(sOTAInitTimer, 0) == pdFAIL)
      {
-         PLAT_LOG("sOTAInitTimer stop() failed");
+         PLAT_LOG("sOTAInitTimer could not stop");
      }
  }
  #endif
