@@ -16,6 +16,7 @@
  */
 
 #include "FactoryDataProvider.h"
+#include <credentials/CertificationDeclaration.h>
 #include <credentials/CHIPCert.h>
 #include <crypto/CHIPCryptoPAL.h>
 #include <lib/core/CHIPError.h>
@@ -348,7 +349,7 @@ CHIP_ERROR ValidateFactoryDataDeviceInstance()
 CHIP_ERROR ValidateFactoryDataAttestationData()
 {
     ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.certification_declaration, "certification_declaration", 1,
-                                              Credentials::kMaxDERCertLength));
+                                              Credentials::kMaxCMSSignedCDMessage));
     ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.dac_cert, "dac_cert", 1, Credentials::kMaxDERCertLength));
     ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.pai_cert, "pai_cert", 1, Credentials::kMaxDERCertLength));
 
@@ -491,7 +492,7 @@ CHIP_ERROR FactoryDataProvider::Init()
 CHIP_ERROR FactoryDataProvider::GetCertificationDeclaration(MutableByteSpan & out_buffer)
 {
     ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.certification_declaration, "certification_declaration", 1,
-                                               Credentials::kMaxDERCertLength));
+                                               Credentials::kMaxCMSSignedCDMessage));
     ReturnErrorCodeIf(out_buffer.size() < mFactoryData.certification_declaration.len, CHIP_ERROR_BUFFER_TOO_SMALL);
 
     return CopySpanToMutableSpan(ByteSpan{ mFactoryData.certification_declaration.data,
