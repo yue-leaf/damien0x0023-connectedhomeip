@@ -30,6 +30,8 @@
 #if CHIP_DEVICE_CONFIG_ENABLE_CHIPOBLE
 
 #include <ble/Ble.h>
+#include <lib/support/ErrorStr.h>
+#include <lib/support/logging/CHIPLogging.h>
 #include <platform/internal/BLEManager.h>
 
 #include "FreeRTOS.h"
@@ -414,8 +416,10 @@ CHIP_ERROR BLEManagerImpl::SendWriteRequest(BLE_CONNECTION_OBJECT conId, const C
  * @fn      ConfigureAdvertisements
  *
  * @brief   Initialize CHIPoBLE Advertisements.
+ *
+ * @return  CHIP_NO_ERROR on success, otherwise an error describing why advertisement data was not configured.
  */
-void BLEManagerImpl::ConfigureAdvertisements(void)
+CHIP_ERROR BLEManagerImpl::ConfigureAdvertisements(void)
 {
     bStatus_t status = FAILURE;
     uint16_t deviceDiscriminator;
@@ -440,7 +444,15 @@ void BLEManagerImpl::ConfigureAdvertisements(void)
     BLEMGR_LOG("BLEMGR: ConfigureAdvertisements");
 
     ChipBLEDeviceIdentificationInfo mDeviceIdInfo;
-    ConfigurationMgr().GetBLEDeviceIdentificationInfo(mDeviceIdInfo);
+    CHIP_ERROR err = ConfigurationMgr().GetBLEDeviceIdentificationInfo(mDeviceIdInfo);
+    if (err != CHIP_NO_ERROR)
+    {
+        ChipLogError(DeviceLayer, "BLE ConfigureAdvertisements: GetBLEDeviceIdentificationInfo failed: %s", ErrorStr(err));
+        return err;
+    }
+
+    ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: vendor=%u product=%u discriminator=%u",
+                    mDeviceIdInfo.GetVendorId(), mDeviceIdInfo.GetProductId(), mDeviceIdInfo.GetDeviceDiscriminator());
 
     memset(sInstance.mScanResDatachipOBle, 0, CHIPOBLE_ADV_DATA_MAX_SIZE);
     memset(sInstance.mAdvDatachipOBle, 0, CHIPOBLE_ADV_DATA_MAX_SIZE);
@@ -462,6 +474,7 @@ void BLEManagerImpl::ConfigureAdvertisements(void)
         // http://software-dl.ti.com/lprf/ble5stack-latest/
         GGS_SetParameter(GGS_DEVICE_NAME_ATT, GAP_DEVICE_NAME_LEN, sInstance.mDeviceName);
 
+        ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: GAP device name=%s", sInstance.mDeviceName);
         BLEMGR_LOG("BLEMGR: AdvInit New device name set: %s", sInstance.mDeviceName);
     }
     else
@@ -516,12 +529,21 @@ void BLEManagerImpl::ConfigureAdvertisements(void)
     {
         // Create Advertisement set #1 and assign handle
         status = (bStatus_t) GapAdv_create(&advCallback, &advParams, &sInstance.advHandleLegacy);
-        assert(status == SUCCESS);
+        if (status != SUCCESS)
+        {
+            ChipLogError(DeviceLayer, "BLE ConfigureAdvertisements: GapAdv_create failed: status=%d", status);
+            return CHIP_ERROR_INTERNAL;
+        }
 
         // Set event mask for set #1
         status = (bStatus_t) GapAdv_setEventMask(sInstance.advHandleLegacy,
                                                  GAP_ADV_EVT_MASK_START_AFTER_ENABLE | GAP_ADV_EVT_MASK_END_AFTER_DISABLE |
                                                      GAP_ADV_EVT_MASK_SET_TERMINATED);
+        if (status != SUCCESS)
+        {
+            ChipLogError(DeviceLayer, "BLE ConfigureAdvertisements: GapAdv_setEventMask failed: status=%d", status);
+            return CHIP_ERROR_INTERNAL;
+        }
 
         Util_constructClock(&sInstance.clkAdvTimeout, AdvTimeoutHandler, ADV_TIMEOUT, 0, false, (uintptr_t) NULL);
     }
@@ -535,7 +557,15 @@ void BLEManagerImpl::ConfigureAdvertisements(void)
     // Load advertising data for set #1 that is statically allocated by the app
     status = (bStatus_t) GapAdv_loadByHandle(sInstance.advHandleLegacy, GAP_ADV_DATA_TYPE_ADV,
                                              CHIPOBLE_ADV_SIZE_NO_DEVICE_ID_INFO + advLength, sInstance.mAdvDatachipOBle);
-    assert(status == SUCCESS);
+    if (status != SUCCESS)
+    {
+        ChipLogError(DeviceLayer, "BLE ConfigureAdvertisements: GapAdv_loadByHandle ADV failed: status=%d len=%u", status,
+                     static_cast<unsigned>(CHIPOBLE_ADV_SIZE_NO_DEVICE_ID_INFO + advLength));
+        return CHIP_ERROR_INTERNAL;
+    }
+    ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: loaded adv data len=%u discriminator=%u",
+                    static_cast<unsigned>(CHIPOBLE_ADV_SIZE_NO_DEVICE_ID_INFO + advLength),
+                    mDeviceIdInfo.GetDeviceDiscriminator());
 
     if (sInstance.mFlags.Has(Flags::kBLEStackAdvInitialized))
     {
@@ -547,7 +577,14 @@ void BLEManagerImpl::ConfigureAdvertisements(void)
     // Load scan response data for set #1 that is statically allocated by the app
     status = (bStatus_t) GapAdv_loadByHandle(sInstance.advHandleLegacy, GAP_ADV_DATA_TYPE_SCAN_RSP, scanResLength,
                                              sInstance.mScanResDatachipOBle);
-    assert(status == SUCCESS);
+    if (status != SUCCESS)
+    {
+        ChipLogError(DeviceLayer, "BLE ConfigureAdvertisements: GapAdv_loadByHandle SCAN_RSP failed: status=%d len=%u", status,
+                     static_cast<unsigned>(scanResLength));
+        return CHIP_ERROR_INTERNAL;
+    }
+    ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: loaded scan response len=%u", static_cast<unsigned>(scanResLength));
+    return CHIP_NO_ERROR;
 }
 
 /*********************************************************************
@@ -859,7 +896,12 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
                     GapAdv_setParam(sInstance.advHandleLegacy, GAP_ADV_PARAM_PRIMARY_INTERVAL_MIN, &newParamMin);
 
                     // Update advertisement parameters
-                    ConfigureAdvertisements();
+                    CHIP_ERROR err = ConfigureAdvertisements();
+                    if (err != CHIP_NO_ERROR)
+                    {
+                        ChipLogError(DeviceLayer, "BLE state update: ConfigureAdvertisements failed: %s", ErrorStr(err));
+                        break;
+                    }
                 }
             }
 
@@ -1122,7 +1164,12 @@ void BLEManagerImpl::ProcessGapMessage(gapEventHdr_t * pMsg)
 #else
             DevInfo_setParameter(DEVINFO_SYSTEM_ID, DEVINFO_SYSTEM_ID_LEN, systemId);
 #endif
-            ConfigureAdvertisements();
+            CHIP_ERROR err = ConfigureAdvertisements();
+            if (err != CHIP_NO_ERROR)
+            {
+                ChipLogError(DeviceLayer, "BLE GAP init: ConfigureAdvertisements failed: %s", ErrorStr(err));
+                break;
+            }
 
             sInstance.mFlags.Set(Flags::kBLEStackInitialized);
             sInstance.mFlags.Set(Flags::kBLEStackAdvInitialized);

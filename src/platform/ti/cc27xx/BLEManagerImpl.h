@@ -300,7 +300,7 @@ private:
     ClockEventData_t argRpaRead = { .event = READ_RPA_EVT };
 
     // ===== Private BLE Stack Helper functions.
-    void ConfigureAdvertisements(void);
+    CHIP_ERROR ConfigureAdvertisements(void);
     void EventHandler_init(void);
     void InitPHYRSSIArray(void);
     CHIP_ERROR CreateEventHandler(void);

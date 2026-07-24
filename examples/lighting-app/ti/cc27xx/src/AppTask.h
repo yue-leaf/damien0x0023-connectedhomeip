@@ -91,9 +91,6 @@ private:
 
     static AppTask sAppTask;
 
- #ifdef TI_FACTORY_DATA
-     chip::DeviceLayer::FactoryDataProvider mFactoryDataProvider;
- #endif
 };
 
 inline AppTask & GetAppTask(void)

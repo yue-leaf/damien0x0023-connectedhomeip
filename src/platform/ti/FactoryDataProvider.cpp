@@ -16,11 +16,14 @@
  */
 
 #include "FactoryDataProvider.h"
+#include <credentials/CHIPCert.h>
 #include <crypto/CHIPCryptoPAL.h>
 #include <lib/core/CHIPError.h>
 #include <lib/support/CodeUtils.h>
 #include <lib/support/logging/CHIPLogging.h>
 #include <lib/support/Span.h>
+#include <platform/ConfigurationManager.h>
+#include <setup_payload/SetupPayload.h>
 #include <string.h>
 
 #if defined(TI_DAC_KEY_USE_PSA_HSM)
@@ -176,6 +179,70 @@ factoryData __attribute__((section(".factory_data_struct"))) __attribute__((used
     {};
 
 namespace {
+CHIP_ERROR ValidateRequiredField(const data_ptr & field, const char * name, size_t minLen, size_t maxLen)
+{
+    if (field.data == nullptr)
+    {
+        ChipLogError(DeviceLayer, "Factory Data %s is missing", name);
+        return CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
+    }
+    if (field.len < minLen || field.len > maxLen)
+    {
+        ChipLogError(DeviceLayer, "Factory Data %s has invalid length: %u expected=[%u,%u]", name,
+                     static_cast<unsigned>(field.len), static_cast<unsigned>(minLen), static_cast<unsigned>(maxLen));
+        return CHIP_ERROR_INVALID_ARGUMENT;
+    }
+
+    return CHIP_NO_ERROR;
+}
+
+CHIP_ERROR ValidatePrintableStringField(const data_ptr & field, const char * name, size_t maxLen)
+{
+    ReturnErrorOnFailure(ValidateRequiredField(field, name, 1, maxLen));
+    for (uint32_t i = 0; i < field.len; ++i)
+    {
+        if (field.data[i] < 0x20 || field.data[i] > 0x7e)
+        {
+            ChipLogError(DeviceLayer, "Factory Data %s contains non-printable byte at index %u", name,
+                         static_cast<unsigned>(i));
+            return CHIP_ERROR_INVALID_ARGUMENT;
+        }
+    }
+
+    return CHIP_NO_ERROR;
+}
+
+bool IsDigit(uint8_t value)
+{
+    return value >= '0' && value <= '9';
+}
+
+CHIP_ERROR ValidateManufacturingDate()
+{
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.manufacturing_date, "manufacturing_date", 10, 10));
+
+    const uint8_t * date = mFactoryData.manufacturing_date.data;
+    if (!IsDigit(date[0]) || !IsDigit(date[1]) || !IsDigit(date[2]) || !IsDigit(date[3]) || date[4] != '-' ||
+        !IsDigit(date[5]) || !IsDigit(date[6]) || date[7] != '-' || !IsDigit(date[8]) || !IsDigit(date[9]))
+    {
+        ChipLogError(DeviceLayer, "Factory Data manufacturing_date must be YYYY-MM-DD");
+        return CHIP_ERROR_INVALID_ARGUMENT;
+    }
+
+    uint16_t year = static_cast<uint16_t>((date[0] - '0') * 1000 + (date[1] - '0') * 100 + (date[2] - '0') * 10 +
+                                          (date[3] - '0'));
+    uint8_t month = static_cast<uint8_t>((date[5] - '0') * 10 + (date[6] - '0'));
+    uint8_t day   = static_cast<uint8_t>((date[8] - '0') * 10 + (date[9] - '0'));
+    if (year == 0 || month < 1 || month > 12 || day < 1 || day > 31)
+    {
+        ChipLogError(DeviceLayer, "Factory Data manufacturing_date is out of range: %04u-%02u-%02u",
+                     static_cast<unsigned>(year), static_cast<unsigned>(month), static_cast<unsigned>(day));
+        return CHIP_ERROR_INVALID_ARGUMENT;
+    }
+
+    return CHIP_NO_ERROR;
+}
+
 CHIP_ERROR ReadFactoryDataUint(const data_ptr & field, const char * name, size_t expectedLen, uint32_t & value)
 {
     if (field.data == nullptr)
@@ -209,26 +276,31 @@ CHIP_ERROR ValidateFactoryDataCommissionableData()
         ChipLogError(DeviceLayer, "Factory Data discriminator is out of range: %u", static_cast<unsigned>(discriminator));
         return CHIP_ERROR_INVALID_ARGUMENT;
     }
-    if (passcode == 0 || passcode > 99999998)
+    if (!PayloadContents::IsValidSetupPIN(passcode))
     {
-        ChipLogError(DeviceLayer, "Factory Data passcode is out of range: %u", static_cast<unsigned>(passcode));
+        ChipLogError(DeviceLayer, "Factory Data passcode is invalid: %u", static_cast<unsigned>(passcode));
         return CHIP_ERROR_INVALID_ARGUMENT;
     }
-    if (iterations < 1000 || iterations > 100000)
+    if (iterations < Crypto::kSpake2p_Min_PBKDF_Iterations || iterations > Crypto::kSpake2p_Max_PBKDF_Iterations)
     {
         ChipLogError(DeviceLayer, "Factory Data SPAKE2+ iteration count is out of range: %u",
                      static_cast<unsigned>(iterations));
         return CHIP_ERROR_INVALID_ARGUMENT;
     }
-    if (mFactoryData.spake2p_salt.data == nullptr || mFactoryData.spake2p_salt.len == 0)
+    if (mFactoryData.spake2p_salt.data == nullptr ||
+        mFactoryData.spake2p_salt.len < Crypto::kSpake2p_Min_PBKDF_Salt_Length ||
+        mFactoryData.spake2p_salt.len > Crypto::kSpake2p_Max_PBKDF_Salt_Length)
     {
-        ChipLogError(DeviceLayer, "Factory Data SPAKE2+ salt is missing");
-        return CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
+        ChipLogError(DeviceLayer, "Factory Data SPAKE2+ salt has invalid length: %u",
+                     static_cast<unsigned>(mFactoryData.spake2p_salt.len));
+        return CHIP_ERROR_INVALID_ARGUMENT;
     }
-    if (mFactoryData.spake2p_verifier.data == nullptr || mFactoryData.spake2p_verifier.len == 0)
+    if (mFactoryData.spake2p_verifier.data == nullptr ||
+        mFactoryData.spake2p_verifier.len != Crypto::kSpake2p_VerifierSerialized_Length)
     {
-        ChipLogError(DeviceLayer, "Factory Data SPAKE2+ verifier is missing");
-        return CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
+        ChipLogError(DeviceLayer, "Factory Data SPAKE2+ verifier has invalid length: %u",
+                     static_cast<unsigned>(mFactoryData.spake2p_verifier.len));
+        return CHIP_ERROR_INVALID_ARGUMENT;
     }
 
     ChipLogProgress(DeviceLayer,
@@ -236,6 +308,71 @@ CHIP_ERROR ValidateFactoryDataCommissionableData()
                     static_cast<unsigned>(passcode), static_cast<unsigned>(discriminator), static_cast<unsigned>(iterations),
                     static_cast<unsigned>(mFactoryData.spake2p_salt.len),
                     static_cast<unsigned>(mFactoryData.spake2p_verifier.len));
+    return CHIP_NO_ERROR;
+}
+
+CHIP_ERROR ValidateFactoryDataDeviceInstance()
+{
+    uint32_t vendorId        = 0;
+    uint32_t productId       = 0;
+    uint32_t hardwareVersion = 0;
+
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.vendor_id, "vendor_id", sizeof(uint16_t), vendorId));
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.product_id, "product_id", sizeof(uint16_t), productId));
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.hw_ver, "hw_ver", sizeof(uint16_t), hardwareVersion));
+    ReturnErrorOnFailure(ValidatePrintableStringField(mFactoryData.serial_number, "serial_number",
+                                                      ConfigurationManager::kMaxSerialNumberLength));
+    ReturnErrorOnFailure(ValidatePrintableStringField(mFactoryData.vendor_name, "vendor_name",
+                                                      ConfigurationManager::kMaxVendorNameLength));
+    ReturnErrorOnFailure(ValidatePrintableStringField(mFactoryData.product_name, "product_name",
+                                                      ConfigurationManager::kMaxProductNameLength));
+    ReturnErrorOnFailure(ValidatePrintableStringField(mFactoryData.hw_ver_str, "hw_ver_str",
+                                                      ConfigurationManager::kMaxHardwareVersionStringLength));
+    ReturnErrorOnFailure(ValidateManufacturingDate());
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.rd_uniqueid, "rd_uniqueid", 16, 32));
+
+    ChipLogProgress(DeviceLayer,
+                    "FactoryDataProvider device instance: vid=%u pid=%u serial=%.*s vendor=%.*s product=%.*s hw_ver=%u hw_ver_str=%.*s mfg=%.*s rd_uid_len=%u",
+                    static_cast<unsigned>(vendorId), static_cast<unsigned>(productId),
+                    static_cast<int>(mFactoryData.serial_number.len), reinterpret_cast<const char *>(mFactoryData.serial_number.data),
+                    static_cast<int>(mFactoryData.vendor_name.len), reinterpret_cast<const char *>(mFactoryData.vendor_name.data),
+                    static_cast<int>(mFactoryData.product_name.len), reinterpret_cast<const char *>(mFactoryData.product_name.data),
+                    static_cast<unsigned>(hardwareVersion), static_cast<int>(mFactoryData.hw_ver_str.len),
+                    reinterpret_cast<const char *>(mFactoryData.hw_ver_str.data),
+                    static_cast<int>(mFactoryData.manufacturing_date.len),
+                    reinterpret_cast<const char *>(mFactoryData.manufacturing_date.data),
+                    static_cast<unsigned>(mFactoryData.rd_uniqueid.len));
+    return CHIP_NO_ERROR;
+}
+
+CHIP_ERROR ValidateFactoryDataAttestationData()
+{
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.certification_declaration, "certification_declaration", 1,
+                                              Credentials::kMaxDERCertLength));
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.dac_cert, "dac_cert", 1, Credentials::kMaxDERCertLength));
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.pai_cert, "pai_cert", 1, Credentials::kMaxDERCertLength));
+
+    Crypto::P256PublicKey dacPublicKey;
+    ReturnErrorOnFailure(
+        Crypto::ExtractPubkeyFromX509Cert(ByteSpan{ mFactoryData.dac_cert.data, mFactoryData.dac_cert.len }, dacPublicKey));
+
+    Crypto::P256PublicKey paiPublicKey;
+    ReturnErrorOnFailure(
+        Crypto::ExtractPubkeyFromX509Cert(ByteSpan{ mFactoryData.pai_cert.data, mFactoryData.pai_cert.len }, paiPublicKey));
+
+#if !defined(TI_DAC_KEY_USE_PSA_HSM)
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.dac_priv_key, "dac_priv_key", Crypto::kP256_PrivateKey_Length,
+                                              Crypto::kP256_PrivateKey_Length));
+#endif
+
+    ChipLogProgress(DeviceLayer, "FactoryDataProvider attestation data: CD_len=%u DAC_len=%u PAI_len=%u DAC_key_source=%s",
+                    static_cast<unsigned>(mFactoryData.certification_declaration.len),
+                    static_cast<unsigned>(mFactoryData.dac_cert.len), static_cast<unsigned>(mFactoryData.pai_cert.len),
+#if defined(TI_DAC_KEY_USE_PSA_HSM)
+                    "HSM");
+#else
+                    "factory-data");
+#endif
     return CHIP_NO_ERROR;
 }
 } // namespace
@@ -325,6 +462,12 @@ exit:
 }
 #endif
 
+FactoryDataProvider & FactoryDataProvider::GetDefaultInstance()
+{
+    static FactoryDataProvider sInstance;
+    return sInstance;
+}
+
 CHIP_ERROR LoadKeypairFromRaw(ByteSpan private_key, ByteSpan public_key, Crypto::P256Keypair & keypair)
 {
     Crypto::P256SerializedKeypair serialized_keypair;
@@ -336,6 +479,8 @@ CHIP_ERROR LoadKeypairFromRaw(ByteSpan private_key, ByteSpan public_key, Crypto:
 
 CHIP_ERROR FactoryDataProvider::Init()
 {
+    ReturnErrorOnFailure(ValidateFactoryDataDeviceInstance());
+    ReturnErrorOnFailure(ValidateFactoryDataAttestationData());
     ReturnErrorOnFailure(ValidateFactoryDataCommissionableData());
 #if defined(TI_DAC_KEY_USE_PSA_HSM)
     ReturnErrorOnFailure(ValidatePsaDacKey());
@@ -345,8 +490,8 @@ CHIP_ERROR FactoryDataProvider::Init()
 
 CHIP_ERROR FactoryDataProvider::GetCertificationDeclaration(MutableByteSpan & out_buffer)
 {
-    ReturnErrorCodeIf(!mFactoryData.certification_declaration.data || mFactoryData.certification_declaration.len == 0,
-                      CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.certification_declaration, "certification_declaration", 1,
+                                               Credentials::kMaxDERCertLength));
     ReturnErrorCodeIf(out_buffer.size() < mFactoryData.certification_declaration.len, CHIP_ERROR_BUFFER_TOO_SMALL);
 
     return CopySpanToMutableSpan(ByteSpan{ mFactoryData.certification_declaration.data,
@@ -362,8 +507,8 @@ CHIP_ERROR FactoryDataProvider::GetFirmwareInformation(MutableByteSpan & out_fir
 }
 CHIP_ERROR FactoryDataProvider::GetDeviceAttestationCert(MutableByteSpan & outBuffer)
 {
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.dac_cert, "dac_cert", 1, Credentials::kMaxDERCertLength));
     ReturnErrorCodeIf(outBuffer.size() < mFactoryData.dac_cert.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.dac_cert.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memcpy(outBuffer.data(), mFactoryData.dac_cert.data, mFactoryData.dac_cert.len);
     outBuffer.reduce_size(mFactoryData.dac_cert.len);
 
@@ -372,8 +517,8 @@ CHIP_ERROR FactoryDataProvider::GetDeviceAttestationCert(MutableByteSpan & outBu
 
 CHIP_ERROR FactoryDataProvider::GetProductAttestationIntermediateCert(MutableByteSpan & outBuffer)
 {
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.pai_cert, "pai_cert", 1, Credentials::kMaxDERCertLength));
     ReturnErrorCodeIf(outBuffer.size() < mFactoryData.pai_cert.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.pai_cert.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memcpy(outBuffer.data(), mFactoryData.pai_cert.data, mFactoryData.pai_cert.len);
     outBuffer.reduce_size(mFactoryData.pai_cert.len);
 
@@ -434,10 +579,10 @@ CHIP_ERROR FactoryDataProvider::SignWithDeviceAttestationKey(const ByteSpan & me
 }
 CHIP_ERROR FactoryDataProvider::GetSetupDiscriminator(uint16_t & setupDiscriminator)
 {
-    ReturnErrorCodeIf(sizeof(setupDiscriminator) < mFactoryData.discriminator.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.discriminator.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
-    memset(&setupDiscriminator, 0, sizeof(setupDiscriminator));
-    memcpy(&setupDiscriminator, mFactoryData.discriminator.data, mFactoryData.discriminator.len);
+    uint32_t value = 0;
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.discriminator, "discriminator", sizeof(uint16_t), value));
+    ReturnErrorCodeIf(value > 4095, CHIP_ERROR_INVALID_ARGUMENT);
+    setupDiscriminator = static_cast<uint16_t>(value);
     return CHIP_NO_ERROR;
 }
 CHIP_ERROR FactoryDataProvider::SetSetupDiscriminator(uint16_t setupDiscriminator)
@@ -446,24 +591,28 @@ CHIP_ERROR FactoryDataProvider::SetSetupDiscriminator(uint16_t setupDiscriminato
 }
 CHIP_ERROR FactoryDataProvider::GetSpake2pIterationCount(uint32_t & iterationCount)
 {
-    ReturnErrorCodeIf(sizeof(iterationCount) < mFactoryData.spake2p_it.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.spake2p_it.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
-    memset(&iterationCount, 0, sizeof(iterationCount));
-    memcpy(&iterationCount, mFactoryData.spake2p_it.data, mFactoryData.spake2p_it.len);
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.spake2p_it, "spake2p_it", sizeof(uint16_t), iterationCount));
+    ReturnErrorCodeIf(iterationCount < Crypto::kSpake2p_Min_PBKDF_Iterations ||
+                          iterationCount > Crypto::kSpake2p_Max_PBKDF_Iterations,
+                      CHIP_ERROR_INVALID_ARGUMENT);
     return CHIP_NO_ERROR;
 }
 CHIP_ERROR FactoryDataProvider::GetSpake2pSalt(MutableByteSpan & saltBuf)
 {
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.spake2p_salt, "spake2p_salt",
+                                               Crypto::kSpake2p_Min_PBKDF_Salt_Length,
+                                               Crypto::kSpake2p_Max_PBKDF_Salt_Length));
     ReturnErrorCodeIf(saltBuf.size() < mFactoryData.spake2p_salt.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.spake2p_salt.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memcpy(saltBuf.data(), mFactoryData.spake2p_salt.data, mFactoryData.spake2p_salt.len);
     saltBuf.reduce_size(mFactoryData.spake2p_salt.len);
     return CHIP_NO_ERROR;
 }
 CHIP_ERROR FactoryDataProvider::GetSpake2pVerifier(MutableByteSpan & verifierBuf, size_t & verifierLen)
 {
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.spake2p_verifier, "spake2p_verifier",
+                                               Crypto::kSpake2p_VerifierSerialized_Length,
+                                               Crypto::kSpake2p_VerifierSerialized_Length));
     ReturnErrorCodeIf(verifierBuf.size() < mFactoryData.spake2p_verifier.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.spake2p_verifier.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memcpy(verifierBuf.data(), mFactoryData.spake2p_verifier.data, mFactoryData.spake2p_verifier.len);
     verifierLen = mFactoryData.spake2p_verifier.len;
     verifierBuf.reduce_size(verifierLen);
@@ -471,10 +620,8 @@ CHIP_ERROR FactoryDataProvider::GetSpake2pVerifier(MutableByteSpan & verifierBuf
 }
 CHIP_ERROR FactoryDataProvider::GetSetupPasscode(uint32_t & setupPasscode)
 {
-    ReturnErrorCodeIf(sizeof(setupPasscode) < mFactoryData.passcode.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.passcode.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
-    memset(&setupPasscode, 0, sizeof(setupPasscode));
-    memcpy(&setupPasscode, mFactoryData.passcode.data, mFactoryData.passcode.len);
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.passcode, "passcode", sizeof(uint32_t), setupPasscode));
+    ReturnErrorCodeIf(!PayloadContents::IsValidSetupPIN(setupPasscode), CHIP_ERROR_INVALID_ARGUMENT);
     return CHIP_NO_ERROR;
 }
 CHIP_ERROR FactoryDataProvider::SetSetupPasscode(uint32_t setupPasscode)
@@ -483,23 +630,25 @@ CHIP_ERROR FactoryDataProvider::SetSetupPasscode(uint32_t setupPasscode)
 }
 CHIP_ERROR FactoryDataProvider::GetVendorName(char * buf, size_t bufSize)
 {
+    ReturnErrorOnFailure(ValidatePrintableStringField(mFactoryData.vendor_name, "vendor_name",
+                                                      ConfigurationManager::kMaxVendorNameLength));
     ReturnErrorCodeIf(bufSize < mFactoryData.vendor_name.len + 1, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.vendor_name.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memcpy(buf, mFactoryData.vendor_name.data, mFactoryData.vendor_name.len);
     buf[mFactoryData.vendor_name.len] = '\0';
     return CHIP_NO_ERROR;
 }
 CHIP_ERROR FactoryDataProvider::GetVendorId(uint16_t & vendorId)
 {
-    ReturnErrorCodeIf(sizeof(vendorId) < mFactoryData.vendor_id.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.vendor_id.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
-    memcpy(&vendorId, mFactoryData.vendor_id.data, mFactoryData.vendor_id.len);
+    uint32_t value = 0;
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.vendor_id, "vendor_id", sizeof(uint16_t), value));
+    vendorId = static_cast<uint16_t>(value);
     return CHIP_NO_ERROR;
 }
 CHIP_ERROR FactoryDataProvider::GetProductName(char * buf, size_t bufSize)
 {
+    ReturnErrorOnFailure(ValidatePrintableStringField(mFactoryData.product_name, "product_name",
+                                                      ConfigurationManager::kMaxProductNameLength));
     ReturnErrorCodeIf(bufSize < mFactoryData.product_name.len + 1, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.product_name.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memset(buf, 0, bufSize);
     memcpy(buf, mFactoryData.product_name.data, mFactoryData.product_name.len);
     buf[mFactoryData.product_name.len] = '\0';
@@ -507,9 +656,9 @@ CHIP_ERROR FactoryDataProvider::GetProductName(char * buf, size_t bufSize)
 }
 CHIP_ERROR FactoryDataProvider::GetProductId(uint16_t & productId)
 {
-    ReturnErrorCodeIf(sizeof(productId) < mFactoryData.product_id.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.product_id.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
-    memcpy(&productId, mFactoryData.product_id.data, mFactoryData.product_id.len);
+    uint32_t value = 0;
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.product_id, "product_id", sizeof(uint16_t), value));
+    productId = static_cast<uint16_t>(value);
     return CHIP_NO_ERROR;
 }
 CHIP_ERROR FactoryDataProvider::GetPartNumber(char * buf, size_t bufSize)
@@ -527,8 +676,9 @@ CHIP_ERROR FactoryDataProvider::GetProductLabel(char * buf, size_t bufSize)
 
 CHIP_ERROR FactoryDataProvider::GetSerialNumber(char * buf, size_t bufSize)
 {
+    ReturnErrorOnFailure(ValidatePrintableStringField(mFactoryData.serial_number, "serial_number",
+                                                      ConfigurationManager::kMaxSerialNumberLength));
     ReturnErrorCodeIf(bufSize < mFactoryData.serial_number.len + 1, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.serial_number.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memset(buf, 0, bufSize);
     memcpy(buf, mFactoryData.serial_number.data, mFactoryData.serial_number.len);
     buf[mFactoryData.serial_number.len] = '\0';
@@ -537,7 +687,7 @@ CHIP_ERROR FactoryDataProvider::GetSerialNumber(char * buf, size_t bufSize)
 
 CHIP_ERROR FactoryDataProvider::GetManufacturingDate(uint16_t & year, uint8_t & month, uint8_t & day)
 {
-    ReturnErrorCodeIf(!mFactoryData.manufacturing_date.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
+    ReturnErrorOnFailure(ValidateManufacturingDate());
     uint8_t tmp[10] = { 0 };
     memcpy(tmp, mFactoryData.manufacturing_date.data, 10);
     year  = ((tmp[0] - 0x30) * 1000) + ((tmp[1] - 0x30) * 100) + ((tmp[2] - 0x30) * 10) + (tmp[3] - 0x30);
@@ -548,15 +698,16 @@ CHIP_ERROR FactoryDataProvider::GetManufacturingDate(uint16_t & year, uint8_t & 
 
 CHIP_ERROR FactoryDataProvider::GetHardwareVersion(uint16_t & hardwareVersion)
 {
-    ReturnErrorCodeIf(sizeof(hardwareVersion) < mFactoryData.hw_ver.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.hw_ver.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
-    memcpy(&hardwareVersion, mFactoryData.hw_ver.data, mFactoryData.hw_ver.len);
+    uint32_t value = 0;
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.hw_ver, "hw_ver", sizeof(uint16_t), value));
+    hardwareVersion = static_cast<uint16_t>(value);
     return CHIP_NO_ERROR;
 }
 CHIP_ERROR FactoryDataProvider::GetHardwareVersionString(char * buf, size_t bufSize)
 {
+    ReturnErrorOnFailure(ValidatePrintableStringField(mFactoryData.hw_ver_str, "hw_ver_str",
+                                                      ConfigurationManager::kMaxHardwareVersionStringLength));
     ReturnErrorCodeIf(bufSize < mFactoryData.hw_ver_str.len + 1, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.hw_ver_str.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memset(buf, 0, bufSize);
     memcpy(buf, mFactoryData.hw_ver_str.data, mFactoryData.hw_ver_str.len);
     buf[mFactoryData.hw_ver_str.len] = '\0';
@@ -566,8 +717,8 @@ CHIP_ERROR FactoryDataProvider::GetHardwareVersionString(char * buf, size_t bufS
 
 CHIP_ERROR FactoryDataProvider::GetRotatingDeviceIdUniqueId(MutableByteSpan & uniqueIdSpan)
 {
+    ReturnErrorOnFailure(ValidateRequiredField(mFactoryData.rd_uniqueid, "rd_uniqueid", 16, 32));
     ReturnErrorCodeIf(uniqueIdSpan.size() < mFactoryData.rd_uniqueid.len, CHIP_ERROR_BUFFER_TOO_SMALL);
-    ReturnErrorCodeIf(!mFactoryData.rd_uniqueid.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     memcpy(uniqueIdSpan.data(), mFactoryData.rd_uniqueid.data, mFactoryData.rd_uniqueid.len);
     uniqueIdSpan.reduce_size(mFactoryData.rd_uniqueid.len);
 

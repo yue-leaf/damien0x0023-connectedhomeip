@@ -246,19 +246,39 @@
      PLAT_LOG("Software Version: %d", CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION);
      PLAT_LOG("Software Version String: %s", CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING);
  
-     CHIP_ERROR ret = PlatformMgr().InitChipStack();
-     if (ret != CHIP_NO_ERROR)
-     {
- 
-         PLAT_LOG("PlatformMgr().InitChipStack() failed");
-         while (1)
-             ;
-     }
- 
- #if CHIP_DEVICE_CONFIG_ENABLE_OTA_REQUESTOR
-     // Create FreeRTOS sw timer for OTA timer.
-     sOTAInitTimer = xTimerCreate("OTAInitTmr",                     // Just a text name, not used by the RTOS kernel
-                                  OTAREQUESTOR_INIT_TIMER_DELAY_MS, // timer period (mS)
+    CHIP_ERROR ret = PlatformMgr().InitChipStack();
+    if (ret != CHIP_NO_ERROR)
+    {
+
+        PLAT_LOG("PlatformMgr().InitChipStack() failed");
+        while (1)
+            ;
+    }
+
+#ifdef TI_FACTORY_DATA
+    PLAT_LOG("FactoryDataProvider was installed during ConfigurationManager init");
+    FactoryDataProvider & factoryDataProvider = FactoryDataProvider::GetDefaultInstance();
+    uint16_t factoryDiscriminator = 0;
+    uint32_t factoryPasscode      = 0;
+    if (factoryDataProvider.GetSetupDiscriminator(factoryDiscriminator) == CHIP_NO_ERROR &&
+        factoryDataProvider.GetSetupPasscode(factoryPasscode) == CHIP_NO_ERROR)
+    {
+        PLAT_LOG("FactoryDataProvider registered: passcode=%u discriminator=%u", factoryPasscode, factoryDiscriminator);
+    }
+    else
+    {
+        PLAT_LOG("FactoryDataProvider registered, but failed to re-read commissioning values");
+    }
+#elif defined(TI_ATTESTATION_CREDENTIALS)
+    SetDeviceAttestationCredentialsProvider(TI::GetTIDacProvider());
+#else
+    SetDeviceAttestationCredentialsProvider(Examples::GetExampleDACProvider());
+#endif
+
+#if CHIP_DEVICE_CONFIG_ENABLE_OTA_REQUESTOR
+    // Create FreeRTOS sw timer for OTA timer.
+    sOTAInitTimer = xTimerCreate("OTAInitTmr",                     // Just a text name, not used by the RTOS kernel
+                                 OTAREQUESTOR_INIT_TIMER_DELAY_MS, // timer period (mS)
                                   false,                            // no timer reload (==one-shot)
                                   (void *) this,                    // init timer id = light obj context
                                   OTAInitTimerEventHandler          // timer callback handler
@@ -304,27 +324,6 @@
          while (1)
              ;
      }
- 
-    // Initialize device attestation config
-#ifdef TI_ATTESTATION_CREDENTIALS
-#ifdef TI_FACTORY_DATA
-    ret = mFactoryDataProvider.Init();
-    if (ret != CHIP_NO_ERROR)
-    {
-        PLAT_LOG("FactoryDataProvider.Init() failed");
-        while (1)
-            ;
-    }
-
-    SetDeviceInstanceInfoProvider(&mFactoryDataProvider);
-    SetDeviceAttestationCredentialsProvider(&mFactoryDataProvider);
-    SetCommissionableDataProvider(&mFactoryDataProvider);
-#else
-    SetDeviceAttestationCredentialsProvider(TI::GetTIDacProvider());
-#endif
-#else
-    SetDeviceAttestationCredentialsProvider(Examples::GetExampleDACProvider());
-#endif
  
      // Init ZCL Data Model and start server
      PLAT_LOG("Initialize Server");

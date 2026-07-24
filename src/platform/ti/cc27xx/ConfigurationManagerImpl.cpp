@@ -35,6 +35,13 @@
 #include <lib/support/CodeUtils.h>
 #include <lib/support/logging/CHIPLogging.h>
 
+#ifdef TI_FACTORY_DATA
+#include <credentials/DeviceAttestationCredsProvider.h>
+#include <platform/CommissionableDataProvider.h>
+#include <platform/DeviceInstanceInfoProvider.h>
+#include <platform/ti/FactoryDataProvider.h>
+#endif
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 // BSP header cannot handle conversions
@@ -67,6 +74,19 @@ CHIP_ERROR ConfigurationManagerImpl::Init()
     // Initialize the generic implementation base class.
     err = Internal::GenericConfigurationManagerImpl<CC23XX_27XXConfig>::Init();
     SuccessOrExit(err);
+
+#ifdef TI_FACTORY_DATA
+    {
+        FactoryDataProvider & factoryDataProvider = FactoryDataProvider::GetDefaultInstance();
+        err                                      = factoryDataProvider.Init();
+        SuccessOrExit(err);
+
+        SetDeviceInstanceInfoProvider(&factoryDataProvider);
+        SetDeviceAttestationCredentialsProvider(&factoryDataProvider);
+        SetCommissionableDataProvider(&factoryDataProvider);
+        ChipLogProgress(DeviceLayer, "FactoryDataProvider installed before BLE/Thread startup");
+    }
+#endif
 
     IncreaseBootCount();
 exit:
