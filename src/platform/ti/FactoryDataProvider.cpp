@@ -175,6 +175,71 @@ factoryData __attribute__((section(".factory_data_struct"))) __attribute__((used
 #endif
     {};
 
+namespace {
+CHIP_ERROR ReadFactoryDataUint(const data_ptr & field, const char * name, size_t expectedLen, uint32_t & value)
+{
+    if (field.data == nullptr)
+    {
+        ChipLogError(DeviceLayer, "Factory Data %s is missing", name);
+        return CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
+    }
+    if (field.len != expectedLen)
+    {
+        ChipLogError(DeviceLayer, "Factory Data %s has invalid length: %u", name, static_cast<unsigned>(field.len));
+        return CHIP_ERROR_INVALID_ARGUMENT;
+    }
+
+    value = 0;
+    memcpy(&value, field.data, expectedLen);
+    return CHIP_NO_ERROR;
+}
+
+CHIP_ERROR ValidateFactoryDataCommissionableData()
+{
+    uint32_t discriminator = 0;
+    uint32_t passcode      = 0;
+    uint32_t iterations    = 0;
+
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.discriminator, "discriminator", sizeof(uint16_t), discriminator));
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.passcode, "passcode", sizeof(uint32_t), passcode));
+    ReturnErrorOnFailure(ReadFactoryDataUint(mFactoryData.spake2p_it, "spake2p_it", sizeof(uint16_t), iterations));
+
+    if (discriminator > 4095)
+    {
+        ChipLogError(DeviceLayer, "Factory Data discriminator is out of range: %u", static_cast<unsigned>(discriminator));
+        return CHIP_ERROR_INVALID_ARGUMENT;
+    }
+    if (passcode == 0 || passcode > 99999998)
+    {
+        ChipLogError(DeviceLayer, "Factory Data passcode is out of range: %u", static_cast<unsigned>(passcode));
+        return CHIP_ERROR_INVALID_ARGUMENT;
+    }
+    if (iterations < 1000 || iterations > 100000)
+    {
+        ChipLogError(DeviceLayer, "Factory Data SPAKE2+ iteration count is out of range: %u",
+                     static_cast<unsigned>(iterations));
+        return CHIP_ERROR_INVALID_ARGUMENT;
+    }
+    if (mFactoryData.spake2p_salt.data == nullptr || mFactoryData.spake2p_salt.len == 0)
+    {
+        ChipLogError(DeviceLayer, "Factory Data SPAKE2+ salt is missing");
+        return CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
+    }
+    if (mFactoryData.spake2p_verifier.data == nullptr || mFactoryData.spake2p_verifier.len == 0)
+    {
+        ChipLogError(DeviceLayer, "Factory Data SPAKE2+ verifier is missing");
+        return CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND;
+    }
+
+    ChipLogProgress(DeviceLayer,
+                    "FactoryDataProvider commissioning data: passcode=%u discriminator=%u spake2_it=%u salt_len=%u verifier_len=%u",
+                    static_cast<unsigned>(passcode), static_cast<unsigned>(discriminator), static_cast<unsigned>(iterations),
+                    static_cast<unsigned>(mFactoryData.spake2p_salt.len),
+                    static_cast<unsigned>(mFactoryData.spake2p_verifier.len));
+    return CHIP_NO_ERROR;
+}
+} // namespace
+
 #if defined(TI_DAC_KEY_USE_PSA_HSM)
 namespace {
 CHIP_ERROR ValidatePsaDacKey()
@@ -271,11 +336,11 @@ CHIP_ERROR LoadKeypairFromRaw(ByteSpan private_key, ByteSpan public_key, Crypto:
 
 CHIP_ERROR FactoryDataProvider::Init()
 {
+    ReturnErrorOnFailure(ValidateFactoryDataCommissionableData());
 #if defined(TI_DAC_KEY_USE_PSA_HSM)
-    return ValidatePsaDacKey();
-#else
-    return CHIP_NO_ERROR;
+    ReturnErrorOnFailure(ValidatePsaDacKey());
 #endif
+    return CHIP_NO_ERROR;
 }
 
 CHIP_ERROR FactoryDataProvider::GetCertificationDeclaration(MutableByteSpan & out_buffer)
@@ -371,6 +436,7 @@ CHIP_ERROR FactoryDataProvider::GetSetupDiscriminator(uint16_t & setupDiscrimina
 {
     ReturnErrorCodeIf(sizeof(setupDiscriminator) < mFactoryData.discriminator.len, CHIP_ERROR_BUFFER_TOO_SMALL);
     ReturnErrorCodeIf(!mFactoryData.discriminator.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
+    memset(&setupDiscriminator, 0, sizeof(setupDiscriminator));
     memcpy(&setupDiscriminator, mFactoryData.discriminator.data, mFactoryData.discriminator.len);
     return CHIP_NO_ERROR;
 }
@@ -407,6 +473,7 @@ CHIP_ERROR FactoryDataProvider::GetSetupPasscode(uint32_t & setupPasscode)
 {
     ReturnErrorCodeIf(sizeof(setupPasscode) < mFactoryData.passcode.len, CHIP_ERROR_BUFFER_TOO_SMALL);
     ReturnErrorCodeIf(!mFactoryData.passcode.data, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
+    memset(&setupPasscode, 0, sizeof(setupPasscode));
     memcpy(&setupPasscode, mFactoryData.passcode.data, mFactoryData.passcode.len);
     return CHIP_NO_ERROR;
 }
