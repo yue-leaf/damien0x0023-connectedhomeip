@@ -378,10 +378,6 @@ CHIP_ERROR ValidatePsaDacKey()
     ReturnErrorCodeIf(!mFactoryData.dac_cert.data || mFactoryData.dac_cert.len == 0,
                       CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
 
-    Crypto::P256PublicKey certPublicKey;
-    ReturnErrorOnFailure(
-        Crypto::ExtractPubkeyFromX509Cert(ByteSpan{ mFactoryData.dac_cert.data, mFactoryData.dac_cert.len }, certPublicKey));
-
     psa_status_t status             = PSA_SUCCESS;
     psa_key_attributes_t attributes = PSA_KEY_ATTRIBUTES_INIT;
     Crypto::P256PublicKey hsmPublicKey;
@@ -407,10 +403,10 @@ CHIP_ERROR ValidatePsaDacKey()
     }
 
     if (hsmPublicKeyLen != hsmPublicKey.Length() ||
-        memcmp(hsmPublicKey.ConstBytes(), certPublicKey.ConstBytes(), certPublicKey.Length()) != 0)
+        !IsSpanUsable(ByteSpan{ hsmPublicKey.ConstBytes(), hsmPublicKeyLen }))
     {
-        ChipLogError(DeviceLayer, "DAC certificate public key does not match HSM key");
-        status = PSA_ERROR_INVALID_SIGNATURE;
+        ChipLogError(DeviceLayer, "DAC HSM public key export is invalid");
+        status = PSA_ERROR_INVALID_ARGUMENT;
         goto exit;
     }
 
@@ -435,7 +431,7 @@ CHIP_ERROR ValidatePsaDacKey()
         }
 
         if (validationSignature.SetLength(validationSignatureLen) != CHIP_NO_ERROR ||
-            certPublicKey.ECDSA_validate_hash_signature(validationDigest, sizeof(validationDigest),
+            hsmPublicKey.ECDSA_validate_hash_signature(validationDigest, sizeof(validationDigest),
                                                         validationSignature) != CHIP_NO_ERROR)
         {
             ChipLogError(DeviceLayer, "DAC HSM hash-signature self-test failed");
