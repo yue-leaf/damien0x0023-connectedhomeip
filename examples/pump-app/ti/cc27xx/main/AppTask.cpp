@@ -285,12 +285,10 @@ int AppTask::Init()
     uiInit();
 
     // Initialize device attestation config
-#ifdef TI_ATTESTATION_CREDENTIALS
 #ifdef TI_FACTORY_DATA
     PLAT_LOG("FactoryDataProvider was installed during ConfigurationManager init");
-#else
+#elif defined(TI_ATTESTATION_CREDENTIALS)
     SetDeviceAttestationCredentialsProvider(TI::GetTIDacProvider());
-#endif
 #else
     SetDeviceAttestationCredentialsProvider(Examples::GetExampleDACProvider());
 #endif
