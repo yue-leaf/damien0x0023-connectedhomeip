@@ -48,6 +48,10 @@ extern "C" {
 #define CHIPOBLEPROFILE_TX_CHAR_UUID 0x129D // GATT indications/read
 #define CHIPOBLEPROFILE_RX_CHAR_UUID 0x119D // GATT Writes
 
+#ifndef CHIPOBLE_ENABLE_C3
+#define CHIPOBLE_ENABLE_C3 0
+#endif
+
 #define CHIPOBLEPROFILE_SERV_UUID_BASE128(uuid)                                                                                    \
     0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, LO_UINT16(uuid), HI_UINT16(uuid), 0x00, 0x00
 
@@ -57,6 +61,9 @@ extern "C" {
 #define CHIPOBLEPROFILE_TX_CHAR 0  // R uint8 - Profile Characteristic 1 (CHIPOBLE Tx) value
 #define CHIPOBLEPROFILE_RX_CHAR 1  // W uint8 - Profile Characteristic 2 (CHIPOBLE Rx) value
 #define CHIPOBLEPROFILE_CCCWrite 2 // Client Characteristic Configuration
+#if CHIPOBLE_ENABLE_C3
+#define CHIPOBLEPROFILE_C3_CHAR 3  // R uint8 - Additional Data characteristic
+#endif
 
 #define CHIPOBLEPROFILE_CHAR_LEN (244)
 #define CHIPOBLEPROFILE_MAX_DESCRIPTION_LEN (20)
@@ -67,10 +74,16 @@ extern "C" {
 
 /* Callback when a characteristic value has changed */
 typedef void (*chipOBleProfileChange_t)(uint8 paramID, uint16 len, uint16_t connHandle);
+#if CHIPOBLE_ENABLE_C3
+typedef bStatus_t (*chipOBleProfileReadAdditionalData_t)(uint8 * value, uint16 * len, uint16 maxLen);
+#endif
 
 typedef struct
 {
     chipOBleProfileChange_t pfnchipOBleProfileChange; // Called when characteristic value changes
+#if CHIPOBLE_ENABLE_C3
+    chipOBleProfileReadAdditionalData_t pfnchipOBleProfileReadAdditionalData;
+#endif
 } chipOBleProfileCBs_t;
 
 /*********************************************************************

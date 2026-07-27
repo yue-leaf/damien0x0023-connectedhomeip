@@ -33,6 +33,9 @@
 #include <lib/core/ErrorStr.h>
 #include <lib/support/logging/CHIPLogging.h>
 #include <platform/internal/BLEManager.h>
+#if CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING
+#include <setup_payload/AdditionalDataPayloadGenerator.h>
+#endif
 
 #include "FreeRTOS.h"
 #include <queue.h>
@@ -121,6 +124,10 @@ extern const Log_Module LogMod_LogModule_Matter;
 }
 #endif
 /* Static class member initialization */
+#if CHIPOBLE_ENABLE_C3
+static CHIP_ERROR GenerateAdditionalDataPayloadForCHIPoBLE(uint8_t * value, uint16_t * len, uint16_t maxLen);
+#endif
+
 BLEManagerImpl BLEManagerImpl::sInstance;
 TaskHandle_t BLEManagerImpl::sBleTaskHndl;
 ICall_EntityID BLEManagerImpl::sSelfEntity;
@@ -132,6 +139,10 @@ QueueHandle_t BLEManagerImpl::sEventHandlerMsgQueueIDStatic;
 chipOBleProfileCBs_t BLEManagerImpl::CHIPoBLEProfile_CBs = {
     // Provisioning GATT Characteristic value change callback
     CHIPoBLEProfile_charValueChangeCB
+#if CHIPOBLE_ENABLE_C3
+    ,
+    CHIPoBLEProfile_readAdditionalDataCB
+#endif
 };
 
 // GAP Bond Manager Callbacks
@@ -453,6 +464,21 @@ CHIP_ERROR BLEManagerImpl::ConfigureAdvertisements(void)
 
     ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: vendor=%u product=%u discriminator=%u",
                     mDeviceIdInfo.GetVendorId(), mDeviceIdInfo.GetProductId(), mDeviceIdInfo.GetDeviceDiscriminator());
+
+#if CHIPOBLE_ENABLE_C3
+    uint8_t additionalData[CHIPOBLEPROFILE_CHAR_LEN] = {};
+    uint16_t additionalDataLen                       = 0;
+
+    err = GenerateAdditionalDataPayloadForCHIPoBLE(additionalData, &additionalDataLen, sizeof(additionalData));
+    if (err == CHIP_NO_ERROR)
+    {
+        mDeviceIdInfo.SetAdditionalDataFlag(true);
+    }
+    else
+    {
+        ChipLogError(DeviceLayer, "BLE ConfigureAdvertisements: Additional Data unavailable: %s", ErrorStr(err));
+    }
+#endif
 
     memset(sInstance.mScanResDatachipOBle, 0, CHIPOBLE_ADV_DATA_MAX_SIZE);
     memset(sInstance.mAdvDatachipOBle, 0, CHIPOBLE_ADV_DATA_MAX_SIZE);
@@ -1977,6 +2003,60 @@ void BLEManagerImpl::CHIPoBLEProfile_charValueChangeCB(uint8_t paramId, uint16_t
         }
     }
 }
+
+#if CHIPOBLE_ENABLE_C3 && CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING && CHIP_ENABLE_ROTATING_DEVICE_ID &&                                  \
+    defined(CHIP_DEVICE_CONFIG_ROTATING_DEVICE_ID_UNIQUE_ID)
+static CHIP_ERROR GenerateAdditionalDataPayloadForCHIPoBLE(uint8_t * value, uint16_t * len, uint16_t maxLen)
+{
+    AdditionalDataPayloadGeneratorParams params;
+    BitFlags<AdditionalDataFields> additionalDataFields;
+    System::PacketBufferHandle bufferHandle;
+    uint8_t rotatingDeviceIdUniqueId[ConfigurationManager::kRotatingDeviceIDUniqueIDLength] = {};
+    MutableByteSpan rotatingDeviceIdUniqueIdSpan(rotatingDeviceIdUniqueId);
+
+    CHIP_ERROR err = DeviceLayer::GetDeviceInstanceInfoProvider()->GetRotatingDeviceIdUniqueId(rotatingDeviceIdUniqueIdSpan);
+    if (err != CHIP_NO_ERROR)
+    {
+        return err;
+    }
+
+    err = ConfigurationMgr().GetLifetimeCounter(params.rotatingDeviceIdLifetimeCounter);
+    if (err != CHIP_NO_ERROR)
+    {
+        return err;
+    }
+
+    params.rotatingDeviceIdUniqueId = rotatingDeviceIdUniqueIdSpan;
+    additionalDataFields.Set(AdditionalDataFields::RotatingDeviceId);
+
+    err = AdditionalDataPayloadGenerator().generateAdditionalDataPayload(params, bufferHandle, additionalDataFields);
+    if (err != CHIP_NO_ERROR)
+    {
+        return err;
+    }
+
+    if (bufferHandle.IsNull() || bufferHandle->DataLength() > maxLen)
+    {
+        return CHIP_ERROR_BUFFER_TOO_SMALL;
+    }
+
+    memcpy(value, bufferHandle->Start(), bufferHandle->DataLength());
+    *len = static_cast<uint16_t>(bufferHandle->DataLength());
+    return CHIP_NO_ERROR;
+}
+
+bStatus_t BLEManagerImpl::CHIPoBLEProfile_readAdditionalDataCB(uint8_t * value, uint16_t * len, uint16_t maxLen)
+{
+    CHIP_ERROR err = GenerateAdditionalDataPayloadForCHIPoBLE(value, len, maxLen);
+    if (err != CHIP_NO_ERROR)
+    {
+        ChipLogError(DeviceLayer, "CHIPoBLE C3 read: Additional Data unavailable: %s", ErrorStr(err));
+        return err == CHIP_ERROR_BUFFER_TOO_SMALL ? bleMemAllocError : ATT_ERR_UNLIKELY;
+    }
+
+    return SUCCESS;
+}
+#endif
 
 /*********************************************************************
  * @fn      RemoteDisplay_passcodeCb
