@@ -86,6 +86,20 @@ jobs:
         with:
           platform: silabs_docker
 
+      - name: Install ZAP from GitHub release
+        shell: bash
+        run: |
+          source scripts/activate.sh
+          ZAP_VERSION="$(< scripts/setup/zap.version)"
+          ZAP_ROOT="$RUNNER_TEMP/matter-zap"
+          python scripts/tools/zap/zap_download.py \
+            --zap-version "$ZAP_VERSION" \
+            --extract-root "$ZAP_ROOT"
+          ZAP_INSTALL_PATH="$ZAP_ROOT/zap-$ZAP_VERSION"
+          test -x "$ZAP_INSTALL_PATH/zap-cli"
+          "$ZAP_INSTALL_PATH/zap-cli" --version
+          echo "ZAP_INSTALL_PATH=$ZAP_INSTALL_PATH" >> "$GITHUB_ENV"
+
       - name: Set up environment for size reports
         uses: ./.github/actions/setup-size-reports
         if: ${{ !env.ACT }}
