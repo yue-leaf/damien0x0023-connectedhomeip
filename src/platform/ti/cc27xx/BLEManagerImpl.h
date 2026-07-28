@@ -332,6 +332,7 @@ private:
     static void FastAdvTimeoutHandler(uintptr_t arg);
     static void CHIPoBLEProfile_charValueChangeCB(uint8_t paramId, uint16_t len, uint16_t connHandle);
 #if CHIPOBLE_ENABLE_C3
+    System::PacketBufferHandle mC3AdditionalDataBufferHandle;
     static bStatus_t CHIPoBLEProfile_readAdditionalDataCB(uint8_t * value, uint16_t * len, uint16_t maxLen);
 #endif
     static void PasscodeCb(uint8_t * pDeviceAddr, uint16_t connHandle, uint8_t uiInputs, uint8_t uiOutputs, uint32_t numComparison);

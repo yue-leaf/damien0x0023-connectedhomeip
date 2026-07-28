@@ -126,7 +126,7 @@ extern const Log_Module LogMod_LogModule_Matter;
 #endif
 /* Static class member initialization */
 #if CHIPOBLE_ENABLE_C3
-static CHIP_ERROR GenerateAdditionalDataPayloadForCHIPoBLE(uint8_t * value, uint16_t * len, uint16_t maxLen);
+static CHIP_ERROR GenerateAdditionalDataPayloadForCHIPoBLE(System::PacketBufferHandle & bufferHandle);
 #endif
 
 BLEManagerImpl BLEManagerImpl::sInstance;
@@ -467,16 +467,22 @@ CHIP_ERROR BLEManagerImpl::ConfigureAdvertisements(void)
                     mDeviceIdInfo.GetVendorId(), mDeviceIdInfo.GetProductId(), mDeviceIdInfo.GetDeviceDiscriminator());
 
 #if CHIPOBLE_ENABLE_C3
-    uint8_t additionalData[CHIPOBLEPROFILE_CHAR_LEN] = {};
-    uint16_t additionalDataLen                       = 0;
-
-    err = GenerateAdditionalDataPayloadForCHIPoBLE(additionalData, &additionalDataLen, sizeof(additionalData));
-    if (err == CHIP_NO_ERROR)
+    sInstance.mC3AdditionalDataBufferHandle = System::PacketBufferHandle();
+    err = GenerateAdditionalDataPayloadForCHIPoBLE(sInstance.mC3AdditionalDataBufferHandle);
+    if (err == CHIP_NO_ERROR && !sInstance.mC3AdditionalDataBufferHandle.IsNull() &&
+        sInstance.mC3AdditionalDataBufferHandle->DataLength() <= CHIPOBLEPROFILE_CHAR_LEN)
     {
         mDeviceIdInfo.SetAdditionalDataFlag(true);
+        ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: Additional Data len=%u",
+                        static_cast<unsigned>(sInstance.mC3AdditionalDataBufferHandle->DataLength()));
     }
     else
     {
+        if (err == CHIP_NO_ERROR)
+        {
+            err = CHIP_ERROR_BUFFER_TOO_SMALL;
+        }
+        sInstance.mC3AdditionalDataBufferHandle = System::PacketBufferHandle();
         ChipLogError(DeviceLayer, "BLE ConfigureAdvertisements: Additional Data unavailable: %s", ErrorStr(err));
     }
 #endif
@@ -2007,11 +2013,10 @@ void BLEManagerImpl::CHIPoBLEProfile_charValueChangeCB(uint8_t paramId, uint16_t
 
 #if CHIPOBLE_ENABLE_C3 && CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING && CHIP_ENABLE_ROTATING_DEVICE_ID &&                                  \
     defined(CHIP_DEVICE_CONFIG_ROTATING_DEVICE_ID_UNIQUE_ID)
-static CHIP_ERROR GenerateAdditionalDataPayloadForCHIPoBLE(uint8_t * value, uint16_t * len, uint16_t maxLen)
+static CHIP_ERROR GenerateAdditionalDataPayloadForCHIPoBLE(System::PacketBufferHandle & bufferHandle)
 {
     AdditionalDataPayloadGeneratorParams params;
     BitFlags<AdditionalDataFields> additionalDataFields;
-    System::PacketBufferHandle bufferHandle;
     uint8_t rotatingDeviceIdUniqueId[ConfigurationManager::kRotatingDeviceIDUniqueIDLength] = {};
     MutableByteSpan rotatingDeviceIdUniqueIdSpan(rotatingDeviceIdUniqueId);
 
@@ -2036,25 +2041,33 @@ static CHIP_ERROR GenerateAdditionalDataPayloadForCHIPoBLE(uint8_t * value, uint
         return err;
     }
 
-    if (bufferHandle.IsNull() || bufferHandle->DataLength() > maxLen)
+    if (bufferHandle.IsNull() || bufferHandle->DataLength() > CHIPOBLEPROFILE_CHAR_LEN)
     {
         return CHIP_ERROR_BUFFER_TOO_SMALL;
     }
 
-    memcpy(value, bufferHandle->Start(), bufferHandle->DataLength());
-    *len = static_cast<uint16_t>(bufferHandle->DataLength());
     return CHIP_NO_ERROR;
 }
 
 bStatus_t BLEManagerImpl::CHIPoBLEProfile_readAdditionalDataCB(uint8_t * value, uint16_t * len, uint16_t maxLen)
 {
-    CHIP_ERROR err = GenerateAdditionalDataPayloadForCHIPoBLE(value, len, maxLen);
-    if (err != CHIP_NO_ERROR)
+    System::PacketBufferHandle & bufferHandle = sInstance.mC3AdditionalDataBufferHandle;
+
+    if (bufferHandle.IsNull())
     {
-        ChipLogError(DeviceLayer, "CHIPoBLE C3 read: Additional Data unavailable: %s", ErrorStr(err));
-        return err == CHIP_ERROR_BUFFER_TOO_SMALL ? bleMemAllocError : ATT_ERR_UNLIKELY;
+        ChipLogError(DeviceLayer, "CHIPoBLE C3 read: Additional Data buffer is empty");
+        return ATT_ERR_UNLIKELY;
     }
 
+    if (bufferHandle->DataLength() > maxLen)
+    {
+        ChipLogError(DeviceLayer, "CHIPoBLE C3 read: Additional Data len=%u maxLen=%u",
+                     static_cast<unsigned>(bufferHandle->DataLength()), static_cast<unsigned>(maxLen));
+        return bleMemAllocError;
+    }
+
+    memcpy(value, bufferHandle->Start(), bufferHandle->DataLength());
+    *len = static_cast<uint16_t>(bufferHandle->DataLength());
     return SUCCESS;
 }
 #endif
