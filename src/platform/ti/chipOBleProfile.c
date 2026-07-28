@@ -57,6 +57,7 @@ static uint8_t chipOBleProfileRxdDataUserDesp[CHIPOBLEPROFILE_MAX_DESCRIPTION_LE
 #if CHIPOBLE_ENABLE_C3
 static uint8_t chipOBleProfileC3CharProps = GATT_PROP_READ;
 static uint8_t chipOBleProfileC3CharVal[CHIPOBLEPROFILE_C3_CHAR_LEN] = { 0x00 };
+static uint16_t chipOBleProfileC3CharLen = 0;
 static uint8_t chipOBleProfileC3DataUserDesp[CHIPOBLEPROFILE_MAX_DESCRIPTION_LEN] = "ChipOBLE C3 Char";
 #endif
 
@@ -132,7 +133,7 @@ bStatus_t CHIPoBLEProfile_RegisterAppCBs(chipOBleProfileCBs_t * appCallbacks)
     return bleAlreadyInRequestedMode;
 }
 
-bStatus_t CHIPoBLEProfile_SetParameter(uint8 param, uint8 len, void * value, uint8_t taskId)
+bStatus_t CHIPoBLEProfile_SetParameter(uint8 param, uint16 len, void * value, uint8_t taskId)
 {
     switch (param)
     {
@@ -140,6 +141,17 @@ bStatus_t CHIPoBLEProfile_SetParameter(uint8 param, uint8 len, void * value, uin
         VOID memcpy(chipOBleProfileTxCharVal, value, len);
         return GATTServApp_ProcessCharCfg(chipOBleProfileTxStateDataConfig, chipOBleProfileTxCharVal, FALSE, chipoBleProfileAttrTbl,
                                           GATT_NUM_ATTRS(chipoBleProfileAttrTbl), taskId, CHIPoBLEProfile_ReadAttrCB);
+
+#if CHIPOBLE_ENABLE_C3
+    case CHIPOBLEPROFILE_C3_CHAR:
+        if (len > CHIPOBLEPROFILE_C3_CHAR_LEN)
+        {
+            return INVALIDPARAMETER;
+        }
+        VOID memcpy(chipOBleProfileC3CharVal, value, len);
+        chipOBleProfileC3CharLen = len;
+        return SUCCESS;
+#endif
 
     default:
         return INVALIDPARAMETER;
@@ -174,16 +186,16 @@ static bStatus_t CHIPoBLEProfile_ReadAttrCB(uint16_t connHandle, gattAttribute_t
 #if CHIPOBLE_ENABLE_C3
     if (!memcmp(pAttr->type.uuid, chipOBleProfileC3CharUUID, pAttr->type.len))
     {
-        if ((chipOBleProfile_AppCBs == NULL) || (chipOBleProfile_AppCBs->pfnchipOBleProfileReadAdditionalData == NULL))
+        len = chipOBleProfileC3CharLen;
+        if ((len == 0) && chipOBleProfile_AppCBs && chipOBleProfile_AppCBs->pfnchipOBleProfileReadAdditionalData)
         {
-            return ATT_ERR_UNLIKELY;
-        }
-
-        status = chipOBleProfile_AppCBs->pfnchipOBleProfileReadAdditionalData(chipOBleProfileC3CharVal, &len,
-                                                                               CHIPOBLEPROFILE_C3_CHAR_LEN);
-        if (status != SUCCESS)
-        {
-            return status;
+            status = chipOBleProfile_AppCBs->pfnchipOBleProfileReadAdditionalData(chipOBleProfileC3CharVal, &len,
+                                                                                   CHIPOBLEPROFILE_C3_CHAR_LEN);
+            if (status != SUCCESS)
+            {
+                return status;
+            }
+            chipOBleProfileC3CharLen = len;
         }
     }
     else

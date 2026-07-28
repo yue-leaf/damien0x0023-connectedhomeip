@@ -472,9 +472,22 @@ CHIP_ERROR BLEManagerImpl::ConfigureAdvertisements(void)
     if (err == CHIP_NO_ERROR && !sInstance.mC3AdditionalDataBufferHandle.IsNull() &&
         sInstance.mC3AdditionalDataBufferHandle->DataLength() <= CHIPOBLEPROFILE_C3_CHAR_LEN)
     {
-        mDeviceIdInfo.SetAdditionalDataFlag(true);
-        ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: Additional Data len=%u",
-                        static_cast<unsigned>(sInstance.mC3AdditionalDataBufferHandle->DataLength()));
+        status = CHIPoBLEProfile_SetParameter(CHIPOBLEPROFILE_C3_CHAR,
+                                              static_cast<uint16_t>(sInstance.mC3AdditionalDataBufferHandle->DataLength()),
+                                              sInstance.mC3AdditionalDataBufferHandle->Start(), sSelfEntity);
+        if (status == SUCCESS)
+        {
+            mDeviceIdInfo.SetAdditionalDataFlag(true);
+            ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: Additional Data len=%u",
+                            static_cast<unsigned>(sInstance.mC3AdditionalDataBufferHandle->DataLength()));
+        }
+        else
+        {
+            err = CHIP_ERROR_INTERNAL;
+            sInstance.mC3AdditionalDataBufferHandle = System::PacketBufferHandle();
+            ChipLogError(DeviceLayer, "BLE ConfigureAdvertisements: failed to store Additional Data in GATT profile: status=%u",
+                         static_cast<unsigned>(status));
+        }
     }
     else
     {
@@ -2063,6 +2076,14 @@ bStatus_t BLEManagerImpl::CHIPoBLEProfile_readAdditionalDataCB(uint8_t * value, 
         {
             ChipLogError(DeviceLayer, "CHIPoBLE C3 read: Additional Data regeneration failed: %s", ErrorStr(err));
             return err == CHIP_ERROR_BUFFER_TOO_SMALL ? bleMemAllocError : ATT_ERR_UNLIKELY;
+        }
+        bStatus_t status = CHIPoBLEProfile_SetParameter(CHIPOBLEPROFILE_C3_CHAR, static_cast<uint16_t>(bufferHandle->DataLength()),
+                                                        bufferHandle->Start(), sSelfEntity);
+        if (status != SUCCESS)
+        {
+            ChipLogError(DeviceLayer, "CHIPoBLE C3 read: failed to store regenerated Additional Data: status=%u",
+                         static_cast<unsigned>(status));
+            return ATT_ERR_UNLIKELY;
         }
     }
 
