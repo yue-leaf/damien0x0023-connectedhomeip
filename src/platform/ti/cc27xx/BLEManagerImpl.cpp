@@ -470,7 +470,7 @@ CHIP_ERROR BLEManagerImpl::ConfigureAdvertisements(void)
     sInstance.mC3AdditionalDataBufferHandle = System::PacketBufferHandle();
     err = GenerateAdditionalDataPayloadForCHIPoBLE(sInstance.mC3AdditionalDataBufferHandle);
     if (err == CHIP_NO_ERROR && !sInstance.mC3AdditionalDataBufferHandle.IsNull() &&
-        sInstance.mC3AdditionalDataBufferHandle->DataLength() <= CHIPOBLEPROFILE_CHAR_LEN)
+        sInstance.mC3AdditionalDataBufferHandle->DataLength() <= CHIPOBLEPROFILE_C3_CHAR_LEN)
     {
         mDeviceIdInfo.SetAdditionalDataFlag(true);
         ChipLogProgress(DeviceLayer, "BLE ConfigureAdvertisements: Additional Data len=%u",
@@ -2041,7 +2041,7 @@ static CHIP_ERROR GenerateAdditionalDataPayloadForCHIPoBLE(System::PacketBufferH
         return err;
     }
 
-    if (bufferHandle.IsNull() || bufferHandle->DataLength() > CHIPOBLEPROFILE_CHAR_LEN)
+    if (bufferHandle.IsNull() || bufferHandle->DataLength() > CHIPOBLEPROFILE_C3_CHAR_LEN)
     {
         return CHIP_ERROR_BUFFER_TOO_SMALL;
     }
@@ -2053,10 +2053,17 @@ bStatus_t BLEManagerImpl::CHIPoBLEProfile_readAdditionalDataCB(uint8_t * value, 
 {
     System::PacketBufferHandle & bufferHandle = sInstance.mC3AdditionalDataBufferHandle;
 
+    ChipLogProgress(DeviceLayer, "CHIPoBLE C3 read: request maxLen=%u", static_cast<unsigned>(maxLen));
+
     if (bufferHandle.IsNull())
     {
-        ChipLogError(DeviceLayer, "CHIPoBLE C3 read: Additional Data buffer is empty");
-        return ATT_ERR_UNLIKELY;
+        ChipLogError(DeviceLayer, "CHIPoBLE C3 read: Additional Data buffer is empty; regenerating");
+        CHIP_ERROR err = GenerateAdditionalDataPayloadForCHIPoBLE(bufferHandle);
+        if (err != CHIP_NO_ERROR)
+        {
+            ChipLogError(DeviceLayer, "CHIPoBLE C3 read: Additional Data regeneration failed: %s", ErrorStr(err));
+            return err == CHIP_ERROR_BUFFER_TOO_SMALL ? bleMemAllocError : ATT_ERR_UNLIKELY;
+        }
     }
 
     if (bufferHandle->DataLength() > maxLen)
@@ -2068,6 +2075,7 @@ bStatus_t BLEManagerImpl::CHIPoBLEProfile_readAdditionalDataCB(uint8_t * value, 
 
     memcpy(value, bufferHandle->Start(), bufferHandle->DataLength());
     *len = static_cast<uint16_t>(bufferHandle->DataLength());
+    ChipLogProgress(DeviceLayer, "CHIPoBLE C3 read: Additional Data len=%u", static_cast<unsigned>(*len));
     return SUCCESS;
 }
 #endif

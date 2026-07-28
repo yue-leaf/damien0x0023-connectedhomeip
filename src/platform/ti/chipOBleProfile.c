@@ -56,7 +56,7 @@ static uint8_t chipOBleProfileRxdDataUserDesp[CHIPOBLEPROFILE_MAX_DESCRIPTION_LE
 
 #if CHIPOBLE_ENABLE_C3
 static uint8_t chipOBleProfileC3CharProps = GATT_PROP_READ;
-static uint8_t chipOBleProfileC3CharVal[CHIPOBLEPROFILE_CHAR_LEN] = { 0x00 };
+static uint8_t chipOBleProfileC3CharVal[CHIPOBLEPROFILE_C3_CHAR_LEN] = { 0x00 };
 static uint8_t chipOBleProfileC3DataUserDesp[CHIPOBLEPROFILE_MAX_DESCRIPTION_LEN] = "ChipOBLE C3 Char";
 #endif
 
@@ -180,7 +180,7 @@ static bStatus_t CHIPoBLEProfile_ReadAttrCB(uint16_t connHandle, gattAttribute_t
         }
 
         status = chipOBleProfile_AppCBs->pfnchipOBleProfileReadAdditionalData(chipOBleProfileC3CharVal, &len,
-                                                                               CHIPOBLEPROFILE_CHAR_LEN);
+                                                                               CHIPOBLEPROFILE_C3_CHAR_LEN);
         if (status != SUCCESS)
         {
             return status;

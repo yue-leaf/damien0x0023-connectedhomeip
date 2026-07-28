@@ -66,6 +66,9 @@ extern "C" {
 #endif
 
 #define CHIPOBLEPROFILE_CHAR_LEN (244)
+#if CHIPOBLE_ENABLE_C3
+#define CHIPOBLEPROFILE_C3_CHAR_LEN (512)
+#endif
 #define CHIPOBLEPROFILE_MAX_DESCRIPTION_LEN (20)
 
 /*********************************************************************
