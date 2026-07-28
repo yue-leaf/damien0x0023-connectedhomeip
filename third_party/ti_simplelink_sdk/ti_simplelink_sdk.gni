@@ -24,6 +24,7 @@ import("//build_overrides/ti_simplelink_sdk.gni")
 import("${chip_root}/src/app/icd/icd.gni")
 
 import("${chip_root}/src/platform/device.gni")
+import("${chip_root}/src/setup_payload/additional_data.gni")
 import("${dir_pw_build}/python.gni")
 
 import("ti_simplelink_board.gni")
@@ -1026,6 +1027,10 @@ template("ti_simplelink_sdk") {
 
     if (ti_simplelink_device_family == "cc27xx") {
       defines = []
+      if (chip_enable_additional_data_advertising &&
+          chip_enable_rotating_device_id) {
+        defines += [ "CHIPOBLE_ENABLE_C3=1" ]
+      }
       include_dirs = [
         "${chip_root}/src/",
         "${chip_root}/third_party/openthread/repo/include",
@@ -1040,7 +1045,7 @@ template("ti_simplelink_sdk") {
         "-Wno-implicit-function-declaration",  # asm not defined
       ]
       sources = [
-        "${chip_root}/src/platform/ti/cc13x4_26x4/chipOBleProfile.c",
+        "${chip_root}/src/platform/ti/chipOBleProfile.c",
         "${chip_root}/src/platform/ti/cc27xx/osal_icall_ble.c",
         "${chip_root}/src/platform/ti/cc27xx/util.c",
         "${ti_simplelink_sdk_root}/kernel/freertos/dpl/MessageQueueP_freertos.c",
