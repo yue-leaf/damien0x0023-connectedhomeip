@@ -348,8 +348,10 @@ jobs:
                       test -s "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting.bin"
                       test -s "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting-without-factory-data.hex"
                       test -s "$SECURE_BOOT_DIR/manifest.json"
-                      python3 -c "import sys; from pathlib import Path; blob=Path(sys.argv[1]).read_bytes(); assert b'ChipOBLE C3 Char' in blob, 'signed Matter firmware is missing the BLE C3 Additional Data characteristic'" \
-                          "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting.bin"
+                      if ! grep -a -F "ChipOBLE C3 Char" "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting.bin" > /dev/null; then
+                          echo "signed Matter firmware is missing the BLE C3 Additional Data characteristic" >&2
+                          exit 1
+                      fi
                   '
 
             - name: Push signed application firmware
