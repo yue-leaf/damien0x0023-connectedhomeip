@@ -222,6 +222,8 @@ jobs:
                           chip_generate_link_map_file=true
                           chip_openthread_ftd=true
                           chip_progress_logging=true
+                          chip_enable_additional_data_advertising=true
+                          chip_enable_rotating_device_id=true
                           custom_factory_data=true
                           ti_dac_key_use_psa_hsm=true
                           target_defines=[
@@ -241,6 +243,11 @@ jobs:
                       if ! arm-none-eabi-nm "$BUILD_DIR/${APP_NAME}.out" |
                           grep -E "^[0-9a-fA-F]+[[:space:]]+T[[:space:]]+tfm_hal_its_fs_info$" > /dev/null; then
                           echo "Expected strong tfm_hal_its_fs_info override" >&2
+                          exit 1
+                      fi
+                      if ! arm-none-eabi-strings "$BUILD_DIR/${APP_NAME}.out" |
+                          grep -F "ChipOBLE C3 Char" > /dev/null; then
+                          echo "Expected Matter BLE C3 Additional Data characteristic in cc27xx lighting app" >&2
                           exit 1
                       fi
 
@@ -341,6 +348,8 @@ jobs:
                       test -s "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting.bin"
                       test -s "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting-without-factory-data.hex"
                       test -s "$SECURE_BOOT_DIR/manifest.json"
+                      python3 -c "import sys; from pathlib import Path; blob=Path(sys.argv[1]).read_bytes(); assert b'ChipOBLE C3 Char' in blob, 'signed Matter firmware is missing the BLE C3 Additional Data characteristic'" \
+                          "$SECURE_BOOT_DIR/signed-ti-cc27xx-lighting.bin"
                   '
 
             - name: Push signed application firmware
