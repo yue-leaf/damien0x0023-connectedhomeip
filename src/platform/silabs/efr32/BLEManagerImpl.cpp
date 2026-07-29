@@ -963,10 +963,11 @@ void BLEManagerImpl::HandleC3ReadRequest(volatile sl_bt_msg_t * evt)
 
 #if CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING
     constexpr uint8_t kAttErrorUnlikelyError = 0x0E;
+    constexpr uint8_t kAttErrorInvalidOffset = 0x07;
 
-    uint8_t attError = 0;
-    size_t dataLen   = 0;
-    uint8_t * data   = nullptr;
+    uint8_t attError     = 0;
+    size_t dataLen       = 0;
+    const uint8_t * data = nullptr;
 
     if (sInstance.c3AdditionalDataBufferHandle.IsNull())
     {
@@ -975,15 +976,29 @@ void BLEManagerImpl::HandleC3ReadRequest(volatile sl_bt_msg_t * evt)
     }
     else
     {
-        dataLen = sInstance.c3AdditionalDataBufferHandle->DataLength();
-        data    = sInstance.c3AdditionalDataBufferHandle->Start();
+        const size_t totalDataLen = sInstance.c3AdditionalDataBufferHandle->DataLength();
+
+        if (readReq->offset > totalDataLen)
+        {
+            ChipLogError(DeviceLayer, "CHIPoBLEChar_C3 read requested with invalid offset:%u, length:%u",
+                         static_cast<unsigned int>(readReq->offset), static_cast<unsigned int>(totalDataLen));
+            attError = kAttErrorInvalidOffset;
+        }
+        else
+        {
+            dataLen = totalDataLen - readReq->offset;
+            if (dataLen > 0)
+            {
+                data = sInstance.c3AdditionalDataBufferHandle->Start() + readReq->offset;
+            }
+        }
     }
 #else
     constexpr uint8_t kAttErrorReadNotPermitted = 0x02;
 
-    uint8_t attError = kAttErrorReadNotPermitted;
-    size_t dataLen   = 0;
-    uint8_t * data   = nullptr;
+    uint8_t attError     = kAttErrorReadNotPermitted;
+    size_t dataLen       = 0;
+    const uint8_t * data = nullptr;
 #endif
 
     sl_status_t ret =
