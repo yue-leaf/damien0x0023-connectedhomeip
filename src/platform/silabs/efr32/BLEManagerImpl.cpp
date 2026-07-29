@@ -953,22 +953,47 @@ exit:
 
     return err;
 }
+#endif // CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING
 
 void BLEManagerImpl::HandleC3ReadRequest(volatile sl_bt_msg_t * evt)
 {
     sl_bt_evt_gatt_server_user_read_request_t * readReq =
         (sl_bt_evt_gatt_server_user_read_request_t *) &(evt->data.evt_gatt_server_user_read_request);
     ChipLogDetail(DeviceLayer, "Read request received for CHIPoBLEChar_C3 - opcode:%d", readReq->att_opcode);
-    sl_status_t ret = sl_bt_gatt_server_send_user_read_response(readReq->connection, readReq->characteristic, 0,
-                                                                sInstance.c3AdditionalDataBufferHandle->DataLength(),
-                                                                sInstance.c3AdditionalDataBufferHandle->Start(), nullptr);
+
+#if CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING
+    constexpr uint8_t kAttErrorUnlikelyError = 0x0E;
+
+    uint8_t attError = 0;
+    size_t dataLen   = 0;
+    uint8_t * data   = nullptr;
+
+    if (sInstance.c3AdditionalDataBufferHandle.IsNull())
+    {
+        ChipLogError(DeviceLayer, "CHIPoBLEChar_C3 read requested before Additional Data was generated");
+        attError = kAttErrorUnlikelyError;
+    }
+    else
+    {
+        dataLen = sInstance.c3AdditionalDataBufferHandle->DataLength();
+        data    = sInstance.c3AdditionalDataBufferHandle->Start();
+    }
+#else
+    constexpr uint8_t kAttErrorReadNotPermitted = 0x02;
+
+    uint8_t attError = kAttErrorReadNotPermitted;
+    size_t dataLen   = 0;
+    uint8_t * data   = nullptr;
+#endif
+
+    sl_status_t ret =
+        sl_bt_gatt_server_send_user_read_response(readReq->connection, readReq->characteristic, attError, dataLen, data, nullptr);
 
     if (ret != SL_STATUS_OK)
     {
         ChipLogDetail(DeviceLayer, "Failed to send read response, err:%ld", ret);
     }
 }
-#endif // CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING
 
 uint8_t BLEManagerImpl::GetTimerHandle(uint8_t connectionHandle, bool allocate)
 {
@@ -1137,12 +1162,10 @@ extern "C" void sl_bt_on_event(sl_bt_msg_t * evt)
 
     case sl_bt_evt_gatt_server_user_read_request_id: {
         ChipLogProgress(DeviceLayer, "GATT server user_read_request");
-#if CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING
         if (evt->data.evt_gatt_server_user_read_request.characteristic == gattdb_CHIPoBLEChar_C3)
         {
             chip::DeviceLayer::Internal::BLEMgrImpl().HandleC3ReadRequest(evt);
         }
-#endif // CHIP_ENABLE_ADDITIONAL_DATA_ADVERTISING
     }
     break;
 
