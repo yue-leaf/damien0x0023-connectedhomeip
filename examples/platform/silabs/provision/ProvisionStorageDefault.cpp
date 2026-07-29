@@ -353,7 +353,39 @@ CHIP_ERROR Storage::SetPersistentUniqueId(const uint8_t * value, size_t size)
 
 CHIP_ERROR Storage::GetPersistentUniqueId(uint8_t * value, size_t max, size_t & size)
 {
-    return SilabsConfig::ReadConfigValueBin(SilabsConfig::kConfigKey_PersistentUniqueId, value, max, size);
+    constexpr size_t kBinaryUniqueIdLength     = 16;
+    constexpr size_t kHexEncodedUniqueIdLength = kBinaryUniqueIdLength * 2;
+    uint8_t storedValue[kHexEncodedUniqueIdLength];
+    size_t storedSize = 0;
+
+    VerifyOrReturnError(value != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
+    ReturnErrorOnFailure(SilabsConfig::ReadConfigValueBin(SilabsConfig::kConfigKey_PersistentUniqueId, storedValue,
+                                                          sizeof(storedValue), storedSize));
+
+    // Silicon Labs Provision v2 persists the 128-bit identifier as 32 hexadecimal characters.
+    bool isHexEncoded = storedSize == kHexEncodedUniqueIdLength;
+    for (size_t i = 0; isHexEncoded && i < storedSize; ++i)
+    {
+        const uint8_t character = storedValue[i];
+        const bool isDigit      = character >= '0' && character <= '9';
+        const bool isLowercase  = character >= 'a' && character <= 'f';
+        const bool isUppercase  = character >= 'A' && character <= 'F';
+        isHexEncoded            = isDigit || isLowercase || isUppercase;
+    }
+
+    if (isHexEncoded)
+    {
+        VerifyOrReturnError(max >= kBinaryUniqueIdLength, CHIP_ERROR_BUFFER_TOO_SMALL);
+        size = Encoding::HexToBytes(reinterpret_cast<const char *>(storedValue), storedSize, value, max);
+        VerifyOrReturnError(size == kBinaryUniqueIdLength, CHIP_ERROR_INVALID_ARGUMENT);
+        return CHIP_NO_ERROR;
+    }
+
+    VerifyOrReturnError(storedSize >= kBinaryUniqueIdLength, CHIP_ERROR_INVALID_ARGUMENT);
+    VerifyOrReturnError(max >= storedSize, CHIP_ERROR_BUFFER_TOO_SMALL);
+    memcpy(value, storedValue, storedSize);
+    size = storedSize;
+    return CHIP_NO_ERROR;
 }
 
 //
