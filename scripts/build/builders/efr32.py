@@ -174,6 +174,7 @@ class Efr32Builder(GnBuilder):
                  enable_ot_coap_lib: bool = False,
                  no_version: bool = False,
                  enable_917_soc: bool = False,
+                 slc_generate: bool = False,
                  use_rps_extension: bool = True
                  ):
         super(Efr32Builder, self).__init__(
@@ -234,6 +235,9 @@ class Efr32Builder(GnBuilder):
 
         if enable_additional_data_advertising:
             self.extra_gn_options.append('chip_enable_additional_data_advertising=true chip_enable_rotating_device_id=true')
+
+        if slc_generate:
+            self.extra_gn_options.append('slc_generate=true')
 
         if enable_ot_lib:
             self.extra_gn_options.append(

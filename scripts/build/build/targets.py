@@ -289,6 +289,7 @@ def BuildEfr32Target():
     target.AppendModifier('ipv4', enable_wifi_ipv4=True).OnlyIfRe('-wifi')
     target.AppendModifier('additional-data-advertising',
                           enable_additional_data_advertising=True)
+    target.AppendModifier('slc-generate', slc_generate=True)
     target.AppendModifier('use-ot-lib', enable_ot_lib=True).ExceptIfRe(
         '-(wifi|use-ot-coap-lib)')
     target.AppendModifier('use-ot-coap-lib', enable_ot_coap_lib=True).ExceptIfRe(
