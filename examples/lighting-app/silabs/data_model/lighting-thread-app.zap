@@ -3100,27 +3100,27 @@
       "id": 2,
       "name": "MA-dimmablelight",
       "deviceTypeRef": {
-        "code": 269,
+        "code": 256,
         "profileId": 259,
-        "label": "MA-extendedcolorlight",
-        "name": "MA-extendedcolorlight"
+        "label": "MA-onofflight",
+        "name": "MA-onofflight"
       },
       "deviceTypes": [
         {
-          "code": 269,
+          "code": 256,
           "profileId": 259,
-          "label": "MA-extendedcolorlight",
-          "name": "MA-extendedcolorlight"
+          "label": "MA-onofflight",
+          "name": "MA-onofflight"
         }
       ],
       "deviceVersions": [
         1
       ],
       "deviceIdentifiers": [
-        269
+        256
       ],
-      "deviceTypeName": "MA-extendedcolorlight",
-      "deviceTypeCode": 269,
+      "deviceTypeName": "MA-onofflight",
+      "deviceTypeCode": 256,
       "deviceTypeProfileId": 259,
       "clusters": [
         {
@@ -3725,7 +3725,7 @@
           "mfgCode": null,
           "define": "LEVEL_CONTROL_CLUSTER",
           "side": "server",
-          "enabled": 1,
+          "enabled": 0,
           "commands": [
             {
               "name": "MoveToLevel",
@@ -4552,7 +4552,7 @@
           "mfgCode": null,
           "define": "COLOR_CONTROL_CLUSTER",
           "side": "server",
-          "enabled": 1,
+          "enabled": 0,
           "commands": [
             {
               "name": "MoveToHue",
