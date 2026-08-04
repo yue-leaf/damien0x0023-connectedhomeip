@@ -2284,8 +2284,6 @@ cluster ColorControl = 768 {
 endpoint 0 {
   device type ma_rootdevice = 22, version 1;
 
-  binding cluster OtaSoftwareUpdateProvider;
-
   server cluster Descriptor {
     callback attribute deviceTypeList;
     callback attribute serverList;
@@ -2332,17 +2330,6 @@ endpoint 0 {
     callback attribute maxPathsPerInvoke;
     ram      attribute featureMap default = 0;
     ram      attribute clusterRevision default = 3;
-  }
-
-  server cluster OtaSoftwareUpdateRequestor {
-    callback attribute defaultOTAProviders;
-    ram      attribute updatePossible default = 1;
-    ram      attribute updateState default = 0;
-    ram      attribute updateStateProgress default = 0;
-    ram      attribute featureMap default = 0;
-    ram      attribute clusterRevision default = 1;
-
-    handle command AnnounceOTAProvider;
   }
 
   server cluster GeneralCommissioning {
