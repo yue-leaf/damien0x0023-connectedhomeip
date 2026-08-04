@@ -705,7 +705,7 @@
           "mfgCode": null,
           "define": "OTA_SOFTWARE_UPDATE_PROVIDER_CLUSTER",
           "side": "client",
-          "enabled": 0,
+          "enabled": 1,
           "commands": [
             {
               "name": "QueryImage",
@@ -755,7 +755,7 @@
           "mfgCode": null,
           "define": "OTA_SOFTWARE_UPDATE_REQUESTOR_CLUSTER",
           "side": "server",
-          "enabled": 0,
+          "enabled": 1,
           "commands": [
             {
               "name": "AnnounceOTAProvider",
@@ -3100,27 +3100,27 @@
       "id": 2,
       "name": "MA-dimmablelight",
       "deviceTypeRef": {
-        "code": 256,
+        "code": 269,
         "profileId": 259,
-        "label": "MA-onofflight",
-        "name": "MA-onofflight"
+        "label": "MA-extendedcolorlight",
+        "name": "MA-extendedcolorlight"
       },
       "deviceTypes": [
         {
-          "code": 256,
+          "code": 269,
           "profileId": 259,
-          "label": "MA-onofflight",
-          "name": "MA-onofflight"
+          "label": "MA-extendedcolorlight",
+          "name": "MA-extendedcolorlight"
         }
       ],
       "deviceVersions": [
         1
       ],
       "deviceIdentifiers": [
-        256
+        269
       ],
-      "deviceTypeName": "MA-onofflight",
-      "deviceTypeCode": 256,
+      "deviceTypeName": "MA-extendedcolorlight",
+      "deviceTypeCode": 269,
       "deviceTypeProfileId": 259,
       "clusters": [
         {
@@ -3725,7 +3725,7 @@
           "mfgCode": null,
           "define": "LEVEL_CONTROL_CLUSTER",
           "side": "server",
-          "enabled": 0,
+          "enabled": 1,
           "commands": [
             {
               "name": "MoveToLevel",
@@ -4291,7 +4291,7 @@
           "mfgCode": null,
           "define": "SCENES_CLUSTER",
           "side": "server",
-          "enabled": 0,
+          "enabled": 1,
           "apiMaturity": "provisional",
           "commands": [
             {
@@ -4552,7 +4552,7 @@
           "mfgCode": null,
           "define": "COLOR_CONTROL_CLUSTER",
           "side": "server",
-          "enabled": 0,
+          "enabled": 1,
           "commands": [
             {
               "name": "MoveToHue",
