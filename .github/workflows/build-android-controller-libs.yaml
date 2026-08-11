@@ -56,6 +56,7 @@ jobs:
               shell: bash
               run: |
                   set -euo pipefail
+                  git config --global --add safe.directory "${GITHUB_WORKSPACE}"
                   actual_commit="$(git rev-parse HEAD)"
                   if [[ "${actual_commit}" != "${CONNECTEDHOMEIP_COMMIT}" ]]; then
                       echo "Expected ${CONNECTEDHOMEIP_COMMIT}, got ${actual_commit}" >&2
