@@ -1,0 +1,171 @@
+# Copyright (c) 2026 Project CHIP Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Build Android Controller Libraries
+
+on:
+    push:
+        branches:
+            - codex/project-chip-f712a460
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: android-controller-libs-${{ github.ref }}
+    cancel-in-progress: true
+
+env:
+    CHIP_LOG_TIMESTAMPS: false
+    CONNECTEDHOMEIP_COMMIT: f712a46025baf567c17ce11a484e0292563e831a
+    BUILD_PROFILE: release
+    DIST_DIR: android-controller-artifacts
+
+jobs:
+    build:
+        name: Build arm64-v8a
+        runs-on: ubuntu-latest
+        timeout-minutes: 180
+
+        container:
+            image: ghcr.io/project-chip/chip-build-android:200
+            volumes:
+                - "/:/runner-root-volume"
+                - "/tmp/log_output:/tmp/test_logs"
+
+        steps:
+            - name: Checkout fixed connectedhomeip revision
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+              with:
+                  ref: ${{ env.CONNECTEDHOMEIP_COMMIT }}
+                  fetch-depth: 1
+
+            - name: Verify source revision
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  actual_commit="$(git rev-parse HEAD)"
+                  if [[ "${actual_commit}" != "${CONNECTEDHOMEIP_COMMIT}" ]]; then
+                      echo "Expected ${CONNECTEDHOMEIP_COMMIT}, got ${actual_commit}" >&2
+                      exit 1
+                  fi
+
+            - name: Checkout submodules and bootstrap
+              uses: ./.github/actions/checkout-submodules-and-bootstrap
+              with:
+                  platform: android
+
+            - name: Reclaim unused Pigweed toolchain space
+              continue-on-error: true
+              shell: bash
+              run: rm -rf .environment/cipd/packages/arm
+
+            - name: Build and stage Android Controller libraries
+              shell: bash
+              run: |
+                  set -euo pipefail
+
+                  package_root="${DIST_DIR}/matter-sdk-chip"
+                  jar_dir="${package_root}/libs"
+                  mkdir -p "${jar_dir}"
+
+                  required_controller_jars=(
+                      CHIPController.jar
+                      CHIPInteractionModel.jar
+                      CHIPClusters.jar
+                      CHIPClusterID.jar
+                      OnboardingPayload.jar
+                      libMatterTlv.jar
+                      libMatterJson.jar
+                  )
+
+                  target_cpu="arm64"
+                  android_abi="arm64-v8a"
+                  output_dir="out/android-${target_cpu}-chip-tool-${BUILD_PROFILE}"
+
+                  ./scripts/run_in_build_env.sh \
+                      "./scripts/build/build_examples.py --build-profile ${BUILD_PROFILE} --target android-${target_cpu}-chip-tool build"
+
+                  controller_jar_dir="${output_dir}/lib/src/controller/java"
+                  platform_jar="${output_dir}/lib/src/platform/android/AndroidPlatform.jar"
+
+                  for jar_name in "${required_controller_jars[@]}"; do
+                      source_jar="${controller_jar_dir}/${jar_name}"
+                      test -s "${source_jar}"
+                      cp "${source_jar}" "${jar_dir}/${jar_name}"
+                  done
+                  test -s "${platform_jar}"
+                  cp "${platform_jar}" "${jar_dir}/AndroidPlatform.jar"
+
+                  native_source_dir="${output_dir}/lib/jni/${android_abi}"
+                  native_dest_dir="${package_root}/src/main/jniLibs/${android_abi}"
+                  mkdir -p "${native_dest_dir}"
+
+                  for library in libCHIPController.so libc++_shared.so; do
+                      test -s "${native_source_dir}/${library}"
+                      cp "${native_source_dir}/${library}" "${native_dest_dir}/${library}"
+                  done
+
+                  for jar_file in "${jar_dir}"/*.jar; do
+                      jar tf "${jar_file}" >/dev/null
+                  done
+
+                  for so_file in "${package_root}"/src/main/jniLibs/*/*.so; do
+                      test -s "${so_file}"
+                      readelf -h "${so_file}" >/dev/null
+                  done
+
+                  cat > "${DIST_DIR}/BUILD_INFO.txt" <<EOF
+                  connectedhomeip_commit=${CONNECTEDHOMEIP_COMMIT}
+                  build_profile=${BUILD_PROFILE}
+                  abis=${android_abi}
+                  builder_image=ghcr.io/project-chip/chip-build-android:200
+                  github_repository=${GITHUB_REPOSITORY}
+                  github_run_id=${GITHUB_RUN_ID}
+                  EOF
+
+                  (
+                      cd "${DIST_DIR}"
+                      find matter-sdk-chip -type f -print0 \
+                          | sort -z \
+                          | xargs -0 sha256sum > SHA256SUMS
+                  )
+
+                  find "${DIST_DIR}" -type f -print | sort
+
+            - name: Upload Android Controller libraries
+              uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+              with:
+                  name: connectedhomeip-android-arm64-v8a-f712a460-${{ github.run_number }}
+                  path: ${{ env.DIST_DIR }}/
+                  if-no-files-found: error
+                  retention-days: 30
+                  compression-level: 0
+
+            - name: Write download summary
+              if: success()
+              shell: bash
+              run: |
+                  cat >> "${GITHUB_STEP_SUMMARY}" <<EOF
+                  ## Android Controller libraries
+
+                  - connectedhomeip: \`${CONNECTEDHOMEIP_COMMIT}\`
+                  - profile: \`${BUILD_PROFILE}\`
+                  - ABI: \`arm64-v8a\`
+                  - artifact: \`connectedhomeip-android-arm64-v8a-f712a460-${{ github.run_number }}\`
+
+                  Download the artifact from this workflow run and extract its
+                  \`matter-sdk-chip\` directory at the Android project root.
+                  EOF
