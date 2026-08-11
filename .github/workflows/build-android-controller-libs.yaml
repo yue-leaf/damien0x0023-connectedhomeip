@@ -97,7 +97,22 @@ jobs:
                   output_dir="out/android-${target_cpu}-chip-tool-${BUILD_PROFILE}"
 
                   ./scripts/run_in_build_env.sh \
-                      "./scripts/build/build_examples.py --build-profile ${BUILD_PROFILE} --target android-${target_cpu}-chip-tool build"
+                      "./scripts/build/build_examples.py --build-profile ${BUILD_PROFILE} --target android-${target_cpu}-chip-tool gen"
+
+                  # Build only the Android Controller deliverables. The full CHIPTool target also
+                  # builds the root test group and APK, neither of which is part of this artifact.
+                  ./scripts/run_in_build_env.sh \
+                      "ninja -C ${output_dir} \
+                          src/controller/java:jni \
+                          src/controller/java:java \
+                          src/controller/java:tlv \
+                          src/controller/java:jsontlv \
+                          src/controller/java:onboarding_payload \
+                          src/platform/android:java \
+                          build/chip/java:shared_cpplib"
+
+                  ./scripts/run_in_build_env.sh \
+                      "find ${output_dir}/lib/jni/${android_abi} -type f -name '*.so' -exec llvm-strip -s {} +"
 
                   controller_jar_dir="${output_dir}/lib/src/controller/java"
                   platform_jar="${output_dir}/lib/src/platform/android/AndroidPlatform.jar"
