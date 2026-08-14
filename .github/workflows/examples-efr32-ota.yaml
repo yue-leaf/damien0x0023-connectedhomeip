@@ -1,0 +1,192 @@
+# Copyright (c) 2020 Project CHIP Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Build example - EFR32 OTA v2
+
+on:
+  push:
+    branches:
+      - silabs-mss
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}-${{ github.sha }}
+  cancel-in-progress: true
+
+env:
+  CHIP_NO_LOG_TIMESTAMPS: true
+  MATTER_SOFTWARE_VERSION: "2"
+  MATTER_SOFTWARE_VERSION_STRING: "2.0.0"
+  OTA_VENDOR_ID: "0xFFF1"
+  OTA_PRODUCT_ID: "0x8005"
+  COMMANDER_DOWNLOAD_URL: "https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip"
+  BOOTLOADER_DOWNLOAD_URL: "https://github.com/SiliconLabs/matter_extension/releases/download/v2.5.0/bootloader_binaries_matter_extension_v2.5.0-1.4.zip"
+  BOOTLOADER_FILE_NAME: "bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37"
+
+jobs:
+  efr32-ota:
+    name: EFR32 BRD2703A OTA v2
+    runs-on: ubuntu-latest
+    if: github.actor != 'restyled-io[bot]'
+
+    container:
+      image: ghcr.io/project-chip/chip-build-efr32:94
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout submodules and bootstrap
+        uses: ./.github/actions/checkout-submodules-and-bootstrap
+        env:
+          PW_CONFIG_FILE: scripts/setup/environment_efr32_ci.json
+        with:
+          platform: silabs_docker
+
+      - name: Install ZAP from GitHub release
+        shell: bash
+        run: |
+          source scripts/activate.sh
+          ZAP_VERSION="$(< scripts/setup/zap.version)"
+          ZAP_ROOT="$RUNNER_TEMP/matter-zap"
+          python scripts/tools/zap/zap_download.py \
+            --zap-version "$ZAP_VERSION" \
+            --extract-root "$ZAP_ROOT"
+          ZAP_INSTALL_PATH="$ZAP_ROOT/zap-$ZAP_VERSION"
+          test -x "$ZAP_INSTALL_PATH/zap-cli"
+          "$ZAP_INSTALL_PATH/zap-cli" --version
+          echo "ZAP_INSTALL_PATH=$ZAP_INSTALL_PATH" >> "$GITHUB_ENV"
+
+      - name: Install Simplicity Commander
+        shell: bash
+        run: |
+          COMMANDER_ZIP="$RUNNER_TEMP/SimplicityCommander-Linux.zip"
+          COMMANDER_PACKAGE_DIR="$RUNNER_TEMP/SimplicityCommander-Linux"
+          COMMANDER_INSTALL_DIR="$RUNNER_TEMP/simplicity-commander"
+
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libqt5widgets5
+          rm -rf /var/lib/apt/lists/*
+
+          wget --quiet "$COMMANDER_DOWNLOAD_URL" -O "$COMMANDER_ZIP"
+          unzip -q "$COMMANDER_ZIP" -d "$COMMANDER_PACKAGE_DIR"
+
+          COMMANDER_ARCHIVE="$(find "$COMMANDER_PACKAGE_DIR" -type f -iname '*linux*x86_64*.tar*' -print -quit)"
+          test -n "$COMMANDER_ARCHIVE"
+          mkdir -p "$COMMANDER_INSTALL_DIR"
+          tar -xf "$COMMANDER_ARCHIVE" -C "$COMMANDER_INSTALL_DIR"
+
+          COMMANDER_BIN="$(find "$COMMANDER_INSTALL_DIR" -type f -name commander -print -quit)"
+          test -n "$COMMANDER_BIN"
+          chmod +x "$COMMANDER_BIN"
+          echo "$(dirname "$COMMANDER_BIN")" >> "$GITHUB_PATH"
+          "$COMMANDER_BIN" --version
+
+      - name: Download BRD2703A internal-storage bootloader
+        shell: bash
+        run: |
+          BOOTLOADER_ZIP="$RUNNER_TEMP/bootloader_binaries_matter_extension_v2.5.0-1.4.zip"
+          BOOTLOADER_PACKAGE_DIR="$RUNNER_TEMP/bootloader-binaries"
+          OUTPUT_DIR="out/efr32-ota-artifacts"
+
+          wget --quiet "$BOOTLOADER_DOWNLOAD_URL" -O "$BOOTLOADER_ZIP"
+          unzip -q "$BOOTLOADER_ZIP" -d "$BOOTLOADER_PACKAGE_DIR"
+
+          BOOTLOADER_SOURCE="$(find "$BOOTLOADER_PACKAGE_DIR" -type f -name "$BOOTLOADER_FILE_NAME" -print -quit)"
+          test -n "$BOOTLOADER_SOURCE"
+          mkdir -p "$OUTPUT_DIR"
+          cp "$BOOTLOADER_SOURCE" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
+          commander util appinfo "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
+
+      - name: Build Lighting App with Matter software version 2
+        shell: bash
+        run: |
+          scripts/examples/gn_silabs_example.sh \
+            examples/lighting-app/silabs \
+            out/efr32-ota \
+            BRD2703A \
+            --docker \
+            --slc_generate \
+            --additional_data_advertising \
+            chip_enable_ota_requestor=true \
+            use_rps_extension=false \
+            "sl_matter_version=${MATTER_SOFTWARE_VERSION}" \
+            "sl_matter_version_str=\"${MATTER_SOFTWARE_VERSION_STRING}\""
+
+          BUILD_DIR="out/efr32-ota/BRD2703A"
+          test -f "$BUILD_DIR/matter-silabs-lighting-example.s37"
+          grep -E "sl_matter_version *= *${MATTER_SOFTWARE_VERSION}" "$BUILD_DIR/args.gn"
+          grep -E "sl_matter_version_str *= *\"${MATTER_SOFTWARE_VERSION_STRING}\"" "$BUILD_DIR/args.gn"
+
+      - name: Create GBL and Matter OTA package
+        shell: bash
+        run: |
+          source scripts/activate.sh
+
+          if ! command -v commander >/dev/null 2>&1; then
+            echo "::error::Simplicity Commander is required to create the EFR32 GBL image"
+            exit 1
+          fi
+
+          BUILD_DIR="out/efr32-ota/BRD2703A"
+          OUTPUT_DIR="out/efr32-ota-artifacts"
+          APP_S37="$BUILD_DIR/matter-silabs-lighting-example.s37"
+          VERSIONED_S37="$OUTPUT_DIR/matter-silabs-lighting-v${MATTER_SOFTWARE_VERSION}.s37"
+          GBL_FILE="$OUTPUT_DIR/matter-silabs-lighting-v${MATTER_SOFTWARE_VERSION}.gbl"
+          OTA_FILE="$OUTPUT_DIR/matter-silabs-lighting-v${MATTER_SOFTWARE_VERSION}.ota"
+          OTA_INFO="$OUTPUT_DIR/matter-silabs-lighting-v${MATTER_SOFTWARE_VERSION}-ota-header.txt"
+
+          mkdir -p "$OUTPUT_DIR"
+          cp "$APP_S37" "$VERSIONED_S37"
+
+          commander util appinfo "$VERSIONED_S37"
+          commander gbl create "$GBL_FILE" \
+            --app "$VERSIONED_S37" \
+            --compress lzma
+
+          python3 src/app/ota_image_tool.py create \
+            -v "$OTA_VENDOR_ID" \
+            -p "$OTA_PRODUCT_ID" \
+            -vn "$MATTER_SOFTWARE_VERSION" \
+            -vs "$MATTER_SOFTWARE_VERSION_STRING" \
+            -da sha256 \
+            -mi 1 \
+            "$GBL_FILE" \
+            "$OTA_FILE"
+
+          python3 src/app/ota_image_tool.py show "$OTA_FILE" | tee "$OTA_INFO"
+          grep -F "[2] Version: ${MATTER_SOFTWARE_VERSION} (0x2)" "$OTA_INFO"
+          grep -F "[3] Version String: ${MATTER_SOFTWARE_VERSION_STRING}" "$OTA_INFO"
+
+          ls -lh "$VERSIONED_S37" "$GBL_FILE" "$OTA_FILE" "$OTA_INFO"
+
+      - name: Publish EFR32 OTA v2 artifacts
+        id: upload-ota-artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: efr32-brd2703a-light-ota-v2-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            out/efr32-ota-artifacts/matter-silabs-lighting-v2.s37
+            out/efr32-ota-artifacts/matter-silabs-lighting-v2.gbl
+            out/efr32-ota-artifacts/matter-silabs-lighting-v2.ota
+            out/efr32-ota-artifacts/matter-silabs-lighting-v2-ota-header.txt
+            out/efr32-ota-artifacts/bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
+
+      - name: Show artifact URL
+        shell: bash
+        run: |
+          echo "OTA artifact download URL: ${{ steps.upload-ota-artifacts.outputs.artifact-url }}"
