@@ -95,8 +95,12 @@ jobs:
           unzip -q "$COMMANDER_ZIP" -d "$COMMANDER_PACKAGE_DIR"
 
           mkdir -p "$COMMANDER_INSTALL_DIR"
-          COMMANDER_ARCHIVE="$(find "$COMMANDER_PACKAGE_DIR" -type f \( -iname '*.tar' -o -iname '*.tar.gz' -o -iname '*.tgz' -o -iname '*.tar.xz' -o -iname '*.tar.bz2' \) -print -quit)"
+          COMMANDER_ARCHIVE="$(find "$COMMANDER_PACKAGE_DIR" -type f -iname 'Commander-cli_linux_x86_64*.tar.bz' -print -quit)"
+          if [ -z "$COMMANDER_ARCHIVE" ]; then
+            COMMANDER_ARCHIVE="$(find "$COMMANDER_PACKAGE_DIR" -type f \( -iname '*.tar' -o -iname '*.tar.gz' -o -iname '*.tgz' -o -iname '*.tar.xz' -o -iname '*.tar.bz' -o -iname '*.tar.bz2' \) -print -quit)"
+          fi
           if [ -n "$COMMANDER_ARCHIVE" ]; then
+            echo "Using Commander archive: $COMMANDER_ARCHIVE"
             tar -xf "$COMMANDER_ARCHIVE" -C "$COMMANDER_INSTALL_DIR"
           fi
 
