@@ -78,21 +78,37 @@ jobs:
           COMMANDER_INSTALL_DIR="$RUNNER_TEMP/simplicity-commander"
 
           apt-get update
-          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libqt5widgets5
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            ca-certificates \
+            curl \
+            file \
+            libqt5widgets5 \
+            unzip
           rm -rf /var/lib/apt/lists/*
 
-          wget --quiet "$COMMANDER_DOWNLOAD_URL" -O "$COMMANDER_ZIP"
+          curl --fail --location --show-error --retry 5 --retry-all-errors \
+            --connect-timeout 30 --max-time 600 \
+            "$COMMANDER_DOWNLOAD_URL" \
+            --output "$COMMANDER_ZIP"
+          ls -lh "$COMMANDER_ZIP"
+          file "$COMMANDER_ZIP"
           unzip -q "$COMMANDER_ZIP" -d "$COMMANDER_PACKAGE_DIR"
 
-          COMMANDER_ARCHIVE="$(find "$COMMANDER_PACKAGE_DIR" -type f -iname '*linux*x86_64*.tar*' -print -quit)"
-          test -n "$COMMANDER_ARCHIVE"
           mkdir -p "$COMMANDER_INSTALL_DIR"
-          tar -xf "$COMMANDER_ARCHIVE" -C "$COMMANDER_INSTALL_DIR"
+          COMMANDER_ARCHIVE="$(find "$COMMANDER_PACKAGE_DIR" -type f \( -iname '*.tar' -o -iname '*.tar.gz' -o -iname '*.tgz' -o -iname '*.tar.xz' -o -iname '*.tar.bz2' \) -print -quit)"
+          if [ -n "$COMMANDER_ARCHIVE" ]; then
+            tar -xf "$COMMANDER_ARCHIVE" -C "$COMMANDER_INSTALL_DIR"
+          fi
 
-          COMMANDER_BIN="$(find "$COMMANDER_INSTALL_DIR" -type f -name commander -print -quit)"
-          test -n "$COMMANDER_BIN"
+          COMMANDER_BIN="$(find "$COMMANDER_INSTALL_DIR" "$COMMANDER_PACKAGE_DIR" -type f \( -name commander -o -name commander.sh \) -print -quit)"
+          if [ -z "$COMMANDER_BIN" ]; then
+            echo "::error::Unable to find commander binary in downloaded Simplicity Commander package"
+            find "$COMMANDER_PACKAGE_DIR" -maxdepth 4 -type f | sort
+            exit 1
+          fi
           chmod +x "$COMMANDER_BIN"
           echo "$(dirname "$COMMANDER_BIN")" >> "$GITHUB_PATH"
+          echo "COMMANDER_PATH=$COMMANDER_BIN" >> "$GITHUB_ENV"
           "$COMMANDER_BIN" --version
 
       - name: Download BRD2703A internal-storage bootloader
@@ -102,7 +118,10 @@ jobs:
           BOOTLOADER_PACKAGE_DIR="$RUNNER_TEMP/bootloader-binaries"
           OUTPUT_DIR="out/efr32-ota-artifacts"
 
-          wget --quiet "$BOOTLOADER_DOWNLOAD_URL" -O "$BOOTLOADER_ZIP"
+          curl --fail --location --show-error --retry 5 --retry-all-errors \
+            --connect-timeout 30 --max-time 300 \
+            "$BOOTLOADER_DOWNLOAD_URL" \
+            --output "$BOOTLOADER_ZIP"
           unzip -q "$BOOTLOADER_ZIP" -d "$BOOTLOADER_PACKAGE_DIR"
 
           BOOTLOADER_SOURCE="$(find "$BOOTLOADER_PACKAGE_DIR" -type f -name "$BOOTLOADER_FILE_NAME" -print -quit)"
