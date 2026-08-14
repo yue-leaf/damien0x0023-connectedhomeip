@@ -80,6 +80,7 @@ jobs:
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             ca-certificates \
+            bzip2 \
             curl \
             file \
             libqt5widgets5 \
@@ -104,16 +105,17 @@ jobs:
             tar -xf "$COMMANDER_ARCHIVE" -C "$COMMANDER_INSTALL_DIR"
           fi
 
-          COMMANDER_BIN="$(find "$COMMANDER_INSTALL_DIR" "$COMMANDER_PACKAGE_DIR" -type f \( -name commander -o -name commander.sh \) -print -quit)"
+          COMMANDER_BIN="$(find "$COMMANDER_INSTALL_DIR" "$COMMANDER_PACKAGE_DIR" -type f \( -name commander -o -name commander.sh -o -name commander-cli \) -print -quit)"
           if [ -z "$COMMANDER_BIN" ]; then
             echo "::error::Unable to find commander binary in downloaded Simplicity Commander package"
             find "$COMMANDER_PACKAGE_DIR" -maxdepth 4 -type f | sort
             exit 1
           fi
           chmod +x "$COMMANDER_BIN"
-          echo "$(dirname "$COMMANDER_BIN")" >> "$GITHUB_PATH"
-          echo "COMMANDER_PATH=$COMMANDER_BIN" >> "$GITHUB_ENV"
-          "$COMMANDER_BIN" --version
+          ln -sf "$COMMANDER_BIN" "$COMMANDER_INSTALL_DIR/commander"
+          echo "$COMMANDER_INSTALL_DIR" >> "$GITHUB_PATH"
+          echo "COMMANDER_PATH=$COMMANDER_INSTALL_DIR/commander" >> "$GITHUB_ENV"
+          "$COMMANDER_INSTALL_DIR/commander" --version
 
       - name: Download BRD2703A internal-storage bootloader
         shell: bash
