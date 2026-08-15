@@ -30,16 +30,14 @@ env:
   CHIP_NO_LOG_TIMESTAMPS: true
   SILABS_BOARD: "BRD2703A"
   APP_NAME: "matter-silabs-lighting"
-  OTA_SOFTWARE_VERSION: "2"
-  OTA_SOFTWARE_VERSION_STRING: "2.0.0"
+  OTA_SOFTWARE_VERSION: "3"
+  OTA_SOFTWARE_VERSION_STRING: "3.0.0"
   MIN_APPLICABLE_SOFTWARE_VERSION: "1"
   OTA_VENDOR_ID: "0xFFF2"
   OTA_PRODUCT_ID: "0x8001"
   INTERNAL_STORAGE_SLOT_START: "0x080EC000"
   INTERNAL_STORAGE_SLOT_SIZE_BYTES: "548864"
   COMMANDER_DOWNLOAD_URL: "https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip"
-  BOOTLOADER_DOWNLOAD_URL: "https://github.com/SiliconLabs/matter_extension/releases/download/v2.5.0/bootloader_binaries_matter_extension_v2.5.0-1.4.zip"
-  BOOTLOADER_FILE_NAME: "bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37"
 
 jobs:
   efr32-ota:
@@ -121,25 +119,6 @@ jobs:
           echo "$COMMANDER_INSTALL_DIR" >> "$GITHUB_PATH"
           echo "COMMANDER_PATH=$COMMANDER_INSTALL_DIR/commander" >> "$GITHUB_ENV"
           "$COMMANDER_INSTALL_DIR/commander" --version
-
-      - name: Download BRD2703A internal-storage bootloader
-        shell: bash
-        run: |
-          BOOTLOADER_ZIP="$RUNNER_TEMP/bootloader_binaries_matter_extension_v2.5.0-1.4.zip"
-          BOOTLOADER_PACKAGE_DIR="$RUNNER_TEMP/bootloader-binaries"
-          OUTPUT_DIR="out/efr32-ota-artifacts"
-
-          curl --fail --location --show-error --retry 5 --retry-all-errors \
-            --connect-timeout 30 --max-time 300 \
-            "$BOOTLOADER_DOWNLOAD_URL" \
-            --output "$BOOTLOADER_ZIP"
-          unzip -q "$BOOTLOADER_ZIP" -d "$BOOTLOADER_PACKAGE_DIR"
-
-          BOOTLOADER_SOURCE="$(find "$BOOTLOADER_PACKAGE_DIR" -type f -name "$BOOTLOADER_FILE_NAME" -print -quit)"
-          test -n "$BOOTLOADER_SOURCE"
-          mkdir -p "$OUTPUT_DIR"
-          cp "$BOOTLOADER_SOURCE" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
-          commander util appinfo "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
 
       - name: Build Lighting App with Matter software version 2
         shell: bash
@@ -267,7 +246,6 @@ jobs:
             out/efr32-ota-artifacts/matter-silabs-lighting-v*.ota
             out/efr32-ota-artifacts/matter-silabs-lighting-v*-ota-header.txt
             out/efr32-ota-artifacts/matter-silabs-lighting-v*-appinfo.txt
-            out/efr32-ota-artifacts/bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
 
       - name: Show artifact URL
         shell: bash
