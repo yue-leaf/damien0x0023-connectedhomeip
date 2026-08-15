@@ -30,8 +30,17 @@
 
 // Only include app properties if the Gecko SDK component that does it automatically isn't present
 #if !defined(SL_CATALOG_GECKO_BOOTLOADER_INTERFACE_PRESENT)
-// Header used for building the image GBL file
-#define APP_PROPERTIES_VERSION 1
+// Header used for building the image GBL file.
+// Keep the Gecko Bootloader application version aligned with the Matter
+// software version configured by the build workflow. If this remains hardcoded
+// to 1, an OTA image built with Matter software version 2 still embeds a GBL app
+// version of 1, which can make apply/rollback/version state ambiguous.
+#ifndef SL_MATTER_VERSION
+#define APP_PROPERTIES_APP_VERSION 1
+#else
+#define APP_PROPERTIES_APP_VERSION SL_MATTER_VERSION
+#endif
+
 #define APP_PROPERTIES_ID                                                                                                          \
     {                                                                                                                              \
         0                                                                                                                          \
@@ -59,7 +68,7 @@ __attribute__((used)) ApplicationProperties_t sl_app_properties = {
       .type = APPLICATION_TYPE_THREAD,
 
       /// Version number for this application
-      .version = APP_PROPERTIES_VERSION,
+      .version = APP_PROPERTIES_APP_VERSION,
 
       /// Capabilities of this application
       .capabilities = 0,

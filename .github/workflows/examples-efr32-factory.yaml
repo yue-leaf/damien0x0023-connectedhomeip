@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Build example - EFR32 OTA v2
+name: Build example - EFR32 factory image
 
 on:
   push:
@@ -30,20 +30,16 @@ env:
   CHIP_NO_LOG_TIMESTAMPS: true
   SILABS_BOARD: "BRD2703A"
   APP_NAME: "matter-silabs-lighting"
-  OTA_SOFTWARE_VERSION: "2"
-  OTA_SOFTWARE_VERSION_STRING: "2.0.0"
-  MIN_APPLICABLE_SOFTWARE_VERSION: "1"
-  OTA_VENDOR_ID: "0xFFF2"
-  OTA_PRODUCT_ID: "0x8001"
+  FACTORY_SOFTWARE_VERSION: "1"
+  FACTORY_SOFTWARE_VERSION_STRING: "1.0.0"
   INTERNAL_STORAGE_SLOT_START: "0x080EC000"
-  INTERNAL_STORAGE_SLOT_SIZE_BYTES: "548864"
   COMMANDER_DOWNLOAD_URL: "https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip"
   BOOTLOADER_DOWNLOAD_URL: "https://github.com/SiliconLabs/matter_extension/releases/download/v2.5.0/bootloader_binaries_matter_extension_v2.5.0-1.4.zip"
   BOOTLOADER_FILE_NAME: "bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37"
 
 jobs:
-  efr32-ota:
-    name: EFR32 BRD2703A OTA v2
+  efr32-factory:
+    name: EFR32 BRD2703A factory v1
     runs-on: ubuntu-latest
     if: github.actor != 'restyled-io[bot]'
 
@@ -127,7 +123,7 @@ jobs:
         run: |
           BOOTLOADER_ZIP="$RUNNER_TEMP/bootloader_binaries_matter_extension_v2.5.0-1.4.zip"
           BOOTLOADER_PACKAGE_DIR="$RUNNER_TEMP/bootloader-binaries"
-          OUTPUT_DIR="out/efr32-ota-artifacts"
+          OUTPUT_DIR="out/efr32-factory-artifacts"
 
           curl --fail --location --show-error --retry 5 --retry-all-errors \
             --connect-timeout 30 --max-time 300 \
@@ -141,12 +137,12 @@ jobs:
           cp "$BOOTLOADER_SOURCE" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
           commander util appinfo "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
 
-      - name: Build Lighting App with Matter software version 2
+      - name: Build internal-storage-safe factory app
         shell: bash
         run: |
           scripts/examples/gn_silabs_example.sh \
             examples/lighting-app/silabs \
-            out/efr32-ota \
+            out/efr32-factory \
             "$SILABS_BOARD" \
             --docker \
             --slc_generate \
@@ -165,41 +161,32 @@ jobs:
             chip_enable_ota_requestor=true \
             use_external_flash=false \
             use_rps_extension=false \
-            "sl_matter_version=${OTA_SOFTWARE_VERSION}" \
-            "sl_matter_version_str=\"${OTA_SOFTWARE_VERSION_STRING}\""
+            "sl_matter_version=${FACTORY_SOFTWARE_VERSION}" \
+            "sl_matter_version_str=\"${FACTORY_SOFTWARE_VERSION_STRING}\""
 
-          BUILD_DIR="out/efr32-ota/$SILABS_BOARD"
+          BUILD_DIR="out/efr32-factory/$SILABS_BOARD"
           test -f "$BUILD_DIR/matter-silabs-lighting-example.s37"
-          grep -E "sl_matter_version *= *${OTA_SOFTWARE_VERSION}" "$BUILD_DIR/args.gn"
-          grep -E "sl_matter_version_str *= *\"${OTA_SOFTWARE_VERSION_STRING}\"" "$BUILD_DIR/args.gn"
+          grep -E "sl_matter_version_str *= *\"${FACTORY_SOFTWARE_VERSION_STRING}\"" "$BUILD_DIR/args.gn"
 
-      - name: Create GBL and Matter OTA package
+      - name: Validate and stage factory artifacts
         shell: bash
         run: |
           source scripts/activate.sh
 
-          if ! command -v commander >/dev/null 2>&1; then
-            echo "::error::Simplicity Commander is required to create the EFR32 GBL image"
-            exit 1
-          fi
-
-          BUILD_DIR="out/efr32-ota/$SILABS_BOARD"
-          OUTPUT_DIR="out/efr32-ota-artifacts"
+          BUILD_DIR="out/efr32-factory/$SILABS_BOARD"
+          OUTPUT_DIR="out/efr32-factory-artifacts"
           APP_S37="$BUILD_DIR/matter-silabs-lighting-example.s37"
-          VERSIONED_S37="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}.s37"
-          GBL_FILE="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}.gbl"
-          OTA_FILE="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}.ota"
-          OTA_INFO="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}-ota-header.txt"
-          APP_INFO="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}-appinfo.txt"
+          FACTORY_S37="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}.s37"
+          APP_INFO="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-appinfo.txt"
 
           mkdir -p "$OUTPUT_DIR"
-          cp "$APP_S37" "$VERSIONED_S37"
+          cp "$APP_S37" "$FACTORY_S37"
 
-          commander util appinfo "$VERSIONED_S37" | tee "$APP_INFO"
-          EXPECTED_APP_VERSION_HEX="$(printf '0x%08x' "$OTA_SOFTWARE_VERSION")"
+          commander util appinfo "$FACTORY_S37" | tee "$APP_INFO"
+          EXPECTED_APP_VERSION_HEX="$(printf '0x%08x' "$FACTORY_SOFTWARE_VERSION")"
           grep -E "App version[[:space:]]*:[[:space:]]*${EXPECTED_APP_VERSION_HEX}" "$APP_INFO"
 
-          python3 - "$VERSIONED_S37" "$INTERNAL_STORAGE_SLOT_START" <<'PY'
+          python3 - "$FACTORY_S37" "$INTERNAL_STORAGE_SLOT_START" <<'PY'
           import sys
           path = sys.argv[1]
           slot_start = int(sys.argv[2], 0)
@@ -224,52 +211,23 @@ jobs:
                   max_end = max(max_end, end)
           print(f"S37 data range: 0x{min_addr:08X}-0x{max_end:08X}; internal OTA slot starts at 0x{slot_start:08X}")
           if max_end > slot_start:
-              raise SystemExit(f"Application overlaps internal OTA slot: max end 0x{max_end:08X} > slot start 0x{slot_start:08X}")
+              raise SystemExit(f"Factory application overlaps internal OTA slot: max end 0x{max_end:08X} > slot start 0x{slot_start:08X}")
           PY
 
-          commander gbl create "$GBL_FILE" \
-            --app "$VERSIONED_S37" \
-            --compress lzma
+          ls -lh "$FACTORY_S37" "$APP_INFO" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
 
-          GBL_SIZE_BYTES="$(wc -c < "$GBL_FILE" | tr -d '[:space:]')"
-          echo "GBL size: ${GBL_SIZE_BYTES} bytes; internal OTA slot size: ${INTERNAL_STORAGE_SLOT_SIZE_BYTES} bytes"
-          if [ "$GBL_SIZE_BYTES" -gt "$INTERNAL_STORAGE_SLOT_SIZE_BYTES" ]; then
-            echo "::error::GBL payload is too large for BRD2703A internal OTA storage: ${GBL_SIZE_BYTES} > ${INTERNAL_STORAGE_SLOT_SIZE_BYTES}"
-            exit 1
-          fi
-
-          python3 src/app/ota_image_tool.py create \
-            -v "$OTA_VENDOR_ID" \
-            -p "$OTA_PRODUCT_ID" \
-            -vn "$OTA_SOFTWARE_VERSION" \
-            -vs "$OTA_SOFTWARE_VERSION_STRING" \
-            -da sha256 \
-            -mi "$MIN_APPLICABLE_SOFTWARE_VERSION" \
-            "$GBL_FILE" \
-            "$OTA_FILE"
-
-          python3 src/app/ota_image_tool.py show "$OTA_FILE" | tee "$OTA_INFO"
-          grep -F "[2] Version: ${OTA_SOFTWARE_VERSION}" "$OTA_INFO"
-          grep -F "[3] Version String: ${OTA_SOFTWARE_VERSION_STRING}" "$OTA_INFO"
-          grep -F "[4] Payload Size: ${GBL_SIZE_BYTES}" "$OTA_INFO"
-
-          ls -lh "$VERSIONED_S37" "$GBL_FILE" "$OTA_FILE" "$OTA_INFO" "$APP_INFO"
-
-      - name: Publish EFR32 OTA v2 artifacts
-        id: upload-ota-artifacts
+      - name: Publish EFR32 factory artifacts
+        id: upload-factory-artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: efr32-brd2703a-light-ota-v${{ env.OTA_SOFTWARE_VERSION }}-${{ github.sha }}
+          name: efr32-brd2703a-light-factory-v${{ env.FACTORY_SOFTWARE_VERSION }}-${{ github.sha }}
           if-no-files-found: error
           path: |
-            out/efr32-ota-artifacts/matter-silabs-lighting-v*.s37
-            out/efr32-ota-artifacts/matter-silabs-lighting-v*.gbl
-            out/efr32-ota-artifacts/matter-silabs-lighting-v*.ota
-            out/efr32-ota-artifacts/matter-silabs-lighting-v*-ota-header.txt
-            out/efr32-ota-artifacts/matter-silabs-lighting-v*-appinfo.txt
-            out/efr32-ota-artifacts/bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
+            out/efr32-factory-artifacts/matter-silabs-lighting-factory-v*.s37
+            out/efr32-factory-artifacts/matter-silabs-lighting-factory-v*-appinfo.txt
+            out/efr32-factory-artifacts/bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
 
       - name: Show artifact URL
         shell: bash
         run: |
-          echo "OTA artifact download URL: ${{ steps.upload-ota-artifacts.outputs.artifact-url }}"
+          echo "Factory artifact download URL: ${{ steps.upload-factory-artifacts.outputs.artifact-url }}"
