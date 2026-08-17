@@ -1,0 +1,77 @@
+# Copyright (c) 2026 Project CHIP Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Build RTL8777G EVB Matter lighting image
+
+on:
+    workflow_dispatch:
+        inputs:
+            artifact_name:
+                description: 'Uploaded artifact name'
+                required: true
+                default: 'rtl8777g-evb-matter-lighting-image'
+                type: string
+
+concurrency:
+    group: ${{ github.ref }}-${{ github.workflow }}-${{ github.run_number }}
+    cancel-in-progress: true
+
+env:
+    CHIP_LOG_TIMESTAMPS: false
+    BUILD_TARGET: realtek-rtl8777g-lighting
+    ARTIFACT_DIR: out/artifacts
+
+jobs:
+    build:
+        name: Build RTL8777G lighting firmware image
+        runs-on: ubuntu-latest
+        if: github.actor != 'restyled-io[bot]'
+
+        container:
+            image: ghcr.io/project-chip/chip-build:200
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+            - name: Checkout submodules & Bootstrap
+              uses: ./.github/actions/checkout-submodules-and-bootstrap
+              with:
+                  platform: realtek
+                  extra-submodule-parameters: --recursive
+
+            - name: Build RTL8777G Matter lighting image
+              run: |
+                  scripts/run_in_build_env.sh "\
+                      ./scripts/build/build_examples.py \
+                      --target ${BUILD_TARGET} \
+                      build \
+                      --copy-artifacts-to ${ARTIFACT_DIR} \
+                  "
+
+            - name: List generated images
+              run: |
+                  find "${ARTIFACT_DIR}" -maxdepth 4 -type f -print -exec ls -lh {} \;
+                  if [ -d "out/${BUILD_TARGET}/bin" ]; then
+                      find "out/${BUILD_TARGET}/bin" -maxdepth 2 -type f -print -exec ls -lh {} \;
+                  fi
+
+            - name: Upload RTL8777G firmware artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ${{ inputs.artifact_name }}
+                  path: |
+                      ${{ env.ARTIFACT_DIR }}/realtek-rtl8777g-lighting/**
+                      out/realtek-rtl8777g-lighting/bin/**
+                  if-no-files-found: error
