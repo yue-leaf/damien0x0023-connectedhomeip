@@ -15,13 +15,18 @@
 name: Build RTL8777G EVB Matter lighting image
 
 on:
-    workflow_dispatch:
-        inputs:
-            artifact_name:
-                description: 'Uploaded artifact name'
-                required: true
-                default: 'rtl8777g-evb-matter-lighting-image'
-                type: string
+  workflow_dispatch:
+    inputs:
+      artifact_name:
+        description: 'Uploaded artifact name'
+        required: true
+        default: 'rtl8777g-evb-matter-lighting-image'
+        type: string
+  push:
+    branches:
+      - silabs-mss-ota
+    tags:
+      - 'v*'
 
 concurrency:
     group: ${{ github.ref }}-${{ github.workflow }}-${{ github.run_number }}
@@ -70,7 +75,7 @@ jobs:
             - name: Upload RTL8777G firmware artifacts
               uses: actions/upload-artifact@v4
               with:
-                  name: ${{ inputs.artifact_name }}
+                  name: ${{ inputs.artifact_name || 'rtl8777g-evb-matter-lighting-image' }}
                   path: |
                       ${{ env.ARTIFACT_DIR }}/realtek-rtl8777g-lighting/**
                       out/realtek-rtl8777g-lighting/bin/**
