@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SD Card &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="MMC" href="../../../mmc/doc/text_cn/README.html" />
+    <link rel="prev" title="SD" href="../../../doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_cn/README.html">蓝牙</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/doc/text_cn/README.html">外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_cn/README.html">USB</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_cn/README.html">SD</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">SD Card</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">环境需求</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">硬件连线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">编译和下载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">测试验证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">代码介绍</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#sd-sdcard-source-path-cn">源码路径</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sd-sdcard-initiallization-cn">初始化</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sd-sdcard-function-cn">功能实现</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mmc/doc/text_cn/README.html">MMC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">SD</a></li>
+    <li class="breadcrumb-item active">SD Card</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="sd-card">
+<h1>SD Card<a class="headerlink" href="#sd-card" title="Link to this heading"></a></h1>
+<p>该示例演示了如何使用 <a class="reference internal" href="../../../../../doc/glossary.html#term-SD"><span class="xref std std-term">SD</span></a> library 实现芯片与 SD 存储卡读、写的应用。</p>
+<p>示例中首先对存储卡进行初始化，并对存储卡进行了数据写入操作。随后进行数据读取并检查与之前写入的数据是否一致。</p>
+<section id="id1">
+<h2>环境需求<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>该示例支持以下开发套件：</p>
+<table class="docutils align-center" id="id9">
+<caption><span class="caption-text">开发套件</span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G HDK</p></td>
+<td><p>RTL87x2G EVB</p></td>
+</tr>
+</tbody>
+</table>
+<p>更多信息请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a>。</p>
+</section>
+<section id="id2">
+<h2>硬件连线<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>SD Card子板及接线，参考 <a class="reference internal" href="../../../../../doc/evb_guide/text_cn/model_b.html"><span class="doc">Model B评估板</span></a> 中 <a class="reference internal" href="../../../../../doc/evb_guide/text_cn/model_b.html#b-wi-fisd-nand-flash"><span class="std std-ref">WiFi和SD Nand Flash复用接口</span></a> 。</p>
+<p>SD Card接口引脚如下表：</p>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text">SD Card接口引脚</span><a class="headerlink" href="#id10" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>引脚名称</p></th>
+<th class="head"><p>PIN</p></th>
+<th class="head"><p>含义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>DAT3 / CS</p></th>
+<td><p>P9_5</p></td>
+<td><p>数据线 3</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>CMD / DI</p></th>
+<td><p>P9_3</p></td>
+<td><p>命令响应线</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>VSS1</p></th>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>VDD</p></th>
+<td><p>VCC(3.3V)</p></td>
+<td><p>3.3V 供电</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>CLK</p></th>
+<td><p>P9_4</p></td>
+<td><p>时钟</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>VSS2</p></th>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>DAT0 / DO</p></th>
+<td><p>P10_0</p></td>
+<td><p>数据线 0</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>DAT1</p></th>
+<td><p>P9_7</p></td>
+<td><p>数据线 1</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>DAT2</p></th>
+<td><p>P9_6</p></td>
+<td><p>数据线 2</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h2>编译和下载<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p id="sd-sdcard-sample-proj-file-cn">该示例的工程路径如下:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\sd\sdcard\proj\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\sd\sdcard\proj\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>请按照以下步骤操作构建并运行该示例:</p>
+<ol class="arabic simple">
+<li><p>打开工程文件。</p></li>
+<li><p>按照 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#app-image"><span class="std std-ref">编译 APP Image</span></a> 给出的步骤构建目标文件。</p></li>
+<li><p>编译成功后，在路径 <code class="file docutils literal notranslate"><span class="pre">mdk\bin</span></code> 或 <code class="file docutils literal notranslate"><span class="pre">gcc\bin</span></code> 下会生成 app bin <code class="file docutils literal notranslate"><span class="pre">app_MP_xxx.bin</span></code> 文件。</p></li>
+<li><p>按照 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#mptool"><span class="std std-ref">MP Tool</span></a> 给出的步骤将 app bin 烧录至 EVB 内。</p></li>
+<li><p>按下复位按键，开始运行。</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2>测试验证<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>当 EVB 启动后，在 Debug Analyzer工具内观察 SD Card 初始化的状态，认卡成功则打印状态： <code class="docutils literal notranslate"><span class="pre">Init:</span> <span class="pre">0</span></code> 。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">Init</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>将准备好的数据（前 30 block 数据为0xff，后 30 block 数据为 0x00）写到 SD Card 中，写成功则打印状态： <code class="docutils literal notranslate"><span class="pre">Write:</span> <span class="pre">0</span></code> 。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">Write</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>读 SD Card 数据，读成功则打印状态： <code class="docutils literal notranslate"><span class="pre">Read:</span> <span class="pre">0</span></code>，同时打印读到的数据。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">Read</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="n">Block</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mh">0x0000</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mh">0xFF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0xFF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0xFF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0xFF</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="mh">0xFF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0xFF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0xFF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0xFF</span>
+<span class="p">...</span>
+<span class="n">Block</span><span class="w"> </span><span class="mi">30</span><span class="o">:</span><span class="w"> </span><span class="mh">0x0000</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x00</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>检查读写数据是否一致，如果不一致会打印错误数据，例如：第 1 block 第 100 个数据错误数据为 0x33 打印如下：</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Block</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="mh">0xA0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mh">0x33</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">error</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id5">
+<h2>代码介绍<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>该章节分为以下几个部分：</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#sd-sdcard-source-path-cn"><span class="std std-ref">源码路径</span></a>。</p></li>
+<li><p>初始化函数将在 <a class="reference internal" href="#sd-sdcard-initiallization-cn"><span class="std std-ref">初始化</span></a> 章节介绍。</p></li>
+<li><p>初始化后的功能实现将在 <a class="reference internal" href="#sd-sdcard-function-cn"><span class="std std-ref">功能实现</span></a> 章节介绍。</p></li>
+</ol>
+<section id="sd-sdcard-source-path-cn">
+<span id="id6"></span><h3>源码路径<a class="headerlink" href="#sd-sdcard-source-path-cn" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>工程路径: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\sd\sdcard\proj</span></code></p></li>
+<li><p>源码路径: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\sd\sdcard\src</span></code></p></li>
+</ul>
+<p>该工程的工程文件代码结构如下：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: sdcard
+    └── secure_only_app
+        └── Device                   includes startup code
+            ├── startup_rtl.c
+            └── system_rtl.c
+        ├── CMSIS                    includes CMSIS header files
+        ├── CMSE Library             Non-secure callable lib
+        ├── lib                      includes all binary symbol files that user application is built on
+            ├── sd.lib
+            └── rtl87x2g_io.lib
+        ├── peripheral               includes all peripheral drivers and module code used by the application
+            ├── rtl_rcc.c
+            ├── rtl_pinmux.c
+            ├── io_dlps.c
+            └── rtl_nvic.c
+        └── APP                      includes the ble_peripheral user application implementation
+            ├── main_ns.c
+            ├── app_task.c
+            └── sd_test.c
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>需要在工程中添加 sd.lib, SD library 封装了 SD 的基础 API。</p>
+</div>
+</section>
+<section id="sd-sdcard-initiallization-cn">
+<span id="id7"></span><h3>初始化<a class="headerlink" href="#sd-sdcard-initiallization-cn" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>设置初始化参数。</p>
+<ol class="arabic simple">
+<li><p>设置 Card 类型为 SD Card。</p></li>
+<li><p>设置数据宽度为 4BIT。</p></li>
+<li><p>设置时钟输出频率为 50MHz。</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SdEmmcInitParm_t</span><span class="w"> </span><span class="n">Parm</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="n">CardType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CARDTYPE_SD</span><span class="p">,</span>
+<span class="w">  </span><span class="p">.</span><span class="n">DataWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATAWIDTH_4BIT</span><span class="p">,</span>
+<span class="w">  </span><span class="p">.</span><span class="n">ClkOutFreq_kHz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="sd-sdcard-function-cn">
+<span id="id8"></span><h3>功能实现<a class="headerlink" href="#sd-sdcard-function-cn" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>调用 <code class="docutils literal notranslate"><span class="pre">Sd_Init</span></code> ，对 SD 卡初始化。</p></li>
+<li><p>调用 <code class="docutils literal notranslate"><span class="pre">os_mem_alloc</span></code> 申请内存 pBuf。</p></li>
+<li><p>准备好数据（前 30 block 数据为 0xff，后 30 block 数据为 0x00），调用 <code class="docutils literal notranslate"><span class="pre">Sd_Write</span></code> 函数，将 pBuf 数据写入 SD 卡中。</p></li>
+<li><p>将 pBuf 数据预填为 0x77，调用 <code class="docutils literal notranslate"><span class="pre">Sd_Read</span></code> 函数，读取数据到 pBuf 内。</p></li>
+<li><p>打印读取的数据，同时检查读写数据是否一致，如果不一致会打印错误数据。</p></li>
+<li><p>调用 <code class="docutils literal notranslate"><span class="pre">os_mem_free</span></code> 释放内存 pBuf。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SdEmmcRes_t</span><span class="w"> </span><span class="n">Res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Init</span><span class="p">(</span><span class="n">SD_Demo</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Parm</span><span class="p">);</span>
+
+<span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">pBuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os_mem_alloc</span><span class="p">(</span><span class="n">RAM_TYPE_EXT_DATA_SRAM</span><span class="p">,</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="p">);</span>
+<span class="n">memset</span><span class="p">(</span><span class="n">pBuf</span><span class="p">,</span><span class="w"> </span><span class="mh">0xff</span><span class="p">,</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="n">memset</span><span class="p">(</span><span class="n">pBuf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="n">Res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Write</span><span class="p">(</span><span class="n">SD_Demo</span><span class="p">,</span><span class="w"> </span><span class="n">START_BLOCK</span><span class="p">,</span><span class="w"> </span><span class="n">BLOCK_CNT</span><span class="p">,</span><span class="w"> </span><span class="n">pBuf</span><span class="p">);</span>
+
+<span class="n">memset</span><span class="p">(</span><span class="n">pBuf</span><span class="p">,</span><span class="w"> </span><span class="mh">0x77</span><span class="p">,</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="p">);</span>
+<span class="n">Res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Read</span><span class="p">(</span><span class="n">SD_Demo</span><span class="p">,</span><span class="w"> </span><span class="n">START_BLOCK</span><span class="p">,</span><span class="w"> </span><span class="n">BLOCK_CNT</span><span class="p">,</span><span class="w"> </span><span class="n">pBuf</span><span class="p">);</span>
+
+<span class="cm">/* Print all read data */</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;Block %d: 0x%04x -&gt; 0x%02x - 0x%02x - 0x%02x - 0x%02x --- 0x%02x - 0x%02x - 0x%02x - 0x%02x&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span>
+<span class="w">               </span><span class="n">pBuf</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">pBuf</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">pBuf</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">pBuf</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span>
+<span class="w">               </span><span class="n">pBuf</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="n">pBuf</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="n">pBuf</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="p">],</span><span class="w"> </span><span class="n">pBuf</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Compare whether the read data is correct from write data */</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(((</span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">((</span><span class="n">pBuf</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mh">0xff</span><span class="p">)))</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="p">((</span><span class="n">j</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BUF_BYTES</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">pBuf</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;Block %d: 0x%04x -&gt; 0x%02x data error&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span><span class="w"> </span><span class="n">pBuf</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pBuf</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x77</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">os_mem_free</span><span class="p">(</span><span class="n">pBuf</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___s_d.html#group___s_d"><span class="std std-ref">SD</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../doc/text_cn/README.html" class="btn btn-neutral float-left" title="SD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../mmc/doc/text_cn/README.html" class="btn btn-neutral float-right" title="MMC" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

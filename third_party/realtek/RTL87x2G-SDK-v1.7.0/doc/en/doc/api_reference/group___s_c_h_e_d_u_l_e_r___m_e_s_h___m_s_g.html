@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh Msg &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Model ID" href="group___s_c_h_e_d_u_l_e_r___m_o_d_e_l___i_d.html" />
+    <link rel="prev" title="Client Data" href="group___s_c_h_e_d_u_l_e_r___c_l_i_e_n_t___d_a_t_a.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___application.html">Application</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p.html">GAP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t.html">GATT</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___mesh___model.html">Mesh Model</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___mesh___model___s_i_g.html">SIG</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r.html">BLOB Transfer</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___common.html">Common</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___d_f_u.html">DFU</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___foundation.html">Foundation</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___generics.html">Generics</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___lighting.html">Lighting</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g.html">Remote Provisioning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___sensors.html">Sensors</a></li>
+<li class="toctree-l7 current"><a class="reference internal" href="group___mesh___model___s_i_g___time___scenes.html">Time and Scenes</a><ul class="current">
+<li class="toctree-l8"><a class="reference internal" href="group___s_c_e_n_e.html">Scene</a></li>
+<li class="toctree-l8 current"><a class="reference internal" href="group___s_c_h_e_d_u_l_e_r.html">Scheduler</a><ul class="current">
+<li class="toctree-l9"><a class="reference internal" href="group___s_c_h_e_d_u_l_e_r___a_c_c_e_s_s___o_p_c_o_d_e.html">Access Opcode</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___s_c_h_e_d_u_l_e_r___c_l_i_e_n_t___a_p_i.html">Client API</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___s_c_h_e_d_u_l_e_r___c_l_i_e_n_t___d_a_t_a.html">Client Data</a></li>
+<li class="toctree-l9 current"><a class="current reference internal" href="#">Mesh Msg</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420scheduler_register_t"><code class="docutils literal notranslate"><span class="pre">scheduler_register_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv415scheduler_get_t"><code class="docutils literal notranslate"><span class="pre">scheduler_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418scheduler_status_t"><code class="docutils literal notranslate"><span class="pre">scheduler_status_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv422scheduler_action_get_t"><code class="docutils literal notranslate"><span class="pre">scheduler_action_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv422scheduler_action_set_t"><code class="docutils literal notranslate"><span class="pre">scheduler_action_set_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv425scheduler_action_status_t"><code class="docutils literal notranslate"><span class="pre">scheduler_action_status_t</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="group___s_c_h_e_d_u_l_e_r___m_o_d_e_l___i_d.html">Model ID</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___s_c_h_e_d_u_l_e_r___s_e_r_v_e_r___a_p_i.html">Server API</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___s_c_h_e_d_u_l_e_r___s_e_r_v_e_r___d_a_t_a.html">Server Data</a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="group___t_i_m_e.html">Time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___mesh___model___vendor.html">Vendor</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___mesh___protocol.html">Mesh Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model.html">Mesh Model</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g.html">SIG</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g___time___scenes.html">Time and Scenes</a></li>
+        <li class="breadcrumb-item"><a href="group___s_c_h_e_d_u_l_e_r.html">Scheduler</a></li>
+    <li class="breadcrumb-item active">Mesh Msg</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesh-msg">
+<h1>Mesh Msg<a class="headerlink" href="#mesh-msg" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">SCHEDULER_MESH_MSG</span></span></dt>
+<dd><p>Mesh message types for scheduler functions. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.IS_SCHEDULER_INDEX_VALID">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga8e2a900ca569c4b2e9008ffec1f1863c"></span><span class="sig-name descname"><span class="n"><span class="pre">IS_SCHEDULER_INDEX_VALID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">index</span></span><span class="sig-paren">)</span> <span class="pre">((index)</span> <span class="pre">&lt;=</span> <span class="pre">15)</span><a class="headerlink" href="#c.IS_SCHEDULER_INDEX_VALID" title="Link to this definition"></a><br /></dt>
+<dd><p>Macro to validate scheduler index. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_YEAR">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga2213bed36dfcc8360024a29fc66cc5bf"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_YEAR</span></span></span> <span class="pre">0x64</span><a class="headerlink" href="#c.SCHEDULER_EVERY_YEAR" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant to schedule every year. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.IS_SCHEDULER_YEAR_VALID">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gab0617e591f152e519a8a6ef2983dd36d"></span><span class="sig-name descname"><span class="n"><span class="pre">IS_SCHEDULER_YEAR_VALID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">year</span></span><span class="sig-paren">)</span> <span class="pre">((year)</span> <span class="pre">&lt;=</span> <span class="pre">0x64)</span><a class="headerlink" href="#c.IS_SCHEDULER_YEAR_VALID" title="Link to this definition"></a><br /></dt>
+<dd><p>Macro to validate scheduler year. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_JANUARY">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga3a22aeddda798fd3c3b847973dfddad5"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_JANUARY</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">0)</span><a class="headerlink" href="#c.SCHEDULER_IN_JANUARY" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in January. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_FEBRUARY">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gaf40b8f45c10272903688a7283f0045b3"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_FEBRUARY</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span><a class="headerlink" href="#c.SCHEDULER_IN_FEBRUARY" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in February. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_MARCH">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gadb9620a04393b78a435c97ddd8616553"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_MARCH</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">2)</span><a class="headerlink" href="#c.SCHEDULER_IN_MARCH" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in March. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_APRIL">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga4b6e5f3979bddb1673aa2e5f2fbc8b8c"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_APRIL</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">3)</span><a class="headerlink" href="#c.SCHEDULER_IN_APRIL" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in April. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_MAY">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga5fbc88c2dd1cc00613ab236954b1937e"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_MAY</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">4)</span><a class="headerlink" href="#c.SCHEDULER_IN_MAY" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in May. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_JUNE">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga2ec57619683085fd5915f8cf8544ac1f"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_JUNE</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">5)</span><a class="headerlink" href="#c.SCHEDULER_IN_JUNE" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in June. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_JULY">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gafb10040adf6e16adf633af0eb5c15859"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_JULY</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">6)</span><a class="headerlink" href="#c.SCHEDULER_IN_JULY" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in July. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_AUGUST">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gadc93046ea3144cc9f65e230899e85fc2"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_AUGUST</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">7)</span><a class="headerlink" href="#c.SCHEDULER_IN_AUGUST" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in August. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_SEPTEMBER">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga625bfc26eeb97d1ab6dd831daa3d644c"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_SEPTEMBER</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">8)</span><a class="headerlink" href="#c.SCHEDULER_IN_SEPTEMBER" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in September. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_OCTOBER">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga2bc5bcb299c663dd40b5871bded298e4"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_OCTOBER</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">9)</span><a class="headerlink" href="#c.SCHEDULER_IN_OCTOBER" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in October. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_NOVEMBER">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga5381f138963129226ce5efc54a395dca"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_NOVEMBER</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">10)</span><a class="headerlink" href="#c.SCHEDULER_IN_NOVEMBER" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in November. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_IN_DECEMBER">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gaf476c5b04324253a00faa588cce57e6f"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_IN_DECEMBER</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">11)</span><a class="headerlink" href="#c.SCHEDULER_IN_DECEMBER" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions in December. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_MONTH">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga94b729ab04e2e7c27351b80e320adf70"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_MONTH</span></span></span> <span class="pre">0x0FFF</span><a class="headerlink" href="#c.SCHEDULER_EVERY_MONTH" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant for scheduling every month. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_DAY">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga20d5c9da4eb4cf2c191f36b6c699f888"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_DAY</span></span></span> <span class="pre">0x00</span><a class="headerlink" href="#c.SCHEDULER_EVERY_DAY" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant to schedule every day. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_HOUR">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga47afae47f89d9e2ed38524182fd787be"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_HOUR</span></span></span> <span class="pre">0x18</span><a class="headerlink" href="#c.SCHEDULER_EVERY_HOUR" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant to schedule every hour. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_RANDOM_HOUR">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gaf77c4e2957c49ba70778749dc1b63af8"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_RANDOM_HOUR</span></span></span> <span class="pre">0x19</span><a class="headerlink" href="#c.SCHEDULER_RANDOM_HOUR" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant for random hour scheduling. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.IS_SCHEDULER_HOUR_VALID">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gab64645f9a10cd32bbc2f2e942cae4b4e"></span><span class="sig-name descname"><span class="n"><span class="pre">IS_SCHEDULER_HOUR_VALID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">hour</span></span><span class="sig-paren">)</span> <span class="pre">((hour)</span> <span class="pre">&lt;=</span> <span class="pre">0x19)</span><a class="headerlink" href="#c.IS_SCHEDULER_HOUR_VALID" title="Link to this definition"></a><br /></dt>
+<dd><p>Macro to validate scheduler hour. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_MINUTE">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gaf742fa1663fbde23c5b0d69f7f57a246"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_MINUTE</span></span></span> <span class="pre">0x3C</span><a class="headerlink" href="#c.SCHEDULER_EVERY_MINUTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant to schedule every minute. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_15_MINUTE">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gaa4db7c0635e3a11aea9f2c884d416165"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_15_MINUTE</span></span></span> <span class="pre">0x3D</span><a class="headerlink" href="#c.SCHEDULER_EVERY_15_MINUTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant for scheduling every 15 minutes. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_20_MINUTE">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga991f8fd61b276c286cefb1bd2a66fb76"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_20_MINUTE</span></span></span> <span class="pre">0x3E</span><a class="headerlink" href="#c.SCHEDULER_EVERY_20_MINUTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant for scheduling every 20 minutes. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_RADOM_MINUTE">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga011939d4b4959db0658eeccc749d0f81"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_RADOM_MINUTE</span></span></span> <span class="pre">0x3F</span><a class="headerlink" href="#c.SCHEDULER_RADOM_MINUTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant for random minute scheduling. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_SECOND">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gab1c822613b3c7f611baeb50632d54cd6"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_SECOND</span></span></span> <span class="pre">0x3C</span><a class="headerlink" href="#c.SCHEDULER_EVERY_SECOND" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant to schedule every second. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_15_SECOND">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gae385a1b8d0a1f50eae004664b0cd1ced"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_15_SECOND</span></span></span> <span class="pre">0x3D</span><a class="headerlink" href="#c.SCHEDULER_EVERY_15_SECOND" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant for scheduling every 15 seconds. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_EVERY_20_SECOND">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gaecc3f5522645eb6af3df8d7e50ecfbac"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_EVERY_20_SECOND</span></span></span> <span class="pre">0x3E</span><a class="headerlink" href="#c.SCHEDULER_EVERY_20_SECOND" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant for scheduling every 20 seconds. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_RANDOM_SECOND">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gaf4819926c9551b9a2a494de0c2254f1e"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_RANDOM_SECOND</span></span></span> <span class="pre">0x3F</span><a class="headerlink" href="#c.SCHEDULER_RANDOM_SECOND" title="Link to this definition"></a><br /></dt>
+<dd><p>Constant for random second scheduling. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_ON_MONDAYS">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga6c23d6ff346235164c4c74fe27ce37f9"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_ON_MONDAYS</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">0)</span><a class="headerlink" href="#c.SCHEDULER_ON_MONDAYS" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions on Mondays. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_ON_TUESDAYS">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gac63066308bb78e3ea6ae7f2200c6edfc"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_ON_TUESDAYS</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span><a class="headerlink" href="#c.SCHEDULER_ON_TUESDAYS" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions on Tuesdays. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_ON_WEDNESDAYS">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga46afc214754bac78c1ed1ae8e2907e51"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_ON_WEDNESDAYS</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">2)</span><a class="headerlink" href="#c.SCHEDULER_ON_WEDNESDAYS" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions on Wednesdays. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_ON_THURSDAYS">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga646ce1c24388e6d3e9023dcaad24d13c"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_ON_THURSDAYS</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">3)</span><a class="headerlink" href="#c.SCHEDULER_ON_THURSDAYS" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions on Thursdays. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_ON_FRIDAYS">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga120ceaef9d8bde2eb42923fa8cc59f50"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_ON_FRIDAYS</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">4)</span><a class="headerlink" href="#c.SCHEDULER_ON_FRIDAYS" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions on Fridays. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_ON_SATURDAYS">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga5ba7c877c17f86ebd6dff1b892ce9d01"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_ON_SATURDAYS</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">5)</span><a class="headerlink" href="#c.SCHEDULER_ON_SATURDAYS" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions on Saturdays. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_ON_SUNDAYS">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga3a64046141d67146fdb2544616dc3ee1"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_ON_SUNDAYS</span></span></span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">6)</span><a class="headerlink" href="#c.SCHEDULER_ON_SUNDAYS" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask for scheduling actions on Sundays. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_TURN_OFF">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga4c7696b8dde717c627fb939dc5635d78"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_TURN_OFF</span></span></span> <span class="pre">0x00</span><a class="headerlink" href="#c.SCHEDULER_TURN_OFF" title="Link to this definition"></a><br /></dt>
+<dd><p>Action to turn off device. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_TURN_ON">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga2a752435901a59f7a206e2e3b3c88c29"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_TURN_ON</span></span></span> <span class="pre">0x01</span><a class="headerlink" href="#c.SCHEDULER_TURN_ON" title="Link to this definition"></a><br /></dt>
+<dd><p>Action to turn on device. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_SCENE_RECALL">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga3d0b033955685f6dbf14d25702d45a7e"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_SCENE_RECALL</span></span></span> <span class="pre">0x02</span><a class="headerlink" href="#c.SCHEDULER_SCENE_RECALL" title="Link to this definition"></a><br /></dt>
+<dd><p>Action to recall a scene. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_NO_ACTION">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1ga9aa4ef59ac79717d327d9a5aa94bd6d7"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_NO_ACTION</span></span></span> <span class="pre">0x0F</span><a class="headerlink" href="#c.SCHEDULER_NO_ACTION" title="Link to this definition"></a><br /></dt>
+<dd><p>Represents no action taken. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SCHEDULER_NO_SCENE">
+<span class="target" id="group___s_c_h_e_d_u_l_e_r___m_e_s_h___m_s_g_1gab17e352c8472f4224eb0bf83f4629535"></span><span class="sig-name descname"><span class="n"><span class="pre">SCHEDULER_NO_SCENE</span></span></span> <span class="pre">0x00</span><a class="headerlink" href="#c.SCHEDULER_NO_SCENE" title="Link to this definition"></a><br /></dt>
+<dd><p>Represents no scene associated. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420scheduler_register_t">
+<span id="_CPPv320scheduler_register_t"></span><span id="_CPPv220scheduler_register_t"></span><span id="scheduler_register_t"></span><span class="target" id="structscheduler__register__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler_register_t</span></span></span><a class="headerlink" href="#_CPPv420scheduler_register_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for scheduler register. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t5indexE">
+<span id="_CPPv3N20scheduler_register_t5indexE"></span><span id="_CPPv2N20scheduler_register_t5indexE"></span><span id="scheduler_register_t::index__uint64_t"></span><span class="target" id="structscheduler__register__t_1a3e39e0381ab73d88040027129d7555bb"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">index</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t5indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scheduler index (0-15). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t4yearE">
+<span id="_CPPv3N20scheduler_register_t4yearE"></span><span id="_CPPv2N20scheduler_register_t4yearE"></span><span id="scheduler_register_t::year__uint64_t"></span><span class="target" id="structscheduler__register__t_1aa95c6829baf36b0c75dee64d870ef19b"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">year</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t4yearE" title="Link to this definition"></a><br /></dt>
+<dd><p>Year field (0-99 or 0x64 for every year). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t5monthE">
+<span id="_CPPv3N20scheduler_register_t5monthE"></span><span id="_CPPv2N20scheduler_register_t5monthE"></span><span id="scheduler_register_t::month__uint64_t"></span><span class="target" id="structscheduler__register__t_1ad5edb971ad837435aa047f6e47daf37b"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">month</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t5monthE" title="Link to this definition"></a><br /></dt>
+<dd><p>Month bitmask field (bit 0-11). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t3dayE">
+<span id="_CPPv3N20scheduler_register_t3dayE"></span><span id="_CPPv2N20scheduler_register_t3dayE"></span><span id="scheduler_register_t::day__uint64_t"></span><span class="target" id="structscheduler__register__t_1a0e8e89ef0033308c724bd211862b8294"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">day</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t3dayE" title="Link to this definition"></a><br /></dt>
+<dd><p>Day of the month (0-31). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t4hourE">
+<span id="_CPPv3N20scheduler_register_t4hourE"></span><span id="_CPPv2N20scheduler_register_t4hourE"></span><span id="scheduler_register_t::hour__uint64_t"></span><span class="target" id="structscheduler__register__t_1a809399428f8ba80ccc9bdd9d97570ec8"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hour</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t4hourE" title="Link to this definition"></a><br /></dt>
+<dd><p>Hour of the day (0-24). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t6minuteE">
+<span id="_CPPv3N20scheduler_register_t6minuteE"></span><span id="_CPPv2N20scheduler_register_t6minuteE"></span><span id="scheduler_register_t::minute__uint64_t"></span><span class="target" id="structscheduler__register__t_1a029a68cc43ea03fe5634bcac0fb43825"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">minute</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t6minuteE" title="Link to this definition"></a><br /></dt>
+<dd><p>Minute of the hour (0-59). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t6secondE">
+<span id="_CPPv3N20scheduler_register_t6secondE"></span><span id="_CPPv2N20scheduler_register_t6secondE"></span><span id="scheduler_register_t::second__uint64_t"></span><span class="target" id="structscheduler__register__t_1a0f38542cb28c89862a93724893db4f3a"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">second</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t6secondE" title="Link to this definition"></a><br /></dt>
+<dd><p>Second of the minute (0-59). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t11day_of_weekE">
+<span id="_CPPv3N20scheduler_register_t11day_of_weekE"></span><span id="_CPPv2N20scheduler_register_t11day_of_weekE"></span><span id="scheduler_register_t::day_of_week__uint64_t"></span><span class="target" id="structscheduler__register__t_1aeedfc98ba61773f79f8256b15f9f072f"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">day_of_week</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t11day_of_weekE" title="Link to this definition"></a><br /></dt>
+<dd><p>Day of the week bitmask (bit 0-6). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t6actionE">
+<span id="_CPPv3N20scheduler_register_t6actionE"></span><span id="_CPPv2N20scheduler_register_t6actionE"></span><span id="scheduler_register_t::action__uint64_t"></span><span class="target" id="structscheduler__register__t_1a11e633bcc5be09ea07d5f44c4c2c1b1b"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t6actionE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scheduler action (e.g., turn on/off). </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t9num_stepsE">
+<span id="_CPPv3N20scheduler_register_t9num_stepsE"></span><span id="_CPPv2N20scheduler_register_t9num_stepsE"></span><span id="scheduler_register_t::num_steps__uint64_t"></span><span class="target" id="structscheduler__register__t_1a3c4e5f0fa4b4f0f9988cd79f8f72737a"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">num_steps</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t9num_stepsE" title="Link to this definition"></a><br /></dt>
+<dd><p>Number of transition steps. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t15step_resolutionE">
+<span id="_CPPv3N20scheduler_register_t15step_resolutionE"></span><span id="_CPPv2N20scheduler_register_t15step_resolutionE"></span><span id="scheduler_register_t::step_resolution__uint64_t"></span><span class="target" id="structscheduler__register__t_1a02afb59e2abea610238832c4bcb9c250"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">step_resolution</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t15step_resolutionE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transition step resolution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20scheduler_register_t12scene_numberE">
+<span id="_CPPv3N20scheduler_register_t12scene_numberE"></span><span id="_CPPv2N20scheduler_register_t12scene_numberE"></span><span id="scheduler_register_t::scene_number__uint16_t"></span><span class="target" id="structscheduler__register__t_1a6f43ed2ab34afd08074c8a8a7d376533"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scene_number</span></span></span><a class="headerlink" href="#_CPPv4N20scheduler_register_t12scene_numberE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scene number for recall action. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415scheduler_get_t">
+<span id="_CPPv315scheduler_get_t"></span><span id="_CPPv215scheduler_get_t"></span><span id="scheduler_get_t"></span><span class="target" id="structscheduler__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler_get_t</span></span></span><a class="headerlink" href="#_CPPv415scheduler_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for getting scheduler status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15scheduler_get_t6opcodeE">
+<span id="_CPPv3N15scheduler_get_t6opcodeE"></span><span id="_CPPv2N15scheduler_get_t6opcodeE"></span><span id="scheduler_get_t::opcode__uint8_tA"></span><span class="target" id="structscheduler__get__t_1ac132ad9ade6ab4403913ac648ce89710"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8249</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N15scheduler_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418scheduler_status_t">
+<span id="_CPPv318scheduler_status_t"></span><span id="_CPPv218scheduler_status_t"></span><span id="scheduler_status_t"></span><span class="target" id="structscheduler__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler_status_t</span></span></span><a class="headerlink" href="#_CPPv418scheduler_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Scheduler status message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18scheduler_status_t6opcodeE">
+<span id="_CPPv3N18scheduler_status_t6opcodeE"></span><span id="_CPPv2N18scheduler_status_t6opcodeE"></span><span id="scheduler_status_t::opcode__uint8_tA"></span><span class="target" id="structscheduler__status__t_1a3e50acc2c56721c0eabf9dc0f5faa9d4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x824A</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18scheduler_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18scheduler_status_t10schedulersE">
+<span id="_CPPv3N18scheduler_status_t10schedulersE"></span><span id="_CPPv2N18scheduler_status_t10schedulersE"></span><span id="scheduler_status_t::schedulers__uint16_t"></span><span class="target" id="structscheduler__status__t_1a3c6b03bc19e8298c7cf1015b7e66e39b"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">schedulers</span></span></span><a class="headerlink" href="#_CPPv4N18scheduler_status_t10schedulersE" title="Link to this definition"></a><br /></dt>
+<dd><p>Bitmask of active schedulers. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422scheduler_action_get_t">
+<span id="_CPPv322scheduler_action_get_t"></span><span id="_CPPv222scheduler_action_get_t"></span><span id="scheduler_action_get_t"></span><span class="target" id="structscheduler__action__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler_action_get_t</span></span></span><a class="headerlink" href="#_CPPv422scheduler_action_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for getting action from a scheduler. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22scheduler_action_get_t6opcodeE">
+<span id="_CPPv3N22scheduler_action_get_t6opcodeE"></span><span id="_CPPv2N22scheduler_action_get_t6opcodeE"></span><span id="scheduler_action_get_t::opcode__uint8_tA"></span><span class="target" id="structscheduler__action__get__t_1a3ac8a5f94f3adcef59a4dc29bb1f936a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8248</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22scheduler_action_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22scheduler_action_get_t5indexE">
+<span id="_CPPv3N22scheduler_action_get_t5indexE"></span><span id="_CPPv2N22scheduler_action_get_t5indexE"></span><span id="scheduler_action_get_t::index__uint8_t"></span><span class="target" id="structscheduler__action__get__t_1aae5a12e607d0f782506d9e6ec6179c64"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">index</span></span></span><a class="headerlink" href="#_CPPv4N22scheduler_action_get_t5indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scheduler action index. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422scheduler_action_set_t">
+<span id="_CPPv322scheduler_action_set_t"></span><span id="_CPPv222scheduler_action_set_t"></span><span id="scheduler_action_set_t"></span><span class="target" id="structscheduler__action__set__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler_action_set_t</span></span></span><a class="headerlink" href="#_CPPv422scheduler_action_set_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for setting scheduler action. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22scheduler_action_set_t6opcodeE">
+<span id="_CPPv3N22scheduler_action_set_t6opcodeE"></span><span id="_CPPv2N22scheduler_action_set_t6opcodeE"></span><span id="scheduler_action_set_t::opcode__uint8_tA"></span><span class="target" id="structscheduler__action__set__t_1aba27e95fa7602a26c2acdd252257ea27"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x60</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22scheduler_action_set_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22scheduler_action_set_t9schedulerE">
+<span id="_CPPv3N22scheduler_action_set_t9schedulerE"></span><span id="_CPPv2N22scheduler_action_set_t9schedulerE"></span><span id="scheduler_action_set_t::scheduler__scheduler_register_t"></span><span class="target" id="structscheduler__action__set__t_1a1e13c6cc3cd3558ed2d10ed14ef13ec9"></span><a class="reference internal" href="#_CPPv420scheduler_register_t" title="scheduler_register_t"><span class="n"><span class="pre">scheduler_register_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler</span></span></span><a class="headerlink" href="#_CPPv4N22scheduler_action_set_t9schedulerE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scheduler register. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425scheduler_action_status_t">
+<span id="_CPPv325scheduler_action_status_t"></span><span id="_CPPv225scheduler_action_status_t"></span><span id="scheduler_action_status_t"></span><span class="target" id="structscheduler__action__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler_action_status_t</span></span></span><a class="headerlink" href="#_CPPv425scheduler_action_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Scheduler action status message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25scheduler_action_status_t6opcodeE">
+<span id="_CPPv3N25scheduler_action_status_t6opcodeE"></span><span id="_CPPv2N25scheduler_action_status_t6opcodeE"></span><span id="scheduler_action_status_t::opcode__uint8_tA"></span><span class="target" id="structscheduler__action__status__t_1a9b515effbac4537f30a7bdec9dc8e10b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x5F</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25scheduler_action_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25scheduler_action_status_t9schedulerE">
+<span id="_CPPv3N25scheduler_action_status_t9schedulerE"></span><span id="_CPPv2N25scheduler_action_status_t9schedulerE"></span><span id="scheduler_action_status_t::scheduler__scheduler_register_t"></span><span class="target" id="structscheduler__action__status__t_1a1e13c6cc3cd3558ed2d10ed14ef13ec9"></span><a class="reference internal" href="#_CPPv420scheduler_register_t" title="scheduler_register_t"><span class="n"><span class="pre">scheduler_register_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler</span></span></span><a class="headerlink" href="#_CPPv4N25scheduler_action_status_t9schedulerE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scheduler register. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___s_c_h_e_d_u_l_e_r___c_l_i_e_n_t___d_a_t_a.html" class="btn btn-neutral float-left" title="Client Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___s_c_h_e_d_u_l_e_r___m_o_d_e_l___i_d.html" class="btn btn-neutral float-right" title="Model ID" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

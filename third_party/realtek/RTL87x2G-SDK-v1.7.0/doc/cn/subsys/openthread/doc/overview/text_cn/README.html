@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thread 协议 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="OpenThread 边界路由器" href="../../otbr/text_cn/README.html" />
+    <link rel="prev" title="功能支持" href="../../text_cn/SupportedFeatures.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_cn/README.html">Bluetooth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../text_cn/README.html">Thread</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../text_cn/SupportedFeatures.html">功能支持</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Thread 协议</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">术语和概念</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">设备类型</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">关键组件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#openthread">Openthread</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#github">GitHub</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">网络拓扑</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rcp">RCP 模式</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id5">主要组件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">RCP 方案介紹</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">示例工程</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#openthread-rcp">使用 OpenThread 设置 RCP 模式</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#rcp-thread-ping-thread">通过 RCP 从一个 Thread 设备 Ping 另一个 Thread 设备的步骤</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">参考资料</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../otbr/text_cn/README.html">OpenThread 边界路由器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../doc/protocols/matter/text_cn/README.html">Matter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+        <li class="breadcrumb-item"><a href="../../text_cn/README.html">Thread</a></li>
+    <li class="breadcrumb-item active">Thread 协议</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="thread">
+<span id="thread-overview-cn"></span><h1>Thread 协议<a class="headerlink" href="#thread" title="Link to this heading"></a></h1>
+<p>Thread 是一种基于 2.4GHz (IEEE 802.15.4) 和 IPv6 的无线自组织网络协议，通常称为无线个域网 (WPAN)。Thread 专为低功耗、低延迟的物联网 (IoT) 设备而设计。它解决了物联网的复杂问题，解决了互操作性、范围、安全性、能效和可靠性等挑战。</p>
+<p>本文概述了 Thread 协议的相关术语和概念、网络拓扑结构、无线电协处理器 (RCP) 模式以及示例工程。</p>
+<section id="id1">
+<h2>术语和概念<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>本节介紹 Thread 协议內的设备类型與形成网络拓扑的关键组件以及开源的 Thread 网络协议。</p>
+<section id="id2">
+<h3>设备类型<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Thread根据设备在线程网络中可以承担的角色，区分了各种设备类型。</p>
+<ol class="arabic">
+<li><p><strong>全线程设备 (FTD)</strong></p>
+<p>FTD可以在线程网络中同时作为路由器和终端设备运行。其无线电持续保持活跃。</p>
+</li>
+<li><p><strong>最小线程设备 (MTD)</strong></p>
+<p>MTD始终是终端设备，依赖其父设备转发所有消息。</p>
+<p>MTD有两个重要的子类型：</p>
+<ul>
+<li><p><strong>最小终端设备 (MED)</strong></p>
+<p>此类型设备无线电始终保持开启，可以及时接收来自父设备的消息。MED适合需要更高响应速度、并且能够承受较高能耗的设备，例如有持续电源或可充电电池的设备。</p>
+</li>
+<li><p><strong>睡眠终端设备 (SED)</strong></p>
+<p>此类型设备通过大部分时间关闭无线电来节省能量，仅在定期唤醒与父设备通信时才开启。SED适合不需要频繁发送或接收数据的电池供电设备。</p>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h3>关键组件<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>领导路由器 (Leader Router)</strong></p>
+<p>领导设备负责管理网络，分配路由器ID并处理网络配置变更。领导是动态选举的，如果当前领导失效，其他路由器会接替以确保网络操作的连续。</p>
+</li>
+<li><p><strong>路由器 (Router)</strong></p>
+<p>路由器在线程网络中路由数据包，帮助扩展网络范围并增强可靠性。路由器可以直接与其他路由器和领导通信。</p>
+<p>如果当前领导失效，路由器也可以成为领导。</p>
+</li>
+<li><p><strong>可成为路由器的终端设备 (REED)</strong></p>
+<p>这些终端设备在网络需要时有潜力成为路由器。只有在被领导提升为路由器时，它们才执行路由功能，从而保持资源的高效利用。</p>
+</li>
+<li><p><strong>终端设备 (Child; End Device)</strong></p>
+<p>终端设备，也称为睡眠终端设备 (SED)，主要与单个父路由器或REED通信。它们不转发其他设备的数据包。SED节能效率高，因为大部分时间都处于低功耗状态。</p>
+</li>
+<li><p><strong>全终端设备 (FED)</strong></p>
+<p>全终端设备类似于终端设备，但它们保持唤醒以更频繁地接收数据包。它们不路由数据包，只与其父路由器通信。</p>
+</li>
+<li><p><strong>睡眠终端设备 (SED)</strong></p>
+<p>这些设备定期唤醒与父路由器交换数据，大部分时间都处于低功耗睡眠模式，适合电池供电的应用。</p>
+</li>
+<li><p><strong>专员 (Commissioner)</strong></p>
+<p>专员负责对网络中新设备进行认证和配置。它处理安全的加入过程，确保只有授权设备才能加入网络。专员可以是嵌入线程网络内部 (本地) 或在外部操作 (外部)。</p>
+</li>
+<li><p><strong>边界路由器 (Border Router)</strong></p>
+<p>边界路由器将线程网络连接到其他网络，如Wi-Fi、以太网或互联网。它提供外部连接并在线程网络和外部网络之间路由数据。</p>
+</li>
+</ol>
+</section>
+<section id="openthread">
+<h3>Openthread<a class="headerlink" href="#openthread" title="Link to this heading"></a></h3>
+<p>OpenThread 是一个开源实现的 Thread 网络协议。
+它由 Google 开发，并免费提供给开发者，以加速连接家庭和商用建筑的产品开发。</p>
+<section id="github">
+<h4>GitHub<a class="headerlink" href="#github" title="Link to this heading"></a></h4>
+<p>OpenThread 以 BSD 3-Clause 许可证发布，并在 GitHub 上可用：
+<a class="reference external" href="https://github.com/openthread/openthread">https://github.com/openthread/openthread</a></p>
+</section>
+</section>
+</section>
+<section id="id4">
+<h2>网络拓扑<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>Thread 网络采用的是网状网络拓扑结构。这种拓扑具备以下特点：</p>
+<ol class="arabic">
+<li><p><strong>自我愈合能力</strong></p>
+<p>如果网络中的某个节点失效，其他节点可以通过动态调整路由来继续保持网络的连通性。</p>
+</li>
+<li><p><strong>多跳路由</strong></p>
+<p>信号可以通过多个中间节点传输，有助于扩大网络的覆盖范围和提高网络的可靠性。</p>
+</li>
+<li><p><strong>动态角色选举</strong></p>
+<p>网络中的设备可以在不同的角色之间动态切换，如在需要时从子节点升级为路由器以支持更多的设备。</p>
+</li>
+</ol>
+<p>Thread 的这些拓扑特性使其非常适合于需要高可靠性和灵活性的物联网应用。</p>
+<p>下图展示了一个线程网络拓扑示例。</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../../../../../_images/network_topology1.png"><img alt="../../../../../_images/network_topology1.png" src="../../../../../_images/network_topology1.png" style="width: 521.6px; height: 375.20000000000005px;" /></a>
+<figcaption>
+<p><span class="caption-text">线程网络拓扑示例</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="rcp">
+<h2>RCP 模式<a class="headerlink" href="#rcp" title="Link to this heading"></a></h2>
+<p>在协处理器设计中，应用程序运行在主处理器上，另一个控制处理器提供 Thread 无线电。这两个处理器通过带有标准协议 (Spinel) 的串行连接进行通信。在 RCP (无线电协处理器) 设计中，OpenThread 的核心运行在主处理器上，控制处理器仅实现带有 Thread 无线电的最小 MAC 层。RCP 和主处理器之间的通信通过串行接口上的 Spinel 协议由 OpenThread Daemon 管理。RCP 设计的优势在于 OpenThread 可以利用更强大主处理器的资源。为了确保 Thread 网络的可靠性，主处理器通常不会睡眠。对于对电源不太敏感的设备，这种设计非常有用。</p>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../../../../../_images/rcp_mode.png"><img alt="../../../../../_images/rcp_mode.png" src="../../../../../_images/rcp_mode.png" style="width: 177.79999999999998px; height: 343.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">RCP 模式</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id5">
+<h3>主要组件<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>主处理器</strong></p>
+<ul class="simple">
+<li><p>运行 OpenThread 堆栈的上层，包括 Thread 网络、网格路由和应用逻辑。</p></li>
+<li><p>通常运行 POSIX 兼容的操作系统，如 Linux。</p></li>
+</ul>
+</li>
+<li><p><strong>无线电协处理器 (RCP)</strong></p>
+<ul class="simple">
+<li><p>处理 OpenThread 堆栈的低层，特别是 802.15.4 PHY 和 MAC 层。</p></li>
+<li><p>执行时间关键的无线电操作。</p></li>
+<li><p>通过串行接口 (如 UART、SPI) 与主处理器通信。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id6">
+<h3>RCP 方案介紹<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<table class="docutils align-center" id="id7">
+<caption><span class="caption-text">RCP 方案</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>RCP 方案</p></th>
+<th class="head"><p>8771HTV</p></th>
+<th class="head"><p>8771GUV</p></th>
+<th class="head"><p>8771GTV</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>介面</p></th>
+<td><p>UART</p></td>
+<td><p>USB</p></td>
+<td><p>UART</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>最大 Tx power</p></th>
+<td><p>8 dBm</p></td>
+<td><p>14 dBm</p></td>
+<td><p>14 dBm</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id8">
+<h2>示例工程<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="openthread-rcp">
+<h3>使用 OpenThread 设置 RCP 模式<a class="headerlink" href="#openthread-rcp" title="Link to this heading"></a></h3>
+<p>这个示例应用通过简单的命令行界面公开 OpenThread 配置和管理 API。以下步骤将带您完成通过 RCP 从一个 Thread 设备向另一个 Thread 设备 ping 所需的最低步骤。</p>
+<section id="rcp-thread-ping-thread">
+<h4>通过 RCP 从一个 Thread 设备 Ping 另一个 Thread 设备的步骤<a class="headerlink" href="#rcp-thread-ping-thread" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p>克隆 OpenThread 仓库。</p>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/openthread/openthread.git
+</pre></div>
+</div>
+</li>
+<li><p>构建 OpenThread Daemon。</p>
+<ul class="simple">
+<li><p>安装依赖。</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ cd openthread
+$ ./script/bootstrap
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>配置并构建 OpenThread Daemon。</p></li>
+</ul>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ./script/cmake-build posix -DOT_DAEMON=ON
+</pre></div>
+</div>
+</li>
+<li><p>连接主机和 RCP dongle。</p>
+<ul class="simple">
+<li><p>主机和 RCP 通过 USB 或 UART 进行通信。</p></li>
+<li><p>RCP dongle 应该被识别为 /dev/ttyACMx 或 /dev/ttyUSBx。 (例如，/dev/ttyACM0)</p></li>
+<li><p>确保串行连接设置 (波特率) 在两端正确配置。 (通常，RCP dongle 波特率设置为 2000000)</p></li>
+</ul>
+</li>
+<li><p>运行 Thread RCP 模式。</p>
+<ul class="simple">
+<li><p>启动 ot-daemon 以启动 RCP 设备。</p></li>
+</ul>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ./build/posix/src/posix/ot-daemon -v &#39;spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate=2000000&#39;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>打开另一个终端窗口并运行 ot-ctl 命令。</p></li>
+</ul>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ./build/posix/src/posix/ot-ctl
+
+这将启动命令行界面 (CLI) 以配置 Thread 设备
+</pre></div>
+</div>
+</li>
+<li><p>配置并形成 Thread 网络。</p>
+<ul class="simple">
+<li><p>将第一台设备配置为领导者。</p></li>
+</ul>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>&gt; dataset init new
+Done
+&gt; dataset
+Active Timestamp: 1
+Channel: 24
+Channel Mask: 0x07fff800
+Ext PAN ID: b7d261da17292918
+Mesh Local Prefix: fd74:3bcf:ba49:f9ba::/64
+Network Key: a0d75caa58cf2fb0b91d5da586adda3a
+Network Name: OpenThread-2373
+PAN ID: 0x2373
+PSKc: 483459904e7b84b098c6b2626ec3cf2c
+Security Policy: 672 onrc 0
+Done
+&gt; dataset commit active
+Done
+&gt; ifconfig up
+Done
+&gt; thread start
+Done
+(稍等片刻)
+&gt; state
+Leader
+Done
+
+设备状态应最终显示为 <span class="nv">`leader`</span>。
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>获取另一个主机和 RCP dongle。</p></li>
+<li><p>配置第二台设备并使其加入网络。</p></li>
+</ul>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ./build/posix/src/posix/ot-daemon -v &#39;spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate=2000000&#39;
+$ ./build/posix/src/posix/ot-ctl
+&gt; dataset networkkey a0d75caa58cf2fb0b91d5da586adda3a
+Done
+&gt; dataset panid 0x2373
+Done
+&gt; dataset commit active
+Done
+&gt; ifconfig up
+Done
+&gt; thread start
+Done
+(稍等片刻)
+&gt; state
+Router # 或 Child
+Done
+
+设备状态应最终显示为 <span class="nv">`router`</span> 或 <span class="nv">`child`</span>
+</pre></div>
+</div>
+</li>
+<li><p>获取 IPv6 地址。</p>
+<ul class="simple">
+<li><p>在领导设备上，获取 IPv6 地址列表。</p></li>
+</ul>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>&gt; ipaddr
+
+确认设备已加入网络并识别合适的 IPv6 地址 (例如，<span class="nv">`fd00::`</span> 地址)
+</pre></div>
+</div>
+</li>
+<li><p>设备间的 Ping。</p>
+<ul class="simple">
+<li><p>从一个设备 ping 另一个设备的 IPv6 地址。</p></li>
+</ul>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>&gt; ping &lt;IPv6-address-of-other-device&gt;
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="id9">
+<h2>参考资料<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p>[1] <a class="reference external" href="https://www.threadgroup.org/">Thread Group</a></p>
+<p>[2] <a class="reference external" href="https://openthread.io/">OpenThread</a></p>
+<p>[3] <a class="reference external" href="https://github.com/openthread">OpenThread GitHub</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../text_cn/SupportedFeatures.html" class="btn btn-neutral float-left" title="功能支持" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../otbr/text_cn/README.html" class="btn btn-neutral float-right" title="OpenThread 边界路由器" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

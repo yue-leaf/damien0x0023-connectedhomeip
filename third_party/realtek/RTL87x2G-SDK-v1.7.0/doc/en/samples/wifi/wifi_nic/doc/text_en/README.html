@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RTL8189FTV Wi-Fi Module &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Ethernet" href="../../../../ethernet/ethernet/doc/text_en/README.html" />
+    <link rel="prev" title="Wi-Fi" href="../../../doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/doc/text_en/README.html">Peripheral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_en/README.html">Wi-Fi</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">RTL8189FTV Wi-Fi Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wiring">Wiring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-and-downloading">Building and Downloading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#experimental-verification">Experimental Verification</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#wi-fi-initialization-verification">Wi-Fi Initialization Verification</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#uart-cmd-verification">UART CMD Verification</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#wi-fi-scan">Wi-Fi Scan</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wi-fi-connect">Wi-Fi Connect</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wi-fi-disconnect">Wi-Fi Disconnect</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#iperf-server">Iperf Server</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#iperf-client">Iperf Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#code-overview">Code Overview</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#source-code-directory">Source Code Directory</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#software-architecture">Software Architecture</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#tasks-and-their-priorities">Tasks and Their Priorities</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#wi-fi-state-machine">Wi-Fi State Machine</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#interactive-mode">Interactive Mode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#application-example">Application Example</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#iperf-demo">Iperf Demo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sntp-demo">SNTP Demo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#http-demo">HTTP Demo</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#important-apis">Important APIs</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#wifi-nic-on">wifi_nic_on</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wifi-nic-off">wifi_nic_off</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wifi-nic-scan">wifi_nic_scan</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wifi-nic-connect">wifi_nic_connect</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wifi-nic-disconnect">wifi_nic_disconnect</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wifi-nic-wlan-send">wifi_nic_wlan_send</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wifi-nic-wlan-recv">wifi_nic_wlan_recv</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">Wi-Fi</a></li>
+    <li class="breadcrumb-item active">RTL8189FTV Wi-Fi Module</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="rtl8189ftv-wi-fi-module">
+<h1>RTL8189FTV Wi-Fi Module<a class="headerlink" href="#rtl8189ftv-wi-fi-module" title="Link to this heading"></a></h1>
+<p id="wifi-nic-chapter-overview">This document aims to guide developers in quickly setting up an RTL8189FTV Wi-Fi (referred to as the Wi-Fi below) development environment, including hardware and software requirements, macro definition configuration, testing steps, and code framework analysis, etc.</p>
+<section id="requirements">
+<span id="wifi-nic-chapter-requirements"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Hardware Requirements</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>RTL87x2G Model B EVB</p></li>
+<li><p>RTL8189FTV Wi-Fi Model</p></li>
+</ol>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Tool Requirements</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>ARM Keil MDK: <a class="reference external" href="https://developer.arm.com">https://developer.arm.com</a></p></li>
+<li><p>BeeMPTool_kits:  <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a></p></li>
+<li><p>DebugAnalyzer:  <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a></p></li>
+<li><p>UartAssist: <a class="reference external" href="http://www.cmsoft.cn/resource/101.html">http://www.cmsoft.cn/resource/101.html</a></p></li>
+<li><p>iperf:  <a class="reference external" href="https://iperf.fr/">https://iperf.fr/</a></p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>For more information, please refer to <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a> .</p>
+</section>
+<section id="wiring">
+<span id="wifi-nic-chapter-wiring"></span><h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<p>Debugging Wi-Fi functionality requires a Wi-Fi module to be assembled on the Model B EVB.
+Refer to the area marked in red in the <a class="reference internal" href="#wifi-nic-wifi-connecter"><span class="std std-ref">Wi-Fi Installation Interface</span></a> for the installation location of the Wi-Fi module on the EVB.
+Please refer to <a class="reference internal" href="#wifi-nic-wifi-module"><span class="std std-ref">Wi-Fi Module</span></a> for the Wi-Fi module and its installation method.</p>
+<figure class="align-center" id="wifi-nic-wifi-connecter">
+<a class="reference internal image-reference" href="../../../../../_images/wifi_nic_wifi_connecter.png"><img alt="There should be a picture here" src="../../../../../_images/wifi_nic_wifi_connecter.png" style="width: 686.0px; height: 391.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Wi-Fi Installation Interface</span><a class="headerlink" href="#wifi-nic-wifi-connecter" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="wifi-nic-wifi-module">
+<a class="reference internal image-reference" href="../../../../../_images/wifi_nic_wifi_module.png"><img alt="There should be a picture here" src="../../../../../_images/wifi_nic_wifi_module.png" style="width: 467.0px; height: 199.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Wi-Fi Module</span><a class="headerlink" href="#wifi-nic-wifi-module" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>RTL87x2G supports communication with the Wi-Fi module through SPI and SDIO interfaces.</p>
+<ul class="simple">
+<li><p>When using the SDIO interface, the pin configuration of RTL87x2G is fixed. For detailed information, please refer to <a class="reference internal" href="#table-wifi-wiring"><span class="std std-ref">Pin Definition</span></a>.</p></li>
+<li><p>When using the SPI interface, the pin configuration becomes more flexible, allowing developers to adjust according to actual needs.</p></li>
+</ul>
+<table class="docutils align-center" id="table-wifi-wiring">
+<caption><span class="caption-text">Pin Definition</span><a class="headerlink" href="#table-wifi-wiring" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Model B EVB</p></th>
+<th class="head"><p>SDIO</p></th>
+<th class="head"><p>SPI</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>GND</p></th>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P9_4</p></th>
+<td><p>CLK</p></td>
+<td><p>CLK</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P9_5</p></th>
+<td><p>D3</p></td>
+<td><p>CS</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P9_6</p></th>
+<td><p>D2</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P9_3</p></th>
+<td><p>CMD</p></td>
+<td><p>MOSI</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P10_0</p></th>
+<td><p>D0</p></td>
+<td><p>MISO</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P9_7</p></th>
+<td><p>D1</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>VDD</p></th>
+<td><p>VDD</p></td>
+<td><p>VDD</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>When using the SPI interface, the default definition is shown in <a class="reference internal" href="#table-wifi-wiring"><span class="std std-ref">Pin Definition</span></a>. If changes are required, they can be made in the <code class="file docutils literal notranslate"><span class="pre">subsys\wifi_nic_driver\src\spi_module.c</span></code> file.</p>
+</div>
+<p>In addition, since the Ethernet module and Wi-Fi module on the Model B EVB share the same set of SDIO interfaces, it is necessary to complete the hardware interface switch by referring to the <a class="reference internal" href="../../../../../doc/evb_guide/text_en/model_b.html#b-ethernet-and-sdio-interface-switching"><span class="std std-ref">Ethernet and SDIO Interface Switching</span></a> section in the <a class="reference internal" href="../../../../../doc/evb_guide/text_en/model_b.html"><span class="doc">Model B Evaluation Board</span></a> document
+before using the Wi-Fi module. Please refer to <a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html"><span class="doc">Evaluation Board Guide</span></a> for a detailed introduction to the EVB.</p>
+</section>
+<section id="configurations">
+<span id="wifi-nic-chapter-configurations"></span><h2>Configurations<a class="headerlink" href="#configurations" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23.1%" />
+<col style="width: 76.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Macro Definition</p></th>
+<th class="head"><p>Function Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>xxx_TASK_PRIORITY</p></th>
+<td><p>Used to configure the priority of each task.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>PERIPHERAL_TYPE</p></th>
+<td><p>Used to configure the type of Wi-Fi HCI interface (SDIO/SPI).</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>SDIO_CLK_kHz</p></th>
+<td><p>Configures the CLK of SDIO.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>SDIO_DATA_WIDTH</p></th>
+<td><p>Configures the SDIO signal transmission mode, <code class="docutils literal notranslate"><span class="pre">1</span></code>  indicates 1Bit mode, <code class="docutils literal notranslate"><span class="pre">4</span></code>  indicates 4Bit mode.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>SUPPORT_INTERACTIVE_MODE</p></th>
+<td><p>UUsed to configure whether to enable UART debugging function, <code class="docutils literal notranslate"><span class="pre">1</span></code> indicates enable, <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates disable.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>SUPPORT_FEATURE_SNTP</p></th>
+<td><p>Used to configure whether to enable SNTP function, <code class="docutils literal notranslate"><span class="pre">1</span></code> indicates enable, <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates disable.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>SUPPORT_FEATURE_HTTP</p></th>
+<td><p>Used to configure whether to enable HTTP function,  <code class="docutils literal notranslate"><span class="pre">1</span></code> indicates enable, <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates disable.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>SUPPORT_MSG_SERVER</p></th>
+<td><p>Used to configure whether to enable message event processing function, <code class="docutils literal notranslate"><span class="pre">1</span></code> indicates enable, <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates disable.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>SUPPORT_AUTO_CONNECT</p></th>
+<td><p>Used to configure whether to enable the function of automatically connecting to AP at startup, <code class="docutils literal notranslate"><span class="pre">1</span></code> indicates enable, <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates disable.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<ul class="simple">
+<li><p>The macro configurations related to Wi-Fi and common API definitions are located in wifi_nic_intf.h.</p></li>
+<li><p>The macro configurations under Fixed parameters are involved in the compilation of the lib file, so please do not change them randomly.</p></li>
+<li><p>Developers can modify the macro definitions under Variable parameters.</p></li>
+</ul>
+</div>
+</section>
+<section id="building-and-downloading">
+<span id="wifi-nic-chapter-building"></span><h2>Building and Downloading<a class="headerlink" href="#building-and-downloading" title="Link to this heading"></a></h2>
+<p>This sample can be found in the SDK folder:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\wifi_nic\proj\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\wifi_nic\proj\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>To build and run the sample, follow the steps listed below:</p>
+<ol class="arabic simple">
+<li><p>Open the project file.</p></li>
+<li><p>To build the target, follow the steps listed in the <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#generate-app-image"><span class="std std-ref">Generating App Image</span></a> section in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p></li>
+<li><p>After a successful compilation, the app bin <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk_xxx.bin</span></code> will be generated in the directory <code class="file docutils literal notranslate"><span class="pre">samples\wifi_nic\proj\mdk\bin</span></code>. If GCC is used for compilation, the generated bin file will be located at <code class="file docutils literal notranslate"><span class="pre">samples\wifi_nic\proj\gcc\bin</span></code>.</p></li>
+<li><p>To download the app bin into the EVB board, follow the steps listed in the <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#images-download"><span class="std std-ref">Images Download</span></a> section in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p></li>
+<li><p>Press the reset button on the EVB board and it will start running.</p></li>
+</ol>
+</section>
+<section id="experimental-verification">
+<span id="wifi-nic-chapter-verification"></span><h2>Experimental Verification<a class="headerlink" href="#experimental-verification" title="Link to this heading"></a></h2>
+<section id="wi-fi-initialization-verification">
+<span id="wifi-nic-chapter-initialization-verification"></span><h3>Wi-Fi Initialization Verification<a class="headerlink" href="#wi-fi-initialization-verification" title="Link to this heading"></a></h3>
+<p>After the EVB board is powered on, if there is a log 'wifi_nic_on ok', it means that Wi-Fi has been initialized normally.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] RTL871X: _8051Reset8188: Finish
+[APP] [wifi_nic] RTL871X: _FWFreeToGo: Polling FW ready OK! (248, 14ms), REG_MCUFWDL:0x070405c6
+[APP] [wifi_nic] RTL871X: rtl8188f_FirmwareDownload: DLFW OK !
+[APP] [wifi_nic] RTL871X: rtl8188f_FirmwareDownload success. write_fw:1, 236ms
+[APP] [wifi_nic] RTL871X:  &lt;=== rtl8188f_FirmwareDownload()
+[APP] [wifi_nic] RTL871X: Set RF Chip ID to RF_6052 and RF type to 0.
+[APP] [wifi_nic] RTL871X: MAC Address = 2c:c3:e6:be:91:9f
+[APP] [wifi_nic] xmit_thread priority = 6 TaskHandle_t addr = 0x123e2c
+[APP] [wifi_nic] cmd_thread priority = 3 TaskHandle_t addr = 0x123e14
+[APP] [wifi_nic] RTL871X: -871x_drv - dev_open, bup=1
+[APP] [wifi_nic] WIFI initialized
+[APP] [wifi_nic] wifi_nic_on ok
+</pre></div>
+</div>
+<p>If the macro SUPPORT_AUTO_CONNECT is set to 1 (default value is 1), Wi-Fi will automatically execute wifi_nic_scan() after initialization,
+scanning for the specified AP (the default SSID is <kbd class="kbd docutils literal notranslate">86box_demo</kbd>, and the password is <kbd class="kbd docutils literal notranslate">123123123</kbd>),
+and the scanning result will be printed out through the log.
+If the specified AP is not detected, the scan operation will be performed every 3 seconds.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] RTL871X: survey done event(129)
+[APP] [wifi_nic] RTL871X: +indicate_wx_scan_complete_event
+[APP] [wifi_nic] wifi nic scan done user data = 86box_demo
+[APP] [wifi_nic] 1:Infra        58:41:20:1a:0c:0f      -44     1       6       WPA/WPA2 PSK            WN_LG2
+[APP] [wifi_nic] 2:Infra        f8:6f:b0:18:cb:b6      -46     1       6       Open                    TP-LINK_CH1
+[APP] [wifi_nic] 3:Infra        5c:de:34:10:bb:a0      -46     6       7       WPA/WPA2 PSK            CMCC-2X9d
+[APP] [wifi_nic] 6:Infra        78:60:5b:3f:99:6d      -48     6       6       WPA/WPA2 PSK            WN_BT
+[APP] [wifi_nic] 7:Infra        62:e6:f9:0b:2f:c2      -56     1       7       WPA2 AES PSK            huawei-ax3_2g
+[APP] [wifi_nic] 8:Infra        00:19:29:00:88:9f      -56     6       7       WPA/WPA2 PSK            ChinaNet-2.4G
+[APP] [wifi_nic] 9:Infra        9c:9d:7e:57:11:92      -58     1       7       WPA2 AES PSK            Redmi_FA2C
+...
+</pre></div>
+</div>
+<p>If the specified AP is successfully scanned, the Wi-Fi connection will then be initiated.
+If the connection to the AP fails, the scan will continue to be performed.</p>
+</section>
+<section id="uart-cmd-verification">
+<span id="wifi-nic-chapter-uart-cmd-verification"></span><h3>UART CMD Verification<a class="headerlink" href="#uart-cmd-verification" title="Link to this heading"></a></h3>
+<p>During the development process, developers can control the Wi-Fi module by sending specific CMDs through the UART interface.
+On RTL87x2G, the definition of the UART pins is as follows: P3_0 is defined as UART TX, P3_1 is defined as UART RX,
+and the default baud rate for the serial port is set to 115200.
+For detailed configuration code, please refer to <code class="file docutils literal notranslate"><span class="pre">sdk\samples\wifi_nic\src\wifi_nic_task\uart_transport.c</span></code> .
+Refer to <a class="reference internal" href="#wifi-nic-uart-assistant"><span class="std std-ref">Serial Port Parameter Configuration</span></a> for the configuration of the serial tool on the PC side.</p>
+<figure class="align-center" id="wifi-nic-uart-assistant">
+<a class="reference internal image-reference" href="../../../../../_images/wifi_nic_uart_assistant.png"><img alt="There should be a picture here" src="../../../../../_images/wifi_nic_uart_assistant.png" style="width: 542.5px; height: 495.59999999999997px;" /></a>
+<figcaption>
+<p><span class="caption-text">Serial Port Parameter Configuration</span><a class="headerlink" href="#wifi-nic-uart-assistant" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="wi-fi-scan">
+<span id="wifi-nic-chapter-uart-cmd-verification-scan"></span><h4>Wi-Fi Scan<a class="headerlink" href="#wi-fi-scan" title="Link to this heading"></a></h4>
+<table class="docutils align-center" id="table-wifi-scan-cmd">
+<caption><span class="caption-text">Introduction to wifi_scan Command</span><a class="headerlink" href="#table-wifi-scan-cmd" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Command</p></th>
+<th class="head"><p>wifi_scan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Overview</p></th>
+<td><p>Launching the Wi-Fi scanning feature.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Format</p></th>
+<td><p>wifi_scan</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Parameters</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Example</p></th>
+<td><p>wifi_scan</p></td>
+</tr>
+</tbody>
+</table>
+<p>Developers send <kbd class="kbd docutils literal notranslate">wifi_scan</kbd> to the RTL87x2G via the PC serial port tool.
+After the RTL87x2G receives the command, it echoes back via the Log, starts the Wi-Fi scanning feature, and displays the results of the Wi-Fi scan.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] CMD : wifi_scan
+[APP] [wifi_nic] [MEM] After do cmd, RAM_TYPE_DATA_ON = 70600, RAM_TYPE_BUFFER_ON = 25000
+[APP] [wifi_nic] RTL871X: survey done event(255)
+[APP] [wifi_nic] RTL871X: +indicate_wx_scan_complete_event
+[APP] [wifi_nic] 1:Infra        58:41:20:1a:0c:0f      -44     1       6       WPA/WPA2 PSK            WN_LG2
+[APP] [wifi_nic] 2:Infra        f8:6f:b0:18:cb:b6      -46     1       6       Open                    TP-LINK_CH1
+[APP] [wifi_nic] 3:Infra        5c:de:34:10:bb:a0      -46     6       7       WPA/WPA2 PSK            CMCC-2X9d
+[APP] [wifi_nic] 6:Infra        78:60:5b:3f:99:6d      -48     6       6       WPA/WPA2 PSK            WN_BT
+[APP] [wifi_nic] 7:Infra        62:e6:f9:0b:2f:c2      -56     1       7       WPA2 AES PSK            huawei-ax3_2g
+[APP] [wifi_nic] 8:Infra        00:19:29:00:88:9f      -56     6       7       WPA/WPA2 PSK            ChinaNet-2.4G
+[APP] [wifi_nic] 9:Infra        9c:9d:7e:57:11:92      -58     1       7       WPA2 AES PSK            Redmi_FA2C
+...
+</pre></div>
+</div>
+</section>
+<section id="wi-fi-connect">
+<span id="wifi-nic-chapter-uart-cmd-verification-connect"></span><h4>Wi-Fi Connect<a class="headerlink" href="#wi-fi-connect" title="Link to this heading"></a></h4>
+<table class="docutils align-center" id="table-wifi-connect-cmd">
+<caption><span class="caption-text">Introduction to wifi_connect Command</span><a class="headerlink" href="#table-wifi-connect-cmd" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Command</p></th>
+<th class="head"><p>wifi_connect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Overview</p></th>
+<td><p>Connect to the Specified AP.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Format</p></th>
+<td><p>wifi_connect &lt;SSID&gt; [PASSWORD]</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Parameters</p></th>
+<td><p>SSID: SSID name of the AP.</p>
+<p>PASSWORD: AP connection password.</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Example</p></th>
+<td><p>wifi_connect 86box_demo 123123123</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, to connect to an AP with the SSID of 86box_demo,
+the developer sends <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">wifi_connect</kbd> <kbd class="kbd docutils literal notranslate">86box_demo</kbd> <kbd class="kbd docutils literal notranslate">123123123</kbd></kbd> to the RTL87x2G through a PC serial port tool.
+After receiving the command, the RTL87x2G will activate the Wi-Fi connection function.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] CMD : wifi_connect 86box_demo 123123123
+[APP] [wifi_nic] RTL871X: wpa_set_auth_algs, AUTH_ALG_OPEN_SYSTEM
+[APP] [wifi_nic] RTL871X: wpa_set_encryption()=&gt;dot11AuthAlgrthm=0, ndisauthtype=7, ndisencryptstatus=1, dot11PrivacyAlgrthm=4, dot118021XGrpPrivacy=4
+[APP] [wifi_nic] RTL871X: set wpa passphrase=123123123, len=9
+[APP] [wifi_nic] RTL871X: wpa passphrase=123123123, len=9
+[APP] [wifi_nic] RTL871X: =&gt;rtw_wx_set_essid
+[APP] [wifi_nic] RTL871X: ssid=86box_demo, len=10
+[APP] [wifi_nic] RTL871X: set ssid [86box_demo]
+...
+</pre></div>
+</div>
+<p>Once successfully connected to the AP, it will automatically initialize <a class="reference internal" href="../../../../../doc/glossary.html#term-LWIP"><span class="xref std std-term">LWIP</span></a> by default and obtain an IP address via the <a class="reference internal" href="../../../../../doc/glossary.html#term-DHCP"><span class="xref std std-term">DHCP</span></a> functionality.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
+[APP] [wifi_nic] RTL871X: set group key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4) keyid:1
+[APP] [wifi_nic] Connected after 2889ms.
+[APP] [wifi_nic] [MEM] After do cmd, RAM_TYPE_DATA_ON = 70048, RAM_TYPE_BUFFER_ON = 25000
+[APP] [LWIP] low_level_init() MAC Addr= 2c:c3:e6:be:91:9f
+[APP] [LWIP] lwip_net_status_callback() netif_is_up dhcp-&gt;state : 0
+[APP] [wifi_nic] TCPIP_Init ok
+[APP] [wifi_nic] lwip dhcp_start success...
+[APP] [LWIP] lwip_net_status_callback() netif_is_up dhcp-&gt;state : 10
+[APP] [LWIP] lwip_net_status_callback() IP: 192.168.72.195
+</pre></div>
+</div>
+<p>If the connection to the AP fails, a log stating 'ERROR: Operation failed!' will be prompted.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="c">...</span>
+[APP] [wifi_nic] RTL871X: rtw_select_and_join_from_scanned_queue: return _FAIL(candidate == NULL)
+[APP] [wifi_nic] RTL871X: try_to_join, but select scanning queue fail
+[APP] [wifi_nic] RTL871X: indicate_wx_custom_event No Assoc Network After Scan Done
+[APP] [wifi_nic] wifi_nic_disconnect_cb() wifi_state = 2 , user_data = disconnect user data
+[APP] [wifi_nic] wifi_nic_disconnect_cb() error_flag = RTW_NONE_NETWORK
+[APP] [wifi_nic] ERROR: Operation failed!
+</pre></div>
+</div>
+</section>
+<section id="wi-fi-disconnect">
+<span id="wifi-nic-chapter-uart-cmd-verification-disconnect"></span><h4>Wi-Fi Disconnect<a class="headerlink" href="#wi-fi-disconnect" title="Link to this heading"></a></h4>
+<table class="docutils align-center" id="table-wifi-disconnect-cmd">
+<caption><span class="caption-text">Introduction to wifi_disconnect Command</span><a class="headerlink" href="#table-wifi-disconnect-cmd" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Command</p></th>
+<th class="head"><p>wifi_disconnect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Overview</p></th>
+<td><p>Disconnect the connected AP.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Format</p></th>
+<td><p>wifi_disconnect</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Parameters</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Example</p></th>
+<td><p>wifi_disconnect</p></td>
+</tr>
+</tbody>
+</table>
+<p>Developers send <kbd class="kbd docutils literal notranslate">wifi_disconnect</kbd> to RTL87x2G through the PC serial port tool.
+After receiving the command, RTL87x2G will disconnect the Wi-Fi connection and disable the DHCP function of LWIP.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] CMD : wifi_disconnect
+[APP] [wifi_nic] Deassociating AP ...
+[APP] [wifi_nic] RTL871X: issue_deauth to 46:37:a4:0e:0f:1e
+[APP] [wifi_nic] RTL871X: update_mgnt_tx_rate(): rate = 2
+[APP] [wifi_nic] RTL871X: HW_VAR_BASIC_RATE: 0x15f -&gt; 0x15f -&gt; 0x15f
+[APP] [wifi_nic] wifi_nic_disconnect_cb() wifi_state = 5 , user_data = disconnect user data
+[APP] [wifi_nic] wifi_nic_disconnect_cb() dhcp stop
+[APP] [LWIP] lwip_net_status_callback() netif_is_up dhcp-&gt;state : 0
+[APP] [wifi_nic] RTL871X: rtw_free_stainfo(): 46:37:a4:0e:0f:1e
+[APP] [wifi_nic]  RTL871X: ### Clean STA_(0) info ###
+[APP] [wifi_nic] ioctl[SIOCGIWESSID] ssid = NULL, not connected
+[APP] [wifi_nic] WIFI disconnect ok
+</pre></div>
+</div>
+</section>
+<section id="iperf-server">
+<span id="wifi-nic-chapter-uart-cmd-iperf-server"></span><h4>Iperf Server<a class="headerlink" href="#iperf-server" title="Link to this heading"></a></h4>
+<table class="docutils align-center" id="table-iperf-server-cmd">
+<caption><span class="caption-text">Introduction to Iperf Server Command</span><a class="headerlink" href="#table-iperf-server-cmd" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Command</p></th>
+<th class="head"><p>iperf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Overview</p></th>
+<td><p>Start iperf server testing function.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Format</p></th>
+<td><p>iperf tcp -s</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Parameters</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Example</p></th>
+<td><p>iperf tcp -s</p></td>
+</tr>
+</tbody>
+</table>
+<p>After successfully connecting to the AP, the developer sends <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">iperf</kbd> <kbd class="kbd docutils literal notranslate">tcp</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">s</kbd></kbd> to RTL87x2G via PC terminal tool.
+Upon receiving the command, RTL87x2G will create an iperf TCP server.
+If successfully created, it prints out the IP of the server and the port number it listens to (default is 5003).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] CMD : iperf tcp -s
+[APP] [wifi_nic] [MEM] After do cmd, RAM_TYPE_DATA_ON = 71488, RAM_TYPE_BUFFER_ON = 25000
+[APP] [wifi_nic] tcp_server start
+[APP] [wifi_nic] &lt;tcp_server&gt; Bind socket successfully!
+[APP] [wifi_nic] &lt;tcp_server&gt; Server ip  : 192.168.1.101
+[APP] [wifi_nic] &lt;tcp_server&gt; Listen port: 5003
+</pre></div>
+</div>
+<p>After the creation of the iperf server, a connection can be initiated on the PC side by launching an iperf client,
+starting method: enter command <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">iperf.exe</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">c</kbd> <kbd class="kbd docutils literal notranslate">192.168.1.101</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">p</kbd> <kbd class="kbd docutils literal notranslate">5003</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">i</kbd> <kbd class="kbd docutils literal notranslate">1</kbd></kbd> in a PowerShell window,
+refer to <a class="reference internal" href="#wifi-nic-pc-iperf-client"><span class="std std-ref">Starting Iperf Client on PC Side</span></a>.
+Once the iperf client successfully connects to the server, the speed test begins. RTL87x2G also prints out the current speed test results via Log.</p>
+<figure class="align-center" id="wifi-nic-pc-iperf-client">
+<a class="reference internal image-reference" href="../../../../../_images/wifi_nic_pc_iperf_client.png"><img alt="There should be a picture here" src="../../../../../_images/wifi_nic_pc_iperf_client.png" style="width: 687.15px; height: 279.90000000000003px;" /></a>
+<figcaption>
+<p><span class="caption-text">Starting Iperf Client on PC Side</span><a class="headerlink" href="#wifi-nic-pc-iperf-client" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] CMD :iperf tcp -s
+[APP] [wifi_nic] [MEM] After do Cmd, RAM_TYPE_DATA_ON = 69200, RAM_TYPE_BUFFER_ON = 25000
+[APP] [wifi_nic] tcp server start
+[APP] [wifi_nic] &lt;tcp server&gt; Bind socket successfully!
+[APP] [wifi_nic] &lt;tcp server&gt; Server ip : 192.168.1.101
+[APP] [wifi_nic] &lt;tcp server&gt; Listen port: 5003
+[APP] [wifi_nic] TCP: Receive 1870 KBytes in 1000 ms, 15321 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1842 KBytes in 1000 ms, 15091 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1702 KBytes in 1000 ms, 13950 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1710 KBytes in 1000 ms, 14008 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1805 KBytes in 1000 ms, 14791 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1798 KBytes in 1000 ms, 14734 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1742 KBytes in 1000 ms, 14273 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1769 KBytes in 1000 ms, 14492 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1849 KBytes in 1000 ms, 15148 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: Receive 1802 KBytes in 1000 ms, 14768 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -31
+[APP] [wifi_nic] TCP: [END] Totally Receive 18176 KBytes, total rate = 14656 Kbits/sec
+</pre></div>
+</div>
+<p>After the test, developers can send <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">iperf</kbd> <kbd class="kbd docutils literal notranslate">stop</kbd></kbd> to RTL87x2G through the PC-side serial port tool to shut down the iperf server.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] CMD : iperf stop
+[APP] [wifi_nic] iperf_test_thread stop
+</pre></div>
+</div>
+</section>
+<section id="iperf-client">
+<span id="wifi-nic-chapter-uart-cmd-iperf-client"></span><h4>Iperf Client<a class="headerlink" href="#iperf-client" title="Link to this heading"></a></h4>
+<table class="docutils align-center" id="table-iperf-client-cmd">
+<caption><span class="caption-text">Introduction to Iperf Client Command</span><a class="headerlink" href="#table-iperf-client-cmd" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Command</p></th>
+<th class="head"><p>iperf</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Overview</p></th>
+<td><p>Start iperf server test function.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Format</p></th>
+<td><p>iperf tcp -c &lt;ip&gt; &lt;port&gt;</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Parameters</p></th>
+<td><p>ip: The IP address or hostname of the server.</p>
+<p>port: The listening port number of the server.</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Example</p></th>
+<td><p>iperf tcp –c 192.168.1.100 5001</p></td>
+</tr>
+</tbody>
+</table>
+<p>Before running iperf client, it's necessary to create a server first.
+Enter command <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">iperf.exe</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">s</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">i</kbd> <kbd class="kbd docutils literal notranslate">1</kbd></kbd> in the PowerShell window on the PC to start an iperf server,
+refer to <a class="reference internal" href="#wifi-nic-pc-iperf-server"><span class="std std-ref">PC Side Creates Iperf Server</span></a>.
+Assuming the IP of the PC side is 192.168.1.100 and the listening port number is 5001.
+Developers send <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">iperf</kbd> <kbd class="kbd docutils literal notranslate">tcp</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">c</kbd> <kbd class="kbd docutils literal notranslate">192.168.1.100</kbd> <kbd class="kbd docutils literal notranslate">5001</kbd></kbd> to RTL87x2G through the PC-side serial port tool.
+After receiving the instructions, RTL87x2G will create an iperf tcp client and try to establish a connection with the server.
+After successful connection, it will print 'Connect to iperf server successful!' through Log and display the current speed test results every second.</p>
+<figure class="align-center" id="wifi-nic-pc-iperf-server">
+<a class="reference internal image-reference" href="../../../../../_images/wifi_nic_pc_iperf_server.png"><img alt="There should be a picture here" src="../../../../../_images/wifi_nic_pc_iperf_server.png" style="width: 728.8000000000001px; height: 142.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">PC Side Creates Iperf Server</span><a class="headerlink" href="#wifi-nic-pc-iperf-server" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[APP] [wifi_nic] CMD : iperf tcp -c 192.168.1.100 5001
+[APP] [wifi_nic] IP =192.168.1.100, port = 5001
+[APP] [wifi_nic] [MEM] After do md, RAM_TYPE_DATA_ON = 69200, RAM_TYPE_BUFFER_ON = 25000
+[APP] [wifi_nic] tcp client start
+[APP] [wifi_nic] &lt;tcp client&gt;:Connect to iperf server successful! ret = 0
+[APP] [wifi_nic] TCP: Send 1260 KBytes in 1001 ms, 10314 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -33
+[APP] [wifi_nic] TCP: Send 1432 KBytes in 1000 ms, 11738 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -33
+[APP] [wifi_nic] TCP: Send 1448 KBytes in 1000 ms, 11866 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -33
+[APP] [wifi_nic] TCP: Send 1375 KBytes in 1004 ms, 11226 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -33
+[APP] [wifi_nic] TCP: Send 1365 KBytes in 1000 ms, 11189 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -33
+[APP] [wifi_nic] TCP: Send 1401 KBytes in 1000 ms, 11481 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -33
+[APP] [wifi_nic] TCP: Send 1464 KBytes in 1001 ms, 11983 Kbits/sec
+[APP] [wifi_nic] WIFI RSSI= -33
+[APP] [wifi_nic] CMD : iperf stop
+[APP] [wifi_nic] [MEM] After do Cmd, RAM_TYPE_DATA_ON= 67472, RAM_TYPE_BUFFER_ON = 25000
+[APP] [wifi_nic] TCP: [END] Totally send 10202 KBytes, total rate = 11437 Kbits/sec
+[APP] [wifi_nic] tcp client stop
+</pre></div>
+</div>
+<p>Upon completion of the test, developers can send <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">iperf</kbd> <kbd class="kbd docutils literal notranslate">stop</kbd></kbd> to RTL87x2G through the PC-side serial port tool to close the iperf client.</p>
+</section>
+</section>
+</section>
+<section id="code-overview">
+<span id="wifi-nic-chapter-code-overview"></span><h2>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading"></a></h2>
+<p>The main purpose of this chapter is to help APP developers become familiar with the development process related to Wi-Fi. This chapter will be introduced according to the following several parts.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wifi-nic-chapter-source-code-directory"><span class="std std-ref">Source Code Directory</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="#wifi-nic-chapter-system-architecture"><span class="std std-ref">Software Architecture</span></a> section will analyze the software architecture of this example code.</p></li>
+<li><p>The <a class="reference internal" href="#wifi-nic-chapter-task-overview"><span class="std std-ref">Tasks and Their Priorities</span></a> section will analyze the roles of various tasks and the priority settings.</p></li>
+<li><p>The <a class="reference internal" href="#wifi-nic-chapter-state-machine"><span class="std std-ref">Wi-Fi State Machine</span></a> section will analyze the state machine of Wi-Fi and state transition relationships.</p></li>
+<li><p>The <a class="reference internal" href="#wifi-nic-chapter-interactive-mode"><span class="std std-ref">Interactive Mode</span></a> section will analyze how the system receives and handles UART commands.</p></li>
+<li><p>The <a class="reference internal" href="#wifi-nic-chapter-demo-application"><span class="std std-ref">Application Example</span></a> section will provide application example code for Wi-Fi, such as iperf, SNTP, etc.</p></li>
+<li><p>The <a class="reference internal" href="#wifi-nic-chapter-important-api"><span class="std std-ref">Important APIs</span></a> section will list and introduce important APIs.</p></li>
+</ul>
+<section id="source-code-directory">
+<span id="wifi-nic-chapter-source-code-directory"></span><h3>Source Code Directory<a class="headerlink" href="#source-code-directory" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Project directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\wifi_nic\proj</span></code></p></li>
+<li><p>Source code directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\wifi_nic\src</span></code></p></li>
+</ul>
+<p>Source files in the Wi-Fi sample project are currently categorized into several groups as below.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: wifi_nic
+    └── secure_only_app
+        └── Device                         includes startup code
+            ├── startup_rtl.c
+            └── system_rtl.c
+        ├── CMSE Library                   Non-secure callable lib
+        ├── Lib                            includes all binary symbol files that user application is built on
+        ├── Peripheral                     includes all peripheral drivers and module code used by the application
+        └── APP                            includes the Wi-Fi user application implementation
+            └── main.c
+        └── lwip/user                      includes Realtek platform layer source code based on LWIP
+            ├── ethernetif.c
+            ├── sys_arch.c
+        └── wifi/startup                   includes code for Wi-Fi initialization
+            ├── wifi_nic_task.c
+            ├── wifi_nic_cb.c
+        └── wifi/msg_server                includes code for Wi-Fi IO_MSG processing
+            ├── wifi_nic_msg.c
+        └── wifi/interactive               includes code for parsing and handling Wi-Fi interaction commands
+            ├── uart_transport.c
+            ├── interactive_task.c
+        └── wifi/demo                      includes the Wi-Fi demo application implementation
+            ├── iperf_test.c
+            ├── sntp_demo.c
+            └── http_demo.c
+        └── wifi/lib                       includes all binary symbol files that user application is built on
+            ├── wlan-8189ftv-sdio-rtl87x2g.lib
+            ├── wifi-nic-driver-sdio.lib
+            └── lwip.lib
+</pre></div>
+</div>
+</section>
+<section id="software-architecture">
+<span id="wifi-nic-chapter-system-architecture"></span><h3>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="#wifi-nic-system-architecture"><span class="std std-ref">System Architecture</span></a> of the Wi-Fi system can be divided into the following part.</p>
+<ul class="simple">
+<li><p>Interactive CMD: Developers can use interactive commands to configure or get the status of Wi-Fi, which is very useful for debugging.</p></li>
+<li><p>Configuration API: Developers can call the configuration API to control the Wi-Fi chip, implementing operations such as scanning, connecting, etc.</p></li>
+<li><p>Network Stack: This part has ported the commonly used LWIP protocol stack.</p></li>
+<li><p>Host Controller: HCI is the communication interface between the host and the Wi-Fi chip, responsible for the exchange of information between the platform and the Wi-Fi chip.</p></li>
+<li><p>Wi-Fi Driver Library: The driver software of the Wi-Fi chip.</p></li>
+<li><p>FreeRTOS: Provides operations such as task scheduling and resource management.</p></li>
+</ul>
+<figure class="align-center" id="wifi-nic-system-architecture">
+<a class="reference internal image-reference" href="../../../../../_images/wifi_nic_system_architecture.png"><img alt="There should be a picture here" src="../../../../../_images/wifi_nic_system_architecture.png" style="width: 643.0px; height: 369.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">System Architecture</span><a class="headerlink" href="#wifi-nic-system-architecture" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="tasks-and-their-priorities">
+<span id="wifi-nic-chapter-task-overview"></span><h3>Tasks and Their Priorities<a class="headerlink" href="#tasks-and-their-priorities" title="Link to this heading"></a></h3>
+<figure class="align-center" id="wifi-nic-task">
+<a class="reference internal image-reference" href="../../../../../_images/wifi_nic_task.png"><img alt="There should be a picture here" src="../../../../../_images/wifi_nic_task.png" style="width: 787.5px; height: 456.3px;" /></a>
+<figcaption>
+<p><span class="caption-text">Task</span><a class="headerlink" href="#wifi-nic-task" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The description and priority of each task are as follows.</p>
+<table class="docutils align-center" id="table-task-list">
+<caption><span class="caption-text">Description and Priority of Task</span><a class="headerlink" href="#table-task-list" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Task</p></th>
+<th class="head"><p>Priority</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Prerequisite</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>wifi_nic</p></th>
+<td><p>2</p></td>
+<td><p>Task to complete Wi-Fi driver initialization.</p></td>
+<td><p>Automatically deleted after Wi-Fi initialization is completed.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>lwip</p></th>
+<td><p>5</p></td>
+<td><p>LWIP kernel thread.</p></td>
+<td><p>Always run after LWIP initialization is completed.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>xmit</p></th>
+<td><p>6</p></td>
+<td><p>Task to send Wi-Fi packets.</p></td>
+<td><p>Run after Wi-Fi is enabled.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>cmd</p></th>
+<td><p>3</p></td>
+<td><p>Task to process internal CMD in Wi-Fi driver.</p></td>
+<td><p>Run after Wi-Fi is enabled.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>irq</p></th>
+<td><p>4</p></td>
+<td><p>Task to receive HCI data, equivalent to interrupt service routine.</p></td>
+<td><p>Run after Wi-Fi is enabled.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>interactive</p></th>
+<td><p>2</p></td>
+<td><p>Task to receive and process UART instructions, convenient for developers to debug.</p></td>
+<td><p>Whether to start is determined by the macro SUPPORT_INTERACTIVE_MODE.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>wifi_server</p></th>
+<td><p>2</p></td>
+<td><p>Task to process message events</p></td>
+<td><p>Whether to start is determined by the macro SUPPORT_MSG_SERVER.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>iperf_test</p></th>
+<td><p>2</p></td>
+<td><p>iperf demonstration application.</p></td>
+<td><p>Automatically created when the speed test starts and automatically deleted after the speed test ends.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>sntp</p></th>
+<td><p>2</p></td>
+<td><p>sntp demonstration application.</p></td>
+<td><p>Whether to start is determined by the macro SUPPORT_FEATURE_SNTP.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>http</p></th>
+<td><p>2</p></td>
+<td><p>http demonstration application.</p></td>
+<td><p>Whether to start is determined by the macro SUPPORT_FEATURE_HTTP.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Idle</p></th>
+<td><p>0</p></td>
+<td><p>Run background tasks.</p></td>
+<td><p>Always running.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wi-fi-state-machine">
+<span id="wifi-nic-chapter-state-machine"></span><h3>Wi-Fi State Machine<a class="headerlink" href="#wi-fi-state-machine" title="Link to this heading"></a></h3>
+<p>In the process of running, the system will switch among the following states of Wi-Fi.</p>
+<table class="docutils align-center" id="table-wifi-state">
+<caption><span class="caption-text">Wi-Fi State Switching Condition</span><a class="headerlink" href="#table-wifi-state" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WIFI_STATE_OFF</p></td>
+<td><p>Wi-Fi driver OFF state.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIFI_STATE_ON</p></td>
+<td><p>Wi-Fi driver startup state.</p></td>
+</tr>
+<tr class="row-even"><td><p>WIFI_STATE_CONNECTING</p></td>
+<td><p>Wi-Fi start connecting.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIFI_STATE_L2CONNECTED</p></td>
+<td><p>Wi-Fi connected to AP.</p></td>
+</tr>
+<tr class="row-even"><td><p>WIFI_STATE_OBTAININGIP</p></td>
+<td><p>Wi-Fi is obtaining IP address.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WIFI_STATE_CONNECTED</p></td>
+<td><p>Wi-Fi connected state.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interactive-mode">
+<span id="wifi-nic-chapter-interactive-mode"></span><h3>Interactive Mode<a class="headerlink" href="#interactive-mode" title="Link to this heading"></a></h3>
+<p>Developers can use interactive commands to debug and configure the Wi-Fi module.
+These commands are input into the RTL87x2G via the UART interface, and the specific process is as follows.</p>
+<figure class="align-center" id="wifi-nic-cmd-processing-flow">
+<a class="reference internal image-reference" href="../../../../../_images/wifi_nic_cmd_processing_flow.png"><img alt="There should be a picture here" src="../../../../../_images/wifi_nic_cmd_processing_flow.png" style="width: 955.8000000000001px; height: 94.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Command Processing Flow</span><a class="headerlink" href="#wifi-nic-cmd-processing-flow" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Developers only need to set the macro SUPPORT_INTERACTIVE_MODE to 1 to use this feature.
+Common interactive commands are shown in the following table.</p>
+<table class="docutils align-center" id="table-wifi-cmd-list">
+<caption><span class="caption-text">Command Overview</span><a class="headerlink" href="#table-wifi-cmd-list" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>wifi_connect</p></td>
+<td><p>Connect to the specified AP.</p></td>
+</tr>
+<tr class="row-odd"><td><p>wifi_disconnect</p></td>
+<td><p>Disconnect from the connected AP.</p></td>
+</tr>
+<tr class="row-even"><td><p>wifi_on</p></td>
+<td><p>Enable the Wi-Fi module.</p></td>
+</tr>
+<tr class="row-odd"><td><p>wifi_off</p></td>
+<td><p>Disable the Wi-Fi module.</p></td>
+</tr>
+<tr class="row-even"><td><p>wifi_scan</p></td>
+<td><p>Start the Wi-Fi scan feature.</p></td>
+</tr>
+<tr class="row-odd"><td><p>iperf</p></td>
+<td><p>iperf speed test.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For how to debug the Wi-Fi module using interactive commands, please refer to <a class="reference internal" href="#wifi-nic-chapter-uart-cmd-verification"><span class="std std-ref">UART CMD Verification</span></a>.</p>
+<p>For interactive task code, please refer to <code class="file docutils literal notranslate"><span class="pre">sdk\samples\wifi_nic\src\wifi_nic_task\interactive_task.c</span></code></p>
+</section>
+<section id="application-example">
+<span id="wifi-nic-chapter-demo-application"></span><h3>Application Example<a class="headerlink" href="#application-example" title="Link to this heading"></a></h3>
+<section id="iperf-demo">
+<h4>Iperf Demo<a class="headerlink" href="#iperf-demo" title="Link to this heading"></a></h4>
+<p>The iperf is a cross-platform network performance testing tool based on the Client/Server model.
+It can test the bandwidth performance of <a class="reference internal" href="../../../../../doc/glossary.html#term-TCP"><span class="xref std std-term">TCP</span></a> / <a class="reference internal" href="../../../../../doc/glossary.html#term-UDP"><span class="xref std std-term">UDP</span></a> and provides statistical information
+such as network throughput, latency jitter, packet loss rate, and maximum transmission unit.
+This information helps developers understand network performance issues, pinpoint network bottlenecks, and thus resolve network failures.</p>
+<p>The iperf network speed test tool can be obtained from the <a class="reference external" href="https://iperf.fr">Iperf Official Website</a> .
+For specific usage methods, please refer to <a class="reference external" href="https://iperf.fr/iperf-doc.php">Iperf User Docs</a> .</p>
+<p>The iperf TCP speed test code has been included in the SDK, located at <code class="file docutils literal notranslate"><span class="pre">sdk\samples\wifi_nic\src\wifi_nic_task\iperf_test.c</span></code> .
+Developers can use interactive commands to conduct tests,
+refer to <a class="reference internal" href="#wifi-nic-chapter-uart-cmd-iperf-server"><span class="std std-ref">Iperf Server</span></a> and <a class="reference internal" href="#wifi-nic-chapter-uart-cmd-iperf-client"><span class="std std-ref">Iperf Client</span></a> .</p>
+<p>For iperf demo code, please refer to <code class="file docutils literal notranslate"><span class="pre">sdk\samples\wifi_nic\src\wifi_nic_task\iperf_test.c</span></code> .</p>
+</section>
+<section id="sntp-demo">
+<h4>SNTP Demo<a class="headerlink" href="#sntp-demo" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="../../../../../doc/glossary.html#term-SNTP"><span class="xref std std-term">SNTP</span></a> is a branch of the development of the <a class="reference internal" href="../../../../../doc/glossary.html#term-NTP"><span class="xref std std-term">NTP</span></a>,
+SNTP uses a simpler method for network clock synchronization. The SNTP protocol works on a client-server structure,
+operating in either unicast (one-to-one) or broadcast (one-to-many) mode.</p>
+<ul class="simple">
+<li><p>In unicast mode, the SNTP client can obtain accurate time information by regularly visiting the NTP server, which is used to adjust the system time of the client itself, thus achieving time synchronization.</p></li>
+<li><p>In broadcast mode, the NTP server periodically sends messages to designated IP broadcast addresses or IP multicast addresses. SNTP clients obtain time information by listening to these addresses.</p></li>
+</ul>
+<p>The SNTP packet format refers to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc4330">SNTPv4</a> .
+According to the SNTP protocol, the total number of seconds of the current time is in slots 40 to 43 of the data packet.</p>
+<p>It is worth noting that the timestamp returned by the NTP server is an NTP timestamp, while the time in daily life is based on <a class="reference internal" href="../../../../../doc/glossary.html#term-UTC"><span class="xref std std-term">UTC</span></a>.
+Therefore, it is necessary to convert the NTP timestamp to a UTC timestamp.</p>
+<p>In summary, the steps to obtain the time from NTP server are as follows.</p>
+<ol class="arabic simple">
+<li><p>Connect to the NTP server using the UDP protocol.</p></li>
+<li><p>Send SNTP packets to the NTP server.</p></li>
+<li><p>Retrieve the data returned from the SNTP server, taking the hexadecimal value from the 40th to the 43rd place.</p></li>
+<li><p>Convert NTP time to UTC time.</p></li>
+<li><p>Use the time library to convert the total seconds into year, month, day, hour, minute, and second.</p></li>
+</ol>
+<p>For SNTP demo code, please refer to <code class="file docutils literal notranslate"><span class="pre">sdk\samples\wifi_nic\src\wifi_nic_task\sntp_demo.c</span></code></p>
+</section>
+<section id="http-demo">
+<h4>HTTP Demo<a class="headerlink" href="#http-demo" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="../../../../../doc/glossary.html#term-HTTP"><span class="xref std std-term">HTTP</span></a> is an application-layer protocol for distributed, collaborative, and hypermedia information systems.
+Embedded devices such as sensors, controllers, or other IoT devices, can use the HTTP protocol to connect to the Internet to send or receive data.
+The main advantage of the HTTP protocol is that it is based on the request-response model,
+enabling embedded devices to send requests and receive corresponding responses.
+Since the devices do not need to maintain a continuously active connection but only need to send requests when needed,
+it simplifies the programming and design of the devices.
+In addition, the HTTP protocol is also known for its openness and extensibility.
+It supports various request methods like GET, POST, etc., allowing embedded devices to retrieve, send, update, or delete data.
+At the same time, the HTTP protocol also supports various media types, allowing embedded devices to send and receive data in various formats,
+such as text, images, audio, video, etc.</p>
+<p>Here's an example of how to apply the HTTP protocol using real-time weather information from the <a class="reference external" href="https://www.seniverse.com/">Seniverse</a> .</p>
+<p>First, you need to register on the Seniror Weather Network and obtain an API key,
+referring to <a class="reference external" href="https://seniverse.yuque.com/hyper_data/api_v3/sdnhw8">Getting Started</a> .
+Once you have the key, you can construct a request message.
+The request message contains the request method, URL, protocol version, request header, and request data.
+The server responds with a status line, and the response content includes the protocol version, success or error codes,
+server information, response headers, and response data, etc.</p>
+<p>The construction method of the request message can be referred to in the following code.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define HOST_NAME     &quot;api.seniverse.com&quot;</span>
+<span class="cp">#define HOST_PORT     80</span>
+
+<span class="cp">#define PRIVATE_KEY   &quot;your_private_key&quot;  </span><span class="c1">//your private key</span>
+<span class="cp">#define LOCATION      &quot;beijing&quot;</span>
+<span class="cp">#define URL           &quot;/v3/weather/now.json?key=&quot; PRIVATE_KEY &quot;&amp;location=&quot; LOCATION &quot;&amp;language=en&amp;unit=c&quot;</span>
+
+<span class="cp">#define HTTPC_CLIENT_AGENT &quot;lwIP/&quot; LWIP_VERSION_STRING</span>
+<span class="cm">/* GET request with proxy */</span>
+<span class="cp">#define HTTPC_REQ_11_PROXY &quot;GET http:</span><span class="c1">//%s%s HTTP/1.1\r\n&quot; /* HOST, URI */\</span>
+<span class="w">    </span><span class="s">&quot;User-Agent: %s</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* User-Agent */</span><span class="w"> </span>\
+<span class="w">    </span><span class="s">&quot;Accept: */*</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="w"> </span>\
+<span class="w">    </span><span class="s">&quot;Host: %s</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* server name */</span><span class="w"> </span>\
+<span class="w">    </span><span class="s">&quot;Connection: Close</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="w"> </span><span class="cm">/* we don&#39;t support persistent connections, yet */</span><span class="w"> </span>\
+<span class="w">    </span><span class="s">&quot;</span><span class="se">\r\n</span><span class="s">&quot;</span>
+<span class="cp">#define HTTPC_REQ_11_PROXY_FORMAT(host, uri, srv_name) HTTPC_REQ_11_PROXY, host, uri, HTTPC_CLIENT_AGENT, srv_name</span>
+</pre></div>
+</div>
+<p>The steps to send an HTTP request are as follows.</p>
+<ol class="arabic simple">
+<li><p>Create a TCP client and connect to the Web server (the default HTTP port number is 80).</p></li>
+<li><p>Send a request message to the Web server through TCP socket.</p></li>
+<li><p>Wait for the Web server to return an HTTP response.</p></li>
+<li><p>Disconnect the TCP connection.</p></li>
+<li><p>Parse the HTML content.</p></li>
+</ol>
+<p>For HTTP demo code, please refer to <code class="file docutils literal notranslate"><span class="pre">sdk\samples\wifi_nic\src\wifi_nic_task\http_demo.c</span></code></p>
+</section>
+</section>
+<section id="important-apis">
+<span id="wifi-nic-chapter-important-api"></span><h3>Important APIs<a class="headerlink" href="#important-apis" title="Link to this heading"></a></h3>
+<section id="wifi-nic-on">
+<h4>wifi_nic_on<a class="headerlink" href="#wifi-nic-on" title="Link to this heading"></a></h4>
+<table class="docutils align-left" id="id2">
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 84.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>wifi_nic_on</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>int wifi_nic_on(void)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>This function is used to enable Wi-Fi.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Output Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Return Value</p></th>
+<td><p>If the function succeeds, the return value is 0.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wifi-nic-off">
+<h4>wifi_nic_off<a class="headerlink" href="#wifi-nic-off" title="Link to this heading"></a></h4>
+<table class="docutils align-left" id="id3">
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 84.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>wifi_nic_off</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>int wifi_nic_off(void)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>This function is used to disable Wi-Fi.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Output Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Return Value</p></th>
+<td><p>If the function succeeds, the return value is 0.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wifi-nic-scan">
+<h4>wifi_nic_scan<a class="headerlink" href="#wifi-nic-scan" title="Link to this heading"></a></h4>
+<table class="docutils align-left" id="id4">
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 84.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>wifi_nic_scan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>void wifi_nic_scan(rtw_scan_result_handler_t results_handler, void *user_data)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>This function is used to initiate a scan to search for 802.11 networks.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter1</p></th>
+<td><p>results_handler: The callback function which will receive and process the result data.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Input Parameter2</p></th>
+<td><p>user_data: The user-specific data that will be passed directly to the callback function.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Output Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Return Value</p></th>
+<td><p>If the function succeeds, the return value is 0.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Prerequisite</p></th>
+<td><p>The callback must not use blocking functions, since it is called from the context of the thread. The callback and user_data variables will be referenced after the function returns. Those variables must remain valid until the scan is complete.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wifi-nic-connect">
+<h4>wifi_nic_connect<a class="headerlink" href="#wifi-nic-connect" title="Link to this heading"></a></h4>
+<table class="docutils align-left" id="id5">
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 84.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>wifi_nic_connect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>int wifi_nic_is_connect (char *ssid, char *password)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>This function is used to trigger connection to a WIFI network.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter1</p></th>
+<td><p>ssid: The SSID name of the network to connect.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Input Parameter2</p></th>
+<td><p>password: The password of the network to connect.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Output Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Return Value</p></th>
+<td><p>If the function succeeds, the return value is 0.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wifi-nic-disconnect">
+<h4>wifi_nic_disconnect<a class="headerlink" href="#wifi-nic-disconnect" title="Link to this heading"></a></h4>
+<table class="docutils align-left" id="wifi-nic-is-disconnect">
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 84.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>wifi_nic_is_disconnect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>int wifi_nic_is_disconnect (void)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>This function is used to trigger disconnection from the current WIFI network.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Output Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Return Value</p></th>
+<td><p>If the function succeeds, the return value is 0.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wifi-nic-wlan-send">
+<h4>wifi_nic_wlan_send<a class="headerlink" href="#wifi-nic-wlan-send" title="Link to this heading"></a></h4>
+<table class="docutils align-left" id="id6">
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 84.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>wifi_nic_wlan_send</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>int wifi_nic_wlan_send(int idx, T_ETH_DRV_SG *sg_list, int sg_len, int total_len)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>This function is called by the network stack, it allocates one skb according to the packet length, then converts the packet from T_ETH_DRV_SG type to skb type, and transmits the skb to the driver.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter1</p></th>
+<td><p>idx: Network interface index, indicating the WIFI interface which transmits the packet.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Input Parameter2</p></th>
+<td><p>sg_list: One pointer pointing to one struct T_ETH_DRV_SG type array which stores the packet generated by the network stack.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter3</p></th>
+<td><p>sg_len: Represents the actual used member's number of the struct T_ETH_DRV_SG array.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Input Parameter4</p></th>
+<td><p>total_len: Total length of this packet to be transmitted.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Output Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Return Value</p></th>
+<td><p>If the function succeeds, the return value is 0.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wifi-nic-wlan-recv">
+<h4>wifi_nic_wlan_recv<a class="headerlink" href="#wifi-nic-wlan-recv" title="Link to this heading"></a></h4>
+<table class="docutils align-left" id="id7">
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 84.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>wifi_nic_wlan_recv</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>int wifi_nic_wlan_recv(int idx, T_ETH_DRV_SG *sg_list, int sg_len)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>This function is called by the network stack, it allocates one skb according to the packet length, then converts the packet from T_ETH_DRV_SG type to skb type, and transmits the skb to the driver.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter1</p></th>
+<td><p>idx: Network interface index, indicating the WIFI interface which transmits the packet.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Input Parameter2</p></th>
+<td><p>sg_list: One pointer pointing to one struct T_ETH_DRV_SG type array which stores the packet generated by the network stack.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter3</p></th>
+<td><p>sg_len: Represents the actual used member's number of the struct T_ETH_DRV_SG array.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Output Parameter</p></th>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Return Value</p></th>
+<td><p>If the function succeeds, the return value is 0.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../doc/text_en/README.html" class="btn btn-neutral float-left" title="Wi-Fi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../../ethernet/ethernet/doc/text_en/README.html" class="btn btn-neutral float-right" title="Ethernet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

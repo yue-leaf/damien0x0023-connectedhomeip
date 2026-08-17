@@ -1,0 +1,87 @@
+#!armclang --target=arm-arm-none-eabi -march=armv8-m.main -E -x c
+;#include "..\mem_config.h"
+;#include "..\flash_map.h"
+#include "..\..\..\..\..\include\rtl87x2g\config\secure\mem_config.h"
+#include "..\..\..\..\..\include\rtl87x2g\config\secure\flash_map.h"
+
+/* Sizes */
+#if (defined(S_RAM_MAIN_STACK_SIZE))
+#define Stack_Size                   S_RAM_MAIN_STACK_SIZE
+#else
+#define Stack_Size                   0x1000
+#endif
+    
+; APP Flash definitions
+#if (BUILD_BANK == 0)
+#define S_LOAD_APP_ADDR       BANK0_SECURE_APP_ADDR
+#define S_LOAD_APP_SIZE       BANK0_SECURE_APP_SIZE
+#else
+#define S_LOAD_APP_ADDR       BANK1_SECURE_APP_ADDR
+#define S_LOAD_APP_SIZE       BANK1_SECURE_APP_SIZE
+#endif
+
+#define SECURE_APP_RAM_TEXT_SECTION_ADDR    S_RAM_APP_ADDR
+#define SECURE_APP_RAM_TEXT_SECTION_SIZE    S_RAM_APP_SIZE
+
+LOAD_FLASH S_LOAD_APP_ADDR S_LOAD_APP_SIZE
+{
+    app_s.bin +0
+    {
+        * (.app.flash.header)
+    }
+
+#if (FEATURE_RAM_CODE == 0)
+    FLASH_START_TEXT +0 
+    {
+        * (.app.flash.start)
+    }
+#endif
+
+    FLASH_TEXT +0
+    {
+#if (FEATURE_RAM_CODE == 0)
+        * (+RO)
+;#else
+;        * (InRoot$$Sections)
+#endif
+        * (.app.flash.text)
+        * (.app.flash.rodata)
+    }
+
+    NSC_VENEER_TABLE +0 ALIGN 32
+    {
+        * (Veneer$$CMSE);
+    }
+
+    RAM_TEXT SECURE_APP_RAM_TEXT_SECTION_ADDR SECURE_APP_RAM_TEXT_SECTION_SIZE
+    {
+#if (FEATURE_RAM_CODE == 1)
+        * (.app.ram.start, +FIRST)
+        * (InRoot$$Sections)
+        * (+RO)
+        * (.encryption.dummy.align, +LAST)
+#else
+        * (.app.ram.text)
+#endif
+        * (.app.ram.data)
+        * (+RW)
+        * (+ZI)
+    }
+
+    S_ARM_LIB_STACK S_RAM_MAIN_STACK_START_ADDR + S_RAM_MAIN_STACK_SIZE EMPTY -Stack_Size 
+    {
+        ; Stack region growing down
+    }
+}
+
+
+#define APP_TRACE_ADR   0x18180000
+#define APP_TRACE_SIZE  0x80000
+LOAD_APP_TRACE APP_TRACE_ADR APP_TRACE_SIZE
+{
+    app_s.trace APP_TRACE_ADR APP_TRACE_SIZE
+    {
+        * (.TRACE)
+    }
+}
+

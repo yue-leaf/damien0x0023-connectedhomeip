@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GATT Client Common Exported Types &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="General Client Callback Data" href="group___general__cb__data.html" />
+    <link rel="prev" title="GATT Client Common Exported Functions" href="group___g_a_t_t___client___common___exported___functions.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___b_t___d_i_r_e_c_t___m_s_g.html">Bluetooth Direct Message</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___b_t___d_e_f.html">Bluetooth Related Definition</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___c_o_m_m_o_n___m_o_d_u_l_e.html">GAP Common Module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___l_e.html">GAP LE Module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___g_a_t_t___s_e_r_v_i_c_e.html">GAP and GATT Inbox Services</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___g_a_t_t___c_l_i_e_n_t___a_p_i.html">GATT Client API</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___g_a_t_t___c_l_i_e_n_t___c_o_m_m_o_n___a_p_i.html">GATT Client Common API</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___g_a_t_t___client___common___exported___functions.html">GATT Client Common Exported Functions</a></li>
+<li class="toctree-l7 current"><a class="current reference internal" href="#">GATT Client Common Exported Types</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv411T_CLIENT_ID"><code class="docutils literal notranslate"><span class="pre">T_CLIENT_ID</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv417T_DISCOVERY_STATE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE15DISC_STATE_IDLEE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_IDLE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE14DISC_STATE_SRVE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_SRV</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE19DISC_STATE_SRV_DONEE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_SRV_DONE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE19DISC_STATE_RELATIONE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_RELATION</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE24DISC_STATE_RELATION_DONEE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_RELATION_DONE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE15DISC_STATE_CHARE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_CHAR</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE20DISC_STATE_CHAR_DONEE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_CHAR_DONE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE27DISC_STATE_CHAR_UUID16_DONEE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_CHAR_UUID16_DONE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE28DISC_STATE_CHAR_UUID128_DONEE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_CHAR_UUID128_DONE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE26DISC_STATE_CHAR_DESCRIPTORE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_CHAR_DESCRIPTOR</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE31DISC_STATE_CHAR_DESCRIPTOR_DONEE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_CHAR_DESCRIPTOR_DONE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_DISCOVERY_STATE17DISC_STATE_FAILEDE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_STATE::DISC_STATE_FAILED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv423T_DISCOVERY_RESULT_TYPE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_ALL_SRV_UUID16E"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_ALL_SRV_UUID16</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_ALL_SRV_UUID128E"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_ALL_SRV_UUID128</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE20DISC_RESULT_SRV_DATAE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_SRV_DATA</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE23DISC_RESULT_CHAR_UUID16E"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_CHAR_UUID16</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE24DISC_RESULT_CHAR_UUID128E"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_CHAR_UUID128</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_CHAR_DESC_UUID16E"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_CHAR_DESC_UUID16</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE29DISC_RESULT_CHAR_DESC_UUID128E"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_CHAR_DESC_UUID128</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_RELATION_UUID16E"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_RELATION_UUID16</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_RELATION_UUID128E"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_RELATION_UUID128</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_BY_UUID16_CHARE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_BY_UUID16_CHAR</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_BY_UUID128_CHARE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_TYPE::DISC_RESULT_BY_UUID128_CHAR</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv417T_GATT_WRITE_TYPE"><code class="docutils literal notranslate"><span class="pre">T_GATT_WRITE_TYPE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_REQE"><code class="docutils literal notranslate"><span class="pre">T_GATT_WRITE_TYPE::GATT_WRITE_TYPE_REQ</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_CMDE"><code class="docutils literal notranslate"><span class="pre">T_GATT_WRITE_TYPE::GATT_WRITE_TYPE_CMD</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_GATT_WRITE_TYPE26GATT_WRITE_TYPE_SIGNED_CMDE"><code class="docutils literal notranslate"><span class="pre">T_GATT_WRITE_TYPE::GATT_WRITE_TYPE_SIGNED_CMD</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv421T_GATT_SERVICE_ELEM16"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_ELEM16</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N21T_GATT_SERVICE_ELEM1610att_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_ELEM16::att_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N21T_GATT_SERVICE_ELEM1616end_group_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_ELEM16::end_group_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N21T_GATT_SERVICE_ELEM166uuid16E"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_ELEM16::uuid16</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv422T_GATT_SERVICE_ELEM128"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_ELEM128</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_SERVICE_ELEM12810att_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_ELEM128::att_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_SERVICE_ELEM12816end_group_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_ELEM128::end_group_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_SERVICE_ELEM1287uuid128E"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_ELEM128::uuid128</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv427T_GATT_SERVICE_BY_UUID_ELEM"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_BY_UUID_ELEM</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N27T_GATT_SERVICE_BY_UUID_ELEM10att_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_BY_UUID_ELEM::att_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N27T_GATT_SERVICE_BY_UUID_ELEM16end_group_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_SERVICE_BY_UUID_ELEM::end_group_handle</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv421T_GATT_CHARACT_ELEM16"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM16</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N21T_GATT_CHARACT_ELEM1611decl_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM16::decl_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N21T_GATT_CHARACT_ELEM1610propertiesE"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM16::properties</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N21T_GATT_CHARACT_ELEM1612value_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM16::value_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N21T_GATT_CHARACT_ELEM166uuid16E"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM16::uuid16</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv422T_GATT_CHARACT_ELEM128"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM128</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_CHARACT_ELEM12811decl_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM128::decl_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_CHARACT_ELEM12810propertiesE"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM128::properties</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_CHARACT_ELEM12812value_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM128::value_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_CHARACT_ELEM1287uuid128E"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_ELEM128::uuid128</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv426T_GATT_CHARACT_DESC_ELEM16"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_DESC_ELEM16</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N26T_GATT_CHARACT_DESC_ELEM166handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_DESC_ELEM16::handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N26T_GATT_CHARACT_DESC_ELEM166uuid16E"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_DESC_ELEM16::uuid16</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv427T_GATT_CHARACT_DESC_ELEM128"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_DESC_ELEM128</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N27T_GATT_CHARACT_DESC_ELEM1286handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_DESC_ELEM128::handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N27T_GATT_CHARACT_DESC_ELEM1287uuid128E"><code class="docutils literal notranslate"><span class="pre">T_GATT_CHARACT_DESC_ELEM128::uuid128</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv422T_GATT_RELATION_ELEM16"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM16</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_RELATION_ELEM1611decl_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM16::decl_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_RELATION_ELEM1610att_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM16::att_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_RELATION_ELEM1616end_group_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM16::end_group_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GATT_RELATION_ELEM166uuid16E"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM16::uuid16</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv423T_GATT_RELATION_ELEM128"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM128</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GATT_RELATION_ELEM12811decl_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM128::decl_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GATT_RELATION_ELEM12810att_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM128::att_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GATT_RELATION_ELEM12816end_group_handleE"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM128::end_group_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GATT_RELATION_ELEM1287uuid128E"><code class="docutils literal notranslate"><span class="pre">T_GATT_RELATION_ELEM128::uuid128</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv423T_DISCOVERY_RESULT_DATA"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA22p_srv_uuid16_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_srv_uuid16_disc_data</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA23p_srv_uuid128_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_srv_uuid128_disc_data</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA15p_srv_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_srv_disc_data</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA23p_char_uuid16_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_char_uuid16_disc_data</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA24p_char_uuid128_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_char_uuid128_disc_data</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA28p_char_desc_uuid16_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_char_desc_uuid16_disc_data</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA29p_char_desc_uuid128_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_char_desc_uuid128_disc_data</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA27p_relation_uuid16_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_relation_uuid16_disc_data</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA28p_relation_uuid128_disc_dataE"><code class="docutils literal notranslate"><span class="pre">T_DISCOVERY_RESULT_DATA::p_relation_uuid128_disc_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="group___general__cb__data.html">General Client Callback Data</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="group___g_a_t_t___client___common___exported___macros.html">GATT Client Exported Macros</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_t_t___c_l_i_e_n_t___e_x_t___a_p_i.html">GATT Client Extension API</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_t_t___c_l_i_e_n_t___l_e_g_a_c_y___a_p_i.html">GATT Client Legacy API</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___c_o_m_m_o_n.html">GATT Common</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___a_p_i.html">GATT Server API</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_t___host.html">Bluetooth Host</a></li>
+        <li class="breadcrumb-item"><a href="group___g_a_t_t___c_l_i_e_n_t___a_p_i.html">GATT Client API</a></li>
+        <li class="breadcrumb-item"><a href="group___g_a_t_t___c_l_i_e_n_t___c_o_m_m_o_n___a_p_i.html">GATT Client Common API</a></li>
+    <li class="breadcrumb-item active">GATT Client Common Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gatt-client-common-exported-types">
+<h1>GATT Client Common Exported Types<a class="headerlink" href="#gatt-client-common-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___g_a_t_t___client___common___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">GATT_Client_Common_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv411T_CLIENT_ID">
+<span id="_CPPv311T_CLIENT_ID"></span><span id="_CPPv211T_CLIENT_ID"></span><span id="T_CLIENT_ID"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ga1dbc30752777dfb1ca20ca68b7bcf827"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CLIENT_ID</span></span></span><a class="headerlink" href="#_CPPv411T_CLIENT_ID" title="Link to this definition"></a><br /></dt>
+<dd><p>Client ID. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417T_DISCOVERY_STATE">
+<span id="_CPPv317T_DISCOVERY_STATE"></span><span id="_CPPv217T_DISCOVERY_STATE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gacc79aa80203875fe23241c3566890c0c"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_DISCOVERY_STATE</span></span></span><a class="headerlink" href="#_CPPv417T_DISCOVERY_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery state during discovery procedure. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE15DISC_STATE_IDLEE">
+<span id="_CPPv3N17T_DISCOVERY_STATE15DISC_STATE_IDLEE"></span><span id="_CPPv2N17T_DISCOVERY_STATE15DISC_STATE_IDLEE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0cade24665c5e96c5bdf800cab0511a5fa4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE15DISC_STATE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery state idle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE14DISC_STATE_SRVE">
+<span id="_CPPv3N17T_DISCOVERY_STATE14DISC_STATE_SRVE"></span><span id="_CPPv2N17T_DISCOVERY_STATE14DISC_STATE_SRVE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0ca552c84170381d985d3b7ccda05c27087"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_SRV</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE14DISC_STATE_SRVE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery services. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE19DISC_STATE_SRV_DONEE">
+<span id="_CPPv3N17T_DISCOVERY_STATE19DISC_STATE_SRV_DONEE"></span><span id="_CPPv2N17T_DISCOVERY_STATE19DISC_STATE_SRV_DONEE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0cacff69ed60604ef2c3c141e67a85947d3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_SRV_DONE</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE19DISC_STATE_SRV_DONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery services done. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE19DISC_STATE_RELATIONE">
+<span id="_CPPv3N17T_DISCOVERY_STATE19DISC_STATE_RELATIONE"></span><span id="_CPPv2N17T_DISCOVERY_STATE19DISC_STATE_RELATIONE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0ca0ef26306564ff58cd89786d76fbe1989"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_RELATION</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE19DISC_STATE_RELATIONE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery relation. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE24DISC_STATE_RELATION_DONEE">
+<span id="_CPPv3N17T_DISCOVERY_STATE24DISC_STATE_RELATION_DONEE"></span><span id="_CPPv2N17T_DISCOVERY_STATE24DISC_STATE_RELATION_DONEE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0ca860fc4662310038f8b8cd7479b073b83"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_RELATION_DONE</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE24DISC_STATE_RELATION_DONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery relation done. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE15DISC_STATE_CHARE">
+<span id="_CPPv3N17T_DISCOVERY_STATE15DISC_STATE_CHARE"></span><span id="_CPPv2N17T_DISCOVERY_STATE15DISC_STATE_CHARE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0ca33d24eaf1bbbaa5e7e0896f82dfd1236"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_CHAR</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE15DISC_STATE_CHARE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery characteristics. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE20DISC_STATE_CHAR_DONEE">
+<span id="_CPPv3N17T_DISCOVERY_STATE20DISC_STATE_CHAR_DONEE"></span><span id="_CPPv2N17T_DISCOVERY_STATE20DISC_STATE_CHAR_DONEE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0cadbf6224d0f9420d748b497fead45fee1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_CHAR_DONE</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE20DISC_STATE_CHAR_DONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery characteristics done. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE27DISC_STATE_CHAR_UUID16_DONEE">
+<span id="_CPPv3N17T_DISCOVERY_STATE27DISC_STATE_CHAR_UUID16_DONEE"></span><span id="_CPPv2N17T_DISCOVERY_STATE27DISC_STATE_CHAR_UUID16_DONEE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0ca689be56b8a6a906e9bf1162e35fe1dd3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_CHAR_UUID16_DONE</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE27DISC_STATE_CHAR_UUID16_DONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery 16 bit UUID characteristics done. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE28DISC_STATE_CHAR_UUID128_DONEE">
+<span id="_CPPv3N17T_DISCOVERY_STATE28DISC_STATE_CHAR_UUID128_DONEE"></span><span id="_CPPv2N17T_DISCOVERY_STATE28DISC_STATE_CHAR_UUID128_DONEE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0caf561ab0332c52165c25c07c7c3aed3e4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_CHAR_UUID128_DONE</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE28DISC_STATE_CHAR_UUID128_DONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery 128 bit UUID characteristics done. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE26DISC_STATE_CHAR_DESCRIPTORE">
+<span id="_CPPv3N17T_DISCOVERY_STATE26DISC_STATE_CHAR_DESCRIPTORE"></span><span id="_CPPv2N17T_DISCOVERY_STATE26DISC_STATE_CHAR_DESCRIPTORE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0ca3ea39d014b51699ea8a22fe8785ab20c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_CHAR_DESCRIPTOR</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE26DISC_STATE_CHAR_DESCRIPTORE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery characteristic descriptors. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE31DISC_STATE_CHAR_DESCRIPTOR_DONEE">
+<span id="_CPPv3N17T_DISCOVERY_STATE31DISC_STATE_CHAR_DESCRIPTOR_DONEE"></span><span id="_CPPv2N17T_DISCOVERY_STATE31DISC_STATE_CHAR_DESCRIPTOR_DONEE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0ca4c6fef8c52ac4a3f507f546feb8d4952"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_CHAR_DESCRIPTOR_DONE</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE31DISC_STATE_CHAR_DESCRIPTOR_DONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery characteristic descriptors done. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_DISCOVERY_STATE17DISC_STATE_FAILEDE">
+<span id="_CPPv3N17T_DISCOVERY_STATE17DISC_STATE_FAILEDE"></span><span id="_CPPv2N17T_DISCOVERY_STATE17DISC_STATE_FAILEDE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ggacc79aa80203875fe23241c3566890c0caacf9d15f875c440ffe0a9eed52def49a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_STATE_FAILED</span></span></span><a class="headerlink" href="#_CPPv4N17T_DISCOVERY_STATE17DISC_STATE_FAILEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery failed. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423T_DISCOVERY_RESULT_TYPE">
+<span id="_CPPv323T_DISCOVERY_RESULT_TYPE"></span><span id="_CPPv223T_DISCOVERY_RESULT_TYPE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ga85dc4728175581fd4e7931ae0ae4a476"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_DISCOVERY_RESULT_TYPE</span></span></span><a class="headerlink" href="#_CPPv423T_DISCOVERY_RESULT_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery result type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_ALL_SRV_UUID16E">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_ALL_SRV_UUID16E"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_ALL_SRV_UUID16E"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476a39f8d0644bda9bba5d1653c71b8213e5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_ALL_SRV_UUID16</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_ALL_SRV_UUID16E" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery all 16 bit UUID services. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_ALL_SRV_UUID128E">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_ALL_SRV_UUID128E"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_ALL_SRV_UUID128E"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476afa8c6699ba7b93813adeacd69b155f85"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_ALL_SRV_UUID128</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_ALL_SRV_UUID128E" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery all 128 bit UUID services. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE20DISC_RESULT_SRV_DATAE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE20DISC_RESULT_SRV_DATAE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE20DISC_RESULT_SRV_DATAE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476ade2cadfd32f36eef9d3b1655c52560be"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_SRV_DATA</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE20DISC_RESULT_SRV_DATAE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery service data. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE23DISC_RESULT_CHAR_UUID16E">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE23DISC_RESULT_CHAR_UUID16E"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE23DISC_RESULT_CHAR_UUID16E"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476a8b0063bbc6750b52790e70cc337cf91f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_CHAR_UUID16</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE23DISC_RESULT_CHAR_UUID16E" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery 16 bit UUID characteristics. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE24DISC_RESULT_CHAR_UUID128E">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE24DISC_RESULT_CHAR_UUID128E"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE24DISC_RESULT_CHAR_UUID128E"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476ad01e97b1f2f3c58560724b1e2394d699"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_CHAR_UUID128</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE24DISC_RESULT_CHAR_UUID128E" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery 128 bit UUID characteristics. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_CHAR_DESC_UUID16E">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_CHAR_DESC_UUID16E"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_CHAR_DESC_UUID16E"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476aa76fcc763b9311a51f5c24f3091b4bc1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_CHAR_DESC_UUID16</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_CHAR_DESC_UUID16E" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery 16 bit UUID characteristic descriptors. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE29DISC_RESULT_CHAR_DESC_UUID128E">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE29DISC_RESULT_CHAR_DESC_UUID128E"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE29DISC_RESULT_CHAR_DESC_UUID128E"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476abafc58a4eb8edd9a460328865cf957aa"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_CHAR_DESC_UUID128</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE29DISC_RESULT_CHAR_DESC_UUID128E" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery 128 bit UUID characteristic descriptors. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_RELATION_UUID16E">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_RELATION_UUID16E"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_RELATION_UUID16E"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476a64b1081935cfd8bef117781d930bcd66"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_RELATION_UUID16</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_RELATION_UUID16E" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery 16 bit UUID relations. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_RELATION_UUID128E">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_RELATION_UUID128E"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_RELATION_UUID128E"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476a9f9a2dff3a2616e013abab31a8687220"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_RELATION_UUID128</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE28DISC_RESULT_RELATION_UUID128E" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery 128 bit UUID relations. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_BY_UUID16_CHARE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_BY_UUID16_CHARE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_BY_UUID16_CHARE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476aafe05fd70a8412307ad46ed5de6f39c0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_BY_UUID16_CHAR</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE26DISC_RESULT_BY_UUID16_CHARE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery characteristics by 16 bit UUID. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_BY_UUID128_CHARE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_BY_UUID128_CHARE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_BY_UUID128_CHARE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga85dc4728175581fd4e7931ae0ae4a476ae8a8dd787c1f2449bcd2a1e9edcfbff9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISC_RESULT_BY_UUID128_CHAR</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_TYPE27DISC_RESULT_BY_UUID128_CHARE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery characteristics by 128 bit UUID. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417T_GATT_WRITE_TYPE">
+<span id="_CPPv317T_GATT_WRITE_TYPE"></span><span id="_CPPv217T_GATT_WRITE_TYPE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1ga571f50f2070e99f32e7ba9c17d043024"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_WRITE_TYPE</span></span></span><a class="headerlink" href="#_CPPv417T_GATT_WRITE_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT write type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_REQE">
+<span id="_CPPv3N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_REQE"></span><span id="_CPPv2N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_REQE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga571f50f2070e99f32e7ba9c17d043024ad8a4b908fe62faac70b3065326259ef0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_WRITE_TYPE_REQ</span></span></span><a class="headerlink" href="#_CPPv4N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_REQE" title="Link to this definition"></a><br /></dt>
+<dd><p>ATT Write Request. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_CMDE">
+<span id="_CPPv3N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_CMDE"></span><span id="_CPPv2N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_CMDE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga571f50f2070e99f32e7ba9c17d043024a11b28ebca7e14661bf1722ec3ec4d24a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_WRITE_TYPE_CMD</span></span></span><a class="headerlink" href="#_CPPv4N17T_GATT_WRITE_TYPE19GATT_WRITE_TYPE_CMDE" title="Link to this definition"></a><br /></dt>
+<dd><p>ATT Write Command. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_GATT_WRITE_TYPE26GATT_WRITE_TYPE_SIGNED_CMDE">
+<span id="_CPPv3N17T_GATT_WRITE_TYPE26GATT_WRITE_TYPE_SIGNED_CMDE"></span><span id="_CPPv2N17T_GATT_WRITE_TYPE26GATT_WRITE_TYPE_SIGNED_CMDE"></span><span class="target" id="group___g_a_t_t___client___common___exported___types_1gga571f50f2070e99f32e7ba9c17d043024a46888e60b6f230b6e43bc96dbca55ce3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_WRITE_TYPE_SIGNED_CMD</span></span></span><a class="headerlink" href="#_CPPv4N17T_GATT_WRITE_TYPE26GATT_WRITE_TYPE_SIGNED_CMDE" title="Link to this definition"></a><br /></dt>
+<dd><p>ATT Signed Write Command. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421T_GATT_SERVICE_ELEM16">
+<span id="_CPPv321T_GATT_SERVICE_ELEM16"></span><span id="_CPPv221T_GATT_SERVICE_ELEM16"></span><span id="T_GATT_SERVICE_ELEM16"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___e_l_e_m16"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SERVICE_ELEM16</span></span></span><a class="headerlink" href="#_CPPv421T_GATT_SERVICE_ELEM16" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_SERVICE_ELEM1610att_handleE">
+<span id="_CPPv3N21T_GATT_SERVICE_ELEM1610att_handleE"></span><span id="_CPPv2N21T_GATT_SERVICE_ELEM1610att_handleE"></span><span id="T_GATT_SERVICE_ELEM16::att_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___e_l_e_m16_1a8cd0cff3a116d6ef67f787ae3a6a48d4"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">att_handle</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_SERVICE_ELEM1610att_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>The handle for the service declaration. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_SERVICE_ELEM1616end_group_handleE">
+<span id="_CPPv3N21T_GATT_SERVICE_ELEM1616end_group_handleE"></span><span id="_CPPv2N21T_GATT_SERVICE_ELEM1616end_group_handleE"></span><span id="T_GATT_SERVICE_ELEM16::end_group_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___e_l_e_m16_1acd9ab9e7ad2317ae33195407699bc367"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end_group_handle</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_SERVICE_ELEM1616end_group_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>The handle of the last attribute within the service definition. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_SERVICE_ELEM166uuid16E">
+<span id="_CPPv3N21T_GATT_SERVICE_ELEM166uuid16E"></span><span id="_CPPv2N21T_GATT_SERVICE_ELEM166uuid16E"></span><span id="T_GATT_SERVICE_ELEM16::uuid16__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___e_l_e_m16_1ae4ba2923b4d364d3472acf5ee2a7752c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid16</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_SERVICE_ELEM166uuid16E" title="Link to this definition"></a><br /></dt>
+<dd><p>16 bit UUID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422T_GATT_SERVICE_ELEM128">
+<span id="_CPPv322T_GATT_SERVICE_ELEM128"></span><span id="_CPPv222T_GATT_SERVICE_ELEM128"></span><span id="T_GATT_SERVICE_ELEM128"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___e_l_e_m128"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SERVICE_ELEM128</span></span></span><a class="headerlink" href="#_CPPv422T_GATT_SERVICE_ELEM128" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_SERVICE_ELEM12810att_handleE">
+<span id="_CPPv3N22T_GATT_SERVICE_ELEM12810att_handleE"></span><span id="_CPPv2N22T_GATT_SERVICE_ELEM12810att_handleE"></span><span id="T_GATT_SERVICE_ELEM128::att_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___e_l_e_m128_1a8cd0cff3a116d6ef67f787ae3a6a48d4"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">att_handle</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_SERVICE_ELEM12810att_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>The handle for the service declaration. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_SERVICE_ELEM12816end_group_handleE">
+<span id="_CPPv3N22T_GATT_SERVICE_ELEM12816end_group_handleE"></span><span id="_CPPv2N22T_GATT_SERVICE_ELEM12816end_group_handleE"></span><span id="T_GATT_SERVICE_ELEM128::end_group_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___e_l_e_m128_1acd9ab9e7ad2317ae33195407699bc367"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end_group_handle</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_SERVICE_ELEM12816end_group_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>The handle of the last attribute within the service definition. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_SERVICE_ELEM1287uuid128E">
+<span id="_CPPv3N22T_GATT_SERVICE_ELEM1287uuid128E"></span><span id="_CPPv2N22T_GATT_SERVICE_ELEM1287uuid128E"></span><span id="T_GATT_SERVICE_ELEM128::uuid128__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___e_l_e_m128_1a220e23c82b55d84afa9afd85d65fad4e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid128</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22T_GATT_SERVICE_ELEM1287uuid128E" title="Link to this definition"></a><br /></dt>
+<dd><p>128 bit UUID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv427T_GATT_SERVICE_BY_UUID_ELEM">
+<span id="_CPPv327T_GATT_SERVICE_BY_UUID_ELEM"></span><span id="_CPPv227T_GATT_SERVICE_BY_UUID_ELEM"></span><span id="T_GATT_SERVICE_BY_UUID_ELEM"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___b_y___u_u_i_d___e_l_e_m"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SERVICE_BY_UUID_ELEM</span></span></span><a class="headerlink" href="#_CPPv427T_GATT_SERVICE_BY_UUID_ELEM" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_GATT_SERVICE_BY_UUID_ELEM10att_handleE">
+<span id="_CPPv3N27T_GATT_SERVICE_BY_UUID_ELEM10att_handleE"></span><span id="_CPPv2N27T_GATT_SERVICE_BY_UUID_ELEM10att_handleE"></span><span id="T_GATT_SERVICE_BY_UUID_ELEM::att_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___b_y___u_u_i_d___e_l_e_m_1a8cd0cff3a116d6ef67f787ae3a6a48d4"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">att_handle</span></span></span><a class="headerlink" href="#_CPPv4N27T_GATT_SERVICE_BY_UUID_ELEM10att_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>The handle for the service declaration. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_GATT_SERVICE_BY_UUID_ELEM16end_group_handleE">
+<span id="_CPPv3N27T_GATT_SERVICE_BY_UUID_ELEM16end_group_handleE"></span><span id="_CPPv2N27T_GATT_SERVICE_BY_UUID_ELEM16end_group_handleE"></span><span id="T_GATT_SERVICE_BY_UUID_ELEM::end_group_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___b_y___u_u_i_d___e_l_e_m_1acd9ab9e7ad2317ae33195407699bc367"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end_group_handle</span></span></span><a class="headerlink" href="#_CPPv4N27T_GATT_SERVICE_BY_UUID_ELEM16end_group_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>The handle of the last attribute within the service definition. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421T_GATT_CHARACT_ELEM16">
+<span id="_CPPv321T_GATT_CHARACT_ELEM16"></span><span id="_CPPv221T_GATT_CHARACT_ELEM16"></span><span id="T_GATT_CHARACT_ELEM16"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m16"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CHARACT_ELEM16</span></span></span><a class="headerlink" href="#_CPPv421T_GATT_CHARACT_ELEM16" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic declaration for 16 bit UUID. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_CHARACT_ELEM1611decl_handleE">
+<span id="_CPPv3N21T_GATT_CHARACT_ELEM1611decl_handleE"></span><span id="_CPPv2N21T_GATT_CHARACT_ELEM1611decl_handleE"></span><span id="T_GATT_CHARACT_ELEM16::decl_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m16_1af8c0763acd4366b503bdfe2842dbf968"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decl_handle</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_CHARACT_ELEM1611decl_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>Attribute handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_CHARACT_ELEM1610propertiesE">
+<span id="_CPPv3N21T_GATT_CHARACT_ELEM1610propertiesE"></span><span id="_CPPv2N21T_GATT_CHARACT_ELEM1610propertiesE"></span><span id="T_GATT_CHARACT_ELEM16::properties__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m16_1a28e2496e5871f973132c34feb28a3c54"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">properties</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_CHARACT_ELEM1610propertiesE" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic Properties, high octet is reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_CHARACT_ELEM1612value_handleE">
+<span id="_CPPv3N21T_GATT_CHARACT_ELEM1612value_handleE"></span><span id="_CPPv2N21T_GATT_CHARACT_ELEM1612value_handleE"></span><span id="T_GATT_CHARACT_ELEM16::value_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m16_1a61c5d051b6f79d08236fae6cf7019e75"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value_handle</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_CHARACT_ELEM1612value_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic Value Handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_CHARACT_ELEM166uuid16E">
+<span id="_CPPv3N21T_GATT_CHARACT_ELEM166uuid16E"></span><span id="_CPPv2N21T_GATT_CHARACT_ELEM166uuid16E"></span><span id="T_GATT_CHARACT_ELEM16::uuid16__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m16_1ae4ba2923b4d364d3472acf5ee2a7752c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid16</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_CHARACT_ELEM166uuid16E" title="Link to this definition"></a><br /></dt>
+<dd><p>16-bit Bluetooth UUID for Characteristic Value. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422T_GATT_CHARACT_ELEM128">
+<span id="_CPPv322T_GATT_CHARACT_ELEM128"></span><span id="_CPPv222T_GATT_CHARACT_ELEM128"></span><span id="T_GATT_CHARACT_ELEM128"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m128"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CHARACT_ELEM128</span></span></span><a class="headerlink" href="#_CPPv422T_GATT_CHARACT_ELEM128" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic declaration for 128 bit UUID. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CHARACT_ELEM12811decl_handleE">
+<span id="_CPPv3N22T_GATT_CHARACT_ELEM12811decl_handleE"></span><span id="_CPPv2N22T_GATT_CHARACT_ELEM12811decl_handleE"></span><span id="T_GATT_CHARACT_ELEM128::decl_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m128_1af8c0763acd4366b503bdfe2842dbf968"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decl_handle</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CHARACT_ELEM12811decl_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>Attribute handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CHARACT_ELEM12810propertiesE">
+<span id="_CPPv3N22T_GATT_CHARACT_ELEM12810propertiesE"></span><span id="_CPPv2N22T_GATT_CHARACT_ELEM12810propertiesE"></span><span id="T_GATT_CHARACT_ELEM128::properties__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m128_1a28e2496e5871f973132c34feb28a3c54"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">properties</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CHARACT_ELEM12810propertiesE" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic Properties, high octet is reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CHARACT_ELEM12812value_handleE">
+<span id="_CPPv3N22T_GATT_CHARACT_ELEM12812value_handleE"></span><span id="_CPPv2N22T_GATT_CHARACT_ELEM12812value_handleE"></span><span id="T_GATT_CHARACT_ELEM128::value_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m128_1a61c5d051b6f79d08236fae6cf7019e75"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value_handle</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CHARACT_ELEM12812value_handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic Value Handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CHARACT_ELEM1287uuid128E">
+<span id="_CPPv3N22T_GATT_CHARACT_ELEM1287uuid128E"></span><span id="_CPPv2N22T_GATT_CHARACT_ELEM1287uuid128E"></span><span id="T_GATT_CHARACT_ELEM128::uuid128__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___e_l_e_m128_1a220e23c82b55d84afa9afd85d65fad4e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid128</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CHARACT_ELEM1287uuid128E" title="Link to this definition"></a><br /></dt>
+<dd><p>128-bit UUID for Characteristic Value. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426T_GATT_CHARACT_DESC_ELEM16">
+<span id="_CPPv326T_GATT_CHARACT_DESC_ELEM16"></span><span id="_CPPv226T_GATT_CHARACT_DESC_ELEM16"></span><span id="T_GATT_CHARACT_DESC_ELEM16"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___d_e_s_c___e_l_e_m16"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CHARACT_DESC_ELEM16</span></span></span><a class="headerlink" href="#_CPPv426T_GATT_CHARACT_DESC_ELEM16" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic descriptor for 16 bit UUID. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CHARACT_DESC_ELEM166handleE">
+<span id="_CPPv3N26T_GATT_CHARACT_DESC_ELEM166handleE"></span><span id="_CPPv2N26T_GATT_CHARACT_DESC_ELEM166handleE"></span><span id="T_GATT_CHARACT_DESC_ELEM16::handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___d_e_s_c___e_l_e_m16_1af242d6e3b6108ea75e1eb236e94c8240"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">handle</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CHARACT_DESC_ELEM166handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>Attribute handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CHARACT_DESC_ELEM166uuid16E">
+<span id="_CPPv3N26T_GATT_CHARACT_DESC_ELEM166uuid16E"></span><span id="_CPPv2N26T_GATT_CHARACT_DESC_ELEM166uuid16E"></span><span id="T_GATT_CHARACT_DESC_ELEM16::uuid16__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___d_e_s_c___e_l_e_m16_1ae4ba2923b4d364d3472acf5ee2a7752c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid16</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CHARACT_DESC_ELEM166uuid16E" title="Link to this definition"></a><br /></dt>
+<dd><p>16 bit UUID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv427T_GATT_CHARACT_DESC_ELEM128">
+<span id="_CPPv327T_GATT_CHARACT_DESC_ELEM128"></span><span id="_CPPv227T_GATT_CHARACT_DESC_ELEM128"></span><span id="T_GATT_CHARACT_DESC_ELEM128"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___d_e_s_c___e_l_e_m128"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CHARACT_DESC_ELEM128</span></span></span><a class="headerlink" href="#_CPPv427T_GATT_CHARACT_DESC_ELEM128" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic descriptor for 128 bit UUID. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_GATT_CHARACT_DESC_ELEM1286handleE">
+<span id="_CPPv3N27T_GATT_CHARACT_DESC_ELEM1286handleE"></span><span id="_CPPv2N27T_GATT_CHARACT_DESC_ELEM1286handleE"></span><span id="T_GATT_CHARACT_DESC_ELEM128::handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___d_e_s_c___e_l_e_m128_1af242d6e3b6108ea75e1eb236e94c8240"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">handle</span></span></span><a class="headerlink" href="#_CPPv4N27T_GATT_CHARACT_DESC_ELEM1286handleE" title="Link to this definition"></a><br /></dt>
+<dd><p>Attribute handle. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_GATT_CHARACT_DESC_ELEM1287uuid128E">
+<span id="_CPPv3N27T_GATT_CHARACT_DESC_ELEM1287uuid128E"></span><span id="_CPPv2N27T_GATT_CHARACT_DESC_ELEM1287uuid128E"></span><span id="T_GATT_CHARACT_DESC_ELEM128::uuid128__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___c_h_a_r_a_c_t___d_e_s_c___e_l_e_m128_1a220e23c82b55d84afa9afd85d65fad4e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid128</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N27T_GATT_CHARACT_DESC_ELEM1287uuid128E" title="Link to this definition"></a><br /></dt>
+<dd><p>128 bit UUID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422T_GATT_RELATION_ELEM16">
+<span id="_CPPv322T_GATT_RELATION_ELEM16"></span><span id="_CPPv222T_GATT_RELATION_ELEM16"></span><span id="T_GATT_RELATION_ELEM16"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m16"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_RELATION_ELEM16</span></span></span><a class="headerlink" href="#_CPPv422T_GATT_RELATION_ELEM16" title="Link to this definition"></a><br /></dt>
+<dd><p>Relationship discovery for 16 bit UUID. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_RELATION_ELEM1611decl_handleE">
+<span id="_CPPv3N22T_GATT_RELATION_ELEM1611decl_handleE"></span><span id="_CPPv2N22T_GATT_RELATION_ELEM1611decl_handleE"></span><span id="T_GATT_RELATION_ELEM16::decl_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m16_1af8c0763acd4366b503bdfe2842dbf968"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decl_handle</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_RELATION_ELEM1611decl_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_RELATION_ELEM1610att_handleE">
+<span id="_CPPv3N22T_GATT_RELATION_ELEM1610att_handleE"></span><span id="_CPPv2N22T_GATT_RELATION_ELEM1610att_handleE"></span><span id="T_GATT_RELATION_ELEM16::att_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m16_1a8cd0cff3a116d6ef67f787ae3a6a48d4"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">att_handle</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_RELATION_ELEM1610att_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_RELATION_ELEM1616end_group_handleE">
+<span id="_CPPv3N22T_GATT_RELATION_ELEM1616end_group_handleE"></span><span id="_CPPv2N22T_GATT_RELATION_ELEM1616end_group_handleE"></span><span id="T_GATT_RELATION_ELEM16::end_group_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m16_1acd9ab9e7ad2317ae33195407699bc367"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end_group_handle</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_RELATION_ELEM1616end_group_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_RELATION_ELEM166uuid16E">
+<span id="_CPPv3N22T_GATT_RELATION_ELEM166uuid16E"></span><span id="_CPPv2N22T_GATT_RELATION_ELEM166uuid16E"></span><span id="T_GATT_RELATION_ELEM16::uuid16__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m16_1ae4ba2923b4d364d3472acf5ee2a7752c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid16</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_RELATION_ELEM166uuid16E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423T_GATT_RELATION_ELEM128">
+<span id="_CPPv323T_GATT_RELATION_ELEM128"></span><span id="_CPPv223T_GATT_RELATION_ELEM128"></span><span id="T_GATT_RELATION_ELEM128"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m128"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_RELATION_ELEM128</span></span></span><a class="headerlink" href="#_CPPv423T_GATT_RELATION_ELEM128" title="Link to this definition"></a><br /></dt>
+<dd><p>Relationship discovery for 128 bit UUID. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GATT_RELATION_ELEM12811decl_handleE">
+<span id="_CPPv3N23T_GATT_RELATION_ELEM12811decl_handleE"></span><span id="_CPPv2N23T_GATT_RELATION_ELEM12811decl_handleE"></span><span id="T_GATT_RELATION_ELEM128::decl_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m128_1af8c0763acd4366b503bdfe2842dbf968"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decl_handle</span></span></span><a class="headerlink" href="#_CPPv4N23T_GATT_RELATION_ELEM12811decl_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GATT_RELATION_ELEM12810att_handleE">
+<span id="_CPPv3N23T_GATT_RELATION_ELEM12810att_handleE"></span><span id="_CPPv2N23T_GATT_RELATION_ELEM12810att_handleE"></span><span id="T_GATT_RELATION_ELEM128::att_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m128_1a8cd0cff3a116d6ef67f787ae3a6a48d4"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">att_handle</span></span></span><a class="headerlink" href="#_CPPv4N23T_GATT_RELATION_ELEM12810att_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GATT_RELATION_ELEM12816end_group_handleE">
+<span id="_CPPv3N23T_GATT_RELATION_ELEM12816end_group_handleE"></span><span id="_CPPv2N23T_GATT_RELATION_ELEM12816end_group_handleE"></span><span id="T_GATT_RELATION_ELEM128::end_group_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m128_1acd9ab9e7ad2317ae33195407699bc367"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end_group_handle</span></span></span><a class="headerlink" href="#_CPPv4N23T_GATT_RELATION_ELEM12816end_group_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GATT_RELATION_ELEM1287uuid128E">
+<span id="_CPPv3N23T_GATT_RELATION_ELEM1287uuid128E"></span><span id="_CPPv2N23T_GATT_RELATION_ELEM1287uuid128E"></span><span id="T_GATT_RELATION_ELEM128::uuid128__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___r_e_l_a_t_i_o_n___e_l_e_m128_1a220e23c82b55d84afa9afd85d65fad4e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid128</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23T_GATT_RELATION_ELEM1287uuid128E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv423T_DISCOVERY_RESULT_DATA">
+<span id="_CPPv323T_DISCOVERY_RESULT_DATA"></span><span id="_CPPv223T_DISCOVERY_RESULT_DATA"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_DISCOVERY_RESULT_DATA</span></span></span><a class="headerlink" href="#_CPPv423T_DISCOVERY_RESULT_DATA" title="Link to this definition"></a><br /></dt>
+<dd><p>Discovery result data. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA22p_srv_uuid16_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA22p_srv_uuid16_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA22p_srv_uuid16_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_srv_uuid16_disc_data__T_GATT_SERVICE_ELEM16P"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1a8749ca1d35f8c39b164fdfcb25c37a25"></span><a class="reference internal" href="#_CPPv421T_GATT_SERVICE_ELEM16" title="T_GATT_SERVICE_ELEM16"><span class="n"><span class="pre">T_GATT_SERVICE_ELEM16</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_srv_uuid16_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA22p_srv_uuid16_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA23p_srv_uuid128_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA23p_srv_uuid128_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA23p_srv_uuid128_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_srv_uuid128_disc_data__T_GATT_SERVICE_ELEM128P"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1a63edac1e02d0147471d10f11c208ab75"></span><a class="reference internal" href="#_CPPv422T_GATT_SERVICE_ELEM128" title="T_GATT_SERVICE_ELEM128"><span class="n"><span class="pre">T_GATT_SERVICE_ELEM128</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_srv_uuid128_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA23p_srv_uuid128_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA15p_srv_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA15p_srv_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA15p_srv_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_srv_disc_data__T_GATT_SERVICE_BY_UUID_ELEMP"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1aa46dae64a317743e0720c8cdae1dd73d"></span><a class="reference internal" href="#_CPPv427T_GATT_SERVICE_BY_UUID_ELEM" title="T_GATT_SERVICE_BY_UUID_ELEM"><span class="n"><span class="pre">T_GATT_SERVICE_BY_UUID_ELEM</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_srv_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA15p_srv_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA23p_char_uuid16_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA23p_char_uuid16_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA23p_char_uuid16_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_char_uuid16_disc_data__T_GATT_CHARACT_ELEM16P"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1afdcb5107ae586681c51551d94b8e61e4"></span><a class="reference internal" href="#_CPPv421T_GATT_CHARACT_ELEM16" title="T_GATT_CHARACT_ELEM16"><span class="n"><span class="pre">T_GATT_CHARACT_ELEM16</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_char_uuid16_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA23p_char_uuid16_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA24p_char_uuid128_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA24p_char_uuid128_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA24p_char_uuid128_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_char_uuid128_disc_data__T_GATT_CHARACT_ELEM128P"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1a2f05654aa8864b0c9e7addc545511453"></span><a class="reference internal" href="#_CPPv422T_GATT_CHARACT_ELEM128" title="T_GATT_CHARACT_ELEM128"><span class="n"><span class="pre">T_GATT_CHARACT_ELEM128</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_char_uuid128_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA24p_char_uuid128_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA28p_char_desc_uuid16_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA28p_char_desc_uuid16_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA28p_char_desc_uuid16_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_char_desc_uuid16_disc_data__T_GATT_CHARACT_DESC_ELEM16P"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1ab5f4726c4a6d921bb41684b9ac21e466"></span><a class="reference internal" href="#_CPPv426T_GATT_CHARACT_DESC_ELEM16" title="T_GATT_CHARACT_DESC_ELEM16"><span class="n"><span class="pre">T_GATT_CHARACT_DESC_ELEM16</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_char_desc_uuid16_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA28p_char_desc_uuid16_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA29p_char_desc_uuid128_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA29p_char_desc_uuid128_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA29p_char_desc_uuid128_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_char_desc_uuid128_disc_data__T_GATT_CHARACT_DESC_ELEM128P"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1aaae6519a1108fd8c73bb125524f4c6c9"></span><a class="reference internal" href="#_CPPv427T_GATT_CHARACT_DESC_ELEM128" title="T_GATT_CHARACT_DESC_ELEM128"><span class="n"><span class="pre">T_GATT_CHARACT_DESC_ELEM128</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_char_desc_uuid128_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA29p_char_desc_uuid128_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA27p_relation_uuid16_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA27p_relation_uuid16_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA27p_relation_uuid16_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_relation_uuid16_disc_data__T_GATT_RELATION_ELEM16P"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1abc312d18b9e1e79fbb57b07787b17fdd"></span><a class="reference internal" href="#_CPPv422T_GATT_RELATION_ELEM16" title="T_GATT_RELATION_ELEM16"><span class="n"><span class="pre">T_GATT_RELATION_ELEM16</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_relation_uuid16_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA27p_relation_uuid16_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_DISCOVERY_RESULT_DATA28p_relation_uuid128_disc_dataE">
+<span id="_CPPv3N23T_DISCOVERY_RESULT_DATA28p_relation_uuid128_disc_dataE"></span><span id="_CPPv2N23T_DISCOVERY_RESULT_DATA28p_relation_uuid128_disc_dataE"></span><span id="T_DISCOVERY_RESULT_DATA::p_relation_uuid128_disc_data__T_GATT_RELATION_ELEM128P"></span><span class="target" id="union_t___d_i_s_c_o_v_e_r_y___r_e_s_u_l_t___d_a_t_a_1ace5451bc50ba0f6046ae77f188e6c9ea"></span><a class="reference internal" href="#_CPPv423T_GATT_RELATION_ELEM128" title="T_GATT_RELATION_ELEM128"><span class="n"><span class="pre">T_GATT_RELATION_ELEM128</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_relation_uuid128_disc_data</span></span></span><a class="headerlink" href="#_CPPv4N23T_DISCOVERY_RESULT_DATA28p_relation_uuid128_disc_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="group___general__cb__data.html">General Client Callback Data</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___g_a_t_t___client___common___exported___functions.html" class="btn btn-neutral float-left" title="GATT Client Common Exported Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___general__cb__data.html" class="btn btn-neutral float-right" title="General Client Callback Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

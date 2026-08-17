@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debug System &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Clock Management" href="../../clock/text_en/README.html" />
+    <link rel="prev" title="Security Mechanisms" href="../../security/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_en/README.html">Platform</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../platform_overview/text_en/README.html">Platform Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/text_en/README.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_en/README.html">Image Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flash/text_en/README.html">Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_en/README.html">PSRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../low_power_mode/text_en/README.html">Low Power Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/text_en/README.html">Security Mechanisms</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Debug System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#log-mechanism">Log Mechanism</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#debug-analyzer">Debug Analyzer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log-printing-interface">Log Printing Interface</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#basic-printing-interface">Basic Printing Interface</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#encapsulated-printing-interface">Encapsulated Printing Interface</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#auxiliary-print-interface">Auxiliary Print Interface</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#direct-print-interface">Direct Print Interface</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#print-example">Print Example</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#log-control">Log Control</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#mp-tool-config-control">MP Tool Config Control</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#log-control-interface">Log Control Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#swd-debug">SWD Debug</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#arm-keil-mdk-swd-debug">ARM Keil MDK SWD Debug</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#j-link-commander-swd-debug">J-Link Commander SWD Debug</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../clock/text_en/README.html">Clock Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_en/README.html">Platform</a></li>
+    <li class="breadcrumb-item active">Debug System</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="debug-system">
+<h1>Debug System<a class="headerlink" href="#debug-system" title="Link to this heading"></a></h1>
+<p>Debug system is a critical technique in the software development process. It's a collection of tools and techniques used to detect and fix errors or issues in software programs. Its main purpose is to help developers identify and resolve various problems encountered during the development and operation of programs, thereby improving software quality and reliability. In debug system, developers can inspect register values and understand the runtime code state by setting breakpoints, single-stepping, logging, and other methods.</p>
+<p>Two debug methods provided by RTL87x2G are listed below:</p>
+<ol class="arabic simple">
+<li><p>Use log mechanism to track code execution and data.</p></li>
+<li><p>Use ARM Keil MDK or J-Link Commander and SWD for debug, adding/removing breakpoints, and accessing/tracing Memory, etc.</p></li>
+</ol>
+<section id="log-mechanism">
+<h2>Log Mechanism<a class="headerlink" href="#log-mechanism" title="Link to this heading"></a></h2>
+<p>Log mechanism is an important tool in software development that helps developers monitor, debug, and maintain software systems by recording various events and state information during program execution. The log of RTL87x2G is viewed through Debug Analyzer tool provided by Realtek, which is designed to simplify the user's debug process. Its goal is to optimize the identification and resolution of software issues, building a more efficient development cycle. For details, please refer to <a class="reference internal" href="../../../tool_set/text_en/README.html#debug-analyzer-tool-en"><span class="std std-ref">Debug Analyzer Tool</span></a>.</p>
+<p>RTL87x2G reserves P0_3 by default as the Log UART output pin, but the log function can also be reconfigured to other pins. The Log UART output pin connects to the PC via UART-to-USB, where Debug Analyzer receives log data through the COM port on PC. The usage of Debug Analyzer is introduced in detail below.</p>
+<section id="debug-analyzer">
+<h3>Debug Analyzer<a class="headerlink" href="#debug-analyzer" title="Link to this heading"></a></h3>
+<p>The steps for use are as follows.</p>
+<ol class="arabic">
+<li><p>Open <code class="file docutils literal notranslate"><span class="pre">DebugAnalyzer.exe</span></code>, and click <span class="menuselection">Settings</span> on the main interface.</p></li>
+<li><p>In the [Detail Settings] interface:</p>
+<ol class="arabic simple">
+<li><p>Select the COM port corresponding to the LOG UART under <span class="guilabel">Serial Port</span>.</p></li>
+<li><p>Select the appropriate <code class="file docutils literal notranslate"><span class="pre">App.trace</span></code> and any other necessary traces under <span class="guilabel">App Trace File</span>.</p></li>
+<li><p>Click <span class="guilabel">confirm</span> at the bottom right. (<code class="file docutils literal notranslate"><span class="pre">App.trace</span></code> is generated in the same directory location as <code class="file docutils literal notranslate"><span class="pre">App.bin</span></code> after the APP program is compiled.)</p></li>
+</ol>
+</li>
+<li><p>Click <span class="guilabel">Start</span> on the main interface to begin.</p>
+<figure class="align-center" id="debug-analyzer-settings">
+<a class="reference internal image-reference" href="../../../../_images/debug_analyzer.png"><img alt="../../../../_images/debug_analyzer.png" src="../../../../_images/debug_analyzer.png" style="width: 1137.6000000000001px; height: 852.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Debug Analyzer Settings</span><a class="headerlink" href="#debug-analyzer-settings" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<p>Debug Analyzer also offers some advanced features.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Log Filter</span>: Filters the display, popping up a new window that only shows logs that meet the filter criteria.</p></li>
+<li><p><span class="guilabel">Clear</span>: Clears the logs in the display box.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Debug Analyzer automatically saves log files, naming them according to the port number and generation time, such as <code class="file docutils literal notranslate"><span class="pre">COM5_2015-06-12_18-05-00.log</span></code>, stored in the DebugAnalyzer installation path <code class="file docutils literal notranslate"><span class="pre">DebugAnalyzer\DataFile</span></code>.</p>
+</div>
+</section>
+<section id="log-printing-interface">
+<h3>Log Printing Interface<a class="headerlink" href="#log-printing-interface" title="Link to this heading"></a></h3>
+<p>The log printing interface can be divided into the following four types:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#basic-printing-interface">Basic Printing interface</a></p></li>
+<li><p><a class="reference internal" href="#encapsulated-printing-interface">Encapsulated Printing Interface</a></p></li>
+<li><p><a class="reference internal" href="#auxiliary-print-interface">Auxiliary Print Interface</a></p></li>
+<li><p><a class="reference internal" href="#direct-print-interface">Direct Print Interface</a></p></li>
+</ul>
+<section id="basic-printing-interface">
+<h4>Basic Printing Interface<a class="headerlink" href="#basic-printing-interface" title="Link to this heading"></a></h4>
+<p>Used for printing real-time logs, declared as follows.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DBG_BUFFER</span><span class="p">(</span><span class="n">T_LOG_TYPE</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">T_LOG_SUBTYPE</span><span class="w"> </span><span class="n">sub_type</span><span class="p">,</span><span class="w"> </span><span class="n">T_MODULE_ID</span><span class="w"> </span><span class="n">module</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">param_num</span><span class="p">,</span><span class="w"> </span><span class="p">...).</span>
+</pre></div>
+</div>
+<p>Parameter description:</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Fixed as TYPE_RTL87X2G</p>
+</dd>
+<dt class="field-even">sub_type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fixed as SUBTYPE_FORMAT</p>
+</dd>
+<dt class="field-odd">module<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Several predefined modules exist within T_MODULE_ID type, these modules are used to categorize logs. Debug Analyzer can recognize these modules and automatically add the module name before each printed log.</p>
+</dd>
+<dt class="field-even">level<span class="colon">:</span></dt>
+<dd class="field-even"><p>Log level, indicating the level at which the log should be printed, four categories are defined as follows:</p>
+</dd>
+</dl>
+</div></blockquote>
+<table class="docutils align-center" id="table-debug-levels">
+<caption><span class="caption-text">Log Levels</span><a class="headerlink" href="#table-debug-levels" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Log Level</p></th>
+<th class="head"><p>Usage Scenario</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LEVEL_ERROR</p></td>
+<td><p>Critical error, the program cannot continue running (Log identifier: !!!)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEVEL_WARN</p></td>
+<td><p>Anomalous situation occurs, the program can continue running (Log identifier: !!*)</p></td>
+</tr>
+<tr class="row-even"><td><p>LEVEL_INFO</p></td>
+<td><p>Important information (Log identifier: !**)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEVEL_TRACE</p></td>
+<td><p>Detailed debug information (Log identifier: none)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_BUFFER" title="DBG_BUFFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_BUFFER()</span></code></a> interface allows up to 20 parameters.</p>
+</div>
+</section>
+<section id="encapsulated-printing-interface">
+<h4>Encapsulated Printing Interface<a class="headerlink" href="#encapsulated-printing-interface" title="Link to this heading"></a></h4>
+<p>For different modules, the RTL87x2G encapsulates corresponding interfaces to print corresponding logs. Like the basic interface, it provides four log levels. The printed logs will start with the module name, such as [APP], [Flash], etc. Declared as follows.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">MODULE</span><span class="p">}</span><span class="n">_PRINT_</span><span class="p">{</span><span class="n">LEVEL</span><span class="p">}</span><span class="n">_</span><span class="p">{</span><span class="n">PARAMNUM</span><span class="p">}(...)</span>
+</pre></div>
+</div>
+<p>Parameter Description:</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">MODULE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Defined in <code class="docutils literal notranslate"><span class="pre">trace.h</span></code>, including APP/GAP/USB/FLASH...</p>
+</dd>
+<dt class="field-even">LEVEL<span class="colon">:</span></dt>
+<dd class="field-even"><p>Same as the four levels of the basic print interface, ERROR/WARN/INFO/TRACE</p>
+</dd>
+<dt class="field-odd">PARAMNUM<span class="colon">:</span></dt>
+<dd class="field-odd"><p>0 to 8, representing the number of log print parameters</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Do not exceed 8 parameters (if using the <a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_BUFFER" title="DBG_BUFFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_BUFFER()</span></code></a> interface, a maximum of 20 parameters is allowed).</p></li>
+<li><p>Try to include all parameters in a single print statement.</p></li>
+</ul>
+</div>
+</section>
+<section id="auxiliary-print-interface">
+<h4>Auxiliary Print Interface<a class="headerlink" href="#auxiliary-print-interface" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_BUFFER" title="DBG_BUFFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_BUFFER()</span></code></a> interface can only print integer types such as (d, i, u, o, x), character (c), and pointer type (p). When you need to print strings, binary arrays, or BT addresses, the following auxiliary print interfaces are required.</p>
+<table class="docutils align-center" id="table-auxiliary-print-interface">
+<caption><span class="caption-text">Auxiliary Print Interface</span><a class="headerlink" href="#table-auxiliary-print-interface" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Interface</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Precautions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TRACE_STRING(char* data)</p></td>
+<td><p>Directly print strings, placeholder %s</p></td>
+<td><p>Maximum string length is 240 bytes</p></td>
+</tr>
+<tr class="row-odd"><td><p>TRACE_BINARY(uint16_t length, uint8_t* data)</p></td>
+<td><p>Print binary data in hexadecimal format, placeholder %b</p></td>
+<td><p>Maximum binary data length is 240 bytes</p></td>
+</tr>
+<tr class="row-even"><td><p>TRACE_BDADDR(char* bd_addr)</p></td>
+<td><p>Print a binary string in BT address format, converting character %s</p></td>
+<td><p>A single log can print up to 4 BT addresses, Example:</p>
+<p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Hex</kbd> <kbd class="kbd docutils literal notranslate">Array:</kbd> <kbd class="kbd docutils literal notranslate">0xaa</kbd> <kbd class="kbd docutils literal notranslate">0xbb</kbd> <kbd class="kbd docutils literal notranslate">0xcc</kbd> <kbd class="kbd docutils literal notranslate">0xdd</kbd> <kbd class="kbd docutils literal notranslate">0xee</kbd> <kbd class="kbd docutils literal notranslate">0xff</kbd> <kbd class="kbd docutils literal notranslate">–&gt;</kbd> <kbd class="kbd docutils literal notranslate">Literal</kbd> <kbd class="kbd docutils literal notranslate">String:</kbd> <kbd class="kbd docutils literal notranslate">FF::EE::DD::CC::BB::AA</kbd></kbd></p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="direct-print-interface">
+<h4>Direct Print Interface<a class="headerlink" href="#direct-print-interface" title="Link to this heading"></a></h4>
+<p>Printing logs by calling functions based on the <a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_BUFFER" title="DBG_BUFFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_BUFFER</span></code></a> interface has a relatively small impact on system performance, but the real-time performance of printing is not high. This is because logs printed through these APIs are buffered and sent to the Log UART when the system is idle.</p>
+<p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_DIRECT" title="DBG_DIRECT"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_DIRECT</span></code></a> is used to print real-time logs. This API has impact on the system because it sends data directly to the Log UART, preventing the system from continuing execution until the log is printed. Therefore, <span class="red-text">it is strongly recommended to use this API only in specific situations.</span></p>
+<ul class="simple">
+<li><p>Before the system restarts</p></li>
+<li><p>Scenarios with high real-time requirements</p></li>
+</ul>
+</section>
+<section id="print-example">
+<h4>Print Example<a class="headerlink" href="#print-example" title="Link to this heading"></a></h4>
+<p>The following example demonstrates the general usage of log APIs and the corresponding output on Debug Analyzer.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">77777</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x5A</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">bd1</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x11</span><span class="p">,</span><span class="w"> </span><span class="mh">0x22</span><span class="p">,</span><span class="w"> </span><span class="mh">0x33</span><span class="p">,</span><span class="w"> </span><span class="mh">0x44</span><span class="p">,</span><span class="w"> </span><span class="mh">0x55</span><span class="p">};</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">bd2</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0xAA</span><span class="p">,</span><span class="w"> </span><span class="mh">0xBB</span><span class="p">,</span><span class="w"> </span><span class="mh">0xCC</span><span class="p">,</span><span class="w"> </span><span class="mh">0xDD</span><span class="p">,</span><span class="w"> </span><span class="mh">0xEE</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">};</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;4&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;7&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;9&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">};</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;F&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;g&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;H&#39;</span><span class="p">};</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Log Test&quot;</span><span class="p">;</span>
+<span class="n">ADC_PRINT_TRACE1</span><span class="p">(</span><span class="s">&quot;ADC value is %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="n">UART_PRINT_INFO3</span><span class="p">(</span><span class="s">&quot;Serial data: 0x%x, c1[%b], s1[%s]&quot;</span><span class="p">,..</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">TRACE_BINARY</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">),</span><span class="w"> </span><span class="n">TRACE_STRING</span><span class="p">(</span><span class="n">s1</span><span class="p">));</span>
+<span class="n">GAP_PRINT_WARN6</span><span class="p">(</span><span class="s">&quot;n[%d], m[%c] bd1[%s], bd2[%s], c2[%b], s2[%s]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,..</span><span class="n">TRACE_BDADDR</span><span class="p">(</span><span class="n">bd1</span><span class="p">),</span><span class="w"> </span><span class="n">TRACE_BDADDR</span><span class="p">(</span><span class="n">bd2</span><span class="p">),</span><span class="n">TRACE_BINARY</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="p">),</span><span class="w"> </span><span class="n">TRACE_STRING</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span>
+<span class="n">APP_PRINT_ERROR0</span><span class="p">(</span><span class="s">&quot;APP ERROR OCCURRED...&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Corresponding output results on Debug Analyzer.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>00252 10-25#17:12:02.021 132 10241 [ADC] ADC value is 77777
+00253 10-25#17:12:02.021 133 10241 [UART] !**Serial data:..0x5a, c1[31-32-33-34-35-36-37-38-39-30], s1[Hello world!]
+00254 10-25#17:12:02.022 134 10241 [GAP] !!*n[77777], m[Z] bd1[55::44::33::22::11::00],bd2[FF::EE::DD::CC::BB::AA],c2[61-62-43-64-45-46-67-48], s2[Log Test]
+00255 10-25#17:12:02.022 135 10241 [APP] !!!APP ERROR OCCURRED...
+</pre></div>
+</div>
+</section>
+</section>
+<section id="log-control">
+<h3>Log Control<a class="headerlink" href="#log-control" title="Link to this heading"></a></h3>
+<p>Users can select the log levels for printing through the following two methods:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mp-tool-config-control">MP Tool Config Control</a></p></li>
+<li><p><a class="reference internal" href="#log-control-interface">Log Control Interface</a></p></li>
+</ul>
+<section id="mp-tool-config-control">
+<h4>MP Tool Config Control<a class="headerlink" href="#mp-tool-config-control" title="Link to this heading"></a></h4>
+<p>MP Tool serves as a production tool, supporting both debug and production modes. During debug, you can configure whether to enable various log levels corresponding to each module. Usage is as follows. For details, please refer to: <a class="reference internal" href="../../../tool_set/text_en/README.html#mp-tool-en"><span class="std std-ref">MP Tool</span></a>.</p>
+<ol class="arabic">
+<li><p>First, click <span class="guilabel">Config Set</span> on the main page.</p>
+<figure class="align-center" id="mp-tool-main-page">
+<a class="reference internal image-reference" href="../../../../_images/MP_Tool_main_page.png"><img alt="../../../../_images/MP_Tool_main_page.png" src="../../../../_images/MP_Tool_main_page.png" style="width: 971.2px; height: 711.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool Main Page</span><a class="headerlink" href="#mp-tool-main-page" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Next, click the <span class="guilabel">Log</span> tab on the [Config Set] page and double-click to modify the Enable/Disable status for the corresponding module and level. Finally, click <span class="guilabel">Confirm</span> at the bottom right to generate the System Config File and flash it.</p>
+<figure class="align-center" id="mp-tool-config-set-page">
+<a class="reference internal image-reference" href="../../../../_images/MP_Tool_config_log.png"><img alt="../../../../_images/MP_Tool_config_log.png" src="../../../../_images/MP_Tool_config_log.png" style="width: 728.0px; height: 604.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool Config Set Page</span><a class="headerlink" href="#mp-tool-config-set-page" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="log-control-interface">
+<h4>Log Control Interface<a class="headerlink" href="#log-control-interface" title="Link to this heading"></a></h4>
+<p>Sometimes it is necessary to control the enabling and disabling of certain logs. One way is by setting the Config File in the MP Tool and programming the Config File into the RTL87x2G. If there is a need to frequently change the log print level, this method is not flexible enough, as reprogramming the System Config File each time is inconvenient. Therefore, the SDK provides 3 APIs to control specific levels of specific modules, namely:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___functions.html#_CPPv421log_module_trace_initAL4E_8uint64_t" title="log_module_trace_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">log_module_trace_init()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___functions.html#_CPPv420log_module_trace_set11T_MODULE_ID7uint8_tb" title="log_module_trace_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">log_module_trace_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___functions.html#_CPPv427log_module_bitmap_trace_set8uint64_t7uint8_tb" title="log_module_bitmap_trace_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">log_module_bitmap_trace_set()</span></code></a></p></li>
+</ul>
+<p>Here are some scenarios to help users understand how to use the log control APIs in applications. Assume the log print function is already enabled and the Config File has set all log trace masks to 1, meaning logs of all levels for all modules will be printed.</p>
+<ul>
+<li><p><strong>Scenario 1</strong></p>
+<p>Disable all trace and info level logs for the APP module.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul id="scenario-2">
+<li><p><strong>Scenario 2</strong></p>
+<p>Only open the log for the PROFILE module.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">mask</span><span class="p">[</span><span class="n">LEVEL_NUM</span><span class="p">];</span>
+<span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">mask</span><span class="p">));</span>
+<span class="w">    </span><span class="n">log_module_trace_init</span><span class="p">(</span><span class="n">mask</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_PROFILE</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_ERROR</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_PROFILE</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_WARN</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_PROFILE</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_PROFILE</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Scenario 3</strong></p>
+<p>Disable the trace level logs for PROFILE/PROTOCOL/GAP/APP modules.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_module_bitmap_trace_set</span><span class="p">(</span><span class="n">MODULE_BIT_PROFILE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">MODULE_BIT_PROTOCOL</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                               </span><span class="n">MODULE_BIT_GAP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">MODULE_BIT_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul id="scenario-4">
+<li><p><strong>Scenario 4</strong></p>
+<p>Disable all trace and info level logs except for the APP module, including disabling BT Snoop log.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MODULE_NUM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">log_module_trace_set_update</span><span class="p">((</span><span class="n">T_MODULE_ID</span><span class="p">)</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">        </span><span class="n">log_module_trace_set_update</span><span class="p">((</span><span class="n">T_MODULE_ID</span><span class="p">)</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_SNOOP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_ERROR</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If the LEVEL_ERROR log for MODULE_SNOOP is enabled, Debug Analyzer will generate a BT Snoop log file <code class="file docutils literal notranslate"><span class="pre">*.cfa</span></code>.</p></li>
+<li><p>If the log for MODULE_SNOOP is disabled, no BT Snoop log will be generated, as seen in <a class="reference internal" href="#scenario-2"><span class="std std-ref">Scenario 2</span></a> and <a class="reference internal" href="#scenario-4"><span class="std std-ref">Scenario 4</span></a>.</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+<section id="swd-debug">
+<h2>SWD Debug<a class="headerlink" href="#swd-debug" title="Link to this heading"></a></h2>
+<p>The RTL87x2G implements three basic debug interfaces:</p>
+<ul class="simple">
+<li><p>run control</p></li>
+<li><p>breakpoint</p></li>
+<li><p>memory access</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The RTL87x2G supports SWD and does not support JTAG.</p>
+</div>
+<section id="arm-keil-mdk-swd-debug">
+<h3>ARM Keil MDK SWD Debug<a class="headerlink" href="#arm-keil-mdk-swd-debug" title="Link to this heading"></a></h3>
+<p>First, correctly install and configure ARM Keil MDK and the main debug features supported by SWD RTL87x2G as shown on the UI.</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">Running control</span> : Running/Reset/Step</p></li>
+<li><p><span class="guilabel">Breakpoints</span>: Add/Delete/Conditional</p></li>
+<li><p>Debug Function Windows</p>
+<ul class="simple">
+<li><p><span class="guilabel">Core registers</span>: Monitor/modify MCU register values.</p></li>
+<li><p><span class="guilabel">Disassembly</span>: Display the assembly code executed by the program, or display mixed with source code.</p></li>
+<li><p><span class="guilabel">Source code</span>: View C code, support breakpoints and real-time display of variables.</p></li>
+<li><p><span class="guilabel">Variable watch</span>: View the values of monitored variables.</p></li>
+<li><p><span class="guilabel">Memory</span>: Display/Modify the memory under investigation, supports direct address input and variable address input.</p></li>
+<li><p><span class="guilabel">Call stack and local variable</span>: Display the current call stack, as well as local variables (i.e., variables on the stack).</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes you may encounter an issue where the image cannot be successfully downloaded to flash, or even if successfully connected with J-Link, SWD cannot be found. In such cases, you can perform the following checks:</p>
+<ol class="arabic simple">
+<li><p>Change the debug clock to a smaller value (for example, from 2MHz to 1MHz), or use a shorter SWD debug cable.</p></li>
+<li><p>The IC may have already entered the DLPS mode. Reset the IC, and the system will remain in an active state for 5 seconds.</p></li>
+<li><p>Check if the SWD feature is disabled in APP.</p></li>
+</ol>
+</div>
+</section>
+<section id="j-link-commander-swd-debug">
+<span id="id1"></span><h3>J-Link Commander SWD Debug<a class="headerlink" href="#j-link-commander-swd-debug" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Before using J-Link Commander, first add device information and configure the flash algorithm. This way, bin file and data can be directly downloaded to flash through J-Link Commander.</p>
+<ol class="arabic simple">
+<li><p>Create a folder in the J-Link installation directory (the directory where <code class="file docutils literal notranslate"><span class="pre">JLink.exe</span></code> is located): <code class="file docutils literal notranslate"><span class="pre">Devices\Realtek\RTL87x2G</span></code>.</p></li>
+<li><p>Locate the files <code class="file docutils literal notranslate"><span class="pre">RTL87x2G_FLASH.FLM</span></code> and <code class="file docutils literal notranslate"><span class="pre">RTL876x_LOG_TRACE.FLM</span></code> from the SDK (under <code class="file docutils literal notranslate"><span class="pre">sdk\tool\flash</span></code> directory), and copy them to <code class="file docutils literal notranslate"><span class="pre">Devices\Realtek\RTL87x2G</span></code>.</p></li>
+<li><p>Open the <code class="file docutils literal notranslate"><span class="pre">JLinkDevices.xml</span></code> file in the J-Link installation directory, and add the device download algorithm information below.</p></li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Device&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ChipInfo</span><span class="w"> </span><span class="na">Vendor=</span><span class="s">&quot;Realtek&quot;</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;RTL87x2G&quot;</span><span class="w"> </span><span class="na">Core=</span><span class="s">&quot;JLINK_CORE_CORTEX_M33&quot;</span><span class="w"> </span><span class="na">WorkRAMAddr=</span><span class="s">&quot;0x00130000&quot;</span><span class="w"> </span><span class="na">WorkRAMSize=</span><span class="s">&quot;0x8000&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FlashBankInfo</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;QSPI Flash&quot;</span><span class="w"> </span><span class="na">BaseAddr=</span><span class="s">&quot;0x04000000&quot;</span><span class="w"> </span><span class="na">MaxSize=</span><span class="s">&quot;0x01000000&quot;</span><span class="w"> </span><span class="na">Loader=</span><span class="s">&quot;Devices/Realtek/RTL87X2G/RTL87x2G_FLASH.FLM&quot;</span><span class="w"> </span><span class="na">LoaderType=</span><span class="s">&quot;FLASH_ALGO_TYPE_CMSIS&quot;</span><span class="w"> </span><span class="na">AlwaysPresent=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;FlashBankInfo</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;QSPI Flash&quot;</span><span class="w"> </span><span class="na">BaseAddr=</span><span class="s">&quot;0x08000000&quot;</span><span class="w"> </span><span class="na">MaxSize=</span><span class="s">&quot;0x10400000&quot;</span><span class="w"> </span><span class="na">Loader=</span><span class="s">&quot;Devices/Realtek/RTL87X2G/RTL876x_LOG_TRACE.FLM&quot;</span><span class="w"> </span><span class="na">LoaderType=</span><span class="s">&quot;FLASH_ALGO_TYPE_CMSIS&quot;</span><span class="w"> </span><span class="na">AlwaysPresent=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Device&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Open the J-Link Commander command window, and sequentially enter <kbd class="kbd docutils literal notranslate">connect</kbd>, <kbd class="kbd docutils literal notranslate">RTL87x2G</kbd>, and <kbd class="kbd docutils literal notranslate">s</kbd>. Seeing the command <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cortex</kbd>-<kbd class="kbd docutils literal notranslate">M33</kbd> <kbd class="kbd docutils literal notranslate">identified.</kbd></kbd> indicates a successful connection.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../_images/J-Link_Commander_SWD_debugging.png"><img alt="../../../../_images/J-Link_Commander_SWD_debugging.png" src="../../../../_images/J-Link_Commander_SWD_debugging.png" style="width: 561.0px; height: 842.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">J-Link Commander SWD Debug</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>After successfully connecting to SWD, you can proceed to debug using the commands supported by J-Link Commander. Common commands are as follows:</p>
+<table class="docutils align-center" id="table-common-command-descriptions">
+<caption><span class="caption-text">Common Command Descriptions</span><a class="headerlink" href="#table-common-command-descriptions" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>h</p></th>
+<td><p>halt cpu</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>r</p></th>
+<td><p>reset cpu</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>g</p></th>
+<td><p>go</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>s</p></th>
+<td><p>step</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>setbp</p></th>
+<td><p>set breakpoint</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>mem32</p></th>
+<td><p>read data from specified address</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>w4</p></th>
+<td><p>write data to specified address</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>erase</p></th>
+<td><p>erase flash</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>loadbin</p></th>
+<td><p>program bin file to flash</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>savebin</p></th>
+<td><p>save data from flash as bin file</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>?</p></th>
+<td><p>input '? to get all supported commands</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="j-link-commander-swd-debug-command-query">
+<a class="reference internal image-reference" href="../../../../_images/J-Link_Commander_SWD_debugging_query.png"><img alt="../../../../_images/J-Link_Commander_SWD_debugging_query.png" src="../../../../_images/J-Link_Commander_SWD_debugging_query.png" style="width: 820.8000000000001px; height: 577.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">J-Link Commander SWD Debug Command Query</span><a class="headerlink" href="#j-link-commander-swd-debug-command-query" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e.html#group___t_r_a_c_e"><span class="std std-ref">Trace</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../security/text_en/README.html" class="btn btn-neutral float-left" title="Security Mechanisms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../clock/text_en/README.html" class="btn btn-neutral float-right" title="Clock Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

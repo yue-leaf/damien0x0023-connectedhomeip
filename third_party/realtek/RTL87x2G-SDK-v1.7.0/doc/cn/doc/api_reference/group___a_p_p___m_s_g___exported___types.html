@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APP Message Exported Types &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">APP Message Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-message-exported-types">
+<h1>APP Message Exported Types<a class="headerlink" href="#app-message-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___a_p_p___m_s_g___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">APP_MSG_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EVENT_GROUP">
+<span class="target" id="group___a_p_p___m_s_g___exported___types_1gabe0f8f9b88e43b5899548e9b1247cbfb"></span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_GROUP</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">event_code</span></span><span class="sig-paren">)</span> <span class="pre">(event_code</span> <span class="pre">&gt;&gt;</span> <span class="pre">4)</span><a class="headerlink" href="#c.EVENT_GROUP" title="Link to this definition"></a><br /></dt>
+<dd><p>Get event code group definition. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv413T_EVENT_GROUP">
+<span id="_CPPv313T_EVENT_GROUP"></span><span id="_CPPv213T_EVENT_GROUP"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ga43f50ce527e4dfb45fec14124060cd48"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_EVENT_GROUP</span></span></span><a class="headerlink" href="#_CPPv413T_EVENT_GROUP" title="Link to this definition"></a><br /></dt>
+<dd><p>Event group definitions. </p>
+<p>Event code is 1 byte code to define messages type exchanging from/to different layers. First half byte is for group define, and second half byte is for code define. Group code: 0: from stack layer 0x1: from peripheral layer 0x2: from audio lib 0xA: from instrument </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_EVENT_GROUP17EVENT_GROUP_STACKE">
+<span id="_CPPv3N13T_EVENT_GROUP17EVENT_GROUP_STACKE"></span><span id="_CPPv2N13T_EVENT_GROUP17EVENT_GROUP_STACKE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga43f50ce527e4dfb45fec14124060cd48a68015f69fe03c89bfab96d75c108d0e9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_GROUP_STACK</span></span></span><a class="headerlink" href="#_CPPv4N13T_EVENT_GROUP17EVENT_GROUP_STACKE" title="Link to this definition"></a><br /></dt>
+<dd><p>message group from BT layer </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_EVENT_GROUP14EVENT_GROUP_IOE">
+<span id="_CPPv3N13T_EVENT_GROUP14EVENT_GROUP_IOE"></span><span id="_CPPv2N13T_EVENT_GROUP14EVENT_GROUP_IOE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga43f50ce527e4dfb45fec14124060cd48a0cdd31cbb0e50228edad06b4a1d1adfd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_GROUP_IO</span></span></span><a class="headerlink" href="#_CPPv4N13T_EVENT_GROUP14EVENT_GROUP_IOE" title="Link to this definition"></a><br /></dt>
+<dd><p>message group from IO layer </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_EVENT_GROUP21EVENT_GROUP_FRAMEWORKE">
+<span id="_CPPv3N13T_EVENT_GROUP21EVENT_GROUP_FRAMEWORKE"></span><span id="_CPPv2N13T_EVENT_GROUP21EVENT_GROUP_FRAMEWORKE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga43f50ce527e4dfb45fec14124060cd48a09543b3091008504c7bad75d70d0d168"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_GROUP_FRAMEWORK</span></span></span><a class="headerlink" href="#_CPPv4N13T_EVENT_GROUP21EVENT_GROUP_FRAMEWORKE" title="Link to this definition"></a><br /></dt>
+<dd><p>message group from Framework layer </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_EVENT_GROUP15EVENT_GROUP_APPE">
+<span id="_CPPv3N13T_EVENT_GROUP15EVENT_GROUP_APPE"></span><span id="_CPPv2N13T_EVENT_GROUP15EVENT_GROUP_APPE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga43f50ce527e4dfb45fec14124060cd48ab70bf9d42563641d0ebda06f3ce7d63b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_GROUP_APP</span></span></span><a class="headerlink" href="#_CPPv4N13T_EVENT_GROUP15EVENT_GROUP_APPE" title="Link to this definition"></a><br /></dt>
+<dd><p>message group from APP layer </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_EVENT_GROUP22EVENT_GROUP_INSTRUMENTE">
+<span id="_CPPv3N13T_EVENT_GROUP22EVENT_GROUP_INSTRUMENTE"></span><span id="_CPPv2N13T_EVENT_GROUP22EVENT_GROUP_INSTRUMENTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga43f50ce527e4dfb45fec14124060cd48a1dc7a6bd40e40b6b823e898af47841da"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_GROUP_INSTRUMENT</span></span></span><a class="headerlink" href="#_CPPv4N13T_EVENT_GROUP22EVENT_GROUP_INSTRUMENTE" title="Link to this definition"></a><br /></dt>
+<dd><p>message group from instrument layer </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv412T_EVENT_TYPE">
+<span id="_CPPv312T_EVENT_TYPE"></span><span id="_CPPv212T_EVENT_TYPE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gae013f504d288fa3c19ec0f1af745975c"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_EVENT_TYPE</span></span></span><a class="headerlink" href="#_CPPv412T_EVENT_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Event type definitions. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE13EVENT_GAP_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE13EVENT_GAP_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE13EVENT_GAP_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975ca4aa7c2091ce22935ccb3665391b7b45b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_GAP_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE13EVENT_GAP_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from GAP layer for stack </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE15EVENT_GAP_TIMERE">
+<span id="_CPPv3N12T_EVENT_TYPE15EVENT_GAP_TIMERE"></span><span id="_CPPv2N12T_EVENT_TYPE15EVENT_GAP_TIMERE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975cab86e06a16509711b337a7576c660d4b4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_GAP_TIMER</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE15EVENT_GAP_TIMERE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from GAP layer for timer </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE13EVENT_HCI_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE13EVENT_HCI_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE13EVENT_HCI_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975caf09117f425b5964ec93616c1dc323db5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_HCI_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE13EVENT_HCI_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from HCI layer for test </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE15EVENT_IO_TO_APPE">
+<span id="_CPPv3N12T_EVENT_TYPE15EVENT_IO_TO_APPE"></span><span id="_CPPv2N12T_EVENT_TYPE15EVENT_IO_TO_APPE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975ca54fa1d4504aab64b0e290572ad56a13e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_IO_TO_APP</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE15EVENT_IO_TO_APPE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from IO to user application </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE13EVENT_SYS_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE13EVENT_SYS_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE13EVENT_SYS_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975ca91a4685b0d8ebb962d7faa6dd924dfe0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_SYS_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE13EVENT_SYS_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from SYS timer to user application </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE13EVENT_DSP_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE13EVENT_DSP_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE13EVENT_DSP_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975caf27eba551e31427b1ecdca19c02f9410"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_DSP_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE13EVENT_DSP_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from DSP to user application </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE15EVENT_CODEC_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE15EVENT_CODEC_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE15EVENT_CODEC_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975ca4cf8cc942f1006b25b7dc07879256ef8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_CODEC_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE15EVENT_CODEC_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from CODEC to user application </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE13EVENT_ANC_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE13EVENT_ANC_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE13EVENT_ANC_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975ca6bc602ce1fe2253d28f5e634fabadc5b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_ANC_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE13EVENT_ANC_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from ANC to user application </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE22EVENT_NOTIFICATION_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE22EVENT_NOTIFICATION_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE22EVENT_NOTIFICATION_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975ca05c7229fd762e5ab145a03312c31096e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_NOTIFICATION_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE22EVENT_NOTIFICATION_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from Notification to user application </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE20EVENT_BIN_LOADER_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE20EVENT_BIN_LOADER_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE20EVENT_BIN_LOADER_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975caec75b833fe8335db7a7688c623c532f4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_BIN_LOADER_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE20EVENT_BIN_LOADER_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from bin load to user application </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE22EVENT_AUDIO_PLUGIN_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE22EVENT_AUDIO_PLUGIN_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE22EVENT_AUDIO_PLUGIN_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975ca6e33bd74c63acbdef2a3f9c13d762488"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_AUDIO_PLUGIN_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE22EVENT_AUDIO_PLUGIN_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from external device to Audio Plugin </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE20EVENT_AUDIO_PATH_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE20EVENT_AUDIO_PATH_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE20EVENT_AUDIO_PATH_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975cadf3cee540eddfbe69d6307cfff01339e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_AUDIO_PATH_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE20EVENT_AUDIO_PATH_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from Audio Plugin to Audio Path </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE19EVENT_APP_TIMER_MSGE">
+<span id="_CPPv3N12T_EVENT_TYPE19EVENT_APP_TIMER_MSGE"></span><span id="_CPPv2N12T_EVENT_TYPE19EVENT_APP_TIMER_MSGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975cabd7e37a1deab84b4ec52789157e6a870"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_APP_TIMER_MSG</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE19EVENT_APP_TIMER_MSGE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from APP timer to user application </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_EVENT_TYPE20EVENT_CMD_FROM_8852BE">
+<span id="_CPPv3N12T_EVENT_TYPE20EVENT_CMD_FROM_8852BE"></span><span id="_CPPv2N12T_EVENT_TYPE20EVENT_CMD_FROM_8852BE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggae013f504d288fa3c19ec0f1af745975caa917391c474135675d540130a9d6c3d4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EVENT_CMD_FROM_8852B</span></span></span><a class="headerlink" href="#_CPPv4N12T_EVENT_TYPE20EVENT_CMD_FROM_8852BE" title="Link to this definition"></a><br /></dt>
+<dd><p>message from 8852B to user application </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv413T_IO_MSG_TYPE">
+<span id="_CPPv313T_IO_MSG_TYPE"></span><span id="_CPPv213T_IO_MSG_TYPE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ga468a59751cf5bb96e120b43fea01e074"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_TYPE</span></span></span><a class="headerlink" href="#_CPPv413T_IO_MSG_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>IO type definitions for IO message, may extend as requested. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE21IO_MSG_TYPE_BT_STATUSE">
+<span id="_CPPv3N13T_IO_MSG_TYPE21IO_MSG_TYPE_BT_STATUSE"></span><span id="_CPPv2N13T_IO_MSG_TYPE21IO_MSG_TYPE_BT_STATUSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a79100fd91a7425e96a85a7db3a7f308e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_BT_STATUS</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE21IO_MSG_TYPE_BT_STATUSE" title="Link to this definition"></a><br /></dt>
+<dd><p>BT status change with subtype <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e"><span class="std std-ref">GAP Bluetooth Message Type Definitions</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_KEYSCANE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_KEYSCANE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_KEYSCANE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a85dbaa70be4f8a01a7758e77c2952f79"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_KEYSCAN</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_KEYSCANE" title="Link to this definition"></a><br /></dt>
+<dd><p>Key scan message with subtype <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1ga53480343dbad6f542a9f67cc37e62ade"><span class="std std-ref">T_IO_MSG_KEYSCAN</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_QDECODEE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_QDECODEE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_QDECODEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ad992a8f5bffca804ea27e5f46c5945ac"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_QDECODE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_QDECODEE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_UARTE">
+<span id="_CPPv3N13T_IO_MSG_TYPE16IO_MSG_TYPE_UARTE"></span><span id="_CPPv2N13T_IO_MSG_TYPE16IO_MSG_TYPE_UARTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a46ed3255f00d4883a56c5a7304d6f505"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_UART</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_UARTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Uart message with subtype <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gac2c41d68ce4555e6d5dd85315aa33f9b"><span class="std std-ref">T_IO_MSG_UART</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_KEYPADE">
+<span id="_CPPv3N13T_IO_MSG_TYPE18IO_MSG_TYPE_KEYPADE"></span><span id="_CPPv2N13T_IO_MSG_TYPE18IO_MSG_TYPE_KEYPADE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074afcd1cea5cfe51455e0d926d451cb191e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_KEYPAD</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_KEYPADE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE14IO_MSG_TYPE_IRE">
+<span id="_CPPv3N13T_IO_MSG_TYPE14IO_MSG_TYPE_IRE"></span><span id="_CPPv2N13T_IO_MSG_TYPE14IO_MSG_TYPE_IRE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a418810ce33d3a3bbf7333f2b781cd01f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_IR</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE14IO_MSG_TYPE_IRE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_GDMAE">
+<span id="_CPPv3N13T_IO_MSG_TYPE16IO_MSG_TYPE_GDMAE"></span><span id="_CPPv2N13T_IO_MSG_TYPE16IO_MSG_TYPE_GDMAE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a921b7b1e91bffa6d96dc74f4cce8630a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_GDMA</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_GDMAE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_ADCE">
+<span id="_CPPv3N13T_IO_MSG_TYPE15IO_MSG_TYPE_ADCE"></span><span id="_CPPv2N13T_IO_MSG_TYPE15IO_MSG_TYPE_ADCE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a1fe187a9ea17c252c8a0486678b909e5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_ADC</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_ADCE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_D3DGE">
+<span id="_CPPv3N13T_IO_MSG_TYPE16IO_MSG_TYPE_D3DGE"></span><span id="_CPPv2N13T_IO_MSG_TYPE16IO_MSG_TYPE_D3DGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ad3f19344b367e2618a96a0da21ecfb74"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_D3DG</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_D3DGE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_SPIE">
+<span id="_CPPv3N13T_IO_MSG_TYPE15IO_MSG_TYPE_SPIE"></span><span id="_CPPv2N13T_IO_MSG_TYPE15IO_MSG_TYPE_SPIE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ad3705dbe9be85d181028c5b693db04b4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_SPI</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_SPIE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE24IO_MSG_TYPE_MOUSE_BUTTONE">
+<span id="_CPPv3N13T_IO_MSG_TYPE24IO_MSG_TYPE_MOUSE_BUTTONE"></span><span id="_CPPv2N13T_IO_MSG_TYPE24IO_MSG_TYPE_MOUSE_BUTTONE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a268b1b1ed5590aeb3a0be556db65255d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_MOUSE_BUTTON</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE24IO_MSG_TYPE_MOUSE_BUTTONE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_GPIOE">
+<span id="_CPPv3N13T_IO_MSG_TYPE16IO_MSG_TYPE_GPIOE"></span><span id="_CPPv2N13T_IO_MSG_TYPE16IO_MSG_TYPE_GPIOE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074af11ba4096588dc277d9bd604f1007024"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_GPIO</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_GPIOE" title="Link to this definition"></a><br /></dt>
+<dd><p>Gpio message with subtype <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gac53061b3924b56c44eacd7e43a711f10"><span class="std std-ref">T_IO_MSG_GPIO</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE24IO_MSG_TYPE_MOUSE_SENSORE">
+<span id="_CPPv3N13T_IO_MSG_TYPE24IO_MSG_TYPE_MOUSE_SENSORE"></span><span id="_CPPv2N13T_IO_MSG_TYPE24IO_MSG_TYPE_MOUSE_SENSORE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a57641382eaf0bcd02b9500dd8a8b7112"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_MOUSE_SENSOR</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE24IO_MSG_TYPE_MOUSE_SENSORE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_PPT_DFUE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_PPT_DFUE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_PPT_DFUE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a60e6c94b625b108db990bd2b4f6731ef"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_PPT_DFU</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_PPT_DFUE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE17IO_MSG_TYPE_TIMERE">
+<span id="_CPPv3N13T_IO_MSG_TYPE17IO_MSG_TYPE_TIMERE"></span><span id="_CPPv2N13T_IO_MSG_TYPE17IO_MSG_TYPE_TIMERE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a06ac5f9480f9dba5295de6e5fa53e770"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_TIMER</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE17IO_MSG_TYPE_TIMERE" title="Link to this definition"></a><br /></dt>
+<dd><p>App timer message with subtype <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gab498cbd52c529791d4eb34eeac576694"><span class="std std-ref">T_IO_MSG_TIMER</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE27IO_MSG_TYPE_RESET_WDG_TIMERE">
+<span id="_CPPv3N13T_IO_MSG_TYPE27IO_MSG_TYPE_RESET_WDG_TIMERE"></span><span id="_CPPv2N13T_IO_MSG_TYPE27IO_MSG_TYPE_RESET_WDG_TIMERE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a17f018ea9e8be4ec85c14eb04ac80c07"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_RESET_WDG_TIMER</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE27IO_MSG_TYPE_RESET_WDG_TIMERE" title="Link to this definition"></a><br /></dt>
+<dd><p>reset watchdog timer </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE31IO_MSG_TYPE_RESET_AON_WDG_TIMERE">
+<span id="_CPPv3N13T_IO_MSG_TYPE31IO_MSG_TYPE_RESET_AON_WDG_TIMERE"></span><span id="_CPPv2N13T_IO_MSG_TYPE31IO_MSG_TYPE_RESET_AON_WDG_TIMERE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a463e3d802ebf607f74e6f5ed4fe44487"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_RESET_AON_WDG_TIMER</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE31IO_MSG_TYPE_RESET_AON_WDG_TIMERE" title="Link to this definition"></a><br /></dt>
+<dd><p>reset AON watchdog timer </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE21IO_MSG_TYPE_WRISTBNADE">
+<span id="_CPPv3N13T_IO_MSG_TYPE21IO_MSG_TYPE_WRISTBNADE"></span><span id="_CPPv2N13T_IO_MSG_TYPE21IO_MSG_TYPE_WRISTBNADE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a25e6b176ea0056249624d325ff1a0cf1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_WRISTBNAD</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE21IO_MSG_TYPE_WRISTBNADE" title="Link to this definition"></a><br /></dt>
+<dd><p>wristband message with subtype T_IO_MSG_WRISTBAND </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE23IO_MSG_TYPE_MESH_STATUSE">
+<span id="_CPPv3N13T_IO_MSG_TYPE23IO_MSG_TYPE_MESH_STATUSE"></span><span id="_CPPv2N13T_IO_MSG_TYPE23IO_MSG_TYPE_MESH_STATUSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ad959aea090ddc9903ff4495837603b47"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_MESH_STATUS</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE23IO_MSG_TYPE_MESH_STATUSE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE27IO_MSG_TYPE_KEYBOARD_BUTTONE">
+<span id="_CPPv3N13T_IO_MSG_TYPE27IO_MSG_TYPE_KEYBOARD_BUTTONE"></span><span id="_CPPv2N13T_IO_MSG_TYPE27IO_MSG_TYPE_KEYBOARD_BUTTONE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a35b1ecff9b4d7ec2af6081293cc296a7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_KEYBOARD_BUTTON</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE27IO_MSG_TYPE_KEYBOARD_BUTTONE" title="Link to this definition"></a><br /></dt>
+<dd><p>subtype to be defined </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_ANCSE">
+<span id="_CPPv3N13T_IO_MSG_TYPE16IO_MSG_TYPE_ANCSE"></span><span id="_CPPv2N13T_IO_MSG_TYPE16IO_MSG_TYPE_ANCSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ade4aa1be07c749161c8ce81cc12eb0c8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_ANCS</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_ANCSE" title="Link to this definition"></a><br /></dt>
+<dd><p>ANCS message </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_CONSOLEE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_CONSOLEE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_CONSOLEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a8dc828281cf3be5c695d59d14b17b9de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_CONSOLE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_CONSOLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Console message with subtype <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1ga1bcad1832d976d3d40663580447a0c55"><span class="std std-ref">T_IO_CONSOLE</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_LE_MGRE">
+<span id="_CPPv3N13T_IO_MSG_TYPE18IO_MSG_TYPE_LE_MGRE"></span><span id="_CPPv2N13T_IO_MSG_TYPE18IO_MSG_TYPE_LE_MGRE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ac5682ccb5a9c988e59398f5e3be7211e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_LE_MGR</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_LE_MGRE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE21IO_MSG_TYPE_GAP_TOUCHE">
+<span id="_CPPv3N13T_IO_MSG_TYPE21IO_MSG_TYPE_GAP_TOUCHE"></span><span id="_CPPv2N13T_IO_MSG_TYPE21IO_MSG_TYPE_GAP_TOUCHE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a2f7c0db88290c3a066059555b90c432c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_GAP_TOUCH</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE21IO_MSG_TYPE_GAP_TOUCHE" title="Link to this definition"></a><br /></dt>
+<dd><p>Cap Touch message with subtype <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gaf415b6a2fadbccf7823fe66519340f8a"><span class="std std-ref">T_IO_MSG_GAP_TOUCH</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_LATENCYE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_LATENCYE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_LATENCYE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a635a928f809815e86c6baa14803a384f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_LATENCY</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_LATENCYE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE29IO_MSG_TYPE_WORK_MODE_MONITORE">
+<span id="_CPPv3N13T_IO_MSG_TYPE29IO_MSG_TYPE_WORK_MODE_MONITORE"></span><span id="_CPPv2N13T_IO_MSG_TYPE29IO_MSG_TYPE_WORK_MODE_MONITORE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074add7042ad07b86f42a6398b72b7079ac0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_WORK_MODE_MONITOR</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE29IO_MSG_TYPE_WORK_MODE_MONITORE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE22IO_MSG_TYPE_OS_MONITORE">
+<span id="_CPPv3N13T_IO_MSG_TYPE22IO_MSG_TYPE_OS_MONITORE"></span><span id="_CPPv2N13T_IO_MSG_TYPE22IO_MSG_TYPE_OS_MONITORE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074abd1706ed50e8a3c771054ca378959636"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_OS_MONITOR</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE22IO_MSG_TYPE_OS_MONITORE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE22IO_MSG_TYPE_BAT_DETECTE">
+<span id="_CPPv3N13T_IO_MSG_TYPE22IO_MSG_TYPE_BAT_DETECTE"></span><span id="_CPPv2N13T_IO_MSG_TYPE22IO_MSG_TYPE_BAT_DETECTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a66cde7eaf18437b99a1cbbc4e4e98e9b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_BAT_DETECT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE22IO_MSG_TYPE_BAT_DETECTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_DEVE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_DEVE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_DEVE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ab2dc0fd95b07aa81213aa58a6c322bf2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_USB_DEV</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_DEVE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_UACE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_UACE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_UACE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a5bc1f7f2619bd80dde3783ef16f9ce5a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_USB_UAC</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_UACE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_HIDE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_HIDE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_HIDE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074aa99ab2b353075b2173c71ec32f4d792d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_USB_HID</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_HIDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_CDCE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_CDCE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_CDCE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074aa06115159d6a716ff8846fec962281d9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_USB_CDC</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_USB_CDCE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_BAT_LPCE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_BAT_LPCE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_BAT_LPCE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a1bb2014a0098a33bb9ac147efa7cef15"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_BAT_LPC</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_BAT_LPCE" title="Link to this definition"></a><br /></dt>
+<dd><p>LPC send low power message </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE20IO_MSG_TYPE_LE_AUDIOE">
+<span id="_CPPv3N13T_IO_MSG_TYPE20IO_MSG_TYPE_LE_AUDIOE"></span><span id="_CPPv2N13T_IO_MSG_TYPE20IO_MSG_TYPE_LE_AUDIOE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a457dd5f2c4d95658479e878017582412"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_LE_AUDIO</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE20IO_MSG_TYPE_LE_AUDIOE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE30IO_MSG_TYPE_REPORT_RATE_CHANGEE">
+<span id="_CPPv3N13T_IO_MSG_TYPE30IO_MSG_TYPE_REPORT_RATE_CHANGEE"></span><span id="_CPPv2N13T_IO_MSG_TYPE30IO_MSG_TYPE_REPORT_RATE_CHANGEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a9d202e12a586893e29ebb00fe817a459"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_REPORT_RATE_CHANGE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE30IO_MSG_TYPE_REPORT_RATE_CHANGEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_LED_ONE">
+<span id="_CPPv3N13T_IO_MSG_TYPE18IO_MSG_TYPE_LED_ONE"></span><span id="_CPPv2N13T_IO_MSG_TYPE18IO_MSG_TYPE_LED_ONE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074af1eaa4a78d3e41d7c19fb6b7bb45d5bd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_LED_ON</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_LED_ONE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_LED_OFFE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_LED_OFFE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_LED_OFFE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074aedf4642ccc84791b2adb7afd615b16d9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_LED_OFF</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_LED_OFFE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_ADV_ONE">
+<span id="_CPPv3N13T_IO_MSG_TYPE18IO_MSG_TYPE_ADV_ONE"></span><span id="_CPPv2N13T_IO_MSG_TYPE18IO_MSG_TYPE_ADV_ONE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a8c7dec5fecf27501f0f6df26a56b973c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_ADV_ON</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_ADV_ONE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_ADV_OFFE">
+<span id="_CPPv3N13T_IO_MSG_TYPE19IO_MSG_TYPE_ADV_OFFE"></span><span id="_CPPv2N13T_IO_MSG_TYPE19IO_MSG_TYPE_ADV_OFFE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a605d8ac47029c4106d2ba4eb33c22d95"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_ADV_OFF</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE19IO_MSG_TYPE_ADV_OFFE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE22IO_MSG_TYPE_MESH_LIGHTE">
+<span id="_CPPv3N13T_IO_MSG_TYPE22IO_MSG_TYPE_MESH_LIGHTE"></span><span id="_CPPv2N13T_IO_MSG_TYPE22IO_MSG_TYPE_MESH_LIGHTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a340f65e456a3cf5a2ce1791f9eeb0770"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_MESH_LIGHT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE22IO_MSG_TYPE_MESH_LIGHTE" title="Link to this definition"></a><br /></dt>
+<dd><p>mesh light message </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_DPIE">
+<span id="_CPPv3N13T_IO_MSG_TYPE15IO_MSG_TYPE_DPIE"></span><span id="_CPPv2N13T_IO_MSG_TYPE15IO_MSG_TYPE_DPIE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a76d348bbd6030b7cd88c0948a597fe2c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_DPI</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_DPIE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE23IO_MSG_TYPE_PPT_RECEIVEE">
+<span id="_CPPv3N13T_IO_MSG_TYPE23IO_MSG_TYPE_PPT_RECEIVEE"></span><span id="_CPPv2N13T_IO_MSG_TYPE23IO_MSG_TYPE_PPT_RECEIVEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074aedf62f2dcb84d2693d48d2a88101039d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_PPT_RECEIVE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE23IO_MSG_TYPE_PPT_RECEIVEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_FMNAE">
+<span id="_CPPv3N13T_IO_MSG_TYPE16IO_MSG_TYPE_FMNAE"></span><span id="_CPPv2N13T_IO_MSG_TYPE16IO_MSG_TYPE_FMNAE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074af8824840da8d3a40bdf478741aacdb67"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_FMNA</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE16IO_MSG_TYPE_FMNAE" title="Link to this definition"></a><br /></dt>
+<dd><p>Findmy specific message with subtype <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gafec2990afdfa25f7aac5b5eb477a4077"><span class="std std-ref">T_IO_MSG_TYPE_FMNA</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE23IO_MSG_TYPE_DRIVER_DATAE">
+<span id="_CPPv3N13T_IO_MSG_TYPE23IO_MSG_TYPE_DRIVER_DATAE"></span><span id="_CPPv2N13T_IO_MSG_TYPE23IO_MSG_TYPE_DRIVER_DATAE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074abd9e10da54ffd96c3254d92392d29ebf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_DRIVER_DATA</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE23IO_MSG_TYPE_DRIVER_DATAE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE37IO_MSG_TYPE_IR_START_SEND_REPEAT_CODEE">
+<span id="_CPPv3N13T_IO_MSG_TYPE37IO_MSG_TYPE_IR_START_SEND_REPEAT_CODEE"></span><span id="_CPPv2N13T_IO_MSG_TYPE37IO_MSG_TYPE_IR_START_SEND_REPEAT_CODEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ad9af67ec78b6071f16e53aae46abbeb3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_IR_START_SEND_REPEAT_CODE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE37IO_MSG_TYPE_IR_START_SEND_REPEAT_CODEE" title="Link to this definition"></a><br /></dt>
+<dd><p>IR send repeat code message </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE28IO_MSG_TYPE_IR_SEND_COMPLETEE">
+<span id="_CPPv3N13T_IO_MSG_TYPE28IO_MSG_TYPE_IR_SEND_COMPLETEE"></span><span id="_CPPv2N13T_IO_MSG_TYPE28IO_MSG_TYPE_IR_SEND_COMPLETEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a7e4eb5ee060572b0e8dba4f92b499d98"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_IR_SEND_COMPLETE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE28IO_MSG_TYPE_IR_SEND_COMPLETEE" title="Link to this definition"></a><br /></dt>
+<dd><p>IR send complete message </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE25IO_MSG_TYPE_IR_LEARN_DATAE">
+<span id="_CPPv3N13T_IO_MSG_TYPE25IO_MSG_TYPE_IR_LEARN_DATAE"></span><span id="_CPPv2N13T_IO_MSG_TYPE25IO_MSG_TYPE_IR_LEARN_DATAE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a6f76156a4872438a21c4c3a860c8fff5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_IR_LEARN_DATA</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE25IO_MSG_TYPE_IR_LEARN_DATAE" title="Link to this definition"></a><br /></dt>
+<dd><p>IR learn data message </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE25IO_MSG_TYPE_IR_LEARN_STOPE">
+<span id="_CPPv3N13T_IO_MSG_TYPE25IO_MSG_TYPE_IR_LEARN_STOPE"></span><span id="_CPPv2N13T_IO_MSG_TYPE25IO_MSG_TYPE_IR_LEARN_STOPE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a20450857df84e7147a47bdc75ec5ede8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_IR_LEARN_STOP</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE25IO_MSG_TYPE_IR_LEARN_STOPE" title="Link to this definition"></a><br /></dt>
+<dd><p>IR learn stop message </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE31IO_MSG_TYPE_START_PPT_RECONNECTE">
+<span id="_CPPv3N13T_IO_MSG_TYPE31IO_MSG_TYPE_START_PPT_RECONNECTE"></span><span id="_CPPv2N13T_IO_MSG_TYPE31IO_MSG_TYPE_START_PPT_RECONNECTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074aeded50ac43b2502f519123bbc052dc11"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_START_PPT_RECONNECT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE31IO_MSG_TYPE_START_PPT_RECONNECTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_DFUE">
+<span id="_CPPv3N13T_IO_MSG_TYPE15IO_MSG_TYPE_DFUE"></span><span id="_CPPv2N13T_IO_MSG_TYPE15IO_MSG_TYPE_DFUE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ab189ee77410eefbbe12083f585a6e1fa"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_DFU</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_DFUE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE24IO_MSG_TYPE_DFU_VALID_FWE">
+<span id="_CPPv3N13T_IO_MSG_TYPE24IO_MSG_TYPE_DFU_VALID_FWE"></span><span id="_CPPv2N13T_IO_MSG_TYPE24IO_MSG_TYPE_DFU_VALID_FWE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074abc539ef024a9ae124ca1f2950911b6b0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_DFU_VALID_FW</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE24IO_MSG_TYPE_DFU_VALID_FWE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE22IO_MSG_TYPE_USB_WAKEUPE">
+<span id="_CPPv3N13T_IO_MSG_TYPE22IO_MSG_TYPE_USB_WAKEUPE"></span><span id="_CPPv2N13T_IO_MSG_TYPE22IO_MSG_TYPE_USB_WAKEUPE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a4adca7a2a428c70ff2e8e8d8024142e9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_USB_WAKEUP</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE22IO_MSG_TYPE_USB_WAKEUPE" title="Link to this definition"></a><br /></dt>
+<dd><p>USB remote wakeup event with subtype <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1ga5f8d0fba0e139c82ef314b7b65879f7b"><span class="std std-ref">T_IO_MSG_USB_WAKEUP_EVENT</span></a></p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_OTHERSE">
+<span id="_CPPv3N13T_IO_MSG_TYPE18IO_MSG_TYPE_OTHERSE"></span><span id="_CPPv2N13T_IO_MSG_TYPE18IO_MSG_TYPE_OTHERSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a662b7be0dcebc125493cf1e9b6c3e588"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_OTHERS</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE18IO_MSG_TYPE_OTHERSE" title="Link to this definition"></a><br /></dt>
+<dd><p>other message for general purpose </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE20IO_MSG_TYPE_CAN_SENDE">
+<span id="_CPPv3N13T_IO_MSG_TYPE20IO_MSG_TYPE_CAN_SENDE"></span><span id="_CPPv2N13T_IO_MSG_TYPE20IO_MSG_TYPE_CAN_SENDE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a98b3350f9190dccd069999ae4bd7c7d2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_CAN_SEND</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE20IO_MSG_TYPE_CAN_SENDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE23IO_MSG_TYPE_CAN_RECEIVEE">
+<span id="_CPPv3N13T_IO_MSG_TYPE23IO_MSG_TYPE_CAN_RECEIVEE"></span><span id="_CPPv2N13T_IO_MSG_TYPE23IO_MSG_TYPE_CAN_RECEIVEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a57a7385b01df854d6116c243475485d0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_CAN_RECEIVE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE23IO_MSG_TYPE_CAN_RECEIVEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE26IO_MSG_TYPE_ELECTRIC_METERE">
+<span id="_CPPv3N13T_IO_MSG_TYPE26IO_MSG_TYPE_ELECTRIC_METERE"></span><span id="_CPPv2N13T_IO_MSG_TYPE26IO_MSG_TYPE_ELECTRIC_METERE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074ab477c2b40cdbbb5e01deeb3fc7a8ba0b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_ELECTRIC_METER</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE26IO_MSG_TYPE_ELECTRIC_METERE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_GUIE">
+<span id="_CPPv3N13T_IO_MSG_TYPE15IO_MSG_TYPE_GUIE"></span><span id="_CPPv2N13T_IO_MSG_TYPE15IO_MSG_TYPE_GUIE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a1856b985f004034bd850a20389c4b80b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_GUI</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE15IO_MSG_TYPE_GUIE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE21IO_MSG_TYPE_ESL_COMMSE">
+<span id="_CPPv3N13T_IO_MSG_TYPE21IO_MSG_TYPE_ESL_COMMSE"></span><span id="_CPPv2N13T_IO_MSG_TYPE21IO_MSG_TYPE_ESL_COMMSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a6279274ecea91a0c7cd373a622b992d9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_ESL_COMMS</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE21IO_MSG_TYPE_ESL_COMMSE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE27IO_MSG_TYPE_PERIPHERALS_HALE">
+<span id="_CPPv3N13T_IO_MSG_TYPE27IO_MSG_TYPE_PERIPHERALS_HALE"></span><span id="_CPPv2N13T_IO_MSG_TYPE27IO_MSG_TYPE_PERIPHERALS_HALE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074aaad05319b2bf72d2286c71b5205e6d9d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_PERIPHERALS_HAL</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE27IO_MSG_TYPE_PERIPHERALS_HALE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_TYPE20IO_MSG_TYPE_ZB_LIGHTE">
+<span id="_CPPv3N13T_IO_MSG_TYPE20IO_MSG_TYPE_ZB_LIGHTE"></span><span id="_CPPv2N13T_IO_MSG_TYPE20IO_MSG_TYPE_ZB_LIGHTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a76b8aa8c2459ff5077fc880026417455"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TYPE_ZB_LIGHT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_TYPE20IO_MSG_TYPE_ZB_LIGHTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Zigbee light control message </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv412T_IO_CONSOLE">
+<span id="_CPPv312T_IO_CONSOLE"></span><span id="_CPPv212T_IO_CONSOLE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ga1bcad1832d976d3d40663580447a0c55"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_CONSOLE</span></span></span><a class="headerlink" href="#_CPPv412T_IO_CONSOLE" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1ga1bcad1832d976d3d40663580447a0c55"><span class="std std-ref">T_IO_CONSOLE</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_IO_CONSOLE24IO_MSG_CONSOLE_STRING_RXE">
+<span id="_CPPv3N12T_IO_CONSOLE24IO_MSG_CONSOLE_STRING_RXE"></span><span id="_CPPv2N12T_IO_CONSOLE24IO_MSG_CONSOLE_STRING_RXE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga1bcad1832d976d3d40663580447a0c55af83a466d58cae3f4b44df967916a2b1d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_CONSOLE_STRING_RX</span></span></span><a class="headerlink" href="#_CPPv4N12T_IO_CONSOLE24IO_MSG_CONSOLE_STRING_RXE" title="Link to this definition"></a><br /></dt>
+<dd><p>Console CLI RX event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_IO_CONSOLE24IO_MSG_CONSOLE_STRING_TXE">
+<span id="_CPPv3N12T_IO_CONSOLE24IO_MSG_CONSOLE_STRING_TXE"></span><span id="_CPPv2N12T_IO_CONSOLE24IO_MSG_CONSOLE_STRING_TXE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga1bcad1832d976d3d40663580447a0c55a1b92dc3105b3c1447477a25dad558563"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_CONSOLE_STRING_TX</span></span></span><a class="headerlink" href="#_CPPv4N12T_IO_CONSOLE24IO_MSG_CONSOLE_STRING_TXE" title="Link to this definition"></a><br /></dt>
+<dd><p>Console CLI TX event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_IO_CONSOLE24IO_MSG_CONSOLE_BINARY_RXE">
+<span id="_CPPv3N12T_IO_CONSOLE24IO_MSG_CONSOLE_BINARY_RXE"></span><span id="_CPPv2N12T_IO_CONSOLE24IO_MSG_CONSOLE_BINARY_RXE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga1bcad1832d976d3d40663580447a0c55a6badabb6675ccfd1bc960ee6b94a6814"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_CONSOLE_BINARY_RX</span></span></span><a class="headerlink" href="#_CPPv4N12T_IO_CONSOLE24IO_MSG_CONSOLE_BINARY_RXE" title="Link to this definition"></a><br /></dt>
+<dd><p>Console protocol RX event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_IO_CONSOLE24IO_MSG_CONSOLE_BINARY_TXE">
+<span id="_CPPv3N12T_IO_CONSOLE24IO_MSG_CONSOLE_BINARY_TXE"></span><span id="_CPPv2N12T_IO_CONSOLE24IO_MSG_CONSOLE_BINARY_TXE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga1bcad1832d976d3d40663580447a0c55a9579502a498d83f98fc26d881ea2d1c1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_CONSOLE_BINARY_TX</span></span></span><a class="headerlink" href="#_CPPv4N12T_IO_CONSOLE24IO_MSG_CONSOLE_BINARY_TXE" title="Link to this definition"></a><br /></dt>
+<dd><p>Console protocol TX event </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416T_IO_MSG_KEYSCAN">
+<span id="_CPPv316T_IO_MSG_KEYSCAN"></span><span id="_CPPv216T_IO_MSG_KEYSCAN"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ga53480343dbad6f542a9f67cc37e62ade"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_KEYSCAN</span></span></span><a class="headerlink" href="#_CPPv416T_IO_MSG_KEYSCAN" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a85dbaa70be4f8a01a7758e77c2952f79"><span class="std std-ref">IO_MSG_TYPE_KEYSCAN</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_IO_MSG_KEYSCAN21IO_MSG_KEYSCAN_RX_PKTE">
+<span id="_CPPv3N16T_IO_MSG_KEYSCAN21IO_MSG_KEYSCAN_RX_PKTE"></span><span id="_CPPv2N16T_IO_MSG_KEYSCAN21IO_MSG_KEYSCAN_RX_PKTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga53480343dbad6f542a9f67cc37e62adea93ff7e787f17c4e21c939e86b606ec2d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_KEYSCAN_RX_PKT</span></span></span><a class="headerlink" href="#_CPPv4N16T_IO_MSG_KEYSCAN21IO_MSG_KEYSCAN_RX_PKTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Keyscan RX data event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_IO_MSG_KEYSCAN18IO_MSG_KEYSCAN_MAXE">
+<span id="_CPPv3N16T_IO_MSG_KEYSCAN18IO_MSG_KEYSCAN_MAXE"></span><span id="_CPPv2N16T_IO_MSG_KEYSCAN18IO_MSG_KEYSCAN_MAXE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga53480343dbad6f542a9f67cc37e62adeae71f2771dc00f07cab64c64103754a8f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_KEYSCAN_MAX</span></span></span><a class="headerlink" href="#_CPPv4N16T_IO_MSG_KEYSCAN18IO_MSG_KEYSCAN_MAXE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_IO_MSG_KEYSCAN28IO_MSG_KEYSCAN_ALLKEYRELEASEE">
+<span id="_CPPv3N16T_IO_MSG_KEYSCAN28IO_MSG_KEYSCAN_ALLKEYRELEASEE"></span><span id="_CPPv2N16T_IO_MSG_KEYSCAN28IO_MSG_KEYSCAN_ALLKEYRELEASEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga53480343dbad6f542a9f67cc37e62adea72c30aff7f0a254509bf6b4cd0ad8d68"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_KEYSCAN_ALLKEYRELEASE</span></span></span><a class="headerlink" href="#_CPPv4N16T_IO_MSG_KEYSCAN28IO_MSG_KEYSCAN_ALLKEYRELEASEE" title="Link to this definition"></a><br /></dt>
+<dd><p>All keys are released event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_IO_MSG_KEYSCAN20IO_MSG_KEYSCAN_STUCKE">
+<span id="_CPPv3N16T_IO_MSG_KEYSCAN20IO_MSG_KEYSCAN_STUCKE"></span><span id="_CPPv2N16T_IO_MSG_KEYSCAN20IO_MSG_KEYSCAN_STUCKE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga53480343dbad6f542a9f67cc37e62adea8cd5b82fa9739a14ea494943d36b2f25"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_KEYSCAN_STUCK</span></span></span><a class="headerlink" href="#_CPPv4N16T_IO_MSG_KEYSCAN20IO_MSG_KEYSCAN_STUCKE" title="Link to this definition"></a><br /></dt>
+<dd><p>key stuck message </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv413T_IO_MSG_UART">
+<span id="_CPPv313T_IO_MSG_UART"></span><span id="_CPPv213T_IO_MSG_UART"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gac2c41d68ce4555e6d5dd85315aa33f9b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_UART</span></span></span><a class="headerlink" href="#_CPPv413T_IO_MSG_UART" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a46ed3255f00d4883a56c5a7304d6f505"><span class="std std-ref">IO_MSG_TYPE_UART</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_UART14IO_MSG_UART_RXE">
+<span id="_CPPv3N13T_IO_MSG_UART14IO_MSG_UART_RXE"></span><span id="_CPPv2N13T_IO_MSG_UART14IO_MSG_UART_RXE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac2c41d68ce4555e6d5dd85315aa33f9ba3e92a9bac87e2c399c8700fa9ef01f30"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_UART_RX</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_UART14IO_MSG_UART_RXE" title="Link to this definition"></a><br /></dt>
+<dd><p>UART RX event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_UART14IO_MSG_UART_TXE">
+<span id="_CPPv3N13T_IO_MSG_UART14IO_MSG_UART_TXE"></span><span id="_CPPv2N13T_IO_MSG_UART14IO_MSG_UART_TXE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac2c41d68ce4555e6d5dd85315aa33f9ba8cea79732acf334f6df9818eb3fed666"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_UART_TX</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_UART14IO_MSG_UART_TXE" title="Link to this definition"></a><br /></dt>
+<dd><p>UART TX event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_UART19IO_MSG_UART_RX_DONEE">
+<span id="_CPPv3N13T_IO_MSG_UART19IO_MSG_UART_RX_DONEE"></span><span id="_CPPv2N13T_IO_MSG_UART19IO_MSG_UART_RX_DONEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac2c41d68ce4555e6d5dd85315aa33f9baa4205552b2d3eaeaa93e3526a529c5fb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_UART_RX_DONE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_UART19IO_MSG_UART_RX_DONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>UART RX done event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_UART31IO_MSG_UART_DATA_PARSER_SUCCESSE">
+<span id="_CPPv3N13T_IO_MSG_UART31IO_MSG_UART_DATA_PARSER_SUCCESSE"></span><span id="_CPPv2N13T_IO_MSG_UART31IO_MSG_UART_DATA_PARSER_SUCCESSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac2c41d68ce4555e6d5dd85315aa33f9baa013d9bbb03afe89840b6fde932e0114"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_UART_DATA_PARSER_SUCCESS</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_UART31IO_MSG_UART_DATA_PARSER_SUCCESSE" title="Link to this definition"></a><br /></dt>
+<dd><p>UART data parser done event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_UART30IO_MSG_UART_DATA_PARSER_FAILEDE">
+<span id="_CPPv3N13T_IO_MSG_UART30IO_MSG_UART_DATA_PARSER_FAILEDE"></span><span id="_CPPv2N13T_IO_MSG_UART30IO_MSG_UART_DATA_PARSER_FAILEDE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac2c41d68ce4555e6d5dd85315aa33f9baae6ee50afa9927713c1b51e252589d21"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_UART_DATA_PARSER_FAILED</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_UART30IO_MSG_UART_DATA_PARSER_FAILEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>UART data parser done event </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv413T_IO_MSG_GPIO">
+<span id="_CPPv313T_IO_MSG_GPIO"></span><span id="_CPPv213T_IO_MSG_GPIO"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gac53061b3924b56c44eacd7e43a711f10"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_GPIO</span></span></span><a class="headerlink" href="#_CPPv413T_IO_MSG_GPIO" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074af11ba4096588dc277d9bd604f1007024"><span class="std std-ref">IO_MSG_TYPE_GPIO</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO15IO_MSG_GPIO_KEYE">
+<span id="_CPPv3N13T_IO_MSG_GPIO15IO_MSG_GPIO_KEYE"></span><span id="_CPPv2N13T_IO_MSG_GPIO15IO_MSG_GPIO_KEYE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a0aec3272873ee303e2ff07cc596986c6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_KEY</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO15IO_MSG_GPIO_KEYE" title="Link to this definition"></a><br /></dt>
+<dd><p>KEY GPIO event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO24IO_MSG_GPIO_UART_WAKE_UPE">
+<span id="_CPPv3N13T_IO_MSG_GPIO24IO_MSG_GPIO_UART_WAKE_UPE"></span><span id="_CPPv2N13T_IO_MSG_GPIO24IO_MSG_GPIO_UART_WAKE_UPE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a50c7e2be2a34695068d5e0940107e882"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_UART_WAKE_UP</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO24IO_MSG_GPIO_UART_WAKE_UPE" title="Link to this definition"></a><br /></dt>
+<dd><p>UART WAKE UP event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO19IO_MSG_GPIO_CHARGERE">
+<span id="_CPPv3N13T_IO_MSG_GPIO19IO_MSG_GPIO_CHARGERE"></span><span id="_CPPv2N13T_IO_MSG_GPIO19IO_MSG_GPIO_CHARGERE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a562150ad19d2f1302924c07475731379"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_CHARGER</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO19IO_MSG_GPIO_CHARGERE" title="Link to this definition"></a><br /></dt>
+<dd><p>CHARGER event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO15IO_MSG_GPIO_NFCE">
+<span id="_CPPv3N13T_IO_MSG_GPIO15IO_MSG_GPIO_NFCE"></span><span id="_CPPv2N13T_IO_MSG_GPIO15IO_MSG_GPIO_NFCE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a58ef2275f099fa4a75ffe43d37ddb7f7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_NFC</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO15IO_MSG_GPIO_NFCE" title="Link to this definition"></a><br /></dt>
+<dd><p>NFC event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO26IO_MSG_GPIO_USB_AUDIO_PLUGE">
+<span id="_CPPv3N13T_IO_MSG_GPIO26IO_MSG_GPIO_USB_AUDIO_PLUGE"></span><span id="_CPPv2N13T_IO_MSG_GPIO26IO_MSG_GPIO_USB_AUDIO_PLUGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a7bc2bde338101ca33d9ca427dac3fbee"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_USB_AUDIO_PLUG</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO26IO_MSG_GPIO_USB_AUDIO_PLUGE" title="Link to this definition"></a><br /></dt>
+<dd><p>USB PLUG IN event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO28IO_MSG_GPIO_USB_AUDIO_UNPLUGE">
+<span id="_CPPv3N13T_IO_MSG_GPIO28IO_MSG_GPIO_USB_AUDIO_UNPLUGE"></span><span id="_CPPv2N13T_IO_MSG_GPIO28IO_MSG_GPIO_USB_AUDIO_UNPLUGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10af99b513622533162ae83e1a72fb60aee"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_USB_AUDIO_UNPLUG</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO28IO_MSG_GPIO_USB_AUDIO_UNPLUGE" title="Link to this definition"></a><br /></dt>
+<dd><p>USB PLUG OUT event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO24IO_MSG_GPIO_ADAPTOR_PLUGE">
+<span id="_CPPv3N13T_IO_MSG_GPIO24IO_MSG_GPIO_ADAPTOR_PLUGE"></span><span id="_CPPv2N13T_IO_MSG_GPIO24IO_MSG_GPIO_ADAPTOR_PLUGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a21cb34bd185f4f3bd7dfc4a1eec1a377"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_ADAPTOR_PLUG</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO24IO_MSG_GPIO_ADAPTOR_PLUGE" title="Link to this definition"></a><br /></dt>
+<dd><p>ADAPTOR PLUG IN event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO26IO_MSG_GPIO_ADAPTOR_UNPLUGE">
+<span id="_CPPv3N13T_IO_MSG_GPIO26IO_MSG_GPIO_ADAPTOR_UNPLUGE"></span><span id="_CPPv2N13T_IO_MSG_GPIO26IO_MSG_GPIO_ADAPTOR_UNPLUGE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10afbe5c6145c11a5f88197ff61e0e85e26"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_ADAPTOR_UNPLUG</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO26IO_MSG_GPIO_ADAPTOR_UNPLUGE" title="Link to this definition"></a><br /></dt>
+<dd><p>ADAPTOR PLUG OUT event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO29IO_MSG_GPIO_CHARGERBOX_DETECTE">
+<span id="_CPPv3N13T_IO_MSG_GPIO29IO_MSG_GPIO_CHARGERBOX_DETECTE"></span><span id="_CPPv2N13T_IO_MSG_GPIO29IO_MSG_GPIO_CHARGERBOX_DETECTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a11c9619af2b56ba40d08c71873ceb1ef"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_CHARGERBOX_DETECT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO29IO_MSG_GPIO_CHARGERBOX_DETECTE" title="Link to this definition"></a><br /></dt>
+<dd><p>CHARGERBOX DETECT event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO23IO_MSG_GPIO_CASE_DETECTE">
+<span id="_CPPv3N13T_IO_MSG_GPIO23IO_MSG_GPIO_CASE_DETECTE"></span><span id="_CPPv2N13T_IO_MSG_GPIO23IO_MSG_GPIO_CASE_DETECTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a629ccc993693a1134f2340131b154a57"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_CASE_DETECT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO23IO_MSG_GPIO_CASE_DETECTE" title="Link to this definition"></a><br /></dt>
+<dd><p>CASE DETECT event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO27IO_MSG_GPIO_USB_AUDIO_CHECKE">
+<span id="_CPPv3N13T_IO_MSG_GPIO27IO_MSG_GPIO_USB_AUDIO_CHECKE"></span><span id="_CPPv2N13T_IO_MSG_GPIO27IO_MSG_GPIO_USB_AUDIO_CHECKE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a375e1395a3441dc4a062d54968914b0a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_USB_AUDIO_CHECK</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO27IO_MSG_GPIO_USB_AUDIO_CHECKE" title="Link to this definition"></a><br /></dt>
+<dd><p>USB CHECK event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO19IO_MSG_GPIO_GSENSORE">
+<span id="_CPPv3N13T_IO_MSG_GPIO19IO_MSG_GPIO_GSENSORE"></span><span id="_CPPv2N13T_IO_MSG_GPIO19IO_MSG_GPIO_GSENSORE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a82f3b86e3de3a0ba25aea091f60b73f0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_GSENSOR</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO19IO_MSG_GPIO_GSENSORE" title="Link to this definition"></a><br /></dt>
+<dd><p>Gsensor detect event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO21IO_MSG_GPIO_SENSOR_LDE">
+<span id="_CPPv3N13T_IO_MSG_GPIO21IO_MSG_GPIO_SENSOR_LDE"></span><span id="_CPPv2N13T_IO_MSG_GPIO21IO_MSG_GPIO_SENSOR_LDE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a3a499521c6d9eb11324ee2ebb639d6d4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_SENSOR_LD</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO21IO_MSG_GPIO_SENSOR_LDE" title="Link to this definition"></a><br /></dt>
+<dd><p>sensor light detect event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO31IO_MSG_GPIO_SENSOR_LD_IO_DETECTE">
+<span id="_CPPv3N13T_IO_MSG_GPIO31IO_MSG_GPIO_SENSOR_LD_IO_DETECTE"></span><span id="_CPPv2N13T_IO_MSG_GPIO31IO_MSG_GPIO_SENSOR_LD_IO_DETECTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10add4fe21e8b15fc4345922720db4199be"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_SENSOR_LD_IO_DETECT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO31IO_MSG_GPIO_SENSOR_LD_IO_DETECTE" title="Link to this definition"></a><br /></dt>
+<dd><p>sensor light IO detect event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO23IO_MSG_GPIO_ADAPTOR_DATE">
+<span id="_CPPv3N13T_IO_MSG_GPIO23IO_MSG_GPIO_ADAPTOR_DATE"></span><span id="_CPPv2N13T_IO_MSG_GPIO23IO_MSG_GPIO_ADAPTOR_DATE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a9fb21b3b5754c18c85e0557452164eb1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_ADAPTOR_DAT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO23IO_MSG_GPIO_ADAPTOR_DATE" title="Link to this definition"></a><br /></dt>
+<dd><p>ADAPTOR DATA event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO33IO_MSG_GPIO_RTK_CHARGERBOX_DETECTE">
+<span id="_CPPv3N13T_IO_MSG_GPIO33IO_MSG_GPIO_RTK_CHARGERBOX_DETECTE"></span><span id="_CPPv2N13T_IO_MSG_GPIO33IO_MSG_GPIO_RTK_CHARGERBOX_DETECTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a359b6d55d89fda2f874ec1c9eb4d5dc2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_RTK_CHARGERBOX_DETECT</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO33IO_MSG_GPIO_RTK_CHARGERBOX_DETECTE" title="Link to this definition"></a><br /></dt>
+<dd><p>CHARGERBOX COMMAND event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO27IO_MSG_GPIO_FMNA_TRIG_PRESSE">
+<span id="_CPPv3N13T_IO_MSG_GPIO27IO_MSG_GPIO_FMNA_TRIG_PRESSE"></span><span id="_CPPv2N13T_IO_MSG_GPIO27IO_MSG_GPIO_FMNA_TRIG_PRESSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10a3de6bab62ec93374053ac40c9dc8184a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_FMNA_TRIG_PRESS</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO27IO_MSG_GPIO_FMNA_TRIG_PRESSE" title="Link to this definition"></a><br /></dt>
+<dd><p>Findmy TRIG PIN press event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO29IO_MSG_GPIO_FMNA_TRIG_RELEASEE">
+<span id="_CPPv3N13T_IO_MSG_GPIO29IO_MSG_GPIO_FMNA_TRIG_RELEASEE"></span><span id="_CPPv2N13T_IO_MSG_GPIO29IO_MSG_GPIO_FMNA_TRIG_RELEASEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10affe368f517eb5851f3b28ddcd7d0e758"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_FMNA_TRIG_RELEASE</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO29IO_MSG_GPIO_FMNA_TRIG_RELEASEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Findmy TRIG PIN release event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_IO_MSG_GPIO29IO_MSG_GPIO_FMNA_CUST_ADV_PINE">
+<span id="_CPPv3N13T_IO_MSG_GPIO29IO_MSG_GPIO_FMNA_CUST_ADV_PINE"></span><span id="_CPPv2N13T_IO_MSG_GPIO29IO_MSG_GPIO_FMNA_CUST_ADV_PINE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggac53061b3924b56c44eacd7e43a711f10aaee5f9e9ecc9342005a79d9d71dc09ca"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GPIO_FMNA_CUST_ADV_PIN</span></span></span><a class="headerlink" href="#_CPPv4N13T_IO_MSG_GPIO29IO_MSG_GPIO_FMNA_CUST_ADV_PINE" title="Link to this definition"></a><br /></dt>
+<dd><p>Findmy customized PIN event </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418T_IO_MSG_GAP_TOUCH">
+<span id="_CPPv318T_IO_MSG_GAP_TOUCH"></span><span id="_CPPv218T_IO_MSG_GAP_TOUCH"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gaf415b6a2fadbccf7823fe66519340f8a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_GAP_TOUCH</span></span></span><a class="headerlink" href="#_CPPv418T_IO_MSG_GAP_TOUCH" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a2f7c0db88290c3a066059555b90c432c"><span class="std std-ref">IO_MSG_TYPE_GAP_TOUCH</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_GAP_TOUCH24IO_MSG_GAP_TOUCH_CH_INFOE">
+<span id="_CPPv3N18T_IO_MSG_GAP_TOUCH24IO_MSG_GAP_TOUCH_CH_INFOE"></span><span id="_CPPv2N18T_IO_MSG_GAP_TOUCH24IO_MSG_GAP_TOUCH_CH_INFOE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggaf415b6a2fadbccf7823fe66519340f8aabfae170d93b5cbf4750514872bd452c4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GAP_TOUCH_CH_INFO</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_GAP_TOUCH24IO_MSG_GAP_TOUCH_CH_INFOE" title="Link to this definition"></a><br /></dt>
+<dd><p>CHANNEL event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_GAP_TOUCH29IO_MSG_GAP_TOUCH_OVER_N_NOISEE">
+<span id="_CPPv3N18T_IO_MSG_GAP_TOUCH29IO_MSG_GAP_TOUCH_OVER_N_NOISEE"></span><span id="_CPPv2N18T_IO_MSG_GAP_TOUCH29IO_MSG_GAP_TOUCH_OVER_N_NOISEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggaf415b6a2fadbccf7823fe66519340f8aa4fc750ced286d0e8a8ebb134d60e251c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GAP_TOUCH_OVER_N_NOISE</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_GAP_TOUCH29IO_MSG_GAP_TOUCH_OVER_N_NOISEE" title="Link to this definition"></a><br /></dt>
+<dd><p>N_NOISE event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_GAP_TOUCH29IO_MSG_GAP_TOUCH_OVER_P_NOISEE">
+<span id="_CPPv3N18T_IO_MSG_GAP_TOUCH29IO_MSG_GAP_TOUCH_OVER_P_NOISEE"></span><span id="_CPPv2N18T_IO_MSG_GAP_TOUCH29IO_MSG_GAP_TOUCH_OVER_P_NOISEE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggaf415b6a2fadbccf7823fe66519340f8aa607ef1e1e09f6563dd06a6273ab3c888"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_GAP_TOUCH_OVER_P_NOISE</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_GAP_TOUCH29IO_MSG_GAP_TOUCH_OVER_P_NOISEE" title="Link to this definition"></a><br /></dt>
+<dd><p>P_NOISE event </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv414T_IO_MSG_TIMER">
+<span id="_CPPv314T_IO_MSG_TIMER"></span><span id="_CPPv214T_IO_MSG_TIMER"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gab498cbd52c529791d4eb34eeac576694"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_TIMER</span></span></span><a class="headerlink" href="#_CPPv414T_IO_MSG_TIMER" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a06ac5f9480f9dba5295de6e5fa53e770"><span class="std std-ref">IO_MSG_TYPE_TIMER</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14T_IO_MSG_TIMER18IO_MSG_TIMER_ALARME">
+<span id="_CPPv3N14T_IO_MSG_TIMER18IO_MSG_TIMER_ALARME"></span><span id="_CPPv2N14T_IO_MSG_TIMER18IO_MSG_TIMER_ALARME"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggab498cbd52c529791d4eb34eeac576694a527f6ec17c7adaff3e24d829d014f380"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TIMER_ALARM</span></span></span><a class="headerlink" href="#_CPPv4N14T_IO_MSG_TIMER18IO_MSG_TIMER_ALARME" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14T_IO_MSG_TIMER16IO_MSG_TIMER_RWSE">
+<span id="_CPPv3N14T_IO_MSG_TIMER16IO_MSG_TIMER_RWSE"></span><span id="_CPPv2N14T_IO_MSG_TIMER16IO_MSG_TIMER_RWSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggab498cbd52c529791d4eb34eeac576694a21e70c86dc24f6c1de2b6e2332a240bc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_TIMER_RWS</span></span></span><a class="headerlink" href="#_CPPv4N14T_IO_MSG_TIMER16IO_MSG_TIMER_RWSE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418T_IO_MSG_TYPE_FMNA">
+<span id="_CPPv318T_IO_MSG_TYPE_FMNA"></span><span id="_CPPv218T_IO_MSG_TYPE_FMNA"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gafec2990afdfa25f7aac5b5eb477a4077"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_TYPE_FMNA</span></span></span><a class="headerlink" href="#_CPPv418T_IO_MSG_TYPE_FMNA" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074af8824840da8d3a40bdf478741aacdb67"><span class="std std-ref">IO_MSG_TYPE_FMNA</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_TYPE_FMNA19IO_MSG_FMNA_KEYROLLE">
+<span id="_CPPv3N18T_IO_MSG_TYPE_FMNA19IO_MSG_FMNA_KEYROLLE"></span><span id="_CPPv2N18T_IO_MSG_TYPE_FMNA19IO_MSG_FMNA_KEYROLLE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggafec2990afdfa25f7aac5b5eb477a4077aac6bca823b90a79fa3a0a90a1e500ecd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_FMNA_KEYROLL</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_TYPE_FMNA19IO_MSG_FMNA_KEYROLLE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_TYPE_FMNA22IO_MSG_FMNA_DISCONNECTE">
+<span id="_CPPv3N18T_IO_MSG_TYPE_FMNA22IO_MSG_FMNA_DISCONNECTE"></span><span id="_CPPv2N18T_IO_MSG_TYPE_FMNA22IO_MSG_FMNA_DISCONNECTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggafec2990afdfa25f7aac5b5eb477a4077ae5310ff5bbde3f623c85f1dc731dbd37"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_FMNA_DISCONNECT</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_TYPE_FMNA22IO_MSG_FMNA_DISCONNECTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_TYPE_FMNA29IO_MSG_FMNA_RECONNECT_TIMEOUTE">
+<span id="_CPPv3N18T_IO_MSG_TYPE_FMNA29IO_MSG_FMNA_RECONNECT_TIMEOUTE"></span><span id="_CPPv2N18T_IO_MSG_TYPE_FMNA29IO_MSG_FMNA_RECONNECT_TIMEOUTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggafec2990afdfa25f7aac5b5eb477a4077a25502535b756086d562d285b3a0dc351"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_FMNA_RECONNECT_TIMEOUT</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_TYPE_FMNA29IO_MSG_FMNA_RECONNECT_TIMEOUTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_TYPE_FMNA20IO_MSG_FMNA_UT_STARTE">
+<span id="_CPPv3N18T_IO_MSG_TYPE_FMNA20IO_MSG_FMNA_UT_STARTE"></span><span id="_CPPv2N18T_IO_MSG_TYPE_FMNA20IO_MSG_FMNA_UT_STARTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggafec2990afdfa25f7aac5b5eb477a4077a91de5ed845489fab507cdde921f8da6f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_FMNA_UT_START</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_TYPE_FMNA20IO_MSG_FMNA_UT_STARTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_TYPE_FMNA19IO_MSG_FMNA_SN_READE">
+<span id="_CPPv3N18T_IO_MSG_TYPE_FMNA19IO_MSG_FMNA_SN_READE"></span><span id="_CPPv2N18T_IO_MSG_TYPE_FMNA19IO_MSG_FMNA_SN_READE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggafec2990afdfa25f7aac5b5eb477a4077a570e29cc49a3664fe97d865bb96f54f3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_FMNA_SN_READ</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_TYPE_FMNA19IO_MSG_FMNA_SN_READE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_TYPE_FMNA14IO_MSG_FMNA_MTE">
+<span id="_CPPv3N18T_IO_MSG_TYPE_FMNA14IO_MSG_FMNA_MTE"></span><span id="_CPPv2N18T_IO_MSG_TYPE_FMNA14IO_MSG_FMNA_MTE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggafec2990afdfa25f7aac5b5eb477a4077a58fa203a5608369938cf38f28c3f4b64"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_FMNA_MT</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_TYPE_FMNA14IO_MSG_FMNA_MTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_IO_MSG_TYPE_FMNA17IO_MSG_FMNA_RESETE">
+<span id="_CPPv3N18T_IO_MSG_TYPE_FMNA17IO_MSG_FMNA_RESETE"></span><span id="_CPPv2N18T_IO_MSG_TYPE_FMNA17IO_MSG_FMNA_RESETE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ggafec2990afdfa25f7aac5b5eb477a4077a7f554dbc54569342ea0b83ee31bb2e12"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_FMNA_RESET</span></span></span><a class="headerlink" href="#_CPPv4N18T_IO_MSG_TYPE_FMNA17IO_MSG_FMNA_RESETE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv419T_IO_MSG_MESH_LIGHT">
+<span id="_CPPv319T_IO_MSG_MESH_LIGHT"></span><span id="_CPPv219T_IO_MSG_MESH_LIGHT"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ga5923144913b6ee450e035ff54891d35a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_MESH_LIGHT</span></span></span><a class="headerlink" href="#_CPPv419T_IO_MSG_MESH_LIGHT" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a340f65e456a3cf5a2ce1791f9eeb0770"><span class="std std-ref">IO_MSG_TYPE_MESH_LIGHT</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_IO_MSG_MESH_LIGHT25IO_MSG_MESH_LIGHT_OFF_GUIE">
+<span id="_CPPv3N19T_IO_MSG_MESH_LIGHT25IO_MSG_MESH_LIGHT_OFF_GUIE"></span><span id="_CPPv2N19T_IO_MSG_MESH_LIGHT25IO_MSG_MESH_LIGHT_OFF_GUIE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga5923144913b6ee450e035ff54891d35aa8cc6c175406742ab91694534bb4df7cd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_MESH_LIGHT_OFF_GUI</span></span></span><a class="headerlink" href="#_CPPv4N19T_IO_MSG_MESH_LIGHT25IO_MSG_MESH_LIGHT_OFF_GUIE" title="Link to this definition"></a><br /></dt>
+<dd><p>MESH LIGHT TURN OFF FROM UI event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_IO_MSG_MESH_LIGHT24IO_MSG_MESH_LIGHT_ON_GUIE">
+<span id="_CPPv3N19T_IO_MSG_MESH_LIGHT24IO_MSG_MESH_LIGHT_ON_GUIE"></span><span id="_CPPv2N19T_IO_MSG_MESH_LIGHT24IO_MSG_MESH_LIGHT_ON_GUIE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga5923144913b6ee450e035ff54891d35aa9a55082c24e3968f053a6c390bf3af72"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_MESH_LIGHT_ON_GUI</span></span></span><a class="headerlink" href="#_CPPv4N19T_IO_MSG_MESH_LIGHT24IO_MSG_MESH_LIGHT_ON_GUIE" title="Link to this definition"></a><br /></dt>
+<dd><p>MESH LIGHT TURN ON FROM UI event </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv425T_IO_MSG_USB_WAKEUP_EVENT">
+<span id="_CPPv325T_IO_MSG_USB_WAKEUP_EVENT"></span><span id="_CPPv225T_IO_MSG_USB_WAKEUP_EVENT"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ga5f8d0fba0e139c82ef314b7b65879f7b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_USB_WAKEUP_EVENT</span></span></span><a class="headerlink" href="#_CPPv425T_IO_MSG_USB_WAKEUP_EVENT" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a4adca7a2a428c70ff2e8e8d8024142e9"><span class="std std-ref">IO_MSG_TYPE_USB_WAKEUP</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_IO_MSG_USB_WAKEUP_EVENT28IO_MSG_USB_WAKEUP_ENTER_DLPSE">
+<span id="_CPPv3N25T_IO_MSG_USB_WAKEUP_EVENT28IO_MSG_USB_WAKEUP_ENTER_DLPSE"></span><span id="_CPPv2N25T_IO_MSG_USB_WAKEUP_EVENT28IO_MSG_USB_WAKEUP_ENTER_DLPSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga5f8d0fba0e139c82ef314b7b65879f7ba7f4e655c53a7289eeee63d80a67e8a05"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_USB_WAKEUP_ENTER_DLPS</span></span></span><a class="headerlink" href="#_CPPv4N25T_IO_MSG_USB_WAKEUP_EVENT28IO_MSG_USB_WAKEUP_ENTER_DLPSE" title="Link to this definition"></a><br /></dt>
+<dd><p>Trigger DONGLE Enter DLPS event </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_IO_MSG_USB_WAKEUP_EVENT27IO_MSG_USB_WAKEUP_EXIT_DLPSE">
+<span id="_CPPv3N25T_IO_MSG_USB_WAKEUP_EVENT27IO_MSG_USB_WAKEUP_EXIT_DLPSE"></span><span id="_CPPv2N25T_IO_MSG_USB_WAKEUP_EVENT27IO_MSG_USB_WAKEUP_EXIT_DLPSE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga5f8d0fba0e139c82ef314b7b65879f7baea32e9fe449717a89140505f0c495a7b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_USB_WAKEUP_EXIT_DLPS</span></span></span><a class="headerlink" href="#_CPPv4N25T_IO_MSG_USB_WAKEUP_EVENT27IO_MSG_USB_WAKEUP_EXIT_DLPSE" title="Link to this definition"></a><br /></dt>
+<dd><p>Notify DONGLE Exit DLPS event </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417T_IO_MSG_ZB_LIGHT">
+<span id="_CPPv317T_IO_MSG_ZB_LIGHT"></span><span id="_CPPv217T_IO_MSG_ZB_LIGHT"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1ga7cbd8a276e0a195dd7014628c7d4e4c9"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG_ZB_LIGHT</span></span></span><a class="headerlink" href="#_CPPv417T_IO_MSG_ZB_LIGHT" title="Link to this definition"></a><br /></dt>
+<dd><p>IO subtype definitions for <a class="reference internal" href="#group___a_p_p___m_s_g___exported___types_1gga468a59751cf5bb96e120b43fea01e074a76b8aa8c2459ff5077fc880026417455"><span class="std std-ref">IO_MSG_TYPE_ZB_LIGHT</span></a> type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_IO_MSG_ZB_LIGHT21IO_MSG_ZB_LIGHT_ONOFFE">
+<span id="_CPPv3N17T_IO_MSG_ZB_LIGHT21IO_MSG_ZB_LIGHT_ONOFFE"></span><span id="_CPPv2N17T_IO_MSG_ZB_LIGHT21IO_MSG_ZB_LIGHT_ONOFFE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga7cbd8a276e0a195dd7014628c7d4e4c9af325d2fe8059c8cc188d99f13bb870dd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_ZB_LIGHT_ONOFF</span></span></span><a class="headerlink" href="#_CPPv4N17T_IO_MSG_ZB_LIGHT21IO_MSG_ZB_LIGHT_ONOFFE" title="Link to this definition"></a><br /></dt>
+<dd><p>Zigbee OnOff control, param = 0 (off) / 1 (on) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_IO_MSG_ZB_LIGHT21IO_MSG_ZB_LIGHT_LEVELE">
+<span id="_CPPv3N17T_IO_MSG_ZB_LIGHT21IO_MSG_ZB_LIGHT_LEVELE"></span><span id="_CPPv2N17T_IO_MSG_ZB_LIGHT21IO_MSG_ZB_LIGHT_LEVELE"></span><span class="target" id="group___a_p_p___m_s_g___exported___types_1gga7cbd8a276e0a195dd7014628c7d4e4c9a268cd4a68a10d55e859b38b68e4826ce"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_MSG_ZB_LIGHT_LEVEL</span></span></span><a class="headerlink" href="#_CPPv4N17T_IO_MSG_ZB_LIGHT21IO_MSG_ZB_LIGHT_LEVELE" title="Link to this definition"></a><br /></dt>
+<dd><p>Zigbee Level control, param = level value (0-254) </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv48T_IO_MSG">
+<span id="_CPPv38T_IO_MSG"></span><span id="_CPPv28T_IO_MSG"></span><span id="T_IO_MSG"></span><span class="target" id="struct_t___i_o___m_s_g"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_IO_MSG</span></span></span><a class="headerlink" href="#_CPPv48T_IO_MSG" title="Link to this definition"></a><br /></dt>
+<dd><p>IO message definition for communications between tasks. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8T_IO_MSG4typeE">
+<span id="_CPPv3N8T_IO_MSG4typeE"></span><span id="_CPPv2N8T_IO_MSG4typeE"></span><span id="T_IO_MSG::type__uint16_t"></span><span class="target" id="struct_t___i_o___m_s_g_1acb5cfd209ba75c853d03f701e7f91679"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N8T_IO_MSG4typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8T_IO_MSG7subtypeE">
+<span id="_CPPv3N8T_IO_MSG7subtypeE"></span><span id="_CPPv2N8T_IO_MSG7subtypeE"></span><span id="T_IO_MSG::subtype__uint16_t"></span><span class="target" id="struct_t___i_o___m_s_g_1ac5d9ab8403fb9ca24facc32b821dd53b"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">subtype</span></span></span><a class="headerlink" href="#_CPPv4N8T_IO_MSG7subtypeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8T_IO_MSG5paramE">
+<span id="_CPPv3N8T_IO_MSG5paramE"></span><span id="_CPPv2N8T_IO_MSG5paramE"></span><span id="T_IO_MSG::param__uint32_t"></span><span class="target" id="struct_t___i_o___m_s_g_1aba18f3d521fde3af39c58b809a9c7ef0"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">param</span></span></span><a class="headerlink" href="#_CPPv4N8T_IO_MSG5paramE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8T_IO_MSG3bufE">
+<span id="_CPPv3N8T_IO_MSG3bufE"></span><span id="_CPPv2N8T_IO_MSG3bufE"></span><span id="T_IO_MSG::buf__voidP"></span><span class="target" id="struct_t___i_o___m_s_g_1a5bc5fa69bee375df074734a2c4858604"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buf</span></span></span><a class="headerlink" href="#_CPPv4N8T_IO_MSG3bufE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8T_IO_MSG1uE">
+<span id="_CPPv3N8T_IO_MSG1uE"></span><span id="_CPPv2N8T_IO_MSG1uE"></span><span id="T_IO_MSG::u__T_IO_MSG"></span><span class="target" id="struct_t___i_o___m_s_g_1a83088e5fdfee25afdf79180e4e51eef2"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48T_IO_MSG" title="T_IO_MSG"><span class="n"><span class="pre">T_IO_MSG</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u</span></span></span><a class="headerlink" href="#_CPPv4N8T_IO_MSG1uE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

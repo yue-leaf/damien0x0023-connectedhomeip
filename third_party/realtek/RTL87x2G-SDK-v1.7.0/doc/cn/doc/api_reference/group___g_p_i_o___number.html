@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPIO Number &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="GPIO Output Mode" href="group___g_p_i_o___output___mode.html" />
+    <link rel="prev" title="GPIO Interrupt Trigger" href="group___g_p_i_o___interrupt___trigger.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___a_d_c.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___q_d_e_c.html">AON_QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___w_d_t.html">AON_WDT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_a_n.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_o_d_e_c.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_n_h_t_i_m.html">ENHTIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_t_h_e_r_n_e_t.html">ETHERNET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_d_m_a.html">GDMA</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___g_p_i_o.html">GPIO</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="group___g_p_i_o___exported___constants.html">GPIO Exported Constants</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___a_p_i___wrapper.html">GPIO API Wrapper</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___bit___action.html">GPIO Bit Action</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___constant___wrapper.html">GPIO Constant Wrapper</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___debounce___clock___source.html">GPIO Debounce Clock Source</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___debounce___divider.html">GPIO Debounce Divider</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___declaration.html">GPIO Declaration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___defines.html">GPIO Defines</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___direction.html">GPIO Direction</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___interrupt___debounce.html">GPIO Interrupt Debounce</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___interrupt___polarity.html">GPIO Interrupt Polarity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___interrupt___trigger.html">GPIO Interrupt Trigger</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">GPIO Number</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___output___mode.html">GPIO Output Mode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_p_i_o___pins___define.html">GPIO Pins Define</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___g_p_i_o___exported___functions.html">GPIO Exported Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___g_p_i_o___exported___types.html">GPIO Exported Types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___h_r_a_d_c.html">HRADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_c.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_s.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_d_u.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_r.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_s_o7816.html">ISO7816</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___k_e_y_s_c_a_n.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_c_d_c.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_p_c.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___n_v_i_c.html">NVIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n___d_e_f_i_n_e.html">PIN DEFINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n_m_u_x.html">PINMUX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_e.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_c_c.html">RCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_t_c.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_e_g_c_o_m.html">SEGCOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i3_w.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___t_i_m.html">TIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_a_r_t.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_t_i_l_s.html">UTILS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___w_d_t.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+        <li class="breadcrumb-item"><a href="group___g_p_i_o.html">GPIO</a></li>
+        <li class="breadcrumb-item"><a href="group___g_p_i_o___exported___constants.html">GPIO Exported Constants</a></li>
+    <li class="breadcrumb-item active">GPIO Number</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gpio-number">
+<h1>GPIO Number<a class="headerlink" href="#gpio-number" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___g_p_i_o___number"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">GPIO_Number</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA0">
+<span class="target" id="group___g_p_i_o___number_1ga8805110db2f281336ff70a98250924ec"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA0</span></span></span> <span class="pre">0</span><a class="headerlink" href="#c.GPIOA0" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA0 corresponding number is 0. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA1">
+<span class="target" id="group___g_p_i_o___number_1ga489faa30d69565a1db9d4094b2b67a08"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA1</span></span></span> <span class="pre">1</span><a class="headerlink" href="#c.GPIOA1" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA1 corresponding number is 1. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA2">
+<span class="target" id="group___g_p_i_o___number_1ga6b0ca8f4da93ecb39a537085eb5e5980"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA2</span></span></span> <span class="pre">2</span><a class="headerlink" href="#c.GPIOA2" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA2 corresponding number is 2. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA3">
+<span class="target" id="group___g_p_i_o___number_1ga7c0c297dbed2b725694af2da1e8346a6"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA3</span></span></span> <span class="pre">3</span><a class="headerlink" href="#c.GPIOA3" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA3 corresponding number is 3. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA4">
+<span class="target" id="group___g_p_i_o___number_1ga250ccd508a84f70d68b0a49a45f1613a"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA4</span></span></span> <span class="pre">4</span><a class="headerlink" href="#c.GPIOA4" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA4 corresponding number is 4. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA5">
+<span class="target" id="group___g_p_i_o___number_1ga62138a5e0f4becb91eed0f711fe0baf9"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA5</span></span></span> <span class="pre">5</span><a class="headerlink" href="#c.GPIOA5" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA5 corresponding number is 5. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA6">
+<span class="target" id="group___g_p_i_o___number_1ga0de40f9448dfe5ae500bf717cee25fa8"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA6</span></span></span> <span class="pre">6</span><a class="headerlink" href="#c.GPIOA6" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA6 corresponding number is 6. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA7">
+<span class="target" id="group___g_p_i_o___number_1gabd89da2bb20ec0d4c03f1355bb26fb38"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA7</span></span></span> <span class="pre">7</span><a class="headerlink" href="#c.GPIOA7" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA7 corresponding number is 7. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA8">
+<span class="target" id="group___g_p_i_o___number_1gab27c4f9ba5012f29eeb976a75314534f"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA8</span></span></span> <span class="pre">8</span><a class="headerlink" href="#c.GPIOA8" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA8 corresponding number is 8. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA9">
+<span class="target" id="group___g_p_i_o___number_1ga3aa03b8061a88448f64f4c1528a1a228"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA9</span></span></span> <span class="pre">9</span><a class="headerlink" href="#c.GPIOA9" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA9 corresponding number is 9. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA10">
+<span class="target" id="group___g_p_i_o___number_1ga8f704cb04b37098ba9fc92b1f194f035"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA10</span></span></span> <span class="pre">10</span><a class="headerlink" href="#c.GPIOA10" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA10 corresponding number is 10. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA11">
+<span class="target" id="group___g_p_i_o___number_1ga548f607606d08681d2c0997a501348b7"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA11</span></span></span> <span class="pre">11</span><a class="headerlink" href="#c.GPIOA11" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA11 corresponding number is 11. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA12">
+<span class="target" id="group___g_p_i_o___number_1gaa2b4441e19ea43ffc5af4ac0e57603af"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA12</span></span></span> <span class="pre">12</span><a class="headerlink" href="#c.GPIOA12" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA12 corresponding number is 12. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA13">
+<span class="target" id="group___g_p_i_o___number_1gadfb8424f54ff68b210b8a3a5b94e6b0a"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA13</span></span></span> <span class="pre">13</span><a class="headerlink" href="#c.GPIOA13" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA13 corresponding number is 13. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA14">
+<span class="target" id="group___g_p_i_o___number_1ga6230254e4114e2c3f92d30ed0a7c9c2a"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA14</span></span></span> <span class="pre">14</span><a class="headerlink" href="#c.GPIOA14" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA14 corresponding number is 14. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA15">
+<span class="target" id="group___g_p_i_o___number_1gaffa96cdb22736d1016aba103b1b49864"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA15</span></span></span> <span class="pre">15</span><a class="headerlink" href="#c.GPIOA15" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA15 corresponding number is 15. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA16">
+<span class="target" id="group___g_p_i_o___number_1gaa372ec0c7c164d61980a2575394e5557"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA16</span></span></span> <span class="pre">16</span><a class="headerlink" href="#c.GPIOA16" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA16 corresponding number is 16. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA17">
+<span class="target" id="group___g_p_i_o___number_1ga34d4a4a670ce4a1a9dc36939374dd652"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA17</span></span></span> <span class="pre">17</span><a class="headerlink" href="#c.GPIOA17" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA17 corresponding number is 17. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA18">
+<span class="target" id="group___g_p_i_o___number_1ga326984b51a5251c87dcd4dcc8e3ad026"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA18</span></span></span> <span class="pre">18</span><a class="headerlink" href="#c.GPIOA18" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA18 corresponding number is 18. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA19">
+<span class="target" id="group___g_p_i_o___number_1gaa5c3c8cf485488f305dee7d00947a6b9"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA19</span></span></span> <span class="pre">19</span><a class="headerlink" href="#c.GPIOA19" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA19 corresponding number is 19. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA20">
+<span class="target" id="group___g_p_i_o___number_1gafa84dcc609160fae3442ca1927dd0b47"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA20</span></span></span> <span class="pre">20</span><a class="headerlink" href="#c.GPIOA20" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA20 corresponding number is 20. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA21">
+<span class="target" id="group___g_p_i_o___number_1gaeaace90148f03c0703626d8368770e57"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA21</span></span></span> <span class="pre">21</span><a class="headerlink" href="#c.GPIOA21" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA21 corresponding number is 21. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA22">
+<span class="target" id="group___g_p_i_o___number_1gac52586fee5ad64a327ddb3ad6f18b860"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA22</span></span></span> <span class="pre">22</span><a class="headerlink" href="#c.GPIOA22" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA22 corresponding number is 22. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA23">
+<span class="target" id="group___g_p_i_o___number_1gaf1bb9daf488b8e63740de3d49aa42c67"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA23</span></span></span> <span class="pre">23</span><a class="headerlink" href="#c.GPIOA23" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA23 corresponding number is 23. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA24">
+<span class="target" id="group___g_p_i_o___number_1ga94071d47e6455238ed80da2ff0c39ad8"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA24</span></span></span> <span class="pre">24</span><a class="headerlink" href="#c.GPIOA24" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA24 corresponding number is 24. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA25">
+<span class="target" id="group___g_p_i_o___number_1ga4cf94822aac444e8919857fc11994706"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA25</span></span></span> <span class="pre">25</span><a class="headerlink" href="#c.GPIOA25" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA25 corresponding number is 25. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA26">
+<span class="target" id="group___g_p_i_o___number_1gadc8974779b28075bf751c14aa99668b7"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA26</span></span></span> <span class="pre">26</span><a class="headerlink" href="#c.GPIOA26" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA26 corresponding number is 26. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA27">
+<span class="target" id="group___g_p_i_o___number_1ga5f3e9e509d3fd9b2a5d75ab51ab7c7e6"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA27</span></span></span> <span class="pre">27</span><a class="headerlink" href="#c.GPIOA27" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA27 corresponding number is 27. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA28">
+<span class="target" id="group___g_p_i_o___number_1ga1176fa70bb4aeb1ad3b9375bd7847e4b"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA28</span></span></span> <span class="pre">28</span><a class="headerlink" href="#c.GPIOA28" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA28 corresponding number is 28. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA29">
+<span class="target" id="group___g_p_i_o___number_1ga7503b17ea295c99cac6a7027e2273511"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA29</span></span></span> <span class="pre">29</span><a class="headerlink" href="#c.GPIOA29" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA29 corresponding number is 29. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA30">
+<span class="target" id="group___g_p_i_o___number_1ga1c9d78e1c47ee9fc9fe5a9f4b5d6500a"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA30</span></span></span> <span class="pre">30</span><a class="headerlink" href="#c.GPIOA30" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA30 corresponding number is 30. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOA31">
+<span class="target" id="group___g_p_i_o___number_1ga22ae901e2be2eae757bf061e5a9ec51d"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOA31</span></span></span> <span class="pre">31</span><a class="headerlink" href="#c.GPIOA31" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA31 corresponding number is 31. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB0">
+<span class="target" id="group___g_p_i_o___number_1gafd5a9cf455be352b2f1201c67351bb43"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB0</span></span></span> <span class="pre">32</span><a class="headerlink" href="#c.GPIOB0" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA32 corresponding number is 32. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB1">
+<span class="target" id="group___g_p_i_o___number_1ga737b1e9e95d6fa1c735eb5f4a29199ef"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB1</span></span></span> <span class="pre">33</span><a class="headerlink" href="#c.GPIOB1" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA33 corresponding number is 33. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB2">
+<span class="target" id="group___g_p_i_o___number_1ga85c05f2019283289bd5ef60f938c2ac1"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB2</span></span></span> <span class="pre">34</span><a class="headerlink" href="#c.GPIOB2" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA34 corresponding number is 34. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB3">
+<span class="target" id="group___g_p_i_o___number_1gac669977c0731280545d4e86153be52a0"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB3</span></span></span> <span class="pre">35</span><a class="headerlink" href="#c.GPIOB3" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA35 corresponding number is 35. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB4">
+<span class="target" id="group___g_p_i_o___number_1ga54fd514799b6fb2e95ac597082ab8621"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB4</span></span></span> <span class="pre">36</span><a class="headerlink" href="#c.GPIOB4" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA36 corresponding number is 36. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB5">
+<span class="target" id="group___g_p_i_o___number_1ga28896eead194bac9a7271ae10e982e4c"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB5</span></span></span> <span class="pre">37</span><a class="headerlink" href="#c.GPIOB5" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA37 corresponding number is 37. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB6">
+<span class="target" id="group___g_p_i_o___number_1ga1201f0a91cb608e71cb52aafc894431e"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB6</span></span></span> <span class="pre">38</span><a class="headerlink" href="#c.GPIOB6" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA38 corresponding number is 38. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB7">
+<span class="target" id="group___g_p_i_o___number_1gac881a405c8df37f8ede632cba68178e1"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB7</span></span></span> <span class="pre">39</span><a class="headerlink" href="#c.GPIOB7" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA39 corresponding number is 39. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB8">
+<span class="target" id="group___g_p_i_o___number_1ga52f08293ac5d6df5327535c0560d8122"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB8</span></span></span> <span class="pre">40</span><a class="headerlink" href="#c.GPIOB8" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA40 corresponding number is 40. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB9">
+<span class="target" id="group___g_p_i_o___number_1ga4a5f4b9470f33af9f69e7c68eadc5ed4"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB9</span></span></span> <span class="pre">41</span><a class="headerlink" href="#c.GPIOB9" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA41 corresponding number is 41. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB10">
+<span class="target" id="group___g_p_i_o___number_1gaf485d5b0aa741a3914fde3121c1a9301"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB10</span></span></span> <span class="pre">42</span><a class="headerlink" href="#c.GPIOB10" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA42 corresponding number is 42. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB11">
+<span class="target" id="group___g_p_i_o___number_1gacf5064d6a3455a5186f5d7ff049baa68"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB11</span></span></span> <span class="pre">43</span><a class="headerlink" href="#c.GPIOB11" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA43 corresponding number is 43. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB12">
+<span class="target" id="group___g_p_i_o___number_1ga28c3ace2cf7a040d749b0100557ace82"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB12</span></span></span> <span class="pre">44</span><a class="headerlink" href="#c.GPIOB12" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA44 corresponding number is 44. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB13">
+<span class="target" id="group___g_p_i_o___number_1ga11de4cf29642a60f9f43c30c9b0945b4"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB13</span></span></span> <span class="pre">45</span><a class="headerlink" href="#c.GPIOB13" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA45 corresponding number is 45. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB14">
+<span class="target" id="group___g_p_i_o___number_1gae7e1a819bbea133f5939e59c29d63c44"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB14</span></span></span> <span class="pre">46</span><a class="headerlink" href="#c.GPIOB14" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA46 corresponding number is 46. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB15">
+<span class="target" id="group___g_p_i_o___number_1gaa2fb015e1c2bc90fb3d6ea68c0d57412"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB15</span></span></span> <span class="pre">47</span><a class="headerlink" href="#c.GPIOB15" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA47 corresponding number is 47. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB16">
+<span class="target" id="group___g_p_i_o___number_1ga7ea8def8c2fca0872a369b20528223c2"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB16</span></span></span> <span class="pre">48</span><a class="headerlink" href="#c.GPIOB16" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA48 corresponding number is 48. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB17">
+<span class="target" id="group___g_p_i_o___number_1ga4c16e484fe242837565534b1e239910c"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB17</span></span></span> <span class="pre">49</span><a class="headerlink" href="#c.GPIOB17" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA49 corresponding number is 49. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB18">
+<span class="target" id="group___g_p_i_o___number_1ga49080462d04a0a66c1598b030f11aba4"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB18</span></span></span> <span class="pre">50</span><a class="headerlink" href="#c.GPIOB18" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA50 corresponding number is 50. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB19">
+<span class="target" id="group___g_p_i_o___number_1ga8dba4cb393413b00535d012f8e6d9ddf"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB19</span></span></span> <span class="pre">51</span><a class="headerlink" href="#c.GPIOB19" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA51 corresponding number is 51. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB20">
+<span class="target" id="group___g_p_i_o___number_1ga2e14c10295e69ecdea3dca0b0625b0c5"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB20</span></span></span> <span class="pre">52</span><a class="headerlink" href="#c.GPIOB20" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA52 corresponding number is 52. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB21">
+<span class="target" id="group___g_p_i_o___number_1ga36d4c5402d809490e50a41e8b2d4c44b"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB21</span></span></span> <span class="pre">53</span><a class="headerlink" href="#c.GPIOB21" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA53 corresponding number is 53. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB22">
+<span class="target" id="group___g_p_i_o___number_1gacc93648523194484c3865f4a5977c58f"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB22</span></span></span> <span class="pre">54</span><a class="headerlink" href="#c.GPIOB22" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA54 corresponding number is 54. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB23">
+<span class="target" id="group___g_p_i_o___number_1gabd8161f7fa3f8db30e930c3c783e82c7"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB23</span></span></span> <span class="pre">55</span><a class="headerlink" href="#c.GPIOB23" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA55 corresponding number is 55. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB24">
+<span class="target" id="group___g_p_i_o___number_1ga59ef7d3ab158db95d9df470b979dcfe0"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB24</span></span></span> <span class="pre">56</span><a class="headerlink" href="#c.GPIOB24" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA56 corresponding number is 56. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB25">
+<span class="target" id="group___g_p_i_o___number_1ga2d2e53e5dae7dc1dced19838221bd9f0"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB25</span></span></span> <span class="pre">57</span><a class="headerlink" href="#c.GPIOB25" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA57 corresponding number is 57. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB26">
+<span class="target" id="group___g_p_i_o___number_1ga723917968732131a65d2b866abffbdaf"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB26</span></span></span> <span class="pre">58</span><a class="headerlink" href="#c.GPIOB26" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA58 corresponding number is 58. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB27">
+<span class="target" id="group___g_p_i_o___number_1ga1c4130c98cd90ed67be5d56853ded8a7"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB27</span></span></span> <span class="pre">59</span><a class="headerlink" href="#c.GPIOB27" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA59 corresponding number is 59. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB28">
+<span class="target" id="group___g_p_i_o___number_1gacbf4798507a395639c794058eb121206"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB28</span></span></span> <span class="pre">60</span><a class="headerlink" href="#c.GPIOB28" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA60 corresponding number is 60. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB29">
+<span class="target" id="group___g_p_i_o___number_1ga0156f0c3a1fc85dc67789a5a740c022b"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB29</span></span></span> <span class="pre">61</span><a class="headerlink" href="#c.GPIOB29" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA61 corresponding number is 61. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB30">
+<span class="target" id="group___g_p_i_o___number_1ga970816f608ca72a5e11aa9ab514da2e1"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB30</span></span></span> <span class="pre">62</span><a class="headerlink" href="#c.GPIOB30" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA62 corresponding number is 62. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.GPIOB31">
+<span class="target" id="group___g_p_i_o___number_1ga3ff0db9c520d5fc4b639d221e7452f70"></span><span class="sig-name descname"><span class="n"><span class="pre">GPIOB31</span></span></span> <span class="pre">63</span><a class="headerlink" href="#c.GPIOB31" title="Link to this definition"></a><br /></dt>
+<dd><p>GPIOA63 corresponding number is 63. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___g_p_i_o___interrupt___trigger.html" class="btn btn-neutral float-left" title="GPIO Interrupt Trigger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___g_p_i_o___output___mode.html" class="btn btn-neutral float-right" title="GPIO Output Mode" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

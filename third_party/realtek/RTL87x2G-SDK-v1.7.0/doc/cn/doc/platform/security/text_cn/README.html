@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安全机制 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="调试系统" href="../../debug_system/text_cn/README.html" />
+    <link rel="prev" title="低功耗模式" href="../../low_power_mode/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_cn/README.html">平台指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../platform_overview/text_cn/README.html">平台概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/text_cn/README.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_cn/README.html">Image Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flash/text_cn/README.html">Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_cn/README.html">PSRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../low_power_mode/text_cn/README.html">低功耗模式</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">安全机制</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">概述</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">安全启动</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image">加密 Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory-data">加密 Factory Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#key">Key 安全存储</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#swd">SWD 接口控制</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#password">Password 调试</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">安全级别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">使用示例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">使能安全启动</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id9">生成签名密钥</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id10">配置和烧录公钥</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id12">固件签名</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">配置加密 Key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app-image">生成加密 APP Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">加密 Factory Data</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#factory-data-dek">配置 Factory Data 及 DEK</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#app">APP 用法</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#efuse">烧录 eFuse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">通过 Password 调试</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../debug_system/text_cn/README.html">调试系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clock/text_cn/README.html">时钟管理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_cn/README.html">平台指南</a></li>
+    <li class="breadcrumb-item active">安全机制</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="id1">
+<h1>安全机制<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>本文介绍 RTL87x2G 芯片的安全机制以及使用方法，主要包括以下几部分：</p>
+<ul class="simple">
+<li><p>安全启动：用于验证引导加载程序和固件的真实性和完整性，防止未经授权或恶意代码的执行。</p></li>
+<li><p>Image 加密：用于对固件进行加密，确保固件的机密性和完整性，防止未经授权的访问和篡改。</p></li>
+<li><p>Factory data 加密：用于对存储在设备内存中的敏感数据进行加密，如加密密钥或用户特定信息，从而减少数据泄露的风险。</p></li>
+<li><p>eFuse 烧录：用于将关键信息，如密码或加密密钥，安全存储在硬件 eFuse 内存中，防止数据被提取或篡改，增强设备的安全性。</p></li>
+<li><p>调试端口控制：限制对 SWD 接口的访问，通过密码机制只允许授权人员进行调试，防止未经授权的调试和潜在的漏洞。</p></li>
+</ul>
+<p>总之，RTL87x2G 芯片的安全机制提供了综合和可靠的方法，以保护设备及其处理的数据的完整性、机密性和可靠性。</p>
+<section id="id2">
+<h2>概述<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>主要从以下几个方面展开介绍：<a class="reference internal" href="#id3">安全启动</a> 、<a class="reference internal" href="#image">加密 Image</a> 、<a class="reference internal" href="#factory-data"><span class="std std-ref">加密 Factory Data</span></a>、<a class="reference internal" href="#key">Key 安全存储</a>、 <a class="reference internal" href="#swd">SWD 接口控制</a> 和 <a class="reference internal" href="#password">Password 调试</a>。</p>
+<section id="id3">
+<h3>安全启动<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>对于安全设备来说，执行固件的真实性校验，以保护设备免受恶意软件的攻击是至关重要的。安全启动嵌入在 RTL87x2G 系列的 ROM 中，并在默认情况下禁用。要启用它，需要通过 MP Tool 烧录相关的 eFuse。</p>
+<p>安全启动用于确保 Image 的完整性和真实性，SHA256 用于完整性校验，ECDSA 用于真实性校验。如果任何 Image 的验证失败，芯片将重启，不会跳转到未经验证的 Image。</p>
+</section>
+<section id="image">
+<h3>加密 Image<a class="headerlink" href="#image" title="Link to this heading"></a></h3>
+<p>加密 Image 的方案是基于 Flash Security 开发的。APP Image 可以根据需求选择加密与否。</p>
+<p><strong>Flash Security</strong> （简称Flash-Sec），又称作 Flash on-the-fly，是一种能让 CPU 直接访问加密 flash数据的技术。其原理为，CPU在访问 Flash-Sec 加密过的数据时，会先通过 Flash-Sec 硬件模块解密该数据，再实际访问解密后的数据。</p>
+<p>Flash-Sec 使用的是 AES 对称加密算法，加密模式为 CTR Mode，加密 key 的长度为 128 bit。Flash-Sec 至多支持配置 8 个 Flash-Sec Region 。其中，Patch image 默认使用 Region #0，App image 默认使用 Region 1。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>需要注意的是，每个 Region 的首地址必须 4KB 对齐。</p>
+</div>
+<p>在 IC 启动过程中，会对加密过的 image 进行 Flash-Sec 初始化（做 region 配置，key 设定等操作）。如果 key 没有烧录或者烧录的 key 和加密的 key 不匹配，都会导致 Flash-Sec 的解密失败。</p>
+</section>
+<section id="factory-data">
+<span id="id4"></span><h3>加密 Factory Data<a class="headerlink" href="#factory-data" title="Link to this heading"></a></h3>
+<p>在生产设备的过程中，可能会生成一些与生产相关的信息，这些信息被称为 factory data（出厂数据）。其中一些 factory data 可能是具有安全敏感性的，比如用于设备认证的密钥对，即私钥和公钥。对于私钥等信息的保护至关重要。</p>
+<p>因此，RTL87x2G 提供了一种保护 factory data 的机制，它会对这些数据进行加密并保存到 flash 中，并且根据设备上的差异化信息产生加解密密钥。在设备启动时，密钥会被安全执行环境加载到 AES 引擎中，使得应用程序能够在不直接接触密钥的情况下解密flash存储器上的factory data。</p>
+</section>
+<section id="key">
+<h3>Key 安全存储<a class="headerlink" href="#key" title="Link to this heading"></a></h3>
+<p>对于AES 对称加密算法，加密和解密用的是同一把 key ，长度为128bit ，所以需要特殊的机制来保护加密 key不 被泄露。加密 key 经过加密 Tool 加密一次得到 <span class="guilabel">key’</span>，<span class="guilabel">key’</span> 再发布给工厂烧录到IC Flash中。</p>
+<p>烧录的过程中，烧录 Tool 会对 <span class="guilabel">key’</span> 解密得到原始的 key，同时会读取 IC 的 UUID 和 key 组合成 <span class="guilabel">key’’</span> 并写入，以保证每块 IC 中烧录的 key（<span class="guilabel">key’’</span>）值都是不同的。这有助于增强加密过程的安全性并减小密钥泄漏的风险。</p>
+</section>
+<section id="swd">
+<h3>SWD 接口控制<a class="headerlink" href="#swd" title="Link to this heading"></a></h3>
+<p>SWD 接口作为重要的调试接口，对调试程序起了很大的作用。但是同样也会增加暴露程序数据和代码的风险。所以安全机制提供了控制 SWD 接口的方法。有3种控制方式：开，关和 Password 控制。其中 Password 控制表示需要通过 HCI UART 输入正确的 Password 才能打开，否则是关闭状态。</p>
+</section>
+<section id="password">
+<h3>Password 调试<a class="headerlink" href="#password" title="Link to this heading"></a></h3>
+<p>Password 和加密 key 类似，也是烧录在 IC 的 eFuse 中。如果某个功能是设定成 Password 控制，就需要通过 HCI UART 输入正确的 Password ，然后 IC 会自动重启并检查 Password 是否正确，如果正确则打开该功能。每次 IC 重启都需要重新输入 Password 才能打开该功能。</p>
+</section>
+</section>
+<section id="id5">
+<h2>安全级别<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>RTL87x2G 提供 3 种 <a class="reference internal" href="#id6"><span class="std std-ref">安全级别</span></a>：0，1和2。数字越高安全级别越高，越高的安全级别可能会对调试或者重烧 eFuse 有影响。以下是不同的安全级别下各个模块的功能开关控制。量产建议设定为2级。</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">安全级别</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Security Level</p></th>
+<th class="head"><p>SWD Control</p></th>
+<th class="head"><p>eFuse Read</p></th>
+<th class="head"><p>eFuse Write</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>0</p></th>
+<td><p>Enable</p></td>
+<td><p>Enable</p></td>
+<td><p>Enable</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>1</p></th>
+<td><p>Enable by password</p></td>
+<td><p>Enable by password</p></td>
+<td><p>Enable</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>2</p></th>
+<td><p>Enable by password</p></td>
+<td><p>Enable by password</p></td>
+<td><p>Enable by password</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h2>使用示例<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h3>使能安全启动<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>安全启动是一种确保设备在启动过程中进行固件真实性校验的机制，以保护设备免受恶意软件的攻击。具体方法是对固件进行 ECDSA 签名，并利用位于 ROM 中的安全启动代码及预先烧录至 eFuse 中的密钥等信息，在设备启动时进行签名验证。只有当所有固件都通过验证，设备才能正常启动。（如果设备没有安全启动的需求，可以跳过本节，不影响其余的安全机制。）</p>
+<section id="id9">
+<h4>生成签名密钥<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p>Realtek 提供了一款名为 signImage 的签名工具（位于 <code class="file docutils literal notranslate"><span class="pre">RTL87x2G</span> <span class="pre">SDK\tools\SignImage</span></code>），该工具集成了密钥生成和固件签名功能。用户可以通过运行 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">signImage.exe</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">help</kbd></kbd> 获取具体的使用方法。
+生成密钥使用方法如下：</p>
+<ol class="arabic simple">
+<li><p>运行 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">signImage.exe</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">g</kbd> <kbd class="kbd docutils literal notranslate">ecdsa</kbd></kbd> （其中参数 -g 代表生成密钥，ecdsa 代表密钥的类型），会生成以下三个文件：</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">key.pem</span></code> （私钥）</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">key.pub</span></code> （公钥）</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">key_hash.bin</span></code> （公钥的 Hash 值，用于校验公钥）</p></li>
+</ul>
+<blockquote>
+<div><figure class="align-center" id="sign">
+<a class="reference internal image-reference" href="../../../../_images/generate_key_with_signImage.png"><img alt="../../../../_images/generate_key_with_signImage.png" src="../../../../_images/generate_key_with_signImage.png" style="width: 555.0px; height: 285.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">使用 Sign 工具生成密钥对</span><a class="headerlink" href="#sign" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>不同的固件允许使用不同的密钥对（最多支持3组），因此可以参考以下脚本生成3组密钥对：<code class="file docutils literal notranslate"><span class="pre">ken_gen.bat</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">set</span><span class="w"> </span><span class="n">key_name</span><span class="o">=%</span><span class="mi">1</span>
+
+<span class="n">signImage</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">ecdsa</span>
+
+<span class="n">del</span><span class="w"> </span><span class="o">/</span><span class="n">f</span><span class="w"> </span><span class="o">/</span><span class="n">q</span><span class="w"> </span><span class="o">%</span><span class="n">key_name</span><span class="o">%</span><span class="p">.</span><span class="n">pem</span><span class="w"> </span><span class="o">%</span><span class="n">key_name</span><span class="o">%</span><span class="p">.</span><span class="n">pub</span><span class="w"> </span><span class="o">%</span><span class="n">key_name</span><span class="o">%</span><span class="n">_hash</span><span class="p">.</span><span class="n">bin</span>
+
+<span class="n">ren</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">pem</span><span class="w"> </span><span class="o">%</span><span class="n">key_name</span><span class="o">%</span><span class="p">.</span><span class="n">pem</span>
+<span class="n">ren</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">pub</span><span class="w"> </span><span class="o">%</span><span class="n">key_name</span><span class="o">%</span><span class="p">.</span><span class="n">pub</span>
+<span class="n">ren</span><span class="w"> </span><span class="n">key_hash</span><span class="p">.</span><span class="n">bin</span><span class="w"> </span><span class="o">%</span><span class="n">key_name</span><span class="o">%</span><span class="n">_hash</span><span class="p">.</span><span class="n">bin</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p>调用 <code class="file docutils literal notranslate"><span class="pre">ken_gen.bat</span></code> 产生对应的密钥对：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>key_gen.bat ecdsa_key1
+key_gen.bat ecdsa_key2
+key_gen.bat ecdsa_key3
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id10">
+<h4>配置和烧录公钥<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<p>通过本章节，您将学习如何开启安全启动，配置签名密钥，并将其烧录到 IC 的 efuse 中。芯片在出厂时并未启用安全启动，因此可以运行未签名的固件。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>开启安全启动后，芯片将只能运行经过正确签名的固件。</p>
+</div>
+<p>在 MP Tool RD Setting 模式下，开启安全启动（选中 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Secure</kbd> <kbd class="kbd docutils literal notranslate">Boot</kbd></kbd>），并为不同的固件选择对应的公钥，如下图所示。</p>
+<p>需要注意一下几点：</p>
+<ol class="arabic simple">
+<li><p>不同的固件可以使用相同的密钥。</p></li>
+<li><p>固件必须使用对应的私钥进行签名。</p></li>
+<li><p>eFuse 位只能从 1 烧成 0，不能从 0 烧成 1。一旦公钥被烧录，便无法修改。</p></li>
+<li><p>对于没有使能 TrustZone 的项目（即没有 Secure APP 这个固件），仍需为 Secure APP 选择一把公钥。</p></li>
+</ol>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../../../../_images/configure_secure_boot.png"><img alt="../../../../_images/configure_secure_boot.png" src="../../../../_images/configure_secure_boot.png" style="width: 576.0px; height: 316.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">配置安全启动</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>配置完成后，生成待烧录的 <code class="file docutils literal notranslate"><span class="pre">EfuseWrite.json</span></code> 文件，Secure Boot 部分示例如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;secure_boot&quot;</span><span class="o">:</span><span class="w">  </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;img_bootpatch_auth_key&quot;</span><span class="o">:</span><span class="w">   </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;img_ota_auth_key&quot;</span><span class="o">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;img_securemcuapp_auth_key&quot;</span><span class="o">:</span><span class="w">    </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;img_stackpatch_auth_key&quot;</span><span class="o">:</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;img_mcupatch_auth_key&quot;</span><span class="o">:</span><span class="w">    </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;img_upperstack_auth_key&quot;</span><span class="o">:</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;img_mcuapp_auth_key&quot;</span><span class="o">:</span><span class="w">  </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;sha256_pub_auth_key1&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;4337aa9d48dfd1051bcb657f9657df289f470eb3b316b2ca9dd5e1bc6752cb817689&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;sha256_pub_auth_key2&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;74ccecda5d4f8a0377731abba00c8fdeb046bad4802f90218e95e96524f5e108857a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;sha256_pub_auth_key3&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;36df987ab627ba7eb3ee359770da34f02b2ea55dfe3f809b47a7e98149e50970758a&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中 <em>sha256_pub_auth_key</em> 的值应该和 <a class="reference internal" href="#id9">生成签名密钥</a> 中生成的 <code class="file docutils literal notranslate"><span class="pre">key_hash.bin</span></code> 中的值一致。
+烧录 <code class="file docutils literal notranslate"><span class="pre">efuse.json</span></code> 文件请参考 <a class="reference internal" href="#efuse">烧录 eFuse</a> 。</p>
+</section>
+<section id="id12">
+<h4>固件签名<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>Boot Patch、OTA Header、Secure APP（如果未开启 TrustZone，则不包括此文件）、Stack Patch、System Patch、BT Host 和 APP 这些文件都需要进行签名。签名过程依然使用 <a class="reference internal" href="#id9">生成签名密钥</a> 中提到的签名工具（<code class="file docutils literal notranslate"><span class="pre">signImage</span></code>）。以下是示例命令及参数说明：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>E:\SignImage&gt;signImage -b 15 -r ecdsa_key1.pem -c sha256 -p boot_patch_MP_master_1.0.206.0_b63c04e5-2f64fa643c242428e6f914c61b2d77ff.bin
+sign image done:
+        boot_patch_MP_master_1.0.206.0_b63c04e5-861a8611119fa1aad25746d268ba0e05.bin
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-b</kbd> <kbd class="kbd docutils literal notranslate">15</kbd></kbd> : 表示芯片类型：RTL87x2G</p></li>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-r</kbd> <kbd class="kbd docutils literal notranslate">ecdsa_key1.pem</kbd></kbd> : 指定私钥文件（请替换为实际的私钥文件）</p></li>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-c</kbd> <kbd class="kbd docutils literal notranslate">sha256</kbd></kbd> : 对固件进行 SHA256 校验</p></li>
+<li><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-p</kbd> <kbd class="kbd docutils literal notranslate">:file:`***.bin</kbd></kbd> : 待签名的固件文件（请替换为实际的固件文件）</p></li>
+</ul>
+<p>签名后的固件烧录方式与未签名的固件相同。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>注意：一旦启用安全启动，Flash 布局中 OTA Bank 内每个大小不为0的文件都必须烧录，即使某些数据文件无需签名，否则芯片将无法正常启动。例如，在 Flash 布局（参见工程的 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> 文件）中，如果 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">APP</kbd> <kbd class="kbd docutils literal notranslate">Config</kbd> <kbd class="kbd docutils literal notranslate">File</kbd></kbd> 设置了 4KB 的大小，则必须烧录此文件。</p>
+</div>
+</section>
+</section>
+<section id="id13">
+<h3>配置加密 Key<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p>编辑 <code class="file docutils literal notranslate"><span class="pre">tools\keys\key.json</span></code> 文件，配置 OCEK 和 PASSWORD 。该文件里的 OCEK 和 PASSWORD 是明文，需要注意保护该文件。在请 Realtek 做 IC 不良分析时，需要提供此处的明文 PASSWORD。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;OCEK&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;a1a2a3a4a5a6a7a8a9aaabacadaeafb0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;PASSWORD&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;00112233445566778899aabbccddeeff&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="app-image">
+<h3>生成加密 APP Image<a class="headerlink" href="#app-image" title="Link to this heading"></a></h3>
+<p>要生成 Flash-Sec 加密的 APP image，需要做以下修改。</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#flash-secapp"><span class="std std-ref">打开 Flash-Sec 加密 APP 的宏</span></a>，将宏 <code class="docutils literal notranslate"><span class="pre">FEATURE_FLASH_SEC</span></code> 设定为 1。默认设定是 0，表示非加密。</p></li>
+</ol>
+<figure class="align-center" id="flash-secapp">
+<a class="reference internal image-reference" href="../../../../_images/enable_app_encryption_by_flash-sec.png"><img alt="../../../../_images/enable_app_encryption_by_flash-sec.png" src="../../../../_images/enable_app_encryption_by_flash-sec.png" style="width: 706.5px; height: 205.20000000000002px;" /></a>
+<figcaption>
+<p><span class="caption-text">打开 Flash-Sec 加密 APP 的宏</span><a class="headerlink" href="#flash-secapp" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Keil工程：修改 <code class="file docutils literal notranslate"><span class="pre">after_build_common.bat</span></code> 文件，确保将 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-</kbd>-<kbd class="kbd docutils literal notranslate">aesmode</kbd> <kbd class="kbd docutils literal notranslate">CTR</kbd></kbd> 加在 <code class="file docutils literal notranslate"><span class="pre">prepend_header</span></code> 命令的末尾。</p></li>
+</ol>
+<figure class="align-center" id="after-build-common-bat">
+<a class="reference internal image-reference" href="../../../../_images/modification_of_after_build_common_bat.png"><img alt="../../../../_images/modification_of_after_build_common_bat.png" src="../../../../_images/modification_of_after_build_common_bat.png" style="width: 1069.2px; height: 104.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">after_build_common.bat修改</span><a class="headerlink" href="#after-build-common-bat" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>GCC工程：修改 <code class="file docutils literal notranslate"><span class="pre">Makefile</span></code> 文件，确保将 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-</kbd>-<kbd class="kbd docutils literal notranslate">aesmode</kbd> <kbd class="kbd docutils literal notranslate">CTR</kbd></kbd> 加在 <code class="file docutils literal notranslate"><span class="pre">prepend_header</span></code> 命令的末尾。</p></li>
+</ol>
+</section>
+<section id="id14">
+<h3>加密 Factory Data<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>MP Tool 自 1.1.1.7 版开始支持加密 Factory Data 。Factory Data 加密采用 AES128 或 256 算法，支持 CBC、CTR 两种模式。加密 Factory Data 的 Key 被称为 DEK（Data Encryption Key），最多支持 4 把。Factory Data 以 User Data 的形式存储，User Data 文件本身不包含地址信息，需要在 MP Tool 手动配置地址。</p>
+<p>MP Tool 在烧录多个 Factory Data 的时候，需要知道每个 Factory Data 的烧录地址，以及采用了哪一把 DEK 。这些信息可通过 MP Tool RD 模式配置，最终记录在 <code class="file docutils literal notranslate"><span class="pre">EfuseWrite.json</span></code> 文件中。该文件原本用来描述待烧录的 eFuse 信息，此处也被用作描述 DEK 信息以及 User Data 信息（包含 DEK 选择，User Data 地址及文件长度等）。 目前只有量产模式支持烧录该文件，所以加密 Factory Data 需要做到打包文件里，在量产模式和 <code class="file docutils literal notranslate"><span class="pre">EfuseWrite.json</span></code> 一起烧录。（如果设备没有加密 Factory Data 的需求，可以跳过本节，不影响其余的安全机制。）</p>
+<section id="factory-data-dek">
+<h4>配置 Factory Data 及 DEK<a class="headerlink" href="#factory-data-dek" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>首先需要在 User Data 对话框配置待加密的 Factory Data。</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>当前可加密的 Factory Data 文件个数：软件没有此限制，仅受限于 Flash 容量。</p></li>
+<li><p>DEK 存储在 Flash 第一个 Sector 的 3072 字节处，地址为0x4000C00。如果把 Factory Data 放到第一个 Sector，最大不能超过 3072 字节。</p></li>
+<li><p>最大支持的 Factory Data 大小为 16K 字节。</p></li>
+</ul>
+</div></blockquote>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="../../../../_images/configure_factory_data.png"><img alt="../../../../_images/configure_factory_data.png" src="../../../../_images/configure_factory_data.png" style="width: 759.6px; height: 597.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">配置待加密的 Factory Data</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>点击 <kbd class="kbd docutils literal notranslate">Confirm</kbd> 按钮之后转到 RD Seting 继续配置 DEK。</p></li>
+</ol>
+<figure class="align-center" id="dek">
+<a class="reference internal image-reference" href="../../../../_images/configure_dek.png"><img alt="../../../../_images/configure_dek.png" src="../../../../_images/configure_dek.png" style="width: 579.2px; height: 468.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">配置 DEK</span><a class="headerlink" href="#dek" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>参考 <a class="reference internal" href="#efuse">烧录 eFuse</a> 章节烧录 <code class="file docutils literal notranslate"><span class="pre">EfuseWrite.json</span></code>。</p></li>
+<li><p>使用 Pack Tool 打包待烧录 Image 及 Factory Data。</p></li>
+</ol>
+</section>
+<section id="app">
+<h4>APP 用法<a class="headerlink" href="#app" title="Link to this heading"></a></h4>
+<p>APP 中包含头文件 <code class="file docutils literal notranslate"><span class="pre">aes_api.h</span></code>，使用如下 API 来执行加解密操作。CBC 模式要求 Factory Data 长度为 16 的整数倍，CTR 模式没有限制。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">crypto_err_t</span><span class="w"> </span><span class="nf">aes128_ctr_encrypt_with_load_key</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_material_id</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+
+<span class="n">crypto_err_t</span><span class="w"> </span><span class="nf">aes128_ctr_decrypt_with_load_key</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_material_id</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+
+<span class="n">crypto_err_t</span><span class="w"> </span><span class="nf">aes256_ctr_encrypt_with_load_key</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_material_id</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+
+<span class="n">crypto_err_t</span><span class="w"> </span><span class="nf">aes256_ctr_decrypt_with_load_key</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_material_id</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+
+<span class="n">crypto_err_t</span><span class="w"> </span><span class="nf">aes128_cbc_encrypt_with_load_key</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_material_id</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+
+<span class="n">crypto_err_t</span><span class="w"> </span><span class="nf">aes128_cbc_decrypt_with_load_key</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_material_id</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+
+<span class="n">crypto_err_t</span><span class="w"> </span><span class="nf">aes256_cbc_encrypt_with_load_key</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_material_id</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+
+<span class="n">crypto_err_t</span><span class="w"> </span><span class="nf">aes256_cbc_decrypt_with_load_key</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">key_material_id</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="efuse">
+<h3>烧录 eFuse<a class="headerlink" href="#efuse" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>RTL87x2G 烧录 eFuse 时已取消2.5V ± 10%限制，只要芯片正常供电即可烧写 eFuse。</p>
+</div>
+<ol class="arabic">
+<li><div class="line-block">
+<div class="line">RD 端配置 <a class="reference internal" href="#id16"><span class="std std-ref">生成用于烧录的 eFuse 文件</span></a>。</div>
+<div class="line">首先确保 MP Tool 处于调试模式：可通过 MP Tool 选择 <span class="menuselection">类型 ‣ 调试</span> 进入。</div>
+</div>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../../../../_images/generate_the_file_to_program_efuse.png"><img alt="../../../../_images/generate_the_file_to_program_efuse.png" src="../../../../_images/generate_the_file_to_program_efuse.png" style="width: 1092.6000000000001px; height: 927.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">生成用于烧录的 eFuse 文件</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="loweralpha simple">
+<li><p>在 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">RD</kbd> <kbd class="kbd docutils literal notranslate">Setting</kbd></kbd> 页面，点击 <kbd class="kbd docutils literal notranslate">Browse</kbd> 按钮导入 <code class="file docutils literal notranslate"><span class="pre">key.json</span></code> 文件。</p></li>
+<li><p>选择项使用的 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Security</kbd> <kbd class="kbd docutils literal notranslate">Level</kbd></kbd>。</p></li>
+<li><p>如果要使能安全启动，请参考 <a class="reference internal" href="#id10">配置和烧录公钥</a> 配置安全启动。</p></li>
+<li><p>如果要加密 Factory Data，请参考 <a class="reference internal" href="#factory-data-dek">配置 Factory Data 及 DEK</a> 配置 Factory Data。</p></li>
+<li><p>点击 <kbd class="kbd docutils literal notranslate">Confirm</kbd> 按钮，生成 <code class="file docutils literal notranslate"><span class="pre">EfuseWrite.json</span></code>，该文件可以提供给工厂烧录。</p></li>
+</ol>
+</li>
+<li><div class="line-block">
+<div class="line">工厂端烧录 eFuse</div>
+<div class="line">首先确保 MP Tool 处于量产模式：可通过 MP Tool 选择 <span class="menuselection">类型 ‣ 量产</span> 进入。</div>
+</div>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../../../../_images/select_the_file_to_be_programmed_in_efuse.png"><img alt="../../../../_images/select_the_file_to_be_programmed_in_efuse.png" src="../../../../_images/select_the_file_to_be_programmed_in_efuse.png" style="width: 705.6px; height: 129.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">选择 eFuse 烧录文件</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>在 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">MP</kbd> <kbd class="kbd docutils literal notranslate">Setting</kbd></kbd> 页面勾选 <kbd class="kbd docutils literal notranslate">Efuse</kbd>，并<a class="reference internal" href="#id17"><span class="std std-ref">选择 eFuse 烧录文件</span></a>。</p></li>
+<li><p>点击 <span class="menuselection">MP Download ‣ 下载</span> 进行烧录。</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="id18">
+<h3>通过 Password 调试<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<p>为了安全起见，当安全级别设置为1或2时，SWD 接口会被禁用。然而，开发人员可以使用密码调试功能重新激活 SWD 接口。这允许授权的开发人员在保持系统整体安全性的同时，重新获取对 SWD 接口的访问权限，以进行调试目的。</p>
+<figure class="align-center" id="password-swd">
+<img alt="../../../../_images/use_password_to_unlock_swd.png" src="../../../../_images/use_password_to_unlock_swd.png" />
+<figcaption>
+<p><span class="caption-text">使用 Password 解锁SWD</span><a class="headerlink" href="#password-swd" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>步骤如下：</p>
+<ol class="arabic simple">
+<li><p>在调试模式 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">RD</kbd> <kbd class="kbd docutils literal notranslate">Download</kbd></kbd> 界面打开串口。</p></li>
+<li><p>选择 <kbd class="kbd docutils literal notranslate">Password</kbd> 。</p></li>
+<li><p>输入 <code class="file docutils literal notranslate"><span class="pre">key.json</span></code> 文件中的原始明文 PASSWORD。</p></li>
+<li><p>点击 <kbd class="kbd docutils literal notranslate">Unlock</kbd> 按钮。</p></li>
+<li><p>之后 IC 会重启。</p></li>
+<li><p>重启之后 SWD 便被打开。</p></li>
+</ol>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___a_e_s___a_p_i___exported___functions.html#group___a_e_s___a_p_i___exported___functions"><span class="std std-ref">AES API Sets</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../low_power_mode/text_cn/README.html" class="btn btn-neutral float-left" title="低功耗模式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../debug_system/text_cn/README.html" class="btn btn-neutral float-right" title="调试系统" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

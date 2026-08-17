@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LE Audio Sync Exported Types &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">LE Audio Sync Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="le-audio-sync-exported-types">
+<h1>LE Audio Sync Exported Types<a class="headerlink" href="#le-audio-sync-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___l_e___audio___sync___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">LE_Audio_Sync_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv423P_FUN_BLE_AUDIO_SYNC_CB">
+<span id="_CPPv323P_FUN_BLE_AUDIO_SYNC_CB"></span><span id="_CPPv223P_FUN_BLE_AUDIO_SYNC_CB"></span><span id="P_FUN_BLE_AUDIO_SYNC_CB"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ga47273ed21177f4f38bd64a42a99ba196"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">P_FUN_BLE_AUDIO_SYNC_CB</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">cb_type</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">p_cb_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv423P_FUN_BLE_AUDIO_SYNC_CB" title="Link to this definition"></a><br /></dt>
+<dd><p>P_FUN_BLE_AUDIO_SYNC_CB LE Audio Sync Callback Function Point Definition. </p>
+<p>bap_audio_sync.h</p>
+<p>Function pointer used in LE Audio module, to send events <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g"><span class="std std-ref">LE Audio Sync Message.</span></a> to application. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423T_BLE_AUDIO_ACTION_ROLE">
+<span id="_CPPv323T_BLE_AUDIO_ACTION_ROLE"></span><span id="_CPPv223T_BLE_AUDIO_ACTION_ROLE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1gadbb1b8babcded15a978b1d6f9553f81b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_ACTION_ROLE</span></span></span><a class="headerlink" href="#_CPPv423T_BLE_AUDIO_ACTION_ROLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Define LE Audio action roles. </p>
+<p>bap_audio_sync.h</p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_BLE_AUDIO_ACTION_ROLE26BLE_AUDIO_ACTION_ROLE_IDLEE">
+<span id="_CPPv3N23T_BLE_AUDIO_ACTION_ROLE26BLE_AUDIO_ACTION_ROLE_IDLEE"></span><span id="_CPPv2N23T_BLE_AUDIO_ACTION_ROLE26BLE_AUDIO_ACTION_ROLE_IDLEE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggadbb1b8babcded15a978b1d6f9553f81ba7e4f4d48031119910bfbf1b23a0aafe6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_ACTION_ROLE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N23T_BLE_AUDIO_ACTION_ROLE26BLE_AUDIO_ACTION_ROLE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_BLE_AUDIO_ACTION_ROLE31BLE_AUDIO_ACTION_ROLE_LOCAL_APIE">
+<span id="_CPPv3N23T_BLE_AUDIO_ACTION_ROLE31BLE_AUDIO_ACTION_ROLE_LOCAL_APIE"></span><span id="_CPPv2N23T_BLE_AUDIO_ACTION_ROLE31BLE_AUDIO_ACTION_ROLE_LOCAL_APIE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggadbb1b8babcded15a978b1d6f9553f81ba5838e3afd5b274ebc4dc307f04c37cec"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_ACTION_ROLE_LOCAL_API</span></span></span><a class="headerlink" href="#_CPPv4N23T_BLE_AUDIO_ACTION_ROLE31BLE_AUDIO_ACTION_ROLE_LOCAL_APIE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_BLE_AUDIO_ACTION_ROLE26BLE_AUDIO_ACTION_ROLE_BASSE">
+<span id="_CPPv3N23T_BLE_AUDIO_ACTION_ROLE26BLE_AUDIO_ACTION_ROLE_BASSE"></span><span id="_CPPv2N23T_BLE_AUDIO_ACTION_ROLE26BLE_AUDIO_ACTION_ROLE_BASSE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggadbb1b8babcded15a978b1d6f9553f81ba4a0c7e71202aa4204086c53ef5fb2aa3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_ACTION_ROLE_BASS</span></span></span><a class="headerlink" href="#_CPPv4N23T_BLE_AUDIO_ACTION_ROLE26BLE_AUDIO_ACTION_ROLE_BASSE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422T_BLE_AUDIO_BIG_ACTION">
+<span id="_CPPv322T_BLE_AUDIO_BIG_ACTION"></span><span id="_CPPv222T_BLE_AUDIO_BIG_ACTION"></span><span class="target" id="group___l_e___audio___sync___exported___types_1gafff8d9c304145590c4980a5fe40adb1e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_BIG_ACTION</span></span></span><a class="headerlink" href="#_CPPv422T_BLE_AUDIO_BIG_ACTION" title="Link to this definition"></a><br /></dt>
+<dd><p>Define LE Audio BIG action. </p>
+<p>bap_audio_sync.h</p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_IDLEE">
+<span id="_CPPv3N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_IDLEE"></span><span id="_CPPv2N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_IDLEE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggafff8d9c304145590c4980a5fe40adb1ea40aeada7b234dd09a831f901e057deda"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_BIG_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_SYNCE">
+<span id="_CPPv3N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_SYNCE"></span><span id="_CPPv2N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_SYNCE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggafff8d9c304145590c4980a5fe40adb1eaed9875ef39a73e086258102c0554c85b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_BIG_SYNC</span></span></span><a class="headerlink" href="#_CPPv4N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_SYNCE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_BLE_AUDIO_BIG_ACTION23BLE_AUDIO_BIG_TERMINATEE">
+<span id="_CPPv3N22T_BLE_AUDIO_BIG_ACTION23BLE_AUDIO_BIG_TERMINATEE"></span><span id="_CPPv2N22T_BLE_AUDIO_BIG_ACTION23BLE_AUDIO_BIG_TERMINATEE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggafff8d9c304145590c4980a5fe40adb1ea5e6f3d881fef0b741769482c57fee187"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_BIG_TERMINATE</span></span></span><a class="headerlink" href="#_CPPv4N22T_BLE_AUDIO_BIG_ACTION23BLE_AUDIO_BIG_TERMINATEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_LOSTE">
+<span id="_CPPv3N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_LOSTE"></span><span id="_CPPv2N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_LOSTE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggafff8d9c304145590c4980a5fe40adb1ea0de01a79b2d469a1aa9a49178b33b128"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_BIG_LOST</span></span></span><a class="headerlink" href="#_CPPv4N22T_BLE_AUDIO_BIG_ACTION18BLE_AUDIO_BIG_LOSTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv421T_BLE_AUDIO_PA_ACTION">
+<span id="_CPPv321T_BLE_AUDIO_PA_ACTION"></span><span id="_CPPv221T_BLE_AUDIO_PA_ACTION"></span><span class="target" id="group___l_e___audio___sync___exported___types_1gaaa3f26a18189459f4b72cc500131ec12"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_PA_ACTION</span></span></span><a class="headerlink" href="#_CPPv421T_BLE_AUDIO_PA_ACTION" title="Link to this definition"></a><br /></dt>
+<dd><p>Define LE Audio PA action. </p>
+<p>bap_audio_sync.h</p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_IDLEE">
+<span id="_CPPv3N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_IDLEE"></span><span id="_CPPv2N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_IDLEE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggaaa3f26a18189459f4b72cc500131ec12aa55890499ebf0b305062e45b368c27ef"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_PA_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_SYNCE">
+<span id="_CPPv3N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_SYNCE"></span><span id="_CPPv2N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_SYNCE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggaaa3f26a18189459f4b72cc500131ec12ad1d9f024cc609a75ebc5ecc4572d052c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_PA_SYNC</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_SYNCE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_PA_ACTION22BLE_AUDIO_PA_TERMINATEE">
+<span id="_CPPv3N21T_BLE_AUDIO_PA_ACTION22BLE_AUDIO_PA_TERMINATEE"></span><span id="_CPPv2N21T_BLE_AUDIO_PA_ACTION22BLE_AUDIO_PA_TERMINATEE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggaaa3f26a18189459f4b72cc500131ec12a9ff83b2a96d636fbd930042ded37bdd4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_PA_TERMINATE</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_PA_ACTION22BLE_AUDIO_PA_TERMINATEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_LOSTE">
+<span id="_CPPv3N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_LOSTE"></span><span id="_CPPv2N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_LOSTE"></span><span class="target" id="group___l_e___audio___sync___exported___types_1ggaaa3f26a18189459f4b72cc500131ec12a13a956a909c309c34c7c9b0c32966281"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BLE_AUDIO_PA_LOST</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_PA_ACTION17BLE_AUDIO_PA_LOSTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426T_BLE_AUDIO_BIG_SYNC_STATE">
+<span id="_CPPv326T_BLE_AUDIO_BIG_SYNC_STATE"></span><span id="_CPPv226T_BLE_AUDIO_BIG_SYNC_STATE"></span><span id="T_BLE_AUDIO_BIG_SYNC_STATE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_y_n_c___s_t_a_t_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_BIG_SYNC_STATE</span></span></span><a class="headerlink" href="#_CPPv426T_BLE_AUDIO_BIG_SYNC_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameters for LE Audio BIG sync state. </p>
+<p>bap_audio_sync.h</p>
+<p>The message data for <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g_1ga30f6f9ce3e73aa3f36cf2ea0c13391a6"><span class="std std-ref">MSG_BLE_AUDIO_BIG_SYNC_STATE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE10sync_stateE">
+<span id="_CPPv3N26T_BLE_AUDIO_BIG_SYNC_STATE10sync_stateE"></span><span id="_CPPv2N26T_BLE_AUDIO_BIG_SYNC_STATE10sync_stateE"></span><span id="T_BLE_AUDIO_BIG_SYNC_STATE::sync_state__T_GAP_BIG_SYNC_RECEIVER_SYNC_STATE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_y_n_c___s_t_a_t_e_1a60207eb06f11caa8688bde7d07a048ea"></span><a class="reference internal" href="group___g_a_p___l_e___b_i_g___m_g_r___exported___types.html#_CPPv434T_GAP_BIG_SYNC_RECEIVER_SYNC_STATE" title="T_GAP_BIG_SYNC_RECEIVER_SYNC_STATE"><span class="n"><span class="pre">T_GAP_BIG_SYNC_RECEIVER_SYNC_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sync_state</span></span></span><a class="headerlink" href="#_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE10sync_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE10encryptionE">
+<span id="_CPPv3N26T_BLE_AUDIO_BIG_SYNC_STATE10encryptionE"></span><span id="_CPPv2N26T_BLE_AUDIO_BIG_SYNC_STATE10encryptionE"></span><span id="T_BLE_AUDIO_BIG_SYNC_STATE::encryption__uint8_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_y_n_c___s_t_a_t_e_1a0a5c15cfbbb5c7bdb10a29407b8f8f58"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">encryption</span></span></span><a class="headerlink" href="#_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE10encryptionE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE6actionE">
+<span id="_CPPv3N26T_BLE_AUDIO_BIG_SYNC_STATE6actionE"></span><span id="_CPPv2N26T_BLE_AUDIO_BIG_SYNC_STATE6actionE"></span><span id="T_BLE_AUDIO_BIG_SYNC_STATE::action__T_BLE_AUDIO_BIG_ACTION"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_y_n_c___s_t_a_t_e_1a539bb1404c810ed4d7b1bc4440cd10aa"></span><a class="reference internal" href="#_CPPv422T_BLE_AUDIO_BIG_ACTION" title="T_BLE_AUDIO_BIG_ACTION"><span class="n"><span class="pre">T_BLE_AUDIO_BIG_ACTION</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action</span></span></span><a class="headerlink" href="#_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE6actionE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE11action_roleE">
+<span id="_CPPv3N26T_BLE_AUDIO_BIG_SYNC_STATE11action_roleE"></span><span id="_CPPv2N26T_BLE_AUDIO_BIG_SYNC_STATE11action_roleE"></span><span id="T_BLE_AUDIO_BIG_SYNC_STATE::action_role__T_BLE_AUDIO_ACTION_ROLE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_y_n_c___s_t_a_t_e_1ad1db01de9d5e7ea6f5b334ed37b9e5f7"></span><a class="reference internal" href="#_CPPv423T_BLE_AUDIO_ACTION_ROLE" title="T_BLE_AUDIO_ACTION_ROLE"><span class="n"><span class="pre">T_BLE_AUDIO_ACTION_ROLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action_role</span></span></span><a class="headerlink" href="#_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE11action_roleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE5causeE">
+<span id="_CPPv3N26T_BLE_AUDIO_BIG_SYNC_STATE5causeE"></span><span id="_CPPv2N26T_BLE_AUDIO_BIG_SYNC_STATE5causeE"></span><span id="T_BLE_AUDIO_BIG_SYNC_STATE::cause__uint16_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_y_n_c___s_t_a_t_e_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N26T_BLE_AUDIO_BIG_SYNC_STATE5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431T_BLE_AUDIO_BIG_SETUP_DATA_PATH">
+<span id="_CPPv331T_BLE_AUDIO_BIG_SETUP_DATA_PATH"></span><span id="_CPPv231T_BLE_AUDIO_BIG_SETUP_DATA_PATH"></span><span id="T_BLE_AUDIO_BIG_SETUP_DATA_PATH"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_e_t_u_p___d_a_t_a___p_a_t_h"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_BIG_SETUP_DATA_PATH</span></span></span><a class="headerlink" href="#_CPPv431T_BLE_AUDIO_BIG_SETUP_DATA_PATH" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameters for LE Audio BIG setup data path. </p>
+<p>bap_audio_sync.h</p>
+<p>The message data for <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g_1gae93dfe9bf574dce39b11eea5065252a2"><span class="std std-ref">MSG_BLE_AUDIO_BIG_SETUP_DATA_PATH</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH7bis_idxE">
+<span id="_CPPv3N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH7bis_idxE"></span><span id="_CPPv2N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH7bis_idxE"></span><span id="T_BLE_AUDIO_BIG_SETUP_DATA_PATH::bis_idx__uint8_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_e_t_u_p___d_a_t_a___p_a_t_h_1a7986c63ead2379c3ad533b7e662357d1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bis_idx</span></span></span><a class="headerlink" href="#_CPPv4N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH7bis_idxE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH15bis_conn_handleE">
+<span id="_CPPv3N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH15bis_conn_handleE"></span><span id="_CPPv2N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH15bis_conn_handleE"></span><span id="T_BLE_AUDIO_BIG_SETUP_DATA_PATH::bis_conn_handle__uint16_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_e_t_u_p___d_a_t_a___p_a_t_h_1a754c4d27002e20dfda0d68bb287d29a8"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bis_conn_handle</span></span></span><a class="headerlink" href="#_CPPv4N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH15bis_conn_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH5causeE">
+<span id="_CPPv3N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH5causeE"></span><span id="_CPPv2N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH5causeE"></span><span id="T_BLE_AUDIO_BIG_SETUP_DATA_PATH::cause__uint16_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___s_e_t_u_p___d_a_t_a___p_a_t_h_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N31T_BLE_AUDIO_BIG_SETUP_DATA_PATH5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv433T_BLE_AUDIO_BASE_DATA_MODIFY_INFO">
+<span id="_CPPv333T_BLE_AUDIO_BASE_DATA_MODIFY_INFO"></span><span id="_CPPv233T_BLE_AUDIO_BASE_DATA_MODIFY_INFO"></span><span id="T_BLE_AUDIO_BASE_DATA_MODIFY_INFO"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_a_s_e___d_a_t_a___m_o_d_i_f_y___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_BASE_DATA_MODIFY_INFO</span></span></span><a class="headerlink" href="#_CPPv433T_BLE_AUDIO_BASE_DATA_MODIFY_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameters for LE Audio base data modify information. </p>
+<p>bap_audio_sync.h</p>
+<p>The message data for <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g_1ga2b14165e4ed5e54f69dc8d084065db9e"><span class="std std-ref">MSG_BLE_AUDIO_BASE_DATA_MODIFY_INFO</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33T_BLE_AUDIO_BASE_DATA_MODIFY_INFO14p_base_mappingE">
+<span id="_CPPv3N33T_BLE_AUDIO_BASE_DATA_MODIFY_INFO14p_base_mappingE"></span><span id="_CPPv2N33T_BLE_AUDIO_BASE_DATA_MODIFY_INFO14p_base_mappingE"></span><span id="T_BLE_AUDIO_BASE_DATA_MODIFY_INFO::p_base_mapping__T_BASE_DATA_MAPPINGP"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_a_s_e___d_a_t_a___m_o_d_i_f_y___i_n_f_o_1af47964af83234ef3d76897bc62c34f89"></span><a class="reference internal" href="group___base___data___exported___types.html#_CPPv419T_BASE_DATA_MAPPING" title="T_BASE_DATA_MAPPING"><span class="n"><span class="pre">T_BASE_DATA_MAPPING</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_base_mapping</span></span></span><a class="headerlink" href="#_CPPv4N33T_BLE_AUDIO_BASE_DATA_MODIFY_INFO14p_base_mappingE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv432T_BLE_AUDIO_BIG_REMOVE_DATA_PATH">
+<span id="_CPPv332T_BLE_AUDIO_BIG_REMOVE_DATA_PATH"></span><span id="_CPPv232T_BLE_AUDIO_BIG_REMOVE_DATA_PATH"></span><span id="T_BLE_AUDIO_BIG_REMOVE_DATA_PATH"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___r_e_m_o_v_e___d_a_t_a___p_a_t_h"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_BIG_REMOVE_DATA_PATH</span></span></span><a class="headerlink" href="#_CPPv432T_BLE_AUDIO_BIG_REMOVE_DATA_PATH" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameters for LE Audio BIG remove data path. </p>
+<p>bap_audio_sync.h</p>
+<p>The message data for <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g_1gaa60f5ae87a922cb4566bb2df0776822d"><span class="std std-ref">MSG_BLE_AUDIO_BIG_REMOVE_DATA_PATH</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH7bis_idxE">
+<span id="_CPPv3N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH7bis_idxE"></span><span id="_CPPv2N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH7bis_idxE"></span><span id="T_BLE_AUDIO_BIG_REMOVE_DATA_PATH::bis_idx__uint8_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___r_e_m_o_v_e___d_a_t_a___p_a_t_h_1a7986c63ead2379c3ad533b7e662357d1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bis_idx</span></span></span><a class="headerlink" href="#_CPPv4N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH7bis_idxE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH15bis_conn_handleE">
+<span id="_CPPv3N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH15bis_conn_handleE"></span><span id="_CPPv2N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH15bis_conn_handleE"></span><span id="T_BLE_AUDIO_BIG_REMOVE_DATA_PATH::bis_conn_handle__uint16_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___r_e_m_o_v_e___d_a_t_a___p_a_t_h_1a754c4d27002e20dfda0d68bb287d29a8"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bis_conn_handle</span></span></span><a class="headerlink" href="#_CPPv4N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH15bis_conn_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH5causeE">
+<span id="_CPPv3N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH5causeE"></span><span id="_CPPv2N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH5causeE"></span><span id="T_BLE_AUDIO_BIG_REMOVE_DATA_PATH::cause__uint16_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_g___r_e_m_o_v_e___d_a_t_a___p_a_t_h_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N32T_BLE_AUDIO_BIG_REMOVE_DATA_PATH5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425T_BLE_AUDIO_PA_SYNC_STATE">
+<span id="_CPPv325T_BLE_AUDIO_PA_SYNC_STATE"></span><span id="_CPPv225T_BLE_AUDIO_PA_SYNC_STATE"></span><span id="T_BLE_AUDIO_PA_SYNC_STATE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___p_a___s_y_n_c___s_t_a_t_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_PA_SYNC_STATE</span></span></span><a class="headerlink" href="#_CPPv425T_BLE_AUDIO_PA_SYNC_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>LE Audio PA sync state. </p>
+<p>bap_audio_sync.h</p>
+<p>The message data for <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g_1gad88d60d90f776887103a67aad16abe47"><span class="std std-ref">MSG_BLE_AUDIO_PA_SYNC_STATE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_BLE_AUDIO_PA_SYNC_STATE10sync_stateE">
+<span id="_CPPv3N25T_BLE_AUDIO_PA_SYNC_STATE10sync_stateE"></span><span id="_CPPv2N25T_BLE_AUDIO_PA_SYNC_STATE10sync_stateE"></span><span id="T_BLE_AUDIO_PA_SYNC_STATE::sync_state__T_GAP_PA_SYNC_STATE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___p_a___s_y_n_c___s_t_a_t_e_1a948ce9b55a953ab43ddef7b2ec0bee10"></span><a class="reference internal" href="group___g_a_p___l_e___p_a___s_y_n_c___exported___types.html#_CPPv419T_GAP_PA_SYNC_STATE" title="T_GAP_PA_SYNC_STATE"><span class="n"><span class="pre">T_GAP_PA_SYNC_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sync_state</span></span></span><a class="headerlink" href="#_CPPv4N25T_BLE_AUDIO_PA_SYNC_STATE10sync_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_BLE_AUDIO_PA_SYNC_STATE6actionE">
+<span id="_CPPv3N25T_BLE_AUDIO_PA_SYNC_STATE6actionE"></span><span id="_CPPv2N25T_BLE_AUDIO_PA_SYNC_STATE6actionE"></span><span id="T_BLE_AUDIO_PA_SYNC_STATE::action__T_BLE_AUDIO_PA_ACTION"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___p_a___s_y_n_c___s_t_a_t_e_1a79b8c32bac6334562401773e1b3d6c5c"></span><a class="reference internal" href="#_CPPv421T_BLE_AUDIO_PA_ACTION" title="T_BLE_AUDIO_PA_ACTION"><span class="n"><span class="pre">T_BLE_AUDIO_PA_ACTION</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action</span></span></span><a class="headerlink" href="#_CPPv4N25T_BLE_AUDIO_PA_SYNC_STATE6actionE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_BLE_AUDIO_PA_SYNC_STATE11action_roleE">
+<span id="_CPPv3N25T_BLE_AUDIO_PA_SYNC_STATE11action_roleE"></span><span id="_CPPv2N25T_BLE_AUDIO_PA_SYNC_STATE11action_roleE"></span><span id="T_BLE_AUDIO_PA_SYNC_STATE::action_role__T_BLE_AUDIO_ACTION_ROLE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___p_a___s_y_n_c___s_t_a_t_e_1ad1db01de9d5e7ea6f5b334ed37b9e5f7"></span><a class="reference internal" href="#_CPPv423T_BLE_AUDIO_ACTION_ROLE" title="T_BLE_AUDIO_ACTION_ROLE"><span class="n"><span class="pre">T_BLE_AUDIO_ACTION_ROLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action_role</span></span></span><a class="headerlink" href="#_CPPv4N25T_BLE_AUDIO_PA_SYNC_STATE11action_roleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_BLE_AUDIO_PA_SYNC_STATE5causeE">
+<span id="_CPPv3N25T_BLE_AUDIO_PA_SYNC_STATE5causeE"></span><span id="_CPPv2N25T_BLE_AUDIO_PA_SYNC_STATE5causeE"></span><span id="T_BLE_AUDIO_PA_SYNC_STATE::cause__uint16_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___p_a___s_y_n_c___s_t_a_t_e_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N25T_BLE_AUDIO_PA_SYNC_STATE5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv432T_BLE_AUDIO_SYNC_HANDLE_RELEASED">
+<span id="_CPPv332T_BLE_AUDIO_SYNC_HANDLE_RELEASED"></span><span id="_CPPv232T_BLE_AUDIO_SYNC_HANDLE_RELEASED"></span><span id="T_BLE_AUDIO_SYNC_HANDLE_RELEASED"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___h_a_n_d_l_e___r_e_l_e_a_s_e_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE_RELEASED</span></span></span><a class="headerlink" href="#_CPPv432T_BLE_AUDIO_SYNC_HANDLE_RELEASED" title="Link to this definition"></a><br /></dt>
+<dd><p>LE Audio sync handle released parameter. </p>
+<p>bap_audio_sync.h</p>
+<p>The message data for <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g_1ga6c2e00a1b8953da5aca3c730c70b0d38"><span class="std std-ref">MSG_BLE_AUDIO_SYNC_HANDLE_RELEASED</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_BLE_AUDIO_SYNC_HANDLE_RELEASED11action_roleE">
+<span id="_CPPv3N32T_BLE_AUDIO_SYNC_HANDLE_RELEASED11action_roleE"></span><span id="_CPPv2N32T_BLE_AUDIO_SYNC_HANDLE_RELEASED11action_roleE"></span><span id="T_BLE_AUDIO_SYNC_HANDLE_RELEASED::action_role__T_BLE_AUDIO_ACTION_ROLE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___h_a_n_d_l_e___r_e_l_e_a_s_e_d_1ad1db01de9d5e7ea6f5b334ed37b9e5f7"></span><a class="reference internal" href="#_CPPv423T_BLE_AUDIO_ACTION_ROLE" title="T_BLE_AUDIO_ACTION_ROLE"><span class="n"><span class="pre">T_BLE_AUDIO_ACTION_ROLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">action_role</span></span></span><a class="headerlink" href="#_CPPv4N32T_BLE_AUDIO_SYNC_HANDLE_RELEASED11action_roleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423T_BLE_AUDIO_ADDR_UPDATE">
+<span id="_CPPv323T_BLE_AUDIO_ADDR_UPDATE"></span><span id="_CPPv223T_BLE_AUDIO_ADDR_UPDATE"></span><span id="T_BLE_AUDIO_ADDR_UPDATE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___a_d_d_r___u_p_d_a_t_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_ADDR_UPDATE</span></span></span><a class="headerlink" href="#_CPPv423T_BLE_AUDIO_ADDR_UPDATE" title="Link to this definition"></a><br /></dt>
+<dd><p>LE Audio advertiser address update. </p>
+<p>bap_audio_sync.h</p>
+<p>The message data for <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g_1gaa945fe02dec72027c1d99a33419d4add"><span class="std std-ref">MSG_BLE_AUDIO_ADDR_UPDATE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_BLE_AUDIO_ADDR_UPDATE18advertiser_addressE">
+<span id="_CPPv3N23T_BLE_AUDIO_ADDR_UPDATE18advertiser_addressE"></span><span id="_CPPv2N23T_BLE_AUDIO_ADDR_UPDATE18advertiser_addressE"></span><span id="T_BLE_AUDIO_ADDR_UPDATE::advertiser_address__uint8_tP"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___a_d_d_r___u_p_d_a_t_e_1a647718a350afce7a4d0b88b54b6f1ae4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">advertiser_address</span></span></span><a class="headerlink" href="#_CPPv4N23T_BLE_AUDIO_ADDR_UPDATE18advertiser_addressE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv424T_BLE_AUDIO_SYNC_CB_DATA">
+<span id="_CPPv324T_BLE_AUDIO_SYNC_CB_DATA"></span><span id="_CPPv224T_BLE_AUDIO_SYNC_CB_DATA"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_CB_DATA</span></span></span><a class="headerlink" href="#_CPPv424T_BLE_AUDIO_SYNC_CB_DATA" title="Link to this definition"></a><br /></dt>
+<dd><p>LE Audio sync callback data. </p>
+<p>bap_audio_sync.h</p>
+<p>The message data for <a class="reference internal" href="group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g.html#group___b_l_e___a_u_d_i_o___s_y_n_c___m_s_g_1gaa945fe02dec72027c1d99a33419d4add"><span class="std std-ref">MSG_BLE_AUDIO_ADDR_UPDATE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA15p_pa_sync_stateE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA15p_pa_sync_stateE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA15p_pa_sync_stateE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_pa_sync_state__T_BLE_AUDIO_PA_SYNC_STATEP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1adadec1ea47fea5360ab39c808e1fa568"></span><a class="reference internal" href="#_CPPv425T_BLE_AUDIO_PA_SYNC_STATE" title="T_BLE_AUDIO_PA_SYNC_STATE"><span class="n"><span class="pre">T_BLE_AUDIO_PA_SYNC_STATE</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_pa_sync_state</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA15p_pa_sync_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA29p_le_periodic_adv_report_infoE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA29p_le_periodic_adv_report_infoE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA29p_le_periodic_adv_report_infoE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_le_periodic_adv_report_info__T_LE_PERIODIC_ADV_REPORT_INFOP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1a9aefa87dff53e8089d7fdba8c7848c69"></span><a class="reference internal" href="group___gap___c_b___msg___exported___types.html#_CPPv429T_LE_PERIODIC_ADV_REPORT_INFO" title="T_LE_PERIODIC_ADV_REPORT_INFO"><span class="n"><span class="pre">T_LE_PERIODIC_ADV_REPORT_INFO</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_le_periodic_adv_report_info</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA29p_le_periodic_adv_report_infoE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA23p_base_data_modify_infoE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA23p_base_data_modify_infoE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA23p_base_data_modify_infoE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_base_data_modify_info__T_BLE_AUDIO_BASE_DATA_MODIFY_INFOP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1a6a6a3ba480b99d164c7543d3c3591dec"></span><a class="reference internal" href="#_CPPv433T_BLE_AUDIO_BASE_DATA_MODIFY_INFO" title="T_BLE_AUDIO_BASE_DATA_MODIFY_INFO"><span class="n"><span class="pre">T_BLE_AUDIO_BASE_DATA_MODIFY_INFO</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_base_data_modify_info</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA23p_base_data_modify_infoE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA16p_big_sync_stateE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA16p_big_sync_stateE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA16p_big_sync_stateE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_big_sync_state__T_BLE_AUDIO_BIG_SYNC_STATEP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1abc335e7513cf735df689641950700e70"></span><a class="reference internal" href="#_CPPv426T_BLE_AUDIO_BIG_SYNC_STATE" title="T_BLE_AUDIO_BIG_SYNC_STATE"><span class="n"><span class="pre">T_BLE_AUDIO_BIG_SYNC_STATE</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_big_sync_state</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA16p_big_sync_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA28p_le_biginfo_adv_report_infoE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA28p_le_biginfo_adv_report_infoE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA28p_le_biginfo_adv_report_infoE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_le_biginfo_adv_report_info__T_LE_BIGINFO_ADV_REPORT_INFOP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1a81f10c02043c853318562781e00294c9"></span><a class="reference internal" href="group___gap___c_b___msg___exported___types.html#_CPPv428T_LE_BIGINFO_ADV_REPORT_INFO" title="T_LE_BIGINFO_ADV_REPORT_INFO"><span class="n"><span class="pre">T_LE_BIGINFO_ADV_REPORT_INFO</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_le_biginfo_adv_report_info</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA28p_le_biginfo_adv_report_infoE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA17p_setup_data_pathE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA17p_setup_data_pathE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA17p_setup_data_pathE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_setup_data_path__T_BLE_AUDIO_BIG_SETUP_DATA_PATHP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1a78aaff77091026ff6b6caf08b8f54d89"></span><a class="reference internal" href="#_CPPv431T_BLE_AUDIO_BIG_SETUP_DATA_PATH" title="T_BLE_AUDIO_BIG_SETUP_DATA_PATH"><span class="n"><span class="pre">T_BLE_AUDIO_BIG_SETUP_DATA_PATH</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_setup_data_path</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA17p_setup_data_pathE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA18p_remove_data_pathE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA18p_remove_data_pathE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA18p_remove_data_pathE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_remove_data_path__T_BLE_AUDIO_BIG_REMOVE_DATA_PATHP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1af04e9387496d601f79368a20e167f771"></span><a class="reference internal" href="#_CPPv432T_BLE_AUDIO_BIG_REMOVE_DATA_PATH" title="T_BLE_AUDIO_BIG_REMOVE_DATA_PATH"><span class="n"><span class="pre">T_BLE_AUDIO_BIG_REMOVE_DATA_PATH</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_remove_data_path</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA18p_remove_data_pathE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA22p_sync_handle_releasedE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA22p_sync_handle_releasedE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA22p_sync_handle_releasedE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_sync_handle_released__T_BLE_AUDIO_SYNC_HANDLE_RELEASEDP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1a6efd1b98e7ae0dbc2b2bb12b53571ef8"></span><a class="reference internal" href="#_CPPv432T_BLE_AUDIO_SYNC_HANDLE_RELEASED" title="T_BLE_AUDIO_SYNC_HANDLE_RELEASED"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE_RELEASED</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_sync_handle_released</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA22p_sync_handle_releasedE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA13p_addr_updateE">
+<span id="_CPPv3N24T_BLE_AUDIO_SYNC_CB_DATA13p_addr_updateE"></span><span id="_CPPv2N24T_BLE_AUDIO_SYNC_CB_DATA13p_addr_updateE"></span><span id="T_BLE_AUDIO_SYNC_CB_DATA::p_addr_update__T_BLE_AUDIO_ADDR_UPDATEP"></span><span class="target" id="union_t___b_l_e___a_u_d_i_o___s_y_n_c___c_b___d_a_t_a_1a0807a6b7a6d4f1ccd4df747bd3baaa4a"></span><a class="reference internal" href="#_CPPv423T_BLE_AUDIO_ADDR_UPDATE" title="T_BLE_AUDIO_ADDR_UPDATE"><span class="n"><span class="pre">T_BLE_AUDIO_ADDR_UPDATE</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_addr_update</span></span></span><a class="headerlink" href="#_CPPv4N24T_BLE_AUDIO_SYNC_CB_DATA13p_addr_updateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421T_BLE_AUDIO_SYNC_INFO">
+<span id="_CPPv321T_BLE_AUDIO_SYNC_INFO"></span><span id="_CPPv221T_BLE_AUDIO_SYNC_INFO"></span><span id="T_BLE_AUDIO_SYNC_INFO"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_INFO</span></span></span><a class="headerlink" href="#_CPPv421T_BLE_AUDIO_SYNC_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>LE Audio sync information. </p>
+<p>bap_audio_sync.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO23advertiser_address_typeE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO23advertiser_address_typeE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO23advertiser_address_typeE"></span><span id="T_BLE_AUDIO_SYNC_INFO::advertiser_address_type__uint8_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1a0e9238425f34791de460c86b3df91c76"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">advertiser_address_type</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO23advertiser_address_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO18advertiser_addressE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO18advertiser_addressE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO18advertiser_addressE"></span><span id="T_BLE_AUDIO_SYNC_INFO::advertiser_address__uint8_tA"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1aa8d5562f910084405137e8cd692c19a2"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">advertiser_address</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">GAP_BD_ADDR_LEN</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO18advertiser_addressE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO7adv_sidE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO7adv_sidE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO7adv_sidE"></span><span id="T_BLE_AUDIO_SYNC_INFO::adv_sid__uint8_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1a3b14460f3f74a7d4552c50044ebbdc5e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adv_sid</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO7adv_sidE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO12broadcast_idE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO12broadcast_idE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO12broadcast_idE"></span><span id="T_BLE_AUDIO_SYNC_INFO::broadcast_id__uint8_tA"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1a629b91da1349104cea0c1975700aec6c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">broadcast_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO12broadcast_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO7sync_idE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO7sync_idE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO7sync_idE"></span><span id="T_BLE_AUDIO_SYNC_INFO::sync_id__uint8_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1aa28406bc1064afdf2cec22165c027880"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sync_id</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO7sync_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO8pa_stateE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO8pa_stateE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO8pa_stateE"></span><span id="T_BLE_AUDIO_SYNC_INFO::pa_state__T_GAP_PA_SYNC_STATE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1a73bcf5d1c0c2ba6be15358ad0bd35dd5"></span><a class="reference internal" href="group___g_a_p___l_e___p_a___s_y_n_c___exported___types.html#_CPPv419T_GAP_PA_SYNC_STATE" title="T_GAP_PA_SYNC_STATE"><span class="n"><span class="pre">T_GAP_PA_SYNC_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pa_state</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO8pa_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO11pa_intervalE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO11pa_intervalE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO11pa_intervalE"></span><span id="T_BLE_AUDIO_SYNC_INFO::pa_interval__uint16_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1a478867b287c5aef223cad8b9e7cd6550"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pa_interval</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO11pa_intervalE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO14p_base_mappingE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO14p_base_mappingE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO14p_base_mappingE"></span><span id="T_BLE_AUDIO_SYNC_INFO::p_base_mapping__T_BASE_DATA_MAPPINGP"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1af47964af83234ef3d76897bc62c34f89"></span><a class="reference internal" href="group___base___data___exported___types.html#_CPPv419T_BASE_DATA_MAPPING" title="T_BASE_DATA_MAPPING"><span class="n"><span class="pre">T_BASE_DATA_MAPPING</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_base_mapping</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO14p_base_mappingE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO12pa_sync_addrE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO12pa_sync_addrE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO12pa_sync_addrE"></span><span id="T_BLE_AUDIO_SYNC_INFO::pa_sync_addr__uint8_tA"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1ada9f4254bb8b8bb871bf87d66c3b4010"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pa_sync_addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">GAP_BD_ADDR_LEN</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO12pa_sync_addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO17pa_sync_addr_typeE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO17pa_sync_addr_typeE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO17pa_sync_addr_typeE"></span><span id="T_BLE_AUDIO_SYNC_INFO::pa_sync_addr_type__uint8_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1a11c5c94a9c6bfedecdfac37ba2177172"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pa_sync_addr_type</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO17pa_sync_addr_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO17big_info_receivedE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO17big_info_receivedE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO17big_info_receivedE"></span><span id="T_BLE_AUDIO_SYNC_INFO::big_info_received__b"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1aa60ab60e820c725b05dbbf536f17a2c7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">big_info_received</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO17big_info_receivedE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO8big_infoE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO8big_infoE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO8big_infoE"></span><span id="T_BLE_AUDIO_SYNC_INFO::big_info__T_LE_BIGINFO_ADV_REPORT_INFO"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1a54df4233e474134bfad2370632b8d832"></span><a class="reference internal" href="group___gap___c_b___msg___exported___types.html#_CPPv428T_LE_BIGINFO_ADV_REPORT_INFO" title="T_LE_BIGINFO_ADV_REPORT_INFO"><span class="n"><span class="pre">T_LE_BIGINFO_ADV_REPORT_INFO</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">big_info</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO8big_infoE" title="Link to this definition"></a><br /></dt>
+<dd><p>BIG sync information. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_BLE_AUDIO_SYNC_INFO9big_stateE">
+<span id="_CPPv3N21T_BLE_AUDIO_SYNC_INFO9big_stateE"></span><span id="_CPPv2N21T_BLE_AUDIO_SYNC_INFO9big_stateE"></span><span id="T_BLE_AUDIO_SYNC_INFO::big_state__T_GAP_BIG_SYNC_RECEIVER_SYNC_STATE"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o_1acdc81178b0f2b0fb73cad3e03314ff5a"></span><a class="reference internal" href="group___g_a_p___l_e___b_i_g___m_g_r___exported___types.html#_CPPv434T_GAP_BIG_SYNC_RECEIVER_SYNC_STATE" title="T_GAP_BIG_SYNC_RECEIVER_SYNC_STATE"><span class="n"><span class="pre">T_GAP_BIG_SYNC_RECEIVER_SYNC_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">big_state</span></span></span><a class="headerlink" href="#_CPPv4N21T_BLE_AUDIO_SYNC_INFO9big_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420T_BLE_AUDIO_BIS_INFO">
+<span id="_CPPv320T_BLE_AUDIO_BIS_INFO"></span><span id="_CPPv220T_BLE_AUDIO_BIS_INFO"></span><span id="T_BLE_AUDIO_BIS_INFO"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_s___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_BLE_AUDIO_BIS_INFO</span></span></span><a class="headerlink" href="#_CPPv420T_BLE_AUDIO_BIS_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>LE Audio BIS information. </p>
+<p>bap_audio_sync.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_BLE_AUDIO_BIS_INFO7bis_numE">
+<span id="_CPPv3N20T_BLE_AUDIO_BIS_INFO7bis_numE"></span><span id="_CPPv2N20T_BLE_AUDIO_BIS_INFO7bis_numE"></span><span id="T_BLE_AUDIO_BIS_INFO::bis_num__uint8_t"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_s___i_n_f_o_1a84abdfd7088aebb560d866e1872199b9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bis_num</span></span></span><a class="headerlink" href="#_CPPv4N20T_BLE_AUDIO_BIS_INFO7bis_numE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_BLE_AUDIO_BIS_INFO8bis_infoE">
+<span id="_CPPv3N20T_BLE_AUDIO_BIS_INFO8bis_infoE"></span><span id="_CPPv2N20T_BLE_AUDIO_BIS_INFO8bis_infoE"></span><span id="T_BLE_AUDIO_BIS_INFO::bis_info__T_BIG_MGR_BIS_CONN_HANDLE_INFOA"></span><span class="target" id="struct_t___b_l_e___a_u_d_i_o___b_i_s___i_n_f_o_1ae6785818250c3f488b74346e4e7b462f"></span><a class="reference internal" href="group___g_a_p___l_e___b_i_g___m_g_r___exported___types.html#_CPPv430T_BIG_MGR_BIS_CONN_HANDLE_INFO" title="T_BIG_MGR_BIS_CONN_HANDLE_INFO"><span class="n"><span class="pre">T_BIG_MGR_BIS_CONN_HANDLE_INFO</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bis_info</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">GAP_BIG_MGR_MAX_BIS_NUM</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20T_BLE_AUDIO_BIS_INFO8bis_infoE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

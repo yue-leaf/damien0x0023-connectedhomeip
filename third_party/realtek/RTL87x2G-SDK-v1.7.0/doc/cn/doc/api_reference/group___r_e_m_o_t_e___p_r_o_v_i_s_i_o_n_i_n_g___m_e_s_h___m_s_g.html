@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh Msg &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Model ID" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_o_d_e_l___i_d.html" />
+    <link rel="prev" title="Client Data" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___c_l_i_e_n_t___d_a_t_a.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___application.html">Application</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p.html">GAP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t.html">GATT</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___mesh___model.html">Mesh Model</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___mesh___model___s_i_g.html">SIG</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r.html">BLOB Transfer</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___common.html">Common</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___d_f_u.html">DFU</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___foundation.html">Foundation</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___generics.html">Generics</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___lighting.html">Lighting</a></li>
+<li class="toctree-l7 current"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g.html">Remote Provisioning</a><ul class="current">
+<li class="toctree-l8"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___a_c_c_e_s_s___o_p_c_o_d_e.html">Access Opcode</a></li>
+<li class="toctree-l8"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___c_l_i_e_n_t___a_p_i.html">Client API</a></li>
+<li class="toctree-l8"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___c_l_i_e_n_t___d_a_t_a.html">Client Data</a></li>
+<li class="toctree-l8 current"><a class="current reference internal" href="#">Mesh Msg</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv421rmt_prov_scan_state_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_state_t</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv428rmt_prov_active_scan_state_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_active_scan_state_t</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv425rmt_prov_dkri_procedure_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_dkri_procedure_t</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv428rmt_prov_link_close_reason_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_close_reason_t</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv421rmt_prov_link_state_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_state_t</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv417rmt_prov_status_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_status_t</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv420rmt_prov_procedure_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_procedure_t</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv422_rmt_prov_scan_state_t"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_scan_state_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22_rmt_prov_scan_state_t24RMT_PROV_SCAN_STATE_IDLEE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_scan_state_t::RMT_PROV_SCAN_STATE_IDLE</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22_rmt_prov_scan_state_t36RMT_PROV_SCAN_STATE_MULTIPLE_DEVICESE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_scan_state_t::RMT_PROV_SCAN_STATE_MULTIPLE_DEVICES</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22_rmt_prov_scan_state_t33RMT_PROV_SCAN_STATE_SINGLE_DEVICEE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_scan_state_t::RMT_PROV_SCAN_STATE_SINGLE_DEVICE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv429_rmt_prov_active_scan_state_t"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_active_scan_state_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N29_rmt_prov_active_scan_state_t37RMT_PROV_SCAN_NOT_SUPPORT_ACTIVE_SCANE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_active_scan_state_t::RMT_PROV_SCAN_NOT_SUPPORT_ACTIVE_SCAN</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N29_rmt_prov_active_scan_state_t33RMT_PROV_SCAN_SUPPORT_ACTIVE_SCANE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_active_scan_state_t::RMT_PROV_SCAN_SUPPORT_ACTIVE_SCAN</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv426_rmt_prov_dkri_procedure_t"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_dkri_procedure_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N26_rmt_prov_dkri_procedure_t29RMT_PROV_DKRI_DEV_KEY_REFRESHE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_dkri_procedure_t::RMT_PROV_DKRI_DEV_KEY_REFRESH</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N26_rmt_prov_dkri_procedure_t31RMT_PROV_DKRI_NODE_ADDR_REFRESHE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_dkri_procedure_t::RMT_PROV_DKRI_NODE_ADDR_REFRESH</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N26_rmt_prov_dkri_procedure_t32RMT_PROV_DKRI_NODE_COMPO_REFRESHE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_dkri_procedure_t::RMT_PROV_DKRI_NODE_COMPO_REFRESH</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv429_rmt_prov_link_close_reason_t"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_close_reason_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N29_rmt_prov_link_close_reason_t27RMT_PROV_LINK_CLOSE_SUCCESSE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_close_reason_t::RMT_PROV_LINK_CLOSE_SUCCESS</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N29_rmt_prov_link_close_reason_t30RMT_PROV_LINK_CLOSE_PROHIBITEDE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_close_reason_t::RMT_PROV_LINK_CLOSE_PROHIBITED</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N29_rmt_prov_link_close_reason_t24RMT_PROV_LINK_CLOSE_FAILE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_close_reason_t::RMT_PROV_LINK_CLOSE_FAIL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv422_rmt_prov_link_state_t"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_state_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22_rmt_prov_link_state_t24RMT_PROV_LINK_STATE_IDLEE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_state_t::RMT_PROV_LINK_STATE_IDLE</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_OPENINGE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_state_t::RMT_PROV_LINK_STATE_LINK_OPENING</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22_rmt_prov_link_state_t31RMT_PROV_LINK_STATE_LINK_ACTIVEE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_state_t::RMT_PROV_LINK_STATE_LINK_ACTIVE</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22_rmt_prov_link_state_t38RMT_PROV_LINK_STATE_OUTBOUND_PKT_TRANSE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_state_t::RMT_PROV_LINK_STATE_OUTBOUND_PKT_TRANS</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_CLOSINGE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_link_state_t::RMT_PROV_LINK_STATE_LINK_CLOSING</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv418_rmt_prov_status_t"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t16RMT_PROV_SUCCESSE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_SUCCESS</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t30RMT_PROV_SCANNING_CANNOT_STARTE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_SCANNING_CANNOT_START</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t22RMT_PROV_INVALID_STATEE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_INVALID_STATE</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t26RMT_PROV_LIMITED_RESOURCESE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LIMITED_RESOURCES</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t25RMT_PROV_LINK_CANNOT_OPENE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LINK_CANNOT_OPEN</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t25RMT_PROV_LINK_OPEN_FAILEDE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LINK_OPEN_FAILED</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_DEVICEE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LINK_CLOSED_BY_DEVICE</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_SERVERE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LINK_CLOSED_BY_SERVER</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_CLIENTE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LINK_CLOSED_BY_CLIENT</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t42RMT_PROV_LINK_CLOSED_AS_CANNOT_RECEIVE_PDUE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LINK_CLOSED_AS_CANNOT_RECEIVE_PDU</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t39RMT_PROV_LINK_CLOSED_AS_CANNOT_SEND_PDUE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LINK_CLOSED_AS_CANNOT_SEND_PDU</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N18_rmt_prov_status_t49RMT_PROV_LINK_CLOSED_AS_CANNOT_DELIVER_PDU_REPORTE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_status_t::RMT_PROV_LINK_CLOSED_AS_CANNOT_DELIVER_PDU_REPORT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv421_rmt_prov_procedure_t"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_procedure_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_IDLEE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_procedure_t::RMT_PROV_PROCEDURE_IDLE</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_PROVE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_procedure_t::RMT_PROV_PROCEDURE_PROV</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_DKRIE"><code class="docutils literal notranslate"><span class="pre">_rmt_prov_procedure_t::RMT_PROV_PROCEDURE_DKRI</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv424rmt_prov_scan_caps_get_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_caps_get_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N24rmt_prov_scan_caps_get_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_caps_get_t::opcode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv427rmt_prov_scan_caps_status_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_caps_status_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N27rmt_prov_scan_caps_status_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_caps_status_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N27rmt_prov_scan_caps_status_t17max_scanned_itemsE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_caps_status_t::max_scanned_items</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N27rmt_prov_scan_caps_status_t17active_scan_stateE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_caps_status_t::active_scan_state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv419rmt_prov_scan_get_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_get_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N19rmt_prov_scan_get_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_get_t::opcode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv421rmt_prov_scan_start_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_start_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_scan_start_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_start_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_scan_start_t19scanned_items_limitE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_start_t::scanned_items_limit</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_scan_start_t7timeoutE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_start_t::timeout</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_scan_start_t4uuidE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_start_t::uuid</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv420rmt_prov_scan_stop_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_stop_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N20rmt_prov_scan_stop_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_stop_t::opcode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv422rmt_prov_scan_status_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_status_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_status_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_status_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_status_t6statusE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_status_t::status</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_status_t10scan_stateE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_status_t::scan_state</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_status_t19scanned_items_limitE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_status_t::scanned_items_limit</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_status_t7timeoutE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_status_t::timeout</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv422rmt_prov_scan_report_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_report_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_report_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_report_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_report_t4rssiE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_report_t::rssi</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_report_t4uuidE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_report_t::uuid</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_report_t3oobE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_report_t::oob</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_scan_report_t8uri_hashE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_scan_report_t::uri_hash</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv430rmt_prov_extended_scan_start_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_start_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N30rmt_prov_extended_scan_start_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_start_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N30rmt_prov_extended_scan_start_t20ad_type_filter_countE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_start_t::ad_type_filter_count</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N30rmt_prov_extended_scan_start_t4dataE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_start_t::data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv431rmt_prov_extended_scan_report_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_report_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N31rmt_prov_extended_scan_report_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_report_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N31rmt_prov_extended_scan_report_t6statusE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_report_t::status</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N31rmt_prov_extended_scan_report_t4uuidE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_report_t::uuid</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N31rmt_prov_extended_scan_report_t7oob_advE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_extended_scan_report_t::oob_adv</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv419rmt_prov_link_get_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_get_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N19rmt_prov_link_get_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_get_t::opcode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv425rmt_prov_link_open_prov_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_open_prov_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N25rmt_prov_link_open_prov_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_open_prov_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N25rmt_prov_link_open_prov_t4uuidE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_open_prov_t::uuid</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N25rmt_prov_link_open_prov_t17link_open_timeoutE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_open_prov_t::link_open_timeout</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv425rmt_prov_link_open_dkri_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_open_dkri_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N25rmt_prov_link_open_dkri_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_open_dkri_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N25rmt_prov_link_open_dkri_t14dkri_procedureE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_open_dkri_t::dkri_procedure</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv421rmt_prov_link_close_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_close_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_link_close_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_close_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_link_close_t6reasonE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_close_t::reason</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv422rmt_prov_link_status_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_status_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_link_status_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_status_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_link_status_t6statusE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_status_t::status</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_link_status_t10link_stateE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_status_t::link_state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv422rmt_prov_link_report_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_report_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_link_report_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_report_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_link_report_t6statusE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_report_t::status</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_link_report_t10link_stateE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_report_t::link_state</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N22rmt_prov_link_report_t6reasonE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_link_report_t::reason</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv419rmt_prov_pdu_send_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_send_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N19rmt_prov_pdu_send_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_send_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N19rmt_prov_pdu_send_t16outbound_pdu_numE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_send_t::outbound_pdu_num</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N19rmt_prov_pdu_send_t3pduE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_send_t::pdu</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv430rmt_prov_pdu_outbound_report_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_outbound_report_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N30rmt_prov_pdu_outbound_report_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_outbound_report_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N30rmt_prov_pdu_outbound_report_t16outbound_pdu_numE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_outbound_report_t::outbound_pdu_num</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv421rmt_prov_pdu_report_t"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_report_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_pdu_report_t6opcodeE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_report_t::opcode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_pdu_report_t15inbound_pdu_numE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_report_t::inbound_pdu_num</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N21rmt_prov_pdu_report_t3pduE"><code class="docutils literal notranslate"><span class="pre">rmt_prov_pdu_report_t::pdu</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_o_d_e_l___i_d.html">Model ID</a></li>
+<li class="toctree-l8"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___s_e_r_v_e_r___a_p_i.html">Server API</a></li>
+<li class="toctree-l8"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___s_e_r_v_e_r___d_a_t_a.html">Server Data</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___sensors.html">Sensors</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___time___scenes.html">Time and Scenes</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___mesh___model___vendor.html">Vendor</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___mesh___protocol.html">Mesh Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model.html">Mesh Model</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g.html">SIG</a></li>
+        <li class="breadcrumb-item"><a href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g.html">Remote Provisioning</a></li>
+    <li class="breadcrumb-item active">Mesh Msg</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesh-msg">
+<h1>Mesh Msg<a class="headerlink" href="#mesh-msg" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">REMOTE_PROVISIONING_MESH_MSG</span></span></dt>
+<dd><p>Mesh message types used by models. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RMT_PROV_MAX_SCANNED_ITEMS_MIN">
+<span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga9291103ea35ebf73b76fd43f9b76ecb9"></span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_MAX_SCANNED_ITEMS_MIN</span></span></span> <span class="pre">4</span><a class="headerlink" href="#c.RMT_PROV_MAX_SCANNED_ITEMS_MIN" title="Link to this definition"></a><br /></dt>
+<dd><p>Minimum number of scanned items. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RMT_PROV_MAX_SCANNED_ITEMS_MAX">
+<span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gae01068b9c5f6522ffd62a83bd1fe649d"></span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_MAX_SCANNED_ITEMS_MAX</span></span></span> <span class="pre">255</span><a class="headerlink" href="#c.RMT_PROV_MAX_SCANNED_ITEMS_MAX" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum number of scanned items. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RMT_PROV_SCANNED_ITEMS_NO_LIMIT">
+<span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga8fd3d4b2d93c870328e0ed0de673eb16"></span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_SCANNED_ITEMS_NO_LIMIT</span></span></span> <span class="pre">0</span><a class="headerlink" href="#c.RMT_PROV_SCANNED_ITEMS_NO_LIMIT" title="Link to this definition"></a><br /></dt>
+<dd><p>No limit on scanned items. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RMT_PROV_EXTENDED_SCAN_TIMEOUT_MIN">
+<span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga3de48cd8328a0fe9af9708cef66ec2e5"></span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_EXTENDED_SCAN_TIMEOUT_MIN</span></span></span> <span class="pre">0x01</span><a class="headerlink" href="#c.RMT_PROV_EXTENDED_SCAN_TIMEOUT_MIN" title="Link to this definition"></a><br /></dt>
+<dd><p>Minimum timeout for extended scan. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RMT_PROV_EXTENDED_SCAN_TIMEOUT_MAX">
+<span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga54b8b9c09ceb3671d6c2a175eaae42ea"></span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_EXTENDED_SCAN_TIMEOUT_MAX</span></span></span> <span class="pre">0x15</span><a class="headerlink" href="#c.RMT_PROV_EXTENDED_SCAN_TIMEOUT_MAX" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum timeout for extended scan. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RMT_PROV_LINK_OPEN_TIMEOUT_MIN">
+<span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gad6b460308428964e0fb374a19893d458"></span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_OPEN_TIMEOUT_MIN</span></span></span> <span class="pre">0x01</span><a class="headerlink" href="#c.RMT_PROV_LINK_OPEN_TIMEOUT_MIN" title="Link to this definition"></a><br /></dt>
+<dd><p>Minimum timeout for link open. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.RMT_PROV_LINK_OPEN_TIMEOUT_MAX">
+<span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gad392095c2bb319f76d17f5d947f7252e"></span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_OPEN_TIMEOUT_MAX</span></span></span> <span class="pre">0x3C</span><a class="headerlink" href="#c.RMT_PROV_LINK_OPEN_TIMEOUT_MAX" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum timeout for link open. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421rmt_prov_scan_state_t">
+<span id="_CPPv321rmt_prov_scan_state_t"></span><span id="_CPPv221rmt_prov_scan_state_t"></span><span id="rmt_prov_scan_state_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga0f1b7e72e5f9531096b125449b49b83e"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_scan_state_t</span></span></span><a class="headerlink" href="#_CPPv421rmt_prov_scan_state_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gac939846e3715575352e758fc797c2c13"><span class="std std-ref">_rmt_prov_scan_state_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv428rmt_prov_active_scan_state_t">
+<span id="_CPPv328rmt_prov_active_scan_state_t"></span><span id="_CPPv228rmt_prov_active_scan_state_t"></span><span id="rmt_prov_active_scan_state_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga0098e36a98c5387ebade9913144dd2d6"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_active_scan_state_t</span></span></span><a class="headerlink" href="#_CPPv428rmt_prov_active_scan_state_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga148505b619bef7b29dd9a6a8385e5910"><span class="std std-ref">_rmt_prov_active_scan_state_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv425rmt_prov_dkri_procedure_t">
+<span id="_CPPv325rmt_prov_dkri_procedure_t"></span><span id="_CPPv225rmt_prov_dkri_procedure_t"></span><span id="rmt_prov_dkri_procedure_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gade86e2282a6c42741f353438c7caf9e3"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_dkri_procedure_t</span></span></span><a class="headerlink" href="#_CPPv425rmt_prov_dkri_procedure_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gafbdaa0c7ae07390d6409aa6258a64b2c"><span class="std std-ref">_rmt_prov_dkri_procedure_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv428rmt_prov_link_close_reason_t">
+<span id="_CPPv328rmt_prov_link_close_reason_t"></span><span id="_CPPv228rmt_prov_link_close_reason_t"></span><span id="rmt_prov_link_close_reason_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga788c56eaa407275522f7ff6ede9fd541"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_link_close_reason_t</span></span></span><a class="headerlink" href="#_CPPv428rmt_prov_link_close_reason_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga632fd6094c9564bf26ca96f36631c03e"><span class="std std-ref">_rmt_prov_link_close_reason_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421rmt_prov_link_state_t">
+<span id="_CPPv321rmt_prov_link_state_t"></span><span id="_CPPv221rmt_prov_link_state_t"></span><span id="rmt_prov_link_state_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gac930d06e863f7fd27bfe1ca17f74048c"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_link_state_t</span></span></span><a class="headerlink" href="#_CPPv421rmt_prov_link_state_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga3a585eeef36725571e498b5553ee21b1"><span class="std std-ref">_rmt_prov_link_state_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv417rmt_prov_status_t">
+<span id="_CPPv317rmt_prov_status_t"></span><span id="_CPPv217rmt_prov_status_t"></span><span id="rmt_prov_status_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gab8680bb9d1dbe070d0c804a18e97674b"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_status_t</span></span></span><a class="headerlink" href="#_CPPv417rmt_prov_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga10fa2e51f061bdf00cdfd7eb4e095de8"><span class="std std-ref">_rmt_prov_status_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv420rmt_prov_procedure_t">
+<span id="_CPPv320rmt_prov_procedure_t"></span><span id="_CPPv220rmt_prov_procedure_t"></span><span id="rmt_prov_procedure_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gae0aa2a19e64fa5c5d116edd353fa9a4a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_procedure_t</span></span></span><a class="headerlink" href="#_CPPv420rmt_prov_procedure_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gae189f5c951a8b3c3e1236ca5da1f50c9"><span class="std std-ref">_rmt_prov_procedure_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422_rmt_prov_scan_state_t">
+<span id="_CPPv322_rmt_prov_scan_state_t"></span><span id="_CPPv222_rmt_prov_scan_state_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gac939846e3715575352e758fc797c2c13"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_rmt_prov_scan_state_t</span></span></span><a class="headerlink" href="#_CPPv422_rmt_prov_scan_state_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enumeration for remote provisioning scan states. Use <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga0f1b7e72e5f9531096b125449b49b83e"><span class="std std-ref">rmt_prov_scan_state_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_rmt_prov_scan_state_t24RMT_PROV_SCAN_STATE_IDLEE">
+<span id="_CPPv3N22_rmt_prov_scan_state_t24RMT_PROV_SCAN_STATE_IDLEE"></span><span id="_CPPv2N22_rmt_prov_scan_state_t24RMT_PROV_SCAN_STATE_IDLEE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggac939846e3715575352e758fc797c2c13aaeb1ac6f7a83422daddadf44ff125d86"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_SCAN_STATE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N22_rmt_prov_scan_state_t24RMT_PROV_SCAN_STATE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan state idle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_rmt_prov_scan_state_t36RMT_PROV_SCAN_STATE_MULTIPLE_DEVICESE">
+<span id="_CPPv3N22_rmt_prov_scan_state_t36RMT_PROV_SCAN_STATE_MULTIPLE_DEVICESE"></span><span id="_CPPv2N22_rmt_prov_scan_state_t36RMT_PROV_SCAN_STATE_MULTIPLE_DEVICESE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggac939846e3715575352e758fc797c2c13a0d7c6d000132e275aa0a6a1e87a44921"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_SCAN_STATE_MULTIPLE_DEVICES</span></span></span><a class="headerlink" href="#_CPPv4N22_rmt_prov_scan_state_t36RMT_PROV_SCAN_STATE_MULTIPLE_DEVICESE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan state for multiple devices. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_rmt_prov_scan_state_t33RMT_PROV_SCAN_STATE_SINGLE_DEVICEE">
+<span id="_CPPv3N22_rmt_prov_scan_state_t33RMT_PROV_SCAN_STATE_SINGLE_DEVICEE"></span><span id="_CPPv2N22_rmt_prov_scan_state_t33RMT_PROV_SCAN_STATE_SINGLE_DEVICEE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggac939846e3715575352e758fc797c2c13af44d21a481f067cc239a972991d66009"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_SCAN_STATE_SINGLE_DEVICE</span></span></span><a class="headerlink" href="#_CPPv4N22_rmt_prov_scan_state_t33RMT_PROV_SCAN_STATE_SINGLE_DEVICEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan state for a single device. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv429_rmt_prov_active_scan_state_t">
+<span id="_CPPv329_rmt_prov_active_scan_state_t"></span><span id="_CPPv229_rmt_prov_active_scan_state_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga148505b619bef7b29dd9a6a8385e5910"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_rmt_prov_active_scan_state_t</span></span></span><a class="headerlink" href="#_CPPv429_rmt_prov_active_scan_state_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enumeration for active scan states in remote provisioning. Use <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga0098e36a98c5387ebade9913144dd2d6"><span class="std std-ref">rmt_prov_active_scan_state_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29_rmt_prov_active_scan_state_t37RMT_PROV_SCAN_NOT_SUPPORT_ACTIVE_SCANE">
+<span id="_CPPv3N29_rmt_prov_active_scan_state_t37RMT_PROV_SCAN_NOT_SUPPORT_ACTIVE_SCANE"></span><span id="_CPPv2N29_rmt_prov_active_scan_state_t37RMT_PROV_SCAN_NOT_SUPPORT_ACTIVE_SCANE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga148505b619bef7b29dd9a6a8385e5910a48a34cc960fb62edb883ae4387ddbd8c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_SCAN_NOT_SUPPORT_ACTIVE_SCAN</span></span></span><a class="headerlink" href="#_CPPv4N29_rmt_prov_active_scan_state_t37RMT_PROV_SCAN_NOT_SUPPORT_ACTIVE_SCANE" title="Link to this definition"></a><br /></dt>
+<dd><p>Active scan not supported. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29_rmt_prov_active_scan_state_t33RMT_PROV_SCAN_SUPPORT_ACTIVE_SCANE">
+<span id="_CPPv3N29_rmt_prov_active_scan_state_t33RMT_PROV_SCAN_SUPPORT_ACTIVE_SCANE"></span><span id="_CPPv2N29_rmt_prov_active_scan_state_t33RMT_PROV_SCAN_SUPPORT_ACTIVE_SCANE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga148505b619bef7b29dd9a6a8385e5910a2ef768815b4b523f41b6e0992da5909d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_SCAN_SUPPORT_ACTIVE_SCAN</span></span></span><a class="headerlink" href="#_CPPv4N29_rmt_prov_active_scan_state_t33RMT_PROV_SCAN_SUPPORT_ACTIVE_SCANE" title="Link to this definition"></a><br /></dt>
+<dd><p>Active scan supported. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv426_rmt_prov_dkri_procedure_t">
+<span id="_CPPv326_rmt_prov_dkri_procedure_t"></span><span id="_CPPv226_rmt_prov_dkri_procedure_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gafbdaa0c7ae07390d6409aa6258a64b2c"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_rmt_prov_dkri_procedure_t</span></span></span><a class="headerlink" href="#_CPPv426_rmt_prov_dkri_procedure_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enumeration for DKRI procedures in remote provisioning. Use <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gade86e2282a6c42741f353438c7caf9e3"><span class="std std-ref">rmt_prov_dkri_procedure_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26_rmt_prov_dkri_procedure_t29RMT_PROV_DKRI_DEV_KEY_REFRESHE">
+<span id="_CPPv3N26_rmt_prov_dkri_procedure_t29RMT_PROV_DKRI_DEV_KEY_REFRESHE"></span><span id="_CPPv2N26_rmt_prov_dkri_procedure_t29RMT_PROV_DKRI_DEV_KEY_REFRESHE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggafbdaa0c7ae07390d6409aa6258a64b2cadbc281fe0199812f002e07ff5e05c70c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_DKRI_DEV_KEY_REFRESH</span></span></span><a class="headerlink" href="#_CPPv4N26_rmt_prov_dkri_procedure_t29RMT_PROV_DKRI_DEV_KEY_REFRESHE" title="Link to this definition"></a><br /></dt>
+<dd><p>Device key refresh procedure. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26_rmt_prov_dkri_procedure_t31RMT_PROV_DKRI_NODE_ADDR_REFRESHE">
+<span id="_CPPv3N26_rmt_prov_dkri_procedure_t31RMT_PROV_DKRI_NODE_ADDR_REFRESHE"></span><span id="_CPPv2N26_rmt_prov_dkri_procedure_t31RMT_PROV_DKRI_NODE_ADDR_REFRESHE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggafbdaa0c7ae07390d6409aa6258a64b2ca63d141e56eb58a58df31d7ed760764fb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_DKRI_NODE_ADDR_REFRESH</span></span></span><a class="headerlink" href="#_CPPv4N26_rmt_prov_dkri_procedure_t31RMT_PROV_DKRI_NODE_ADDR_REFRESHE" title="Link to this definition"></a><br /></dt>
+<dd><p>Node address refresh procedure. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26_rmt_prov_dkri_procedure_t32RMT_PROV_DKRI_NODE_COMPO_REFRESHE">
+<span id="_CPPv3N26_rmt_prov_dkri_procedure_t32RMT_PROV_DKRI_NODE_COMPO_REFRESHE"></span><span id="_CPPv2N26_rmt_prov_dkri_procedure_t32RMT_PROV_DKRI_NODE_COMPO_REFRESHE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggafbdaa0c7ae07390d6409aa6258a64b2ca37fc5a74f6224cc49ebd351f28be4059"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_DKRI_NODE_COMPO_REFRESH</span></span></span><a class="headerlink" href="#_CPPv4N26_rmt_prov_dkri_procedure_t32RMT_PROV_DKRI_NODE_COMPO_REFRESHE" title="Link to this definition"></a><br /></dt>
+<dd><p>Node composition refresh procedure. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv429_rmt_prov_link_close_reason_t">
+<span id="_CPPv329_rmt_prov_link_close_reason_t"></span><span id="_CPPv229_rmt_prov_link_close_reason_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga632fd6094c9564bf26ca96f36631c03e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_rmt_prov_link_close_reason_t</span></span></span><a class="headerlink" href="#_CPPv429_rmt_prov_link_close_reason_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enumeration for remote provisioning link close reasons. Use <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga788c56eaa407275522f7ff6ede9fd541"><span class="std std-ref">rmt_prov_link_close_reason_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29_rmt_prov_link_close_reason_t27RMT_PROV_LINK_CLOSE_SUCCESSE">
+<span id="_CPPv3N29_rmt_prov_link_close_reason_t27RMT_PROV_LINK_CLOSE_SUCCESSE"></span><span id="_CPPv2N29_rmt_prov_link_close_reason_t27RMT_PROV_LINK_CLOSE_SUCCESSE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga632fd6094c9564bf26ca96f36631c03ea2602cf7440f368655ed182d3dcda1a77"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSE_SUCCESS</span></span></span><a class="headerlink" href="#_CPPv4N29_rmt_prov_link_close_reason_t27RMT_PROV_LINK_CLOSE_SUCCESSE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provisioning procedure completed successfully. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29_rmt_prov_link_close_reason_t30RMT_PROV_LINK_CLOSE_PROHIBITEDE">
+<span id="_CPPv3N29_rmt_prov_link_close_reason_t30RMT_PROV_LINK_CLOSE_PROHIBITEDE"></span><span id="_CPPv2N29_rmt_prov_link_close_reason_t30RMT_PROV_LINK_CLOSE_PROHIBITEDE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga632fd6094c9564bf26ca96f36631c03ea556fc6cf7cfe595a1fcf411dae4b5aee"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSE_PROHIBITED</span></span></span><a class="headerlink" href="#_CPPv4N29_rmt_prov_link_close_reason_t30RMT_PROV_LINK_CLOSE_PROHIBITEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Prohibited action. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N29_rmt_prov_link_close_reason_t24RMT_PROV_LINK_CLOSE_FAILE">
+<span id="_CPPv3N29_rmt_prov_link_close_reason_t24RMT_PROV_LINK_CLOSE_FAILE"></span><span id="_CPPv2N29_rmt_prov_link_close_reason_t24RMT_PROV_LINK_CLOSE_FAILE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga632fd6094c9564bf26ca96f36631c03ea3b4ba2e693a1159f1e0a435b9c268c3b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSE_FAIL</span></span></span><a class="headerlink" href="#_CPPv4N29_rmt_prov_link_close_reason_t24RMT_PROV_LINK_CLOSE_FAILE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provisioning procedure failed. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422_rmt_prov_link_state_t">
+<span id="_CPPv322_rmt_prov_link_state_t"></span><span id="_CPPv222_rmt_prov_link_state_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga3a585eeef36725571e498b5553ee21b1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_rmt_prov_link_state_t</span></span></span><a class="headerlink" href="#_CPPv422_rmt_prov_link_state_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enumeration for remote provisioning link states. Use <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gac930d06e863f7fd27bfe1ca17f74048c"><span class="std std-ref">rmt_prov_link_state_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_rmt_prov_link_state_t24RMT_PROV_LINK_STATE_IDLEE">
+<span id="_CPPv3N22_rmt_prov_link_state_t24RMT_PROV_LINK_STATE_IDLEE"></span><span id="_CPPv2N22_rmt_prov_link_state_t24RMT_PROV_LINK_STATE_IDLEE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga3a585eeef36725571e498b5553ee21b1a1ce8f3605fa7569c124ea7492d93edbb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_STATE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N22_rmt_prov_link_state_t24RMT_PROV_LINK_STATE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link state idle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_OPENINGE">
+<span id="_CPPv3N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_OPENINGE"></span><span id="_CPPv2N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_OPENINGE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga3a585eeef36725571e498b5553ee21b1aef79bc43af60a4a2088a31b6119584fc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_STATE_LINK_OPENING</span></span></span><a class="headerlink" href="#_CPPv4N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_OPENINGE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link state opening. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_rmt_prov_link_state_t31RMT_PROV_LINK_STATE_LINK_ACTIVEE">
+<span id="_CPPv3N22_rmt_prov_link_state_t31RMT_PROV_LINK_STATE_LINK_ACTIVEE"></span><span id="_CPPv2N22_rmt_prov_link_state_t31RMT_PROV_LINK_STATE_LINK_ACTIVEE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga3a585eeef36725571e498b5553ee21b1a9952ff8ff04588f91f040f4e183deef6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_STATE_LINK_ACTIVE</span></span></span><a class="headerlink" href="#_CPPv4N22_rmt_prov_link_state_t31RMT_PROV_LINK_STATE_LINK_ACTIVEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link state active. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_rmt_prov_link_state_t38RMT_PROV_LINK_STATE_OUTBOUND_PKT_TRANSE">
+<span id="_CPPv3N22_rmt_prov_link_state_t38RMT_PROV_LINK_STATE_OUTBOUND_PKT_TRANSE"></span><span id="_CPPv2N22_rmt_prov_link_state_t38RMT_PROV_LINK_STATE_OUTBOUND_PKT_TRANSE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga3a585eeef36725571e498b5553ee21b1a3b01340a1d756e0f72792c3a556659ce"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_STATE_OUTBOUND_PKT_TRANS</span></span></span><a class="headerlink" href="#_CPPv4N22_rmt_prov_link_state_t38RMT_PROV_LINK_STATE_OUTBOUND_PKT_TRANSE" title="Link to this definition"></a><br /></dt>
+<dd><p>Outbound packet transmission state. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_CLOSINGE">
+<span id="_CPPv3N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_CLOSINGE"></span><span id="_CPPv2N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_CLOSINGE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga3a585eeef36725571e498b5553ee21b1ac19f89c74cac66c03f561948d0ee1aa6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_STATE_LINK_CLOSING</span></span></span><a class="headerlink" href="#_CPPv4N22_rmt_prov_link_state_t32RMT_PROV_LINK_STATE_LINK_CLOSINGE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link closing state. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418_rmt_prov_status_t">
+<span id="_CPPv318_rmt_prov_status_t"></span><span id="_CPPv218_rmt_prov_status_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ga10fa2e51f061bdf00cdfd7eb4e095de8"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_rmt_prov_status_t</span></span></span><a class="headerlink" href="#_CPPv418_rmt_prov_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enumeration for remote provisioning statuses. Use <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gab8680bb9d1dbe070d0c804a18e97674b"><span class="std std-ref">rmt_prov_status_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t16RMT_PROV_SUCCESSE">
+<span id="_CPPv3N18_rmt_prov_status_t16RMT_PROV_SUCCESSE"></span><span id="_CPPv2N18_rmt_prov_status_t16RMT_PROV_SUCCESSE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8a84d1fe2235a0f2fd0f08f797c4dfb7ae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_SUCCESS</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t16RMT_PROV_SUCCESSE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provisioning success. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t30RMT_PROV_SCANNING_CANNOT_STARTE">
+<span id="_CPPv3N18_rmt_prov_status_t30RMT_PROV_SCANNING_CANNOT_STARTE"></span><span id="_CPPv2N18_rmt_prov_status_t30RMT_PROV_SCANNING_CANNOT_STARTE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8ac245b2829f797465dfaa835ca34f6c5d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_SCANNING_CANNOT_START</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t30RMT_PROV_SCANNING_CANNOT_STARTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scanning cannot start. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t22RMT_PROV_INVALID_STATEE">
+<span id="_CPPv3N18_rmt_prov_status_t22RMT_PROV_INVALID_STATEE"></span><span id="_CPPv2N18_rmt_prov_status_t22RMT_PROV_INVALID_STATEE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8adbc67241d2ec28c1cf2ef0c4ba583d29"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_INVALID_STATE</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t22RMT_PROV_INVALID_STATEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Invalid state. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t26RMT_PROV_LIMITED_RESOURCESE">
+<span id="_CPPv3N18_rmt_prov_status_t26RMT_PROV_LIMITED_RESOURCESE"></span><span id="_CPPv2N18_rmt_prov_status_t26RMT_PROV_LIMITED_RESOURCESE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8a5a7dc9391fba7858ccb1934495b2c51d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LIMITED_RESOURCES</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t26RMT_PROV_LIMITED_RESOURCESE" title="Link to this definition"></a><br /></dt>
+<dd><p>Limited resources available. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t25RMT_PROV_LINK_CANNOT_OPENE">
+<span id="_CPPv3N18_rmt_prov_status_t25RMT_PROV_LINK_CANNOT_OPENE"></span><span id="_CPPv2N18_rmt_prov_status_t25RMT_PROV_LINK_CANNOT_OPENE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8aed96f73122813497b0ed9e656a35cf7d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CANNOT_OPEN</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t25RMT_PROV_LINK_CANNOT_OPENE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link cannot open. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t25RMT_PROV_LINK_OPEN_FAILEDE">
+<span id="_CPPv3N18_rmt_prov_status_t25RMT_PROV_LINK_OPEN_FAILEDE"></span><span id="_CPPv2N18_rmt_prov_status_t25RMT_PROV_LINK_OPEN_FAILEDE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8af523a0c6e1e873d0c1f2cf8f3febaf1c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_OPEN_FAILED</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t25RMT_PROV_LINK_OPEN_FAILEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link open failed. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_DEVICEE">
+<span id="_CPPv3N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_DEVICEE"></span><span id="_CPPv2N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_DEVICEE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8af91f668675c195b72f5e9fa67cad966f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSED_BY_DEVICE</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_DEVICEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link closed by device. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_SERVERE">
+<span id="_CPPv3N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_SERVERE"></span><span id="_CPPv2N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_SERVERE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8a769adcbb6a1c222b46e9f457753c83fc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSED_BY_SERVER</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_SERVERE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link closed by server. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_CLIENTE">
+<span id="_CPPv3N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_CLIENTE"></span><span id="_CPPv2N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_CLIENTE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8a3a2548ec2d29b9503e53bcd6a2c11c74"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSED_BY_CLIENT</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t30RMT_PROV_LINK_CLOSED_BY_CLIENTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link closed by client. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t42RMT_PROV_LINK_CLOSED_AS_CANNOT_RECEIVE_PDUE">
+<span id="_CPPv3N18_rmt_prov_status_t42RMT_PROV_LINK_CLOSED_AS_CANNOT_RECEIVE_PDUE"></span><span id="_CPPv2N18_rmt_prov_status_t42RMT_PROV_LINK_CLOSED_AS_CANNOT_RECEIVE_PDUE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8a259f60658ec4d7860c2e1ef9f9e05452"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSED_AS_CANNOT_RECEIVE_PDU</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t42RMT_PROV_LINK_CLOSED_AS_CANNOT_RECEIVE_PDUE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link closed as PDU cannot be received. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t39RMT_PROV_LINK_CLOSED_AS_CANNOT_SEND_PDUE">
+<span id="_CPPv3N18_rmt_prov_status_t39RMT_PROV_LINK_CLOSED_AS_CANNOT_SEND_PDUE"></span><span id="_CPPv2N18_rmt_prov_status_t39RMT_PROV_LINK_CLOSED_AS_CANNOT_SEND_PDUE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8a7b1741ab098b7388c7dcf417b05a6a40"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSED_AS_CANNOT_SEND_PDU</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t39RMT_PROV_LINK_CLOSED_AS_CANNOT_SEND_PDUE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link closed as PDU cannot be sent. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_rmt_prov_status_t49RMT_PROV_LINK_CLOSED_AS_CANNOT_DELIVER_PDU_REPORTE">
+<span id="_CPPv3N18_rmt_prov_status_t49RMT_PROV_LINK_CLOSED_AS_CANNOT_DELIVER_PDU_REPORTE"></span><span id="_CPPv2N18_rmt_prov_status_t49RMT_PROV_LINK_CLOSED_AS_CANNOT_DELIVER_PDU_REPORTE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gga10fa2e51f061bdf00cdfd7eb4e095de8ad0caa03541246d3a005f465096c1117b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_LINK_CLOSED_AS_CANNOT_DELIVER_PDU_REPORT</span></span></span><a class="headerlink" href="#_CPPv4N18_rmt_prov_status_t49RMT_PROV_LINK_CLOSED_AS_CANNOT_DELIVER_PDU_REPORTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link closed as PDU report cannot be delivered. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv421_rmt_prov_procedure_t">
+<span id="_CPPv321_rmt_prov_procedure_t"></span><span id="_CPPv221_rmt_prov_procedure_t"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gae189f5c951a8b3c3e1236ca5da1f50c9"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_rmt_prov_procedure_t</span></span></span><a class="headerlink" href="#_CPPv421_rmt_prov_procedure_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enumeration for procedures in remote provisioning. Use <a class="reference internal" href="#group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1gae0aa2a19e64fa5c5d116edd353fa9a4a"><span class="std std-ref">rmt_prov_procedure_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_IDLEE">
+<span id="_CPPv3N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_IDLEE"></span><span id="_CPPv2N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_IDLEE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggae189f5c951a8b3c3e1236ca5da1f50c9a7bcbef8091389378313373978ab7e1a9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_PROCEDURE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Procedure idle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_PROVE">
+<span id="_CPPv3N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_PROVE"></span><span id="_CPPv2N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_PROVE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggae189f5c951a8b3c3e1236ca5da1f50c9a606dd5334325b46454b192ad34e28f66"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_PROCEDURE_PROV</span></span></span><a class="headerlink" href="#_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_PROVE" title="Link to this definition"></a><br /></dt>
+<dd><p>Procedure provisioning. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_DKRIE">
+<span id="_CPPv3N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_DKRIE"></span><span id="_CPPv2N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_DKRIE"></span><span class="target" id="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_e_s_h___m_s_g_1ggae189f5c951a8b3c3e1236ca5da1f50c9adae50f6e900697c277df5f573e74c562"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RMT_PROV_PROCEDURE_DKRI</span></span></span><a class="headerlink" href="#_CPPv4N21_rmt_prov_procedure_t23RMT_PROV_PROCEDURE_DKRIE" title="Link to this definition"></a><br /></dt>
+<dd><p>Procedure DKRI. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424rmt_prov_scan_caps_get_t">
+<span id="_CPPv324rmt_prov_scan_caps_get_t"></span><span id="_CPPv224rmt_prov_scan_caps_get_t"></span><span id="rmt_prov_scan_caps_get_t"></span><span class="target" id="structrmt__prov__scan__caps__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_scan_caps_get_t</span></span></span><a class="headerlink" href="#_CPPv424rmt_prov_scan_caps_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Get scan capabilities message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24rmt_prov_scan_caps_get_t6opcodeE">
+<span id="_CPPv3N24rmt_prov_scan_caps_get_t6opcodeE"></span><span id="_CPPv2N24rmt_prov_scan_caps_get_t6opcodeE"></span><span id="rmt_prov_scan_caps_get_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__scan__caps__get__t_1a422076d010d54aad0d0ce7edab69cd99"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x804F</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N24rmt_prov_scan_caps_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv427rmt_prov_scan_caps_status_t">
+<span id="_CPPv327rmt_prov_scan_caps_status_t"></span><span id="_CPPv227rmt_prov_scan_caps_status_t"></span><span id="rmt_prov_scan_caps_status_t"></span><span class="target" id="structrmt__prov__scan__caps__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_scan_caps_status_t</span></span></span><a class="headerlink" href="#_CPPv427rmt_prov_scan_caps_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan capabilities status message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27rmt_prov_scan_caps_status_t6opcodeE">
+<span id="_CPPv3N27rmt_prov_scan_caps_status_t6opcodeE"></span><span id="_CPPv2N27rmt_prov_scan_caps_status_t6opcodeE"></span><span id="rmt_prov_scan_caps_status_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__scan__caps__status__t_1a4258e0f6be518521aaf88423f36cd7ba"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8050</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N27rmt_prov_scan_caps_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27rmt_prov_scan_caps_status_t17max_scanned_itemsE">
+<span id="_CPPv3N27rmt_prov_scan_caps_status_t17max_scanned_itemsE"></span><span id="_CPPv2N27rmt_prov_scan_caps_status_t17max_scanned_itemsE"></span><span id="rmt_prov_scan_caps_status_t::max_scanned_items__uint8_t"></span><span class="target" id="structrmt__prov__scan__caps__status__t_1a064e2243782d5fdb329f73798899cea4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_scanned_items</span></span></span><a class="headerlink" href="#_CPPv4N27rmt_prov_scan_caps_status_t17max_scanned_itemsE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum scanned items. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27rmt_prov_scan_caps_status_t17active_scan_stateE">
+<span id="_CPPv3N27rmt_prov_scan_caps_status_t17active_scan_stateE"></span><span id="_CPPv2N27rmt_prov_scan_caps_status_t17active_scan_stateE"></span><span id="rmt_prov_scan_caps_status_t::active_scan_state__rmt_prov_active_scan_state_t"></span><span class="target" id="structrmt__prov__scan__caps__status__t_1a78bd593024077fb712aafdda26089984"></span><a class="reference internal" href="#_CPPv428rmt_prov_active_scan_state_t" title="rmt_prov_active_scan_state_t"><span class="n"><span class="pre">rmt_prov_active_scan_state_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">active_scan_state</span></span></span><a class="headerlink" href="#_CPPv4N27rmt_prov_scan_caps_status_t17active_scan_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p>Active scan state. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419rmt_prov_scan_get_t">
+<span id="_CPPv319rmt_prov_scan_get_t"></span><span id="_CPPv219rmt_prov_scan_get_t"></span><span id="rmt_prov_scan_get_t"></span><span class="target" id="structrmt__prov__scan__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_scan_get_t</span></span></span><a class="headerlink" href="#_CPPv419rmt_prov_scan_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Get scan message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19rmt_prov_scan_get_t6opcodeE">
+<span id="_CPPv3N19rmt_prov_scan_get_t6opcodeE"></span><span id="_CPPv2N19rmt_prov_scan_get_t6opcodeE"></span><span id="rmt_prov_scan_get_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__scan__get__t_1a0559046a9a83c88b8a9bb0751b9766e1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8051</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19rmt_prov_scan_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421rmt_prov_scan_start_t">
+<span id="_CPPv321rmt_prov_scan_start_t"></span><span id="_CPPv221rmt_prov_scan_start_t"></span><span id="rmt_prov_scan_start_t"></span><span class="target" id="structrmt__prov__scan__start__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_scan_start_t</span></span></span><a class="headerlink" href="#_CPPv421rmt_prov_scan_start_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Start scan message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_scan_start_t6opcodeE">
+<span id="_CPPv3N21rmt_prov_scan_start_t6opcodeE"></span><span id="_CPPv2N21rmt_prov_scan_start_t6opcodeE"></span><span id="rmt_prov_scan_start_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__scan__start__t_1a6fb03b0ef2db1afd0ae394131b953c47"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8052</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_scan_start_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_scan_start_t19scanned_items_limitE">
+<span id="_CPPv3N21rmt_prov_scan_start_t19scanned_items_limitE"></span><span id="_CPPv2N21rmt_prov_scan_start_t19scanned_items_limitE"></span><span id="rmt_prov_scan_start_t::scanned_items_limit__uint8_t"></span><span class="target" id="structrmt__prov__scan__start__t_1a57f7501e4afd2bc8051993f13164d849"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scanned_items_limit</span></span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_scan_start_t19scanned_items_limitE" title="Link to this definition"></a><br /></dt>
+<dd><p>Limit on scanned items. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_scan_start_t7timeoutE">
+<span id="_CPPv3N21rmt_prov_scan_start_t7timeoutE"></span><span id="_CPPv2N21rmt_prov_scan_start_t7timeoutE"></span><span id="rmt_prov_scan_start_t::timeout__uint8_t"></span><span class="target" id="structrmt__prov__scan__start__t_1abaf366c6d73ec33baf041915b61b231f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout</span></span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_scan_start_t7timeoutE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan timeout. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_scan_start_t4uuidE">
+<span id="_CPPv3N21rmt_prov_scan_start_t4uuidE"></span><span id="_CPPv2N21rmt_prov_scan_start_t4uuidE"></span><span id="rmt_prov_scan_start_t::uuid__uint8_tA"></span><span class="target" id="structrmt__prov__scan__start__t_1a55fdff5eb435c150ffdb70a5c95edeb3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_scan_start_t4uuidE" title="Link to this definition"></a><br /></dt>
+<dd><p>Unique universal identifier. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420rmt_prov_scan_stop_t">
+<span id="_CPPv320rmt_prov_scan_stop_t"></span><span id="_CPPv220rmt_prov_scan_stop_t"></span><span id="rmt_prov_scan_stop_t"></span><span class="target" id="structrmt__prov__scan__stop__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_scan_stop_t</span></span></span><a class="headerlink" href="#_CPPv420rmt_prov_scan_stop_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Stop scan message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20rmt_prov_scan_stop_t6opcodeE">
+<span id="_CPPv3N20rmt_prov_scan_stop_t6opcodeE"></span><span id="_CPPv2N20rmt_prov_scan_stop_t6opcodeE"></span><span id="rmt_prov_scan_stop_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__scan__stop__t_1ae25385cfc2fb8083600fa44fa87fb579"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8053</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20rmt_prov_scan_stop_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422rmt_prov_scan_status_t">
+<span id="_CPPv322rmt_prov_scan_status_t"></span><span id="_CPPv222rmt_prov_scan_status_t"></span><span id="rmt_prov_scan_status_t"></span><span class="target" id="structrmt__prov__scan__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_scan_status_t</span></span></span><a class="headerlink" href="#_CPPv422rmt_prov_scan_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan status message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_status_t6opcodeE">
+<span id="_CPPv3N22rmt_prov_scan_status_t6opcodeE"></span><span id="_CPPv2N22rmt_prov_scan_status_t6opcodeE"></span><span id="rmt_prov_scan_status_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__scan__status__t_1afb8cf4801c81cfc12055fb03853a2f28"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8054</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_status_t6statusE">
+<span id="_CPPv3N22rmt_prov_scan_status_t6statusE"></span><span id="_CPPv2N22rmt_prov_scan_status_t6statusE"></span><span id="rmt_prov_scan_status_t::status__rmt_prov_status_t"></span><span class="target" id="structrmt__prov__scan__status__t_1adaa278db97a679da2d86fe7795259117"></span><a class="reference internal" href="#_CPPv417rmt_prov_status_t" title="rmt_prov_status_t"><span class="n"><span class="pre">rmt_prov_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_status_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan status. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_status_t10scan_stateE">
+<span id="_CPPv3N22rmt_prov_scan_status_t10scan_stateE"></span><span id="_CPPv2N22rmt_prov_scan_status_t10scan_stateE"></span><span id="rmt_prov_scan_status_t::scan_state__rmt_prov_scan_state_t"></span><span class="target" id="structrmt__prov__scan__status__t_1ab967b29529aa1149bf2f5cc17d24ac72"></span><a class="reference internal" href="#_CPPv421rmt_prov_scan_state_t" title="rmt_prov_scan_state_t"><span class="n"><span class="pre">rmt_prov_scan_state_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scan_state</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_status_t10scan_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan state. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_status_t19scanned_items_limitE">
+<span id="_CPPv3N22rmt_prov_scan_status_t19scanned_items_limitE"></span><span id="_CPPv2N22rmt_prov_scan_status_t19scanned_items_limitE"></span><span id="rmt_prov_scan_status_t::scanned_items_limit__uint8_t"></span><span class="target" id="structrmt__prov__scan__status__t_1a57f7501e4afd2bc8051993f13164d849"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scanned_items_limit</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_status_t19scanned_items_limitE" title="Link to this definition"></a><br /></dt>
+<dd><p>Limit on scanned items. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_status_t7timeoutE">
+<span id="_CPPv3N22rmt_prov_scan_status_t7timeoutE"></span><span id="_CPPv2N22rmt_prov_scan_status_t7timeoutE"></span><span id="rmt_prov_scan_status_t::timeout__uint8_t"></span><span class="target" id="structrmt__prov__scan__status__t_1abaf366c6d73ec33baf041915b61b231f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timeout</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_status_t7timeoutE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan timeout. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422rmt_prov_scan_report_t">
+<span id="_CPPv322rmt_prov_scan_report_t"></span><span id="_CPPv222rmt_prov_scan_report_t"></span><span id="rmt_prov_scan_report_t"></span><span class="target" id="structrmt__prov__scan__report__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_scan_report_t</span></span></span><a class="headerlink" href="#_CPPv422rmt_prov_scan_report_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan report message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_report_t6opcodeE">
+<span id="_CPPv3N22rmt_prov_scan_report_t6opcodeE"></span><span id="_CPPv2N22rmt_prov_scan_report_t6opcodeE"></span><span id="rmt_prov_scan_report_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__scan__report__t_1a21e1a32566dc511c4f6ede621a77115e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8055</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_report_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_report_t4rssiE">
+<span id="_CPPv3N22rmt_prov_scan_report_t4rssiE"></span><span id="_CPPv2N22rmt_prov_scan_report_t4rssiE"></span><span id="rmt_prov_scan_report_t::rssi__int8_t"></span><span class="target" id="structrmt__prov__scan__report__t_1a3b962e67ba74725bd60ca3c29f785abe"></span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rssi</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_report_t4rssiE" title="Link to this definition"></a><br /></dt>
+<dd><p>Received signal strength indication. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_report_t4uuidE">
+<span id="_CPPv3N22rmt_prov_scan_report_t4uuidE"></span><span id="_CPPv2N22rmt_prov_scan_report_t4uuidE"></span><span id="rmt_prov_scan_report_t::uuid__uint8_tA"></span><span class="target" id="structrmt__prov__scan__report__t_1a55fdff5eb435c150ffdb70a5c95edeb3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_report_t4uuidE" title="Link to this definition"></a><br /></dt>
+<dd><p>Unique universal identifier. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_report_t3oobE">
+<span id="_CPPv3N22rmt_prov_scan_report_t3oobE"></span><span id="_CPPv2N22rmt_prov_scan_report_t3oobE"></span><span id="rmt_prov_scan_report_t::oob__uint8_tA"></span><span class="target" id="structrmt__prov__scan__report__t_1aff0f19135881287622ffc4d856b5a8ae"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oob</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_report_t3oobE" title="Link to this definition"></a><br /></dt>
+<dd><p>Out-of-band information. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_scan_report_t8uri_hashE">
+<span id="_CPPv3N22rmt_prov_scan_report_t8uri_hashE"></span><span id="_CPPv2N22rmt_prov_scan_report_t8uri_hashE"></span><span id="rmt_prov_scan_report_t::uri_hash__uint8_tA"></span><span class="target" id="structrmt__prov__scan__report__t_1a7ca3bdf10edcc5817d915d33fd57853f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uri_hash</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_scan_report_t8uri_hashE" title="Link to this definition"></a><br /></dt>
+<dd><p>URI hash value. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430rmt_prov_extended_scan_start_t">
+<span id="_CPPv330rmt_prov_extended_scan_start_t"></span><span id="_CPPv230rmt_prov_extended_scan_start_t"></span><span id="rmt_prov_extended_scan_start_t"></span><span class="target" id="structrmt__prov__extended__scan__start__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_extended_scan_start_t</span></span></span><a class="headerlink" href="#_CPPv430rmt_prov_extended_scan_start_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Extended scan start message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30rmt_prov_extended_scan_start_t6opcodeE">
+<span id="_CPPv3N30rmt_prov_extended_scan_start_t6opcodeE"></span><span id="_CPPv2N30rmt_prov_extended_scan_start_t6opcodeE"></span><span id="rmt_prov_extended_scan_start_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__extended__scan__start__t_1a8737f33629f7fb63bedca523dfba4d43"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8056</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N30rmt_prov_extended_scan_start_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30rmt_prov_extended_scan_start_t20ad_type_filter_countE">
+<span id="_CPPv3N30rmt_prov_extended_scan_start_t20ad_type_filter_countE"></span><span id="_CPPv2N30rmt_prov_extended_scan_start_t20ad_type_filter_countE"></span><span id="rmt_prov_extended_scan_start_t::ad_type_filter_count__uint8_t"></span><span class="target" id="structrmt__prov__extended__scan__start__t_1a99e58e4b7f947e1f5882c2ed85d32d74"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ad_type_filter_count</span></span></span><a class="headerlink" href="#_CPPv4N30rmt_prov_extended_scan_start_t20ad_type_filter_countE" title="Link to this definition"></a><br /></dt>
+<dd><p>Count of advertisement type filters. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30rmt_prov_extended_scan_start_t4dataE">
+<span id="_CPPv3N30rmt_prov_extended_scan_start_t4dataE"></span><span id="_CPPv2N30rmt_prov_extended_scan_start_t4dataE"></span><span id="rmt_prov_extended_scan_start_t::data__uint8_tA"></span><span class="target" id="structrmt__prov__extended__scan__start__t_1ac3c027f9a365f5741871df5ace13943f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N30rmt_prov_extended_scan_start_t4dataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Data field. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431rmt_prov_extended_scan_report_t">
+<span id="_CPPv331rmt_prov_extended_scan_report_t"></span><span id="_CPPv231rmt_prov_extended_scan_report_t"></span><span id="rmt_prov_extended_scan_report_t"></span><span class="target" id="structrmt__prov__extended__scan__report__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_extended_scan_report_t</span></span></span><a class="headerlink" href="#_CPPv431rmt_prov_extended_scan_report_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Extended scan report message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31rmt_prov_extended_scan_report_t6opcodeE">
+<span id="_CPPv3N31rmt_prov_extended_scan_report_t6opcodeE"></span><span id="_CPPv2N31rmt_prov_extended_scan_report_t6opcodeE"></span><span id="rmt_prov_extended_scan_report_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__extended__scan__report__t_1afd2953d2c6448cb09b06eb9187c50801"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8057</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31rmt_prov_extended_scan_report_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31rmt_prov_extended_scan_report_t6statusE">
+<span id="_CPPv3N31rmt_prov_extended_scan_report_t6statusE"></span><span id="_CPPv2N31rmt_prov_extended_scan_report_t6statusE"></span><span id="rmt_prov_extended_scan_report_t::status__rmt_prov_status_t"></span><span class="target" id="structrmt__prov__extended__scan__report__t_1adaa278db97a679da2d86fe7795259117"></span><a class="reference internal" href="#_CPPv417rmt_prov_status_t" title="rmt_prov_status_t"><span class="n"><span class="pre">rmt_prov_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N31rmt_prov_extended_scan_report_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Scan status. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31rmt_prov_extended_scan_report_t4uuidE">
+<span id="_CPPv3N31rmt_prov_extended_scan_report_t4uuidE"></span><span id="_CPPv2N31rmt_prov_extended_scan_report_t4uuidE"></span><span id="rmt_prov_extended_scan_report_t::uuid__uint8_tA"></span><span class="target" id="structrmt__prov__extended__scan__report__t_1a55fdff5eb435c150ffdb70a5c95edeb3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31rmt_prov_extended_scan_report_t4uuidE" title="Link to this definition"></a><br /></dt>
+<dd><p>Unique universal identifier. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31rmt_prov_extended_scan_report_t7oob_advE">
+<span id="_CPPv3N31rmt_prov_extended_scan_report_t7oob_advE"></span><span id="_CPPv2N31rmt_prov_extended_scan_report_t7oob_advE"></span><span id="rmt_prov_extended_scan_report_t::oob_adv__uint8_tA"></span><span class="target" id="structrmt__prov__extended__scan__report__t_1acd32bec9d26201cd5c5f530a30b26496"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oob_adv</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31rmt_prov_extended_scan_report_t7oob_advE" title="Link to this definition"></a><br /></dt>
+<dd><p>Out-of-band advertisement information. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419rmt_prov_link_get_t">
+<span id="_CPPv319rmt_prov_link_get_t"></span><span id="_CPPv219rmt_prov_link_get_t"></span><span id="rmt_prov_link_get_t"></span><span class="target" id="structrmt__prov__link__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_link_get_t</span></span></span><a class="headerlink" href="#_CPPv419rmt_prov_link_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Get link message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19rmt_prov_link_get_t6opcodeE">
+<span id="_CPPv3N19rmt_prov_link_get_t6opcodeE"></span><span id="_CPPv2N19rmt_prov_link_get_t6opcodeE"></span><span id="rmt_prov_link_get_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__link__get__t_1a1172baa8ee8d3b70e4258ee312de87b0"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8058</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19rmt_prov_link_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425rmt_prov_link_open_prov_t">
+<span id="_CPPv325rmt_prov_link_open_prov_t"></span><span id="_CPPv225rmt_prov_link_open_prov_t"></span><span id="rmt_prov_link_open_prov_t"></span><span class="target" id="structrmt__prov__link__open__prov__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_link_open_prov_t</span></span></span><a class="headerlink" href="#_CPPv425rmt_prov_link_open_prov_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Open provisioning link message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25rmt_prov_link_open_prov_t6opcodeE">
+<span id="_CPPv3N25rmt_prov_link_open_prov_t6opcodeE"></span><span id="_CPPv2N25rmt_prov_link_open_prov_t6opcodeE"></span><span id="rmt_prov_link_open_prov_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__link__open__prov__t_1aee019d3eac1f6debbc987fee757a1eea"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8059</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25rmt_prov_link_open_prov_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25rmt_prov_link_open_prov_t4uuidE">
+<span id="_CPPv3N25rmt_prov_link_open_prov_t4uuidE"></span><span id="_CPPv2N25rmt_prov_link_open_prov_t4uuidE"></span><span id="rmt_prov_link_open_prov_t::uuid__uint8_tA"></span><span class="target" id="structrmt__prov__link__open__prov__t_1a55fdff5eb435c150ffdb70a5c95edeb3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25rmt_prov_link_open_prov_t4uuidE" title="Link to this definition"></a><br /></dt>
+<dd><p>Unique universal identifier. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25rmt_prov_link_open_prov_t17link_open_timeoutE">
+<span id="_CPPv3N25rmt_prov_link_open_prov_t17link_open_timeoutE"></span><span id="_CPPv2N25rmt_prov_link_open_prov_t17link_open_timeoutE"></span><span id="rmt_prov_link_open_prov_t::link_open_timeout__uint8_t"></span><span class="target" id="structrmt__prov__link__open__prov__t_1ac4cdec44f6021ed66a2170f34a2951ff"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">link_open_timeout</span></span></span><a class="headerlink" href="#_CPPv4N25rmt_prov_link_open_prov_t17link_open_timeoutE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link open timeout. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425rmt_prov_link_open_dkri_t">
+<span id="_CPPv325rmt_prov_link_open_dkri_t"></span><span id="_CPPv225rmt_prov_link_open_dkri_t"></span><span id="rmt_prov_link_open_dkri_t"></span><span class="target" id="structrmt__prov__link__open__dkri__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_link_open_dkri_t</span></span></span><a class="headerlink" href="#_CPPv425rmt_prov_link_open_dkri_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Open DKRI link message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25rmt_prov_link_open_dkri_t6opcodeE">
+<span id="_CPPv3N25rmt_prov_link_open_dkri_t6opcodeE"></span><span id="_CPPv2N25rmt_prov_link_open_dkri_t6opcodeE"></span><span id="rmt_prov_link_open_dkri_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__link__open__dkri__t_1aee019d3eac1f6debbc987fee757a1eea"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8059</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25rmt_prov_link_open_dkri_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25rmt_prov_link_open_dkri_t14dkri_procedureE">
+<span id="_CPPv3N25rmt_prov_link_open_dkri_t14dkri_procedureE"></span><span id="_CPPv2N25rmt_prov_link_open_dkri_t14dkri_procedureE"></span><span id="rmt_prov_link_open_dkri_t::dkri_procedure__rmt_prov_dkri_procedure_t"></span><span class="target" id="structrmt__prov__link__open__dkri__t_1af280ce8e364df8b80015f763eb45d679"></span><a class="reference internal" href="#_CPPv425rmt_prov_dkri_procedure_t" title="rmt_prov_dkri_procedure_t"><span class="n"><span class="pre">rmt_prov_dkri_procedure_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dkri_procedure</span></span></span><a class="headerlink" href="#_CPPv4N25rmt_prov_link_open_dkri_t14dkri_procedureE" title="Link to this definition"></a><br /></dt>
+<dd><p>DKRI procedure. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421rmt_prov_link_close_t">
+<span id="_CPPv321rmt_prov_link_close_t"></span><span id="_CPPv221rmt_prov_link_close_t"></span><span id="rmt_prov_link_close_t"></span><span class="target" id="structrmt__prov__link__close__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_link_close_t</span></span></span><a class="headerlink" href="#_CPPv421rmt_prov_link_close_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Close link message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_link_close_t6opcodeE">
+<span id="_CPPv3N21rmt_prov_link_close_t6opcodeE"></span><span id="_CPPv2N21rmt_prov_link_close_t6opcodeE"></span><span id="rmt_prov_link_close_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__link__close__t_1a46da2075ea35ec66384fd745ed306396"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x805A</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_link_close_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_link_close_t6reasonE">
+<span id="_CPPv3N21rmt_prov_link_close_t6reasonE"></span><span id="_CPPv2N21rmt_prov_link_close_t6reasonE"></span><span id="rmt_prov_link_close_t::reason__rmt_prov_link_close_reason_t"></span><span class="target" id="structrmt__prov__link__close__t_1a1f4e7cd2bba1e4ea147f470880a3e8c0"></span><a class="reference internal" href="#_CPPv428rmt_prov_link_close_reason_t" title="rmt_prov_link_close_reason_t"><span class="n"><span class="pre">rmt_prov_link_close_reason_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reason</span></span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_link_close_t6reasonE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reason for link closure. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422rmt_prov_link_status_t">
+<span id="_CPPv322rmt_prov_link_status_t"></span><span id="_CPPv222rmt_prov_link_status_t"></span><span id="rmt_prov_link_status_t"></span><span class="target" id="structrmt__prov__link__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_link_status_t</span></span></span><a class="headerlink" href="#_CPPv422rmt_prov_link_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Link status message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_link_status_t6opcodeE">
+<span id="_CPPv3N22rmt_prov_link_status_t6opcodeE"></span><span id="_CPPv2N22rmt_prov_link_status_t6opcodeE"></span><span id="rmt_prov_link_status_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__link__status__t_1af3420484d116b7a1ca3acbc035f1d555"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x805B</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_link_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_link_status_t6statusE">
+<span id="_CPPv3N22rmt_prov_link_status_t6statusE"></span><span id="_CPPv2N22rmt_prov_link_status_t6statusE"></span><span id="rmt_prov_link_status_t::status__rmt_prov_status_t"></span><span class="target" id="structrmt__prov__link__status__t_1adaa278db97a679da2d86fe7795259117"></span><a class="reference internal" href="#_CPPv417rmt_prov_status_t" title="rmt_prov_status_t"><span class="n"><span class="pre">rmt_prov_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_link_status_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Link status. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_link_status_t10link_stateE">
+<span id="_CPPv3N22rmt_prov_link_status_t10link_stateE"></span><span id="_CPPv2N22rmt_prov_link_status_t10link_stateE"></span><span id="rmt_prov_link_status_t::link_state__rmt_prov_link_state_t"></span><span class="target" id="structrmt__prov__link__status__t_1ac6e34ba79cc6c2b4c4654a66f36ea0b7"></span><a class="reference internal" href="#_CPPv421rmt_prov_link_state_t" title="rmt_prov_link_state_t"><span class="n"><span class="pre">rmt_prov_link_state_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">link_state</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_link_status_t10link_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p>Current link state. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422rmt_prov_link_report_t">
+<span id="_CPPv322rmt_prov_link_report_t"></span><span id="_CPPv222rmt_prov_link_report_t"></span><span id="rmt_prov_link_report_t"></span><span class="target" id="structrmt__prov__link__report__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_link_report_t</span></span></span><a class="headerlink" href="#_CPPv422rmt_prov_link_report_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Link report message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_link_report_t6opcodeE">
+<span id="_CPPv3N22rmt_prov_link_report_t6opcodeE"></span><span id="_CPPv2N22rmt_prov_link_report_t6opcodeE"></span><span id="rmt_prov_link_report_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__link__report__t_1a498abb2c5f0f0045cba50540bd4e95fa"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x805C</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_link_report_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_link_report_t6statusE">
+<span id="_CPPv3N22rmt_prov_link_report_t6statusE"></span><span id="_CPPv2N22rmt_prov_link_report_t6statusE"></span><span id="rmt_prov_link_report_t::status__rmt_prov_status_t"></span><span class="target" id="structrmt__prov__link__report__t_1adaa278db97a679da2d86fe7795259117"></span><a class="reference internal" href="#_CPPv417rmt_prov_status_t" title="rmt_prov_status_t"><span class="n"><span class="pre">rmt_prov_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_link_report_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Report status. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_link_report_t10link_stateE">
+<span id="_CPPv3N22rmt_prov_link_report_t10link_stateE"></span><span id="_CPPv2N22rmt_prov_link_report_t10link_stateE"></span><span id="rmt_prov_link_report_t::link_state__rmt_prov_link_state_t"></span><span class="target" id="structrmt__prov__link__report__t_1ac6e34ba79cc6c2b4c4654a66f36ea0b7"></span><a class="reference internal" href="#_CPPv421rmt_prov_link_state_t" title="rmt_prov_link_state_t"><span class="n"><span class="pre">rmt_prov_link_state_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">link_state</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_link_report_t10link_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p>Current state of the link. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22rmt_prov_link_report_t6reasonE">
+<span id="_CPPv3N22rmt_prov_link_report_t6reasonE"></span><span id="_CPPv2N22rmt_prov_link_report_t6reasonE"></span><span id="rmt_prov_link_report_t::reason__pb_adv_link_close_reason_t"></span><span class="target" id="structrmt__prov__link__report__t_1ac96c71c60fca8b7840313f7546b43ad3"></span><a class="reference internal" href="group___pb___adv___exported___types.html#_CPPv426pb_adv_link_close_reason_t" title="pb_adv_link_close_reason_t"><span class="n"><span class="pre">pb_adv_link_close_reason_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reason</span></span></span><a class="headerlink" href="#_CPPv4N22rmt_prov_link_report_t6reasonE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reason for link closure. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419rmt_prov_pdu_send_t">
+<span id="_CPPv319rmt_prov_pdu_send_t"></span><span id="_CPPv219rmt_prov_pdu_send_t"></span><span id="rmt_prov_pdu_send_t"></span><span class="target" id="structrmt__prov__pdu__send__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_pdu_send_t</span></span></span><a class="headerlink" href="#_CPPv419rmt_prov_pdu_send_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Send PDU message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19rmt_prov_pdu_send_t6opcodeE">
+<span id="_CPPv3N19rmt_prov_pdu_send_t6opcodeE"></span><span id="_CPPv2N19rmt_prov_pdu_send_t6opcodeE"></span><span id="rmt_prov_pdu_send_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__pdu__send__t_1af7f20b12025ba8176c42a81aeee4b1c3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x805D</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19rmt_prov_pdu_send_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19rmt_prov_pdu_send_t16outbound_pdu_numE">
+<span id="_CPPv3N19rmt_prov_pdu_send_t16outbound_pdu_numE"></span><span id="_CPPv2N19rmt_prov_pdu_send_t16outbound_pdu_numE"></span><span id="rmt_prov_pdu_send_t::outbound_pdu_num__uint8_t"></span><span class="target" id="structrmt__prov__pdu__send__t_1aba8d8010070d21fdacc4f03f5be372d5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outbound_pdu_num</span></span></span><a class="headerlink" href="#_CPPv4N19rmt_prov_pdu_send_t16outbound_pdu_numE" title="Link to this definition"></a><br /></dt>
+<dd><p>Number of outbound PDUs. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19rmt_prov_pdu_send_t3pduE">
+<span id="_CPPv3N19rmt_prov_pdu_send_t3pduE"></span><span id="_CPPv2N19rmt_prov_pdu_send_t3pduE"></span><span id="rmt_prov_pdu_send_t::pdu__uint8_tA"></span><span class="target" id="structrmt__prov__pdu__send__t_1a7dc6be93fb4c3277fbd80fc3574220fa"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pdu</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19rmt_prov_pdu_send_t3pduE" title="Link to this definition"></a><br /></dt>
+<dd><p>PDU data. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430rmt_prov_pdu_outbound_report_t">
+<span id="_CPPv330rmt_prov_pdu_outbound_report_t"></span><span id="_CPPv230rmt_prov_pdu_outbound_report_t"></span><span id="rmt_prov_pdu_outbound_report_t"></span><span class="target" id="structrmt__prov__pdu__outbound__report__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_pdu_outbound_report_t</span></span></span><a class="headerlink" href="#_CPPv430rmt_prov_pdu_outbound_report_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Outbound PDU report message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30rmt_prov_pdu_outbound_report_t6opcodeE">
+<span id="_CPPv3N30rmt_prov_pdu_outbound_report_t6opcodeE"></span><span id="_CPPv2N30rmt_prov_pdu_outbound_report_t6opcodeE"></span><span id="rmt_prov_pdu_outbound_report_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__pdu__outbound__report__t_1a609ddaf321ef357704191e9ffc66a7a3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x805E</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N30rmt_prov_pdu_outbound_report_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30rmt_prov_pdu_outbound_report_t16outbound_pdu_numE">
+<span id="_CPPv3N30rmt_prov_pdu_outbound_report_t16outbound_pdu_numE"></span><span id="_CPPv2N30rmt_prov_pdu_outbound_report_t16outbound_pdu_numE"></span><span id="rmt_prov_pdu_outbound_report_t::outbound_pdu_num__uint8_t"></span><span class="target" id="structrmt__prov__pdu__outbound__report__t_1aba8d8010070d21fdacc4f03f5be372d5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outbound_pdu_num</span></span></span><a class="headerlink" href="#_CPPv4N30rmt_prov_pdu_outbound_report_t16outbound_pdu_numE" title="Link to this definition"></a><br /></dt>
+<dd><p>Number of outbound PDUs. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421rmt_prov_pdu_report_t">
+<span id="_CPPv321rmt_prov_pdu_report_t"></span><span id="_CPPv221rmt_prov_pdu_report_t"></span><span id="rmt_prov_pdu_report_t"></span><span class="target" id="structrmt__prov__pdu__report__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rmt_prov_pdu_report_t</span></span></span><a class="headerlink" href="#_CPPv421rmt_prov_pdu_report_t" title="Link to this definition"></a><br /></dt>
+<dd><p>PDU report message structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_pdu_report_t6opcodeE">
+<span id="_CPPv3N21rmt_prov_pdu_report_t6opcodeE"></span><span id="_CPPv2N21rmt_prov_pdu_report_t6opcodeE"></span><span id="rmt_prov_pdu_report_t::opcode__uint8_tA"></span><span class="target" id="structrmt__prov__pdu__report__t_1ac5fc557d74874aa621b193e45c990e50"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x805F</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_pdu_report_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_pdu_report_t15inbound_pdu_numE">
+<span id="_CPPv3N21rmt_prov_pdu_report_t15inbound_pdu_numE"></span><span id="_CPPv2N21rmt_prov_pdu_report_t15inbound_pdu_numE"></span><span id="rmt_prov_pdu_report_t::inbound_pdu_num__uint8_t"></span><span class="target" id="structrmt__prov__pdu__report__t_1a9bb950199b5bc10abada7d07228ea0a1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inbound_pdu_num</span></span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_pdu_report_t15inbound_pdu_numE" title="Link to this definition"></a><br /></dt>
+<dd><p>Number of inbound PDUs. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21rmt_prov_pdu_report_t3pduE">
+<span id="_CPPv3N21rmt_prov_pdu_report_t3pduE"></span><span id="_CPPv2N21rmt_prov_pdu_report_t3pduE"></span><span id="rmt_prov_pdu_report_t::pdu__uint8_tA"></span><span class="target" id="structrmt__prov__pdu__report__t_1a7dc6be93fb4c3277fbd80fc3574220fa"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pdu</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21rmt_prov_pdu_report_t3pduE" title="Link to this definition"></a><br /></dt>
+<dd><p>PDU data. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___c_l_i_e_n_t___d_a_t_a.html" class="btn btn-neutral float-left" title="Client Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g___m_o_d_e_l___i_d.html" class="btn btn-neutral float-right" title="Model ID" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

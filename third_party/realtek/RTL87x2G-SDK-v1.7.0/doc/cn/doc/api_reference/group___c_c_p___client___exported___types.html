@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Call Control Client Exported Types &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">Call Control Client Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="call-control-client-exported-types">
+<h1>Call Control Client Exported Types<a class="headerlink" href="#call-control-client-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___c_c_p___client___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">CCP_Client_Exported_Types</span></span></dt>
+<dd><dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv455T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM">
+<span id="_CPPv355T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM"></span><span id="_CPPv255T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m___o_r_i_g_i_n_a_t_e___o_p_c_o_d_e___p_a_r_a_m"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM</span></span></span><a class="headerlink" href="#_CPPv455T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameter of opcode Originate in <a class="reference internal" href="#struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m"><span class="std std-ref">T_CCP_CLIENT_WRITE_CALL_CP_PARAM</span></a>. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N55T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM5p_uriE">
+<span id="_CPPv3N55T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM5p_uriE"></span><span id="_CPPv2N55T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM5p_uriE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM::p_uri__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m___o_r_i_g_i_n_a_t_e___o_p_c_o_d_e___p_a_r_a_m_1aeb74bd06accefc119f2e64d6c9324208"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_uri</span></span></span><a class="headerlink" href="#_CPPv4N55T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM5p_uriE" title="Link to this definition"></a><br /></dt>
+<dd><p>Uniform Resource Identifier (URI) of the outgoing call.</p>
+<p>The URI is comprised of the URI scheme followed by the Caller ID.</p>
+<p>uri_scheme:caller_id. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N55T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM7uri_lenE">
+<span id="_CPPv3N55T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM7uri_lenE"></span><span id="_CPPv2N55T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM7uri_lenE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM::uri_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m___o_r_i_g_i_n_a_t_e___o_p_c_o_d_e___p_a_r_a_m_1ab3e65f5e44ae4b1b6da937b50db9240c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uri_len</span></span></span><a class="headerlink" href="#_CPPv4N55T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM7uri_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv450T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM">
+<span id="_CPPv350T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM"></span><span id="_CPPv250T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m___j_o_i_n___o_p_c_o_d_e___p_a_r_a_m"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM</span></span></span><a class="headerlink" href="#_CPPv450T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameter of opcode Join in <a class="reference internal" href="#struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m"><span class="std std-ref">T_CCP_CLIENT_WRITE_CALL_CP_PARAM</span></a>. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N50T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM22p_list_of_call_indexesE">
+<span id="_CPPv3N50T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM22p_list_of_call_indexesE"></span><span id="_CPPv2N50T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM22p_list_of_call_indexesE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM::p_list_of_call_indexes__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m___j_o_i_n___o_p_c_o_d_e___p_a_r_a_m_1a5792a1ee2b57ed9bc5082a306b1e6f88"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_list_of_call_indexes</span></span></span><a class="headerlink" href="#_CPPv4N50T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM22p_list_of_call_indexesE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N50T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM24list_of_call_indexes_lenE">
+<span id="_CPPv3N50T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM24list_of_call_indexes_lenE"></span><span id="_CPPv2N50T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM24list_of_call_indexes_lenE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM::list_of_call_indexes_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m___j_o_i_n___o_p_c_o_d_e___p_a_r_a_m_1ad950e84a6c333aa880ed65d32035e4a1"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">list_of_call_indexes_len</span></span></span><a class="headerlink" href="#_CPPv4N50T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM24list_of_call_indexes_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv432T_CCP_CLIENT_WRITE_CALL_CP_PARAM">
+<span id="_CPPv332T_CCP_CLIENT_WRITE_CALL_CP_PARAM"></span><span id="_CPPv232T_CCP_CLIENT_WRITE_CALL_CP_PARAM"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_WRITE_CALL_CP_PARAM</span></span></span><a class="headerlink" href="#_CPPv432T_CCP_CLIENT_WRITE_CALL_CP_PARAM" title="Link to this definition"></a><br /></dt>
+<dd><p>Write Call Control Point characteristic parameter. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM6opcodeE">
+<span id="_CPPv3N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM6opcodeE"></span><span id="_CPPv2N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM6opcodeE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM::opcode__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m_1a5c1b56e6bccc2a95dbddf1a08e56e87d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><a class="headerlink" href="#_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___t_b_s___c_a_l_l___c_o_n_t_r_o_l___p_o_i_n_t___c_h_a_r___o_p_c_o_d_e.html#group___t_b_s___c_a_l_l___c_o_n_t_r_o_l___p_o_i_n_t___c_h_a_r___o_p_c_o_d_e"><span class="std std-ref">Call Control Point Characteristic Opcodes</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM24accept_opcode_call_indexE">
+<span id="_CPPv3N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM24accept_opcode_call_indexE"></span><span id="_CPPv2N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM24accept_opcode_call_indexE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM::accept_opcode_call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m_1ab547376902a3c219d9e04a19707f6274"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">accept_opcode_call_index</span></span></span><a class="headerlink" href="#_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM24accept_opcode_call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM27terminate_opcode_call_indexE">
+<span id="_CPPv3N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM27terminate_opcode_call_indexE"></span><span id="_CPPv2N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM27terminate_opcode_call_indexE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM::terminate_opcode_call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m_1a8a123e2396383f7539918df965e29191"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">terminate_opcode_call_index</span></span></span><a class="headerlink" href="#_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM27terminate_opcode_call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM28local_hold_opcode_call_indexE">
+<span id="_CPPv3N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM28local_hold_opcode_call_indexE"></span><span id="_CPPv2N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM28local_hold_opcode_call_indexE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM::local_hold_opcode_call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m_1af3e3880979a63170133f2b6a823a5ab0"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">local_hold_opcode_call_index</span></span></span><a class="headerlink" href="#_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM28local_hold_opcode_call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM32local_retrieve_opcode_call_indexE">
+<span id="_CPPv3N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM32local_retrieve_opcode_call_indexE"></span><span id="_CPPv2N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM32local_retrieve_opcode_call_indexE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM::local_retrieve_opcode_call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m_1a859f6af1f57a1d8c06500339060421e1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">local_retrieve_opcode_call_index</span></span></span><a class="headerlink" href="#_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM32local_retrieve_opcode_call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM22originate_opcode_paramE">
+<span id="_CPPv3N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM22originate_opcode_paramE"></span><span id="_CPPv2N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM22originate_opcode_paramE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM::originate_opcode_param__T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m_1a06bff401a97514a6ab6ef87b19b68044"></span><a class="reference internal" href="#_CPPv455T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM" title="T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM"><span class="n"><span class="pre">T_CCP_CLIENT_WRITE_CALL_CP_PARAM_ORIGINATE_OPCODE_PARAM</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">originate_opcode_param</span></span></span><a class="headerlink" href="#_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM22originate_opcode_paramE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM17join_opcode_paramE">
+<span id="_CPPv3N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM17join_opcode_paramE"></span><span id="_CPPv2N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM17join_opcode_paramE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM::join_opcode_param__T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m_1af0e9453a94011d4e41a13023c4e0a5b3"></span><a class="reference internal" href="#_CPPv450T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM" title="T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM"><span class="n"><span class="pre">T_CCP_CLIENT_WRITE_CALL_CP_PARAM_JOIN_OPCODE_PARAM</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">join_opcode_param</span></span></span><a class="headerlink" href="#_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM17join_opcode_paramE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM5paramE">
+<span id="_CPPv3N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM5paramE"></span><span id="_CPPv2N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM5paramE"></span><span id="T_CCP_CLIENT_WRITE_CALL_CP_PARAM::param__T_CCP_CLIENT_WRITE_CALL_CP_PARAM"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___w_r_i_t_e___c_a_l_l___c_p___p_a_r_a_m_1af800074b8f3cb25f2ff709381ea542c0"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv432T_CCP_CLIENT_WRITE_CALL_CP_PARAM" title="T_CCP_CLIENT_WRITE_CALL_CP_PARAM"><span class="n"><span class="pre">T_CCP_CLIENT_WRITE_CALL_CP_PARAM</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">param</span></span></span><a class="headerlink" href="#_CPPv4N32T_CCP_CLIENT_WRITE_CALL_CP_PARAM5paramE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv433T_CCP_CLIENT_BEARER_PROVIDER_NAME">
+<span id="_CPPv333T_CCP_CLIENT_BEARER_PROVIDER_NAME"></span><span id="_CPPv233T_CCP_CLIENT_BEARER_PROVIDER_NAME"></span><span id="T_CCP_CLIENT_BEARER_PROVIDER_NAME"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___p_r_o_v_i_d_e_r___n_a_m_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_PROVIDER_NAME</span></span></span><a class="headerlink" href="#_CPPv433T_CCP_CLIENT_BEARER_PROVIDER_NAME" title="Link to this definition"></a><br /></dt>
+<dd><p>Bearer Provider Name characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33T_CCP_CLIENT_BEARER_PROVIDER_NAME22p_bearer_provider_nameE">
+<span id="_CPPv3N33T_CCP_CLIENT_BEARER_PROVIDER_NAME22p_bearer_provider_nameE"></span><span id="_CPPv2N33T_CCP_CLIENT_BEARER_PROVIDER_NAME22p_bearer_provider_nameE"></span><span id="T_CCP_CLIENT_BEARER_PROVIDER_NAME::p_bearer_provider_name__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___p_r_o_v_i_d_e_r___n_a_m_e_1a64b01410e3ddedc342ec89152340a644"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_bearer_provider_name</span></span></span><a class="headerlink" href="#_CPPv4N33T_CCP_CLIENT_BEARER_PROVIDER_NAME22p_bearer_provider_nameE" title="Link to this definition"></a><br /></dt>
+<dd><p>UTF-8 string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33T_CCP_CLIENT_BEARER_PROVIDER_NAME24bearer_provider_name_lenE">
+<span id="_CPPv3N33T_CCP_CLIENT_BEARER_PROVIDER_NAME24bearer_provider_name_lenE"></span><span id="_CPPv2N33T_CCP_CLIENT_BEARER_PROVIDER_NAME24bearer_provider_name_lenE"></span><span id="T_CCP_CLIENT_BEARER_PROVIDER_NAME::bearer_provider_name_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___p_r_o_v_i_d_e_r___n_a_m_e_1ac431869b7c9f0ae4a570380a52338d91"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_provider_name_len</span></span></span><a class="headerlink" href="#_CPPv4N33T_CCP_CLIENT_BEARER_PROVIDER_NAME24bearer_provider_name_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423T_CCP_CLIENT_BEARER_UCI">
+<span id="_CPPv323T_CCP_CLIENT_BEARER_UCI"></span><span id="_CPPv223T_CCP_CLIENT_BEARER_UCI"></span><span id="T_CCP_CLIENT_BEARER_UCI"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___u_c_i"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_UCI</span></span></span><a class="headerlink" href="#_CPPv423T_CCP_CLIENT_BEARER_UCI" title="Link to this definition"></a><br /></dt>
+<dd><p>Bearer Uniform Caller Identifier (UCI) characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_CCP_CLIENT_BEARER_UCI12p_bearer_uciE">
+<span id="_CPPv3N23T_CCP_CLIENT_BEARER_UCI12p_bearer_uciE"></span><span id="_CPPv2N23T_CCP_CLIENT_BEARER_UCI12p_bearer_uciE"></span><span id="T_CCP_CLIENT_BEARER_UCI::p_bearer_uci__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___u_c_i_1aef441c1a557782e5473e014d45fbbff9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_bearer_uci</span></span></span><a class="headerlink" href="#_CPPv4N23T_CCP_CLIENT_BEARER_UCI12p_bearer_uciE" title="Link to this definition"></a><br /></dt>
+<dd><p>Identifier of the telephone bearer.</p>
+<p>The 'client_id' field of the UCI table is used to populate the Bearer UCI characteristic as a UTF-8 string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_CCP_CLIENT_BEARER_UCI14bearer_uci_lenE">
+<span id="_CPPv3N23T_CCP_CLIENT_BEARER_UCI14bearer_uci_lenE"></span><span id="_CPPv2N23T_CCP_CLIENT_BEARER_UCI14bearer_uci_lenE"></span><span id="T_CCP_CLIENT_BEARER_UCI::bearer_uci_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___u_c_i_1aeb8ed9b2fd028c3950b074b5bdc618f2"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_uci_len</span></span></span><a class="headerlink" href="#_CPPv4N23T_CCP_CLIENT_BEARER_UCI14bearer_uci_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430T_CCP_CLIENT_BEARER_TECHNOLOGY">
+<span id="_CPPv330T_CCP_CLIENT_BEARER_TECHNOLOGY"></span><span id="_CPPv230T_CCP_CLIENT_BEARER_TECHNOLOGY"></span><span id="T_CCP_CLIENT_BEARER_TECHNOLOGY"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___t_e_c_h_n_o_l_o_g_y"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_TECHNOLOGY</span></span></span><a class="headerlink" href="#_CPPv430T_CCP_CLIENT_BEARER_TECHNOLOGY" title="Link to this definition"></a><br /></dt>
+<dd><p>Bearer Technology characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_CCP_CLIENT_BEARER_TECHNOLOGY19p_bearer_technologyE">
+<span id="_CPPv3N30T_CCP_CLIENT_BEARER_TECHNOLOGY19p_bearer_technologyE"></span><span id="_CPPv2N30T_CCP_CLIENT_BEARER_TECHNOLOGY19p_bearer_technologyE"></span><span id="T_CCP_CLIENT_BEARER_TECHNOLOGY::p_bearer_technology__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___t_e_c_h_n_o_l_o_g_y_1a0d7216fdb975f24d0062535d3ac68c58"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_bearer_technology</span></span></span><a class="headerlink" href="#_CPPv4N30T_CCP_CLIENT_BEARER_TECHNOLOGY19p_bearer_technologyE" title="Link to this definition"></a><br /></dt>
+<dd><p>Type of technology for telephone bearer: <a class="reference internal" href="group___t_b_s___b_e_a_r_e_r___t_e_c_h_n_o_l_o_g_y___c_h_a_r___v_a_l_u_e.html#group___t_b_s___b_e_a_r_e_r___t_e_c_h_n_o_l_o_g_y___c_h_a_r___v_a_l_u_e"><span class="std std-ref">Bearer Technology Characteristic Values</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_CCP_CLIENT_BEARER_TECHNOLOGY21bearer_technology_lenE">
+<span id="_CPPv3N30T_CCP_CLIENT_BEARER_TECHNOLOGY21bearer_technology_lenE"></span><span id="_CPPv2N30T_CCP_CLIENT_BEARER_TECHNOLOGY21bearer_technology_lenE"></span><span id="T_CCP_CLIENT_BEARER_TECHNOLOGY::bearer_technology_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___t_e_c_h_n_o_l_o_g_y_1ac8d5f1f7bc238eea1909521e5f86074e"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_technology_len</span></span></span><a class="headerlink" href="#_CPPv4N30T_CCP_CLIENT_BEARER_TECHNOLOGY21bearer_technology_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv446T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST">
+<span id="_CPPv346T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST"></span><span id="_CPPv246T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST"></span><span id="T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___u_r_i___s_c_h_e_m_e_s___s_u_p_p_o_r_t_e_d___l_i_s_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST</span></span></span><a class="headerlink" href="#_CPPv446T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST" title="Link to this definition"></a><br /></dt>
+<dd><p>Bearer URI Schemes Supported List characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N46T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST35p_bearer_uri_schemes_supported_listE">
+<span id="_CPPv3N46T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST35p_bearer_uri_schemes_supported_listE"></span><span id="_CPPv2N46T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST35p_bearer_uri_schemes_supported_listE"></span><span id="T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST::p_bearer_uri_schemes_supported_list__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___u_r_i___s_c_h_e_m_e_s___s_u_p_p_o_r_t_e_d___l_i_s_t_1a7a1026580eca0df457af50bcb09e12ed"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_bearer_uri_schemes_supported_list</span></span></span><a class="headerlink" href="#_CPPv4N46T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST35p_bearer_uri_schemes_supported_listE" title="Link to this definition"></a><br /></dt>
+<dd><p>A comma-delimited list of supported URI schemes expressed as a UTF-8 string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N46T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST37bearer_uri_schemes_supported_list_lenE">
+<span id="_CPPv3N46T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST37bearer_uri_schemes_supported_list_lenE"></span><span id="_CPPv2N46T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST37bearer_uri_schemes_supported_list_lenE"></span><span id="T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST::bearer_uri_schemes_supported_list_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___u_r_i___s_c_h_e_m_e_s___s_u_p_p_o_r_t_e_d___l_i_s_t_1ad63c34b31d7b9b31474966017c5d1fe9"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_uri_schemes_supported_list_len</span></span></span><a class="headerlink" href="#_CPPv4N46T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST37bearer_uri_schemes_supported_list_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv438T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS">
+<span id="_CPPv338T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS"></span><span id="_CPPv238T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS"></span><span id="T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___l_i_s_t___c_u_r_r_e_n_t___c_a_l_l_s"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS</span></span></span><a class="headerlink" href="#_CPPv438T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS" title="Link to this definition"></a><br /></dt>
+<dd><p>Bearer List Current Calls characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS27p_bearer_list_current_callsE">
+<span id="_CPPv3N38T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS27p_bearer_list_current_callsE"></span><span id="_CPPv2N38T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS27p_bearer_list_current_callsE"></span><span id="T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS::p_bearer_list_current_calls__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___l_i_s_t___c_u_r_r_e_n_t___c_a_l_l_s_1a6c6633fc03b3e03a1b1205d4024f821f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_bearer_list_current_calls</span></span></span><a class="headerlink" href="#_CPPv4N38T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS27p_bearer_list_current_callsE" title="Link to this definition"></a><br /></dt>
+<dd><p>A list of current calls.</p>
+<p>Each list item in the list of calls shall have the structure.<ul class="simple">
+<li><p>List_Item_Length[i] (1 octet) : Total length of the item, excluding the octet for the List_Item_Length field itself.</p></li>
+<li><p>Call_Index[i] (1 octet): A number chosen by Call Control Server to identify call.</p></li>
+<li><p>Call_State[i] (1 octet): <a class="reference internal" href="group___t___t_b_s___c_a_l_l___s_t_a_t_e.html#group___t___t_b_s___c_a_l_l___s_t_a_t_e"><span class="std std-ref">Call State of the Call</span></a>.</p></li>
+<li><p>Call_Flags[i] (1 octet): A bit field, <a class="reference internal" href="group___t_b_s___c_a_l_l___f_l_a_g_s___b_i_t___def.html#group___t_b_s___c_a_l_l___f_l_a_g_s___b_i_t___def"><span class="std std-ref">Call Flags Bit Definitions</span></a>.</p></li>
+<li><p>Call_URI[i] (variable): Incoming Call URI or Outgoing Call URI. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS29bearer_list_current_calls_lenE">
+<span id="_CPPv3N38T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS29bearer_list_current_calls_lenE"></span><span id="_CPPv2N38T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS29bearer_list_current_calls_lenE"></span><span id="T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS::bearer_list_current_calls_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___b_e_a_r_e_r___l_i_s_t___c_u_r_r_e_n_t___c_a_l_l_s_1a49908b8eb985b6ad5c59672290020410"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_list_current_calls_len</span></span></span><a class="headerlink" href="#_CPPv4N38T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS29bearer_list_current_calls_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>0 : No calls are available.</p></li>
+<li><p>Other values. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv444T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI">
+<span id="_CPPv344T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI"></span><span id="_CPPv244T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI"></span><span id="T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___i_n_c_o_m_i_n_g___c_a_l_l___t_a_r_g_e_t___b_e_a_r_e_r___u_r_i"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI</span></span></span><a class="headerlink" href="#_CPPv444T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI" title="Link to this definition"></a><br /></dt>
+<dd><p>Incoming Call Target Bearer URI characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI10call_indexE">
+<span id="_CPPv3N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI10call_indexE"></span><span id="_CPPv2N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI10call_indexE"></span><span id="T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI::call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___i_n_c_o_m_i_n_g___c_a_l_l___t_a_r_g_e_t___b_e_a_r_e_r___u_r_i_1a11dcbc3efd906020a78b7d6a2195cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_index</span></span></span><a class="headerlink" href="#_CPPv4N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI10call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI26p_incoming_call_target_uriE">
+<span id="_CPPv3N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI26p_incoming_call_target_uriE"></span><span id="_CPPv2N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI26p_incoming_call_target_uriE"></span><span id="T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI::p_incoming_call_target_uri__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___i_n_c_o_m_i_n_g___c_a_l_l___t_a_r_g_e_t___b_e_a_r_e_r___u_r_i_1a7d7ff57556fd65a31e2b0ac08f52dceb"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_incoming_call_target_uri</span></span></span><a class="headerlink" href="#_CPPv4N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI26p_incoming_call_target_uriE" title="Link to this definition"></a><br /></dt>
+<dd><p>URI of the target of an incoming call.</p>
+<p>The URI is comprised of the URI scheme followed by the identity of the target of the call.</p>
+<p>uri_scheme:identity_target_call. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI28incoming_call_target_uri_lenE">
+<span id="_CPPv3N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI28incoming_call_target_uri_lenE"></span><span id="_CPPv2N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI28incoming_call_target_uri_lenE"></span><span id="T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI::incoming_call_target_uri_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___i_n_c_o_m_i_n_g___c_a_l_l___t_a_r_g_e_t___b_e_a_r_e_r___u_r_i_1ada70a90719c897b0ff3c97464723cdcb"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">incoming_call_target_uri_len</span></span></span><a class="headerlink" href="#_CPPv4N44T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI28incoming_call_target_uri_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423T_CCP_CLIENT_CALL_STATE">
+<span id="_CPPv323T_CCP_CLIENT_CALL_STATE"></span><span id="_CPPv223T_CCP_CLIENT_CALL_STATE"></span><span id="T_CCP_CLIENT_CALL_STATE"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___s_t_a_t_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_CALL_STATE</span></span></span><a class="headerlink" href="#_CPPv423T_CCP_CLIENT_CALL_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>Call State characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_CCP_CLIENT_CALL_STATE12p_call_stateE">
+<span id="_CPPv3N23T_CCP_CLIENT_CALL_STATE12p_call_stateE"></span><span id="_CPPv2N23T_CCP_CLIENT_CALL_STATE12p_call_stateE"></span><span id="T_CCP_CLIENT_CALL_STATE::p_call_state__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___s_t_a_t_e_1a2421168b9f5a93cf07fbe002f14d7a16"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_call_state</span></span></span><a class="headerlink" href="#_CPPv4N23T_CCP_CLIENT_CALL_STATE12p_call_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p>An array of members.</p>
+<p>Each 3 octets, and represents an abstraction of the different states that telephone calls are in.</p>
+<p>Each member in the array shall have the structure.<ul class="simple">
+<li><p>Call_Index[i] (1 octet): A number chosen by Call Control Server to identify call.</p></li>
+<li><p>State[i] (1 octet): <a class="reference internal" href="group___t___t_b_s___c_a_l_l___s_t_a_t_e.html#group___t___t_b_s___c_a_l_l___s_t_a_t_e"><span class="std std-ref">Call State of the Call</span></a>.</p></li>
+<li><p>Call_Flags[i] (1 octet): A bit field, <a class="reference internal" href="group___t_b_s___c_a_l_l___f_l_a_g_s___b_i_t___def.html#group___t_b_s___c_a_l_l___f_l_a_g_s___b_i_t___def"><span class="std std-ref">Call Flags Bit Definitions</span></a>. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_CCP_CLIENT_CALL_STATE14call_state_lenE">
+<span id="_CPPv3N23T_CCP_CLIENT_CALL_STATE14call_state_lenE"></span><span id="_CPPv2N23T_CCP_CLIENT_CALL_STATE14call_state_lenE"></span><span id="T_CCP_CLIENT_CALL_STATE::call_state_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___s_t_a_t_e_1a3ffe261904bbfb0dcc7ba2ca5e043738"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_state_len</span></span></span><a class="headerlink" href="#_CPPv4N23T_CCP_CLIENT_CALL_STATE14call_state_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>0 : No calls are available.</p></li>
+<li><p>Other values. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431T_CCP_CLIENT_TERMINATION_REASON">
+<span id="_CPPv331T_CCP_CLIENT_TERMINATION_REASON"></span><span id="_CPPv231T_CCP_CLIENT_TERMINATION_REASON"></span><span id="T_CCP_CLIENT_TERMINATION_REASON"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___t_e_r_m_i_n_a_t_i_o_n___r_e_a_s_o_n"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_TERMINATION_REASON</span></span></span><a class="headerlink" href="#_CPPv431T_CCP_CLIENT_TERMINATION_REASON" title="Link to this definition"></a><br /></dt>
+<dd><p>Termination Reason characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_CCP_CLIENT_TERMINATION_REASON10call_indexE">
+<span id="_CPPv3N31T_CCP_CLIENT_TERMINATION_REASON10call_indexE"></span><span id="_CPPv2N31T_CCP_CLIENT_TERMINATION_REASON10call_indexE"></span><span id="T_CCP_CLIENT_TERMINATION_REASON::call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___t_e_r_m_i_n_a_t_i_o_n___r_e_a_s_o_n_1a11dcbc3efd906020a78b7d6a2195cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_index</span></span></span><a class="headerlink" href="#_CPPv4N31T_CCP_CLIENT_TERMINATION_REASON10call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_CCP_CLIENT_TERMINATION_REASON11reason_codeE">
+<span id="_CPPv3N31T_CCP_CLIENT_TERMINATION_REASON11reason_codeE"></span><span id="_CPPv2N31T_CCP_CLIENT_TERMINATION_REASON11reason_codeE"></span><span id="T_CCP_CLIENT_TERMINATION_REASON::reason_code__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___t_e_r_m_i_n_a_t_i_o_n___r_e_a_s_o_n_1af1e994a73c4664042b579bd40c9f4901"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reason_code</span></span></span><a class="headerlink" href="#_CPPv4N31T_CCP_CLIENT_TERMINATION_REASON11reason_codeE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___t_b_s___t_e_r_m_i_n_a_t_i_o_n___r_e_a_s_o_n___c_o_d_e_s.html#group___t_b_s___t_e_r_m_i_n_a_t_i_o_n___r_e_a_s_o_n___c_o_d_e_s"><span class="std std-ref">Termination Reason Codes</span></a>. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426T_CCP_CLIENT_INCOMING_CALL">
+<span id="_CPPv326T_CCP_CLIENT_INCOMING_CALL"></span><span id="_CPPv226T_CCP_CLIENT_INCOMING_CALL"></span><span id="T_CCP_CLIENT_INCOMING_CALL"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___i_n_c_o_m_i_n_g___c_a_l_l"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_INCOMING_CALL</span></span></span><a class="headerlink" href="#_CPPv426T_CCP_CLIENT_INCOMING_CALL" title="Link to this definition"></a><br /></dt>
+<dd><p>Incoming Call characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_CCP_CLIENT_INCOMING_CALL10call_indexE">
+<span id="_CPPv3N26T_CCP_CLIENT_INCOMING_CALL10call_indexE"></span><span id="_CPPv2N26T_CCP_CLIENT_INCOMING_CALL10call_indexE"></span><span id="T_CCP_CLIENT_INCOMING_CALL::call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___i_n_c_o_m_i_n_g___c_a_l_l_1a11dcbc3efd906020a78b7d6a2195cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_index</span></span></span><a class="headerlink" href="#_CPPv4N26T_CCP_CLIENT_INCOMING_CALL10call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_CCP_CLIENT_INCOMING_CALL5p_uriE">
+<span id="_CPPv3N26T_CCP_CLIENT_INCOMING_CALL5p_uriE"></span><span id="_CPPv2N26T_CCP_CLIENT_INCOMING_CALL5p_uriE"></span><span id="T_CCP_CLIENT_INCOMING_CALL::p_uri__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___i_n_c_o_m_i_n_g___c_a_l_l_1aeb74bd06accefc119f2e64d6c9324208"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_uri</span></span></span><a class="headerlink" href="#_CPPv4N26T_CCP_CLIENT_INCOMING_CALL5p_uriE" title="Link to this definition"></a><br /></dt>
+<dd><p>URI of the incoming caller.</p>
+<p>The URI of the incoming call is comprised of the URI scheme followed by the Caller ID of the call as a UTF-8 string.</p>
+<p>uri_scheme:caller_id. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_CCP_CLIENT_INCOMING_CALL7uri_lenE">
+<span id="_CPPv3N26T_CCP_CLIENT_INCOMING_CALL7uri_lenE"></span><span id="_CPPv2N26T_CCP_CLIENT_INCOMING_CALL7uri_lenE"></span><span id="T_CCP_CLIENT_INCOMING_CALL::uri_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___i_n_c_o_m_i_n_g___c_a_l_l_1ab3e65f5e44ae4b1b6da937b50db9240c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uri_len</span></span></span><a class="headerlink" href="#_CPPv4N26T_CCP_CLIENT_INCOMING_CALL7uri_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431T_CCP_CLIENT_CALL_FRIENDLY_NAME">
+<span id="_CPPv331T_CCP_CLIENT_CALL_FRIENDLY_NAME"></span><span id="_CPPv231T_CCP_CLIENT_CALL_FRIENDLY_NAME"></span><span id="T_CCP_CLIENT_CALL_FRIENDLY_NAME"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___f_r_i_e_n_d_l_y___n_a_m_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_CALL_FRIENDLY_NAME</span></span></span><a class="headerlink" href="#_CPPv431T_CCP_CLIENT_CALL_FRIENDLY_NAME" title="Link to this definition"></a><br /></dt>
+<dd><p>Call Friendly Name characteristic. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_CCP_CLIENT_CALL_FRIENDLY_NAME10call_indexE">
+<span id="_CPPv3N31T_CCP_CLIENT_CALL_FRIENDLY_NAME10call_indexE"></span><span id="_CPPv2N31T_CCP_CLIENT_CALL_FRIENDLY_NAME10call_indexE"></span><span id="T_CCP_CLIENT_CALL_FRIENDLY_NAME::call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___f_r_i_e_n_d_l_y___n_a_m_e_1a11dcbc3efd906020a78b7d6a2195cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_index</span></span></span><a class="headerlink" href="#_CPPv4N31T_CCP_CLIENT_CALL_FRIENDLY_NAME10call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_CCP_CLIENT_CALL_FRIENDLY_NAME15p_friendly_nameE">
+<span id="_CPPv3N31T_CCP_CLIENT_CALL_FRIENDLY_NAME15p_friendly_nameE"></span><span id="_CPPv2N31T_CCP_CLIENT_CALL_FRIENDLY_NAME15p_friendly_nameE"></span><span id="T_CCP_CLIENT_CALL_FRIENDLY_NAME::p_friendly_name__uint8_tP"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___f_r_i_e_n_d_l_y___n_a_m_e_1a945fbe8672d9e3cc997aafef858e781c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_friendly_name</span></span></span><a class="headerlink" href="#_CPPv4N31T_CCP_CLIENT_CALL_FRIENDLY_NAME15p_friendly_nameE" title="Link to this definition"></a><br /></dt>
+<dd><p>Friendly name of the incoming call or outgoing call.</p>
+<p>UTF-8 string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_CCP_CLIENT_CALL_FRIENDLY_NAME17friendly_name_lenE">
+<span id="_CPPv3N31T_CCP_CLIENT_CALL_FRIENDLY_NAME17friendly_name_lenE"></span><span id="_CPPv2N31T_CCP_CLIENT_CALL_FRIENDLY_NAME17friendly_name_lenE"></span><span id="T_CCP_CLIENT_CALL_FRIENDLY_NAME::friendly_name_len__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___f_r_i_e_n_d_l_y___n_a_m_e_1a160038ed5e846326f2e3716a5328c2af"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">friendly_name_len</span></span></span><a class="headerlink" href="#_CPPv4N31T_CCP_CLIENT_CALL_FRIENDLY_NAME17friendly_name_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421T_CCP_CLIENT_DIS_DONE">
+<span id="_CPPv321T_CCP_CLIENT_DIS_DONE"></span><span id="_CPPv221T_CCP_CLIENT_DIS_DONE"></span><span id="T_CCP_CLIENT_DIS_DONE"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___d_i_s___d_o_n_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_DIS_DONE</span></span></span><a class="headerlink" href="#_CPPv421T_CCP_CLIENT_DIS_DONE" title="Link to this definition"></a><br /></dt>
+<dd><p>Data for <a class="reference internal" href="group___l_e_a___l_i_b___exported___types.html#group___l_e_a___l_i_b___exported___types_1ggabe1a2e587cdc57dc5de8e141de5d1b0ba3bbdedbb4bc67bd4429e84477de61bc1"><span class="std std-ref">LE_AUDIO_MSG_CCP_CLIENT_DIS_DONE</span></a>. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_CCP_CLIENT_DIS_DONE11conn_handleE">
+<span id="_CPPv3N21T_CCP_CLIENT_DIS_DONE11conn_handleE"></span><span id="_CPPv2N21T_CCP_CLIENT_DIS_DONE11conn_handleE"></span><span id="T_CCP_CLIENT_DIS_DONE::conn_handle__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___d_i_s___d_o_n_e_1a0d5ffe38d68e48d81e61fc6a4999ae68"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_handle</span></span></span><a class="headerlink" href="#_CPPv4N21T_CCP_CLIENT_DIS_DONE11conn_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_CCP_CLIENT_DIS_DONE8is_foundE">
+<span id="_CPPv3N21T_CCP_CLIENT_DIS_DONE8is_foundE"></span><span id="_CPPv2N21T_CCP_CLIENT_DIS_DONE8is_foundE"></span><span id="T_CCP_CLIENT_DIS_DONE::is_found__b"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___d_i_s___d_o_n_e_1aaf193e77dc196e79c86a8bc0384d3b1a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_found</span></span></span><a class="headerlink" href="#_CPPv4N21T_CCP_CLIENT_DIS_DONE8is_foundE" title="Link to this definition"></a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>true : Service is found.</p></li>
+<li><p>false : Service is not found. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_CCP_CLIENT_DIS_DONE13load_from_ftlE">
+<span id="_CPPv3N21T_CCP_CLIENT_DIS_DONE13load_from_ftlE"></span><span id="_CPPv2N21T_CCP_CLIENT_DIS_DONE13load_from_ftlE"></span><span id="T_CCP_CLIENT_DIS_DONE::load_from_ftl__b"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___d_i_s___d_o_n_e_1a15bf19c40a3f1a06b378155f1cebd543"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">load_from_ftl</span></span></span><a class="headerlink" href="#_CPPv4N21T_CCP_CLIENT_DIS_DONE13load_from_ftlE" title="Link to this definition"></a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>true : Service table is loaded from FTL.</p></li>
+<li><p>false : Service table is not loaded from FTL. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_CCP_CLIENT_DIS_DONE4gtbsE">
+<span id="_CPPv3N21T_CCP_CLIENT_DIS_DONE4gtbsE"></span><span id="_CPPv2N21T_CCP_CLIENT_DIS_DONE4gtbsE"></span><span id="T_CCP_CLIENT_DIS_DONE::gtbs__b"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___d_i_s___d_o_n_e_1a9842651d59e1bdaba1c2b14c4fc81ee1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gtbs</span></span></span><a class="headerlink" href="#_CPPv4N21T_CCP_CLIENT_DIS_DONE4gtbsE" title="Link to this definition"></a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>true : Generic Telephone Bearer Service (GTBS).</p></li>
+<li><p>false : Telephone Bearer Service (TBS). </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_CCP_CLIENT_DIS_DONE7srv_numE">
+<span id="_CPPv3N21T_CCP_CLIENT_DIS_DONE7srv_numE"></span><span id="_CPPv2N21T_CCP_CLIENT_DIS_DONE7srv_numE"></span><span id="T_CCP_CLIENT_DIS_DONE::srv_num__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___d_i_s___d_o_n_e_1ae8eb9e907c08f64e35cacd3da3c4c62c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_num</span></span></span><a class="headerlink" href="#_CPPv4N21T_CCP_CLIENT_DIS_DONE7srv_numE" title="Link to this definition"></a><br /></dt>
+<dd><p>Service instance number. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424T_CCP_CLIENT_READ_RESULT">
+<span id="_CPPv324T_CCP_CLIENT_READ_RESULT"></span><span id="_CPPv224T_CCP_CLIENT_READ_RESULT"></span><span id="T_CCP_CLIENT_READ_RESULT"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_READ_RESULT</span></span></span><a class="headerlink" href="#_CPPv424T_CCP_CLIENT_READ_RESULT" title="Link to this definition"></a><br /></dt>
+<dd><p>Data for <a class="reference internal" href="group___l_e_a___l_i_b___exported___types.html#group___l_e_a___l_i_b___exported___types_1ggabe1a2e587cdc57dc5de8e141de5d1b0baf66b3160dae5ae12e2b4fbbfd6d5ea45"><span class="std std-ref">LE_AUDIO_MSG_CCP_CLIENT_READ_RESULT</span></a>. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT11conn_handleE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT11conn_handleE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT11conn_handleE"></span><span id="T_CCP_CLIENT_READ_RESULT::conn_handle__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a0d5ffe38d68e48d81e61fc6a4999ae68"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_handle</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT11conn_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT4gtbsE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT4gtbsE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT4gtbsE"></span><span id="T_CCP_CLIENT_READ_RESULT::gtbs__b"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a9842651d59e1bdaba1c2b14c4fc81ee1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gtbs</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT4gtbsE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT15srv_instance_idE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT15srv_instance_idE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT15srv_instance_idE"></span><span id="T_CCP_CLIENT_READ_RESULT::srv_instance_id__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a3a01750951c4cebe1ce112e004bf1d9c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_instance_id</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT15srv_instance_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT9char_uuidE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT9char_uuidE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT9char_uuidE"></span><span id="T_CCP_CLIENT_READ_RESULT::char_uuid__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a9f3145fdca7e71bb12e053ea206e9bb2"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_uuid</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT9char_uuidE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT5causeE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT5causeE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT5causeE"></span><span id="T_CCP_CLIENT_READ_RESULT::cause__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT20bearer_provider_nameE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT20bearer_provider_nameE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT20bearer_provider_nameE"></span><span id="T_CCP_CLIENT_READ_RESULT::bearer_provider_name__T_CCP_CLIENT_BEARER_PROVIDER_NAME"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a2c433403784d8b70f54ca6e9c5933cf3"></span><a class="reference internal" href="#_CPPv433T_CCP_CLIENT_BEARER_PROVIDER_NAME" title="T_CCP_CLIENT_BEARER_PROVIDER_NAME"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_PROVIDER_NAME</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_provider_name</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT20bearer_provider_nameE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT10bearer_uciE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT10bearer_uciE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT10bearer_uciE"></span><span id="T_CCP_CLIENT_READ_RESULT::bearer_uci__T_CCP_CLIENT_BEARER_UCI"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a95d17d6f57d61b8ddfd6436baa421314"></span><a class="reference internal" href="#_CPPv423T_CCP_CLIENT_BEARER_UCI" title="T_CCP_CLIENT_BEARER_UCI"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_UCI</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_uci</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT10bearer_uciE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT17bearer_technologyE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT17bearer_technologyE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT17bearer_technologyE"></span><span id="T_CCP_CLIENT_READ_RESULT::bearer_technology__T_CCP_CLIENT_BEARER_TECHNOLOGY"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a14dab26f90bd1769b580c50580d890a4"></span><a class="reference internal" href="#_CPPv430T_CCP_CLIENT_BEARER_TECHNOLOGY" title="T_CCP_CLIENT_BEARER_TECHNOLOGY"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_TECHNOLOGY</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_technology</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT17bearer_technologyE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT33bearer_uri_schemes_supported_listE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT33bearer_uri_schemes_supported_listE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT33bearer_uri_schemes_supported_listE"></span><span id="T_CCP_CLIENT_READ_RESULT::bearer_uri_schemes_supported_list__T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a2a70dc299ed963a5dc80fc04b5cb1feb"></span><a class="reference internal" href="#_CPPv446T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST" title="T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_uri_schemes_supported_list</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT33bearer_uri_schemes_supported_listE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT22bearer_signal_strengthE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT22bearer_signal_strengthE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT22bearer_signal_strengthE"></span><span id="T_CCP_CLIENT_READ_RESULT::bearer_signal_strength__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1abc4eb76e1e13d312b28fdedc69f05cc5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_signal_strength</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT22bearer_signal_strengthE" title="Link to this definition"></a><br /></dt>
+<dd><p>Level of the signal of the telephone bearer.</p>
+<p><ul class="simple">
+<li><p>0 : No service.</p></li>
+<li><p>1 to 99 : Meaning of the values is left up to the implementation.</p></li>
+<li><p>100 : Maximum signal strength.</p></li>
+<li><p>101 to 254: Reserved for future use.</p></li>
+<li><p>255 : Signal strength is unavailable or has no meaning for this particular bearer. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT41bearer_signal_strength_reporting_intervalE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT41bearer_signal_strength_reporting_intervalE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT41bearer_signal_strength_reporting_intervalE"></span><span id="T_CCP_CLIENT_READ_RESULT::bearer_signal_strength_reporting_interval__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a666b022ae5ec2b2fb92c5b5dc58ed46e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_signal_strength_reporting_interval</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT41bearer_signal_strength_reporting_intervalE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reporting interval expressed in seconds.</p>
+<p><ul class="simple">
+<li><p>0 : Signal strength is reported as soon as the signal strength changes.</p></li>
+<li><p>1 to 255. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT25bearer_list_current_callsE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT25bearer_list_current_callsE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT25bearer_list_current_callsE"></span><span id="T_CCP_CLIENT_READ_RESULT::bearer_list_current_calls__T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1afbec119d77cec64e4c37c9beb4cf2dcd"></span><a class="reference internal" href="#_CPPv438T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS" title="T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_list_current_calls</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT25bearer_list_current_callsE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT12status_flagsE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT12status_flagsE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT12status_flagsE"></span><span id="T_CCP_CLIENT_READ_RESULT::status_flags__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a013c2a29942fbe984127558843eaa0ce"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_flags</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT12status_flagsE" title="Link to this definition"></a><br /></dt>
+<dd><p>Current status of features that Call Control Server device supports.</p>
+<p>A bit field.</p>
+<p><a class="reference internal" href="group___t_b_s___s_t_a_t_u_s___f_l_a_g_s___c_h_a_r___b_i_t___def.html#group___t_b_s___s_t_a_t_u_s___f_l_a_g_s___c_h_a_r___b_i_t___def"><span class="std std-ref">Status Flags Characteristic Bit Definitions</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT31incoming_call_target_bearer_uriE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT31incoming_call_target_bearer_uriE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT31incoming_call_target_bearer_uriE"></span><span id="T_CCP_CLIENT_READ_RESULT::incoming_call_target_bearer_uri__T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1adf03755444cf6a4e2c7af761b644bb85"></span><a class="reference internal" href="#_CPPv444T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI" title="T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI"><span class="n"><span class="pre">T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">incoming_call_target_bearer_uri</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT31incoming_call_target_bearer_uriE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT10call_stateE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT10call_stateE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT10call_stateE"></span><span id="T_CCP_CLIENT_READ_RESULT::call_state__T_CCP_CLIENT_CALL_STATE"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a464550e583a65e99df5a9a9c2c970b25"></span><a class="reference internal" href="#_CPPv423T_CCP_CLIENT_CALL_STATE" title="T_CCP_CLIENT_CALL_STATE"><span class="n"><span class="pre">T_CCP_CLIENT_CALL_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_state</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT10call_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT35call_control_point_optional_opcodesE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT35call_control_point_optional_opcodesE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT35call_control_point_optional_opcodesE"></span><span id="T_CCP_CLIENT_READ_RESULT::call_control_point_optional_opcodes__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a7799560601a9b8b7151c169c72bc196b"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_control_point_optional_opcodes</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT35call_control_point_optional_opcodesE" title="Link to this definition"></a><br /></dt>
+<dd><p>Optional opcodes of the Call Control Point.</p>
+<p>A bit field.</p>
+<p><a class="reference internal" href="group___t_b_s___c_a_l_l___c_o_n_t_r_o_l___p_o_i_n_t___o_p_t_i_o_n_a_l___o_p_c_o_d_e_s___c_h_a_r___b_i_t___def.html#group___t_b_s___c_a_l_l___c_o_n_t_r_o_l___p_o_i_n_t___o_p_t_i_o_n_a_l___o_p_c_o_d_e_s___c_h_a_r___b_i_t___def"><span class="std std-ref">Call Control Point Optional Opcodes Characteristic Bit Definitions</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT13incoming_callE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT13incoming_callE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT13incoming_callE"></span><span id="T_CCP_CLIENT_READ_RESULT::incoming_call__T_CCP_CLIENT_INCOMING_CALL"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a2ff2117db2f9f0e8d67f814fef063ef7"></span><a class="reference internal" href="#_CPPv426T_CCP_CLIENT_INCOMING_CALL" title="T_CCP_CLIENT_INCOMING_CALL"><span class="n"><span class="pre">T_CCP_CLIENT_INCOMING_CALL</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">incoming_call</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT13incoming_callE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT18call_friendly_nameE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT18call_friendly_nameE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT18call_friendly_nameE"></span><span id="T_CCP_CLIENT_READ_RESULT::call_friendly_name__T_CCP_CLIENT_CALL_FRIENDLY_NAME"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1adcb618110c4bd5120f1393eae882c1dc"></span><a class="reference internal" href="#_CPPv431T_CCP_CLIENT_CALL_FRIENDLY_NAME" title="T_CCP_CLIENT_CALL_FRIENDLY_NAME"><span class="n"><span class="pre">T_CCP_CLIENT_CALL_FRIENDLY_NAME</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_friendly_name</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT18call_friendly_nameE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT18content_control_idE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT18content_control_idE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT18content_control_idE"></span><span id="T_CCP_CLIENT_READ_RESULT::content_control_id__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1ab16efc52509697ad3fef2f52706b0c05"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">content_control_id</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT18content_control_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Represent a unique instance of a service that either controls or provides status information on an audio-related feature. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_CCP_CLIENT_READ_RESULT4dataE">
+<span id="_CPPv3N24T_CCP_CLIENT_READ_RESULT4dataE"></span><span id="_CPPv2N24T_CCP_CLIENT_READ_RESULT4dataE"></span><span id="T_CCP_CLIENT_READ_RESULT::data__T_CCP_CLIENT_READ_RESULT"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a4dde0ed4823e9484f3cb3238242a4d32"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv424T_CCP_CLIENT_READ_RESULT" title="T_CCP_CLIENT_READ_RESULT"><span class="n"><span class="pre">T_CCP_CLIENT_READ_RESULT</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><a class="headerlink" href="#_CPPv4N24T_CCP_CLIENT_READ_RESULT4dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419T_CCP_CLIENT_NOTIFY">
+<span id="_CPPv319T_CCP_CLIENT_NOTIFY"></span><span id="_CPPv219T_CCP_CLIENT_NOTIFY"></span><span id="T_CCP_CLIENT_NOTIFY"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_NOTIFY</span></span></span><a class="headerlink" href="#_CPPv419T_CCP_CLIENT_NOTIFY" title="Link to this definition"></a><br /></dt>
+<dd><p>Data for <a class="reference internal" href="group___l_e_a___l_i_b___exported___types.html#group___l_e_a___l_i_b___exported___types_1ggabe1a2e587cdc57dc5de8e141de5d1b0ba3f26be6f3b77ab48d4566e3ba3fa11f2"><span class="std std-ref">LE_AUDIO_MSG_CCP_CLIENT_NOTIFY</span></a>. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY11conn_handleE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY11conn_handleE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY11conn_handleE"></span><span id="T_CCP_CLIENT_NOTIFY::conn_handle__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a0d5ffe38d68e48d81e61fc6a4999ae68"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_handle</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY11conn_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY4gtbsE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY4gtbsE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY4gtbsE"></span><span id="T_CCP_CLIENT_NOTIFY::gtbs__b"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a9842651d59e1bdaba1c2b14c4fc81ee1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gtbs</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY4gtbsE" title="Link to this definition"></a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>true : Generic Telephone Bearer Service (GTBS).</p></li>
+<li><p>false : Telephone Bearer Service (TBS). </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY15srv_instance_idE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY15srv_instance_idE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY15srv_instance_idE"></span><span id="T_CCP_CLIENT_NOTIFY::srv_instance_id__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a3a01750951c4cebe1ce112e004bf1d9c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_instance_id</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY15srv_instance_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY9char_uuidE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY9char_uuidE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY9char_uuidE"></span><span id="T_CCP_CLIENT_NOTIFY::char_uuid__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a9f3145fdca7e71bb12e053ea206e9bb2"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_uuid</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY9char_uuidE" title="Link to this definition"></a><br /></dt>
+<dd><p><ul class="simple">
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1ga6531d49cd020d89862298c58dab1b5f1"><span class="std std-ref">TBS_UUID_CHAR_BEARER_PROVIDER_NAME</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1ga17063ea3f8aa0e0dbb3d3ef22e174339"><span class="std std-ref">TBS_UUID_CHAR_BEARER_TECHNOLOGY</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1ga56adabc4efc7510e67dd6fa78cb4b63b"><span class="std std-ref">TBS_UUID_CHAR_BEARER_URI_SCHEMES_SUPPORTED_LIST</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1gab179f88ee5667b732533f04c2364543d"><span class="std std-ref">TBS_UUID_CHAR_BEARER_SIGNAL_STRENGTH</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1gade43a8ec1d52d30e3505e8b401114224"><span class="std std-ref">TBS_UUID_CHAR_BEARER_LIST_CURRENT_CALLS</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1ga047b0042ab17ea684532dbf5e8b0b553"><span class="std std-ref">TBS_UUID_CHAR_STATUS_FLAGS</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1gaa15c3f136a14be051dcd5046737e0b17"><span class="std std-ref">TBS_UUID_CHAR_INCOMING_CALL_TARGET_BEARER_URI</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1gaa8b26f56c891d9d2c322fc506125b3e1"><span class="std std-ref">TBS_UUID_CHAR_CALL_STATE</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1gac7c827fa44b35298d25d951aa08ead8a"><span class="std std-ref">TBS_UUID_CHAR_TERMINATION_REASON</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1gad529d73c6dd9ada0680167c81e4a8224"><span class="std std-ref">TBS_UUID_CHAR_INCOMING_CALL</span></a></p></li>
+<li><p><a class="reference internal" href="group___t_b_s___u_u_i_d___c_h_a_r.html#group___t_b_s___u_u_i_d___c_h_a_r_1ga6849ee9949b2b35b4797afba8dbff48e"><span class="std std-ref">TBS_UUID_CHAR_CALL_FRIENDLY_NAME</span></a></p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY20bearer_provider_nameE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY20bearer_provider_nameE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY20bearer_provider_nameE"></span><span id="T_CCP_CLIENT_NOTIFY::bearer_provider_name__T_CCP_CLIENT_BEARER_PROVIDER_NAME"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a2c433403784d8b70f54ca6e9c5933cf3"></span><a class="reference internal" href="#_CPPv433T_CCP_CLIENT_BEARER_PROVIDER_NAME" title="T_CCP_CLIENT_BEARER_PROVIDER_NAME"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_PROVIDER_NAME</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_provider_name</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY20bearer_provider_nameE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY17bearer_technologyE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY17bearer_technologyE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY17bearer_technologyE"></span><span id="T_CCP_CLIENT_NOTIFY::bearer_technology__T_CCP_CLIENT_BEARER_TECHNOLOGY"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a14dab26f90bd1769b580c50580d890a4"></span><a class="reference internal" href="#_CPPv430T_CCP_CLIENT_BEARER_TECHNOLOGY" title="T_CCP_CLIENT_BEARER_TECHNOLOGY"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_TECHNOLOGY</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_technology</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY17bearer_technologyE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY33bearer_uri_schemes_supported_listE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY33bearer_uri_schemes_supported_listE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY33bearer_uri_schemes_supported_listE"></span><span id="T_CCP_CLIENT_NOTIFY::bearer_uri_schemes_supported_list__T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a2a70dc299ed963a5dc80fc04b5cb1feb"></span><a class="reference internal" href="#_CPPv446T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST" title="T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_URI_SCHEMES_SUPPORTED_LIST</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_uri_schemes_supported_list</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY33bearer_uri_schemes_supported_listE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY22bearer_signal_strengthE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY22bearer_signal_strengthE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY22bearer_signal_strengthE"></span><span id="T_CCP_CLIENT_NOTIFY::bearer_signal_strength__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1abc4eb76e1e13d312b28fdedc69f05cc5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_signal_strength</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY22bearer_signal_strengthE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY25bearer_list_current_callsE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY25bearer_list_current_callsE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY25bearer_list_current_callsE"></span><span id="T_CCP_CLIENT_NOTIFY::bearer_list_current_calls__T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1afbec119d77cec64e4c37c9beb4cf2dcd"></span><a class="reference internal" href="#_CPPv438T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS" title="T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS"><span class="n"><span class="pre">T_CCP_CLIENT_BEARER_LIST_CURRENT_CALLS</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bearer_list_current_calls</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY25bearer_list_current_callsE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY12status_flagsE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY12status_flagsE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY12status_flagsE"></span><span id="T_CCP_CLIENT_NOTIFY::status_flags__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a013c2a29942fbe984127558843eaa0ce"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_flags</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY12status_flagsE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY31incoming_call_target_bearer_uriE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY31incoming_call_target_bearer_uriE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY31incoming_call_target_bearer_uriE"></span><span id="T_CCP_CLIENT_NOTIFY::incoming_call_target_bearer_uri__T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1adf03755444cf6a4e2c7af761b644bb85"></span><a class="reference internal" href="#_CPPv444T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI" title="T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI"><span class="n"><span class="pre">T_CCP_CLIENT_INCOMING_CALL_TARGET_BEARER_URI</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">incoming_call_target_bearer_uri</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY31incoming_call_target_bearer_uriE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY10call_stateE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY10call_stateE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY10call_stateE"></span><span id="T_CCP_CLIENT_NOTIFY::call_state__T_CCP_CLIENT_CALL_STATE"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a464550e583a65e99df5a9a9c2c970b25"></span><a class="reference internal" href="#_CPPv423T_CCP_CLIENT_CALL_STATE" title="T_CCP_CLIENT_CALL_STATE"><span class="n"><span class="pre">T_CCP_CLIENT_CALL_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_state</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY10call_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY18termination_reasonE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY18termination_reasonE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY18termination_reasonE"></span><span id="T_CCP_CLIENT_NOTIFY::termination_reason__T_CCP_CLIENT_TERMINATION_REASON"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a0e84279cc1cf76f61691e2b9726e5ef9"></span><a class="reference internal" href="#_CPPv431T_CCP_CLIENT_TERMINATION_REASON" title="T_CCP_CLIENT_TERMINATION_REASON"><span class="n"><span class="pre">T_CCP_CLIENT_TERMINATION_REASON</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">termination_reason</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY18termination_reasonE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY13incoming_callE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY13incoming_callE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY13incoming_callE"></span><span id="T_CCP_CLIENT_NOTIFY::incoming_call__T_CCP_CLIENT_INCOMING_CALL"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a2ff2117db2f9f0e8d67f814fef063ef7"></span><a class="reference internal" href="#_CPPv426T_CCP_CLIENT_INCOMING_CALL" title="T_CCP_CLIENT_INCOMING_CALL"><span class="n"><span class="pre">T_CCP_CLIENT_INCOMING_CALL</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">incoming_call</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY13incoming_callE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY18call_friendly_nameE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY18call_friendly_nameE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY18call_friendly_nameE"></span><span id="T_CCP_CLIENT_NOTIFY::call_friendly_name__T_CCP_CLIENT_CALL_FRIENDLY_NAME"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1adcb618110c4bd5120f1393eae882c1dc"></span><a class="reference internal" href="#_CPPv431T_CCP_CLIENT_CALL_FRIENDLY_NAME" title="T_CCP_CLIENT_CALL_FRIENDLY_NAME"><span class="n"><span class="pre">T_CCP_CLIENT_CALL_FRIENDLY_NAME</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_friendly_name</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY18call_friendly_nameE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_CCP_CLIENT_NOTIFY4dataE">
+<span id="_CPPv3N19T_CCP_CLIENT_NOTIFY4dataE"></span><span id="_CPPv2N19T_CCP_CLIENT_NOTIFY4dataE"></span><span id="T_CCP_CLIENT_NOTIFY::data__T_CCP_CLIENT_NOTIFY"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___n_o_t_i_f_y_1a3905e2133fe3acc4afa3acd8fab6d40b"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419T_CCP_CLIENT_NOTIFY" title="T_CCP_CLIENT_NOTIFY"><span class="n"><span class="pre">T_CCP_CLIENT_NOTIFY</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><a class="headerlink" href="#_CPPv4N19T_CCP_CLIENT_NOTIFY4dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv427T_CCP_CLIENT_CALL_CP_NOTIFY">
+<span id="_CPPv327T_CCP_CLIENT_CALL_CP_NOTIFY"></span><span id="_CPPv227T_CCP_CLIENT_CALL_CP_NOTIFY"></span><span id="T_CCP_CLIENT_CALL_CP_NOTIFY"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___c_p___n_o_t_i_f_y"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CCP_CLIENT_CALL_CP_NOTIFY</span></span></span><a class="headerlink" href="#_CPPv427T_CCP_CLIENT_CALL_CP_NOTIFY" title="Link to this definition"></a><br /></dt>
+<dd><p>Data for <a class="reference internal" href="group___l_e_a___l_i_b___exported___types.html#group___l_e_a___l_i_b___exported___types_1ggabe1a2e587cdc57dc5de8e141de5d1b0baf186c088e2a7e122020efcb2a4f07170"><span class="std std-ref">LE_AUDIO_MSG_CCP_CLIENT_CALL_CP_NOTIFY</span></a>. </p>
+<p>ccp_client.h</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY11conn_handleE">
+<span id="_CPPv3N27T_CCP_CLIENT_CALL_CP_NOTIFY11conn_handleE"></span><span id="_CPPv2N27T_CCP_CLIENT_CALL_CP_NOTIFY11conn_handleE"></span><span id="T_CCP_CLIENT_CALL_CP_NOTIFY::conn_handle__uint16_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___c_p___n_o_t_i_f_y_1a0d5ffe38d68e48d81e61fc6a4999ae68"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_handle</span></span></span><a class="headerlink" href="#_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY11conn_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY4gtbsE">
+<span id="_CPPv3N27T_CCP_CLIENT_CALL_CP_NOTIFY4gtbsE"></span><span id="_CPPv2N27T_CCP_CLIENT_CALL_CP_NOTIFY4gtbsE"></span><span id="T_CCP_CLIENT_CALL_CP_NOTIFY::gtbs__b"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___c_p___n_o_t_i_f_y_1a9842651d59e1bdaba1c2b14c4fc81ee1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gtbs</span></span></span><a class="headerlink" href="#_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY4gtbsE" title="Link to this definition"></a><br /></dt>
+<dd><p><ul class="simple">
+<li><p>true : Generic Telephone Bearer Service (GTBS).</p></li>
+<li><p>false : Telephone Bearer Service (TBS). </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY15srv_instance_idE">
+<span id="_CPPv3N27T_CCP_CLIENT_CALL_CP_NOTIFY15srv_instance_idE"></span><span id="_CPPv2N27T_CCP_CLIENT_CALL_CP_NOTIFY15srv_instance_idE"></span><span id="T_CCP_CLIENT_CALL_CP_NOTIFY::srv_instance_id__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___c_p___n_o_t_i_f_y_1a3a01750951c4cebe1ce112e004bf1d9c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_instance_id</span></span></span><a class="headerlink" href="#_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY15srv_instance_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY16requested_opcodeE">
+<span id="_CPPv3N27T_CCP_CLIENT_CALL_CP_NOTIFY16requested_opcodeE"></span><span id="_CPPv2N27T_CCP_CLIENT_CALL_CP_NOTIFY16requested_opcodeE"></span><span id="T_CCP_CLIENT_CALL_CP_NOTIFY::requested_opcode__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___c_p___n_o_t_i_f_y_1aee0a4b6020513ae10d88cd5f9ed4abfe"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requested_opcode</span></span></span><a class="headerlink" href="#_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY16requested_opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___t_b_s___c_a_l_l___c_o_n_t_r_o_l___p_o_i_n_t___c_h_a_r___o_p_c_o_d_e.html#group___t_b_s___c_a_l_l___c_o_n_t_r_o_l___p_o_i_n_t___c_h_a_r___o_p_c_o_d_e"><span class="std std-ref">Call Control Point Characteristic Opcodes</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY10call_indexE">
+<span id="_CPPv3N27T_CCP_CLIENT_CALL_CP_NOTIFY10call_indexE"></span><span id="_CPPv2N27T_CCP_CLIENT_CALL_CP_NOTIFY10call_indexE"></span><span id="T_CCP_CLIENT_CALL_CP_NOTIFY::call_index__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___c_p___n_o_t_i_f_y_1a11dcbc3efd906020a78b7d6a2195cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">call_index</span></span></span><a class="headerlink" href="#_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY10call_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY11result_codeE">
+<span id="_CPPv3N27T_CCP_CLIENT_CALL_CP_NOTIFY11result_codeE"></span><span id="_CPPv2N27T_CCP_CLIENT_CALL_CP_NOTIFY11result_codeE"></span><span id="T_CCP_CLIENT_CALL_CP_NOTIFY::result_code__uint8_t"></span><span class="target" id="struct_t___c_c_p___c_l_i_e_n_t___c_a_l_l___c_p___n_o_t_i_f_y_1aa3de37afab5717fd74a4ddeb8eeb292a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">result_code</span></span></span><a class="headerlink" href="#_CPPv4N27T_CCP_CLIENT_CALL_CP_NOTIFY11result_codeE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___t_b_s___c_a_l_l___c_o_n_t_r_o_l___p_o_i_n_t___n_o_t_i_f_i_c_a_t_i_o_n___r_e_s_u_l_t___c_o_d_e_s.html#group___t_b_s___c_a_l_l___c_o_n_t_r_o_l___p_o_i_n_t___n_o_t_i_f_i_c_a_t_i_o_n___r_e_s_u_l_t___c_o_d_e_s"><span class="std std-ref">Call Control Point Notification Result Codes</span></a>. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

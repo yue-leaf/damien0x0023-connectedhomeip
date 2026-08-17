@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tool Set &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Platform" href="../../platform/text_en/README.html" />
+    <link rel="prev" title="Model C Evaluation Board" href="../../evb_guide/text_en/model_c.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../index.html">
+        
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tool Set</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mp-tool">MP Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mpcli">MPCli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mp-pack-tool">MP Pack Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flash-map-generate-tool">Flash Map Generate Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rf-test-tool">RF Test Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debug-analyzer-tool">Debug Analyzer Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cfu-download-tool">CFU Download Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ios-ota-app">iOS OTA APP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#android-ota-app">Android OTA APP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">Tool Set</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="tool-set">
+<h1>Tool Set<a class="headerlink" href="#tool-set" title="Link to this heading"></a></h1>
+<p>In addition to the intrinsic capabilities of our System on Chip (<a class="reference internal" href="../../glossary.html#term-SoC"><span class="xref std std-term">SoC</span></a>), a comprehensive set of tools has been developed to facilitate extended feature development, user application creation, and large-scale production processes. This document offers a concise overview of these tools.</p>
+<p>Here is a summary of the tools described:</p>
+<table class="docutils align-center" id="tool-description">
+<caption><span class="caption-text">Brief Description of Tools</span><a class="headerlink" href="#tool-description" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>File Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#mp-tool">MP Tool</a></p></th>
+<td><p>Used for R&amp;D debugging or mass production.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\tools\BeeMPTool_vx.x.x.x</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#mpcli">MPCli</a></p></th>
+<td><p>Commond-line version of MP Tool, which used for R&amp;D debugging or mass production.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\tools\MPCLI</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#mp-pack-tool">MP Pack Tool</a></p></th>
+<td><p>Used to merge image files and generate data packet files for <a class="reference internal" href="../../glossary.html#term-MP"><span class="xref std std-term">MP</span></a>, <a class="reference internal" href="../../glossary.html#term-OTA"><span class="xref std std-term">OTA</span></a>, <a class="reference internal" href="../../glossary.html#term-CFU"><span class="xref std std-term">CFU</span></a>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\tools\BeeMPTool_vx.x.x.x\tools\MPPackTool</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#flash-map-generate-tool">Flash Map Generate Tool</a></p></th>
+<td><p>Used to generate <code class="docutils literal notranslate"><span class="pre">flashmap.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">flashmap.h</span></code>, <code class="docutils literal notranslate"><span class="pre">OTAHeader</span></code> files.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\tools\BeeMPTool_vx.x.x.x\tools\FlashMapGenerateTool</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#rf-test-tool">RF Test Tool</a></p></th>
+<td><p>Used for Bluetooth, Zigbee, and other RF performance testing and certification testing such as <a class="reference internal" href="../../glossary.html#term-FCC"><span class="xref std std-term">FCC</span></a>, <a class="reference internal" href="../../glossary.html#term-BQB"><span class="xref std std-term">BQB</span></a>, <a class="reference internal" href="../../glossary.html#term-CE"><span class="xref std std-term">CE</span></a>, <a class="reference internal" href="../../glossary.html#term-SRRC"><span class="xref std std-term">SRRC</span></a>, <a class="reference internal" href="../../glossary.html#term-KC"><span class="xref std std-term">KC</span></a>.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#debug-analyzer-tool">Debug Analyzer Tool</a></p></th>
+<td><p>Used for system log analysis and debugging.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\tools\DebugAnalyzer-vx.x.x.x</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#cfu-download-tool">CFU Download Tool</a></p></th>
+<td><p>Used for firmware upgrades via USB.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#ios-ota-app">iOS OTA APP</a></p></th>
+<td><p>Used for OTA upgrades via iOS.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#android-ota-app">Android OTA APP</a></p></th>
+<td><p>Used for OTA upgrades via Android.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="mp-tool">
+<span id="mp-tool-en"></span><h2>MP Tool<a class="headerlink" href="#mp-tool" title="Link to this heading"></a></h2>
+<p>The MP Tool is a utility designed to support both mass production and debug modes.</p>
+<ul class="simple">
+<li><p><strong>Debug Mode</strong>: Offers developers a platform for debugging and feature development, with the main features including:</p>
+<ul>
+<li><p>Download image</p></li>
+<li><p>Setup APP Config and System Config File</p></li>
+<li><p>Erase flash</p></li>
+<li><p>Readback flash</p></li>
+</ul>
+</li>
+<li><p><strong>MP Mode</strong>: Provides an array of capabilities, including the ability to program up to 8 devices concurrently and modify the device's Bluetooth address.</p></li>
+</ul>
+<p>The MP Tool is integrated with Pack and Flash Map Generate functionalities. For detailed instructions on utilizing these features, refer to the user guide located in each tool's directory.</p>
+<p>Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download MP Tool and consult the provided documentation.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../_images/MPTool_Interface.png"><img alt="../../../_images/MPTool_Interface.png" src="../../../_images/MPTool_Interface.png" style="width: 847.0px; height: 621.5999999999999px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool Main Interface</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="mpcli">
+<h2>MPCli<a class="headerlink" href="#mpcli" title="Link to this heading"></a></h2>
+<p>MPCli is the command-line version of the MP Tool, which can be used on Windows, Linux, and MacOS systems. The main features of MPCli include:</p>
+<ul class="simple">
+<li><p>Download image</p></li>
+<li><p>Modify MAC, calibrate XTAL Internal Cap, adjust TX Power</p></li>
+<li><p>Readback EUID and MAC</p></li>
+<li><p>Erase flash</p></li>
+<li><p>Download eFuse</p></li>
+</ul>
+<p>Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download MPCli and consult the provided documentation.</p>
+</section>
+<section id="mp-pack-tool">
+<span id="mp-pack-tool-en"></span><h2>MP Pack Tool<a class="headerlink" href="#mp-pack-tool" title="Link to this heading"></a></h2>
+<p>The MP Pack Tool serves to amalgamate sub-images and generate a consolidated packet file for operations such as mass production (<a class="reference internal" href="../../glossary.html#term-MP"><span class="xref std std-term">MP</span></a>), over-the-air updates (<a class="reference internal" href="../../glossary.html#term-OTA"><span class="xref std std-term">OTA</span></a>), or component firmware updates (<a class="reference internal" href="../../glossary.html#term-CFU"><span class="xref std std-term">CFU</span></a>).</p>
+<p>Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download MP Pack Tool and consult the provided documentation.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../_images/PackTool_Interface.png"><img alt="../../../_images/PackTool_Interface.png" src="../../../_images/PackTool_Interface.png" style="width: 850.85px; height: 676.65px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Pack Tool Main Interface</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="flash-map-generate-tool">
+<span id="flash-map-generate-tool-en"></span><h2>Flash Map Generate Tool<a class="headerlink" href="#flash-map-generate-tool" title="Link to this heading"></a></h2>
+<p>The Flash Map Generate Tool offers two essential functions:</p>
+<ul class="simple">
+<li><p>Generation of <code class="file docutils literal notranslate"><span class="pre">flashmap.h</span></code> and <code class="file docutils literal notranslate"><span class="pre">flashmap.ini</span></code> files.</p></li>
+<li><p>Creation of header required for <a class="reference internal" href="../../glossary.html#term-OTA"><span class="xref std std-term">OTA</span></a> updates.</p></li>
+</ul>
+<p>Flash Map Generate Tool and its documentation are integrated into the MP Tool kits, Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download and consult the provided documentation.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../../_images/FlashmapGenerateTool_Interface.png"><img alt="../../../_images/FlashmapGenerateTool_Interface.png" src="../../../_images/FlashmapGenerateTool_Interface.png" style="width: 848.64px; height: 535.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">Flash Map Generate Tool Main Interface</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="rf-test-tool">
+<h2>RF Test Tool<a class="headerlink" href="#rf-test-tool" title="Link to this heading"></a></h2>
+<p>The RF Test Tool offers a suite of capabilities:</p>
+<ul class="simple">
+<li><p>Support RF performance testing of technologies such as Bluetooth and Zigbee.</p></li>
+<li><p>Support certification testing for various regulatory standards including <a class="reference internal" href="../../glossary.html#term-FCC"><span class="xref std std-term">FCC</span></a>/<a class="reference internal" href="../../glossary.html#term-BQB"><span class="xref std std-term">BQB</span></a>/<a class="reference internal" href="../../glossary.html#term-CE"><span class="xref std std-term">CE</span></a>/<a class="reference internal" href="../../glossary.html#term-SRRC"><span class="xref std std-term">SRRC</span></a>/<a class="reference internal" href="../../glossary.html#term-KC"><span class="xref std std-term">KC</span></a>.</p></li>
+</ul>
+<p>Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download RF Test Tool and consult the provided documentation.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../../_images/RFTestTool_Interface.png"><img alt="../../../_images/RFTestTool_Interface.png" src="../../../_images/RFTestTool_Interface.png" style="width: 851.9599999999999px; height: 636.02px;" /></a>
+<figcaption>
+<p><span class="caption-text">RF Test Tool Main Interface</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="debug-analyzer-tool">
+<span id="debug-analyzer-tool-en"></span><h2>Debug Analyzer Tool<a class="headerlink" href="#debug-analyzer-tool" title="Link to this heading"></a></h2>
+<p>The Debug Analyzer Tool enables engineers to capture and decode system logs across various transport layers, enhancing the debugging process.
+Key features of this tool include:</p>
+<ul class="simple">
+<li><p>Support for multiple input methods:</p>
+<ul>
+<li><p><a class="reference internal" href="../../glossary.html#term-UART"><span class="xref std std-term">UART</span></a></p></li>
+<li><p>Binary files</p></li>
+</ul>
+</li>
+<li><p>Compatibility with both <a class="reference internal" href="../../glossary.html#term-MCU"><span class="xref std std-term">MCU</span></a> and <a class="reference internal" href="../../glossary.html#term-DSP"><span class="xref std std-term">DSP</span></a> logs.</p></li>
+<li><p>Capabilities for log saving and parsing.</p></li>
+<li><p>Generation of Bluetooth snoop logs for in-depth analysis with the Frontline capture tool.</p></li>
+<li><p>Support for Ellisys injection.</p></li>
+</ul>
+<p>Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download Debug Analyzer Tool and consult the provided documentation.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../../_images/DebugAnalyzerTool_Interface.png"><img alt="../../../_images/DebugAnalyzerTool_Interface.png" src="../../../_images/DebugAnalyzerTool_Interface.png" style="width: 853.5px; height: 521.25px;" /></a>
+<figcaption>
+<p><span class="caption-text">Debug Analyzer Tool Main Interface</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="cfu-download-tool">
+<h2>CFU Download Tool<a class="headerlink" href="#cfu-download-tool" title="Link to this heading"></a></h2>
+<p>Used for upgrading the firmware of Realtek chips that comply with the CFU  protocol.</p>
+<p>Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download CFU Download Tool and consult the provided documentation.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../../../_images/CFU_Download_Tool_MainInterface.png"><img alt="../../../_images/CFU_Download_Tool_MainInterface.png" src="../../../_images/CFU_Download_Tool_MainInterface.png" style="width: 711.0px; height: 456.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">CFU Download Tool Main Interface</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ios-ota-app">
+<h2>iOS OTA APP<a class="headerlink" href="#ios-ota-app" title="Link to this heading"></a></h2>
+<p>Used for upgrading the firmware of Realtek chips via iOS.</p>
+<p>Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download iOS OTA APP and consult the provided documentation.</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../../../_images/IOS_OTA_APP_Interface.png"><img alt="../../../_images/IOS_OTA_APP_Interface.png" src="../../../_images/IOS_OTA_APP_Interface.png" style="width: 285.75px; height: 617.25px;" /></a>
+<figcaption>
+<p><span class="caption-text">iOS OTA APP Main Interface</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="android-ota-app">
+<h2>Android OTA APP<a class="headerlink" href="#android-ota-app" title="Link to this heading"></a></h2>
+<p>Used for upgrading the firmware of Realtek chips via Android.</p>
+<p>Please visit the <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> website to download Android OTA APP and consult the provided documentation.</p>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../../../_images/Android_OTA_APP_Interface.png"><img alt="../../../_images/Android_OTA_APP_Interface.png" src="../../../_images/Android_OTA_APP_Interface.png" style="width: 273.75px; height: 594.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Android OTA APP Main Interface</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../evb_guide/text_en/model_c.html" class="btn btn-neutral float-left" title="Model C Evaluation Board" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../platform/text_en/README.html" class="btn btn-neutral float-right" title="Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

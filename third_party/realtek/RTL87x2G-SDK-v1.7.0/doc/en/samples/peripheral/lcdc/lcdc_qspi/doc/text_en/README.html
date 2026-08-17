@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDI &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="LPC" href="../../../../lpc/doc/text_en/README.html" />
+    <link rel="prev" title="DPI" href="../../../lcdc_dpi/doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../../index.html">
+        
+            <img src="../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../doc/text_en/README.html">Peripheral</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html">General Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../adc/doc/text_en/README.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../aon_qdec/doc/text_en/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../can/doc/text_en/README.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../codec/doc/text_en/README.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../enhtimer/doc/text_en/README.html">ENHTIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../gdma/doc/text_en/README.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../gpio/doc/text_en/README.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../i2c/doc/text_en/README.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../i2s/doc/text_en/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../idu/doc/text_en/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ir/doc/text_en/README.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../keyscan/doc/text_en/README.html">KEYSCAN</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../doc/text_en/README.html">LCDC</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../../doc/text_en/README.html#sample-list">Sample List</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../../lcdc_dpi/doc/text_en/README.html">DPI</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">SDI</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wiring">Wiring</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#building-and-downloading">Building and Downloading</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#experimental-verification">Experimental Verification</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#screen-refresh-successfully">Screen Refresh Successfully</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#code-overview">Code Overview</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#source-code-directory">Source Code Directory</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#functional-implementation">Functional Implementation</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="#set-update-window">Set Update Window</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="#dma-configurations">DMA Configurations</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#data-transmission">Data Transmission</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/text_en/README.html#functional-overview">Functional Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/text_en/README.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/text_en/README.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lpc/doc/text_en/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ppe/doc/text_en/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../rtc/doc/text_en/README.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../spi/doc/text_en/README.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../spi3wire/doc/text_en/README.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../timer/doc/text_en/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../uart/doc/text_en/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../wdt/doc/text_en/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../wifi/doc/text_en/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/text_en/README.html">Peripheral</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">LCDC</a></li>
+    <li class="breadcrumb-item active">SDI</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="sdi">
+<h1>SDI<a class="headerlink" href="#sdi" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This sample demonstrates the application of driving a ICNA3311 LCD panel through <a class="reference internal" href="../../../../../../doc/glossary.html#term-SDI"><span class="xref std std-term">SDI</span></a> interface of the <a class="reference internal" href="../../../../../../doc/glossary.html#term-LCDC"><span class="xref std std-term">LCDC</span></a> peripheral.</p>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>For requirements, please refer to the <a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html#general-requirements-en"><span class="std std-ref">Requirements</span></a>.</p>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Connect P3_6 to the Reset pin.</p></li>
+<li><p>Connect P4_2 to D0 pin.</p></li>
+<li><p>Connect P4_1 to D1 pin.</p></li>
+<li><p>Connect P3_2 to D2 pin.</p></li>
+<li><p>Connect P3_3 to D3 pin.</p></li>
+<li><p>Connect P4_3 to CS pin.</p></li>
+<li><p>Connect P4_0 to CLK pin.</p></li>
+<li><p>Connect P0_5 to TE pin.</p></li>
+</ol>
+</section>
+<section id="configurations">
+<span id="sdi-configurations-en"></span><h2>Configurations<a class="headerlink" href="#configurations" title="Link to this heading"></a></h2>
+<p>The following parameter <code class="docutils literal notranslate"><span class="pre">ABGR_color</span></code> in function <code class="docutils literal notranslate"><span class="pre">rtk_lcd_hal_init()</span></code> can be modified to change the color displayed on LCD screen.</p>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ABGR_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0000FF00</span><span class="p">;</span>
+<span class="n">rtk_lcd_hal_rect_fill</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">280</span><span class="p">,</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w"> </span><span class="n">ABGR_color</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Current default value stands for pure green.</p>
+</section>
+<section id="building-and-downloading">
+<h2>Building and Downloading<a class="headerlink" href="#building-and-downloading" title="Link to this heading"></a></h2>
+<p>For building and downloading, please refer to the <a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html#general-build-download-en"><span class="std std-ref">Building and Downloading</span></a>.</p>
+</section>
+<section id="experimental-verification">
+<h2>Experimental Verification<a class="headerlink" href="#experimental-verification" title="Link to this heading"></a></h2>
+<section id="screen-refresh-successfully">
+<h3>Screen Refresh Successfully<a class="headerlink" href="#screen-refresh-successfully" title="Link to this heading"></a></h3>
+<p>The screen is refreshed with certain color determined in <a class="reference internal" href="#sdi-configurations-en"><span class="std std-ref">Configurations</span></a>.</p>
+</section>
+</section>
+<section id="code-overview">
+<h2>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading"></a></h2>
+<p>This section introduces the code and process description for initialization and corresponding function implementation in the sample.</p>
+<section id="source-code-directory">
+<h3>Source Code Directory<a class="headerlink" href="#source-code-directory" title="Link to this heading"></a></h3>
+<p>The directories for project file and source code are as follows:</p>
+<ul class="simple">
+<li><p>Project directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\peripheral\lcdc\lcdc_qspi\proj</span></code></p></li>
+<li><p>Source code directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\peripheral\lcdc\lcdc_qspi\src</span></code></p></li>
+</ul>
+</section>
+<section id="initialization">
+<span id="sdi-initiallization-en"></span><h3>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h3>
+<p>The initialization process is included in <code class="docutils literal notranslate"><span class="pre">rtk_lcd_hal_init()</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Enable clock of LCDC, and select suitable clock source.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* config LCD dev info */</span>
+<span class="n">RCC_PeriphClockCmd</span><span class="p">(</span><span class="n">APBPeriph_DISP</span><span class="p">,</span><span class="w"> </span><span class="n">APBPeriph_DISP_CLOCK</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+
+<span class="c1">//from XTAL SOURCE = 40M</span>
+<span class="n">PERIBLKCTRL_PERI_CLK</span><span class="o">-&gt;</span><span class="n">u_324</span><span class="p">.</span><span class="n">BITS_324</span><span class="p">.</span><span class="n">disp_ck_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">PERIBLKCTRL_PERI_CLK</span><span class="o">-&gt;</span><span class="n">u_324</span><span class="p">.</span><span class="n">BITS_324</span><span class="p">.</span><span class="n">disp_func_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">PERIBLKCTRL_PERI_CLK</span><span class="o">-&gt;</span><span class="n">u_324</span><span class="p">.</span><span class="n">BITS_324</span><span class="p">.</span><span class="n">r_disp_mux_clk_cg_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">//From PLL1, SOURCE = 100M</span>
+<span class="n">PERIBLKCTRL_PERI_CLK</span><span class="o">-&gt;</span><span class="n">u_324</span><span class="p">.</span><span class="n">BITS_324</span><span class="p">.</span><span class="n">r_disp_div_en</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">PERIBLKCTRL_PERI_CLK</span><span class="o">-&gt;</span><span class="n">u_324</span><span class="p">.</span><span class="n">BITS_324</span><span class="p">.</span><span class="n">r_disp_clk_src_sel0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">//pll1_peri(0) or pll2(1, pll2 = 160M)</span>
+<span class="n">PERIBLKCTRL_PERI_CLK</span><span class="o">-&gt;</span><span class="n">u_324</span><span class="p">.</span><span class="n">BITS_324</span><span class="p">.</span><span class="n">r_disp_clk_src_sel1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">//pll(1) or xtal(0)</span>
+<span class="n">PERIBLKCTRL_PERI_CLK</span><span class="o">-&gt;</span><span class="n">u_324</span><span class="p">.</span><span class="n">BITS_324</span><span class="p">.</span><span class="n">r_disp_div_sel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">//div</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Initialize all the pins to be used.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">LCD_QSPI_RST</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="n">Pad_Config</span><span class="p">(</span><span class="n">LCD_QSPI_D0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="n">Pad_Config</span><span class="p">(</span><span class="n">LCD_QSPI_D1</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="n">Pad_Config</span><span class="p">(</span><span class="n">LCD_QSPI_D2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="n">Pad_Config</span><span class="p">(</span><span class="n">LCD_QSPI_D3</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="n">Pad_Config</span><span class="p">(</span><span class="n">LCD_QSPI_CS</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="n">Pad_Config</span><span class="p">(</span><span class="n">LCD_QSPI_CLK</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="n">Pad_Config</span><span class="p">(</span><span class="n">LCD_QSPI_TE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+
+<span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">LCD_QSPI_RST</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">LCD_QSPI_D0</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">LCD_QSPI_D1</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">LCD_QSPI_D2</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">LCD_QSPI_D3</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">LCD_QSPI_CS</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">LCD_QSPI_CLK</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">LCD_QSPI_TE</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Determine input and output color format, and select SDI interface. Enable TE signal.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LCDC_InitTypeDef</span><span class="w"> </span><span class="n">lcdc_init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_Interface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_IF_DBIC</span><span class="p">;</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_GroupSel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_PixelInputFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_INPUT_RGB565</span><span class="p">;</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_PixelOutputFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_OUTPUT_RGB565</span><span class="p">;</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_PixelBitSwap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_SWAP_BYPASS</span><span class="p">;</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_TeEn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">;</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_TePolarity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_TE_EDGE_FALLING</span><span class="p">;</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_TeInputMux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_TE_LCD_INPUT</span><span class="p">;</span>
+<span class="n">lcdc_init</span><span class="p">.</span><span class="n">LCDC_DmaThreshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">112</span><span class="p">;</span>
+<span class="n">LCDC_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lcdc_init</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Initialize SDI interface, select clock divider, polarity and phase.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LCDC_DBICCfgTypeDef</span><span class="w"> </span><span class="n">dbic_init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">dbic_init</span><span class="p">.</span><span class="n">DBIC_SPEED_SEL</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="n">dbic_init</span><span class="p">.</span><span class="n">SCPOL</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="n">DBIC_SCPOL_LOW</span><span class="p">;</span>
+<span class="n">dbic_init</span><span class="p">.</span><span class="n">SCPH</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="n">DBIC_SCPH_1Edge</span><span class="p">;</span>
+<span class="n">DBIC_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dbic_init</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Control Reset pin to finish LCD panel reset procedure.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LCDC_LCD_SET_RST</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="n">platform_delay_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">LCDC_LCD_SET_RST</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">platform_delay_ms</span><span class="p">(</span><span class="mi">120</span><span class="p">);</span>
+<span class="n">LCDC_LCD_SET_RST</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="n">platform_delay_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Send command and data with basic SPI protocol, these commands and data should refer to LCD producer's guide book.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">incna3311_cmd_param1</span><span class="p">(</span><span class="mh">0xFE</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">);</span>
+<span class="n">incna3311_cmd_param1</span><span class="p">(</span><span class="mh">0xC4</span><span class="p">,</span><span class="w"> </span><span class="mh">0x80</span><span class="p">);</span><span class="w">           </span><span class="cm">/*set quad SPI mode*/</span>
+<span class="n">incna3311_cmd_param1</span><span class="p">(</span><span class="mh">0x35</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">);</span><span class="w">           </span><span class="cm">/*set tear on*/</span>
+<span class="n">incna3311_cmd_param1</span><span class="p">(</span><span class="mh">0x51</span><span class="p">,</span><span class="w"> </span><span class="mh">0xff</span><span class="p">);</span><span class="w">           </span><span class="cm">/*write display brightness*/</span>
+<span class="n">incna3311_cmd_param1</span><span class="p">(</span><span class="mh">0x53</span><span class="p">,</span><span class="w"> </span><span class="mh">0x20</span><span class="p">);</span><span class="w">           </span><span class="cm">/*write display ctrl ,dimming*/</span>
+<span class="n">incna3311_cmd_param1</span><span class="p">(</span><span class="mh">0x63</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">);</span><span class="w">           </span><span class="cm">/*write HBM display brightness*/</span>
+</pre></div>
+</div>
+</section>
+<section id="functional-implementation">
+<h3>Functional Implementation<a class="headerlink" href="#functional-implementation" title="Link to this heading"></a></h3>
+<section id="set-update-window">
+<h4>Set Update Window<a class="headerlink" href="#set-update-window" title="Link to this heading"></a></h4>
+<p>Function <code class="docutils literal notranslate"><span class="pre">rtk_lcd_hal_set_window</span></code> is used to set the window of screen that is to be updated. This example demonstrates a window starting from point (0,0) with a width of 280 and a height of 456:</p>
+<ol class="arabic simple">
+<li><p>Set the window by sending commands to LCD panel. Using the range of window to construct data packet together with command.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//Horizontal Range</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xStart</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xStart</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">;</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xEnd</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xEnd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">;</span>
+<span class="n">incna3311_cmd_param4</span><span class="p">(</span><span class="mh">0x2A</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<span class="c1">//Vertical Range</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yStart</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yStart</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">;</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yEnd</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yEnd</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">;</span>
+<span class="n">incna3311_cmd_param4</span><span class="p">(</span><span class="mh">0x2B</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Switch AXI mode of LCDC to <code class="docutils literal notranslate"><span class="pre">LCDC_FW_MODE</span></code> to allow writing modification to SDI by API <a class="reference internal" href="../../../../../../doc/api_reference/group___l_c_d_c___exported___functions.html#_CPPv415LCDC_AXIMUXMode19LCDC_AXI_MUX_MODE_T" title="LCDC_AXIMUXMode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">LCDC_AXIMUXMode()</span></code></a>.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LCDC_AXIMUXMode</span><span class="p">(</span><span class="n">LCDC_FW_MODE</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Set data size, address and commands for frame data transmission, after which switch LCDC back to <code class="docutils literal notranslate"><span class="pre">LCDC_HW_MODE</span></code>.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DBIC_CmdLength</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">DBIC_AddrLength</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">DBIC_TX_NDF</span><span class="p">(</span><span class="n">len_byte</span><span class="p">);</span>
+<span class="cm">/* must push cmd and address to handler before SDI enable */</span>
+<span class="n">LCDC_SPICCmd</span><span class="p">(</span><span class="mh">0x32</span><span class="p">);</span>
+<span class="n">LCDC_SPICAddr</span><span class="p">(</span><span class="mh">0x002c00</span><span class="p">);</span>
+<span class="n">LCDC_AXIMUXMode</span><span class="p">(</span><span class="n">LCDC_HW_MODE</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dma-configurations">
+<h3>DMA Configurations<a class="headerlink" href="#dma-configurations" title="Link to this heading"></a></h3>
+<p>After SDI interface is initialized, DMA should also be initialized to enable data transmission. The procedure is demonstrated in <code class="docutils literal notranslate"><span class="pre">rtk_lcd_hal_clear_screen</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Initialize DMA parameter, including data size, burst size and source increament, to transmit data to LCD panel through initialized SDI interface. In this sample, single block mode is used.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LCDC_DMA_InitTypeDef</span><span class="w"> </span><span class="n">LCDC_DMA_InitStruct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="n">LCDC_DMA_StructInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">LCDC_DMA_InitStruct</span><span class="p">);</span>
+<span class="n">LCDC_DMA_InitStruct</span><span class="p">.</span><span class="n">LCDC_DMA_ChannelNum</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_DMA_CHANNEL_NUM</span><span class="p">;</span>
+<span class="n">LCDC_DMA_InitStruct</span><span class="p">.</span><span class="n">LCDC_DMA_DIR</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_DMA_DIR_PeripheralToMemory</span><span class="p">;</span>
+<span class="n">LCDC_DMA_InitStruct</span><span class="p">.</span><span class="n">LCDC_DMA_SourceInc</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_DMA_SourceInc_Inc</span><span class="p">;</span>
+<span class="n">LCDC_DMA_InitStruct</span><span class="p">.</span><span class="n">LCDC_DMA_DestinationInc</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_DMA_DestinationInc_Fix</span><span class="p">;</span>
+<span class="n">LCDC_DMA_InitStruct</span><span class="p">.</span><span class="n">LCDC_DMA_SourceDataSize</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_DMA_DataSize_Word</span><span class="p">;</span>
+<span class="n">LCDC_DMA_InitStruct</span><span class="p">.</span><span class="n">LCDC_DMA_DestinationDataSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_DMA_DataSize_Word</span><span class="p">;</span>
+<span class="n">LCDC_DMA_InitStruct</span><span class="p">.</span><span class="n">LCDC_DMA_SourceMsize</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_DMA_Msize_8</span><span class="p">;</span>
+<span class="n">LCDC_DMA_InitStruct</span><span class="p">.</span><span class="n">LCDC_DMA_DestinationMsize</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_DMA_Msize_8</span><span class="p">;</span>
+<span class="n">LCDC_DMA_Init</span><span class="p">(</span><span class="n">LCDC_DMA_CHANNEL_INDEX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">LCDC_DMA_InitStruct</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="data-transmission">
+<h3>Data Transmission<a class="headerlink" href="#data-transmission" title="Link to this heading"></a></h3>
+<p>After internal DMA is intialized, data transmission is prepared. The procedure is demonstrated in <code class="docutils literal notranslate"><span class="pre">rtk_lcd_hal_clear_screen</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Determine how many pixels should be sent within each frame with API <a class="reference internal" href="../../../../../../doc/api_reference/group___l_c_d_c___exported___functions.html#_CPPv418LCDC_SetTxPixelLen8uint32_t" title="LCDC_SetTxPixelLen"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">LCDC_SetTxPixelLen()</span></code></a>.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LCDC_SetTxPixelLen</span><span class="p">(</span><span class="mi">280</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">456</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Let DMA start to transmit data to internal FIFO with <a class="reference internal" href="../../../../../../doc/api_reference/group___l_c_d_c___exported___functions.html#_CPPv411LCDC_DmaCmd15FunctionalState" title="LCDC_DmaCmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">LCDC_DmaCmd()</span></code></a>.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LCDC_DmaCmd</span><span class="p">(</span><span class="n">ENABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Let LCDC start to transmit data from internal FIFO to selected interface by calling API <a class="reference internal" href="../../../../../../doc/api_reference/group___l_c_d_c___exported___functions.html#_CPPv417LCDC_AutoWriteCmd15FunctionalState" title="LCDC_AutoWriteCmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">LCDC_AutoWriteCmd()</span></code></a>.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LCDC_AutoWriteCmd</span><span class="p">(</span><span class="n">ENABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Polling status of LCDC. After DMA and SDI return to idle status, disable LCDC function.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">LCDC_HANDLER</span><span class="o">-&gt;</span><span class="n">DMA_FIFO_CTRL</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">LCDC_DMA_ENABLE</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RESET</span><span class="p">);</span><span class="c1">//wait dma idle</span>
+<span class="n">LCDC_HANDLER_OPERATE_CTR_t</span><span class="w"> </span><span class="n">handler_reg_0x14</span><span class="p">;</span>
+<span class="k">do</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">handler_reg_0x14</span><span class="p">.</span><span class="n">d32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LCDC_HANDLER</span><span class="o">-&gt;</span><span class="n">OPERATE_CTR</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">handler_reg_0x14</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">auto_write_start</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RESET</span><span class="p">);</span>
+<span class="n">LCDC_Cmd</span><span class="p">(</span><span class="n">DISABLE</span><span class="p">);</span>
+<span class="n">LCDC_ClearDmaFifo</span><span class="p">();</span>
+<span class="n">LCDC_ClearTxPixelCnt</span><span class="p">();</span>
+<span class="n">LCDC_AXIMUXMode</span><span class="p">(</span><span class="n">LCDC_FW_MODE</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___l_c_d_c.html#group___l_c_d_c"><span class="std std-ref">LCDC</span></a></p></li>
+<li><p><span class="xref std std-ref">LCDC_DBIC</span></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___l_c_d_c___d_m_a.html#group___l_c_d_c___d_m_a"><span class="std std-ref">LCDC_DMA</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../lcdc_dpi/doc/text_en/README.html" class="btn btn-neutral float-left" title="DPI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../../lpc/doc/text_en/README.html" class="btn btn-neutral float-right" title="LPC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

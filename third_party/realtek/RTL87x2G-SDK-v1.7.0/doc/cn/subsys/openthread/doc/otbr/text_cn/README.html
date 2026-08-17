@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenThread 边界路由器 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="Matter" href="../../../../../doc/protocols/matter/text_cn/README.html" />
+    <link rel="prev" title="Thread 协议" href="../../overview/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_cn/README.html">Bluetooth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../text_cn/README.html">Thread</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../text_cn/SupportedFeatures.html">功能支持</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../overview/text_cn/README.html">Thread 协议</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OpenThread 边界路由器</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">术语和概念</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">关键网络功能</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">特性</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">服务</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">网络拓扑</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">外部线程配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">示例工程</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id8">需求</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id9">硬件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id10">软件</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id12">环境设置和测试流程</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#otbr">在树莓派上设置 OTBR</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id14">测试步骤</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../doc/protocols/matter/text_cn/README.html">Matter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+        <li class="breadcrumb-item"><a href="../../text_cn/README.html">Thread</a></li>
+    <li class="breadcrumb-item active">OpenThread 边界路由器</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="openthread">
+<span id="openthread-border-router-cn"></span><h1>OpenThread 边界路由器<a class="headerlink" href="#openthread" title="Link to this heading"></a></h1>
+<p>边界路由器是能够在网状网络内外路由数据包的设备。Thread 边界路由器是连接 Thread 网络和其他基于 IP 的网络 (如 Wi-Fi 或以太网) 的设备。</p>
+<section id="id1">
+<h2>术语和概念<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>本节详细介绍了边界路由器 (Border Router) 所支持的关键网络功能、特性与服务。
+这些功能和特性为现代网络环境提供了强大的支持，能够实现多种网络拓扑之间的无缝通信、管理和配置。</p>
+<section id="id2">
+<h3>关键网络功能<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>双向 IP 连接</strong></p>
+<p>实现 Thread 和 Wi-Fi/以太网网络之间的双向 IP 连接，确保设备可以在不同网络协议之间顺畅通信。这种连接对于有多个设备和广泛网络覆盖的环境尤其重要。</p>
+</li>
+<li><p><strong>双向服务发现</strong></p>
+<p>通过使用 mDNS 和 SRP，边界路由器能够支持设备在 Wi-Fi/以太网和 Thread 网络中进行服务的双向发现。这种功能有助于自动化设备的发现与配置，提高网络效率。</p>
+</li>
+<li><p><strong>基于基础架构的 Thread 分区合并</strong></p>
+<p>通过 IP 链路合并分区，使得多个独立的 Thread 网络能够协同工作，形成更大的统一网络，从而提高网络的冗余性和可靠性。</p>
+</li>
+<li><p><strong>外部 Thread 委托</strong></p>
+<p>通过外部设备 (例如智能手机) 来认证和加入新设备，提供更便捷和安全的网络接入方式。</p>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h3>特性<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Web GUI 配置和管理</strong></p>
+<p>提供用户友好的图形界面，简化边界路由器的配置和管理过程。用户可以通过这一界面快速进行操作，极大地提高了管理效率。</p>
+</li>
+<li><p><strong>边界代理支持</strong></p>
+<p>与外部委托的 Thread 边界代理结合，提供了一种安全的方式来管理设备接入和权限，确保网络资源的安全性。</p>
+</li>
+<li><p><strong>DHCPv6 前缀代理</strong></p>
+<p>在 Thread 网络中获取并分配 IPv6 前缀，支持设备在网络中获得合法的 IP 地址。</p>
+</li>
+<li><p><strong>NAT64 和 DNS64 支持</strong></p>
+<p>允许仅支持 IPv6 的设备访问 IPv4-only 的网络资源，实现广泛的网络兼容性和互通性。</p>
+</li>
+<li><p><strong>OpenThread 驱动支持</strong></p>
+<p>基于 OpenThread 的特性，确保设备能够高效利用现有的网络协议和技术。</p>
+</li>
+<li><p><strong>Docker 支持</strong></p>
+<p>通过容器技术，边界路由器能够在各种环境中快速部署和扩展，符合现代化的 IT 部署需求。</p>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h3>服务<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>mDNS 发布器</strong></p>
+<p>帮助外部设备发现和连接到边界路由器及其关联的 Thread 网络，提高设备的网络集成能力。</p>
+</li>
+<li><p><strong>PSKc 生成器</strong></p>
+<p>提供自动化的密钥生成，确保网络通信的安全性，减少人为错误的机会。</p>
+</li>
+<li><p><strong>Web 服务</strong></p>
+<p>提供直观的 Web 用户界面 (UI) ，使网络管理员能够轻松管理和监控 Thread 网络，从而优化网络性能。</p>
+</li>
+</ol>
+<p>通过这些功能和特性，边界路由器为现代网络提供了强大而灵活的解决方案，确保在不断发展的网络环境中保持高效可靠的性能。</p>
+</section>
+</section>
+<section id="id5">
+<h2>网络拓扑<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>Thread 边界路由器的网络拓扑主要包括以下几个部分：</p>
+<ol class="arabic">
+<li><p><strong>Thread 网络</strong></p>
+<p>由多个低功耗设备 (如传感器和灯具) 组成，每个设备都可以相互通信，形成一个无线网状网络。</p>
+</li>
+<li><p><strong>边界路由器</strong></p>
+<p>作为连接 Thread 网络和外部 IP 网络 (如家庭 Wi-Fi 或以太网) 的桥梁。
+它让 Thread 设备可以访问外部网络和互联网。</p>
+</li>
+<li><p><strong>Wi-Fi/以太网网络</strong></p>
+<p>OTBR 连在这类网络上，使得 Thread 网络设备能与这部分网络中的设备进行通信。</p>
+</li>
+<li><p><strong>服务发现</strong></p>
+<p>OTBR 使用协议来自动发现网络中的服务，让设备可以轻松找到并使用本地资源。</p>
+</li>
+<li><p><strong>网络互通</strong></p>
+<p>支持将 IPv6 设备与 IPv4 网络资源连接，保证它们可以互相访问。</p>
+</li>
+</ol>
+<p>下图展示了一个通过 OTBR 连接 Thread 网络和其他基于 IP 的网络拓扑示例。</p>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../../../../../_images/otbr.png"><img alt="../../../../../_images/otbr.png" src="../../../../../_images/otbr.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">通过 OTBR 连接 Thread 网络和其他基于 IP 的网络</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
+<h2>外部线程配置<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>在外部线程配置过程中，使用一个连接到不同网络 (如Wi-Fi或以太网) 的专员设备，而非线程网络。这个外部专员，例如手机，利用线程边界路由器作为中介，促进新设备加入线程网络。</p>
+<p>以下是使用手机进行外部线程配置的过程:</p>
+<ol class="arabic simple">
+<li><p>使用手机 APP 扫描 Thread 终端设备发出的 BLE 广播并进行 BLE 连接。</p></li>
+<li><p>手机 APP 通过 BLE 连接将 OTBR 网络的凭证同步到 Thread 终端设备。</p></li>
+<li><p>Thread 终端设备使用凭证加入 Thread 网络。</p></li>
+</ol>
+<p>下图展示了一个线程网络拓扑示例，并演示了使用手机进行外部配置的过程。</p>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../../../../../_images/network_topology.png"><img alt="../../../../../_images/network_topology.png" src="../../../../../_images/network_topology.png" style="width: 521.6px; height: 416.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">手机进行外部配置的过程</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id7">
+<h2>示例工程<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h3>需求<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>要建立 OpenThread 边界路由器 (OTBR) 环境，请确保您拥有以下硬件和软件。以下是详细的设置要求：</p>
+<section id="id9">
+<h4>硬件<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>一台树莓派 3/4 设备和至少 8 GB 容量的 SD 卡</p></li>
+<li><p>一台未在路由器上启用 IPv6 Router Advertisement Guard 的 Wi-Fi AP</p></li>
+<li><p>8771GUV RCP dongle</p></li>
+<li><p>Matter 设备 (例如智能插座)</p></li>
+<li><p>一台至少搭载 Android 8.1 的 Android 手机</p></li>
+</ul>
+</section>
+<section id="id10">
+<h4>软件<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.raspberrypi.com/software/">树莓派 Imager</a></p></li>
+<li><p><a class="reference external" href="https://github.com/project-chip/connectedhomeip/blob/master/docs/guides/android_building.md">Android App (CHIPTool)</a></p></li>
+</ul>
+<table class="docutils align-center" id="id11">
+<caption><span class="caption-text">需求</span><a class="headerlink" href="#id11" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>角色</p></th>
+<th class="head"><p>硬件</p></th>
+<th class="head"><p>软件</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>OTBR</p></th>
+<td><p>树莓派</p>
+<p>RTL8771GUV RCP dongle</p>
+</td>
+<td><p>树莓派 Imager</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Wi-Fi AP</p></th>
+<td><p>Wi-Fi AP</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Thread 终端设备</p></th>
+<td><p>Matter 设备 (例如智能插座)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>测试设备</p></th>
+<td><p>Android 手机</p></td>
+<td><p>CHIPTool</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id12">
+<h3>环境设置和测试流程<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<section id="otbr">
+<h4>在树莓派上设置 OTBR<a class="headerlink" href="#otbr" title="Link to this heading"></a></h4>
+<div class="admonition-otbr-rcp-thread admonition">
+<p class="admonition-title">前提条件
+ 用户应为 OTBR 准备一个 RCP 模式的 Thread 设备。</p>
+<ul>
+<li><p>设置树莓派。</p></li>
+<li><p>下载并安装 <a class="reference external" href="https://www.raspberrypi.com/software/">树莓派 Imager</a>。</p></li>
+<li><p>选择 <span class="menuselection">选择操作系统 ‣ 其他通用操作系统 ‣ Ubuntu ‣ Ubuntu 20.04 或更高版本 (32 位或 64 位)</span>。</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../../_images/raspi_setup1.png"><img alt="../../../../../_images/raspi_setup1.png" src="../../../../../_images/raspi_setup1.png" style="width: 80%;" /></a>
+</figure>
+</li>
+<li><p>选择 <span class="menuselection">选择存储 ‣ 选择外部 SD 卡</span>。</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../../_images/raspi_setup2.png"><img alt="../../../../../_images/raspi_setup2.png" src="../../../../../_images/raspi_setup2.png" style="width: 40%;" /></a>
+</figure>
+</li>
+<li><p>选择 <span class="guilabel">设置</span>， 填入 <kbd class="kbd docutils literal notranslate">主机名</kbd> 字段，勾选 <span class="guilabel">启用 SSH</span>，并填入用户名和密码字段，必要时勾选 <span class="guilabel">配置无线局域网</span>，并填入 SSID 和密码字段。</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../../_images/raspi_setup3.png"><img alt="../../../../../_images/raspi_setup3.png" src="../../../../../_images/raspi_setup3.png" style="width: 80%;" /></a>
+</figure>
+</li>
+<li><p>保存并点击写入按钮，将引导镜像写入 SD 卡。</p></li>
+<li><p>将 SD 卡插入树莓派并上电，现在您已完成树莓派的设置。</p></li>
+</ul>
+</div>
+<ol class="arabic">
+<li><p>克隆 OTBR 仓库。</p>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/openthread/ot-br-posix
+</pre></div>
+</div>
+</li>
+<li><p>修改 RCP dongle 的设备端口。</p>
+<ul class="simple">
+<li><p>将设备端口修改为 <kbd class="kbd docutils literal notranslate">ttyACM0</kbd>，波特率修改为 <kbd class="kbd docutils literal notranslate">2000000</kbd>。</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ cd ot-br-posix
+$ vi CMakeLists.txt
+set(OTBR_RADIO_URL &quot;spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate=2000000&quot;
+</pre></div>
+</div>
+</li>
+<li><p>构建并安装 OTBR。</p>
+<ul class="simple">
+<li><p>安装依赖。</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ./script/bootstrap
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>使用以太网进行边界路由。</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ INFRA_IF_NAME=eth0 ./script/setup
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>使用 WiFi 进行边界路由。</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ INFRA_IF_NAME=wlan0 ./script/setup
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果不确定网络接口名称，可以输入 <kbd class="kbd docutils literal notranslate">ifconfig</kbd> 命令列出所有网络接口。</p>
+</div>
+</li>
+<li><p>验证 8771GUV RCP dongle 用于 OTBR。</p>
+<ul class="simple">
+<li><p>将 USB 端口连接到树莓派和 8771GUV RCP dongle 之间。</p></li>
+<li><p>重启并检查 OTBR 状态。</p></li>
+<li><p>8771GUV 会被识别为 <kbd class="kbd docutils literal notranslate">/dev/ttyACM0</kbd>，活跃 (运行) 状态表示您成功在树莓派上设置了 OTBR。</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ sudo service otbr-agent restart
+$ sudo service otbr-agent status
+● otbr-agent.service - Border Router Agent
+Loaded: loaded (/lib/systemd/system/otbr-agent.service; enabled; vendor preset: enabled)
+Active: active (running) since Mon 2021-03-01 05:46:26 GMT; 2s ago
+Main PID: 2997 (otbr-agent)
+  Tasks: 1 (limit: 4915)
+CGroup: /system.slice/otbr-agent.service
+         └─2997 /usr/sbin/otbr-agent -I wpan0 -B wlan0 spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate…
+Mar 01 05:46:26 raspberrypi otbr-agent[2997]: Initialize OpenThread Border Router Agent: OK
+Mar 01 05:46:26 raspberrypi otbr-agent[2997]: Border router agent started.
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id14">
+<h4>测试步骤<a class="headerlink" href="#id14" title="Link to this heading"></a></h4>
+<p>按照以下指示操作：</p>
+<ol class="arabic">
+<li><p>启动 OTBR 并形成 Thread 网络。</p>
+<ul class="simple">
+<li><p>启动 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">otbr</kbd>-<kbd class="kbd docutils literal notranslate">agent</kbd></kbd> 服务。</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ sudo service otbr-agent restart
+$ sudo service otbr-agent status
+● otbr-agent.service - Border Router Agent
+Loaded: loaded (/lib/systemd/system/otbr-agent.service; enabled; vendor preset: enabled)
+Active: active (running) since Mon 2021-03-01 05:46:26 GMT; 2s ago
+Main PID: 2997 (otbr-agent)
+  Tasks: 1 (limit: 4915)
+CGroup: /system.slice/otbr-agent.service
+         └─2997 /usr/sbin/otbr-agent -I wpan0 -B wlan0 spinel+hdlc+uart:///dev/ttyACM0?uart-baudrate…
+Mar 01 05:46:26 raspberrypi otbr-agent[2997]: Initialize OpenThread Border Router Agent: OK
+Mar 01 05:46:26 raspberrypi otbr-agent[2997]: Border router agent started.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>形成 Thread 网络。</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ot-ctl dataset init new
+$ ot-ctl dataset commit active
+$ ot-ctl ifconfig up
+$ ot-ctl thread start
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>等待几秒钟并验证网络状态。</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>确保 OTBR 成为 leader 角色。</p>
+</div>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ot-ctl state
+leader
+</pre></div>
+</div>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ot-ctl netdata show
+Prefixes:
+fd76:a5d1:fcb0:1707::/64 paos med 4000
+Routes:
+fd49:7770:7fc5:0::/64 s med 4000
+Services:
+44970 5d c000 s 4000
+44970 01 9a04b000000e10 s 4000
+Done
+</pre></div>
+</div>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ot-ctl ipaddr
+fda8:5ce9:df1e:6620:0:ff:fe00:fc11
+fda8:5ce9:df1e:6620:0:0:0:fc38
+fda8:5ce9:df1e:6620:0:ff:fe00:fc10
+fd76:a5d1:fcb0:1707:f3c7:d88c:efd1:24a9
+fda8:5ce9:df1e:6620:0:ff:fe00:fc00
+fda8:5ce9:df1e:6620:0:ff:fe00:4000
+fda8:5ce9:df1e:6620:3593:acfc:10db:1a8d
+fe80:0:0:0:a6:301c:3e9f:2f5b
+Done
+</pre></div>
+</div>
+</li>
+<li><p>打开 Matter 设备。</p>
+<ul class="simple">
+<li><p>打开 Matter 设备电源。</p></li>
+<li><p>等待手机开始配网过程。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>请注意，如果 Matter 设备已与其他移动设备配网，您可以按照 Matter 设备的指南将其恢复出厂设置 (例如：按住电源键 10 秒)。</p>
+</div>
+</li>
+<li><p>将手机连接到 WiFi。</p>
+<ul class="simple">
+<li><p>将手机连接到与 OTBR 相同的 WiFi 接入点 (AP) 。</p></li>
+<li><p>确保手机和 OTBR 在同一网络上。</p></li>
+</ul>
+</li>
+<li><p>启动 CHIPTool App。</p>
+<ul class="simple">
+<li><p>选择 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">PROVISION</kbd> <kbd class="kbd docutils literal notranslate">CHIP</kbd> <kbd class="kbd docutils literal notranslate">DEVICE</kbd> <kbd class="kbd docutils literal notranslate">WITH</kbd> <kbd class="kbd docutils literal notranslate">THREAD</kbd></kbd> 项目扫描 Matter 设备的二维码。</p></li>
+<li><p>一旦成功，将显示 OTBR 的设置页面，如下图所示。</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../../_images/chiptool1.png"><img alt="../../../../../_images/chiptool1.png" src="../../../../../_images/chiptool1.png" style="width: 70%;" /></a>
+</figure>
+<ul class="simple">
+<li><p>填写 OTBR 的相应设置后，点击 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SAVE</kbd> <kbd class="kbd docutils literal notranslate">NETWORK</kbd></kbd> 开始配网。</p></li>
+<li><p>用户可以在 OTBR 上输入以下命令以获取相应设置：</p></li>
+</ul>
+<div class="command highlight-rst notranslate"><div class="highlight"><pre><span></span>$ ot-ctl channel
+$ ot-ctl panid
+$ ot-ctl extpanid
+$ ot-ctl networkkey
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>在开发阶段，由于尚未获得正式证书，配网过程中可能会弹出如下图所示的对话框。请选择 <kbd class="kbd docutils literal notranslate">CONTINUE</kbd> 继续。右下角显示的对话框弹出时，表示配网成功。</p>
+</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../../_images/chiptool2.png"><img alt="../../../../../_images/chiptool2.png" src="../../../../../_images/chiptool2.png" style="width: 70%;" /></a>
+</figure>
+</li>
+<li><p>完成调试。</p>
+<ul class="simple">
+<li><p>等待调试过程完成。</p></li>
+<li><p>完成后，继续下一步。</p></li>
+</ul>
+</li>
+<li><p>进入控制面板。</p>
+<ul class="simple">
+<li><p>在 <strong>CHIPTool</strong> 应用中，选择菜单项：<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">LIGHT</kbd> <kbd class="kbd docutils literal notranslate">ON/OFF</kbd> <kbd class="kbd docutils literal notranslate">&amp;</kbd> <kbd class="kbd docutils literal notranslate">LEVEL</kbd> <kbd class="kbd docutils literal notranslate">CLUSTER</kbd></kbd>。</p></li>
+<li><p>这将打开 Matter 设备的控制面板。</p></li>
+</ul>
+</li>
+<li><p>控制 Matter 设备。</p>
+<ul class="simple">
+<li><p>使用手机通过 OTBR 控制 Matter 设备。</p></li>
+<li><p>测试打开和关闭灯光、调节灯光亮度等功能。</p></li>
+<li><p>最后，你可以通过手机通过 OTBR 按下图控制 Matter 设备。</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../../_images/chiptool3.png"><img alt="../../../../../_images/chiptool3.png" src="../../../../../_images/chiptool3.png" style="width: 70%;" /></a>
+</figure>
+<ul class="simple">
+<li><p>下图说明了通过 OTBR 控制 Matter 设备的测试步骤。</p></li>
+</ul>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../../../../../_images/otbr_test_steps.png"><img alt="../../../../../_images/otbr_test_steps.png" src="../../../../../_images/otbr_test_steps.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-text">通过 OTBR 控制 Matter 设备的测试步骤</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="id15">
+<h2>参考资料<a class="headerlink" href="#id15" title="Link to this heading"></a></h2>
+<p>[1] <a class="reference external" href="https://openthread.io/guides/border-router">OpenThread Border Router</a></p>
+<p>[2] <a class="reference external" href="https://github.com/openthread/ot-br-posix">OpenThread Border Router GitHub</a></p>
+<p>[3] <a class="reference external" href="https://openthread.io/codelabs/openthread-border-router#1">Thread Border Router - Bidirectional IPv6 Connectivity and DNS-Based Service Discovery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../overview/text_cn/README.html" class="btn btn-neutral float-left" title="Thread 协议" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../../../doc/protocols/matter/text_cn/README.html" class="btn btn-neutral float-right" title="Matter" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

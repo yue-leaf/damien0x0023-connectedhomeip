@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LE Peripheral &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="LE Central" href="../../../ble_central/doc/text_en/README.html" />
+    <link rel="prev" title="LE Observer" href="../../../ble_observer/doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_en/README.html">Bluetooth</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_broadcaster/doc/text_en/README.html">LE Broadcaster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_observer/doc/text_en/README.html">LE Observer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LE Peripheral</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wiring">Wiring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configurations">Configurations</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#configurable-items">Configurable Items</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#generating-system-config-file">Generating System Config File</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#building-and-downloading">Building and Downloading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#experimental-verification">Experimental Verification</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#testing-with-another-kit">Testing with Another Kit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#testing-with-phone">Testing with Phone</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#code-overview">Code Overview</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#source-code-directory">Source Code Directory</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bluetooth-host-overview">Bluetooth Host Overview</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gap-message-handler">GAP Message Handler</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#profile-message-callback">Profile Message Callback</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ancs-client">ANCS Client</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#how-to-modify-the-parameters-of-advertising-data">How to Modify the Parameters of Advertising Data?</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_central/doc/text_en/README.html">LE Central</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_scatternet/doc/text_en/README.html">LE Scatternet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_bt5_peripheral/doc/text_en/README.html">LE Peripheral Extended ADV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_bt5_central/doc/text_en/README.html">LE Central Extended Scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_peripheral_privacy/doc/text_en/README.html">LE Peripheral Privacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dtm/doc/text_en/README.html">LE DTM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mesh/doc/text_en/README.html">Bluetooth Mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/doc/text_en/README.html">Peripheral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_en/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">Bluetooth</a></li>
+    <li class="breadcrumb-item active">LE Peripheral</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="le-peripheral">
+<span id="le-peripheral-en"></span><h1>LE Peripheral<a class="headerlink" href="#le-peripheral" title="Link to this heading"></a></h1>
+<p>The <em>ble_peripheral</em> sample demonstrates how to use the LE <a class="reference internal" href="../../../../../doc/glossary.html#term-GAP"><span class="xref std std-term">GAP</span></a> Peripheral role to develop many different
+peripheral-role based applications.</p>
+<p>LE Peripheral role features:</p>
+<ul class="simple">
+<li><p>Can send connectable advertising events.</p></li>
+<li><p>Can accept the establishment of LE link and become a Peripheral role in the link.</p></li>
+</ul>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>The sample supports the following development kits:</p>
+<table class="docutils align-center" id="id1">
+<caption><span class="caption-text">Development Kits</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-HDK"><span class="xref std std-term">HDK</span></a></p></td>
+<td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>To quickly set up the development environment, please refer to the detailed instructions provided in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#quick-start"><span class="std std-ref">Quick Start</span></a>.</p>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<p>For specific wiring instructions, please refer to <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#rtl87x2g-evb-interfaces-and-modules"><span class="std std-ref">EVB Interfaces and Modules</span></a> in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#quick-start"><span class="std std-ref">Quick Start</span></a>.</p>
+</section>
+<section id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Link to this heading"></a></h2>
+<section id="configurable-items">
+<h3>Configurable Items<a class="headerlink" href="#configurable-items" title="Link to this heading"></a></h3>
+<p>All contents that can be configured for the sample are in
+<code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_peripheral\src\app_flags.h</span></code>,
+developers can configure according to actual needs.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/** @brief  Config APP LE link number */</span>
+<span class="cp">#define APP_MAX_LINKS  1</span>
+<span class="cm">/** @brief  Config DLPS: 0-Disable DLPS, 1-Enable DLPS */</span>
+<span class="cp">#define F_BT_DLPS_EN                        0</span>
+<span class="cm">/** @brief  Config ANCS Client: 0-Not built in, 1-Open ANCS client function */</span>
+<span class="cp">#define F_BT_ANCS_CLIENT_SUPPORT            0</span>
+<span class="cp">#define F_BT_ANCS_APP_FILTER                (F_BT_ANCS_CLIENT_SUPPORT &amp; 1)</span>
+<span class="cp">#define F_BT_ANCS_GET_APP_ATTR              (F_BT_ANCS_CLIENT_SUPPORT &amp; 0)</span>
+<span class="cm">/** @brief  Config ANCS Client debug log: 0-close, 1-open  */</span>
+<span class="cp">#define F_BT_ANCS_CLIENT_DEBUG              (F_BT_ANCS_CLIENT_SUPPORT &amp; 0)</span>
+</pre></div>
+</div>
+<p>Developers can open or close the ANCS Client Module through the macro <code class="docutils literal notranslate"><span class="pre">F_BT_ANCS_CLIENT_SUPPORT</span></code>. For more information about the ANCS Module, please refer to <a class="reference internal" href="#ancs-client">ANCS Client</a>.</p>
+</section>
+<section id="generating-system-config-file">
+<h3>Generating System Config File<a class="headerlink" href="#generating-system-config-file" title="Link to this heading"></a></h3>
+<p>Developers shall configure the following items through MP Tool:</p>
+<table class="docutils align-default" id="table-mp-tool-configuration-of-ble-peripheral">
+<caption><span class="caption-text">MP Tool Configuration</span><a class="headerlink" href="#table-mp-tool-configuration-of-ble-peripheral" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configurable Item</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LE Slave Link Num</p></td>
+<td><p>≥ <strong>APP_MAX_LINKS</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>For more information about MP Tool Configuration, please refer to <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#generating-system-config-file"><span class="std std-ref">Generating System Config File</span></a> in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#quick-start"><span class="std std-ref">Quick Start</span></a>.</p>
+</section>
+</section>
+<section id="building-and-downloading">
+<span id="peripheral-building-and-downloading"></span><h2>Building and Downloading<a class="headerlink" href="#building-and-downloading" title="Link to this heading"></a></h2>
+<p>This sample can be found in the SDK folder:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_peripheral\proj\rtl87x2g\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_peripheral\proj\rtl87x2g\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>To build and run the sample, follow the steps listed below:</p>
+<ol class="arabic simple">
+<li><p>Open project file.</p></li>
+<li><p>To build the target, follow the steps listed on the <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#generate-app-image"><span class="std std-ref">Generating App Image</span></a> in
+<a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#quick-start"><span class="std std-ref">Quick Start</span></a>.</p></li>
+<li><p>After a successful compilation, the APP bin <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk_xxx.bin</span></code> will be generated in
+the directory <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_peripheral\proj\rtl87x2g\mdk\bin</span></code>.</p></li>
+<li><p>To download APP bin into EVB, follow the steps listed on the <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#mp-tool-download"><span class="std std-ref">MP Tool Download</span></a>
+in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#quick-start"><span class="std std-ref">Quick Start</span></a>.</p></li>
+<li><p>Press the <kbd class="kbd docutils literal notranslate">reset</kbd> button on the EVB and it will start running.</p></li>
+</ol>
+</section>
+<section id="experimental-verification">
+<h2>Experimental Verification<a class="headerlink" href="#experimental-verification" title="Link to this heading"></a></h2>
+<p>After downloading the sample bin to the EVB, developers can test it either by using another
+kit that is running the <a class="reference internal" href="../../../ble_central/doc/text_en/README.html#le-central-en"><span class="std std-ref">LE Central</span></a> sample, or a phone installed LE APPs like <code class="file docutils literal notranslate"><span class="pre">LightBlue</span></code>.</p>
+<section id="testing-with-another-kit">
+<h3>Testing with Another Kit<a class="headerlink" href="#testing-with-another-kit" title="Link to this heading"></a></h3>
+<p>Please refer to <a class="reference internal" href="../../../ble_central/doc/text_en/README.html#central-testing-with-another-kit"><span class="std std-ref">Testing with Another Kit</span></a>
+in <a class="reference internal" href="../../../ble_central/doc/text_en/README.html#le-central-en"><span class="std std-ref">LE Central</span></a>.</p>
+</section>
+<section id="testing-with-phone">
+<h3>Testing with Phone<a class="headerlink" href="#testing-with-phone" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Press the <span class="guilabel">reset</span> button on <a class="reference internal" href="../../../../../doc/glossary.html#term-DUT"><span class="xref std std-term">DUT</span></a> and <strong>DUT</strong> will start sending connectable undirected advertising events.</p>
+<p>If the advertisement is successfully enabled, the following <strong>Debug Analyzer</strong> log will be printed. If developers do not
+see the following log, it means that the advertisement failed to start. Please check if the
+software and hardware environment is configured correctly.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP</span><span class="w"> </span><span class="n">adv</span><span class="w"> </span><span class="n">start</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run <code class="file docutils literal notranslate"><span class="pre">LightBlue</span></code> on an iOS device to search for and connect with <strong>DUT</strong>, as shown below:</p>
+<figure class="align-center" id="figure-ble-peripheral-test-with-ios-device">
+<a class="reference internal image-reference" href="../../../../../_images/periph_ios_test.png"><img alt="../../../../../_images/periph_ios_test.png" src="../../../../../_images/periph_ios_test.png" style="width: 477.0px; height: 351.75px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>ble_peripheral</em> Test with iOS Device</span><a class="headerlink" href="#figure-ble-peripheral-test-with-ios-device" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Developers can implement actions like scanning, connecting, pairing, discovering services, deleting bond information, disconnecting, etc., on the phone-end.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="code-overview">
+<h2>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading"></a></h2>
+<p>The main purpose of this chapter is to help developers become familiar with the development
+process related to the Peripheral Role. This chapter will be introduced according to the
+following several parts:</p>
+<ul class="simple">
+<li><p>The directories of the project and source code files will be introduced in chapter <a class="reference internal" href="#source-code-directory">Source Code Directory</a>.</p></li>
+<li><p>The Bluetooth Host will be introduced in chapter <a class="reference internal" href="#bluetooth-host-overview">Bluetooth Host Overview</a>.</p></li>
+<li><p>The main function and configurable GAP parameters of this sample will be
+introduced in chapter <a class="reference internal" href="#initialization">Initialization</a>.</p></li>
+<li><p>The GAP message handler of this sample will be introduced in chapter <a class="reference internal" href="#gap-message-handler">GAP Message Handler</a>.</p></li>
+<li><p>The profile message callback of this sample will be introduced in chapter <a class="reference internal" href="#profile-message-callback">Profile Message Callback</a>.</p></li>
+<li><p>The ANCS client module will be introduced in chapter <a class="reference internal" href="#ancs-client">ANCS Client</a>.</p></li>
+</ul>
+<section id="source-code-directory">
+<h3>Source Code Directory<a class="headerlink" href="#source-code-directory" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Project directory: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_peripheral\proj</span></code>.</p></li>
+<li><p>Source code directory: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_peripheral\src</span></code>.</p></li>
+</ul>
+<p>Source files in the <em>ble_peripheral</em> sample project are currently categorized into several groups as below.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: peripheral
+    └── secure_only_app
+        └── Device                   includes startup code
+        ├── CMSE Library             Non-secure callable lib
+        ├── Lib                      includes all binary symbol files that user application is built on
+            ├── ROM_NS.lib
+            └── lowerstack.lib
+            └── rtl87x2g_sdk.lib
+            └── gap_utils.lib
+        ├── Peripheral               includes all peripheral drivers and module code used by the application
+        ├── Profile                  includes LE profiles or services used by the sample application
+        └── APP                      includes the ble_peripheral user application implementation
+            ├── ancs.c
+            ├── app_task.c
+            ├── main.c
+            └── peripheral_app.c
+</pre></div>
+</div>
+<p>The sample uses default GAP <a class="reference internal" href="../../../../../doc/glossary.html#term-LIB"><span class="xref std std-term">LIB</span></a> that matches with <code class="file docutils literal notranslate"><span class="pre">bt_host_0_0</span></code>, please refer to <a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_en/README.html#usage-of-gap-lib"><span class="std std-ref">Usage of GAP LIB</span></a> in <a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_en/README.html#bluetooth-host-image-en"><span class="std std-ref">Host Image</span></a> for more information.</p>
+</section>
+<section id="bluetooth-host-overview">
+<h3>Bluetooth Host Overview<a class="headerlink" href="#bluetooth-host-overview" title="Link to this heading"></a></h3>
+<p>The sample uses default Bluetooth Host image in <code class="file docutils literal notranslate"><span class="pre">bt_host_0_0</span></code>, please refer to <a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_en/README.html#bluetooth-host-image-en"><span class="std std-ref">Host Image</span></a> for more information.</p>
+<p>For details of Bluetooth technology features supported by the Bluetooth Host, please refer to the file
+<code class="file docutils literal notranslate"><span class="pre">bin\rtl87x2g\bt_host_image\bt_host_0_0\bt_host_config.h</span></code>.</p>
+</section>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">main()</span></code> function is invoked when the EVB is powered on and the chip is reset,
+and it performs the following initialization functions:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">board_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">le_gap_init</span><span class="p">(</span><span class="n">APP_MAX_LINKS</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_lib_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">app_le_gap_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">app_le_profile_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">pwr_mgr_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">task_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">os_sched_start</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___c_o_m_m_o_n___exported___functions.html#_CPPv411le_gap_init7uint8_t" title="le_gap_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_gap_init()</span></code></a> function is used to initialize GAP and configure link number.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_le_profile_init()</span></code> function is used to initialize the profile.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_le_gap_init()</span></code> function is used to initialize the GAP parameters. Developers can configure the following parameters: Device name and device appearance, Advertising parameters, GAP Bond Manager parameters (please refer to the chapter <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#configure-device-name-and-device-appearance"><span class="std std-ref">Configure Device Name and Device Appearance</span></a>, chapter <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#configure-advertising-parameters"><span class="std std-ref">Configure Advertising Parameters</span></a>, chapter <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#configure-bond-manager-parameters"><span class="std std-ref">Configure Bond Manager Parameters</span></a> of <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#le-host-en"><span class="std std-ref">LE Host</span></a>).</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_le_gap_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Device name and device appearance */</span>
+<span class="w">    </span><span class="p">......</span>
+
+
+<span class="w">    </span><span class="cm">/* Advertising parameters */</span>
+<span class="w">    </span><span class="p">......</span>
+
+<span class="w">    </span><span class="cm">/* GAP Bond Manager parameters */</span>
+<span class="w">    </span><span class="p">......</span>
+
+<span class="w">    </span><span class="cm">/* Set advertising parameters */</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_EVENT_TYPE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_evt_type</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_evt_type</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_DIRECT_ADDR_TYPE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_direct_type</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_direct_type</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_DIRECT_ADDR</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_direct_addr</span><span class="p">),</span><span class="w"> </span><span class="n">adv_direct_addr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_CHANNEL_MAP</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_chann_map</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_chann_map</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_FILTER_POLICY</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_filter_policy</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_filter_policy</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_INTERVAL_MIN</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_int_min</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_int_min</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_INTERVAL_MAX</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_int_max</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_int_max</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_DATA</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_data</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">adv_data</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_SCAN_RSP_DATA</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scan_rsp_data</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">scan_rsp_data</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Setup the GAP Bond Manager */</span>
+<span class="w">    </span><span class="n">gap_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_PAIRING_MODE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_pair_mode</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_pair_mode</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_AUTHEN_REQUIREMENTS_FLAGS</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_flags</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_flags</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_IO_CAPABILITIES</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_io_cap</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_io_cap</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_OOB_ENABLED</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_oob</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_oob</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_bond_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_FIXED_PASSKEY</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_fix_passkey</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_fix_passkey</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_bond_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_FIXED_PASSKEY_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_use_fix_passkey</span><span class="p">),</span>
+<span class="w">                      </span><span class="o">&amp;</span><span class="n">auth_use_fix_passkey</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_bond_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_SEC_REQ_REQUIREMENT</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_sec_req_flags</span><span class="p">),</span>
+<span class="w">                      </span><span class="o">&amp;</span><span class="n">auth_sec_req_flags</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* register gap message callback */</span>
+<span class="w">    </span><span class="n">le_register_app_cb</span><span class="p">(</span><span class="n">app_gap_callback</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A device in the peripheral mode shall send connectable advertising events. Therefore, the parameter <code class="docutils literal notranslate"><span class="pre">adv_evt_type</span></code> should be configured as the following type: <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv4N12T_GAP_ADTYPE18GAP_ADTYPE_ADV_INDE" title="GAP_ADTYPE_ADV_IND"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GAP_ADTYPE_ADV_IND</span></code></a>.</p>
+<p>More information on LE GAP initialization and startup flow can be found in the chapter <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#gap-parameters-initialization"><span class="std std-ref">GAP Parameters Initialization</span></a> of <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#le-host-en"><span class="std std-ref">LE Host</span></a>.</p>
+</section>
+<section id="gap-message-handler">
+<h3>GAP Message Handler<a class="headerlink" href="#gap-message-handler" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">app_handle_gap_msg()</span></code> function is invoked whenever a GAP message is received from the Bluetooth Host.
+More information on GAP messages can be found in the chapter <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#bluetooth-le-gap-message"><span class="std std-ref">Bluetooth LE GAP Message</span></a> of <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#le-host-en"><span class="std std-ref">LE Host</span></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_handle_gap_msg</span><span class="p">(</span><span class="n">T_IO_MSG</span><span class="w"> </span><span class="o">*</span><span class="n">p_gap_msg</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_LE_GAP_MSG</span><span class="w"> </span><span class="n">gap_msg</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">conn_id</span><span class="p">;</span>
+<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gap_msg</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p_gap_msg</span><span class="o">-&gt;</span><span class="n">u</span><span class="p">.</span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">p_gap_msg</span><span class="o">-&gt;</span><span class="n">u</span><span class="p">.</span><span class="n">param</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">APP_PRINT_TRACE1</span><span class="p">(</span><span class="s">&quot;app_handle_gap_msg: subtype %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p_gap_msg</span><span class="o">-&gt;</span><span class="n">subtype</span><span class="p">);</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_gap_msg</span><span class="o">-&gt;</span><span class="n">subtype</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_MSG_LE_DEV_STATE_CHANGE</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">app_handle_dev_state_evt</span><span class="p">(</span><span class="n">gap_msg</span><span class="p">.</span><span class="n">msg_data</span><span class="p">.</span><span class="n">gap_dev_state_change</span><span class="p">.</span><span class="n">new_state</span><span class="p">,</span>
+<span class="w">                                    </span><span class="n">gap_msg</span><span class="p">.</span><span class="n">msg_data</span><span class="p">.</span><span class="n">gap_dev_state_change</span><span class="p">.</span><span class="n">cause</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="p">......</span>
+
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="n">APP_PRINT_ERROR1</span><span class="p">(</span><span class="s">&quot;app_handle_gap_msg: unknown subtype %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p_gap_msg</span><span class="o">-&gt;</span><span class="n">subtype</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>ble_peripheral</em> sample will call <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___broadcaster___exported___functions.html#_CPPv412le_adv_startv" title="le_adv_start"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_adv_start()</span></code></a> to start advertising when receiving <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___i_n_i_t___s_t_a_t_e.html#c.GAP_INIT_STATE_STACK_READY" title="GAP_INIT_STATE_STACK_READY"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GAP_INIT_STATE_STACK_READY</span></code></a>.
+If <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___broadcaster___exported___functions.html#_CPPv412le_adv_startv" title="le_adv_start"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_adv_start()</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">true</span></code>, it means Bluetooth Host has already received this command and is ready to execute. When this command
+execution completes, Bluetooth Host will send <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___a_d_v___s_t_a_t_e.html#c.GAP_ADV_STATE_ADVERTISING" title="GAP_ADV_STATE_ADVERTISING"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GAP_ADV_STATE_ADVERTISING</span></code></a> to <code class="docutils literal notranslate"><span class="pre">app_handle_dev_state_evt()</span></code>.
+When <em>ble_peripheral</em> sample runs on the EVB, the device will send connectable advertising events and can be scanned and connected as a Peripheral role by a remote device.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_handle_dev_state_evt</span><span class="p">(</span><span class="n">T_GAP_DEV_STATE</span><span class="w"> </span><span class="n">new_state</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">cause</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">APP_PRINT_INFO3</span><span class="p">(</span><span class="s">&quot;app_handle_dev_state_evt: init state %d, adv state %d, cause 0x%x&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">new_state</span><span class="p">.</span><span class="n">gap_init_state</span><span class="p">,</span><span class="w"> </span><span class="n">new_state</span><span class="p">.</span><span class="n">gap_adv_state</span><span class="p">,</span><span class="w"> </span><span class="n">cause</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gap_dev_state</span><span class="p">.</span><span class="n">gap_init_state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">new_state</span><span class="p">.</span><span class="n">gap_init_state</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">new_state</span><span class="p">.</span><span class="n">gap_init_state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GAP_INIT_STATE_STACK_READY</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;GAP stack ready&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="cm">/*stack ready*/</span>
+<span class="w">            </span><span class="n">le_adv_start</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gap_dev_state</span><span class="p">.</span><span class="n">gap_adv_state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">new_state</span><span class="p">.</span><span class="n">gap_adv_state</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">new_state</span><span class="p">.</span><span class="n">gap_adv_state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GAP_ADV_STATE_IDLE</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;GAP adv stoped&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">new_state</span><span class="p">.</span><span class="n">gap_adv_state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GAP_ADV_STATE_ADVERTISING</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;GAP adv start&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">gap_dev_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_state</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When the <em>ble_peripheral</em> sample receives the <a class="reference internal" href="../../../../../doc/api_reference/group___gap___msg___exported___types.html#_CPPv4N16T_GAP_CONN_STATE27GAP_CONN_STATE_DISCONNECTEDE" title="GAP_CONN_STATE_DISCONNECTED"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GAP_CONN_STATE_DISCONNECTED</span></code></a> message, it will call the <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___broadcaster___exported___functions.html#_CPPv412le_adv_startv" title="le_adv_start"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_adv_start()</span></code></a> function again to start advertising.
+After disconnecting, the <em>ble_peripheral</em> sample will be restored to the status that is discoverable and connectable again.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_handle_conn_state_evt</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">conn_id</span><span class="p">,</span><span class="w"> </span><span class="n">T_GAP_CONN_STATE</span><span class="w"> </span><span class="n">new_state</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">disc_cause</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">APP_PRINT_INFO4</span><span class="p">(</span><span class="s">&quot;app_handle_conn_state_evt: conn_id %d old_state %d new_state %d, disc_cause 0x%x&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">conn_id</span><span class="p">,</span><span class="w"> </span><span class="n">gap_conn_state</span><span class="p">,</span><span class="w"> </span><span class="n">new_state</span><span class="p">,</span><span class="w"> </span><span class="n">disc_cause</span><span class="p">);</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">new_state</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_CONN_STATE_DISCONNECTED</span><span class="p">:</span>
+<span class="w">       </span><span class="p">{</span>
+<span class="w">           </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">disc_cause</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">HCI_ERR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">HCI_ERR_REMOTE_USER_TERMINATE</span><span class="p">))</span>
+<span class="w">               </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">disc_cause</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">HCI_ERR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">HCI_ERR_LOCAL_HOST_TERMINATE</span><span class="p">)))</span>
+<span class="w">           </span><span class="p">{</span>
+<span class="w">               </span><span class="n">APP_PRINT_ERROR1</span><span class="p">(</span><span class="s">&quot;app_handle_conn_state_evt: connection lost cause 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">disc_cause</span><span class="p">);</span>
+<span class="w">           </span><span class="p">}</span>
+
+<span class="w">           </span><span class="n">le_adv_start</span><span class="p">();</span>
+<span class="w">       </span><span class="p">}</span>
+<span class="w">       </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="profile-message-callback">
+<h3>Profile Message Callback<a class="headerlink" href="#profile-message-callback" title="Link to this heading"></a></h3>
+<p>When APP uses <code class="docutils literal notranslate"><span class="pre">xxx_add_service</span></code> to register a specific service, the APP shall register the callback function to handle the message from the specific service.
+APP shall call <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___s_e_r_v_e_r___exported___functions.html#_CPPv422server_register_app_cb23P_FUN_SERVER_GENERAL_CB" title="server_register_app_cb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">server_register_app_cb()</span></code></a> to register the callback function used to handle the message from the profile server layer.</p>
+<p>APP can register different callback functions to handle different services or register the general callback function to handle all messages from specific services and profile server layer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">app_profile_callback()</span></code> function is the general callback function. <code class="docutils literal notranslate"><span class="pre">app_profile_callback()</span></code> can distinguish different services by <strong>service ID</strong>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_le_profile_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">server_init</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">   </span><span class="n">simp_srv_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simp_ble_service_add_service</span><span class="p">(</span><span class="n">app_profile_callback</span><span class="p">);</span>
+<span class="w">   </span><span class="n">bas_srv_id</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">bas_add_service</span><span class="p">(</span><span class="n">app_profile_callback</span><span class="p">);</span>
+<span class="w">   </span><span class="n">server_register_app_cb</span><span class="p">(</span><span class="n">app_profile_callback</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>More information can be found in the chapter <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#gatt-profile-server-en"><span class="std std-ref">GATT Profile Server</span></a> of <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html#le-host-en"><span class="std std-ref">LE Host</span></a>.</p>
+<ul>
+<li><p><strong>General profile server callback</strong></p>
+<p><a class="reference internal" href="../../../../../doc/api_reference/group___general___service___i_d.html#c.SERVICE_PROFILE_GENERAL_ID" title="SERVICE_PROFILE_GENERAL_ID"><code class="xref c c-macro docutils literal notranslate"><span class="pre">SERVICE_PROFILE_GENERAL_ID</span></code></a> is the service ID used by the profile server layer. Message used by the profile server layer contains two message types:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a.html#_CPPv4N16T_SERVER_CB_TYPE28PROFILE_EVT_SRV_REG_COMPLETEE" title="PROFILE_EVT_SRV_REG_COMPLETE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PROFILE_EVT_SRV_REG_COMPLETE</span></code></a></p>
+<p>This message is used to inform that the service registration process has been completed in GAP Start Flow.</p>
+</li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a.html#_CPPv4N16T_SERVER_CB_TYPE30PROFILE_EVT_SEND_DATA_COMPLETEE" title="PROFILE_EVT_SEND_DATA_COMPLETE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PROFILE_EVT_SEND_DATA_COMPLETE</span></code></a></p>
+<p>This message is used to inform the result of sending the notification or indication.</p>
+</li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_profile_callback</span><span class="p">(</span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">app_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">service_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SERVICE_PROFILE_GENERAL_ID</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="n">T_SERVER_APP_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_SERVER_APP_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">      </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">eventId</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">PROFILE_EVT_SRV_REG_COMPLETE</span><span class="p">:</span><span class="c1">// srv register result event.</span>
+<span class="w">         </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;PROFILE_EVT_SRV_REG_COMPLETE: result %d&quot;</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">event_data</span><span class="p">.</span><span class="n">service_reg_result</span><span class="p">);</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">PROFILE_EVT_SEND_DATA_COMPLETE</span><span class="p">:</span>
+<span class="w">         </span><span class="p">......</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Battery Service</strong></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">bas_srv_id</span></code> is the service ID of the battery service.</div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_profile_callback</span><span class="p">(</span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">app_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">service_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bas_srv_id</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="n">T_BAS_CALLBACK_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_bas_cb_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_BAS_CALLBACK_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_bas_cb_data</span><span class="o">-&gt;</span><span class="n">msg_type</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">SERVICE_CALLBACK_TYPE_INDIFICATION_NOTIFICATION</span><span class="p">:</span>
+<span class="w">         </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Simple LE Service</strong></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">simp_srv_id</span></code> is the service ID of simple LE service.</div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_profile_callback</span><span class="p">(</span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">app_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="k">else</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">service_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">simp_srv_id</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="n">TSIMP_CALLBACK_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_simp_cb_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TSIMP_CALLBACK_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_simp_cb_data</span><span class="o">-&gt;</span><span class="n">msg_type</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">SERVICE_CALLBACK_TYPE_INDIFICATION_NOTIFICATION</span><span class="p">:</span>
+<span class="w">         </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="ancs-client">
+<span id="peripheral-ancs-client-en"></span><h3>ANCS Client<a class="headerlink" href="#ancs-client" title="Link to this heading"></a></h3>
+<p>ANCS routines are defined in <code class="file docutils literal notranslate"><span class="pre">ancs.c</span></code> and <code class="file docutils literal notranslate"><span class="pre">ancs.h</span></code>. If other applications want to access this function, the procedure is shown as below:</p>
+<ol class="arabic">
+<li><p>Copy <code class="file docutils literal notranslate"><span class="pre">ancs.h</span></code> and <code class="file docutils literal notranslate"><span class="pre">ancs.c</span></code> to the target APP directory.</p></li>
+<li><p>Configure parameter <code class="docutils literal notranslate"><span class="pre">auth_sec_req_enable</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_le_gap_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if F_BT_ANCS_CLIENT_SUPPORT</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">auth_sec_req_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="cp">#else</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">auth_sec_req_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="w">   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">auth_sec_req_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GAP_AUTHEN_BIT_BONDING_FLAG</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Initialize ANCS client in <code class="docutils literal notranslate"><span class="pre">app_le_profile_init()</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_le_profile_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="cp">#if F_BT_ANCS_CLIENT_SUPPORT</span>
+<span class="w">   </span><span class="n">client_init</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">   </span><span class="n">ancs_init</span><span class="p">(</span><span class="n">APP_MAX_LINKS</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Start ANCS discovery when authentication procedure is completed.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_handle_authen_state_evt</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">conn_id</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">new_state</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">cause</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_AUTHEN_STATE_COMPLETE</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cause</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GAP_SUCCESS</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">   </span><span class="cp">#if F_BT_ANCS_CLIENT_SUPPORT</span>
+<span class="w">               </span><span class="n">ancs_start_discovery</span><span class="p">(</span><span class="n">conn_id</span><span class="p">);</span>
+<span class="w">   </span><span class="cp">#endif</span>
+<span class="w">               </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;app_handle_authen_state_evt: GAP_AUTHEN_STATE_COMPLETE pair success&quot;</span><span class="p">);</span>
+
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;app_handle_authen_state_evt: GAP_AUTHEN_STATE_COMPLETE pair failed&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Customize the ANCS routines in <code class="file docutils literal notranslate"><span class="pre">ancs.c</span></code>.</p></li>
+</ol>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="how-to-modify-the-parameters-of-advertising-data">
+<h3>How to Modify the Parameters of Advertising Data?<a class="headerlink" href="#how-to-modify-the-parameters-of-advertising-data" title="Link to this heading"></a></h3>
+<p>The advertising data are defined in the following array <code class="docutils literal notranslate"><span class="pre">adv_data</span></code>, and developers can directly modify the content of the array to modify the advertising data.</p>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">adv_data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Flags */</span>
+<span class="w">    </span><span class="mh">0x02</span><span class="p">,</span><span class="w">             </span><span class="cm">/* length */</span>
+<span class="w">    </span><span class="n">GAP_ADTYPE_FLAGS</span><span class="p">,</span><span class="w"> </span><span class="cm">/* type=&quot;Flags&quot; */</span>
+<span class="w">    </span><span class="n">GAP_ADTYPE_FLAGS_LIMITED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED</span><span class="p">,</span>
+<span class="w">    </span><span class="cm">/* Service */</span>
+<span class="w">    </span><span class="mh">0x03</span><span class="p">,</span><span class="w">             </span><span class="cm">/* length */</span>
+<span class="w">    </span><span class="n">GAP_ADTYPE_16BIT_COMPLETE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">LO_WORD</span><span class="p">(</span><span class="n">GATT_UUID_SIMPLE_PROFILE</span><span class="p">),</span>
+<span class="w">    </span><span class="n">HI_WORD</span><span class="p">(</span><span class="n">GATT_UUID_SIMPLE_PROFILE</span><span class="p">),</span>
+<span class="w">    </span><span class="cm">/* Local name */</span>
+<span class="w">    </span><span class="mh">0x0F</span><span class="p">,</span><span class="w">             </span><span class="cm">/* length */</span>
+<span class="w">    </span><span class="n">GAP_ADTYPE_LOCAL_NAME_COMPLETE</span><span class="p">,</span>
+<span class="w">    </span><span class="sc">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;L&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;_&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;P&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;R&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;I&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;P&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;R&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;L&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e.html#group___g_a_p___l_e"><span class="std std-ref">GAP LE Module</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___s_e_r_v_e_r___a_p_i.html#group___g_a_t_t___s_e_r_v_e_r___a_p_i"><span class="std std-ref">GATT Server API</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../ble_observer/doc/text_en/README.html" class="btn btn-neutral float-left" title="LE Observer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../ble_central/doc/text_en/README.html" class="btn btn-neutral float-right" title="LE Central" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

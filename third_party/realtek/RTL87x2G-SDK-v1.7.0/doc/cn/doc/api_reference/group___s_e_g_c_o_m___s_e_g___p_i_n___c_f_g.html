@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEGCOM Pin Configuration of SEGs &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="SEGCOM Exported Functions" href="group___s_e_g_c_o_m___exported___functions.html" />
+    <link rel="prev" title="SEGCOM Pin Configuration of COMs" href="group___s_e_g_c_o_m___c_o_m___p_i_n___c_f_g.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___a_d_c.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___q_d_e_c.html">AON_QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___w_d_t.html">AON_WDT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_a_n.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_o_d_e_c.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_n_h_t_i_m.html">ENHTIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_t_h_e_r_n_e_t.html">ETHERNET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_d_m_a.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_p_i_o.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___h_r_a_d_c.html">HRADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_c.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_s.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_d_u.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_r.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_s_o7816.html">ISO7816</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___k_e_y_s_c_a_n.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_c_d_c.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_p_c.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___n_v_i_c.html">NVIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n___d_e_f_i_n_e.html">PIN DEFINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n_m_u_x.html">PINMUX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_e.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_c_c.html">RCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_t_c.html">RTC</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___s_e_g_c_o_m.html">SEGCOM</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___s_e_g_c_o_m___exported___constants.html">SEGCOM Exported Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___s_e_g_c_o_m___exported___functions.html">SEGCOM Exported Functions</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___s_e_g_c_o_m___exported___types.html">SEGCOM Exported Types</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___s_e_g_c_o_m___i_n_i_t___s_t_r_u_c_t.html">SEGCOM Initialization Structure</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___s_e_g_c_o_m___c_o_m___p_i_n___c_f_g.html">SEGCOM Pin Configuration of COMs</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">SEGCOM Pin Configuration of SEGs</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv426SEGCOM_SEG_Pin_CFG_Typedef"><code class="docutils literal notranslate"><span class="pre">SEGCOM_SEG_Pin_CFG_Typedef</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv418SEGCOM_seg_pin_cfg"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg0_p_0_7E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg0_p_0_7</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg1_p_0_6E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg1_p_0_6</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg2_p_0_5E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg2_p_0_5</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg3_p_1_2E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg3_p_1_2</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg4_p_0_4E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg4_p_0_4</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg5_p_1_5E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg5_p_1_5</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg6_p_1_6E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg6_p_1_6</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg7_p_1_7E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg7_p_1_7</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg8_p_3_6E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg8_p_3_6</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg9_p_3_5E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg9_p_3_5</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg10_p_3_4E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg10_p_3_4</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg11_p_3_3E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg11_p_3_3</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg12_p_5_5E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg12_p_5_5</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg13_p_3_7E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg13_p_3_7</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg14_p_4_0E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg14_p_4_0</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg15_p_4_1E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg15_p_4_1</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg16_p_4_2E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg16_p_4_2</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg17_p_4_3E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg17_p_4_3</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg18_p_9_0E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg18_p_9_0</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg19_p_9_1E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg19_p_9_1</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg20_p_9_2E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg20_p_9_2</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg21_p_4_7E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg21_p_4_7</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg22_p_4_6E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg22_p_4_6</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg23_p_4_5E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg23_p_4_5</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg24_p_4_4E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg24_p_4_4</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg25_p_1_4E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg25_p_1_4</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg26_p_1_3E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg26_p_1_3</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg27_p_5_0E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg27_p_5_0</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg28_p_5_1E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg28_p_5_1</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg29_p_5_2E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg29_p_5_2</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg30_p_5_3E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg30_p_5_3</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg31_p_5_4E"><code class="docutils literal notranslate"><span class="pre">SEGCOM_seg_pin_cfg::seg31_p_5_4</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i3_w.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___t_i_m.html">TIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_a_r_t.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_t_i_l_s.html">UTILS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___w_d_t.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+        <li class="breadcrumb-item"><a href="group___s_e_g_c_o_m.html">SEGCOM</a></li>
+        <li class="breadcrumb-item"><a href="group___s_e_g_c_o_m___exported___constants.html">SEGCOM Exported Constants</a></li>
+    <li class="breadcrumb-item active">SEGCOM Pin Configuration of SEGs</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="segcom-pin-configuration-of-segs">
+<h1>SEGCOM Pin Configuration of SEGs<a class="headerlink" href="#segcom-pin-configuration-of-segs" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___s_e_g_c_o_m___s_e_g___p_i_n___c_f_g"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">SEGCOM_SEG_PIN_CFG</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv426SEGCOM_SEG_Pin_CFG_Typedef">
+<span id="_CPPv326SEGCOM_SEG_Pin_CFG_Typedef"></span><span id="_CPPv226SEGCOM_SEG_Pin_CFG_Typedef"></span><span id="SEGCOM_SEG_Pin_CFG_Typedef"></span><span class="target" id="group___s_e_g_c_o_m___s_e_g___p_i_n___c_f_g_1gaf3131f417de5d6bcdbe516827002fd9c"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418SEGCOM_seg_pin_cfg" title="SEGCOM_seg_pin_cfg"><span class="n"><span class="pre">SEGCOM_seg_pin_cfg</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SEGCOM_SEG_Pin_CFG_Typedef</span></span></span><a class="headerlink" href="#_CPPv426SEGCOM_SEG_Pin_CFG_Typedef" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418SEGCOM_seg_pin_cfg">
+<span id="_CPPv318SEGCOM_seg_pin_cfg"></span><span id="_CPPv218SEGCOM_seg_pin_cfg"></span><span id="SEGCOM_seg_pin_cfg"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SEGCOM_seg_pin_cfg</span></span></span><a class="headerlink" href="#_CPPv418SEGCOM_seg_pin_cfg" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg0_p_0_7E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg0_p_0_7E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg0_p_0_7E"></span><span id="SEGCOM_seg_pin_cfg::seg0_p_0_7__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a54717f84c410eae4a303649e93870b8c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg0_p_0_7</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg0_p_0_7E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P0_7 as SEG0. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg1_p_0_6E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg1_p_0_6E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg1_p_0_6E"></span><span id="SEGCOM_seg_pin_cfg::seg1_p_0_6__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1add78642814e116f24801c76a16924ce9"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg1_p_0_6</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg1_p_0_6E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P0_6 as SEG1. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg2_p_0_5E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg2_p_0_5E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg2_p_0_5E"></span><span id="SEGCOM_seg_pin_cfg::seg2_p_0_5__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1aa4b4c8015fb9f42a33074548f25e8e95"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg2_p_0_5</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg2_p_0_5E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P0_5 as SEG2. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg3_p_1_2E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg3_p_1_2E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg3_p_1_2E"></span><span id="SEGCOM_seg_pin_cfg::seg3_p_1_2__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1ad4412ef0ac322c261f210071642ed52a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg3_p_1_2</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg3_p_1_2E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P1_2 as SEG3. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg4_p_0_4E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg4_p_0_4E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg4_p_0_4E"></span><span id="SEGCOM_seg_pin_cfg::seg4_p_0_4__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a948ca79d33e2655ad9f618fb7e4d238d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg4_p_0_4</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg4_p_0_4E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P0_4 as SEG4. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg5_p_1_5E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg5_p_1_5E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg5_p_1_5E"></span><span id="SEGCOM_seg_pin_cfg::seg5_p_1_5__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a465f7b8bf59090042e219e757566513b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg5_p_1_5</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg5_p_1_5E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P1_5 as SEG5. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg6_p_1_6E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg6_p_1_6E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg6_p_1_6E"></span><span id="SEGCOM_seg_pin_cfg::seg6_p_1_6__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a2db10496d7cf40e01f9bdd911990bab6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg6_p_1_6</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg6_p_1_6E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P1_6 as SEG6. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg7_p_1_7E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg7_p_1_7E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg7_p_1_7E"></span><span id="SEGCOM_seg_pin_cfg::seg7_p_1_7__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a3accfac1a21d09b24ecd69910ed98d1a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg7_p_1_7</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg7_p_1_7E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P1_7 as SEG7. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg8_p_3_6E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg8_p_3_6E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg8_p_3_6E"></span><span id="SEGCOM_seg_pin_cfg::seg8_p_3_6__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a3b26251fa9913efaea10f31559593ee5"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg8_p_3_6</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg8_p_3_6E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P3_6 as SEG8. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg10seg9_p_3_5E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg10seg9_p_3_5E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg10seg9_p_3_5E"></span><span id="SEGCOM_seg_pin_cfg::seg9_p_3_5__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a530c109440be8ef99786468373f9c14d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg9_p_3_5</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg10seg9_p_3_5E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P3_5 as SEG9. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg10_p_3_4E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg10_p_3_4E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg10_p_3_4E"></span><span id="SEGCOM_seg_pin_cfg::seg10_p_3_4__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1abe998adff3050254474b542901102e6e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg10_p_3_4</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg10_p_3_4E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P3_4 as SEG10. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg11_p_3_3E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg11_p_3_3E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg11_p_3_3E"></span><span id="SEGCOM_seg_pin_cfg::seg11_p_3_3__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a216d68cce50af9f57a5730e0ff1a6cb3"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg11_p_3_3</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg11_p_3_3E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P3_3 as SEG11. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg12_p_5_5E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg12_p_5_5E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg12_p_5_5E"></span><span id="SEGCOM_seg_pin_cfg::seg12_p_5_5__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a43775c3d4a2f2838625cb032d7d142c3"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg12_p_5_5</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg12_p_5_5E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P5_5 as SEG12. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg13_p_3_7E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg13_p_3_7E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg13_p_3_7E"></span><span id="SEGCOM_seg_pin_cfg::seg13_p_3_7__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1ac603ce5ad78a242c867744c8279d273d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg13_p_3_7</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg13_p_3_7E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P3_7 as SEG13. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg14_p_4_0E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg14_p_4_0E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg14_p_4_0E"></span><span id="SEGCOM_seg_pin_cfg::seg14_p_4_0__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a7f2d028df45d533efef2bf55b82b4c86"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg14_p_4_0</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg14_p_4_0E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P4_0 as SEG14. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg15_p_4_1E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg15_p_4_1E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg15_p_4_1E"></span><span id="SEGCOM_seg_pin_cfg::seg15_p_4_1__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a901e0d712853ac169945774b79eaaf0b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg15_p_4_1</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg15_p_4_1E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P4_1 as SEG15. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg16_p_4_2E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg16_p_4_2E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg16_p_4_2E"></span><span id="SEGCOM_seg_pin_cfg::seg16_p_4_2__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1aa6a9d8d25f7638d8e4f5467a9f2ee883"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg16_p_4_2</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg16_p_4_2E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P4_2 as SEG16. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg17_p_4_3E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg17_p_4_3E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg17_p_4_3E"></span><span id="SEGCOM_seg_pin_cfg::seg17_p_4_3__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1afa4adffa179bfb94867ddd5ff0ddb537"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg17_p_4_3</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg17_p_4_3E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P4_3 as SEG17. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg18_p_9_0E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg18_p_9_0E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg18_p_9_0E"></span><span id="SEGCOM_seg_pin_cfg::seg18_p_9_0__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1ae2d91be3a1b8077053984eaae79353ef"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg18_p_9_0</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg18_p_9_0E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P9_0 as SEG18. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg19_p_9_1E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg19_p_9_1E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg19_p_9_1E"></span><span id="SEGCOM_seg_pin_cfg::seg19_p_9_1__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1aadeb27022ea94ab1ee55454319fdedb7"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg19_p_9_1</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg19_p_9_1E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P9_1 as SEG19. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg20_p_9_2E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg20_p_9_2E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg20_p_9_2E"></span><span id="SEGCOM_seg_pin_cfg::seg20_p_9_2__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a4b88a037be9a8868784af8362dc60880"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg20_p_9_2</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg20_p_9_2E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P9_2 as SEG20. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg21_p_4_7E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg21_p_4_7E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg21_p_4_7E"></span><span id="SEGCOM_seg_pin_cfg::seg21_p_4_7__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1acf7a97944fb241d72fd2f6fa85bf4f1c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg21_p_4_7</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg21_p_4_7E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P4_7 as SEG21. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg22_p_4_6E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg22_p_4_6E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg22_p_4_6E"></span><span id="SEGCOM_seg_pin_cfg::seg22_p_4_6__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a11a073a4338fd0f2233228129eb72f12"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg22_p_4_6</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg22_p_4_6E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P4_6 as SEG22. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg23_p_4_5E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg23_p_4_5E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg23_p_4_5E"></span><span id="SEGCOM_seg_pin_cfg::seg23_p_4_5__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a1dc8ad407bd92c9a3d6529030d79d3fa"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg23_p_4_5</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg23_p_4_5E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P4_5 as SEG23. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg24_p_4_4E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg24_p_4_4E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg24_p_4_4E"></span><span id="SEGCOM_seg_pin_cfg::seg24_p_4_4__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a494afef0bb6a5478357cdd0f77b18188"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg24_p_4_4</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg24_p_4_4E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P4_4 as SEG24. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg25_p_1_4E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg25_p_1_4E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg25_p_1_4E"></span><span id="SEGCOM_seg_pin_cfg::seg25_p_1_4__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1ac9612837588b355cef4915a486491d5f"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg25_p_1_4</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg25_p_1_4E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P1_4 as SEG25. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg26_p_1_3E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg26_p_1_3E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg26_p_1_3E"></span><span id="SEGCOM_seg_pin_cfg::seg26_p_1_3__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1aad6e685e478af56ada0e6eb40f0b657a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg26_p_1_3</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg26_p_1_3E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P1_3 as SEG26. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg27_p_5_0E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg27_p_5_0E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg27_p_5_0E"></span><span id="SEGCOM_seg_pin_cfg::seg27_p_5_0__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a460504286c90322892d03568e114f3c3"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg27_p_5_0</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg27_p_5_0E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P5_0 as SEG27. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg28_p_5_1E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg28_p_5_1E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg28_p_5_1E"></span><span id="SEGCOM_seg_pin_cfg::seg28_p_5_1__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a3e8b8582d7f09aa1ef5df1eb15cef2b5"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg28_p_5_1</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg28_p_5_1E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P5_1 as SEG28. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg29_p_5_2E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg29_p_5_2E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg29_p_5_2E"></span><span id="SEGCOM_seg_pin_cfg::seg29_p_5_2__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a1c48df59197fede9327f322f26c39800"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg29_p_5_2</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg29_p_5_2E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P5_2 as SEG29. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg30_p_5_3E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg30_p_5_3E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg30_p_5_3E"></span><span id="SEGCOM_seg_pin_cfg::seg30_p_5_3__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1ac3c74e19c26dc720481609ae74803d54"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg30_p_5_3</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg30_p_5_3E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P5_3 as SEG30. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18SEGCOM_seg_pin_cfg11seg31_p_5_4E">
+<span id="_CPPv3N18SEGCOM_seg_pin_cfg11seg31_p_5_4E"></span><span id="_CPPv2N18SEGCOM_seg_pin_cfg11seg31_p_5_4E"></span><span id="SEGCOM_seg_pin_cfg::seg31_p_5_4__uint32_t"></span><span class="target" id="struct_s_e_g_c_o_m__seg__pin__cfg_1a814fbb6c9db0b5916bec11fa5f7b87d7"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">seg31_p_5_4</span></span></span><a class="headerlink" href="#_CPPv4N18SEGCOM_seg_pin_cfg11seg31_p_5_4E" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable P5_4 as SEG31. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___s_e_g_c_o_m___c_o_m___p_i_n___c_f_g.html" class="btn btn-neutral float-left" title="SEGCOM Pin Configuration of COMs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___s_e_g_c_o_m___exported___functions.html" class="btn btn-neutral float-right" title="SEGCOM Exported Functions" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

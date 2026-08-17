@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model B 评估板 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="Model C 评估板" href="model_c.html" />
+    <link rel="prev" title="Model A 评估板" href="model_a.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../index.html">
+        
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">评估板指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="model_a.html">Model A 评估板</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Model B 评估板</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">区块分布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">接口分布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">区块和接口介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#evb">EVB 子板</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">电源</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">评估板接口</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">评估板的引脚分配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">评估板使用说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id30">评估板供电接线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">下载模式接线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">正常模式接线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sdio">以太网与 SDIO 接口切换</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34">显示接口</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">IC 功耗测试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rf"><span class="xref std std-term">RF</span> 测试</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model_c.html">Model C 评估板</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">评估板指南</a></li>
+    <li class="breadcrumb-item active">Model B 评估板</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="model-b">
+<h1>Model B 评估板<a class="headerlink" href="#model-b" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>RTL87x2G Model B 评估板适配的子板有：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#rtl8772gwprtl8772gwf"><span class="std std-ref">RTL8772GWP 子板</span></a></p></li>
+<li><p><a class="reference internal" href="#rtl8772gwprtl8772gwf"><span class="std std-ref">RTL8772GWF 子板</span></a></p></li>
+</ul>
+<p>RTL87x2G Model B 评估板上提供了用户开发的硬件环境，包括：</p>
+<ul class="simple">
+<li><p>5V 转 3.3V 和 1.8V <a class="reference internal" href="../../glossary.html#term-LDO"><span class="xref std std-term">LDO</span></a> 电源模块</p></li>
+<li><p>支持 <a class="reference internal" href="../../glossary.html#term-QSPI"><span class="xref std std-term">QSPI</span></a> （Group1），I8080（Group2）和 RGB888 屏幕接口</p></li>
+<li><p>支持音频模块（<a class="reference internal" href="../../glossary.html#term-AMIC"><span class="xref std std-term">AMIC</span></a>，<a class="reference internal" href="../../glossary.html#term-DMIC"><span class="xref std std-term">DMIC</span></a>，<a class="reference internal" href="../../glossary.html#term-AEC"><span class="xref std std-term">AEC</span></a>）接口</p></li>
+<li><p>支持 <a class="reference internal" href="../../glossary.html#term-Wi-Fi"><span class="xref std std-term">Wi-Fi</span></a> 模块和 SD Nand Flash 模块接口</p></li>
+<li><p>支持 RS485 和 <a class="reference internal" href="../../glossary.html#term-A2C"><span class="xref std std-term">A2C</span></a> 接口</p></li>
+<li><p>支持红外感应模块接口</p></li>
+<li><p>支持温湿度传感器模块接口</p></li>
+<li><p>以太网模块</p></li>
+<li><p><a class="reference internal" href="../../glossary.html#term-USB"><span class="xref std std-term">USB</span></a> 转 <a class="reference internal" href="../../glossary.html#term-UART"><span class="xref std std-term">UART</span></a> 转换芯片，FT232RL</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如需购买 EVB，可访问 Realtek 官方网站，获取 <a class="reference external" href="https://www.realmcu.com/zh/Home/Shop">导购指引</a>。</p>
+</div>
+</section>
+<section id="id3">
+<h2>区块分布<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>Model B 评估板 <a class="reference internal" href="#id4"><span class="std std-ref">正面</span></a> 和 <a class="reference internal" href="#id5"><span class="std std-ref">背面</span></a> 的 <a class="reference internal" href="#id6"><span class="std std-ref">区块分布</span></a> 如下。</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../../_images/EVB_model_B_blocks_distribution_Diagram-Front.jpg"><img alt="../../../_images/EVB_model_B_blocks_distribution_Diagram-Front.jpg" src="../../../_images/EVB_model_B_blocks_distribution_Diagram-Front.jpg" style="width: 1312.8000000000002px; height: 670.8000000000001px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板区块分布示意图-正面</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../../_images/EVB_model_B_blocks_distribution_Diagram-Back.jpg"><img alt="../../../_images/EVB_model_B_blocks_distribution_Diagram-Back.jpg" src="../../../_images/EVB_model_B_blocks_distribution_Diagram-Back.jpg" style="width: 1302.0px; height: 559.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板区块分布示意图-背面</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>以下按照逆时针的顺序依次介绍评估板的区块。</p>
+<table class="docutils align-center" id="id6">
+<caption><span class="caption-text">Model B 评估板的区块介绍</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>区块</p></th>
+<th class="head"><p>介绍</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a> 子板连接座（EVB Daughter Board Socket）</p></th>
+<td><p>用于连接 <a class="reference internal" href="#b-evb"><span class="std std-ref">EVB 子板</span></a>，具有防倒插机制</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#id36"><span class="std std-ref">显示接口类型选择（Display Interface Type Selection）</span></a></p></th>
+<td><p>Model B 评估板支持 QSPI（Group1），I8080（Group2）和 RGB888 屏幕接口</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#b-can"><span class="std std-ref">A2C 接口（A2C Interface）</span></a></p></th>
+<td><p>用于连接 A2C 收发器模块</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#b-rs485"><span class="std std-ref">RS485 接口（RS485 Interface）</span></a></p></th>
+<td><p>用于连接 RS485 模块</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#id19"><span class="std std-ref">红外感应接口（Infrared Sensing Interface）</span></a></p></th>
+<td><p>用于连接红外感应模块</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../glossary.html#term-SWD"><span class="xref std std-term">SWD</span></a> 接口（SWD Interface）</p></th>
+<td><p>用于 SWD 调试</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>复位按键（Reset Key）</p></th>
+<td><p>按下此按键会复位系统</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#b-uart-log"><span class="std std-ref">UART/LOG 测试接口（UART/LOG Test Interface）</span></a></p></th>
+<td><p>支持下载模式和正常模式</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#id35"><span class="std std-ref">显示供电选择（Display Power Selection）</span></a></p></th>
+<td><p>支持 USB 端口 CON1 或 CON2 对屏幕进行供电</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#b-usbcon1"><span class="std std-ref">USB 端口 CON1（USB Port CON1）</span></a></p></th>
+<td><p>用于评估板供电，并与 RTL87x2G USB 通信</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>外部供电（External Power Supply）</p></th>
+<td><p>为外设提供 1.8V 和 3.3V 供电</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#b"><span class="std std-ref">IC 供电电压选择（IC Power Voltage Selection）</span></a></p></th>
+<td><p>IC 供电电压选择（3.3V/1.8V 可选）</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#id15"><span class="std std-ref">音频模数转换模块接口（Audio Analog-to-digital Conversion Module Interface）</span></a></p></th>
+<td><p>用于连接音频模数转换模块</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#b-wi-fisd-nand-flash"><span class="std std-ref">Wi-Fi 和 SD Nand Flash 复用接口（Wi-Fi and SD Nand Flash Multiplexed Interface）</span></a></p></th>
+<td><p>用于连接 Wi-Fi 模块或 RTK SD Nand Flash 子板</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>DMIC 接口（DMIC Interface）</p></th>
+<td><p>用于连接外部 DMIC 子板</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>AMIC 接口（AMIC Interface）</p></th>
+<td><p>用于连接外部 AMIC 子板</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>麦克风和耳机插座（Microphone and Headphone Sockets）</p></th>
+<td><p>支持 3.5mm 音频接口</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="#id26"><span class="std std-ref">以太网模块（Ethernet Module）</span></a></p></th>
+<td><p>以太网模块采用 RTL8201FR，支持 <a class="reference internal" href="../../glossary.html#term-RMII"><span class="xref std std-term">RMII</span></a> 接口</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#id22"><span class="std std-ref">温湿度传感器接口（Temperature and Humidity Sensor Interface）</span></a></p></th>
+<td><p>用于连接温湿度传感器</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>24 位 <a class="reference internal" href="../../glossary.html#term-ADC"><span class="xref std std-term">ADC</span></a> 接口（24bits ADC Interface）</p></th>
+<td><p>24 位 ADC 接口，AIN0-3 可作为四路单端输入，AIN0-1 和 AIN2-3 可作为两路差分输入</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="#b-usbcon2"><span class="std std-ref">USB 端口 CON2（USB Port CON2）</span></a></p></th>
+<td><p>用于评估板供电，并连接 USB 转 UART 芯片 FT232RL，用于下载程序或调试</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>显示接口（Display Socket）</p></th>
+<td><p>用于连接显示屏幕</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h2>接口分布<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../../../_images/EVB_model_B_interfaces_distribution_Diagram-Front.jpg"><img alt="../../../_images/EVB_model_B_interfaces_distribution_Diagram-Front.jpg" src="../../../_images/EVB_model_B_interfaces_distribution_Diagram-Front.jpg" style="width: 1163.4px; height: 699.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板接口分布示意图-正面</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="../../../_images/EVB_model_B_interfaces_distribution_Diagram-Back.jpg"><img alt="../../../_images/EVB_model_B_interfaces_distribution_Diagram-Back.jpg" src="../../../_images/EVB_model_B_interfaces_distribution_Diagram-Back.jpg" style="width: 1169.2px; height: 538.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板接口分布示意图-背面</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>评估板上引脚名字前面带有斜杠，如/P1_7，/P3_7，表示该引脚未与 IC 直接相连，使用时需上件对应 0 欧姆电阻。</p>
+</div>
+</section>
+<section id="id10">
+<h2>区块和接口介绍<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<section id="evb">
+<span id="b-evb"></span><h3>EVB 子板<a class="headerlink" href="#evb" title="Link to this heading"></a></h3>
+<p>EVB子板可拆卸更换，子母板之间的连接座有防倒插机制。RTL87x2G Model B 评估板可适配的子板有 RTL8772GWP 子板和 RTL8772GWF 子板。</p>
+<figure class="align-center" id="rtl8772gwprtl8772gwf">
+<a class="reference internal image-reference" href="../../../_images/RTL8772GWP_and_RTL8772GWF_Daughterboard.jpg"><img alt="../../../_images/RTL8772GWP_and_RTL8772GWF_Daughterboard.jpg" src="../../../_images/RTL8772GWP_and_RTL8772GWF_Daughterboard.jpg" style="width: 898.5px; height: 350.7px;" /></a>
+<figcaption>
+<p><span class="caption-text">RTL8772GWP 和 RTL8772GWF 子板</span><a class="headerlink" href="#rtl8772gwprtl8772gwf" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id11">
+<h3>电源<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<blockquote id="b-usbcon1">
+<div><dl class="simple">
+<dt>USB 端口 CON1</dt><dd><p><a class="reference internal" href="#model-b-usb-con1-con2"><span class="std std-ref">USB端口CON1</span></a>，用于 Model B 评估板供电，并与 RTL87x2G USB 通信。</p>
+</dd>
+</dl>
+</div></blockquote>
+<blockquote id="b-usbcon2">
+<div><dl class="simple">
+<dt>USB端口CON2</dt><dd><p><a class="reference internal" href="#model-b-usb-con1-con2"><span class="std std-ref">USB端口CON2</span></a>，用于 Model B 评估板供电，并连接 USB 转 UART 芯片 FT232RL，用于下载程序或调试。</p>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="model-b-usb-con1-con2">
+<a class="reference internal image-reference" href="../../../_images/USB_socket_CON1_2_of_EVB_model_B.jpg"><img alt="../../../_images/USB_socket_CON1_2_of_EVB_model_B.jpg" src="../../../_images/USB_socket_CON1_2_of_EVB_model_B.jpg" style="width: 534.6px; height: 333.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 USB 端口 CON1 和 CON2</span><a class="headerlink" href="#model-b-usb-con1-con2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<blockquote id="b">
+<div><dl class="simple">
+<dt>IC 供电电压选择</dt><dd><p>VDD_VBAT/VDDIO/VDDIO_EXT 可根据实际运用场景选择 1.8V or 3.3V 供电，默认接 3.3V。电源输入引脚说明如下。</p>
+</dd>
+</dl>
+</div></blockquote>
+<table class="docutils align-center" id="id12">
+<caption><span class="caption-text">Model B 评估板电源输入引脚介绍</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>引脚名称</p></th>
+<th class="head"><p>作用</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>V33_USB</p></th>
+<td><p>为 USB 传输供电</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>VD33_PA</p></th>
+<td><p>为内部 +14dBm 射频功率放大器供电</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>AVDD</p></th>
+<td><p>为内部 24 位 ADC 供电</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>VDD_VBAT</p></th>
+<td><p>为内部稳压器和模拟电路供电</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>VDDIO</p></th>
+<td><p>为 PAD 和 Flash 供电</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>VDDIO18</p></th>
+<td><p>为 MCM PSRAM 供电</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>VDDIO_EXT</p></th>
+<td><p>为外设供电</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ol class="arabic simple">
+<li><p>VDDIO 和 VDDIO_EXT 电压要保持一致。</p></li>
+<li><p>使用 RTL8772GWP 子板时，VDDIO18 只能选择 1.8V。</p></li>
+</ol>
+</div>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../../../_images/Power_select_of_EVB_model_B.jpg"><img alt="../../../_images/Power_select_of_EVB_model_B.jpg" src="../../../_images/Power_select_of_EVB_model_B.jpg" style="width: 357.6px; height: 303.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板供电电压选择</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id14">
+<h3>评估板接口<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<blockquote id="b-uart-log">
+<div><dl class="simple">
+<dt>UART/LOG 测试接口</dt><dd><dl class="field-list simple">
+<dt class="field-odd">下载模式<span class="colon">:</span></dt>
+<dd class="field-odd"><p>红框标的两个按键开关都需要按下。按下 <kbd class="kbd docutils literal notranslate">reset</kbd> 按键（或重新上电），进入下载模式。</p>
+</dd>
+<dt class="field-even">正常模式<span class="colon">:</span></dt>
+<dd class="field-even"><p>红框标的两个按键开关都需要松开。按下 <kbd class="kbd docutils literal notranslate">reset</kbd> 按键（或重新上电），开始运行程序，此时调试可使用 Log pin。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="model-b-uart-log">
+<a class="reference internal image-reference" href="../../../_images/UART_LOG_communication_switches_of_EVB_model_B.jpg"><img alt="../../../_images/UART_LOG_communication_switches_of_EVB_model_B.jpg" src="../../../_images/UART_LOG_communication_switches_of_EVB_model_B.jpg" style="width: 381.3px; height: 277.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 UART/LOG 测试接口</span><a class="headerlink" href="#model-b-uart-log" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<blockquote id="b-rs485">
+<div><dl class="simple">
+<dt>RS485 接口</dt><dd><p>使用 RS485 时需要将蓝框标出的三组排针用跳线帽连接。<a class="reference internal" href="#model-b-rs485-rs485"><span class="std std-ref">RS485模块</span></a> 输入 3.3V-TTL。将 RS485 模块连接到评估板时，注意模块上每个 pin 与评估板上 RS485 接口一一对应，防止插反。</p>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="model-b-rs485-rs485">
+<a class="reference internal image-reference" href="../../../_images/RS485_interface_module_of_EVB_model_B.jpg"><img alt="../../../_images/RS485_interface_module_of_EVB_model_B.jpg" src="../../../_images/RS485_interface_module_of_EVB_model_B.jpg" style="width: 386.0px; height: 279.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 RS485 接口和 RS485 模块</span><a class="headerlink" href="#model-b-rs485-rs485" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="model-b-rs485">
+<a class="reference internal image-reference" href="../../../_images/RS485_Interface.jpg"><img alt="../../../_images/RS485_Interface.jpg" src="../../../_images/RS485_Interface.jpg" style="width: 273.75px; height: 321.25px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 RS485 模块连接示意图</span><a class="headerlink" href="#model-b-rs485" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<blockquote id="b-can">
+<div><dl class="simple">
+<dt>A2C 接口</dt><dd><p><a class="reference internal" href="#model-b-a2c-can"><span class="std std-ref">A2C 接口</span></a> 如图中左边两排绿框所示，用于连接收发器模块，另一排为 A2C 测试接口。使用 A2C 接口时需要将蓝框标出的三组排针用跳线帽连接。模块采用 TJA1051，是一款高速收发器，为控制器提供差动发送和接收功能，传输速率高达 1Mbit/s。将收发器模块连接到评估板时，注意模块上每个 pin 与评估板上 A2C 接口一一对应，防止插反。</p>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="model-b-a2c-can">
+<a class="reference internal image-reference" href="../../../_images/CAN_interface_and_module_of_EVB_model_B.jpg"><img alt="../../../_images/CAN_interface_and_module_of_EVB_model_B.jpg" src="../../../_images/CAN_interface_and_module_of_EVB_model_B.jpg" style="width: 377.0px; height: 293.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 A2C 接口和收发器模块</span><a class="headerlink" href="#model-b-a2c-can" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="model-b-can">
+<a class="reference internal image-reference" href="../../../_images/CAN_module_connecting_of_EVB_model_B.jpg"><img alt="../../../_images/CAN_module_connecting_of_EVB_model_B.jpg" src="../../../_images/CAN_module_connecting_of_EVB_model_B.jpg" style="width: 295.75px; height: 399.34999999999997px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 A2C 接口连接示意图</span><a class="headerlink" href="#model-b-can" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<blockquote id="id15">
+<div><dl class="simple">
+<dt>音频模数转换接口</dt><dd><p><a class="reference internal" href="#id16"><span class="std std-ref">音频模数转换接口</span></a> 中 MIC_L 和 MIC_R 均连接麦克风模块，作为音频输入；U19 放置音频模数转换模块。连接时注意引脚顺序，防止接反。<a class="reference internal" href="#id17"><span class="std std-ref">音频模数转换模块</span></a> 采用 PCM1808 器件，带有 24 位 A/D 转换器，并包含一个数字抽取滤波器和高通滤波器，用于消除输入信号的直流部分。PCM1808 在串行音频接口中支持主从模式和两种数据格式，通过暂停系统时钟来支持掉电和复位功能，采样率范围为 8kHz~96kHz。供电为 5V 模拟电源和 3.3V 数字电源。</p>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../../../_images/Audio_stereo_analog-to-digital_conversion_module_interface_of_EVB_model_B.jpg"><img alt="../../../_images/Audio_stereo_analog-to-digital_conversion_module_interface_of_EVB_model_B.jpg" src="../../../_images/Audio_stereo_analog-to-digital_conversion_module_interface_of_EVB_model_B.jpg" style="width: 430.8px; height: 263.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板音频模数转换接口</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../../../_images/MicrophoneL_and_audio_stereo_analog-to-digital_conversion_moduleR_of_EVB_model_B.jpg"><img alt="../../../_images/MicrophoneL_and_audio_stereo_analog-to-digital_conversion_moduleR_of_EVB_model_B.jpg" src="../../../_images/MicrophoneL_and_audio_stereo_analog-to-digital_conversion_moduleR_of_EVB_model_B.jpg" style="width: 356.0px; height: 207.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">麦克风（左）和音频模数转换模块（右）</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../../../_images/audio_stereo_analog-to-digital_conversion_module_connecting_of_EVB_model_B.jpg"><img alt="../../../_images/audio_stereo_analog-to-digital_conversion_module_connecting_of_EVB_model_B.jpg" src="../../../_images/audio_stereo_analog-to-digital_conversion_module_connecting_of_EVB_model_B.jpg" style="width: 367.8px; height: 322.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板音频模数转换模块连接示意图</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<blockquote id="id19">
+<div><dl class="simple">
+<dt>红外感应接口</dt><dd><p>使用 <a class="reference internal" href="#id20"><span class="std std-ref">红外感应模块</span></a> 时需要先用跳线帽将 J127 连接，然后将红外感应模块插到 J77，注意接插位置顺序，防止反接。红外感应模块采用 HC-SR505，工作电压范围是 4.5~20V，静态电流小于 50uA。当人进入其感应范围则输出高电平，人离开感应范围则自动延时关闭高电平，输出低电平。支持可重复触发，即感应输出高电平后，在延时时间内，如果有人体在其感应范围活动，其输出将一直保持高电平，直到人离开后才延时将高电平变为低电平。</p>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../../../_images/Infrared_sensing_interface_of_EVB_model_B.jpg"><img alt="../../../_images/Infrared_sensing_interface_of_EVB_model_B.jpg" src="../../../_images/Infrared_sensing_interface_of_EVB_model_B.jpg" style="width: 386.0px; height: 196.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板红外感应接口及模块</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id21">
+<a class="reference internal image-reference" href="../../../_images/Infrared_sensing_module_connecting_of_EVB_model_B.jpg"><img alt="../../../_images/Infrared_sensing_module_connecting_of_EVB_model_B.jpg" src="../../../_images/Infrared_sensing_module_connecting_of_EVB_model_B.jpg" style="width: 239.39999999999998px; height: 365.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板红外感应模块连接示意图</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<blockquote id="id22">
+<div><dl class="simple">
+<dt>温湿度传感器接口</dt><dd><p><a class="reference internal" href="#id23"><span class="std std-ref">温湿度传感器模块</span></a> 供电电压为 2.4~5.5V，支持 <a class="reference internal" href="../../glossary.html#term-I2C"><span class="xref std std-term">I2C</span></a> 通信协议，温度的量程和精度分别为 -40~+125℃，±0.2℃，湿度的量程和精度分别为 0~100%RH，±2%RH，功耗为 4.8uW（1 次/秒）。连接时注意接插位置顺序，防止反接。</p>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="id23">
+<a class="reference internal image-reference" href="../../../_images/Temperature_and_humidity_sensor_interface_of_EVB_model_B.jpg"><img alt="../../../_images/Temperature_and_humidity_sensor_interface_of_EVB_model_B.jpg" src="../../../_images/Temperature_and_humidity_sensor_interface_of_EVB_model_B.jpg" style="width: 405.0px; height: 156.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B评估板温湿度传感器接口及模块</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../../../_images/Temperature_and_humidity_sensor_connecting_of_EVB_model_B.jpg"><img alt="../../../_images/Temperature_and_humidity_sensor_connecting_of_EVB_model_B.jpg" src="../../../_images/Temperature_and_humidity_sensor_connecting_of_EVB_model_B.jpg" style="width: 433.8px; height: 346.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B评估板温湿度传感器模块连接示意图</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<blockquote id="b-wi-fisd-nand-flash">
+<div><dl class="simple">
+<dt>Wi-Fi 和 SD Nand Flash 复用接口</dt><dd><ol class="arabic simple">
+<li><p><a class="reference internal" href="#model-bwi-fi"><span class="std std-ref">Wi-Fi模块</span></a> 为 BL-M8189FS6，支持 <a class="reference internal" href="../../glossary.html#term-SDIO"><span class="xref std std-term">SDIO</span></a> 接口。支持 IEEE 802.11b/g/n 标准，并提供高达 150Mbps 的 PHY 速率，提供功能丰富的无线连接和远距离可靠的吞吐量。</p></li>
+<li><p><a class="reference internal" href="#model-b-sd-nand-flash"><span class="std std-ref">SD Nand Flash 连接座</span></a> 可搭配 RTK SD Nand Flash 子板使用。连接时插入图右边蓝框标出的连接座，注意接插位置顺序，防止反接。</p></li>
+</ol>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="model-bwi-fi">
+<a class="reference internal image-reference" href="../../../_images/WiFi_interface_and_module_of_EVB_model_B.jpg"><img alt="../../../_images/WiFi_interface_and_module_of_EVB_model_B.jpg" src="../../../_images/WiFi_interface_and_module_of_EVB_model_B.jpg" style="width: 505.0px; height: 202.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 Wi-Fi 接口及模块</span><a class="headerlink" href="#model-bwi-fi" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="model-b-sd-nand-flash">
+<a class="reference internal image-reference" href="../../../_images/SD_NAND_flash_interface_and_daughterboard_of_EVB_model_B.jpg"><img alt="../../../_images/SD_NAND_flash_interface_and_daughterboard_of_EVB_model_B.jpg" src="../../../_images/SD_NAND_flash_interface_and_daughterboard_of_EVB_model_B.jpg" style="width: 486.0px; height: 380.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 SD nand flash 连接座及子板</span><a class="headerlink" href="#model-b-sd-nand-flash" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id25">
+<a class="reference internal image-reference" href="../../../_images/SD_NAND_flash_connection_of_EVB_model_B.jpg"><img alt="../../../_images/SD_NAND_flash_connection_of_EVB_model_B.jpg" src="../../../_images/SD_NAND_flash_connection_of_EVB_model_B.jpg" style="width: 401.79999999999995px; height: 196.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 SD nand flash 子板连接示意图</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ol class="arabic simple">
+<li><p>正常模式：Wi-Fi 或 SD Nand Flash 模块正常工作时，需用跳线帽将 J35 排针连接；</p></li>
+<li><p>低功耗模式：拔掉 J35 上的跳线帽，然后将 J37 中蓝框标出的排针连接任意一个 <a class="reference internal" href="../../glossary.html#term-GPIO"><span class="xref std std-term">GPIO</span></a>。GPIO 输出高，Wi-Fi 或 SD Nand Flash 模块正常工作。GPIO 输出低，模块不工作。</p></li>
+</ol>
+</div>
+<blockquote id="id26">
+<div><dl class="simple">
+<dt>以太网模块</dt><dd><p><a class="reference internal" href="#id27"><span class="std std-ref">以太网模块</span></a> 采用 RTL8201FR，支持 RMII 接口。红框标出的按键为以太网模块的复位按键。</p>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="id27">
+<a class="reference internal image-reference" href="../../../_images/Ethernet_module_of_EVB_model_B.jpg"><img alt="../../../_images/Ethernet_module_of_EVB_model_B.jpg" src="../../../_images/Ethernet_module_of_EVB_model_B.jpg" style="width: 481.0px; height: 228.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板以太网模块</span><a class="headerlink" href="#id27" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id28">
+<h2>评估板的引脚分配<a class="headerlink" href="#id28" title="Link to this heading"></a></h2>
+<p>请参照最新的 <a class="reference download internal" download="" href="../../../_downloads/248d3dc295c7913fc192d203677cfced/RTL87x2G_IOPin_Information_1.5_20240906.xlsx"><code class="xref download docutils literal notranslate"><span class="pre">RTL87x2G_IOPin_Information</span> <span class="pre">文档</span></code></a>。</p>
+</section>
+<section id="id29">
+<h2>评估板使用说明<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
+<section id="id30">
+<h3>评估板供电接线<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<p>Model B 评估板供电可单独使用 USB 端口 CON2 供电，此时 RTL87x2G 的 USB 通信功能无法使用，但可以正常下载程序到 RTL87x2G。评估板供电接线见下图，红框标出的所有跳线帽需接上。</p>
+<figure class="align-center" id="model-b-usb-con2">
+<a class="reference internal image-reference" href="../../../_images/Power_supply_with_USB_socket_CON2_of_EVB_model_B.jpg"><img alt="../../../_images/Power_supply_with_USB_socket_CON2_of_EVB_model_B.jpg" src="../../../_images/Power_supply_with_USB_socket_CON2_of_EVB_model_B.jpg" style="width: 619.8px; height: 309.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板使用 USB 端口 CON2 供电接线示意图</span><a class="headerlink" href="#model-b-usb-con2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>若需使用 RTL87x2G 的 USB 通信功能，评估板上的 USB 端口 CON1 和 CON2 都需要连接，此时供电连线示意图见下图，红框标出的所有跳线帽需接上。与单独使用 USB 端口 CON2 供电接线不同之处在 J120 中跳线帽选择 5V_IC。</p>
+<figure class="align-center" id="model-b-usb-con1-2">
+<a class="reference internal image-reference" href="../../../_images/Power_supply_with_USB_socket_CON1_2_of_EVB_model_B.jpg"><img alt="../../../_images/Power_supply_with_USB_socket_CON1_2_of_EVB_model_B.jpg" src="../../../_images/Power_supply_with_USB_socket_CON1_2_of_EVB_model_B.jpg" style="width: 618.0px; height: 307.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板使用 USB 端口 CON1 和 CON2 供电接线示意图</span><a class="headerlink" href="#model-b-usb-con1-2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id31">
+<h3>下载模式接线<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<p>P0_3 为下载模式选择管脚，P0_3 拉低后硬件 Reset 或重新上电会进入下载模式， <a class="reference internal" href="#model-b-uart-log"><span class="std std-ref">UART/LOG 测试接口</span></a> 图中红框标的两个按键开关都需要按下，此时 P0_3（log）被拉低，P3_0 连接到 RX，P3_1 连接到 TX，然后按下 <kbd class="kbd docutils literal notranslate">reset</kbd> 按键或重新上电，进入下载模式。</p>
+</section>
+<section id="id32">
+<h3>正常模式接线<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<p>请确认 <a class="reference internal" href="#model-b-uart-log"><span class="std std-ref">UART/LOG 测试接口</span></a> 图中红框标的两个按键开关松开，此时 P0_3（log）连接到 RX，P3_0 和 P3_1 分别与 RX 和 TX 断开。通过 USB 端口 CON2，用 Debug Analyzer 调试。</p>
+</section>
+<section id="sdio">
+<span id="b-sdio"></span><h3>以太网与 SDIO 接口切换<a class="headerlink" href="#sdio" title="Link to this heading"></a></h3>
+<p>由于以太网模块、Wi-Fi 和 SDIO 模块共用同一组 SDIO 接口。当使用以太网模块时，需要将 <a class="reference internal" href="#id33"><span class="std std-ref">以太网接口切换</span></a> 图中的电阻上件，同时解焊 <a class="reference internal" href="#model-b-sdio"><span class="std std-ref">SDIO 接口切换</span></a> 图中的电阻；当使用 Wi-Fi 和 SDIO 模块时，需要将<a class="reference internal" href="#model-b-sdio"><span class="std std-ref">SDIO 接口切换</span></a> 图中的电阻上件，同时解焊 <a class="reference internal" href="#id33"><span class="std std-ref">以太网接口切换</span></a> 图中的电阻；默认出厂时，上件使用的是以太网模块。</p>
+<figure class="align-center" id="id33">
+<a class="reference internal image-reference" href="../../../_images/Switch_to_Ethernet_interface_of_EVB_model_B.jpg"><img alt="../../../_images/Switch_to_Ethernet_interface_of_EVB_model_B.jpg" src="../../../_images/Switch_to_Ethernet_interface_of_EVB_model_B.jpg" style="width: 378.0px; height: 270.59999999999997px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板以太网接口切换</span><a class="headerlink" href="#id33" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="model-b-sdio">
+<a class="reference internal image-reference" href="../../../_images/Switch_to_SDIO_interface_of_EVB_model_B.jpg"><img alt="../../../_images/Switch_to_SDIO_interface_of_EVB_model_B.jpg" src="../../../_images/Switch_to_SDIO_interface_of_EVB_model_B.jpg" style="width: 372.8px; height: 260.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Model B 评估板 SDIO 接口切换</span><a class="headerlink" href="#model-b-sdio" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id34">
+<h3>显示接口<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<blockquote id="id35">
+<div><dl class="simple">
+<dt>供电选择</dt><dd><p>当使用 USB 端口 CON2 供电时，5VDIS 只能与 5V_FT 相连。当使用 USB 端口 CON1 和 CON2 供电时，5VDIS 可接 5V_FT 或者 5V_IC。</p>
+</dd>
+</dl>
+</div></blockquote>
+<figure class="align-center" id="model-b-5vdis-5v-ft">
+<a class="reference internal image-reference" href="../../../_images/Single_USB_cable_power_supply_and_burning_mode_5VDIS_connecting_to_5V_FT.jpg"><img alt="../../../_images/Single_USB_cable_power_supply_and_burning_mode_5VDIS_connecting_to_5V_FT.jpg" src="../../../_images/Single_USB_cable_power_supply_and_burning_mode_5VDIS_connecting_to_5V_FT.jpg" style="width: 600.0px; height: 237.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">显示由 5V_FT 供电</span><a class="headerlink" href="#model-b-5vdis-5v-ft" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="model-b-5vdis-5v-ic">
+<a class="reference internal image-reference" href="../../../_images/Dual_wire_burning_debugging_5VDIS_connecting_to_5V_IC.jpg"><img alt="../../../_images/Dual_wire_burning_debugging_5VDIS_connecting_to_5V_IC.jpg" src="../../../_images/Dual_wire_burning_debugging_5VDIS_connecting_to_5V_IC.jpg" style="width: 604.75px; height: 241.25px;" /></a>
+<figcaption>
+<p><span class="caption-text">显示由 5V_FT 或者 5V_IC 供电</span><a class="headerlink" href="#model-b-5vdis-5v-ic" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<blockquote id="id36">
+<div><dl class="simple">
+<dt>显示接口类型选择</dt><dd><p>显示接口类型选择，请根据实际所选屏幕要求确定 LCD_IM[1:0] 的电平状态，具体请查阅所选屏幕驱动芯片数据手册。</p>
+</dd>
+</dl>
+</div></blockquote>
+<table class="docutils align-center" id="model-b-qspi-group1-i8080-group2-rgb888-pin">
+<caption><span class="caption-text">Model B 评估板的 QSPI（Group1），I8080（Group2）和 RGB888 屏幕接口 pin 分配</span><a class="headerlink" href="#model-b-qspi-group1-i8080-group2-rgb888-pin" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>PIN Name</p></th>
+<th class="head"><p>QSPI（Group1）接口定义</p></th>
+<th class="head"><p>I8080（Group2）接口定义</p></th>
+<th class="head"><p>RGB888 接口定义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>P2_2</p></th>
+<td><p>TP_RST</p></td>
+<td><p>TP_RST</p></td>
+<td><p>TP_RST</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P2_3</p></th>
+<td><p>TP_INT</p></td>
+<td><p>TP_INT</p></td>
+<td><p>TP_INT</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P2_4</p></th>
+<td><p>TP_SCL</p></td>
+<td><p>TP_SCL</p></td>
+<td><p>TP_SCL</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P2_5</p></th>
+<td><p>TP_SDA</p></td>
+<td><p>TP_SDA</p></td>
+<td><p>TP_SDA</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P1_4</p></th>
+<td><p>LCD_BL_CTRL</p></td>
+<td><p>LCD_BL_CTRL</p></td>
+<td><p>LCD_BL_CTRL</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P4_3</p></th>
+<td><p>QSPI_CS</p></td>
+<td><p>8080_D7</p></td>
+<td><p>D7</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P3_4</p></th>
+<td><p>QSPI_DCX</p></td>
+<td></td>
+<td><p>D16</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P4_0</p></th>
+<td><p>QSPI_CLK（PHY）</p></td>
+<td><p>8080_D4</p></td>
+<td><p>D4</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P3_3</p></th>
+<td><p>QSPI_SIO3</p></td>
+<td></td>
+<td><p>D15</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P3_2</p></th>
+<td><p>QSPI_SIO2</p></td>
+<td></td>
+<td><p>D14</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P4_1</p></th>
+<td><p>QSPI_SIO1</p></td>
+<td><p>8080_D5</p></td>
+<td><p>D5</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P4_2</p></th>
+<td><p>QSPI_SIO0</p></td>
+<td><p>8080_D6</p></td>
+<td><p>D6</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P3_6</p></th>
+<td><p>LCD_RESX</p></td>
+<td><p>LCD_RESX</p></td>
+<td><p>CM</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P0_5</p></th>
+<td><p>LCD_TE（VSYNC）</p></td>
+<td><p>8080_D1</p></td>
+<td><p>D1</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P0_2</p></th>
+<td></td>
+<td><p>8080_WR#</p></td>
+<td><p>PCLK</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P1_5</p></th>
+<td></td>
+<td><p>8080_DCX</p></td>
+<td><p>HSYNC</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P1_6</p></th>
+<td></td>
+<td><p>8080_RD#</p></td>
+<td><p>SD</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P0_7</p></th>
+<td></td>
+<td><p>8080_D3</p></td>
+<td><p>D3</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P0_6</p></th>
+<td></td>
+<td><p>8080_D2</p></td>
+<td><p>D2</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P0_4</p></th>
+<td></td>
+<td><p>8080_D0</p></td>
+<td><p>D0</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P0_1</p></th>
+<td></td>
+<td><p>8080_LCD_TE</p></td>
+<td><p>VSYNC</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P0_0</p></th>
+<td></td>
+<td><p>8080_CS#</p></td>
+<td><p>DE</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P5_0</p></th>
+<td></td>
+<td></td>
+<td><p>D23</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P5_1</p></th>
+<td></td>
+<td></td>
+<td><p>D22</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P5_2</p></th>
+<td></td>
+<td></td>
+<td><p>D21</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P5_3</p></th>
+<td></td>
+<td></td>
+<td><p>D20</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P5_4</p></th>
+<td></td>
+<td></td>
+<td><p>D19</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P5_5</p></th>
+<td></td>
+<td></td>
+<td><p>D18</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P3_5</p></th>
+<td></td>
+<td></td>
+<td><p>D17</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P9_2</p></th>
+<td></td>
+<td></td>
+<td><p>D13</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P4_7</p></th>
+<td></td>
+<td></td>
+<td><p>D12</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P4_6</p></th>
+<td></td>
+<td></td>
+<td><p>D11</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P4_5</p></th>
+<td></td>
+<td></td>
+<td><p>D10</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P4_4</p></th>
+<td></td>
+<td></td>
+<td><p>D9</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P1_2</p></th>
+<td></td>
+<td></td>
+<td><p>D8</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P9_1</p></th>
+<td></td>
+<td></td>
+<td><p>SPI_CS</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>P9_0</p></th>
+<td></td>
+<td></td>
+<td><p>SPI_CLK</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>P1_3</p></th>
+<td></td>
+<td></td>
+<td><p>SPI_DO</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ic">
+<h3>IC 功耗测试<a class="headerlink" href="#ic" title="Link to this heading"></a></h3>
+<p>Model B 评估板提供 1.8V 和 3.3V 电压的 IC 功耗测量接口。</p>
+<ul class="simple">
+<li><p>当 IC 供电是 3.3V 时，量测时断开 J135，然后串进电流表，量测通过 J135 的电流。</p></li>
+<li><p>当 IC 供电是 1.8V 时，量测时断开 J136，然后串进电流表，量测通过 J136 的电流。</p></li>
+</ul>
+<figure class="align-center" id="ic-b">
+<a class="reference internal image-reference" href="../../../_images/Power_Consumption_of_EVB_Model_B.jpg"><img alt="../../../_images/Power_Consumption_of_EVB_Model_B.jpg" src="../../../_images/Power_Consumption_of_EVB_Model_B.jpg" style="width: 752.4px; height: 225.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">IC 功耗测试接口</span><a class="headerlink" href="#ic-b" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ol class="arabic simple">
+<li><p>请根据 <a class="reference internal" href="#id12"><span class="std std-ref">电源输入引脚介绍</span></a> 和功耗测量场景正确连接跳线帽。</p></li>
+<li><p>为避免额外的耗电，需要关闭 log 打印。</p></li>
+<li><p>为避免调试设备的影响，请勿将 UART，SWD 和调试器连接。</p></li>
+<li><p>为避免以太网模块影响，需去除电阻 R47，R49，R266 或者将 P1_7，P9_3，P9_4 配置成 pull-none，shutdown 模式。</p></li>
+<li><p>当采用外部直流电源供电时，需拔掉 J135 和 J136 跳线帽，然后外灌至 VDD_3V3_IC。注意使用 RTL8772GWP 子板时，由于 RTL8772GWP 子板的 MCMPSRAM 是 1.8V 供电，直流电源外灌至 VDD_1V8_IC 的电压只能是 1.8V。</p></li>
+</ol>
+</div>
+</section>
+<section id="rf">
+<h3><a class="reference internal" href="../../glossary.html#term-RF"><span class="xref std std-term">RF</span></a> 测试<a class="headerlink" href="#rf" title="Link to this heading"></a></h3>
+<p>使用 RF Test Tool 进行 Bluetooth/Zigbee 等射频性能测试时，红框标的两个按键开关都需要按下，然后拔掉 logkey 上的跳线帽，使 P0_3 悬空，P3_0 连接到 RX，P3_1 连接到 TX。</p>
+<figure class="align-center" id="rf-model-b">
+<a class="reference internal image-reference" href="../../../_images/RF_test_model_B.jpg"><img alt="../../../_images/RF_test_model_B.jpg" src="../../../_images/RF_test_model_B.jpg" style="width: 606.0px; height: 315.3px;" /></a>
+<figcaption>
+<p><span class="caption-text">RF 测试接线</span><a class="headerlink" href="#rf-model-b" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="model_a.html" class="btn btn-neutral float-left" title="Model A 评估板" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="model_c.html" class="btn btn-neutral float-right" title="Model C 评估板" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

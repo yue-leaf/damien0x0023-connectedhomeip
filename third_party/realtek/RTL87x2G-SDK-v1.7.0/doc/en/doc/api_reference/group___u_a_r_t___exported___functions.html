@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UART Exported Functions &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="UART Exported Types" href="group___u_a_r_t___exported___types.html" />
+    <link rel="prev" title="UART Word Length" href="group___u_a_r_t___word___length.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___a_d_c.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___q_d_e_c.html">AON_QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___w_d_t.html">AON_WDT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_a_n.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_o_d_e_c.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_n_h_t_i_m.html">ENHTIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_t_h_e_r_n_e_t.html">ETHERNET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_d_m_a.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_p_i_o.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___h_r_a_d_c.html">HRADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_c.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_s.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_d_u.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_r.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_s_o7816.html">ISO7816</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___k_e_y_s_c_a_n.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_c_d_c.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_p_c.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___n_v_i_c.html">NVIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n___d_e_f_i_n_e.html">PIN DEFINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n_m_u_x.html">PINMUX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_e.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_c_c.html">RCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_t_c.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_e_g_c_o_m.html">SEGCOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i3_w.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___t_i_m.html">TIM</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___u_a_r_t.html">UART</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___u_a_r_t___exported___constants.html">UART Exported Constants</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">UART Exported Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv411UART_DeInitP12UART_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_DeInit()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv49UART_InitP12UART_TypeDefP16UART_InitTypeDef"><code class="docutils literal notranslate"><span class="pre">UART_Init()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv415UART_StructInitP16UART_InitTypeDef"><code class="docutils literal notranslate"><span class="pre">UART_StructInit()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418UART_MaskINTConfigP12UART_TypeDef8uint32_t15FunctionalState"><code class="docutils literal notranslate"><span class="pre">UART_MaskINTConfig()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv414UART_INTConfigP12UART_TypeDef8uint32_t15FunctionalState"><code class="docutils literal notranslate"><span class="pre">UART_INTConfig()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv413UART_SendDataP12UART_TypeDefPK7uint8_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">UART_SendData()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416UART_ReceiveDataP12UART_TypeDefP7uint8_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">UART_ReceiveData()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416UART_SetBaudRateP12UART_TypeDef8uint16_t8uint16_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">UART_SetBaudRate()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv414UART_SetParamsP12UART_TypeDef8uint16_t8uint16_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">UART_SetParams()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416UART_LoopBackCmdP12UART_TypeDef15FunctionalState"><code class="docutils literal notranslate"><span class="pre">UART_LoopBackCmd()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418UART_GetFlagStatusP12UART_TypeDef8uint32_t"><code class="docutils literal notranslate"><span class="pre">UART_GetFlagStatus()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418UART_GetLineStatusP12UART_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_GetLineStatus()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv413UART_SendByteP12UART_TypeDef7uint8_t"><code class="docutils literal notranslate"><span class="pre">UART_SendByte()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416UART_ReceiveByteP12UART_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_ReceiveByte()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv411UART_GetIIDP12UART_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_GetIID()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416UART_ClearRxFIFOP12UART_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_ClearRxFIFO()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv421UART_GetTxFIFODataLenP12UART_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_GetTxFIFODataLen()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv421UART_GetRxFIFODataLenP12UART_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_GetRxFIFODataLen()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv413UART_TxDmaCmdP12UART_TypeDef15FunctionalState"><code class="docutils literal notranslate"><span class="pre">UART_TxDmaCmd()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv413UART_RxDmaCmdP12UART_TypeDef15FunctionalState"><code class="docutils literal notranslate"><span class="pre">UART_RxDmaCmd()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418UART_OneWireConfigP12UART_TypeDef15FunctionalState"><code class="docutils literal notranslate"><span class="pre">UART_OneWireConfig()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv417UART_ClkDivConfigP12UART_TypeDef20UARTClockDiv_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_ClkDivConfig()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv411UART_ClkGetP12UART_TypeDefP20UARTClockSrc_TypeDefP20UARTClockDiv_TypeDef"><code class="docutils literal notranslate"><span class="pre">UART_ClkGet()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___u_a_r_t___exported___types.html">UART Exported Types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_t_i_l_s.html">UTILS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___w_d_t.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+        <li class="breadcrumb-item"><a href="group___u_a_r_t.html">UART</a></li>
+    <li class="breadcrumb-item active">UART Exported Functions</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="uart-exported-functions">
+<h1>UART Exported Functions<a class="headerlink" href="#uart-exported-functions" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___u_a_r_t___exported___functions"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">UART_Exported_Functions</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411UART_DeInitP12UART_TypeDef">
+<span id="_CPPv311UART_DeInitP12UART_TypeDef"></span><span id="_CPPv211UART_DeInitP12UART_TypeDef"></span><span id="UART_DeInit__UART_TypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga78d1bed44f47ad24ff2b6f34cf8f4653"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_DeInit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411UART_DeInitP12UART_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Deinitialize the selected UART peripheral registers to their default reset values(turn off UART clock). </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">UART_DeInit</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv49UART_InitP12UART_TypeDefP16UART_InitTypeDef">
+<span id="_CPPv39UART_InitP12UART_TypeDefP16UART_InitTypeDef"></span><span id="_CPPv29UART_InitP12UART_TypeDefP16UART_InitTypeDef"></span><span id="UART_Init__UART_TypeDefP.UART_InitTypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1gafa42d3571c479818210b9bc065337506"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_Init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <a class="reference internal" href="group___u_a_r_t___exported___types.html#_CPPv416UART_InitTypeDef" title="UART_InitTypeDef"><span class="n"><span class="pre">UART_InitTypeDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UART_InitStruct</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49UART_InitP12UART_TypeDefP16UART_InitTypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Initialize the selected UART peripheral according to the specified parameters in UART_InitStruct. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_DeInit</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">RCC_PeriphClockCmd</span><span class="p">(</span><span class="n">APBPeriph_UART0</span><span class="p">,</span><span class="w"> </span><span class="n">APBPeriph_UART0_CLOCK</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">UART_InitTypeDef</span><span class="w"> </span><span class="n">UART_InitStruct</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_StructInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">UART_InitStruct</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_Div</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_Ovsr</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_OvsrAdj</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mh">0x252</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_RxThdLevel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">//Add other initialization parameters that need to be configured here.</span>
+<span class="w">    </span><span class="n">UART_Init</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UART_InitStruct</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>UART_InitStruct</strong> -- <strong>[in]</strong> Pointer to a <a class="reference internal" href="group___u_a_r_t___exported___types.html#struct_u_a_r_t___init_type_def"><span class="std std-ref">UART_InitTypeDef</span></a> structure which will be initialized.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415UART_StructInitP16UART_InitTypeDef">
+<span id="_CPPv315UART_StructInitP16UART_InitTypeDef"></span><span id="_CPPv215UART_StructInitP16UART_InitTypeDef"></span><span id="UART_StructInit__UART_InitTypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga73087c97b8a29a580894ced7b125bc41"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_StructInit</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___u_a_r_t___exported___types.html#_CPPv416UART_InitTypeDef" title="UART_InitTypeDef"><span class="n"><span class="pre">UART_InitTypeDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UART_InitStruct</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415UART_StructInitP16UART_InitTypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Fill each UART_InitStruct member with its default value. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_DeInit</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">RCC_PeriphClockCmd</span><span class="p">(</span><span class="n">APBPeriph_UART0</span><span class="p">,</span><span class="w"> </span><span class="n">APBPeriph_UART0_CLOCK</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">UART_InitTypeDef</span><span class="w"> </span><span class="n">UART_InitStruct</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_StructInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">UART_InitStruct</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_Div</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_Ovsr</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_OvsrAdj</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mh">0x252</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_RxThdLevel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//Add other initialization parameters that need to be configured here.</span>
+<span class="w">    </span><span class="n">UART_Init</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UART_InitStruct</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default settings for the UART_InitStruct member are shown in the following table: <table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>UART_InitStruct member   </p></th>
+<th class="head"><p>Default value    </p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>UART_Div   </p></td>
+<td><p>20    </p></td>
+</tr>
+<tr class="row-odd"><td><p>UART_Ovsr   </p></td>
+<td><p>12    </p></td>
+</tr>
+<tr class="row-even"><td><p>UART_OvsrAdj   </p></td>
+<td><p>0x252    </p></td>
+</tr>
+<tr class="row-odd"><td><p>UART_Parity   </p></td>
+<td><p><a class="reference internal" href="group___u_a_r_t___parity.html#group___u_a_r_t___parity_1ggac35c296dc6e2bcb8f42a9f2413478cf2a8a19892439089709d849ff7e80cb8823"><span class="std std-ref">UART_PARITY_NO_PARTY</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>UART_StopBits   </p></td>
+<td><p><a class="reference internal" href="group___u_a_r_t___stop___bits.html#group___u_a_r_t___stop___bits_1gga468066a48727a3bc1db3ae96dc37bfc1a44b3bfbe90aebe2b23227f5c011f41cc"><span class="std std-ref">UART_STOP_BITS_1</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>UART_WordLen   </p></td>
+<td><p><a class="reference internal" href="group___u_a_r_t___word___length.html#group___u_a_r_t___word___length_1gga875d666b26e50154f85522e7b6e4e079adfe14e878f1dce80dd1cc30a713167b8"><span class="std std-ref">UART_WORD_LENGTH_8BIT</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>UART_TxThdLevel   </p></td>
+<td><p>16    </p></td>
+</tr>
+<tr class="row-odd"><td><p>UART_RxThdLevel   </p></td>
+<td><p>16    </p></td>
+</tr>
+<tr class="row-even"><td><p>UART_IdleTime   </p></td>
+<td><p><a class="reference internal" href="group___u_a_r_t___rx___idle___time.html#group___u_a_r_t___rx___idle___time_1gga75fa0366eb5c2b7c698401405c63449fa33158df24a37cf2776122fcb32de9375"><span class="std std-ref">UART_RX_IDLE_2BYTE</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>UART_HardwareFlowControl   </p></td>
+<td><p><a class="reference internal" href="group___u_a_r_t___hardware___flow___control.html#group___u_a_r_t___hardware___flow___control_1ggab847ba13dc68a5e8b9b61672927f89d1a58c44ad116ba5fd6b52a16ca7c64802a"><span class="std std-ref">UART_HW_FLOW_CTRL_DISABLE</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>UART_DmaEn   </p></td>
+<td><p><a class="reference internal" href="group___u_a_r_t___d_m_a.html#group___u_a_r_t___d_m_a_1gga9c2db05393db4af94baf87bda6a3e52aa1b8df60eb38bbb0a887c9c167f473500"><span class="std std-ref">UART_DMA_DISABLE</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>UART_TxDmaEn   </p></td>
+<td><p>DISABLE    </p></td>
+</tr>
+<tr class="row-even"><td><p>UART_RxDmaEn   </p></td>
+<td><p>DISABLE    </p></td>
+</tr>
+<tr class="row-odd"><td><p>UART_TxWaterLevel   </p></td>
+<td><p>15    </p></td>
+</tr>
+<tr class="row-even"><td><p>UART_RxWaterLevel   </p></td>
+<td><p>1   </p></td>
+</tr>
+</tbody>
+</table>
+</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>UART_InitStruct</strong> -- <strong>[in]</strong> Pointer to an <a class="reference internal" href="group___u_a_r_t___exported___types.html#struct_u_a_r_t___init_type_def"><span class="std std-ref">UART_InitTypeDef</span></a> structure which will be initialized.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418UART_MaskINTConfigP12UART_TypeDef8uint32_t15FunctionalState">
+<span id="_CPPv318UART_MaskINTConfigP12UART_TypeDef8uint32_t15FunctionalState"></span><span id="_CPPv218UART_MaskINTConfigP12UART_TypeDef8uint32_t15FunctionalState"></span><span id="UART_MaskINTConfig__UART_TypeDefP.uint32_t.FunctionalState"></span><span class="target" id="group___u_a_r_t___exported___functions_1gac0575deab2fea85fe6302e58db944375"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_MaskINTConfig</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">UART_INT_MASK</span></span>, <a class="reference internal" href="group___functional_state.html#_CPPv415FunctionalState" title="FunctionalState"><span class="n"><span class="pre">FunctionalState</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">NewState</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418UART_MaskINTConfigP12UART_TypeDef8uint32_t15FunctionalState" title="Link to this definition"></a><br /></dt>
+<dd><p>Mask or unmask the specified UART interrupt source. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_DeInit</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">RCC_PeriphClockCmd</span><span class="p">(</span><span class="n">APBPeriph_UART0</span><span class="p">,</span><span class="w"> </span><span class="n">APBPeriph_UART0_CLOCK</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">UART_InitTypeDef</span><span class="w"> </span><span class="n">UART_InitStruct</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_StructInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">UART_InitStruct</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_Div</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_Ovsr</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_OvsrAdj</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mh">0x252</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_RxThdLevel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//Add other initialization parameters that need to be configured here.</span>
+<span class="w">    </span><span class="n">UART_Init</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UART_InitStruct</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">UART_MaskINTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_MASK_RD_AVA</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UART_INTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_RD_AVA</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UART_MaskINTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_MASK_RD_AVA</span><span class="p">,</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>UART_INT</strong> -- <strong>[in]</strong> Specify the UART interrupt source that to be mask or unmask. This parameter can be one of the following values, refer to <a class="reference internal" href="group___u_a_r_t___interrupts___mask.html#group___u_a_r_t___interrupts___mask"><span class="std std-ref">UART Interrupts Mask</span></a>. <ul>
+<li><p>UART_INT_MASK_RD_AVA: Mask INTCR(erbi). </p></li>
+<li><p>UART_INT_MASK_FIFO_EMPTY: Mask INTCR(etbei). </p></li>
+<li><p>UART_INT_MASK_LINE_STS: Mask INTCR(elsi). </p></li>
+<li><p>UART_INT_MASK_MODEM_STS: Mask INTCR(edssi). </p></li>
+<li><p>UART_INT_MASK_RX_BREAK: Mask rx break interrupt. </p></li>
+<li><p>UART_INT_MASK_RX_IDLE: Mask rx break interrupt. </p></li>
+<li><p>UART_INT_MASK_TX_DONE: Mask the interrupt tx done interrupt. </p></li>
+<li><p>UART_INT_MASK_TX_THD: Mask tx fifo threshold interrupt. </p></li>
+</ul>
+</p></li>
+<li><p><strong>NewState</strong> -- <strong>[in]</strong> New state of the specified UART interrupt source. This parameter can be one of the following values:<ul>
+<li><p>ENABLE: Mask the specified UART interrupt source.</p></li>
+<li><p>DISABLE: Unmask the specified UART interrupt source.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414UART_INTConfigP12UART_TypeDef8uint32_t15FunctionalState">
+<span id="_CPPv314UART_INTConfigP12UART_TypeDef8uint32_t15FunctionalState"></span><span id="_CPPv214UART_INTConfigP12UART_TypeDef8uint32_t15FunctionalState"></span><span id="UART_INTConfig__UART_TypeDefP.uint32_t.FunctionalState"></span><span class="target" id="group___u_a_r_t___exported___functions_1gad6300523972b599b7241e98337124c83"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_INTConfig</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">UART_IT</span></span>, <a class="reference internal" href="group___functional_state.html#_CPPv415FunctionalState" title="FunctionalState"><span class="n"><span class="pre">FunctionalState</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">NewState</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414UART_INTConfigP12UART_TypeDef8uint32_t15FunctionalState" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable or disable the specified UART interrupts. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_DeInit</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">RCC_PeriphClockCmd</span><span class="p">(</span><span class="n">APBPeriph_UART0</span><span class="p">,</span><span class="w"> </span><span class="n">APBPeriph_UART0_CLOCK</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">UART_InitTypeDef</span><span class="w"> </span><span class="n">UART_InitStruct</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_StructInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">UART_InitStruct</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_Div</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_Ovsr</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_OvsrAdj</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mh">0x252</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_InitStruct</span><span class="p">.</span><span class="n">UART_RxThdLevel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">//Add other initialization parameters that need to be configured here.</span>
+<span class="w">    </span><span class="n">UART_Init</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UART_InitStruct</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">UART_INTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_RD_AVA</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>UART_IT</strong> -- <strong>[in]</strong> Specify the UART interrupt source that to be enabled or disabled. This parameter can be any combination of the following values, refer to <a class="reference internal" href="group___u_a_r_t___interrupts.html#group___u_a_r_t___interrupts"><span class="std std-ref">UART Interrupts</span></a>. <ul>
+<li><p>UART_INT_RD_AVA: Rx data avaliable interrupt source. </p></li>
+<li><p>UART_INT_TX_FIFO_EMPTY: Tx FIFO empty interrupt source. </p></li>
+<li><p>UART_INT_RX_LINE_STS: Rx line status interrupt source. </p></li>
+<li><p>UART_INT_MODEM_STS: Modem status interrupt source. </p></li>
+<li><p>UART_INT_TX_DONE: Tx done interrupt source. </p></li>
+<li><p>UART_INT_TX_THD: Tx threshold(FIFO data length &lt;= thredhold) interrupt source. </p></li>
+<li><p>UART_INT_RX_BREAK: Rx break signal interrupt source. </p></li>
+<li><p>UART_INT_RX_IDLE: Rx bus ilde interrupt source. </p></li>
+</ul>
+</p></li>
+<li><p><strong>NewState</strong> -- <strong>[in]</strong> New state of the specified UART interrupt source. This parameter can be one of the following values:<ul>
+<li><p>ENABLE: Enable the specified UART interrupt.</p></li>
+<li><p>DISABLE: Disable the specified UART interrupt.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413UART_SendDataP12UART_TypeDefPK7uint8_t8uint16_t">
+<span id="_CPPv313UART_SendDataP12UART_TypeDefPK7uint8_t8uint16_t"></span><span id="_CPPv213UART_SendDataP12UART_TypeDefPK7uint8_t8uint16_t"></span><span id="UART_SendData__UART_TypeDefP.uint8_tCP.uint16_t"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga218dbe4dcd2e0150e13c3e82f131fcf5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_SendData</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inBuf</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413UART_SendDataP12UART_TypeDefPK7uint8_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Send data. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;UART demo&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_SendData</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>inBuf</strong> -- <strong>[in]</strong> Buffer of data to be sent. </p></li>
+<li><p><strong>count</strong> -- <strong>[in]</strong> Length of data to be sent.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416UART_ReceiveDataP12UART_TypeDefP7uint8_t8uint16_t">
+<span id="_CPPv316UART_ReceiveDataP12UART_TypeDefP7uint8_t8uint16_t"></span><span id="_CPPv216UART_ReceiveDataP12UART_TypeDefP7uint8_t8uint16_t"></span><span id="UART_ReceiveData__UART_TypeDefP.uint8_tP.uint16_t"></span><span class="target" id="group___u_a_r_t___exported___functions_1gaeaa77ee7d7980d5c556695414c72958d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_ReceiveData</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">outBuf</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416UART_ReceiveDataP12UART_TypeDefP7uint8_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Receive data from RX FIFO. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">};</span>
+<span class="w">    </span><span class="n">UART_ReceiveData</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>outBuf</strong> -- <strong>[out]</strong> Buffer to store data which read from RX FIFO. </p></li>
+<li><p><strong>count</strong> -- <strong>[in]</strong> Length of data to read.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416UART_SetBaudRateP12UART_TypeDef8uint16_t8uint16_t8uint16_t">
+<span id="_CPPv316UART_SetBaudRateP12UART_TypeDef8uint16_t8uint16_t8uint16_t"></span><span id="_CPPv216UART_SetBaudRateP12UART_TypeDef8uint16_t8uint16_t8uint16_t"></span><span id="UART_SetBaudRate__UART_TypeDefP.uint16_t.uint16_t.uint16_t"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga2251278878fa44fbcb19af690beb1bd3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_SetBaudRate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">div</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ovsr</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ovsr_adj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416UART_SetBaudRateP12UART_TypeDef8uint16_t8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set UART communication baudrate. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">UART</span><span class="w"> </span><span class="n">BaudRate</span><span class="w"> </span><span class="n">Table</span><span class="o">:</span><span class="w"> </span><span class="n">Baud</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="p">(</span><span class="n">clock</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="mi">40</span><span class="n">MHz</span><span class="w"> </span><span class="n">only</span><span class="p">)</span>
+<span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="o">:</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="n">bit</span>
+<span class="mi">10</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="o">:</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="n">bit</span>
+<span class="mi">11</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="o">:</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">parity</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="n">bit</span>
+<span class="mi">12</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="o">:</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">parity</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="n">bit</span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="n">nd</span><span class="w"> </span><span class="n">Stop</span><span class="w"> </span><span class="n">bit</span>
+<span class="w"> </span><span class="n">baudrate</span><span class="w"> </span><span class="o">|</span><span class="w">       </span><span class="mi">9</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="w">      </span><span class="o">|</span><span class="w">       </span><span class="mi">10</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="w">     </span><span class="o">|</span><span class="w">      </span><span class="mi">11</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="w">      </span><span class="o">|</span><span class="w">      </span><span class="mi">12</span><span class="w"> </span><span class="n">bits</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">length</span><span class="w">      </span><span class="o">|</span>
+<span class="w">          </span><span class="o">|</span><span class="w">  </span><span class="n">ovsr</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">ovsr_adj</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">div</span><span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">ovsr</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">ovsr_adj</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">div</span><span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">ovsr</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">ovsr_adj</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">div</span><span class="w">    </span><span class="o">|</span><span class="w">  </span><span class="n">ovsr</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">ovsr_adj</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="n">div</span><span class="w">    </span><span class="o">|</span>
+<span class="o">--------------------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="mi">1200</span><span class="w">      </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x16D</span><span class="w">      </span><span class="mh">0xC35</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x112</span><span class="w">      </span><span class="mh">0x91B</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x70</span><span class="w">       </span><span class="mh">0x91B</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x71</span><span class="w">       </span><span class="mh">0x91B</span><span class="w">   </span><span class="o">|</span>
+<span class="mi">4800</span><span class="w">      </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x682</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x682</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0xB</span><span class="w">      </span><span class="mh">0x6DD</span><span class="w">      </span><span class="mh">0x1F3</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0xB</span><span class="w">      </span><span class="mh">0x6D5</span><span class="w">      </span><span class="mh">0x1F3</span><span class="w">   </span><span class="o">|</span>
+<span class="mi">7200</span><span class="w">      </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x457</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x457</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0xC</span><span class="w">      </span><span class="mh">0x84</span><span class="w">       </span><span class="mh">0x143</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0xC</span><span class="w">      </span><span class="mh">0x84</span><span class="w">       </span><span class="mh">0x143</span><span class="w">   </span><span class="o">|</span>
+<span class="mi">9600</span><span class="w">      </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x341</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x341</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x7</span><span class="w">      </span><span class="mh">0x7EF</span><span class="w">      </span><span class="mh">0x143</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x7</span><span class="w">      </span><span class="mh">0x7EF</span><span class="w">      </span><span class="mh">0x143</span><span class="w">   </span><span class="o">|</span>
+<span class="mi">14400</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x6</span><span class="w">      </span><span class="mh">0x10</span><span class="w">       </span><span class="mh">0xFA</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x10</span><span class="w">       </span><span class="mh">0xC5</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x10</span><span class="w">       </span><span class="mh">0xC5</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x10</span><span class="w">       </span><span class="mh">0xC5</span><span class="w">    </span><span class="o">|</span>
+<span class="mi">19200</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x120</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x150</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x77B</span><span class="w">      </span><span class="mh">0x97</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x77B</span><span class="w">      </span><span class="mh">0x97</span><span class="w">    </span><span class="o">|</span>
+<span class="mi">28800</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0xC0</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0xE0</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x6</span><span class="w">      </span><span class="mh">0x84</span><span class="w">       </span><span class="mh">0x7C</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x6</span><span class="w">      </span><span class="mh">0x84</span><span class="w">       </span><span class="mh">0x7C</span><span class="w">    </span><span class="o">|</span>
+<span class="mi">38400</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x90</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0xA8</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0xE</span><span class="w">      </span><span class="mh">0x122</span><span class="w">      </span><span class="mh">0x36</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0xE</span><span class="w">      </span><span class="mh">0x122</span><span class="w">      </span><span class="mh">0x36</span><span class="w">    </span><span class="o">|</span>
+<span class="mi">57600</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x60</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x70</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x6</span><span class="w">      </span><span class="mh">0x84</span><span class="w">       </span><span class="mh">0x3E</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x6</span><span class="w">      </span><span class="mh">0x84</span><span class="w">       </span><span class="mh">0x3E</span><span class="w">    </span><span class="o">|</span>
+<span class="mi">76800</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x48</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x54</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0xE</span><span class="w">      </span><span class="mh">0x122</span><span class="w">      </span><span class="mh">0x1B</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0xE</span><span class="w">      </span><span class="mh">0x122</span><span class="w">      </span><span class="mh">0x1B</span><span class="w">    </span><span class="o">|</span>
+<span class="mi">115200</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x30</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x38</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x6</span><span class="w">      </span><span class="mh">0x84</span><span class="w">       </span><span class="mh">0x1F</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x6</span><span class="w">      </span><span class="mh">0x84</span><span class="w">       </span><span class="mh">0x1F</span><span class="w">    </span><span class="o">|</span>
+<span class="mi">230400</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x18</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x1C</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0xE</span><span class="w">      </span><span class="mh">0x122</span><span class="w">      </span><span class="mh">0x9</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0xE</span><span class="w">      </span><span class="mh">0x122</span><span class="w">      </span><span class="mh">0x9</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">460800</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0xC</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0xE</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x7</span><span class="w">      </span><span class="mh">0x14A</span><span class="w">      </span><span class="mh">0x7</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x7</span><span class="w">      </span><span class="mh">0x15A</span><span class="w">      </span><span class="mh">0x7</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">500000</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x8</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x8</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x8</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x8</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">921600</span><span class="w">    </span><span class="o">|</span><span class="w">   </span><span class="mh">0x2</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x6</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x1</span><span class="w">      </span><span class="mh">0x3</span><span class="w">        </span><span class="mh">0x7</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x2AA</span><span class="w">      </span><span class="mh">0x3</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x2AB</span><span class="w">      </span><span class="mh">0x3</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">1000000</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x8</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x8</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x4</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x4</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">1382400</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0xAA</span><span class="w">       </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x2AA</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x2AA</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x9</span><span class="w">      </span><span class="mh">0x2AB</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">1444400</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x1F7</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x3F7</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x3F7</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x3FF</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">1500000</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x92</span><span class="w">       </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x92</span><span class="w">       </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x492</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x490</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">1843200</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x1F7</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x3F7</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x3F7</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x3FF</span><span class="w">      </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">2000000</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x4</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x0</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x4</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x2</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">3000000</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x92</span><span class="w">       </span><span class="mh">0x1</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x92</span><span class="w">       </span><span class="mh">0x1</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x492</span><span class="w">      </span><span class="mh">0x1</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x8</span><span class="w">      </span><span class="mh">0x490</span><span class="w">      </span><span class="mh">0x1</span><span class="w">     </span><span class="o">|</span>
+<span class="mi">4000000</span><span class="w">   </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x1</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x1</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x1</span><span class="w">     </span><span class="o">|</span><span class="w">   </span><span class="mh">0x5</span><span class="w">      </span><span class="mh">0x0</span><span class="w">        </span><span class="mh">0x1</span><span class="w">     </span><span class="o">|</span>
+<span class="o">---------------------------------------------------------------------------------------------------------------------------------------------</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">div</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">ovsr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">ovsr_adj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x252</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_SetBaudRate</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">div</span><span class="p">,</span><span class="w"> </span><span class="n">ovsr</span><span class="p">,</span><span class="w"> </span><span class="n">ovsr_adj</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>div</strong> -- <strong>[in]</strong> Parameter of the selected UART baudrate. </p></li>
+<li><p><strong>ovsr</strong> -- <strong>[in]</strong> Parameter of the selected UART baudrate. </p></li>
+<li><p><strong>ovsr_adj</strong> -- <strong>[in]</strong> Parameter of the selected UART baudrate.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414UART_SetParamsP12UART_TypeDef8uint16_t8uint16_t8uint16_t">
+<span id="_CPPv314UART_SetParamsP12UART_TypeDef8uint16_t8uint16_t8uint16_t"></span><span id="_CPPv214UART_SetParamsP12UART_TypeDef8uint16_t8uint16_t8uint16_t"></span><span id="UART_SetParams__UART_TypeDefP.uint16_t.uint16_t.uint16_t"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga38b9fd4ab5c3a5ee6f5a826c853608de"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_SetParams</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">wordLen</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">parity</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">stopBits</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414UART_SetParamsP12UART_TypeDef8uint16_t8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set UART communication parameters. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">word_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_WORD_LENGTH_8BIT</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">parity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_PARITY_NO_PARTY</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">stop_bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_STOP_BITS_1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_SetParams</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">wordLen</span><span class="p">,</span><span class="w"> </span><span class="n">parity</span><span class="p">,</span><span class="w"> </span><span class="n">stopBits</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>wordLen</strong> -- <strong>[in]</strong> Data width of the selected UART peripheral. This parameter can be one of the following values: <ul>
+<li><p>UART_WORD_LENGTH_7BIT: 7-bit data length. </p></li>
+<li><p>UART_WORD_LENGTH_8BIT: 8-bit data length. </p></li>
+</ul>
+</p></li>
+<li><p><strong>parity</strong> -- <strong>[in]</strong> Parity of the selected UART peripheral. This parameter can be one of the following values: <ul>
+<li><p>UART_STOP_BITS_1: 1-bit stop bit. </p></li>
+<li><p>UART_STOP_BITS_2: 2-bit stop bit. </p></li>
+</ul>
+</p></li>
+<li><p><strong>stopBits</strong> -- <strong>[in]</strong> Stop bit of the selected UART peripheral. This parameter can be one of the following values:<ul>
+<li><p>UART_PARITY_NO_PARTY: No parity.</p></li>
+<li><p>UART_PARITY_ODD: Odd parity.</p></li>
+<li><p>UART_PARITY_EVEN: Even parity.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416UART_LoopBackCmdP12UART_TypeDef15FunctionalState">
+<span id="_CPPv316UART_LoopBackCmdP12UART_TypeDef15FunctionalState"></span><span id="_CPPv216UART_LoopBackCmdP12UART_TypeDef15FunctionalState"></span><span id="UART_LoopBackCmd__UART_TypeDefP.FunctionalState"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga0aef2fbb107b9c52bf8db8c4e7af9d76"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_LoopBackCmd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <a class="reference internal" href="group___functional_state.html#_CPPv415FunctionalState" title="FunctionalState"><span class="n"><span class="pre">FunctionalState</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">NewState</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416UART_LoopBackCmdP12UART_TypeDef15FunctionalState" title="Link to this definition"></a><br /></dt>
+<dd><p>Config UART loopback function. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_LoopBackCmd</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>NewState</strong> -- <strong>[in]</strong> Enable or disable UART loopback function. This parameter can be one of the following values:<ul>
+<li><p>ENABLE: Enable the specified UART loopback function.</p></li>
+<li><p>DISABLE: Disable the specified UART loopback function.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418UART_GetFlagStatusP12UART_TypeDef8uint32_t">
+<span id="_CPPv318UART_GetFlagStatusP12UART_TypeDef8uint32_t"></span><span id="_CPPv218UART_GetFlagStatusP12UART_TypeDef8uint32_t"></span><span id="UART_GetFlagStatus__UART_TypeDefP.uint32_t"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga8778fc5eb3a14c0dcb938e72c01236e8"></span><a class="reference internal" href="group___i_t_status.html#_CPPv410FlagStatus" title="FlagStatus"><span class="n"><span class="pre">FlagStatus</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_GetFlagStatus</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">UART_FLAG</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418UART_GetFlagStatusP12UART_TypeDef8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Check whether the specified UART flag is set. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_senddata_continuous</span><span class="p">(</span><span class="n">UART_TypeDef</span><span class="w"> </span><span class="o">*</span><span class="n">UARTx</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">pSend_Buf</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">vCount</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">vCount</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">UART_TX_FIFO_SIZE</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">UART_GetFlagStatus</span><span class="p">(</span><span class="n">UARTx</span><span class="p">,</span><span class="w"> </span><span class="n">UART_FLAG_TX_FIFO_EMPTY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_TX_FIFO_SIZE</span><span class="p">;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">count</span><span class="o">--</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UARTx</span><span class="o">-&gt;</span><span class="n">UART_RBR_THR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pSend_Buf</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">vCount</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">UART_TX_FIFO_SIZE</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">UART_GetFlagStatus</span><span class="p">(</span><span class="n">UARTx</span><span class="p">,</span><span class="w"> </span><span class="n">UART_FLAG_TX_FIFO_EMPTY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">vCount</span><span class="o">--</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UARTx</span><span class="o">-&gt;</span><span class="n">UART_RBR_THR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pSend_Buf</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>UART_FLAG</strong> -- <strong>[in]</strong> Specify UART flag to check. This parameter can be one of the following values, refer to <a class="reference internal" href="group___u_a_r_t___flag.html#group___u_a_r_t___flag"><span class="std std-ref">UART Flag</span></a>. <ul>
+<li><p>UART_FLAG_RX_DATA_AVA: Rx data is avaliable. </p></li>
+<li><p>UART_FLAG_RX_OVERRUN: Rx FIFO overrun. </p></li>
+<li><p>UART_FLAG_RX_PARITY_ERR: Rx parity error. </p></li>
+<li><p>UART_FLAG_RX_FRAME_ERR: Rx frame error. </p></li>
+<li><p>UART_FLAG_RX_BREAK_ERR: Rx break error. </p></li>
+<li><p>UART_FLAG_TX_FIFO_EMPTY: Tx Holding Register or Tx FIFO empty </p></li>
+<li><p>UART_FLAG_TX_EMPTY: Tx FIFO and Tx shift register are both empty. </p></li>
+<li><p>UART_FLAG_RX_FIFO_ERR: Rx FIFO error. </p></li>
+<li><p>UART_FLAG_RX_IDLE: Rx idle. </p></li>
+<li><p>UART_FLAG_TX_DONE: Tx waveform done &amp; TX_FIFO_EMPTY = 1. </p></li>
+<li><p>UART_FLAG_TX_THD: TX_FIFO_LEVEL&lt;=txfifo_trigger_level.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New status of UART flag.<ul class="simple">
+<li><p>SET: The specified UART flag bit is set.</p></li>
+<li><p>RESET: The specified flag is not set.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418UART_GetLineStatusP12UART_TypeDef">
+<span id="_CPPv318UART_GetLineStatusP12UART_TypeDef"></span><span id="_CPPv218UART_GetLineStatusP12UART_TypeDef"></span><span id="UART_GetLineStatus__UART_TypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga9418daf597cd1138944846cbfb9ea2ca"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_GetLineStatus</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418UART_GetLineStatusP12UART_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the specified UART line status. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">line_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_GetLineStatus</span><span class="p">(</span><span class="n">UART_DEMO</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line_status</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">UART_FLAG</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">//Add user code here.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Line status.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413UART_SendByteP12UART_TypeDef7uint8_t">
+<span id="_CPPv313UART_SendByteP12UART_TypeDef7uint8_t"></span><span id="_CPPv213UART_SendByteP12UART_TypeDef7uint8_t"></span><span id="UART_SendByte__UART_TypeDefP.uint8_t"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga9561701f37a14eae4c07b9a10522369c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_SendByte</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413UART_SendByteP12UART_TypeDef7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Send one byte of data. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x55</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UART_SendByte</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>data</strong> -- <strong>[in]</strong> Byte data to send.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416UART_ReceiveByteP12UART_TypeDef">
+<span id="_CPPv316UART_ReceiveByteP12UART_TypeDef"></span><span id="_CPPv216UART_ReceiveByteP12UART_TypeDef"></span><span id="UART_ReceiveByte__UART_TypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga9adc506b30377b8933a6387fa6cfa688"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_ReceiveByte</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416UART_ReceiveByteP12UART_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Read a byte of data from UART RX FIFO. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_ReceiveByte</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Which byte data has been read.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411UART_GetIIDP12UART_TypeDef">
+<span id="_CPPv311UART_GetIIDP12UART_TypeDef"></span><span id="_CPPv211UART_GetIIDP12UART_TypeDef"></span><span id="UART_GetIID__UART_TypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1gaef654a0778b72280e5cd6ca535b26cfc"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_GetIID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411UART_GetIIDP12UART_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the interrupt identifier of the selected UART peripheral. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">UART0_Handler</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">rx_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">uart_rev_data</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+
+<span class="w">    </span><span class="c1">//Get interrupt ID.</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">int_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_GetIID</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">//Disable interrupt.</span>
+<span class="w">    </span><span class="n">UART_INTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_RD_AVA</span><span class="p">,</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">UART_GetFlagStatus</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_FLAG_RX_IDLE</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UART_INTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_RX_IDLE</span><span class="p">,</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">//Add user code here.</span>
+<span class="w">        </span><span class="n">UART_ClearRxFIFO</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">UART_INTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_RX_IDLE</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The interrupt identifier value. This return value can be one or a combination of the following:<ul class="simple">
+<li><p>UART_INT_ID_LINE_STATUS: Rx line status interrupt ID.</p></li>
+<li><p>UART_INT_ID_RX_LEVEL_REACH: Rx data available or trigger level reached interrupt ID.</p></li>
+<li><p>UART_INT_ID_RX_TIMEOUT: Rx FIFO data timeout interrupt ID.</p></li>
+<li><p>UART_INT_ID_TX_FIFO_EMPTY: Tx FIFO empty interrupt ID.</p></li>
+<li><p>UART_INT_ID_MODEM_STATUS: Modem status interrupt ID.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416UART_ClearRxFIFOP12UART_TypeDef">
+<span id="_CPPv316UART_ClearRxFIFOP12UART_TypeDef"></span><span id="_CPPv216UART_ClearRxFIFOP12UART_TypeDef"></span><span id="UART_ClearRxFIFO__UART_TypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1gabc96a9821eb74d3f2c28889896faece2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_ClearRxFIFO</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416UART_ClearRxFIFOP12UART_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Clear Rx FIFO of the selected UART peripheral. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_ClearRxFIFO</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421UART_GetTxFIFODataLenP12UART_TypeDef">
+<span id="_CPPv321UART_GetTxFIFODataLenP12UART_TypeDef"></span><span id="_CPPv221UART_GetTxFIFODataLenP12UART_TypeDef"></span><span id="UART_GetTxFIFODataLen__UART_TypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga050dced2470f7c2913c0e987fb0b6e45"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_GetTxFIFODataLen</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421UART_GetTxFIFODataLenP12UART_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the data length in Tx FIFO of the selected UART peripheral. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_GetTxFIFODataLen</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Data length in UART TX FIFO.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421UART_GetRxFIFODataLenP12UART_TypeDef">
+<span id="_CPPv321UART_GetRxFIFODataLenP12UART_TypeDef"></span><span id="_CPPv221UART_GetRxFIFODataLenP12UART_TypeDef"></span><span id="UART_GetRxFIFODataLen__UART_TypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga295b35d9b53d2cee5b4fbf57be12a832"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_GetRxFIFODataLen</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421UART_GetRxFIFODataLenP12UART_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the data length in Rx FIFO of the selected UART peripheral. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_GetRxFIFODataLen</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Data length in UART RX FIFO.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413UART_TxDmaCmdP12UART_TypeDef15FunctionalState">
+<span id="_CPPv313UART_TxDmaCmdP12UART_TypeDef15FunctionalState"></span><span id="_CPPv213UART_TxDmaCmdP12UART_TypeDef15FunctionalState"></span><span id="UART_TxDmaCmd__UART_TypeDefP.FunctionalState"></span><span class="target" id="group___u_a_r_t___exported___functions_1gacac5caaee5f5393a21096ab24b2622d9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_TxDmaCmd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <a class="reference internal" href="group___functional_state.html#_CPPv415FunctionalState" title="FunctionalState"><span class="n"><span class="pre">FunctionalState</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">NewState</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413UART_TxDmaCmdP12UART_TypeDef15FunctionalState" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable/Disable DMA mode on UART side. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_TxDmaCmd</span><span class="p">(</span><span class="n">UART_DEMO</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>NewState</strong> -- <strong>[in]</strong> Enable or disable UART DMA mode. This parameter can be one of the following values:<ul>
+<li><p>true: Enable UART DMA mode.</p></li>
+<li><p>false: Disable UART DMA mode.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413UART_RxDmaCmdP12UART_TypeDef15FunctionalState">
+<span id="_CPPv313UART_RxDmaCmdP12UART_TypeDef15FunctionalState"></span><span id="_CPPv213UART_RxDmaCmdP12UART_TypeDef15FunctionalState"></span><span id="UART_RxDmaCmd__UART_TypeDefP.FunctionalState"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga4d2949f1873c55e77bc0aa627c145a87"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_RxDmaCmd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <a class="reference internal" href="group___functional_state.html#_CPPv415FunctionalState" title="FunctionalState"><span class="n"><span class="pre">FunctionalState</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">NewState</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413UART_RxDmaCmdP12UART_TypeDef15FunctionalState" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable/Disable DMA mode on UART side. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_RxDmaCmd</span><span class="p">(</span><span class="n">UART_DEMO</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>NewState</strong> -- <strong>[in]</strong> Enable or disable UART DMA mode. This parameter can be one of the following values:<ul>
+<li><p>true: Enable UART DMA mode.</p></li>
+<li><p>false: Disable UART DMA mode.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418UART_OneWireConfigP12UART_TypeDef15FunctionalState">
+<span id="_CPPv318UART_OneWireConfigP12UART_TypeDef15FunctionalState"></span><span id="_CPPv218UART_OneWireConfigP12UART_TypeDef15FunctionalState"></span><span id="UART_OneWireConfig__UART_TypeDefP.FunctionalState"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga15549e62dc0841852b14f71ec1f5a0a0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_OneWireConfig</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <a class="reference internal" href="group___functional_state.html#_CPPv415FunctionalState" title="FunctionalState"><span class="n"><span class="pre">FunctionalState</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">NewState</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418UART_OneWireConfigP12UART_TypeDef15FunctionalState" title="Link to this definition"></a><br /></dt>
+<dd><p>UART one wire config. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UART_OneWireConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>NewState</strong> -- <strong>[in]</strong> UART one wire config is set or not. This parameter can be one of the following values:<ul>
+<li><p>true: UART one wire config is set.</p></li>
+<li><p>false: UART one wire config is unset.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417UART_ClkDivConfigP12UART_TypeDef20UARTClockDiv_TypeDef">
+<span id="_CPPv317UART_ClkDivConfigP12UART_TypeDef20UARTClockDiv_TypeDef"></span><span id="_CPPv217UART_ClkDivConfigP12UART_TypeDef20UARTClockDiv_TypeDef"></span><span id="UART_ClkDivConfig__UART_TypeDefP.UARTClockDiv_TypeDef"></span><span class="target" id="group___u_a_r_t___exported___functions_1ga2cbc713bc3e21d9824f9fbeafba87cad"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_ClkDivConfig</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <a class="reference internal" href="group___u_a_r_t___clock___divider.html#_CPPv420UARTClockDiv_TypeDef" title="UARTClockDiv_TypeDef"><span class="n"><span class="pre">UARTClockDiv_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">ClockDiv</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417UART_ClkDivConfigP12UART_TypeDef20UARTClockDiv_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>UART clock divider config. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_i2c_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">RCC_UARTClkDivConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_CLOCK_DIVIDER_1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>ClockDiv</strong> -- <strong>[in]</strong> Specify the UART clock divider. This parameter can refer to <a class="reference internal" href="group___u_a_r_t___clock___divider.html#group___u_a_r_t___clock___divider"><span class="std std-ref">UART Clock Divider</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411UART_ClkGetP12UART_TypeDefP20UARTClockSrc_TypeDefP20UARTClockDiv_TypeDef">
+<span id="_CPPv311UART_ClkGetP12UART_TypeDefP20UARTClockSrc_TypeDefP20UARTClockDiv_TypeDef"></span><span id="_CPPv211UART_ClkGetP12UART_TypeDefP20UARTClockSrc_TypeDefP20UARTClockDiv_TypeDef"></span><span id="UART_ClkGet__UART_TypeDefP.UARTClockSrc_TypeDefP.UARTClockDiv_TypeDefP"></span><span class="target" id="group___u_a_r_t___exported___functions_1gade6a341c645f0a997f32f97070e141e1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UART_ClkGet</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UART_TypeDef</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">UARTx</span></span>, <a class="reference internal" href="group___u_a_r_t___source___clock.html#_CPPv420UARTClockSrc_TypeDef" title="UARTClockSrc_TypeDef"><span class="n"><span class="pre">UARTClockSrc_TypeDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ClockSrc</span></span>, <a class="reference internal" href="group___u_a_r_t___clock___divider.html#_CPPv420UARTClockDiv_TypeDef" title="UARTClockDiv_TypeDef"><span class="n"><span class="pre">UARTClockDiv_TypeDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ClockDiv</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411UART_ClkGetP12UART_TypeDefP20UARTClockSrc_TypeDefP20UARTClockDiv_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Get UART clock divider config. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UARTx</strong> -- <strong>[in]</strong> Select the UART peripheral. Refer to <a class="reference internal" href="group___u_a_r_t___declaration.html#group___u_a_r_t___declaration"><span class="std std-ref">UART Declaration</span></a>. </p></li>
+<li><p><strong>ClockSrc</strong> -- <strong>[out]</strong> Specify the UART clock source. </p></li>
+<li><p><strong>ClockDiv</strong> -- <strong>[out]</strong> Specify the UART clock divider. This parameter can refer to <a class="reference internal" href="group___u_a_r_t___clock___divider.html#group___u_a_r_t___clock___divider"><span class="std std-ref">UART Clock Divider</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The status of get clock. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___u_a_r_t___word___length.html" class="btn btn-neutral float-left" title="UART Word Length" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___u_a_r_t___exported___types.html" class="btn btn-neutral float-right" title="UART Exported Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

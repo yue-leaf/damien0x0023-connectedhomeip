@@ -1,0 +1,86 @@
+TinyML Motion Trajectory Recognition — Sample Application
+=========================================================
+
+Copyright (c) 2026, Realtek Semiconductor Corporation. All rights reserved.
+
+SPDX-License-Identifier: LicenseRef-Realtek-5-Clause
+
+The sample application code in this directory (tinyml_main.c, motion_preprocess.c,
+*.h) is proprietary software owned by Realtek Semiconductor Corporation. It is
+provided as part of the Realtek RTL87x2G TinyML SDK and is subject to the terms
+of the separate agreement or license under which it was provided.
+
+
+Third-Party Components
+======================
+
+--------------------------------------------------------------------------------
+[1] libts_realtek_cm55 / libts_realtek_gcc_cm55 — TFLite Micro Inference Engine Wrapper
+--------------------------------------------------------------------------------
+Copyright (c) 2026, Realtek Semiconductor Corporation. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Realtek-5-Clause
+
+Realtek-proprietary runtime wrapper. It incorporates the following components,
+both licensed under the Apache License, Version 2.0:
+
+  - TensorFlow Lite for Microcontrollers -- Copyright The TensorFlow Authors
+  - CMSIS-NN                             -- Copyright (c) 2009-2021 Arm Limited
+
+Apache-2.0 full license text:
+
+    doc/license/text_en/apache-2.0_license.rst
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Per-component copyright/attribution notices:
+
+    doc/license/text_en/tflite_micro_license.rst
+    doc/license/text_en/arm_license.rst
+
+--------------------------------------------------------------------------------
+[2] model_tflite.cpp — TFLite Model Data (Training Dataset: EdgeImpulse)
+--------------------------------------------------------------------------------
+The int8-quantized 1D-CNN model embedded in src/tinyml_main/model_tflite.cpp was
+trained on the "Continuous motion recognition" dataset published by
+EdgeImpulse Inc.
+
+    Dataset name: Continuous motion recognition
+    Source:       https://docs.edgeimpulse.com/datasets/time-series/continuous-motion-recognition
+    Copyright:    EdgeImpulse Inc.
+    License:      The Clear BSD License (SPDX: BSD-3-Clause-Clear)
+
+The model was self-built (no Edge Impulse proprietary SDK code is included in
+this sample); only the training dataset is subject to the license below. The
+embedded binary is a derivative work of the dataset.
+
+The Clear BSD License
+
+  Copyright (c) EdgeImpulse Inc.
+  All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted (subject to the limitations in the disclaimer
+  below) provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    * Neither the name of the copyright holder nor the names of its
+      contributors may be used to endorse or promote products derived from
+      this software without specific prior written permission.
+
+  NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED
+  BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+  CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+  BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+  FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+  TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

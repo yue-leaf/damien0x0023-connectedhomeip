@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>86Box &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="Tri-Mode Mouse" href="../../../trimode_mouse/doc/text_cn/README.html" />
+    <link rel="prev" title="应用程序" href="../../../../doc/applications/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../doc/applications/text_cn/README.html">应用程序</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">86Box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">实用案例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">支持功能</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">环境需求</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">硬件连线</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#evb">EVB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wi-fi">Wi-Fi模块</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">配置选项</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cn-86box-compile-download">编译和下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">测试验证</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ui">UI 测试流程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mesh">Mesh 测试流程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matter">Matter 测试流程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Wi-Fi测试流程</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">软件设计介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">源代码目录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flash">Flash布局</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">软件架构</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">任务和优先级</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gui">GUI 任务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">Mesh 任务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">Matter 任务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Wi-Fi 任务</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../trimode_mouse/doc/text_cn/README.html">Tri-Mode Mouse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ppt_transport/doc/text_cn/README.html">PPT Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lvgl/doc/text_cn/README.html">LVGL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+    <li class="breadcrumb-item active">86Box</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="box">
+<h1>86Box<a class="headerlink" href="#box" title="Link to this heading"></a></h1>
+<p>86Box 中控是智能家居系统的重要组成部分，具有集中管理和控制各种智能家电的功能。其设计类似普通开关插座，可以方便地安装在墙壁上或嵌入墙壁内。用户只需通过手机、平板等专用应用，即可远程控制空调、电视、灯光、窗帘、门锁等各类设备。86Box 中控使家庭智能化管理变得尽心且便捷，极大提升了家庭生活质量。</p>
+<section id="id1">
+<h2>概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>本文介绍了基于 Realtek RTL8772GWP 的 86Box Smart Home 方案相关信息，旨在帮助用户搭建开发环境，包括了解 SDK、编译和烧录固件及系统测试方法等。开发者可烧录 SDK 中的测试文件，确保开发环境配置得当、EVB 可以正常工作。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>本文所述示例方案采用 Realtek RTL8772GWP EVB，搭配 st7701s 驱动的 RGB(480 * 480) LCD 显示、gt911 驱动的触控屏模组，开发者若选用本文相同的硬件环境，可直接运行 SDK 中的样例工程。</p></li>
+<li><p>如需适配其他型号的显示屏和输入设备，请参考 <a class="reference external" href="https://docs.realmcu.com/gui/cn/latest/Porting/index.html">移植</a>，适配到新的显示和输入设备驱动。</p></li>
+<li><p>Realtek RTL8772GWP 芯片支持的显示接口：i8080、qspi/spi、RGB888/RGB565。</p></li>
+</ul>
+</div>
+</section>
+<section id="id3">
+<h2>实用案例<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>下图显示了 86Box 应用包含的模块：</p>
+<figure class="align-center" id="box-systemmodule">
+<a class="reference internal image-reference" href="../../../../_images/fig_module.jpeg"><img alt="../../../../_images/fig_module.jpeg" src="../../../../_images/fig_module.jpeg" style="width: 927.5999999999999px; height: 624.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">86Box 系统模块组成</span><a class="headerlink" href="#box-systemmodule" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h2>支持功能<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>Realtek 86Box 应用程序提供完备功能支持:</p>
+<ul class="simple">
+<li><p>支持蓝牙 Mesh 1.1/1.0 协议</p></li>
+<li><p>支持 Matter 协议</p></li>
+<li><p>支持 Wi-Fi 入网</p></li>
+<li><p>支持可视化 UI 开发</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>环境需求<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">硬件环境需求</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>RTL87x2GWP <a class="reference internal" href="../../../../doc/glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a></p></li>
+<li><p>LCD 屏幕模块</p></li>
+<li><p>Wi-Fi模块</p></li>
+<li><p>Mesh dongle 模块</p></li>
+<li><p>Matter 设备</p></li>
+</ol>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">工具需求</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>ARM Keil MDK: <a class="reference external" href="https://developer.arm.com">ArmMDK</a></p></li>
+<li><p>MPTool_kits: <a class="reference external" href="https://www.realmcu.com/zh/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU-Tool</a></p></li>
+<li><p>DebugAnalyzer: <a class="reference external" href="https://www.realmcu.com/zh/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU-Tool</a></p></li>
+<li><p>RVisualDesigner: <a class="reference external" href="https://www.realmcu.com/zh/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU-Tool</a></p></li>
+<li><p>scons 4.4.0: python 环境运行 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">pip</kbd> <kbd class="kbd docutils literal notranslate">install</kbd> <kbd class="kbd docutils literal notranslate">scons==4.4.0</kbd></kbd></p></li>
+<li><p>GCC: Matter <a class="reference external" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">arm-gcc</a></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h2>硬件连线<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="evb">
+<h3>EVB<a class="headerlink" href="#evb" title="Link to this heading"></a></h3>
+<p>EVB 提供了用户开发和应用调试的硬件环境。86Box 应用使用 Model B EVB 进行演示，EVB 由母板和子板组成。EVB 具有下载模式和工作模式，下载模式用于烧录固件等功能，工作模式为正常运行应用程序模式，开发者需要配置 EVB 以进入所需的模式。有关 EVB 母板的详细介绍和使用方法请参阅 <a class="reference internal" href="../../../../doc/evb_guide/text_cn/model_b.html"><span class="doc">评估板指南</span></a>。</p>
+<figure class="align-center" id="box-evb-cn">
+<a class="reference internal image-reference" href="../../../../_images/fig_evb.png"><img alt="../../../../_images/fig_evb.png" src="../../../../_images/fig_evb.png" style="width: 498.59999999999997px; height: 658.1999999999999px;" /></a>
+<figcaption>
+<p><span class="caption-text">86Box EVB 接线</span><a class="headerlink" href="#box-evb-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="wi-fi">
+<h3>Wi-Fi模块<a class="headerlink" href="#wi-fi" title="Link to this heading"></a></h3>
+<p>Wi-Fi模块在EVB上的安装方法请参考 <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_cn/README.html"><span class="doc">Wi-Fi</span></a> 文档中
+<a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_cn/README.html#cn-wifi-nic-chapter-wiring"><span class="std std-ref">硬件连线</span></a> 章节。</p>
+</section>
+</section>
+<section id="id9">
+<h2>配置选项<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p>SDK 中 86Box 方案的配置在 <code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj\menu_config.h</span></code> 中，默认配置如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="cp">#define CONFIG_REALTEK_BUILD_GUI_OS_HEAP      </span><span class="cm">/* RTK GUI Use OS Heap */</span>
+
+<span class="c1">// #define CONFIG_REALTEK_BUILD_MATTER_SWITCH  /* Enable Matter Switch */</span>
+<span class="cp">#define CONFIG_REALTEK_BUILD_MESH_SWITCH   0   </span><span class="cm">/* Enable Mesh Provisioner, 0: disable, 1: enable */</span>
+<span class="cp">#define CONFIG_REALTEK_BUILD_WIFI_NIC    0     </span><span class="cm">/* Enable WIFI NIC, 0: disable, 1: enable */</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>当配置修改后，根据所支持的编译方式重新构建工程后配置生效，构建方法请参考 <a class="reference internal" href="#cn-86box-compile-download"><span class="std std-ref">编译和下载</span></a> 步骤。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_REALTEK_BUILD_GUI_OS_HEAP</span></code>：配置是否使用内部 RAM 为主 RAM 资源，可配置为 PSRAM 作为主 RAM 资源。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_REALTEK_BUILD_MATTER_SWITCH</span></code>：配置是否使能 Matter 模块， Matter 模块仅支持 GCC 编译。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_REALTEK_BUILD_MESH_SWITCH</span></code>：配置是否使能 Mesh 模块， Mesh 模块仅支持 arm-compiler 编译。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_REALTEK_BUILD_WIFI_NIC</span></code>：配置是否使能 Wi-Fi模块， Wi-Fi模块仅支持 arm-compiler 编译。</p></li>
+</ul>
+</div>
+</section>
+<section id="cn-86box-compile-download">
+<span id="id10"></span><h2>编译和下载<a class="headerlink" href="#cn-86box-compile-download" title="Link to this heading"></a></h2>
+<p>请参阅 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 进行编译和下载。值得注意的是：</p>
+<ol class="arabic">
+<li><div class="line-block">
+<div class="line"><a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#flash-map"><span class="std std-ref">生成 Flash Map</span></a> 步骤：</div>
+<div class="line">开发人员需要根据 <code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj\flash_map.h</span></code> 生成 <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> 。</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#system-config-file"><span class="std std-ref">生成 System Config File</span></a> 步骤：</div>
+<div class="line">务必使能 psram power，其他功能可根据需要进行配置。</div>
+</div>
+</li>
+</ol>
+<figure class="align-center" id="system-config-psram-power-86box">
+<a class="reference internal image-reference" href="../../../../_images/fig_system_config.png"><img alt="../../../../_images/fig_system_config.png" src="../../../../_images/fig_system_config.png" style="width: 685.8px; height: 553.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">system config 使能 psram power</span><a class="headerlink" href="#system-config-psram-power-86box" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="3">
+<li><p><a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#app-image"><span class="std std-ref">编译 APP Image</span></a> 步骤：</p>
+<ol class="arabic">
+<li><p>86Box SDK 工程路径为：<code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj</span></code>。</p></li>
+<li><p>Keil MDK 工程路径为： <code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj\mdk</span></code> 。</p></li>
+<li><p>当修改了工程的配置后，需要重新构建工程，将会生成全新工程文件，覆盖原有的工程文件。</p></li>
+<li><p>构建工程时，在工程路径下打开 cmd 窗口。</p>
+<ol class="arabic">
+<li><p>对于支持 arm-compiler 的工程，运行命令 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">scons</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">target=mdk5</kbd></kbd> 构建 mdk 工程，打开 mdk 工程进行编译，APP image 将生成在以下路径中：<code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj\mdk\bin</span></code>。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">SDK\applications\86box\proj&gt; scons --target=mdk5</span>
+</span><span class="go">scons: Reading SConscript files ...</span>
+<span class="go">...</span>
+<span class="go">CC xxxx.o</span>
+<span class="go">CC xxxx.o</span>
+<span class="go">...</span>
+<span class="go">LINK app.elf</span>
+<span class="go">fromelf --bin app.elf --output rtthread.bin</span>
+<span class="go">fromelf -z app.elf</span>
+<span class="go">scons: done building targets.</span>
+</pre></div>
+</div>
+</li>
+<li><p>对于支持 gcc 的工程，运行 <kbd class="kbd docutils literal notranslate">scons</kbd> 构建并编译工程，APP image 将生成在工程路径下。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">SDK\applications\86box\proj&gt; scons</span>
+</span><span class="go">scons: Reading SConscript files ...</span>
+<span class="go">...</span>
+<span class="go">CC xxxx.o</span>
+<span class="go">CC xxxx.o</span>
+<span class="go">...</span>
+<span class="go">arm-none-eabi-size app.elf</span>
+<span class="go">text    data     bss     dec     hex filename</span>
+<span class="go">974942       0  221424 1196366  12414e app.elf</span>
+<span class="go">..\..\..\tools\md5\md5.exe app_MP.bin</span>
+<span class="go">MD5 v1.0.4</span>
+<span class="go">Output Image: app_MP_sdk_1.0.5.16_5870d5e6-ecdd77cad50adfc46b584686317c7199.bin</span>
+<span class="go">scons: done building targets.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>生成和下载 User Data：</p>
+<ol class="arabic simple">
+<li><p>请使用 MP Tool 的 <span class="guilabel">User Data</span> 功能下载 <code class="file docutils literal notranslate"><span class="pre">root(0x4600000).bin</span></code>，写入地址： <code class="docutils literal notranslate"><span class="pre">0x04600000</span></code>。</p></li>
+<li><p>Demo User Data 路径：<code class="file docutils literal notranslate"><span class="pre">SDK\subsys\gui\gui_engine\example\screen_480_480\</span></code>。</p></li>
+<li><p>当使用 RVisualDesigner 导出自定义的 UI 时，路径： <code class="file docutils literal notranslate"><span class="pre">RVisualDesigner</span> <span class="pre">prj\Export\bin</span></code>。</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="id11">
+<h2>测试验证<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<section id="ui">
+<h3>UI 测试流程<a class="headerlink" href="#ui" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>正确完成烧录固件及 UserData 后，令 EVB 切换到工作模式，复位重启。</p></li>
+<li><p>设备重启后可以看到有 86Box 图标，点击图标进入应用，应用内部具有多个横向标签页，左右滑动可顺序切换，底部圆点标识当前标签页位置，点击可快速跳转。标签页包括主页面、开关页面、空调页面、窗帘页面和 wifi 测速页面，每个页面中的控件如按键等可进行交互。更多控件的交互演示，请参阅  <a class="reference external" href="https://docs.realmcu.com/gui/cn/latest/sample/86box/86box.html">示例 86Box 应用程序</a>。</p></li>
+</ol>
+<figure class="align-center" id="uidemo-86box">
+<a class="reference internal image-reference" href="../../../../_images/fig_uiDemo.png"><img alt="../../../../_images/fig_uiDemo.png" src="../../../../_images/fig_uiDemo.png" style="width: 786.0px; height: 434.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">86Box UI 演示</span><a class="headerlink" href="#uidemo-86box" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="mesh">
+<h3>Mesh 测试流程<a class="headerlink" href="#mesh" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>在工程中配置使能 Mesh 模块，构建编译，烧录下载。</p></li>
+<li><p>将 Mesh Dongle 上电，并保证 dongle 上的开关为 <span class="guilabel">ON</span> 状态，当开关拨至 <span class="guilabel">ON</span> 状态时，dongle 闪烁一次。</p></li>
+<li><p>EVB 重启后点击 “小鸟” 图标进入 86Box 应用，滑动至开关页面，点击对应开关可观察到 Mesh dongle 亮起或关闭，且与屏幕上灯状态一致。</p></li>
+<li><p>有关 Mesh 功能详细的介绍和测试请参阅 <a class="reference internal" href="../../../../samples/bluetooth/mesh/mesh_provisioner/doc/text_cn/README.html"><span class="doc">Mesh Provisioner</span></a>。</p></li>
+</ol>
+<figure class="align-center" id="meshdemo-cn">
+<a class="reference internal image-reference" href="../../../../_images/fig_meshDemo.png"><img alt="../../../../_images/fig_meshDemo.png" src="../../../../_images/fig_meshDemo.png" style="width: 393.3px; height: 675.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">86Box Mesh 演示</span><a class="headerlink" href="#meshdemo-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="matter">
+<h3>Matter 测试流程<a class="headerlink" href="#matter" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Matter 照明开关的编译部分请参考 <a class="reference external" href="https://docs.realmcu.com/matter/cn/latest/doc/samples/light_switch/text_cn/README.html">照明开关</a> 文档中的 <a class="reference external" href="https://docs.realmcu.com/matter/cn/latest/doc/samples/light_switch/text_cn/README.html#cn-matter-light-switch-sample-building">编译</a> 章节，生成的 Matter 静态链接库将被包进86Box 应用程序。</p></li>
+<li><p>在工程中配置使能 Matter 模块，构建编译，烧录下载。</p></li>
+<li><p>设备配网、绑定和照明控制的测试过程请参考 <a class="reference external" href="https://docs.realmcu.com/matter/cn/latest/doc/samples/light_switch/text_cn/README.html">照明开关</a> 文档中的 <a class="reference external" href="https://docs.realmcu.com/matter/cn/latest/doc/samples/light_switch/text_cn/README.html#cn-matter-light-switch-sample-verification">测试验证</a> 章节。将其中的照明开关应用程序替换为 86Box 应用程序。</p></li>
+</ol>
+</section>
+<section id="id17">
+<h3>Wi-Fi测试流程<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>在工程中配置使能 Wi-Fi 模块，构建编译，烧录下载。</p></li>
+<li><p>Wi-Fi 扫描、连接等功能的测试过程请参考 <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_cn/README.html"><span class="doc">Wi-Fi</span></a> 文档中 <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_cn/README.html#cn-wifi-nic-chapter-verification"><span class="std std-ref">测试验证</span></a> 章节。</p></li>
+</ol>
+</section>
+</section>
+<section id="id18">
+<h2>软件设计介绍<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<p>本章主要介绍 RTL8772GWP 86Box 解决方案的软件相关技术参数和行为规范，为 86Box 的所有功能提供软件概述，包括 GUI 任务、 Mesh 通信任务、Matter 通信任务、Wi-Fi 通信任务等行为规范，用于指导 86Box 的开发和追踪软件测试中遇到的问题。</p>
+<section id="id19">
+<h3>源代码目录<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>工程文件目录： <code class="file docutils literal notranslate"><span class="pre">sdk\application\86box\proj</span></code>。</p></li>
+<li><p>源代码目录： <code class="file docutils literal notranslate"><span class="pre">sdk\application\86box\src</span></code>。</p></li>
+</ul>
+<p>86Box SDK中的源文件目前分为以下几类：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: 86box
+    └── app                            includes the 86Box user application implementation
+        ├── menu_config.h              project construct configurations
+        ├── main.c
+        └── 86box_init.c
+    ├── lib
+    ├── device
+    ├── peripheral                     includes all peripheral drivers and module code used by the application
+    ├── profile                        includes BLE profiles or services
+    ├── dfu
+    ├── dfu_task
+    ├── rtk_gui                        includes all gui porting
+        ├── gui_port_acc.c
+        ├── gui_port_dc.c              display controller port
+        ├── gui_port_filesystem.c      filesystem api port
+        ├── gui_port_ftl.c
+        ├── gui_port_indev.c
+        └── gui_port_os.c              os api port
+    ├── realgui/3rd
+    ├── JerryScript
+    ├── JerryScriptPort
+    ├── realgui/app
+    ├── realgui/dc
+    ├── realgui/engine
+    ├── realgui/input
+    ├── realgui/misc
+    ├── realgui/SaaA                   includes js middle layer function implementation
+    ├── realgui/server
+    ├── realgui/widget                 includes all the realgui widgets implementation
+    ├── database
+    ├── fs
+    ├── hal_drivers
+    ├── lcd_low_driver                 includes display pannel IC driver implementation
+    ├── Compiler
+    └── touch_driver                   includes touch IC driver implementation
+    :
+    └── matter_switch                  includes Matter switch function implementation
+    :
+    ├── mesh switch                    includes mesh driver support
+    └── mesh app                       includes mesh application implementation
+    :
+    └── wifi_nic                       includes wifi nic function implementation
+</pre></div>
+</div>
+</section>
+<section id="flash">
+<h3>Flash布局<a class="headerlink" href="#flash" title="Link to this heading"></a></h3>
+<p>应用程序默认的 flash 布局头文件： <code class="file docutils literal notranslate"><span class="pre">sdk\application\86box\proj\flash_map.h</span></code>。</p>
+<table class="docutils align-default" id="sample-flash-layout-cn">
+<caption><span class="caption-text">Flash布局说明</span><a class="headerlink" href="#sample-flash-layout-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example layout with a total flash size of 16 MB</p></th>
+<th class="head"><p>Size(byte)</p></th>
+<th class="head"><p>Start Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>4K</p></td>
+<td><p>0x04000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OEM Header</p></td>
+<td><p>4K</p></td>
+<td><p>0x04001000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x04002000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x0400A000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Bank0</p></td>
+<td><p>2456K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>OTA Header</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>System Patch code</p></li>
+</ul>
+</td>
+<td><p>32K</p></td>
+<td><p>0x04013000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>BT Lowerstack Patch code</p></li>
+</ul>
+</td>
+<td><p>60K</p></td>
+<td><p>0x0401B000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>BT Host code</p></li>
+</ul>
+</td>
+<td><p>212K</p></td>
+<td><p>0x0402A000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP code</p></li>
+</ul>
+</td>
+<td><p>2148K</p></td>
+<td><p>0x0405F000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP Config File</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data1</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data2</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data3</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data4</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data5</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data6</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OTA Bank1</p></td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Secure APP code</p></td>
+<td><p>16K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AC000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank1 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x0427C000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x0427C000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Temp</p></td>
+<td><p>2148K</p></td>
+<td><p>0x0427C000</p></td>
+</tr>
+<tr class="row-odd"><td><p>FTL</p></td>
+<td><p>16K</p></td>
+<td><p>0x04495000</p></td>
+</tr>
+<tr class="row-even"><td><p>APP Defined Section1</p></td>
+<td><p>0K</p></td>
+<td><p>0x04499000</p></td>
+</tr>
+<tr class="row-odd"><td><p>APP Defined Section2</p></td>
+<td><p>0K</p></td>
+<td><p>0x04499000</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<ul class="simple">
+<li><p>如需调整Flash布局，请参考 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#flash-map"><span class="std std-ref">生成 Flash Map</span></a> 的步骤。</p></li>
+<li><p>调整Flash布局后，必须使用新的 <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> 重新进行 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#ota-header"><span class="std std-ref">生成 OTA Header</span></a> 和 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#system-config-file"><span class="std std-ref">生成 System Config File</span></a> 步骤。</p></li>
+</ul>
+</div>
+</section>
+<section id="id20">
+<h3>软件架构<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<p>系统软件架构如下图所示：</p>
+<figure class="align-center" id="software-architecture-86box">
+<a class="reference internal image-reference" href="../../../../_images/fig_swArch.png"><img alt="../../../../_images/fig_swArch.png" src="../../../../_images/fig_swArch.png" style="width: 691.2px; height: 521.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">系统软件架构</span><a class="headerlink" href="#software-architecture-86box" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Platform feature</strong>: 包括OTA、Flash、<a class="reference internal" href="../../../../doc/glossary.html#term-FTL"><span class="xref std std-term">FTL</span></a> 等。</p></li>
+<li><p><strong>Peripheral driver</strong>: 提供对 RTL87x2G 外设接口的应用层访问。</p></li>
+<li><p><strong>OSIF</strong>: 实时操作系统的抽象层。</p></li>
+<li><p><strong>GAP</strong>: 用户应用程序与 BLE 协议栈通信的抽象层。</p></li>
+<li><p><strong>Application</strong>: 应用层包含用户定义的各个应用任务。</p></li>
+</ul>
+</section>
+<section id="id21">
+<h3>任务和优先级<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<p>如下图所示，用户应用程序共创建了8个任务：</p>
+<figure class="align-center" id="tasks-86box">
+<a class="reference internal image-reference" href="../../../../_images/fig_swTask.png"><img alt="../../../../_images/fig_swTask.png" src="../../../../_images/fig_swTask.png" style="width: 795.2px; height: 542.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">任务和优先级</span><a class="headerlink" href="#tasks-86box" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>各任务描述及优先级如下表：</p>
+<table class="docutils align-center" id="id27">
+<caption><span class="caption-text">任务说明及优先级</span><a class="headerlink" href="#id27" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>任务</p></th>
+<th class="head"><p>描述</p></th>
+<th class="head"><p>优先级</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Timer</p></td>
+<td><p>实现 FreeRTOS 所需的软件定时器</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>BT Controller stack</p></td>
+<td><p>实现 <a class="reference internal" href="../../../../doc/glossary.html#term-HCI"><span class="xref std std-term">HCI</span></a> 以下的BLE协议栈</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>BT Host stack</p></td>
+<td><p>实现 <a class="reference internal" href="../../../../doc/glossary.html#term-HCI"><span class="xref std std-term">HCI</span></a> 以上的BLE协议栈</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wi-Fi</p></td>
+<td><p>完成 Wi-Fi 初始化</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Mesh</p></td>
+<td><p>完成 Mesh 初始化</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Matter</p></td>
+<td><p>完成 Matte 始化</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>GUI</p></td>
+<td><p>处理 UI 显示及交互</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Idle</p></td>
+<td><p>运行后台任务</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>可以创建多个应用任务，并相应地分配内存资源。</p>
+</div>
+</section>
+<section id="gui">
+<h3>GUI 任务<a class="headerlink" href="#gui" title="Link to this heading"></a></h3>
+<p>GUI 任务的软件架构如下图所示：</p>
+<figure class="align-center" id="gui-task">
+<a class="reference internal image-reference" href="../../../../_images/fig_swUI.png"><img alt="../../../../_images/fig_swUI.png" src="../../../../_images/fig_swUI.png" style="width: 680.0px; height: 328.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">GUI 任务软件架构</span><a class="headerlink" href="#gui-task" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>86Box 应用的 GUI 基于脚本语言配合可视化 UI 设计工具 RVisualDesigner 进行开发，开发者使用 UI 设计工具进行 UI 布局设计和资源配置，再使用 JS 脚本语言进行交互逻辑设计。该开发模式和软件架构灵活便捷，利用 JS 中间件和 XML 解析库来对常用控件和交互方式进行封装，能降低开发者学习成本，缩短开发周期。如何使用 JS 脚本和 RVisualDesigner 进行 UI 设计开发，具体请参阅  <a class="reference external" href="https://docs.realmcu.com/gui/cn/latest/GUI-APP/SaaA/index.html">使用脚本设计应用程序</a>。</p>
+<p>在 GUI 任务中，GUI 利用 HMI(Human Machine Interface) 搭配硬件设备驱动来即时获取和处理用户的交互，包括触屏、显示等，而后 GUI 将信息传给对应的控件，开发者可以在 JS 脚本中通过 api 对用户行为和控件动作进行监听，从而进一步回调处理。此外，GUI 将通过消息队列来实现与其他任务间的信息同步，如 Mesh 消息、Matter 消息、Wi-Fi 消息等。当开发者需要进行移植或适配其他硬件平台时，只需修改相关的接口文件，具体请参阅 <a class="reference external" href="https://docs.realmcu.com/gui/cn/latest/Porting/index.html">移植</a>。</p>
+</section>
+<section id="id24">
+<h3>Mesh 任务<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<p>Mesh 任务的软件架构请参考 <a class="reference internal" href="../../../../subsys/bluetooth/mesh/doc/text_cn/Bluetooth_Mesh_Overview.html"><span class="doc">Mesh 概述</span></a> 文档。</p>
+</section>
+<section id="id25">
+<h3>Matter 任务<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<p>Matter 任务主要用于初始化 Matter 协议栈。Matter 协议栈是基于官方的 <a class="reference external" href="https://github.com/rtkconnectivity/connectedhomeip">Matter GitHub repository</a> 上开发，并且是开源的。</p>
+</section>
+<section id="id26">
+<h3>Wi-Fi 任务<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<p>Wi-Fi 任务的软件架构请参考 <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_cn/README.html"><span class="doc">Wi-Fi</span></a> 文档中
+<a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_cn/README.html#cn-wifi-nic-chapter-system-architecture"><span class="std std-ref">系统架构</span></a> 章节。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../../doc/applications/text_cn/README.html" class="btn btn-neutral float-left" title="应用程序" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../trimode_mouse/doc/text_cn/README.html" class="btn btn-neutral float-right" title="Tri-Mode Mouse" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

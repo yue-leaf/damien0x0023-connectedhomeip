@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LE Scatternet &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="LE Peripheral Extended ADV" href="../../../ble_bt5_peripheral/doc/text_cn/README.html" />
+    <link rel="prev" title="LE Central" href="../../../ble_central/doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_cn/README.html">蓝牙</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_broadcaster/doc/text_cn/README.html">LE Broadcaster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_observer/doc/text_cn/README.html">LE Observer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_peripheral/doc/text_cn/README.html">LE Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_central/doc/text_cn/README.html">LE Central</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LE Scatternet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">环境需求</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">硬件连线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">配置</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id5">配置选项</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">生成系统配置文件</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">编译和下载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">测试验证</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#scaternet">与另一块开发板对测</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id10">准备步骤</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id11">测试步骤</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#tester-1">与 Tester 1 连接</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#tester-2">与 Tester 2 连接</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#tester-1-tester-2">与 Tester 1 和 Tester 2 交互</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">代码介绍</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id13">源码路径</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bluetooth-host">Bluetooth Host 介绍</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id14">初始化</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id15">多链路管理</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gap">GAP 消息处理</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id16">GAP 回调函数处理</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#profile-client">Profile Client 消息回调函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#profile-service">Profile Service 消息回调函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#airplane-mode">Airplane Mode 设置</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_bt5_peripheral/doc/text_cn/README.html">LE Peripheral Extended ADV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_bt5_central/doc/text_cn/README.html">LE Central Extended Scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_peripheral_privacy/doc/text_cn/README.html">LE Peripheral Privacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dtm/doc/text_cn/README.html">LE DTM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mesh/doc/text_cn/README.html">Bluetooth Mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/doc/text_cn/README.html">外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_cn/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_cn/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">蓝牙</a></li>
+    <li class="breadcrumb-item active">LE Scatternet</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="le-scatternet">
+<span id="le-scatternet-cn"></span><h1>LE Scatternet<a class="headerlink" href="#le-scatternet" title="Link to this heading"></a></h1>
+<p><em>ble_scatternet</em> 示例工程可以作为开发同时支持 Peripheral Role 和 Central Role 的应用程序的框架。</p>
+<p>Scatternet 特征:</p>
+<ul class="simple">
+<li><p>在同一时间，作为 Peripheral 角色与多个 Central 建立连线。</p></li>
+<li><p>在同一时间，作为 Peripheral 角色和 Central 角色。</p></li>
+<li><p>不支持角色转换。</p></li>
+</ul>
+<section id="id1">
+<h2>环境需求<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>该示例支持以下开发工具包:</p>
+<table class="docutils align-center" id="id2">
+<caption><span class="caption-text">开发套件</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-HDK"><span class="xref std std-term">HDK</span></a></p></td>
+<td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>为快速搭建起开发环境，可参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 中提供的详细指导。</p>
+</section>
+<section id="id3">
+<h2>硬件连线<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 中的 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id15"><span class="std std-ref">EVB 接口和模块</span></a>。</p>
+<p>该示例工程需要支持用户命令接口。
+具体连线介绍请参考 <a class="reference internal" href="../../../../../subsys/staging/data_uart_cmd/doc/text_cn/README.html#id1"><span class="std std-ref">用户命令接口</span></a> 中的 <a class="reference internal" href="../../../../../subsys/staging/data_uart_cmd/doc/text_cn/README.html#data-uart"><span class="std std-ref">Data UART 连接</span></a>。</p>
+</section>
+<section id="id4">
+<h2>配置<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h3>配置选项<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>该示例工程全部配置选项在
+<code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_scatternet\src\app_flags.h</span></code> 中，
+开发者可以根据实际需求配置。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/** @brief  Config APP LE link number */</span>
+<span class="cp">#define APP_MAX_LINKS  2</span>
+<span class="cm">/** @brief  Config airplane mode support: 0-Not built in, 1-built in, use user command to set*/</span>
+<span class="cp">#define F_BT_AIRPLANE_MODE_SUPPORT          0</span>
+<span class="cm">/** @brief  Config device name characteristic and appearance characteristic property: 0-Not writeable, 1-writeable, save to flash*/</span>
+<span class="cp">#define F_BT_GAPS_CHAR_WRITEABLE            0</span>
+<span class="cm">/** @brief  Config set physical: 0-Not built in, 1-built in, use user command to set*/</span>
+<span class="cp">#define F_BT_LE_5_0_SET_PHY_SUPPORT         0</span>
+<span class="cm">/** @brief  Config local address type: 0-pulic address, 1-static random address */</span>
+<span class="cp">#define F_BT_LE_USE_STATIC_RANDOM_ADDR      0</span>
+</pre></div>
+</div>
+<ul>
+<li><p>飞行模式的设置：</p>
+<p>配置 <code class="docutils literal notranslate"><span class="pre">F_BT_AIRPLANE_MODE_SUPPORT</span></code> 以打开飞行模式（默认关闭）。打开飞行模式后，系统会关闭蓝牙功能。更多信息请参考 <a class="reference internal" href="#id12">代码介绍</a> 中的 <a class="reference internal" href="#airplane-mode">Airplane Mode 设置</a>。</p>
+</li>
+<li><p><a class="reference internal" href="../../../../../doc/glossary.html#term-GAP"><span class="xref std std-term">GAP</span></a> service characteristic 的可写属性：</p>
+<p>配置 <code class="docutils literal notranslate"><span class="pre">F_BT_GAPS_CHAR_WRITEABLE</span></code> 以打开该功能（默认关闭）。更多信息请参考 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#gap-service-characteristic"><span class="std std-ref">GAP Service Characteristic 的可写属性</span></a>。</p>
+</li>
+<li><p>静态随机地址的使用：</p>
+<p>配置 <code class="docutils literal notranslate"><span class="pre">F_BT_LE_USE_STATIC_RANDOM_ADDR</span></code> 以打开该功能（默认关闭）。更多信息请参考 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#static-random-address"><span class="std std-ref">本地设备使用 Static Random Address</span></a>。</p>
+</li>
+<li><p><a class="reference internal" href="../../../../../doc/glossary.html#term-PHY"><span class="xref std std-term">PHY</span></a> 设置：</p>
+<p>配置 <code class="docutils literal notranslate"><span class="pre">F_BT_LE_5_0_SET_PHY_SUPPORT</span></code> 以打开该功能（默认关闭）。更多信息请参考 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#physical-phy"><span class="std std-ref">Physical (PHY) 设置</span></a>。</p>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h3>生成系统配置文件<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>开发者可以通过 MP Tool 配置以下项目：</p>
+<table class="docutils align-default" id="mp-tool">
+<caption><span class="caption-text">MP Tool 配置</span><a class="headerlink" href="#mp-tool" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configurable Item</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="guilabel">LE Master Link Num</span></p></td>
+<td><p>≥1</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">LE Slave Link Num</span></p></td>
+<td><p>≥1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>开发者配置的 <code class="docutils literal notranslate"><span class="pre">LE</span> <span class="pre">Master</span> <span class="pre">Link</span> <span class="pre">Num</span></code> 值与 <code class="docutils literal notranslate"><span class="pre">LE</span> <span class="pre">Slave</span> <span class="pre">Link</span> <span class="pre">Num</span></code> 值之和应大于等于 <code class="file docutils literal notranslate"><span class="pre">app_flags.h</span></code> 中配置的 <code class="docutils literal notranslate"><span class="pre">APP_MAX_LINKS</span></code> 值。</p></li>
+</ul>
+</div>
+<p>更多有关于 MP Tool 配置信息请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 中的 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#system-config-file"><span class="std std-ref">生成 System Config File</span></a>。</p>
+</section>
+</section>
+<section id="id7">
+<h2>编译和下载<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>该示例可以在 SDK 文件夹中找到:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_scatternet\proj\rtl87x2g\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_scatternet\proj\rtl87x2g\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>编译和运行该示例请遵循以下步骤:</p>
+<ol class="arabic simple">
+<li><p>打开项目文件。</p></li>
+<li><p>要编译目标文件, 请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 的
+<a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#app-image"><span class="std std-ref">编译 APP Image</span></a> 中列出的步骤。</p></li>
+<li><p>编译成功后，目录 <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_scatternet\proj\rtl87x2g\mdk\bin</span></code> 下会生成 APP bin 文件 <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk_xxx.bin</span></code>。</p></li>
+<li><p>要下载 APP bin 到 EVB，请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 的 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#mptool"><span class="std std-ref">MP Tool</span></a> 中列出的步骤。</p></li>
+<li><p>在 EVB 上按下 <kbd class="kbd docutils literal notranslate">reset</kbd> 键，程序将开始运行。</p></li>
+</ol>
+</section>
+<section id="id8">
+<h2>测试验证<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>将示例工程烧录到 EVB 后，开发者可以使用两个开发板分别运行 <a class="reference internal" href="../../../ble_peripheral/doc/text_cn/README.html#le-peripheral-cn"><span class="std std-ref">LE Peripheral</span></a> 示例工程和 <a class="reference internal" href="../../../ble_central/doc/text_cn/README.html#le-central-cn"><span class="std std-ref">LE Central</span></a> 示例工程。</p>
+<section id="scaternet">
+<span id="id9"></span><h3>与另一块开发板对测<a class="headerlink" href="#scaternet" title="Link to this heading"></a></h3>
+<p>准备三块开发板分别命名为 <a class="reference internal" href="../../../../../doc/glossary.html#term-DUT"><span class="xref std std-term">DUT</span></a>， <strong>Tester 1</strong> 和 <strong>Tester 2</strong> ，开发者可以使用 <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Analyzer</span></code> 做 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id37"><span class="std std-ref">Log 验证</span></a> 。</p>
+<section id="id10">
+<h4>准备步骤<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p>使用 MP Tool 将 <strong>DUT</strong> 地址设为 [00:11:22:33:44:80]，然后编译
+<em>ble_scatternet</em> 示例工程并下载 images 到 <strong>DUT</strong> 上。
+开发者可以在电脑的串口辅助工具端输入用户命令，请参考 <a class="reference internal" href="../../../../../subsys/staging/data_uart_cmd/doc/text_cn/README.html#id1"><span class="std std-ref">用户命令接口</span></a> 中的 <a class="reference internal" href="../../../../../subsys/staging/data_uart_cmd/doc/text_cn/README.html#id9"><span class="std std-ref">如何使用命令</span></a>。</p></li>
+<li><p>使用 MP Tool 将 <strong>Tester 1</strong> 地址设为 [00:11:22:33:44:81]，然后编译
+<em>ble_peripheral</em> 示例工程，并下载 images 到 <strong>Tester 1</strong> 上。更多信息请参考 <a class="reference internal" href="../../../ble_peripheral/doc/text_cn/README.html#le-peripheral-cn"><span class="std std-ref">LE Peripheral</span></a> 中的 <a class="reference internal" href="../../../ble_peripheral/doc/text_cn/README.html#peripheral"><span class="std std-ref">编译和下载</span></a>。</p></li>
+<li><p>使用 MP Tool 将 <strong>Tester 2</strong> 地址设为 [00:11:22:33:44:85]，然后编译
+<em>ble_central</em> 示例工程，并下载 images 到 <strong>Tester 2</strong> 上。更多信息请参考 <a class="reference internal" href="../../../ble_central/doc/text_cn/README.html#le-central-cn"><span class="std std-ref">LE Central</span></a> 中的 <a class="reference internal" href="../../../ble_central/doc/text_cn/README.html#central"><span class="std std-ref">编译和下载</span></a>。</p></li>
+</ol>
+<p>更多关于如何修改 <strong>蓝牙地址</strong> 的细节请查阅 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 中的 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#system-config-file"><span class="std std-ref">生成 System Config File</span></a>。</p>
+</section>
+<section id="id11">
+<h4>测试步骤<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<p>因为同时支持 Peripheral Role 和 Central Role, 所以测试流程是 <a class="reference internal" href="../../../ble_peripheral/doc/text_cn/README.html#le-peripheral-cn"><span class="std std-ref">LE Peripheral</span></a> 的测试流程和 <a class="reference internal" href="../../../ble_central/doc/text_cn/README.html#le-central-cn"><span class="std std-ref">LE Central</span></a> 的测试流程的结合。</p>
+<section id="tester-1">
+<h5>与 Tester 1 连接<a class="headerlink" href="#tester-1" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p>按 <strong>Tester 1</strong> 上的 <span class="guilabel">reset</span> 键， <strong>Tester 1</strong> 将开始发送可连接广播。</p></li>
+</ol>
+<blockquote>
+<div><p>如果成功启动广播，会打印下面的 <strong>Debug Analyzer</strong> 日志。 如果没有看到下列日志，说明广播启动失败。请检查软件和硬件环境。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP</span><span class="w"> </span><span class="n">adv</span><span class="w"> </span><span class="n">start</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>按 <strong>DUT</strong> 上的 <span class="guilabel">reset</span> 键，开发者可以在电脑的串口辅助工具端输入用户命令。</p></li>
+</ol>
+<blockquote>
+<div><p>如果 <strong>DUT</strong> 成功启动且串口辅助工具配置成功，
+开发者会看到如下日志。串口辅助工具端会显示本地地址。
+如果没有看到下列日志，请检查软件和硬件环境。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">local</span><span class="w"> </span><span class="n">bd</span><span class="w"> </span><span class="n">addr</span><span class="o">:</span><span class="w"> </span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span>
+</pre></div>
+</div>
+<p><strong>DUT</strong> 和 <strong>Tester 1</strong> 间的测试流程如下：</p>
+<table class="docutils align-default" id="id17">
+<caption><span class="caption-text">DUT 和 Tester 1 间的测试流程</span><a class="headerlink" href="#id17" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 5.3%" />
+<col style="width: 15.8%" />
+<col style="width: 26.3%" />
+<col style="width: 52.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>DUT User Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>DUT Log</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><kbd class="kbd docutils literal notranslate">bondclear</kbd></p></td>
+<td><p>删除 <strong>DUT</strong> 端的绑定信息。</p></td>
+<td><p><strong>Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">GAP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">le_clear_all_keys</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><kbd class="kbd docutils literal notranslate">scan</kbd></p></td>
+<td><p><strong>DUT</strong> 开始扫描附近的 LE 设备。</p></td>
+<td><p><strong>Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP</span><span class="w"> </span><span class="n">scan</span><span class="w"> </span><span class="n">start</span>
+<span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="n">GAP_MSG_LE_SCAN_INFO</span><span class="o">:</span><span class="w"> </span><span class="n">bd_addr</span><span class="w"> </span><span class="mo">00</span><span class="o">::</span><span class="mi">11</span><span class="o">::</span><span class="mi">22</span><span class="o">::</span><span class="mi">33</span><span class="o">::</span><span class="mi">44</span><span class="o">::</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="n">bdtype</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">adv_type</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">rssi</span><span class="w"> </span><span class="mi">-17</span><span class="p">,</span><span class="w"> </span><span class="n">data_len</span><span class="w"> </span><span class="mi">23</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><kbd class="kbd docutils literal notranslate">stopscan</kbd></p></td>
+<td><p>停止扫描。</p></td>
+<td><p><strong>Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP</span><span class="w"> </span><span class="n">scan</span><span class="w"> </span><span class="n">stop</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><kbd class="kbd docutils literal notranslate">showdev</kbd></p></td>
+<td><p>显示扫描到的设备列表，该设备列表通过 simple LE service 的 UUID 筛选。</p></td>
+<td><p><strong>Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Advertising</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Scan</span><span class="w"> </span><span class="n">response</span><span class="o">:</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xA00A</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="n">list</span>
+<span class="n">RemoteBd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mo">00</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">33</span><span class="o">:</span><span class="mi">44</span><span class="o">:</span><span class="mi">81</span><span class="p">]</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">condev</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td><p>作为 Central role 发起连线。</p></td>
+<td><p><strong>Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Connected</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="tester-2">
+<h5>与 Tester 2 连接<a class="headerlink" href="#tester-2" title="Link to this heading"></a></h5>
+<ul>
+<li><p>按 <strong>Tester 2</strong> 上的 <span class="guilabel">reset</span> 键，开发者可以在电脑的串口辅助工具端输入用户命令。</p>
+<p>如果 <strong>Tester 2</strong> 成功启动且串口辅助工具配置成功，
+开发者会看到如下日志。串口辅助工具端会显示本地地址。
+如果没有看到下列日志，请检查软件和硬件环境。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">local</span><span class="w"> </span><span class="n">bd</span><span class="w"> </span><span class="n">addr</span><span class="o">:</span><span class="w"> </span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span><span class="o">:</span><span class="n">xx</span>
+</pre></div>
+</div>
+<p>此部分 <strong>DUT</strong> 和 <strong>Tester 2</strong> 的测试流程如下：</p>
+<table class="docutils align-default" id="id18">
+<caption><span class="caption-text">DUT 和 Tester 2 间的测试流程</span><a class="headerlink" href="#id18" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 6.0%" />
+<col style="width: 12.0%" />
+<col style="width: 12.0%" />
+<col style="width: 30.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>DUT User Command</p></th>
+<th class="head"><p>Tester 2 User Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Log</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6</p></td>
+<td></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">bond</kbd> <kbd class="kbd docutils literal notranslate">clear</kbd></kbd></p></td>
+<td><p>清除 <strong>Tester 2</strong> 端的绑定信息。</p></td>
+<td><p><strong>Tester 2 Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">GAP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">le_clear_all_keys</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p><kbd class="kbd docutils literal notranslate">startadv</kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 发送可连接可扫描的非定向广播。</p></td>
+<td><p><strong>DUT Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP</span><span class="w"> </span><span class="n">adv</span><span class="w"> </span><span class="n">start</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td></td>
+<td><p><kbd class="kbd docutils literal notranslate">scan</kbd></p></td>
+<td><p><strong>Tester 2</strong> 开始扫描附近的 LE 设备。</p></td>
+<td><p><strong>Tester 2 Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP</span><span class="w"> </span><span class="n">scan</span><span class="w"> </span><span class="n">start</span>
+<span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="n">GAP_MSG_LE_SCAN_INFO</span><span class="o">:</span><span class="w"> </span><span class="n">bd_addr</span><span class="w"> </span><span class="mo">00</span><span class="o">::</span><span class="mi">11</span><span class="o">::</span><span class="mi">22</span><span class="o">::</span><span class="mi">33</span><span class="o">::</span><span class="mi">44</span><span class="o">::</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="n">bdtype</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">adv_type</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">rssi</span><span class="w"> </span><span class="mi">-17</span><span class="p">,</span><span class="w"> </span><span class="n">data_len</span><span class="w"> </span><span class="mi">23</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td></td>
+<td><p><kbd class="kbd docutils literal notranslate">stopscan</kbd></p></td>
+<td><p><strong>Tester 2</strong> 停止扫描。</p></td>
+<td><p><strong>Tester 2 Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP</span><span class="w"> </span><span class="n">scan</span><span class="w"> </span><span class="n">stop</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td></td>
+<td><p><kbd class="kbd docutils literal notranslate">showdev</kbd></p></td>
+<td><p>显示扫描到的设备列表。该设备列表通过 simple LE service 的 UUID 筛选。</p></td>
+<td><p><strong>Tester 2 Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Advertising</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Scan</span><span class="w"> </span><span class="n">response</span><span class="o">:</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xA00A</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="n">list</span>
+<span class="n">RemoteBd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mo">00</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">33</span><span class="o">:</span><span class="mi">44</span><span class="o">:</span><span class="mi">80</span><span class="p">]</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">condev</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td><p><strong>Tester 2</strong> 发起向 <strong>DUT</strong> 建立连线， <code class="docutils literal notranslate"><span class="pre">0</span></code> 表示 <strong>DUT</strong> 在设备列表中的序列号</p></td>
+<td><p><strong>Tester 2 Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Connected</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p><kbd class="kbd docutils literal notranslate">showcon</kbd></p></td>
+<td></td>
+<td><p>显示 <strong>DUT</strong> 端已经建立的连线。</p></td>
+<td><p><strong>DUT Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ShowCon</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="mh">0x00000002</span><span class="w"> </span><span class="n">role</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">RemoteBd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mo">00</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">33</span><span class="o">:</span><span class="mi">44</span><span class="o">:</span><span class="mi">81</span><span class="p">]</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">ShowCon</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="mh">0x00000002</span><span class="w"> </span><span class="n">role</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">RemoteBd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mo">00</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">33</span><span class="o">:</span><span class="mi">44</span><span class="o">:</span><span class="mi">85</span><span class="p">]</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">active</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">  </span><span class="n">idle</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</section>
+<section id="tester-1-tester-2">
+<h5>与 Tester 1 和 Tester 2 交互<a class="headerlink" href="#tester-1-tester-2" title="Link to this heading"></a></h5>
+<p>此时， <strong>DUT</strong> 已经分别作为 Central Role 和 Peripheral Role 与 <strong>Tester 1</strong> 和 <strong>Tester 2</strong> 建立了连线。接着将进行以下测试：</p>
+<blockquote>
+<div><table class="docutils align-default" id="id19">
+<caption><span class="caption-text">连线之后的测试流程</span><a class="headerlink" href="#id19" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 6.0%" />
+<col style="width: 15.0%" />
+<col style="width: 9.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>DUT User Command</p></th>
+<th class="head"><p>Tester 2 User Command</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Log</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>13</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">sauth</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 向 Tester 1 发送配对请求。</p></td>
+<td><p><strong>DUT Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Pair</span><span class="w"> </span><span class="n">success</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">disc</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td></td>
+<td><p>断开与 <strong>Tester 1</strong> 的连线。</p></td>
+<td><p><strong>DUT Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Disconnect</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">disc</kbd> <kbd class="kbd docutils literal notranslate">1</kbd></kbd></p></td>
+<td></td>
+<td><p>断开与 <strong>Tester 2</strong> 的连线。</p></td>
+<td><p><strong>DUT Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Disconnect</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">condev</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 与 <strong>Tester 1</strong> 回连。</p></td>
+<td><p><strong>DUT Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Connected</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p><kbd class="kbd docutils literal notranslate">startadv</kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 发送可连接可扫描非定向广播。</p></td>
+<td><p><strong>DUT Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GAP</span><span class="w"> </span><span class="n">adv</span><span class="w"> </span><span class="n">start</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>18</p></td>
+<td></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">condev</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td><p><strong>Tester 2</strong> 与 <strong>DUT</strong> 回连。</p></td>
+<td><p><strong>Tester 2 Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Connected</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">Pair</span><span class="w"> </span><span class="n">success</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>19</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">sauth</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 向 <strong>Tester 1</strong> 发送配对请求。</p></td>
+<td><p><strong>DUT Serial port assistant tool</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Pair</span><span class="w"> </span><span class="n">success</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">conupdreq</kbd> <kbd class="kbd docutils literal notranslate">1</kbd> <kbd class="kbd docutils literal notranslate">x30</kbd> <kbd class="kbd docutils literal notranslate">x40</kbd> <kbd class="kbd docutils literal notranslate">0</kbd> <kbd class="kbd docutils literal notranslate">1000</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 向 <strong>Tester 2</strong> 发送连接参数更新请求。</p></td>
+<td><p><strong>Tester 2 Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">app_handle_conn_param_update_evt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="n">success</span><span class="o">:</span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">conn_interval</span><span class="w"> </span><span class="mh">0x3c</span><span class="p">,</span>
+<span class="w">      </span><span class="n">conn_slave_latency</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">conn_supervision_timeout</span><span class="w"> </span><span class="mh">0x3e8</span>
+</pre></div>
+</div>
+<p><strong>DUT Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">app_handle_conn_param_update_evt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="n">success</span><span class="o">:</span><span class="n">conn_id</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">conn_interval</span><span class="w"> </span><span class="mh">0x3c</span><span class="p">,</span>
+<span class="w">      </span><span class="n">conn_slave_latency</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">conn_supervision_timeout</span><span class="w"> </span><span class="mh">0x3e8</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">conupdreq</kbd> <kbd class="kbd docutils literal notranslate">0</kbd> <kbd class="kbd docutils literal notranslate">x30</kbd> <kbd class="kbd docutils literal notranslate">x40</kbd> <kbd class="kbd docutils literal notranslate">0</kbd> <kbd class="kbd docutils literal notranslate">1000</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 向 <strong>Tester 1</strong> 发送连接参数更新请求。</p></td>
+<td><p><strong>DUT Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">app_handle_conn_param_update_evt</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="n">success</span><span class="o">:</span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">conn_interval</span><span class="w"> </span><span class="mh">0x3c</span><span class="p">,</span>
+<span class="w">      </span><span class="n">conn_slave_latency</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">conn_supervision_timeout</span><span class="w"> </span><span class="mh">0x3e8</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">setphy</kbd> <kbd class="kbd docutils literal notranslate">1</kbd> <kbd class="kbd docutils literal notranslate">1</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 将与 <strong>Tester 2</strong> 的 PHY 设为 2M。</p></td>
+<td><p><strong>Tester 2 Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BTIFMSG</span><span class="p">]</span><span class="w"> </span><span class="err">↗</span><span class="n">BTIF_MSG_LE_PHY_UPDATE_INFO</span><span class="w"> </span><span class="p">(</span><span class="n">CMD</span><span class="o">:</span><span class="mh">0x01AB</span><span class="p">)</span><span class="w"> </span><span class="n">cause</span><span class="o">:</span><span class="mh">0x0000</span><span class="w"> </span><span class="n">link_id</span><span class="o">:</span><span class="mh">0x000A</span>
+<span class="w">          </span><span class="nl">tx_phy</span><span class="p">:</span><span class="mh">0x02</span><span class="p">(</span><span class="n">BTIF_LE_PHY_2M</span><span class="p">)</span><span class="w"> </span><span class="n">rx_phy</span><span class="o">:</span><span class="mh">0x02</span><span class="p">(</span><span class="n">BTIF_LE_PHY_2M</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>DUT Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BTIFMSG</span><span class="p">]</span><span class="w"> </span><span class="err">↗</span><span class="n">BTIF_MSG_LE_PHY_UPDATE_INFO</span><span class="w"> </span><span class="p">(</span><span class="n">CMD</span><span class="o">:</span><span class="mh">0x01AB</span><span class="p">)</span><span class="w"> </span><span class="n">cause</span><span class="o">:</span><span class="mh">0x0000</span><span class="w"> </span><span class="n">link_id</span><span class="o">:</span><span class="mh">0x0012</span>
+<span class="w">          </span><span class="nl">tx_phy</span><span class="p">:</span><span class="mh">0x02</span><span class="p">(</span><span class="n">BTIF_LE_PHY_2M</span><span class="p">)</span><span class="w"> </span><span class="n">rx_phy</span><span class="o">:</span><span class="mh">0x02</span><span class="p">(</span><span class="n">BTIF_LE_PHY_2M</span><span class="p">)</span>
+<span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP_MSG_LE_PHY_UPDATE_INFO</span><span class="o">:</span><span class="n">conn_id</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">cause</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">rx_phy</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">tx_phy</span><span class="w"> </span><span class="mi">2</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">setphy</kbd> <kbd class="kbd docutils literal notranslate">0</kbd> <kbd class="kbd docutils literal notranslate">1</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 将与 <strong>Tester 1</strong> 的 PHY 设为 2M。</p></td>
+<td><p><strong>DUT Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">BTIFMSG</span><span class="p">]</span><span class="w"> </span><span class="err">↗</span><span class="n">BTIF_MSG_LE_PHY_UPDATE_INFO</span><span class="w"> </span><span class="p">(</span><span class="n">CMD</span><span class="o">:</span><span class="mh">0x01AB</span><span class="p">)</span><span class="w"> </span><span class="n">cause</span><span class="o">:</span><span class="mh">0x0000</span><span class="w"> </span><span class="n">link_id</span><span class="o">:</span><span class="mh">0x000A</span>
+<span class="w">          </span><span class="nl">tx_phy</span><span class="p">:</span><span class="mh">0x02</span><span class="p">(</span><span class="n">BTIF_LE_PHY_2M</span><span class="p">)</span><span class="w"> </span><span class="n">rx_phy</span><span class="o">:</span><span class="mh">0x02</span><span class="p">(</span><span class="n">BTIF_LE_PHY_2M</span><span class="p">)</span>
+<span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAP_MSG_LE_PHY_UPDATE_INFO</span><span class="o">:</span><span class="n">conn_id</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">cause</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">rx_phy</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">tx_phy</span><span class="w"> </span><span class="mi">2</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">simpdis</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 发起 discovery 流程，获取 Simple LE Service 信息。</p></td>
+<td><p><strong>DUT Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">app_client_callback</span><span class="o">:</span><span class="w"> </span><span class="n">discover</span><span class="w"> </span><span class="n">simp</span><span class="w"> </span><span class="n">procedure</span><span class="w"> </span><span class="n">done</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>25</p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">gapdis</kbd> <kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td></td>
+<td><p><strong>DUT</strong> 发起 discovery 流程，获取 GAP Service 信息。</p></td>
+<td><p><strong>DUT Debug Analyzer</strong> shows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">GAPS_READ_DEVICE_NAME</span><span class="o">:</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">BLE_PERIPHERAL</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+</section>
+</section>
+</section>
+<section id="id12">
+<h2>代码介绍<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<p>本章将按照以下几个部分进行介绍：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id13">源码路径</a> 中介绍项目目录和源代码文件。</p></li>
+<li><p><a class="reference internal" href="#bluetooth-host">Bluetooth Host 介绍</a> 中介绍了 Bluetooth Host 相关信息。</p></li>
+<li><p><a class="reference internal" href="#id14">初始化</a> 中介绍 Scatternet 相关参数和 Bluetooth Host 初始化。</p></li>
+<li><p><a class="reference internal" href="#id15">多链路管理</a> 中介绍了链路管理模块。</p></li>
+<li><p><a class="reference internal" href="#gap">GAP 消息处理</a> 中介绍 Scatternet 相关的 GAP 消息处理。</p></li>
+<li><p><a class="reference internal" href="#id16">GAP 回调函数处理</a> 中介绍 Scatternet 相关的 GAP 回调函数处理。</p></li>
+<li><p><a class="reference internal" href="#profile-client">Profile Client 消息回调函数</a> 中介绍了 Scatternet 相关的 Profile Client 回调函数处理。</p></li>
+<li><p><a class="reference internal" href="#profile-service">Profile Service 消息回调函数</a> 中介绍了 Scatternet 相关的 Profile Service 回调函数处理。</p></li>
+<li><p><a class="reference internal" href="#airplane-mode">Airplane Mode 设置</a> 中介绍了设置飞行模式的流程。</p></li>
+</ul>
+<section id="id13">
+<h3>源码路径<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>工程目录: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_scatternet\proj</span></code>。</p></li>
+<li><p>源码目录: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\ble_scatternet\src</span></code>。</p></li>
+</ul>
+<p><em>ble_scatternet</em> 示例工程中的源文件当前被分为几个组，如下所示：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: scatternet
+    └── secure_only_app
+        └── Device                   includes startup code
+        ├── CMSE Library             Non-secure callable library
+        ├── Lib                      includes all binary symbol files that user application is built on
+            ├── ROM_NS.lib
+            └── lowerstack.lib
+            └── rtl87x2g_sdk.lib
+            └── gap_utils.lib
+        ├── peripheral               includes all peripheral drivers and module code used by the application
+        ├── Profile                  includes LE profiles or services used by the sample application
+        └── APP                      includes the ble_scatternet user application implementation
+            ├── app_task.c
+            ├── main.c
+            ├── link_mgr.c
+            ├── scatternet_app.c
+            ├── user_cmd.c
+            ├── user_cmd_parse.c
+            └── data_uart.c
+</pre></div>
+</div>
+<p>示例工程使用与 <code class="file docutils literal notranslate"><span class="pre">bt_host_0_0</span></code> 匹配的默认 GAP <a class="reference internal" href="../../../../../doc/glossary.html#term-LIB"><span class="xref std std-term">LIB</span></a>，请参阅文档 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_cn/README.html#bluetooth-host-image-cn"><span class="std std-ref">Host Image</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_cn/README.html#id4"><span class="std std-ref">GAP LIB 的使用方法</span></a> 以获取更多信息。</p>
+</section>
+<section id="bluetooth-host">
+<h3>Bluetooth Host 介绍<a class="headerlink" href="#bluetooth-host" title="Link to this heading"></a></h3>
+<p>示例工程默认使用 Bluetooth Host image 版本 <code class="file docutils literal notranslate"><span class="pre">bt_host_0_0</span></code>，更多信息可参阅
+<a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_cn/README.html#bluetooth-host-image-cn"><span class="std std-ref">Host Image</span></a>。</p>
+<p>关于 Bluetooth Host 所支持的蓝牙功能的详细信息，请参阅文件 <code class="file docutils literal notranslate"><span class="pre">bin\rtl87x2g\bt_host_image\bt_host_0_0\bt_host_config.h</span></code>。</p>
+</section>
+<section id="id14">
+<h3>初始化<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>当 EVB 启动并且芯片复位时，<code class="docutils literal notranslate"><span class="pre">main()</span></code> 函数将被调用，它执行以下初始化函数：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">board_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">le_gap_init</span><span class="p">(</span><span class="n">APP_MAX_LINKS</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_lib_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">app_le_gap_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">app_le_profile_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">pwr_mgr_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">task_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">os_sched_start</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___c_o_m_m_o_n___exported___functions.html#_CPPv411le_gap_init7uint8_t" title="le_gap_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_gap_init()</span></code></a> 用于初始化 GAP 并配置链接个数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_le_profile_init()</span></code> 用于初始化 profile。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_le_gap_init()</span></code> 用于初始化 GAP 参数，开发者可以自行配置以下参数：Device name 和 device appearance，Advertising 参数，Scan 参数，GAP Bond Manager 参数（请参考 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#device-name-device-appearance"><span class="std std-ref">Device Name 和 Device Appearance 的配置</span></a>，<a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#advertising"><span class="std std-ref">Advertising 参数的配置</span></a>，<a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#scan"><span class="std std-ref">Scan 参数的配置</span></a>，<a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#bond-manager"><span class="std std-ref">Bond Manager 参数的配置</span></a>）。</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_le_gap_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Device name and device appearance */</span>
+<span class="w">    </span><span class="p">......</span>
+
+<span class="w">    </span><span class="cm">/* Scan parameters */</span>
+<span class="w">    </span><span class="p">......</span>
+
+<span class="w">    </span><span class="cm">/* GAP Bond Manager parameters */</span>
+<span class="w">    </span><span class="p">......</span>
+
+<span class="w">    </span><span class="cm">/* Set device name and device appearance */</span>
+<span class="w">    </span><span class="n">le_set_gap_param</span><span class="p">(</span><span class="n">GAP_PARAM_DEVICE_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">GAP_DEVICE_NAME_LEN</span><span class="p">,</span><span class="w"> </span><span class="n">device_name</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_set_gap_param</span><span class="p">(</span><span class="n">GAP_PARAM_APPEARANCE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">appearance</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">appearance</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Set scan parameters */</span>
+<span class="w">    </span><span class="n">le_scan_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_SCAN_MODE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scan_mode</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scan_mode</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_scan_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_SCAN_INTERVAL</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scan_interval</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scan_interval</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_scan_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_SCAN_WINDOW</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scan_window</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scan_window</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_scan_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_SCAN_FILTER_POLICY</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scan_filter_policy</span><span class="p">),</span>
+<span class="w">                    </span><span class="o">&amp;</span><span class="n">scan_filter_policy</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_scan_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_SCAN_FILTER_DUPLICATES</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scan_filter_duplicate</span><span class="p">),</span>
+<span class="w">                    </span><span class="o">&amp;</span><span class="n">scan_filter_duplicate</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Set advertising parameters */</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_EVENT_TYPE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_evt_type</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_evt_type</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_DIRECT_ADDR_TYPE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_direct_type</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_direct_type</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_DIRECT_ADDR</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_direct_addr</span><span class="p">),</span><span class="w"> </span><span class="n">adv_direct_addr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_CHANNEL_MAP</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_chann_map</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_chann_map</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_FILTER_POLICY</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_filter_policy</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_filter_policy</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_INTERVAL_MIN</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_int_min</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_int_min</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_INTERVAL_MAX</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_int_max</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adv_int_max</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_ADV_DATA</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">adv_data</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">adv_data</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_adv_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_SCAN_RSP_DATA</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">scan_rsp_data</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">scan_rsp_data</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Setup the GAP Bond Manager */</span>
+<span class="w">    </span><span class="n">gap_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_PAIRING_MODE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_pair_mode</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_pair_mode</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_AUTHEN_REQUIREMENTS_FLAGS</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_flags</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_flags</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_IO_CAPABILITIES</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_io_cap</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_io_cap</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_OOB_ENABLED</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_oob</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_oob</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_bond_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_FIXED_PASSKEY</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_fix_passkey</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_fix_passkey</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_bond_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_FIXED_PASSKEY_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_use_fix_passkey</span><span class="p">),</span>
+<span class="w">                    </span><span class="o">&amp;</span><span class="n">auth_use_fix_passkey</span><span class="p">);</span>
+<span class="w">    </span><span class="n">le_bond_set_param</span><span class="p">(</span><span class="n">GAP_PARAM_BOND_SEC_REQ_REQUIREMENT</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">auth_sec_req_flags</span><span class="p">),</span>
+<span class="w">                    </span><span class="o">&amp;</span><span class="n">auth_sec_req_flags</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* register gap message callback */</span>
+<span class="w">    </span><span class="n">le_register_app_cb</span><span class="p">(</span><span class="n">app_gap_callback</span><span class="p">);</span>
+<span class="w">    </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>更多关于 LE GAP 初始化和启动流程的信息可以查阅 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#id14"><span class="std std-ref">GAP 参数的初始化</span></a>。</p>
+</section>
+<section id="id15">
+<h3>多链路管理<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p>应用的链路控制模块在 <code class="file docutils literal notranslate"><span class="pre">link_mgr.h</span></code> 中定义。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">T_GAP_CONN_STATE</span><span class="w">        </span><span class="n">conn_state</span><span class="p">;</span><span class="w">          </span><span class="cm">/**&lt; Connection state. */</span>
+<span class="w">   </span><span class="n">T_GAP_REMOTE_ADDR_TYPE</span><span class="w">  </span><span class="n">bd_type</span><span class="p">;</span><span class="w">             </span><span class="cm">/**&lt; remote BD type*/</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w">                 </span><span class="n">bd_addr</span><span class="p">[</span><span class="n">GAP_BD_ADDR_LEN</span><span class="p">];</span><span class="w"> </span><span class="cm">/**&lt; remote BD */</span>
+<span class="p">}</span><span class="w"> </span><span class="n">T_APP_LINK</span><span class="p">;</span>
+<span class="k">extern</span><span class="w"> </span><span class="n">T_APP_LINK</span><span class="w"> </span><span class="n">app_link_table</span><span class="p">[</span><span class="n">APP_MAX_LINKS</span><span class="p">];</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">app_link_table</span></code> 用于保存链路相关信息。</p>
+</section>
+<section id="gap">
+<h3>GAP 消息处理<a class="headerlink" href="#gap" title="Link to this heading"></a></h3>
+<p>当 APP 从 Bluetooth Host 接收到 GAP 消息时，函数 <code class="docutils literal notranslate"><span class="pre">app_handle_gap_msg()</span></code> 会被调用。
+当收到 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___m_s_g___t_y_p_e.html#c.GAP_MSG_LE_CONN_STATE_CHANGE" title="GAP_MSG_LE_CONN_STATE_CHANGE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GAP_MSG_LE_CONN_STATE_CHANGE</span></code></a> 消息后， <code class="docutils literal notranslate"><span class="pre">app_handle_conn_state_evt()</span></code> 会更新 <code class="docutils literal notranslate"><span class="pre">app_link_table</span></code> 中的信息。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_handle_conn_state_evt</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">conn_id</span><span class="p">,</span><span class="w"> </span><span class="n">T_GAP_CONN_STATE</span><span class="w"> </span><span class="n">new_state</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">disc_cause</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">conn_id</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">APP_MAX_LINKS</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="n">APP_PRINT_INFO4</span><span class="p">(</span><span class="s">&quot;app_handle_conn_state_evt: conn_id %d, conn_state(%d -&gt; %d), disc_cause 0x%x&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">conn_id</span><span class="p">,</span><span class="w"> </span><span class="n">app_link_table</span><span class="p">[</span><span class="n">conn_id</span><span class="p">].</span><span class="n">conn_state</span><span class="p">,</span><span class="w"> </span><span class="n">new_state</span><span class="p">,</span><span class="w"> </span><span class="n">disc_cause</span><span class="p">);</span>
+<span class="w">   </span><span class="n">app_link_table</span><span class="p">[</span><span class="n">conn_id</span><span class="p">].</span><span class="n">conn_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_state</span><span class="p">;</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">new_state</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_CONN_STATE_DISCONNECTED</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">disc_cause</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">HCI_ERR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">HCI_ERR_REMOTE_USER_TERMINATE</span><span class="p">))</span>
+<span class="w">               </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">disc_cause</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span><span class="n">HCI_ERR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">HCI_ERR_LOCAL_HOST_TERMINATE</span><span class="p">)))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="n">APP_PRINT_ERROR2</span><span class="p">(</span><span class="s">&quot;app_handle_conn_state_evt: connection lost, conn_id %d, cause 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn_id</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">disc_cause</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">data_uart_print</span><span class="p">(</span><span class="s">&quot;Disconnect conn_id %d</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn_id</span><span class="p">);</span>
+<span class="w">            </span><span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">app_link_table</span><span class="p">[</span><span class="n">conn_id</span><span class="p">],</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_APP_LINK</span><span class="p">));</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_CONN_STATE_CONNECTED</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">le_get_conn_addr</span><span class="p">(</span><span class="n">conn_id</span><span class="p">,</span><span class="w"> </span><span class="n">app_link_table</span><span class="p">[</span><span class="n">conn_id</span><span class="p">].</span><span class="n">bd_addr</span><span class="p">,</span>
+<span class="w">                           </span><span class="o">&amp;</span><span class="n">app_link_table</span><span class="p">[</span><span class="n">conn_id</span><span class="p">].</span><span class="n">bd_type</span><span class="p">);</span>
+<span class="w">            </span><span class="n">data_uart_print</span><span class="p">(</span><span class="s">&quot;Connected success conn_id %d</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">conn_id</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">default</span><span class="o">:</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>更多关于 GAP 消息的信息可以查阅 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#bluetooth-le-gap"><span class="std std-ref">蓝牙状态消息</span></a>。</p>
+</section>
+<section id="id16">
+<h3>GAP 回调函数处理<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">app_gap_callback()</span></code> 用于处理 GAP 回调函数消息，更多信息参见 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#id47"><span class="std std-ref">Bluetooth LE GAP 回调函数</span></a>。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_gap_callback</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">cb_type</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_cb_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">   </span><span class="n">T_LE_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_LE_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_cb_data</span><span class="p">;</span>
+
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cb_type</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="cm">/* common msg */</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_MSG_LE_READ_RSSI</span><span class="p">:</span>
+<span class="w">   </span><span class="p">.......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="profile-client">
+<h3>Profile Client 消息回调函数<a class="headerlink" href="#profile-client" title="Link to this heading"></a></h3>
+<p>当 APP 使用 <code class="docutils literal notranslate"><span class="pre">xxx_add_client</span></code> 注册 specific client 时，APP 需注册回调函数以处理 specific client 的消息。APP 可以针对不同的 clients 注册不同的回调函数，也可以注册通用回调函数以处理 specific clients 的消息。</p>
+<p><code class="docutils literal notranslate"><span class="pre">app_client_callback()</span></code> 是通用回调函数，根据 <strong>client ID</strong> 区分不同的 clients。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_le_profile_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">client_init</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="w">   </span><span class="n">gaps_client_id</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">gaps_add_client</span><span class="p">(</span><span class="n">app_client_callback</span><span class="p">,</span><span class="w"> </span><span class="n">APP_MAX_LINKS</span><span class="p">);</span>
+<span class="w">   </span><span class="n">simple_ble_client_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simp_ble_add_client</span><span class="p">(</span><span class="n">app_client_callback</span><span class="p">,</span><span class="w"> </span><span class="n">APP_MAX_LINKS</span><span class="p">);</span>
+<span class="w">   </span><span class="n">bas_client_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bas_add_client</span><span class="p">(</span><span class="n">app_client_callback</span><span class="p">,</span><span class="w"> </span><span class="n">APP_MAX_LINKS</span><span class="p">);</span>
+<span class="w">   </span><span class="n">client_register_general_client_cb</span><span class="p">(</span><span class="n">app_client_callback</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_client_callback</span><span class="p">(</span><span class="n">T_CLIENT_ID</span><span class="w"> </span><span class="n">client_id</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">conn_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">   </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;app_client_callback: client_id %d, conn_id %d&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">client_id</span><span class="p">,</span><span class="w"> </span><span class="n">conn_id</span><span class="p">);</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">client_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CLIENT_PROFILE_GENERAL_ID</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">       </span><span class="n">T_CLIENT_APP_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_client_app_cb_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_CLIENT_APP_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">       </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_client_app_cb_data</span><span class="o">-&gt;</span><span class="n">cb_type</span><span class="p">)</span>
+<span class="w">       </span><span class="p">{</span>
+<span class="w">       </span><span class="k">case</span><span class="w"> </span><span class="no">CLIENT_APP_CB_TYPE_DISC_STATE</span><span class="p">:</span>
+<span class="w">       </span><span class="p">......</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">client_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">gaps_client_id</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">       </span><span class="n">T_GAPS_CLIENT_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_gaps_cb_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_GAPS_CLIENT_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">       </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_gaps_cb_data</span><span class="o">-&gt;</span><span class="n">cb_type</span><span class="p">)</span>
+<span class="w">       </span><span class="p">{</span>
+<span class="w">       </span><span class="k">case</span><span class="w"> </span><span class="no">GAPS_CLIENT_CB_TYPE_DISC_STATE</span><span class="p">:</span>
+<span class="w">       </span><span class="p">......</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>ble_scatternet</em> 示例工程支持的 GATT profile clients 包括 <strong>GAP Service Client</strong>， <strong>Simple LE Service Client</strong> 和 <strong>Battery Service Client</strong> 。</p>
+</section>
+<section id="profile-service">
+<h3>Profile Service 消息回调函数<a class="headerlink" href="#profile-service" title="Link to this heading"></a></h3>
+<p>当 APP 使用 <code class="docutils literal notranslate"><span class="pre">xxx_add_service</span></code> 注册 specific service 时，APP 需要注册回调函数以处理 specific service 的消息。
+APP 需要调用 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___s_e_r_v_e_r___exported___functions.html#_CPPv422server_register_app_cb23P_FUN_SERVER_GENERAL_CB" title="server_register_app_cb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">server_register_app_cb()</span></code></a> 注册回调函数以处理 profile server layer 的信息。</p>
+<p>APP 可以针对不同的 services 注册不同的回调函数，也可以注册通用回调函数以处理 specific services 和 profile server layer 的消息。</p>
+<p><code class="docutils literal notranslate"><span class="pre">app_profile_callback()</span></code> 通用回调函数，根据 <strong>service ID</strong> 区分不同的 services。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_le_profile_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">server_init</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">   </span><span class="n">simp_srv_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simp_ble_service_add_service</span><span class="p">(</span><span class="n">app_profile_callback</span><span class="p">);</span>
+<span class="w">   </span><span class="n">bas_srv_id</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">bas_add_service</span><span class="p">(</span><span class="n">app_profile_callback</span><span class="p">);</span>
+<span class="w">   </span><span class="n">server_register_app_cb</span><span class="p">(</span><span class="n">app_profile_callback</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>更多信息参见 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#gatt-profile-server-cn"><span class="std std-ref">GATT Profile Server</span></a>。</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><strong>通用 profile server 回调函数</strong></div>
+</div>
+<p><a class="reference internal" href="../../../../../doc/api_reference/group___general___service___i_d.html#c.SERVICE_PROFILE_GENERAL_ID" title="SERVICE_PROFILE_GENERAL_ID"><code class="xref c c-macro docutils literal notranslate"><span class="pre">SERVICE_PROFILE_GENERAL_ID</span></code></a> 是 profile server layer 使用的 service ID。Profile server layer 包含两种消息类型：</p>
+<ul>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a.html#_CPPv4N16T_SERVER_CB_TYPE28PROFILE_EVT_SRV_REG_COMPLETEE" title="PROFILE_EVT_SRV_REG_COMPLETE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PROFILE_EVT_SRV_REG_COMPLETE</span></code></a></p>
+<p>该消息用于通知 GAP 启动流程中的服务注册流程已经结束。</p>
+</li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a.html#_CPPv4N16T_SERVER_CB_TYPE30PROFILE_EVT_SEND_DATA_COMPLETEE" title="PROFILE_EVT_SEND_DATA_COMPLETE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PROFILE_EVT_SEND_DATA_COMPLETE</span></code></a></p>
+<p>Profile server layer 使用该消息向 APP 通知发送 notification 或者 indication 的结果。</p>
+</li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_profile_callback</span><span class="p">(</span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">app_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">service_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SERVICE_PROFILE_GENERAL_ID</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">T_SERVER_APP_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_SERVER_APP_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">eventId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">PROFILE_EVT_SRV_REG_COMPLETE</span><span class="p">:</span><span class="c1">// srv register result event.</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;PROFILE_EVT_SRV_REG_COMPLETE: result %d&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">event_data</span><span class="p">.</span><span class="n">service_reg_result</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">PROFILE_EVT_SEND_DATA_COMPLETE</span><span class="p">:</span>
+<span class="w">            </span><span class="p">......</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Battery Service</strong></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">bas_srv_id</span></code> 是 battery service 的 service ID。</div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_profile_callback</span><span class="p">(</span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">app_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="p">......</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">service_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bas_srv_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">T_BAS_CALLBACK_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_bas_cb_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_BAS_CALLBACK_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">      </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_bas_cb_data</span><span class="o">-&gt;</span><span class="n">msg_type</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">SERVICE_CALLBACK_TYPE_INDIFICATION_NOTIFICATION</span><span class="p">:</span>
+<span class="w">            </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Simple LE Service</strong></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">simp_srv_id</span></code> 是 simple LE service 的 service ID。</div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_profile_callback</span><span class="p">(</span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">app_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="p">......</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">service_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">simp_srv_id</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="n">TSIMP_CALLBACK_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_simp_cb_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TSIMP_CALLBACK_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">      </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_simp_cb_data</span><span class="o">-&gt;</span><span class="n">msg_type</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">SERVICE_CALLBACK_TYPE_INDIFICATION_NOTIFICATION</span><span class="p">:</span>
+<span class="w">          </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="airplane-mode">
+<h3>Airplane Mode 设置<a class="headerlink" href="#airplane-mode" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><div class="line-block">
+<div class="line"><strong>注册 GAP Common 回调函数</strong></div>
+<div class="line">APP 需要调用 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___c_o_m_m_o_n___e_x_p_o_r_t___functions.html#_CPPv419gap_register_app_cb16P_FUN_GAP_APP_CB" title="gap_register_app_cb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_register_app_cb()</span></code></a> 以注册回调函数。</div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_le_gap_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">......</span>
+<span class="w">    </span><span class="n">gap_register_app_cb</span><span class="p">(</span><span class="n">app_gap_common_callback</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>GAP Common 回调函数消息处理</strong></p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_gap_common_callback</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">cb_type</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_cb_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_GAP_CB_DATA</span><span class="w"> </span><span class="n">cb_data</span><span class="p">;</span>
+<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cb_data</span><span class="p">,</span><span class="w"> </span><span class="n">p_cb_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_GAP_CB_DATA</span><span class="p">));</span>
+<span class="w">    </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;app_gap_common_callback: cb_type = %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cb_type</span><span class="p">);</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cb_type</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_MSG_WRITE_AIRPLAN_MODE</span><span class="p">:</span>
+<span class="w">      </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;GAP_MSG_WRITE_AIRPLAN_MODE: cause 0x%x&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">cb_data</span><span class="p">.</span><span class="n">p_gap_write_airplan_mode_rsp</span><span class="o">-&gt;</span><span class="n">cause</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_MSG_READ_AIRPLAN_MODE</span><span class="p">:</span>
+<span class="w">      </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;GAP_MSG_READ_AIRPLAN_MODE: cause 0x%x, mode %d&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">cb_data</span><span class="p">.</span><span class="n">p_gap_read_airplan_mode_rsp</span><span class="o">-&gt;</span><span class="n">cause</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">cb_data</span><span class="p">.</span><span class="n">p_gap_read_airplan_mode_rsp</span><span class="o">-&gt;</span><span class="n">mode</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>该回调函数可处理 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___c_o_m_m_o_n___m_s_g___t_y_p_e.html#c.GAP_MSG_WRITE_AIRPLAN_MODE" title="GAP_MSG_WRITE_AIRPLAN_MODE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GAP_MSG_WRITE_AIRPLAN_MODE</span></code></a> 和 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___c_o_m_m_o_n___m_s_g___t_y_p_e.html#c.GAP_MSG_READ_AIRPLAN_MODE" title="GAP_MSG_READ_AIRPLAN_MODE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GAP_MSG_READ_AIRPLAN_MODE</span></code></a> 消息。</p>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p><strong>相关 APIs</strong></p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___c_o_m_m_o_n___e_x_p_o_r_t___functions.html#_CPPv422gap_write_airplan_mode7uint8_t" title="gap_write_airplan_mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_write_airplan_mode()</span></code></a> 用于写 airplane mode。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___c_o_m_m_o_n___e_x_p_o_r_t___functions.html#_CPPv421gap_read_airplan_modev" title="gap_read_airplan_mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_read_airplan_mode()</span></code></a> 用于读 airplane mode。</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">T_USER_CMD_PARSE_RESULT</span><span class="w"> </span><span class="nf">cmd_wairplane</span><span class="p">(</span><span class="n">T_USER_CMD_PARSED_VALUE</span><span class="w"> </span><span class="o">*</span><span class="n">p_parse_value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">T_GAP_CAUSE</span><span class="w"> </span><span class="n">cause</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_parse_value</span><span class="o">-&gt;</span><span class="n">dw_param</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">   </span><span class="n">cause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gap_write_airplan_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">);</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">T_USER_CMD_PARSE_RESULT</span><span class="p">)</span><span class="n">cause</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">static</span><span class="w"> </span><span class="n">T_USER_CMD_PARSE_RESULT</span><span class="w"> </span><span class="nf">cmd_rairplane</span><span class="p">(</span><span class="n">T_USER_CMD_PARSED_VALUE</span><span class="w"> </span><span class="o">*</span><span class="n">p_parse_value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">T_GAP_CAUSE</span><span class="w"> </span><span class="n">cause</span><span class="p">;</span>
+<span class="w">   </span><span class="n">cause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gap_read_airplan_mode</span><span class="p">();</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">T_USER_CMD_PARSE_RESULT</span><span class="p">)</span><span class="n">cause</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e.html#group___g_a_p___l_e"><span class="std std-ref">GAP LE Module</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___c_l_i_e_n_t___a_p_i.html#group___g_a_t_t___c_l_i_e_n_t___a_p_i"><span class="std std-ref">GATT Client API</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_t_t___s_e_r_v_e_r___a_p_i.html#group___g_a_t_t___s_e_r_v_e_r___a_p_i"><span class="std std-ref">GATT Server API</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../ble_central/doc/text_cn/README.html" class="btn btn-neutral float-left" title="LE Central" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../ble_bt5_peripheral/doc/text_cn/README.html" class="btn btn-neutral float-right" title="LE Peripheral Extended ADV" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

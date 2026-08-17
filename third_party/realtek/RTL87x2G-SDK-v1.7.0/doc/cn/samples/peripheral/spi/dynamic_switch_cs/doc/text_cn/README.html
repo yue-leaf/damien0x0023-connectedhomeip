@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Switch Chip Selection &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" />
+    <link rel="next" title="GDMA Single Block" href="../../../gdma_singleblock/doc/text_cn/README.html" />
+    <link rel="prev" title="Polling" href="../../../polling/doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../../index.html">
+        
+            <img src="../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../bluetooth/doc/text_cn/README.html">蓝牙</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../doc/text_cn/README.html">外设</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html">General Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../adc/doc/text_cn/README.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../aon_qdec/doc/text_cn/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../can/doc/text_cn/README.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../codec/doc/text_cn/README.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../enhtimer/doc/text_cn/README.html">ENHTIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../gdma/doc/text_cn/README.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../gpio/doc/text_cn/README.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../i2c/doc/text_cn/README.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../i2s/doc/text_cn/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../idu/doc/text_cn/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ir/doc/text_cn/README.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../keyscan/doc/text_cn/README.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lcdc/doc/text_cn/README.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lpc/doc/text_cn/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ppe/doc/text_cn/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../rtc/doc/text_cn/README.html">RTC</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../doc/text_cn/README.html">SPI</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../../doc/text_cn/README.html#doc-sample-list-label">示例列表</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../../loopback/doc/text_cn/README.html">LoopBack</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../polling/doc/text_cn/README.html">Polling</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Dynamic Switch Chip Selection</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id1">环境需求</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id2">硬件连线</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id3">配置选项</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">编译和下载</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">测试验证</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">代码介绍</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id7">源码路径</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id8">初始化</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#spi-dynamic-switch-cs-function-cn">功能实现</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../gdma_singleblock/doc/text_cn/README.html">GDMA Single Block</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/text_cn/README.html#id2">功能概述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../spi3wire/doc/text_cn/README.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../timer/doc/text_cn/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../uart/doc/text_cn/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../wdt/doc/text_cn/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../usb/doc/text_cn/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../sd/doc/text_cn/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/text_cn/README.html">外设</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">SPI</a></li>
+    <li class="breadcrumb-item active">Dynamic Switch Chip Selection</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="dynamic-switch-chip-selection">
+<h1>Dynamic Switch Chip Selection<a class="headerlink" href="#dynamic-switch-chip-selection" title="Link to this heading"></a></h1>
+<p>该示例演示 <a class="reference internal" href="../../../../../../doc/glossary.html#term-SPI"><span class="xref std std-term">SPI</span></a> 动态切换片选信号（CS）的功能。</p>
+<p>在主程序中，会连续切换 CS 线并发送数据。通过逻辑分析仪，可以观察到 CS 线的切换以及发送数据的波形。</p>
+<section id="id1">
+<h2>环境需求<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>该示例的环境需求，可参考 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html#general-requirements-cn"><span class="std std-ref">环境需求</span></a>。</p>
+</section>
+<section id="id2">
+<h2>硬件连线<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>P4_0（SCK）、P4_1（MOSI）、P4_2（MISO）、P2_3（CS0）、P2_4（CS1）和 P2_5（CS2）连接逻辑分析仪观察波形。</p>
+</section>
+<section id="id3">
+<h2>配置选项<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>可配置如下宏修改引脚定义。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define SPI_MASTER_SCK_PIN               P4_0</span>
+<span class="cp">#define SPI_MASTER_MOSI_PIN              P4_1</span>
+<span class="cp">#define SPI_MASTER_MISO_PIN              P4_2</span>
+<span class="cp">#define SPI_MASTER_CS0_PIN               P2_3</span>
+<span class="cp">#define SPI_MASTER_CS1_PIN               P2_4</span>
+<span class="cp">#define SPI_MASTER_CS2_PIN               P2_5</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h2>编译和下载<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>该示例的编译和下载流程，可参考 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html#general-build-download-cn"><span class="std std-ref">编译和下载</span></a>。</p>
+</section>
+<section id="id5">
+<h2>测试验证<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>EVB 启动后，在 Debug Analyzer 工具内观察 log。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Start</span><span class="w"> </span><span class="n">spi</span><span class="w"> </span><span class="n">dynamic</span><span class="w"> </span><span class="k">switch</span><span class="w"> </span><span class="n">cs</span><span class="w"> </span><span class="n">test</span><span class="o">!</span>
+</pre></div>
+</div>
+</li>
+<li><p>在逻辑分析仪中观察 CS 线切换的波形和 MOSI 数据线的数据是否正确。每次发送数据时，三条 CS 线被依次拉低。</p></li>
+</ol>
+<figure class="align-center" id="spics">
+<a class="reference internal image-reference" href="../../../../../../_images/spi_cs.png"><img alt="这里应该是 SPI 切换 CS 波形的图片" src="../../../../../../_images/spi_cs.png" style="width: 1132.0px; height: 396.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">SPI 切换 CS 波形</span><a class="headerlink" href="#spics" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
+<h2>代码介绍<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>该章节主要介绍示例中的初始化和相应功能实现的代码和流程说明。</p>
+<section id="id7">
+<h3>源码路径<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>工程文件和源码路径如下：</p>
+<ul class="simple">
+<li><p>工程路径: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\peripheral\spi\dynamic_switch_cs\proj</span></code></p></li>
+<li><p>源码路径: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\peripheral\spi\dynamic_switch_cs\src</span></code></p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>初始化<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>外设的初始化流程可参考 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html"><span class="doc">General Introduction</span></a> 中的 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html#general-peripheral-init-flow-cn"><span class="std std-ref">初始化流程</span></a> 部分。</p>
+<ol class="arabic">
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv410Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef" title="Pad_Config"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pad_Config()</span></code></a> 与 <a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv413Pinmux_Config7uint8_t7uint8_t" title="Pinmux_Config"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pinmux_Config()</span></code></a>，配置对应引脚的 PAD 和 PINMUX。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_spi_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">SPI_MASTER_SCK_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">SPI_MASTER_MOSI_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">SPI_MASTER_MISO_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">SPI_MASTER_CS0_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">SPI_MASTER_CS1_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">SPI_MASTER_CS2_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Pinmux_Deinit</span><span class="p">(</span><span class="n">SPI_MASTER_SCK_PIN</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Deinit</span><span class="p">(</span><span class="n">SPI_MASTER_MOSI_PIN</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Deinit</span><span class="p">(</span><span class="n">SPI_MASTER_MISO_PIN</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Deinit</span><span class="p">(</span><span class="n">SPI_MASTER_CS0_PIN</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Deinit</span><span class="p">(</span><span class="n">SPI_MASTER_CS1_PIN</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Deinit</span><span class="p">(</span><span class="n">SPI_MASTER_CS2_PIN</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">SPI_MASTER_SCK_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">SPI1_CLK_MASTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">SPI_MASTER_MOSI_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">SPI1_MO_MASTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">SPI_MASTER_MISO_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">SPI1_MI_MASTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">SPI_MASTER_CS0_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">SPI1_CSN_0_MASTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">SPI_MASTER_CS1_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">SPI1_CSN_1_MASTER</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">SPI_MASTER_CS2_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">SPI1_CSN_2_MASTER</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___r_c_c___exported___functions.html#_CPPv418RCC_PeriphClockCmd8uint32_t8uint32_t15FunctionalState" title="RCC_PeriphClockCmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">RCC_PeriphClockCmd()</span></code></a> ，开启 SPI 时钟。</p></li>
+<li><p>对 SPI 外设进行初始化：</p>
+<ol class="loweralpha simple">
+<li><p>定义 <a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___types.html#_CPPv415SPI_InitTypeDef" title="SPI_InitTypeDef"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_InitTypeDef</span></code></a> 类型 <code class="docutils literal notranslate"><span class="pre">SPI_InitStruct</span></code> ，调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___functions.html#_CPPv414SPI_StructInitP15SPI_InitTypeDef" title="SPI_StructInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_StructInit()</span></code></a> 将 <code class="docutils literal notranslate"><span class="pre">SPI_InitStruct</span></code> 预填默认值。</p></li>
+<li><p>根据需求修改 <code class="docutils literal notranslate"><span class="pre">SPI_InitStruct</span></code> 参数，SPI 的初始化参数配置如下表。</p></li>
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___functions.html#_CPPv48SPI_InitP11SPI_TypeDefP15SPI_InitTypeDef" title="SPI_Init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_Init()</span></code></a>，初始化 SPI 外设。</p></li>
+</ol>
+</li>
+</ol>
+<table class="docutils align-center" id="id10">
+<caption><span class="caption-text">SPI 初始化参数</span><a class="headerlink" href="#id10" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>SPI Hardware Parameters</p></th>
+<th class="head"><p>Setting in the <code class="docutils literal notranslate"><span class="pre">SPI_InitStruct</span></code></p></th>
+<th class="head"><p>SPI</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SPI Transfer Mode</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___types.html#_CPPv4N15SPI_InitTypeDef13SPI_DirectionE" title="SPI_InitTypeDef::SPI_Direction"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_InitTypeDef::SPI_Direction</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___data___direction.html#_CPPv4N24SPIDataDirection_TypeDef24SPI_Direction_FullDuplexE" title="SPI_Direction_FullDuplex"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_Direction_FullDuplex</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>SPI Data Size</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___types.html#_CPPv4N15SPI_InitTypeDef12SPI_DataSizeE" title="SPI_InitTypeDef::SPI_DataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_InitTypeDef::SPI_DataSize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___data___size.html#_CPPv4N19SPIDataSize_TypeDef15SPI_DataSize_8bE" title="SPI_DataSize_8b"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_DataSize_8b</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Clock Mode - CPOL</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___types.html#_CPPv4N15SPI_InitTypeDef8SPI_CPOLE" title="SPI_InitTypeDef::SPI_CPOL"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_InitTypeDef::SPI_CPOL</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___clock___polarity.html#_CPPv4N24SPIClockPolarity_TypeDef13SPI_CPOL_HighE" title="SPI_CPOL_High"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_CPOL_High</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Clock Mode - CPHA</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___types.html#_CPPv4N15SPI_InitTypeDef8SPI_CPHAE" title="SPI_InitTypeDef::SPI_CPHA"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_InitTypeDef::SPI_CPHA</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___clock___phase.html#_CPPv4N21SPIClockPhase_TypeDef14SPI_CPHA_2EdgeE" title="SPI_CPHA_2Edge"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_CPHA_2Edge</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Clock Prescaler</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___types.html#_CPPv4N15SPI_InitTypeDef21SPI_BaudRatePrescalerE" title="SPI_InitTypeDef::SPI_BaudRatePrescaler"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_InitTypeDef::SPI_BaudRatePrescaler</span></code></a></p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>Frame Format</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___types.html#_CPPv4N15SPI_InitTypeDef15SPI_FrameFormatE" title="SPI_InitTypeDef::SPI_FrameFormat"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_InitTypeDef::SPI_FrameFormat</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___frame___format.html#_CPPv4N22SPIFrameFormat_TypeDef18SPI_Frame_MotorolaE" title="SPI_Frame_Motorola"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_Frame_Motorola</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___functions.html#_CPPv47SPI_CmdP11SPI_TypeDef15FunctionalState" title="SPI_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_Cmd()</span></code></a>，使能 SPI 外设。</p></li>
+</ol>
+</section>
+<section id="spi-dynamic-switch-cs-function-cn">
+<span id="id9"></span><h3>功能实现<a class="headerlink" href="#spi-dynamic-switch-cs-function-cn" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___functions.html#_CPPv414SPI_SendBufferP11SPI_TypeDefP7uint8_t8uint16_t" title="SPI_SendBuffer"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_SendBuffer()</span></code></a> ，发送数据，此时默认使用的片选为 CS0。</p></li>
+<li><p>等待 TX FIFO 空，等待 BUSY 位置位，确保本次通信完成。</p></li>
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___functions.html#_CPPv415SPI_SetCSNumberP11SPI_TypeDef7uint8_t" title="SPI_SetCSNumber"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_SetCSNumber()</span></code></a> ，切换 CS 线至 CS1，再次调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___functions.html#_CPPv414SPI_SendBufferP11SPI_TypeDefP7uint8_t8uint16_t" title="SPI_SendBuffer"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_SendBuffer()</span></code></a> 发送数据，并等待数据发送完成。</p></li>
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i___exported___functions.html#_CPPv415SPI_SetCSNumberP11SPI_TypeDef7uint8_t" title="SPI_SetCSNumber"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI_SetCSNumber()</span></code></a> ，切换 CS 线至 CS2，再次发送数据，并等待数据发送完成。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">spi_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="n">SPI_SendBuffer</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">write_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* wait Tx FIFO empty */</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI_GetFlagState</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">SPI_FLAG_TFE</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RESET</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI_GetFlagState</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">SPI_FLAG_BUSY</span><span class="p">));</span>
+
+<span class="w">    </span><span class="cm">/* switch to CS1 signal */</span>
+<span class="w">    </span><span class="n">SPI_SetCSNumber</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">SPI_SendBuffer</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">write_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/* wait Tx FIFO empty */</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI_GetFlagState</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">SPI_FLAG_TFE</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RESET</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI_GetFlagState</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">SPI_FLAG_BUSY</span><span class="p">));</span>
+
+<span class="w">    </span><span class="cm">/* switch to CS2 signal */</span>
+<span class="w">    </span><span class="n">SPI_SetCSNumber</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">SPI_SendBuffer</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">write_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="cm">/* wait Tx FIFO empty */</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI_GetFlagState</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">SPI_FLAG_TFE</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RESET</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI_GetFlagState</span><span class="p">(</span><span class="n">SPI1</span><span class="p">,</span><span class="w"> </span><span class="n">SPI_FLAG_BUSY</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___r_c_c.html#group___r_c_c"><span class="std std-ref">RCC</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___s_p_i.html#group___s_p_i"><span class="std std-ref">SPI</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x.html#group___p_i_n_m_u_x"><span class="std std-ref">PINMUX</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../polling/doc/text_cn/README.html" class="btn btn-neutral float-left" title="Polling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../gdma_singleblock/doc/text_cn/README.html" class="btn btn-neutral float-right" title="GDMA Single Block" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

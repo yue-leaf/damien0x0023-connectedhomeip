@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bluetooth GATT Service Exported Types &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">Bluetooth GATT Service Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bluetooth-gatt-service-exported-types">
+<h1>Bluetooth GATT Service Exported Types<a class="headerlink" href="#bluetooth-gatt-service-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">BT_GATT_SERVICE_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv427P_FUN_GATT_EXT_SEND_DATA_CB">
+<span id="_CPPv327P_FUN_GATT_EXT_SEND_DATA_CB"></span><span id="_CPPv227P_FUN_GATT_EXT_SEND_DATA_CB"></span><span id="P_FUN_GATT_EXT_SEND_DATA_CB"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1gae6ed5007a3c95a997b6f3bd6f3e294bb"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">P_FUN_GATT_EXT_SEND_DATA_CB</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___e_x_t___c_b___d_a_t_a.html#_CPPv422T_EXT_SEND_DATA_RESULT" title="T_EXT_SEND_DATA_RESULT"><span class="n"><span class="pre">T_EXT_SEND_DATA_RESULT</span></span></a><span class="w"> </span><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv427P_FUN_GATT_EXT_SEND_DATA_CB" title="Link to this definition"></a><br /></dt>
+<dd><p>Define GATT service send data callback function point. </p>
+<p>Function pointer used to handle the result of send notification or indication. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv426P_FUNC_GATT_SVC_GENERAL_CB">
+<span id="_CPPv326P_FUNC_GATT_SVC_GENERAL_CB"></span><span id="_CPPv226P_FUNC_GATT_SVC_GENERAL_CB"></span><span id="P_FUNC_GATT_SVC_GENERAL_CB"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1gaefcd5056ef2240cdf206711524e51b2f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">P_FUNC_GATT_SVC_GENERAL_CB</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">p_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv426P_FUNC_GATT_SVC_GENERAL_CB" title="Link to this definition"></a><br /></dt>
+<dd><p>Define GATT service general callback function point. </p>
+<p>Function pointer used to handle the event <a class="reference internal" href="#group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1gae74682ecff949d0c71ec3be140c46c53"><span class="std std-ref">T_GATT_SVC_EVENT</span></a>. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416T_GATT_SVC_EVENT">
+<span id="_CPPv316T_GATT_SVC_EVENT"></span><span id="_CPPv216T_GATT_SVC_EVENT"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1gae74682ecff949d0c71ec3be140c46c53"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SVC_EVENT</span></span></span><a class="headerlink" href="#_CPPv416T_GATT_SVC_EVENT" title="Link to this definition"></a><br /></dt>
+<dd><p>Define GATT service event type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GATT_SVC_EVENT25GATT_SVC_EVENT_REG_RESULTE">
+<span id="_CPPv3N16T_GATT_SVC_EVENT25GATT_SVC_EVENT_REG_RESULTE"></span><span id="_CPPv2N16T_GATT_SVC_EVENT25GATT_SVC_EVENT_REG_RESULTE"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1ggae74682ecff949d0c71ec3be140c46c53ad854195ac735afcc7f844a710445d8bc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_SVC_EVENT_REG_RESULT</span></span></span><a class="headerlink" href="#_CPPv4N16T_GATT_SVC_EVENT25GATT_SVC_EVENT_REG_RESULTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Result for register GATT services. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GATT_SVC_EVENT36GATT_SVC_EVENT_REG_AFTER_INIT_RESULTE">
+<span id="_CPPv3N16T_GATT_SVC_EVENT36GATT_SVC_EVENT_REG_AFTER_INIT_RESULTE"></span><span id="_CPPv2N16T_GATT_SVC_EVENT36GATT_SVC_EVENT_REG_AFTER_INIT_RESULTE"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1ggae74682ecff949d0c71ec3be140c46c53a827cff9910de3230514d810e847898f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_SVC_EVENT_REG_AFTER_INIT_RESULT</span></span></span><a class="headerlink" href="#_CPPv4N16T_GATT_SVC_EVENT36GATT_SVC_EVENT_REG_AFTER_INIT_RESULTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Result for register GATT services after initialization. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417T_GATT_SVC_RESULT">
+<span id="_CPPv317T_GATT_SVC_RESULT"></span><span id="_CPPv217T_GATT_SVC_RESULT"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1ga5d12dd13062a56c95824e090433bc896"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SVC_RESULT</span></span></span><a class="headerlink" href="#_CPPv417T_GATT_SVC_RESULT" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT service register result type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_GATT_SVC_RESULT16GATT_SVC_SUCCESSE">
+<span id="_CPPv3N17T_GATT_SVC_RESULT16GATT_SVC_SUCCESSE"></span><span id="_CPPv2N17T_GATT_SVC_RESULT16GATT_SVC_SUCCESSE"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1gga5d12dd13062a56c95824e090433bc896ab81cad83bb631cd6fa0c32fb52d3aa43"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_SVC_SUCCESS</span></span></span><a class="headerlink" href="#_CPPv4N17T_GATT_SVC_RESULT16GATT_SVC_SUCCESSE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_GATT_SVC_RESULT13GATT_SVC_FAILE">
+<span id="_CPPv3N17T_GATT_SVC_RESULT13GATT_SVC_FAILE"></span><span id="_CPPv2N17T_GATT_SVC_RESULT13GATT_SVC_FAILE"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1gga5d12dd13062a56c95824e090433bc896a1b8ff204b032724dd339ccf928a596ae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_SVC_FAIL</span></span></span><a class="headerlink" href="#_CPPv4N17T_GATT_SVC_RESULT13GATT_SVC_FAILE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv411T_CHAR_UUID">
+<span id="_CPPv311T_CHAR_UUID"></span><span id="_CPPv211T_CHAR_UUID"></span><span id="T_CHAR_UUID"></span><span class="target" id="struct_t___c_h_a_r___u_u_i_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_CHAR_UUID</span></span></span><a class="headerlink" href="#_CPPv411T_CHAR_UUID" title="Link to this definition"></a><br /></dt>
+<dd><p>Bluetooth GATT service characteristic UUID. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_CHAR_UUID5indexE">
+<span id="_CPPv3N11T_CHAR_UUID5indexE"></span><span id="_CPPv2N11T_CHAR_UUID5indexE"></span><span id="T_CHAR_UUID::index__uint16_t"></span><span class="target" id="struct_t___c_h_a_r___u_u_i_d_1a852b86a2eaee9852ada7a43e61e311a2"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">index</span></span></span><a class="headerlink" href="#_CPPv4N11T_CHAR_UUID5indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_CHAR_UUID9uuid_sizeE">
+<span id="_CPPv3N11T_CHAR_UUID9uuid_sizeE"></span><span id="_CPPv2N11T_CHAR_UUID9uuid_sizeE"></span><span id="T_CHAR_UUID::uuid_size__uint8_t"></span><span class="target" id="struct_t___c_h_a_r___u_u_i_d_1aa4fd50f1b75f400f3b39777775a043e2"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid_size</span></span></span><a class="headerlink" href="#_CPPv4N11T_CHAR_UUID9uuid_sizeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_CHAR_UUID11char_uuid16E">
+<span id="_CPPv3N11T_CHAR_UUID11char_uuid16E"></span><span id="_CPPv2N11T_CHAR_UUID11char_uuid16E"></span><span id="T_CHAR_UUID::char_uuid16__uint16_t"></span><span class="target" id="struct_t___c_h_a_r___u_u_i_d_1afad5a92f3a09bedc67d70db0f5095047"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_uuid16</span></span></span><a class="headerlink" href="#_CPPv4N11T_CHAR_UUID11char_uuid16E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_CHAR_UUID12char_uuid128E">
+<span id="_CPPv3N11T_CHAR_UUID12char_uuid128E"></span><span id="_CPPv2N11T_CHAR_UUID12char_uuid128E"></span><span id="T_CHAR_UUID::char_uuid128__uint8_tA"></span><span class="target" id="struct_t___c_h_a_r___u_u_i_d_1aa15a25f6073bea210f0b7170e425ba06"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_uuid128</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N11T_CHAR_UUID12char_uuid128E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_CHAR_UUID2uuE">
+<span id="_CPPv3N11T_CHAR_UUID2uuE"></span><span id="_CPPv2N11T_CHAR_UUID2uuE"></span><span id="T_CHAR_UUID::uu__T_CHAR_UUID"></span><span class="target" id="struct_t___c_h_a_r___u_u_i_d_1adff78580a2d38655fcc4614a2a586eb4"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv411T_CHAR_UUID" title="T_CHAR_UUID"><span class="n"><span class="pre">T_CHAR_UUID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uu</span></span></span><a class="headerlink" href="#_CPPv4N11T_CHAR_UUID2uuE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421T_GATT_SVC_REG_RESULT">
+<span id="_CPPv321T_GATT_SVC_REG_RESULT"></span><span id="_CPPv221T_GATT_SVC_REG_RESULT"></span><span id="T_GATT_SVC_REG_RESULT"></span><span class="target" id="struct_t___g_a_t_t___s_v_c___r_e_g___r_e_s_u_l_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SVC_REG_RESULT</span></span></span><a class="headerlink" href="#_CPPv421T_GATT_SVC_REG_RESULT" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT service register result. </p>
+<p>The message type for <a class="reference internal" href="#group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1ggae74682ecff949d0c71ec3be140c46c53ad854195ac735afcc7f844a710445d8bc"><span class="std std-ref">GATT_SVC_EVENT_REG_RESULT</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_SVC_REG_RESULT6resultE">
+<span id="_CPPv3N21T_GATT_SVC_REG_RESULT6resultE"></span><span id="_CPPv2N21T_GATT_SVC_REG_RESULT6resultE"></span><span id="T_GATT_SVC_REG_RESULT::result__T_GATT_SVC_RESULT"></span><span class="target" id="struct_t___g_a_t_t___s_v_c___r_e_g___r_e_s_u_l_t_1a0e94f0561271a20f957dfb617f7f932b"></span><a class="reference internal" href="#_CPPv417T_GATT_SVC_RESULT" title="T_GATT_SVC_RESULT"><span class="n"><span class="pre">T_GATT_SVC_RESULT</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">result</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_SVC_REG_RESULT6resultE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv432T_GATT_SVC_REG_AFTER_INIT_RESULT">
+<span id="_CPPv332T_GATT_SVC_REG_AFTER_INIT_RESULT"></span><span id="_CPPv232T_GATT_SVC_REG_AFTER_INIT_RESULT"></span><span id="T_GATT_SVC_REG_AFTER_INIT_RESULT"></span><span class="target" id="struct_t___g_a_t_t___s_v_c___r_e_g___a_f_t_e_r___i_n_i_t___r_e_s_u_l_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SVC_REG_AFTER_INIT_RESULT</span></span></span><a class="headerlink" href="#_CPPv432T_GATT_SVC_REG_AFTER_INIT_RESULT" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT service register after initialization result. </p>
+<p>The message type for <a class="reference internal" href="#group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1ggae74682ecff949d0c71ec3be140c46c53a827cff9910de3230514d810e847898f6"><span class="std std-ref">GATT_SVC_EVENT_REG_AFTER_INIT_RESULT</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_GATT_SVC_REG_AFTER_INIT_RESULT5causeE">
+<span id="_CPPv3N32T_GATT_SVC_REG_AFTER_INIT_RESULT5causeE"></span><span id="_CPPv2N32T_GATT_SVC_REG_AFTER_INIT_RESULT5causeE"></span><span id="T_GATT_SVC_REG_AFTER_INIT_RESULT::cause__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_v_c___r_e_g___a_f_t_e_r___i_n_i_t___r_e_s_u_l_t_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N32T_GATT_SVC_REG_AFTER_INIT_RESULT5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32T_GATT_SVC_REG_AFTER_INIT_RESULT10service_idE">
+<span id="_CPPv3N32T_GATT_SVC_REG_AFTER_INIT_RESULT10service_idE"></span><span id="_CPPv2N32T_GATT_SVC_REG_AFTER_INIT_RESULT10service_idE"></span><span id="T_GATT_SVC_REG_AFTER_INIT_RESULT::service_id__T_SERVER_ID"></span><span class="target" id="struct_t___g_a_t_t___s_v_c___r_e_g___a_f_t_e_r___i_n_i_t___r_e_s_u_l_t_1a094c03474c2092d3d653930fecb969e8"></span><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___types.html#_CPPv411T_SERVER_ID" title="T_SERVER_ID"><span class="n"><span class="pre">T_SERVER_ID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">service_id</span></span></span><a class="headerlink" href="#_CPPv4N32T_GATT_SVC_REG_AFTER_INIT_RESULT10service_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422T_GATT_SVC_PENDING_NUM">
+<span id="_CPPv322T_GATT_SVC_PENDING_NUM"></span><span id="_CPPv222T_GATT_SVC_PENDING_NUM"></span><span id="T_GATT_SVC_PENDING_NUM"></span><span class="target" id="struct_t___g_a_t_t___s_v_c___p_e_n_d_i_n_g___n_u_m"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SVC_PENDING_NUM</span></span></span><a class="headerlink" href="#_CPPv422T_GATT_SVC_PENDING_NUM" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT service pending packet number. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_SVC_PENDING_NUM10notify_numE">
+<span id="_CPPv3N22T_GATT_SVC_PENDING_NUM10notify_numE"></span><span id="_CPPv2N22T_GATT_SVC_PENDING_NUM10notify_numE"></span><span id="T_GATT_SVC_PENDING_NUM::notify_num__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_v_c___p_e_n_d_i_n_g___n_u_m_1a0041852226184b7a2966e6386938f6e1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notify_num</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_SVC_PENDING_NUM10notify_numE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_SVC_PENDING_NUM7ind_numE">
+<span id="_CPPv3N22T_GATT_SVC_PENDING_NUM7ind_numE"></span><span id="_CPPv2N22T_GATT_SVC_PENDING_NUM7ind_numE"></span><span id="T_GATT_SVC_PENDING_NUM::ind_num__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_v_c___p_e_n_d_i_n_g___n_u_m_1a7939cae67cf7016f2fee8192748b6185"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ind_num</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_SVC_PENDING_NUM7ind_numE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

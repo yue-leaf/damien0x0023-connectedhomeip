@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GDMA Master Transmit Slave Receive &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="GDMA Master Receive Slave Transmit" href="../../../gdma_master_rx_slave_tx/doc/text_en/README.html" />
+    <link rel="prev" title="LoopBack" href="../../../trx_loopback/doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../../index.html">
+        
+            <img src="../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../doc/text_en/README.html">Peripheral</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html">General Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../adc/doc/text_en/README.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../aon_qdec/doc/text_en/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../can/doc/text_en/README.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../codec/doc/text_en/README.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../enhtimer/doc/text_en/README.html">ENHTIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../gdma/doc/text_en/README.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../gpio/doc/text_en/README.html">GPIO</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../doc/text_en/README.html">I2C</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../../doc/text_en/README.html#sample-list">Sample List</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="../../../trx_loopback/doc/text_en/README.html">LoopBack</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">GDMA Master Transmit Slave Receive</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wiring">Wiring</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#building-and-downloading">Building and Downloading</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#experimental-verification">Experimental Verification</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#code-overview">Code Overview</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#source-code-directory">Source Code Directory</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#functional-implementation">Functional Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../gdma_master_rx_slave_tx/doc/text_en/README.html">GDMA Master Receive Slave Transmit</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/text_en/README.html#functional-overview">Functional Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/text_en/README.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../i2s/doc/text_en/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../idu/doc/text_en/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ir/doc/text_en/README.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../keyscan/doc/text_en/README.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lcdc/doc/text_en/README.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lpc/doc/text_en/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ppe/doc/text_en/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../rtc/doc/text_en/README.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../spi/doc/text_en/README.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../spi3wire/doc/text_en/README.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../timer/doc/text_en/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../uart/doc/text_en/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../wdt/doc/text_en/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../wifi/doc/text_en/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/text_en/README.html">Peripheral</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">I2C</a></li>
+    <li class="breadcrumb-item active">GDMA Master Transmit Slave Receive</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="gdma-master-transmit-slave-receive">
+<h1>GDMA Master Transmit Slave Receive<a class="headerlink" href="#gdma-master-transmit-slave-receive" title="Link to this heading"></a></h1>
+<p>This sample demonstrates communication between an <a class="reference internal" href="../../../../../../doc/glossary.html#term-I2C"><span class="xref std std-term">I2C</span></a> master device and a slave device using <a class="reference internal" href="../../../../../../doc/glossary.html#term-GDMA"><span class="xref std std-term">GDMA</span></a>.
+Meanwhile, the master and the slave are interconnected to achieve transmission that master receive data and slave transmit data.</p>
+<p>The master device acts as the receiver, using 2 GDMA channel for sending read command and receiving data respectively.
+The slave device acts as the transmitter, using GDMA for sending data.</p>
+<p>In this sample, I2C0 is configured as the master device; I2C1 is configured as the slave device.</p>
+<figure class="align-center" id="figure-i2c-dma-master-receive-slave-send-diagram">
+<a class="reference internal image-reference" href="../../../../../../_images/I2C_dma_master_tx_slave_rx_diagram.png"><img alt="Here should be I2C dma master receive slave send diagram" src="../../../../../../_images/I2C_dma_master_tx_slave_rx_diagram.png" style="width: 1228.0px; height: 284.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">I2C Master Transmit Slave Receive Using GDMA Diagram</span><a class="headerlink" href="#figure-i2c-dma-master-receive-slave-send-diagram" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>For requirements, please refer to the <a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html#general-requirements-en"><span class="std std-ref">Requirements</span></a>.</p>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<p>Connect P4_0 (master SCL) to P4_2 (slave SCL), P4_1 (master SDA) to P4_3 (slave SDA) on the EVB.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The frequency of SCL is influenced by both the pull-up resistor and the wire capacitance. Therefore, it is strongly recommended to choose appropriate pull-up resistors to make the frequency accurate. This sample need connect 2.2 kΩ pull-up resistors.</p>
+</div>
+<p>The connection schematic of the pull-up resistor is shown below:</p>
+<figure class="align-center" id="figure-i2c-pull-up-resistor">
+<a class="reference internal image-reference" href="../../../../../../_images/i2c_pull_up.png"><img alt="Here should be the I2C pull-up resistor schematic" src="../../../../../../_images/i2c_pull_up.png" style="width: 471.0px; height: 359.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">I2C pull-up resistor schematic</span><a class="headerlink" href="#figure-i2c-pull-up-resistor" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="configurations">
+<span id="i2c-dma-master-tx-slave-rx-configuration-en"></span><h2>Configurations<a class="headerlink" href="#configurations" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>The following macros can be configured to modify pin definitions.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define I2C0_SCL_PIN                         P4_0</span>
+<span class="cp">#define I2C0_SDA_PIN                         P4_1</span>
+
+<span class="cp">#define I2C1_SCL_PIN                         P4_2</span>
+<span class="cp">#define I2C1_SDA_PIN                         P4_3</span>
+</pre></div>
+</div>
+</li>
+<li><p>The following macros can be configured to modify the GDMA TX and GDMA RX channel settings.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Set the folling macros to modify the I2C0 TX GDMA Channel settings.</span>
+<span class="cp">#define I2C0_GDMA_CHANNEL_NUM                0</span>
+<span class="cp">#define I2C0_GDMA_Channel                    GDMA_Channel0</span>
+<span class="cp">#define I2C0_GDMA_Channel_IRQn               GDMA0_Channel0_IRQn</span>
+<span class="cp">#define I2C0_GDMA_Channel_Handler            GDMA0_Channel0_Handler</span>
+
+<span class="c1">// Set the folling macros to modify the I2C1 RX GDMA Channel settings.</span>
+<span class="cp">#define I2C1_GDMA_CHANNEL_NUM                1</span>
+<span class="cp">#define I2C1_GDMA_Channel                    GDMA_Channel1</span>
+<span class="cp">#define I2C1_GDMA_Channel_IRQn               GDMA0_Channel1_IRQn</span>
+<span class="cp">#define I2C1_GDMA_Channel_Handler            GDMA0_Channel1_Handler</span>
+</pre></div>
+</div>
+</li>
+<li><p>The following macros can be configured to modify the I2C GDMA data transfer length.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define GDMA_TRANSFER_SIZE                   200                      </span><span class="cm">/*&lt; Set this macro to modify the transfer size. */</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="building-and-downloading">
+<h2>Building and Downloading<a class="headerlink" href="#building-and-downloading" title="Link to this heading"></a></h2>
+<p>For building and downloading, please refer to the <a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html#general-build-download-en"><span class="std std-ref">Building and Downloading</span></a>.</p>
+</section>
+<section id="experimental-verification">
+<h2>Experimental Verification<a class="headerlink" href="#experimental-verification" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>When the GDMA TX finishes transferring data, it will enter ISR and print log.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">I2C0_GDMA_Channel_Handler</span><span class="o">!</span><span class="w"> </span><span class="n">I2C</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="n">send</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">GDMA</span><span class="w"> </span><span class="n">successfully</span>
+</pre></div>
+</div>
+</li>
+<li><p>When the GDMA RX finishes transferring data, it will enter ISR and print log.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">In</span><span class="w"> </span><span class="n">I2C1_GDMA_Channel_Handler</span><span class="o">!</span><span class="w"> </span><span class="n">I2C</span><span class="w"> </span><span class="n">slave</span><span class="w"> </span><span class="n">receive</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">GDMA</span><span class="w"> </span><span class="n">successfully</span>
+<span class="n">GDMA_Send_Buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">GDMA_Recv_Buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">GDMA_Send_Buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">GDMA_Recv_Buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">...</span>
+<span class="n">GDMA_Send_Buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">711</span><span class="p">,</span><span class="w"> </span><span class="n">GDMA_Recv_Buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">199</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to insert a stop condition to terminate the transmission when the master device sends the last data.
+For more details, refer to: <a class="reference internal" href="../../../doc/text_en/README.html#i2c-command-en"><span class="std std-ref">I2C Command</span></a> , the bit 9 must be set to 1 for the last data, i.e., (199 | (1 &lt;&lt; 9)) = 711.
+Therefore, there will be a difference in the log display for the last data: the transmitting data will show as 711, while the receiving data will show as 199.</p>
+</div>
+</section>
+<section id="code-overview">
+<h2>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading"></a></h2>
+<p>This section introduces the code and process description for initialization and corresponding function implementation in the sample.</p>
+<section id="source-code-directory">
+<h3>Source Code Directory<a class="headerlink" href="#source-code-directory" title="Link to this heading"></a></h3>
+<p>The directory for project file and source code are as follows:</p>
+<ul class="simple">
+<li><p>Project directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\peripheral\i2c\gdma_master_tx_slave_rx\proj</span></code></p></li>
+<li><p>Source code directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\peripheral\i2c\gdma_master_tx_slave_rx\src</span></code></p></li>
+</ul>
+</section>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h3>
+<p>The initialization flow for peripherals can refer to <a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html#general-peripheral-init-flow-en"><span class="std std-ref">Initialization Flow</span></a> in <a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html"><span class="doc">General Introduction</span></a>.</p>
+<ol class="arabic">
+<li><p>Call <a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv410Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef" title="Pad_Config"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pad_Config()</span></code></a> and <a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv413Pinmux_Config7uint8_t7uint8_t" title="Pinmux_Config"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pinmux_Config()</span></code></a> to configure the PAD and PINMUX of the corresponding pins.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_i2c_master_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">I2C_MASTER_SCL_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">I2C_MASTER_SDA_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">I2C_MASTER_SCL_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">I2C0_CLK</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">I2C_MASTER_SDA_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">I2C0_DAT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">board_i2c_slave_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">I2C_SLAVE_SCL_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">I2C_SLAVE_SDA_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">I2C_SLAVE_SCL_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">I2C1_CLK</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">I2C_SLAVE_SDA_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">I2C1_DAT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Call <a class="reference internal" href="../../../../../../doc/api_reference/group___r_c_c___exported___functions.html#_CPPv418RCC_PeriphClockCmd8uint32_t8uint32_t15FunctionalState" title="RCC_PeriphClockCmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">RCC_PeriphClockCmd()</span></code></a> to enable the I2C clock.</p></li>
+<li><p>Initialize the I2C peripheral:</p>
+<ol class="loweralpha simple">
+<li><p>Define the <a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv415I2C_InitTypeDef" title="I2C_InitTypeDef"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef</span></code></a> type <code class="docutils literal notranslate"><span class="pre">I2C_InitStruct</span></code>, and call <a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___functions.html#_CPPv414I2C_StructInitP15I2C_InitTypeDef" title="I2C_StructInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_StructInit()</span></code></a> to pre-fill <code class="docutils literal notranslate"><span class="pre">I2C_InitStruct</span></code> with default values.</p></li>
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">I2C_InitStruct</span></code> parameters as needed. The initialization parameter configurations for I2C0 and I2C1 are shown in the table below. Call <a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___functions.html#_CPPv48I2C_InitP11I2C_TypeDefP15I2C_InitTypeDef" title="I2C_Init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_Init()</span></code></a> to initialize the I2C peripheral.</p></li>
+</ol>
+</li>
+</ol>
+<table class="docutils align-center" id="id1">
+<caption><span class="caption-text">I2C Initialization Parameters</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>I2C Hardware Parameters</p></th>
+<th class="head"><p>Setting in the <code class="docutils literal notranslate"><span class="pre">I2C_InitStruct</span></code></p></th>
+<th class="head"><p>I2C0(Master)</p></th>
+<th class="head"><p>I2C1(Slave)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Clock(Hz)</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef14I2C_ClockSpeedE" title="I2C_InitTypeDef::I2C_ClockSpeed"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_ClockSpeed</span></code></a></p></td>
+<td><p>100000</p></td>
+<td><p>100000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Device role (I2C master or I2C slave)</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef14I2C_DeviveModeE" title="I2C_InitTypeDef::I2C_DeviveMode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_DeviveMode</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___device___mode.html#_CPPv4N21I2CDeviceMode_TypeDef21I2C_DeviveMode_MasterE" title="I2C_DeviveMode_Master"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_DeviveMode_Master</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___device___mode.html#_CPPv4N21I2CDeviceMode_TypeDef20I2C_DeviveMode_SlaveE" title="I2C_DeviveMode_Slave"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_DeviveMode_Slave</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Address mode (7bits/ 10bits mode)</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef15I2C_AddressModeE" title="I2C_InitTypeDef::I2C_AddressMode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_AddressMode</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___address___mode.html#_CPPv4N22I2CAddressMode_TypeDef20I2C_AddressMode_7BITE" title="I2C_AddressMode_7BIT"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_AddressMode_7BIT</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___address___mode.html#_CPPv4N22I2CAddressMode_TypeDef20I2C_AddressMode_7BITE" title="I2C_AddressMode_7BIT"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_AddressMode_7BIT</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Slave address</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef16I2C_SlaveAddressE" title="I2C_InitTypeDef::I2C_SlaveAddress"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_SlaveAddress</span></code></a></p></td>
+<td><p>0x50</p></td>
+<td><p>0x50</p></td>
+</tr>
+<tr class="row-even"><td><p>Enable or Disable Rx GDMA function</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef11I2C_RxDmaEnE" title="I2C_InitTypeDef::I2C_RxDmaEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_RxDmaEn</span></code></a></p></td>
+<td><p>-</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Enable or Disable Tx GDMA function</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef11I2C_TxDmaEnE" title="I2C_InitTypeDef::I2C_TxDmaEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_TxDmaEn</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a></p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>Rx water level</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef16I2C_RxWaterlevelE" title="I2C_InitTypeDef::I2C_RxWaterlevel"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_RxWaterlevel</span></code></a></p></td>
+<td><p>-</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tx water level</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef16I2C_TxWaterlevelE" title="I2C_InitTypeDef::I2C_TxWaterlevel"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_TxWaterlevel</span></code></a></p></td>
+<td><p>23</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>Auto ACK enable</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___types.html#_CPPv4N15I2C_InitTypeDef7I2C_AckE" title="I2C_InitTypeDef::I2C_Ack"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_InitTypeDef::I2C_Ack</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic" start="4">
+<li><p>Call <a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c___exported___functions.html#_CPPv47I2C_CmdP11I2C_TypeDef15FunctionalState" title="I2C_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2C_Cmd()</span></code></a> to enable the I2C peripheral.</p></li>
+<li><p>Initialize GDMA TX data information. Setting BIT8 of the data to 0 represents a Master Write operation, and setting BIT9 to 1 represents the Master sending a Stop Bit. For more details, refer to: <a class="reference internal" href="../../../doc/text_en/README.html#i2c-command-en"><span class="std std-ref">I2C Command</span></a> .</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Initialize data buffer */</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">GDMA_TRANSFER_SIZE</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GDMA_I2C_Send_Buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">0x0000</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">GDMA_I2C_Send_Buf</span><span class="p">[</span><span class="n">GDMA_TRANSFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GDMA_I2C_Send_Buf</span><span class="p">[</span><span class="n">GDMA_TRANSFER_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">0x00001</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">));</span>
+</pre></div>
+</div>
+</li>
+<li><p>Initialize the GDMA peripheral:</p>
+<ol class="loweralpha simple">
+<li><p>Define a <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv416GDMA_InitTypeDef" title="GDMA_InitTypeDef"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef</span></code></a> type <code class="docutils literal notranslate"><span class="pre">GDMA_InitStruct</span></code>, and call <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___functions.html#_CPPv415GDMA_StructInitP16GDMA_InitTypeDef" title="GDMA_StructInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_StructInit()</span></code></a> to pre-fill <code class="docutils literal notranslate"><span class="pre">GDMA_InitStruct</span></code> with default values.</p></li>
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">GDMA_InitStruct</span></code> parameters as needed. The initialization parameters for the GDMA TX and RX channels are configured as shown in the table below. Call <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___functions.html#_CPPv49GDMA_InitP19GDMA_ChannelTypeDefP16GDMA_InitTypeDef" title="GDMA_Init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Init()</span></code></a> to initialize the GDMA peripheral.</p></li>
+<li><p>Configure the GDMA total transfer complete interrupt <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___interrupts.html#c.GDMA_INT_Transfer" title="GDMA_INT_Transfer"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_INT_Transfer</span></code></a> and NVIC. For NVIC configurations, refer to <a class="reference internal" href="../../../../doc/general_introduction/text_en/README.html#general-nvic-config-en"><span class="std std-ref">Interrupt Configuration</span></a>.</p></li>
+<li><p>Call <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___functions.html#_CPPv48GDMA_Cmd7uint8_t15FunctionalState" title="GDMA_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Cmd()</span></code></a> to enable the corresponding GDMA channel transfer.</p></li>
+</ol>
+</li>
+</ol>
+<table class="docutils align-center" id="id2">
+<caption><span class="caption-text">GDMA Initialization Parameters</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>GDMA Hardware Parameters</p></th>
+<th class="head"><p>Setting in the <code class="docutils literal notranslate"><span class="pre">GDMA_InitStruct</span></code></p></th>
+<th class="head"><p>GDMA TX Channel</p></th>
+<th class="head"><p>GDMA RX Channel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Channel Num</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef15GDMA_ChannelNumE" title="GDMA_InitTypeDef::GDMA_ChannelNum"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_ChannelNum</span></code></a></p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transfer Direction</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef8GDMA_DIRE" title="GDMA_InitTypeDef::GDMA_DIR"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DIR</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___transfer___direction.html#_CPPv4N21GDMADirection_TypeDef27GDMA_DIR_MemoryToPeripheralE" title="GDMA_DIR_MemoryToPeripheral"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DIR_MemoryToPeripheral</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___transfer___direction.html#_CPPv4N21GDMADirection_TypeDef27GDMA_DIR_PeripheralToMemoryE" title="GDMA_DIR_PeripheralToMemory"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DIR_PeripheralToMemory</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Buffer Size</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef15GDMA_BufferSizeE" title="GDMA_InitTypeDef::GDMA_BufferSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_BufferSize</span></code></a></p></td>
+<td><p>200</p></td>
+<td><p>200</p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Address Increment or Decrement</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef14GDMA_SourceIncE" title="GDMA_InitTypeDef::GDMA_SourceInc"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceInc</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___source___incremented___mode.html#_CPPv4N18GDMASrcInc_TypeDef17DMA_SourceInc_FixE" title="DMA_SourceInc_Fix"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DMA_SourceInc_Fix</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___source___incremented___mode.html#_CPPv4N18GDMASrcInc_TypeDef17DMA_SourceInc_IncE" title="DMA_SourceInc_Inc"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DMA_SourceInc_Inc</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Address Increment or Decrement</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef19GDMA_DestinationIncE" title="GDMA_InitTypeDef::GDMA_DestinationInc"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationInc</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___destination___incremented___mode.html#_CPPv4N19GDMADestInc_TypeDef22DMA_DestinationInc_IncE" title="DMA_DestinationInc_Inc"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DMA_DestinationInc_Inc</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___destination___incremented___mode.html#_CPPv4N19GDMADestInc_TypeDef22DMA_DestinationInc_FixE" title="DMA_DestinationInc_Fix"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DMA_DestinationInc_Fix</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Data Size</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef19GDMA_SourceDataSizeE" title="GDMA_InitTypeDef::GDMA_SourceDataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceDataSize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___size.html#_CPPv4N20GDMADataSize_TypeDef22GDMA_DataSize_HalfWordE" title="GDMA_DataSize_HalfWord"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DataSize_HalfWord</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___size.html#_CPPv4N20GDMADataSize_TypeDef18GDMA_DataSize_ByteE" title="GDMA_DataSize_Byte"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DataSize_Byte</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Data Size</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef24GDMA_DestinationDataSizeE" title="GDMA_InitTypeDef::GDMA_DestinationDataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationDataSize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___size.html#_CPPv4N20GDMADataSize_TypeDef22GDMA_DataSize_HalfWordE" title="GDMA_DataSize_HalfWord"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DataSize_HalfWord</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___size.html#_CPPv4N20GDMADataSize_TypeDef18GDMA_DataSize_ByteE" title="GDMA_DataSize_Byte"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DataSize_Byte</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Burst Transaction Length</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef16GDMA_SourceMsizeE" title="GDMA_InitTypeDef::GDMA_SourceMsize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceMsize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___msize.html#_CPPv4N17GDMAMSize_TypeDef12GDMA_Msize_1E" title="GDMA_Msize_1"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Msize_1</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___msize.html#_CPPv4N17GDMAMSize_TypeDef12GDMA_Msize_4E" title="GDMA_Msize_4"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Msize_4</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Burst Transaction Length</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef21GDMA_DestinationMsizeE" title="GDMA_InitTypeDef::GDMA_DestinationMsize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationMsize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___msize.html#_CPPv4N17GDMAMSize_TypeDef12GDMA_Msize_1E" title="GDMA_Msize_1"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Msize_1</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___msize.html#_CPPv4N17GDMAMSize_TypeDef12GDMA_Msize_4E" title="GDMA_Msize_4"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Msize_4</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Address</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef15GDMA_SourceAddrE" title="GDMA_InitTypeDef::GDMA_SourceAddr"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceAddr</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GDMA_I2C_Send_Buf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(&amp;(I2C1-&gt;IC_DATA_CMD))</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Address</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef20GDMA_DestinationAddrE" title="GDMA_InitTypeDef::GDMA_DestinationAddr"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationAddr</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(&amp;(I2C0-&gt;IC_DATA_CMD))</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GDMA_I2C_Recv_Buf</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Handshake</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef20GDMA_SourceHandshakeE" title="GDMA_InitTypeDef::GDMA_SourceHandshake"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceHandshake</span></code></a></p></td>
+<td><p>-</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___handshake___type.html#c.GDMA_Handshake_I2C1_RX" title="GDMA_Handshake_I2C1_RX"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_Handshake_I2C1_RX</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Handshake</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef18GDMA_DestHandshakeE" title="GDMA_InitTypeDef::GDMA_DestHandshake"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestHandshake</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___handshake___type.html#c.GDMA_Handshake_I2C0_TX" title="GDMA_Handshake_I2C0_TX"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_Handshake_I2C0_TX</span></code></a></p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The GDMA TX channel sets <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef19GDMA_SourceDataSizeE" title="GDMA_InitTypeDef::GDMA_SourceDataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceDataSize</span></code></a> and <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef24GDMA_DestinationDataSizeE" title="GDMA_InitTypeDef::GDMA_DestinationDataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationDataSize</span></code></a> to <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___size.html#_CPPv4N20GDMADataSize_TypeDef22GDMA_DataSize_HalfWordE" title="GDMA_DataSize_HalfWord"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DataSize_HalfWord</span></code></a>.
+The reason is that when the master device sends data, it needs to insert a Write Bit and Stop Bit into the data. For more details, refer to <a class="reference internal" href="../../../doc/text_en/README.html#i2c-command-en"><span class="std std-ref">I2C Command</span></a>.</p>
+<p>The GDMA RX channel sets <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef19GDMA_SourceDataSizeE" title="GDMA_InitTypeDef::GDMA_SourceDataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceDataSize</span></code></a> and <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef24GDMA_DestinationDataSizeE" title="GDMA_InitTypeDef::GDMA_DestinationDataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationDataSize</span></code></a> to <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___size.html#_CPPv4N20GDMADataSize_TypeDef18GDMA_DataSize_ByteE" title="GDMA_DataSize_Byte"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DataSize_Byte</span></code></a>, which is sufficient for only receiving data.</p>
+</div>
+</section>
+<section id="functional-implementation">
+<span id="i2c-gdma-master-tx-slave-rx-function-en"></span><h3>Functional Implementation<a class="headerlink" href="#functional-implementation" title="Link to this heading"></a></h3>
+<p>The flow for the master device using GDMA to send data and the slave device using GDMA to receive data is shown in the figure:</p>
+<figure class="align-center" id="figure-i2c-dma-master-send-slave-receive-flow">
+<a class="reference internal image-reference" href="../../../../../../_images/I2C_dma_master_tx_slave_rx_flow.png"><img alt="Here should be I2C dma master send slave receive flow" src="../../../../../../_images/I2C_dma_master_tx_slave_rx_flow.png" style="width: 871.0px; height: 605.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">I2C Master Device Sends Slave Device Receives GDMA Transfer Flow</span><a class="headerlink" href="#figure-i2c-dma-master-send-slave-receive-flow" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>After enabling the GDMA TX channel transmission, the GDMA TX channel transfers data from <code class="docutils literal notranslate"><span class="pre">GDMA_I2C_Send_Buf</span></code> to <code class="docutils literal notranslate"><span class="pre">(&amp;(I2C0-&gt;IC_DATA_CMD))</span></code>, and the I2C master device begins sending data. Once the GDMA TX data transmission is complete, it triggers the <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___interrupts.html#c.GDMA_INT_Transfer" title="GDMA_INT_Transfer"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_INT_Transfer</span></code></a> interrupt for the GDMA TX channel, and the corresponding information is printed within the interrupt handler function.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">I2C0_GDMA_Channel_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">GDMA_INTConfig</span><span class="p">(</span><span class="n">I2C0_GDMA_CHANNEL_NUM</span><span class="p">,</span><span class="w"> </span><span class="n">GDMA_INT_Transfer</span><span class="p">,</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">);</span>
+<span class="w">   </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;I2C0_GDMA_Channel_Handler! I2C master send data by GDMA successfully&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">//Add user code here</span>
+<span class="w">   </span><span class="n">GDMA_ClearINTPendingBit</span><span class="p">(</span><span class="n">I2C0_GDMA_CHANNEL_NUM</span><span class="p">,</span><span class="w"> </span><span class="n">GDMA_INT_Transfer</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>After enabling the GDMA RX channel transmission, when the I2C slave device receives data, the GDMA RX channel transfers the data from <code class="docutils literal notranslate"><span class="pre">(&amp;(I2C1-&gt;IC_DATA_CMD))</span></code> to <code class="docutils literal notranslate"><span class="pre">GDMA_I2C_Recv_Buf</span></code>. Once the GDMA RX data transfer is complete, it triggers the <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___interrupts.html#c.GDMA_INT_Transfer" title="GDMA_INT_Transfer"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_INT_Transfer</span></code></a> interrupt on the GDMA RX channel, and the corresponding information is printed within the interrupt handler function.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">I2C1_GDMA_Channel_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">GDMA_INTConfig</span><span class="p">(</span><span class="n">I2C1_GDMA_CHANNEL_NUM</span><span class="p">,</span><span class="w"> </span><span class="n">GDMA_INT_Transfer</span><span class="p">,</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">);</span>
+<span class="w">   </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;In I2C1_GDMA_Channel_Handler! I2C slave receive data by GDMA successfully&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="c1">//Add user code here</span>
+<span class="w">   </span><span class="n">GDMA_ClearINTPendingBit</span><span class="p">(</span><span class="n">I2C1_GDMA_CHANNEL_NUM</span><span class="p">,</span><span class="w"> </span><span class="n">GDMA_INT_Transfer</span><span class="p">);</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">GDMA_TRANSFER_SIZE</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="kt">uint8_t</span><span class="p">)</span><span class="n">GDMA_I2C_Send_Buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">GDMA_I2C_Recv_Buf</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot; Data transmission error! GDMA_Send_Buf = %d, GDMA_Recv_Buf = %d&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">GDMA_I2C_Send_Buf</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">GDMA_I2C_Recv_Buf</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot; GDMA_Send_Buf = %d, GDMA_Recv_Buf = %d&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">GDMA_I2C_Send_Buf</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">GDMA_I2C_Recv_Buf</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">      </span><span class="n">GDMA_I2C_Recv_Buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_c.html#group___i2_c"><span class="std std-ref">I2C</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a.html#group___g_d_m_a"><span class="std std-ref">GDMA</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x.html#group___p_i_n_m_u_x"><span class="std std-ref">PINMUX</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___n_v_i_c.html#group___n_v_i_c"><span class="std std-ref">NVIC</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../trx_loopback/doc/text_en/README.html" class="btn btn-neutral float-left" title="LoopBack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../gdma_master_rx_slave_tx/doc/text_en/README.html" class="btn btn-neutral float-right" title="GDMA Master Receive Slave Transmit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

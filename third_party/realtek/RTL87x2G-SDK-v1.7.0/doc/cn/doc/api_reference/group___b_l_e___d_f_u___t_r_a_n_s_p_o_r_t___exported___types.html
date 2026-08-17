@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLE DFU Transport Exported Types &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="BLE DFU Transport Exported Variables" href="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___variables.html" />
+    <link rel="prev" title="OTA Device Feature Bit Set" href="group___o_t_a___device___feature___bit___set.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___d_f_u.html">DFU</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t.html">BLE DFU Transport</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___functions.html">BLE DFU Transport Exported Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___macros.html">BLE DFU Transport Exported Macros</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">BLE DFU Transport Exported Types</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv423T_OTA_CLEAR_LOCAL_CAUSE"><code class="docutils literal notranslate"><span class="pre">T_OTA_CLEAR_LOCAL_CAUSE</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE18OTA_SUCCESS_REBOOTE"><code class="docutils literal notranslate"><span class="pre">T_OTA_CLEAR_LOCAL_CAUSE::OTA_SUCCESS_REBOOT</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE12OTA_BLE_DISCE"><code class="docutils literal notranslate"><span class="pre">T_OTA_CLEAR_LOCAL_CAUSE::OTA_BLE_DISC</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TRANS_TIMEOUTE"><code class="docutils literal notranslate"><span class="pre">T_OTA_CLEAR_LOCAL_CAUSE::OTA_IMAGE_TRANS_TIMEOUT</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TOTAL_TIMEOUTE"><code class="docutils literal notranslate"><span class="pre">T_OTA_CLEAR_LOCAL_CAUSE::OTA_IMAGE_TOTAL_TIMEOUT</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE13OTA_RESET_CMDE"><code class="docutils literal notranslate"><span class="pre">T_OTA_CLEAR_LOCAL_CAUSE::OTA_RESET_CMD</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv410T_OTA_BANK"><code class="docutils literal notranslate"><span class="pre">T_OTA_BANK</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N10T_OTA_BANK11ACTIVE_BANKE"><code class="docutils literal notranslate"><span class="pre">T_OTA_BANK::ACTIVE_BANK</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N10T_OTA_BANK13INACTIVE_BANKE"><code class="docutils literal notranslate"><span class="pre">T_OTA_BANK::INACTIVE_BANK</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv414T_OTA_TIMER_ID"><code class="docutils literal notranslate"><span class="pre">T_OTA_TIMER_ID</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N14T_OTA_TIMER_ID24TIMER_ID_DFU_IMAGE_TRANSE"><code class="docutils literal notranslate"><span class="pre">T_OTA_TIMER_ID::TIMER_ID_DFU_IMAGE_TRANS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv48OTA_FLAG"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8OTA_FLAG5valueE"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG::value</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8OTA_FLAG15buffer_check_enE"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG::buffer_check_en</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8OTA_FLAG14is_ota_processE"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG::is_ota_process</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8OTA_FLAG22is_support_mutil_imageE"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG::is_support_mutil_image</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8OTA_FLAG10is_devinfoE"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG::is_devinfo</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8OTA_FLAG9skip_flagE"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG::skip_flag</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8OTA_FLAG8ota_modeE"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG::ota_mode</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8OTA_FLAG4RSVDE"><code class="docutils literal notranslate"><span class="pre">OTA_FLAG::RSVD</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv411TEST_ENABLE"><code class="docutils literal notranslate"><span class="pre">TEST_ENABLE</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11TEST_ENABLE5valueE"><code class="docutils literal notranslate"><span class="pre">TEST_ENABLE::value</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11TEST_ENABLE8t_aes_enE"><code class="docutils literal notranslate"><span class="pre">TEST_ENABLE::t_aes_en</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11TEST_ENABLE13t_stress_testE"><code class="docutils literal notranslate"><span class="pre">TEST_ENABLE::t_stress_test</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11TEST_ENABLE11t_copy_failE"><code class="docutils literal notranslate"><span class="pre">TEST_ENABLE::t_copy_fail</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11TEST_ENABLE11t_skip_failE"><code class="docutils literal notranslate"><span class="pre">TEST_ENABLE::t_skip_fail</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11TEST_ENABLE21t_buffercheck_disableE"><code class="docutils literal notranslate"><span class="pre">TEST_ENABLE::t_buffercheck_disable</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11TEST_ENABLE4rsvdE"><code class="docutils literal notranslate"><span class="pre">TEST_ENABLE::rsvd</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv417T_TEMP_IMAGE_INFO"><code class="docutils literal notranslate"><span class="pre">T_TEMP_IMAGE_INFO</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N17T_TEMP_IMAGE_INFO12image_offsetE"><code class="docutils literal notranslate"><span class="pre">T_TEMP_IMAGE_INFO::image_offset</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv419OTA_FUNCTION_STRUCT"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT25timer_handle_ota_transferE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::timer_handle_ota_transfer</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT19p_ota_temp_buf_headE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::p_ota_temp_buf_head</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT15image_indicatorE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::image_indicator</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT18image_total_lengthE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::image_total_length</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT10cur_offsetE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::cur_offset</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT19buffer_check_offsetE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::buffer_check_offset</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT20next_subimage_offsetE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::next_subimage_offset</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT24tmp_next_subimage_offsetE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::tmp_next_subimage_offset</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT8image_idE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::image_id</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT22ota_temp_buf_used_sizeE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::ota_temp_buf_used_size</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT11buffer_sizeE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::buffer_size</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT8mtu_sizeE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::mtu_size</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT15temp_image_infoE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::temp_image_info</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT15force_temp_modeE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::force_temp_mode</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT7bd_addrE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::bd_addr</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT8bp_levelE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::bp_level</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT32dfu_conn_para_update_in_progressE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::dfu_conn_para_update_in_progress</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT13is_last_imageE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::is_last_image</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT8ota_flagE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::ota_flag</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N19OTA_FUNCTION_STRUCT4testE"><code class="docutils literal notranslate"><span class="pre">OTA_FUNCTION_STRUCT::test</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv412SHA256_CHECK"><code class="docutils literal notranslate"><span class="pre">SHA256_CHECK</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N12SHA256_CHECK6img_idE"><code class="docutils literal notranslate"><span class="pre">SHA256_CHECK::img_id</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N12SHA256_CHECK6sha256E"><code class="docutils literal notranslate"><span class="pre">SHA256_CHECK::sha256</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv48IMG_INFO"><code class="docutils literal notranslate"><span class="pre">IMG_INFO</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8IMG_INFO6img_idE"><code class="docutils literal notranslate"><span class="pre">IMG_INFO::img_id</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N8IMG_INFO4dataE"><code class="docutils literal notranslate"><span class="pre">IMG_INFO::data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv416DEVICE_INFO_MODE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16DEVICE_INFO_MODE5valueE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE::value</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16DEVICE_INFO_MODE14buffercheck_enE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE::buffercheck_en</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16DEVICE_INFO_MODE6aes_enE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE::aes_en</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16DEVICE_INFO_MODE8aes_modeE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE::aes_mode</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16DEVICE_INFO_MODE18support_multiimageE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE::support_multiimage</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16DEVICE_INFO_MODE21is_support_normal_otaE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE::is_support_normal_ota</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16DEVICE_INFO_MODE30is_ota_support_dual_bank_mergeE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE::is_ota_support_dual_bank_merge</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16DEVICE_INFO_MODE4rsvdE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO_MODE::rsvd</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv411DEVICE_INFO"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO7ic_typeE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::ic_type</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO8spec_verE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::spec_ver</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO4modeE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::mode</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO5rsvd0E"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::rsvd0</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO13ota_temp_sizeE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::ota_temp_size</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO14active_banknumE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::active_banknum</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO24bootpatch_active_banknumE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::bootpatch_active_banknum</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO24secureapp_active_banknumE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::secureapp_active_banknum</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO18ctrl_header_offsetE"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::ctrl_header_offset</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11DEVICE_INFO5rsvd1E"><code class="docutils literal notranslate"><span class="pre">DEVICE_INFO::rsvd1</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv411OTA_SETTING"><code class="docutils literal notranslate"><span class="pre">OTA_SETTING</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11OTA_SETTING5valueE"><code class="docutils literal notranslate"><span class="pre">OTA_SETTING::value</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11OTA_SETTING6enc_enE"><code class="docutils literal notranslate"><span class="pre">OTA_SETTING::enc_en</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11OTA_SETTING9sha256_enE"><code class="docutils literal notranslate"><span class="pre">OTA_SETTING::sha256_en</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11OTA_SETTING14link_loss_stopE"><code class="docutils literal notranslate"><span class="pre">OTA_SETTING::link_loss_stop</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N11OTA_SETTING4rsvdE"><code class="docutils literal notranslate"><span class="pre">OTA_SETTING::rsvd</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___variables.html">BLE DFU Transport Exported Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___d_f_u___c_o_m_m_o_n.html">DFU Common</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___d_f_u___s_e_r_v_i_c_e.html">DFU Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___o_t_a___s_e_r_v_i_c_e.html">OTA Service</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___d_f_u.html">DFU</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t.html">BLE DFU Transport</a></li>
+    <li class="breadcrumb-item active">BLE DFU Transport Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ble-dfu-transport-exported-types">
+<h1>BLE DFU Transport Exported Types<a class="headerlink" href="#ble-dfu-transport-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">BLE_DFU_TRANSPORT_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423T_OTA_CLEAR_LOCAL_CAUSE">
+<span id="_CPPv323T_OTA_CLEAR_LOCAL_CAUSE"></span><span id="_CPPv223T_OTA_CLEAR_LOCAL_CAUSE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1gaf81d73caa2a6f252da97ce821ec49efa"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_OTA_CLEAR_LOCAL_CAUSE</span></span></span><a class="headerlink" href="#_CPPv423T_OTA_CLEAR_LOCAL_CAUSE" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA clear local cause. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE18OTA_SUCCESS_REBOOTE">
+<span id="_CPPv3N23T_OTA_CLEAR_LOCAL_CAUSE18OTA_SUCCESS_REBOOTE"></span><span id="_CPPv2N23T_OTA_CLEAR_LOCAL_CAUSE18OTA_SUCCESS_REBOOTE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1ggaf81d73caa2a6f252da97ce821ec49efaa6f058db8cc36bbbd2edc55027a4df13e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OTA_SUCCESS_REBOOT</span></span></span><a class="headerlink" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE18OTA_SUCCESS_REBOOTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE12OTA_BLE_DISCE">
+<span id="_CPPv3N23T_OTA_CLEAR_LOCAL_CAUSE12OTA_BLE_DISCE"></span><span id="_CPPv2N23T_OTA_CLEAR_LOCAL_CAUSE12OTA_BLE_DISCE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1ggaf81d73caa2a6f252da97ce821ec49efaa3703551d6e4c62cbf66f3a191751dba2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OTA_BLE_DISC</span></span></span><a class="headerlink" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE12OTA_BLE_DISCE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TRANS_TIMEOUTE">
+<span id="_CPPv3N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TRANS_TIMEOUTE"></span><span id="_CPPv2N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TRANS_TIMEOUTE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1ggaf81d73caa2a6f252da97ce821ec49efaa1298b2539be6619b4919c3787708afc6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OTA_IMAGE_TRANS_TIMEOUT</span></span></span><a class="headerlink" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TRANS_TIMEOUTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TOTAL_TIMEOUTE">
+<span id="_CPPv3N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TOTAL_TIMEOUTE"></span><span id="_CPPv2N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TOTAL_TIMEOUTE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1ggaf81d73caa2a6f252da97ce821ec49efaaf7fa5d9dfca6ad1e719de856168332cc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OTA_IMAGE_TOTAL_TIMEOUT</span></span></span><a class="headerlink" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE23OTA_IMAGE_TOTAL_TIMEOUTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE13OTA_RESET_CMDE">
+<span id="_CPPv3N23T_OTA_CLEAR_LOCAL_CAUSE13OTA_RESET_CMDE"></span><span id="_CPPv2N23T_OTA_CLEAR_LOCAL_CAUSE13OTA_RESET_CMDE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1ggaf81d73caa2a6f252da97ce821ec49efaa0e3db7b18d074a41bb38a672fd592db8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OTA_RESET_CMD</span></span></span><a class="headerlink" href="#_CPPv4N23T_OTA_CLEAR_LOCAL_CAUSE13OTA_RESET_CMDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv410T_OTA_BANK">
+<span id="_CPPv310T_OTA_BANK"></span><span id="_CPPv210T_OTA_BANK"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1ga7b3edbfb45618948b480cd1f63bf00d8"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_OTA_BANK</span></span></span><a class="headerlink" href="#_CPPv410T_OTA_BANK" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA Bank number. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N10T_OTA_BANK11ACTIVE_BANKE">
+<span id="_CPPv3N10T_OTA_BANK11ACTIVE_BANKE"></span><span id="_CPPv2N10T_OTA_BANK11ACTIVE_BANKE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1gga7b3edbfb45618948b480cd1f63bf00d8a5e086e15877ced7f5a08451554259a18"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ACTIVE_BANK</span></span></span><a class="headerlink" href="#_CPPv4N10T_OTA_BANK11ACTIVE_BANKE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N10T_OTA_BANK13INACTIVE_BANKE">
+<span id="_CPPv3N10T_OTA_BANK13INACTIVE_BANKE"></span><span id="_CPPv2N10T_OTA_BANK13INACTIVE_BANKE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1gga7b3edbfb45618948b480cd1f63bf00d8a5fe7c118d43adfacfc8177e1d53e6da7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INACTIVE_BANK</span></span></span><a class="headerlink" href="#_CPPv4N10T_OTA_BANK13INACTIVE_BANKE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv414T_OTA_TIMER_ID">
+<span id="_CPPv314T_OTA_TIMER_ID"></span><span id="_CPPv214T_OTA_TIMER_ID"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1ga3e0c29a63029a2d7c21507115b8568c6"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_OTA_TIMER_ID</span></span></span><a class="headerlink" href="#_CPPv414T_OTA_TIMER_ID" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA timer ID. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14T_OTA_TIMER_ID24TIMER_ID_DFU_IMAGE_TRANSE">
+<span id="_CPPv3N14T_OTA_TIMER_ID24TIMER_ID_DFU_IMAGE_TRANSE"></span><span id="_CPPv2N14T_OTA_TIMER_ID24TIMER_ID_DFU_IMAGE_TRANSE"></span><span class="target" id="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___types_1gga3e0c29a63029a2d7c21507115b8568c6ad0e1f760d3437d2d5e201a4c7567bac0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TIMER_ID_DFU_IMAGE_TRANS</span></span></span><a class="headerlink" href="#_CPPv4N14T_OTA_TIMER_ID24TIMER_ID_DFU_IMAGE_TRANSE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv48OTA_FLAG">
+<span id="_CPPv38OTA_FLAG"></span><span id="_CPPv28OTA_FLAG"></span><span class="target" id="union_o_t_a___f_l_a_g"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OTA_FLAG</span></span></span><a class="headerlink" href="#_CPPv48OTA_FLAG" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA flag. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-union-members">Union members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8OTA_FLAG5valueE">
+<span id="_CPPv3N8OTA_FLAG5valueE"></span><span id="_CPPv2N8OTA_FLAG5valueE"></span><span id="OTA_FLAG::value__uint8_t"></span><span class="target" id="union_o_t_a___f_l_a_g_1a638e4503e0ae6ce655b7ad2e17e8f0ad"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><a class="headerlink" href="#_CPPv4N8OTA_FLAG5valueE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-bit-field-structure">Bit field structure</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="union_o_t_a___f_l_a_g_1a1cd0531f5ee0f640f44067e42dc7f609"></span><span class="sig-name descname"><span class="pre">struct</span> <span class="pre">OTA_FLAG</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8OTA_FLAG15buffer_check_enE">
+<span id="_CPPv3N8OTA_FLAG15buffer_check_enE"></span><span id="_CPPv2N8OTA_FLAG15buffer_check_enE"></span><span id="OTA_FLAG::buffer_check_en__uint8_t"></span><span class="target" id="union_o_t_a___f_l_a_g_1a982634a4a5280a6a4ab671054ab22efe"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">buffer_check_en</span></span></span><a class="headerlink" href="#_CPPv4N8OTA_FLAG15buffer_check_enE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8OTA_FLAG14is_ota_processE">
+<span id="_CPPv3N8OTA_FLAG14is_ota_processE"></span><span id="_CPPv2N8OTA_FLAG14is_ota_processE"></span><span id="OTA_FLAG::is_ota_process__uint8_t"></span><span class="target" id="union_o_t_a___f_l_a_g_1aa59670f35c1d2538fa6fc7991c897261"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_ota_process</span></span></span><a class="headerlink" href="#_CPPv4N8OTA_FLAG14is_ota_processE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8OTA_FLAG22is_support_mutil_imageE">
+<span id="_CPPv3N8OTA_FLAG22is_support_mutil_imageE"></span><span id="_CPPv2N8OTA_FLAG22is_support_mutil_imageE"></span><span id="OTA_FLAG::is_support_mutil_image__uint8_t"></span><span class="target" id="union_o_t_a___f_l_a_g_1a6500f3d5cedbd814c2fa27ef3864330d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_support_mutil_image</span></span></span><a class="headerlink" href="#_CPPv4N8OTA_FLAG22is_support_mutil_imageE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8OTA_FLAG10is_devinfoE">
+<span id="_CPPv3N8OTA_FLAG10is_devinfoE"></span><span id="_CPPv2N8OTA_FLAG10is_devinfoE"></span><span id="OTA_FLAG::is_devinfo__uint8_t"></span><span class="target" id="union_o_t_a___f_l_a_g_1a625fa3e81d6bc6000c59194af470a580"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_devinfo</span></span></span><a class="headerlink" href="#_CPPv4N8OTA_FLAG10is_devinfoE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8OTA_FLAG9skip_flagE">
+<span id="_CPPv3N8OTA_FLAG9skip_flagE"></span><span id="_CPPv2N8OTA_FLAG9skip_flagE"></span><span id="OTA_FLAG::skip_flag__uint8_t"></span><span class="target" id="union_o_t_a___f_l_a_g_1a3ac7d28aed8413635d860bb0538f1bea"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">skip_flag</span></span></span><a class="headerlink" href="#_CPPv4N8OTA_FLAG9skip_flagE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8OTA_FLAG8ota_modeE">
+<span id="_CPPv3N8OTA_FLAG8ota_modeE"></span><span id="_CPPv2N8OTA_FLAG8ota_modeE"></span><span id="OTA_FLAG::ota_mode__uint8_t"></span><span class="target" id="union_o_t_a___f_l_a_g_1a5940fe32a4f1a7828f777aa8f392b71e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ota_mode</span></span></span><a class="headerlink" href="#_CPPv4N8OTA_FLAG8ota_modeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8OTA_FLAG4RSVDE">
+<span id="_CPPv3N8OTA_FLAG4RSVDE"></span><span id="_CPPv2N8OTA_FLAG4RSVDE"></span><span id="OTA_FLAG::RSVD__uint8_t"></span><span class="target" id="union_o_t_a___f_l_a_g_1a1502087848b826bf4a7d90671cbcc500"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RSVD</span></span></span><a class="headerlink" href="#_CPPv4N8OTA_FLAG4RSVDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv411TEST_ENABLE">
+<span id="_CPPv311TEST_ENABLE"></span><span id="_CPPv211TEST_ENABLE"></span><span class="target" id="union_t_e_s_t___e_n_a_b_l_e"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TEST_ENABLE</span></span></span><a class="headerlink" href="#_CPPv411TEST_ENABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA test flag. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-union-members">Union members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11TEST_ENABLE5valueE">
+<span id="_CPPv3N11TEST_ENABLE5valueE"></span><span id="_CPPv2N11TEST_ENABLE5valueE"></span><span id="TEST_ENABLE::value__uint8_t"></span><span class="target" id="union_t_e_s_t___e_n_a_b_l_e_1a638e4503e0ae6ce655b7ad2e17e8f0ad"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><a class="headerlink" href="#_CPPv4N11TEST_ENABLE5valueE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-bit-field-structure">Bit field structure</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="union_t_e_s_t___e_n_a_b_l_e_1a4194864c721daa3640c14e86d0ccf834"></span><span class="sig-name descname"><span class="pre">struct</span> <span class="pre">TEST_ENABLE</span></span></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11TEST_ENABLE8t_aes_enE">
+<span id="_CPPv3N11TEST_ENABLE8t_aes_enE"></span><span id="_CPPv2N11TEST_ENABLE8t_aes_enE"></span><span id="TEST_ENABLE::t_aes_en__uint8_t"></span><span class="target" id="union_t_e_s_t___e_n_a_b_l_e_1a98d8b5422e80789e58d2e98b65d890f5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">t_aes_en</span></span></span><a class="headerlink" href="#_CPPv4N11TEST_ENABLE8t_aes_enE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11TEST_ENABLE13t_stress_testE">
+<span id="_CPPv3N11TEST_ENABLE13t_stress_testE"></span><span id="_CPPv2N11TEST_ENABLE13t_stress_testE"></span><span id="TEST_ENABLE::t_stress_test__uint8_t"></span><span class="target" id="union_t_e_s_t___e_n_a_b_l_e_1a3d6897d620d5c9f33d3aef857301bdff"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">t_stress_test</span></span></span><a class="headerlink" href="#_CPPv4N11TEST_ENABLE13t_stress_testE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11TEST_ENABLE11t_copy_failE">
+<span id="_CPPv3N11TEST_ENABLE11t_copy_failE"></span><span id="_CPPv2N11TEST_ENABLE11t_copy_failE"></span><span id="TEST_ENABLE::t_copy_fail__uint8_t"></span><span class="target" id="union_t_e_s_t___e_n_a_b_l_e_1a0e82e15eae265ff6d233aa1184edb70b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">t_copy_fail</span></span></span><a class="headerlink" href="#_CPPv4N11TEST_ENABLE11t_copy_failE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11TEST_ENABLE11t_skip_failE">
+<span id="_CPPv3N11TEST_ENABLE11t_skip_failE"></span><span id="_CPPv2N11TEST_ENABLE11t_skip_failE"></span><span id="TEST_ENABLE::t_skip_fail__uint8_t"></span><span class="target" id="union_t_e_s_t___e_n_a_b_l_e_1a33bcf5d27a83f54a9ea5e0b2f92557b4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">t_skip_fail</span></span></span><a class="headerlink" href="#_CPPv4N11TEST_ENABLE11t_skip_failE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11TEST_ENABLE21t_buffercheck_disableE">
+<span id="_CPPv3N11TEST_ENABLE21t_buffercheck_disableE"></span><span id="_CPPv2N11TEST_ENABLE21t_buffercheck_disableE"></span><span id="TEST_ENABLE::t_buffercheck_disable__uint8_t"></span><span class="target" id="union_t_e_s_t___e_n_a_b_l_e_1a87ebc1f32af3e86b3c3c8ecba73a107b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">t_buffercheck_disable</span></span></span><a class="headerlink" href="#_CPPv4N11TEST_ENABLE21t_buffercheck_disableE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11TEST_ENABLE4rsvdE">
+<span id="_CPPv3N11TEST_ENABLE4rsvdE"></span><span id="_CPPv2N11TEST_ENABLE4rsvdE"></span><span id="TEST_ENABLE::rsvd__uint8_t"></span><span class="target" id="union_t_e_s_t___e_n_a_b_l_e_1a12144a8b7d28e438d97bd2606d534990"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rsvd</span></span></span><a class="headerlink" href="#_CPPv4N11TEST_ENABLE4rsvdE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417T_TEMP_IMAGE_INFO">
+<span id="_CPPv317T_TEMP_IMAGE_INFO"></span><span id="_CPPv217T_TEMP_IMAGE_INFO"></span><span id="T_TEMP_IMAGE_INFO"></span><span class="target" id="struct_t___t_e_m_p___i_m_a_g_e___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_TEMP_IMAGE_INFO</span></span></span><a class="headerlink" href="#_CPPv417T_TEMP_IMAGE_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA image offset. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_TEMP_IMAGE_INFO12image_offsetE">
+<span id="_CPPv3N17T_TEMP_IMAGE_INFO12image_offsetE"></span><span id="_CPPv2N17T_TEMP_IMAGE_INFO12image_offsetE"></span><span id="T_TEMP_IMAGE_INFO::image_offset__uint32_t"></span><span class="target" id="struct_t___t_e_m_p___i_m_a_g_e___i_n_f_o_1a54ef33bd3975f7991c506cc1d25e1f5e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image_offset</span></span></span><a class="headerlink" href="#_CPPv4N17T_TEMP_IMAGE_INFO12image_offsetE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419OTA_FUNCTION_STRUCT">
+<span id="_CPPv319OTA_FUNCTION_STRUCT"></span><span id="_CPPv219OTA_FUNCTION_STRUCT"></span><span id="OTA_FUNCTION_STRUCT"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OTA_FUNCTION_STRUCT</span></span></span><a class="headerlink" href="#_CPPv419OTA_FUNCTION_STRUCT" title="Link to this definition"></a><br /></dt>
+<dd><p>Extended device information for OTA operations. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT25timer_handle_ota_transferE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT25timer_handle_ota_transferE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT25timer_handle_ota_transferE"></span><span id="OTA_FUNCTION_STRUCT::timer_handle_ota_transfer__voidP"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a244ea54b750665da3efc7e23aebf5a5a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">timer_handle_ota_transfer</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT25timer_handle_ota_transferE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT19p_ota_temp_buf_headE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT19p_ota_temp_buf_headE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT19p_ota_temp_buf_headE"></span><span id="OTA_FUNCTION_STRUCT::p_ota_temp_buf_head__uint8_tP"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a3697ec9ccc098c9cb8a70ae64daf7e54"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_ota_temp_buf_head</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT19p_ota_temp_buf_headE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT15image_indicatorE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT15image_indicatorE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT15image_indicatorE"></span><span id="OTA_FUNCTION_STRUCT::image_indicator__uint32_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1ad7d425e04a4e1bc5cb90149a0e9c45a9"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image_indicator</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT15image_indicatorE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT18image_total_lengthE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT18image_total_lengthE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT18image_total_lengthE"></span><span id="OTA_FUNCTION_STRUCT::image_total_length__uint32_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a97fb57f3df1c2fb43884ba7d4243b04d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image_total_length</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT18image_total_lengthE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT10cur_offsetE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT10cur_offsetE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT10cur_offsetE"></span><span id="OTA_FUNCTION_STRUCT::cur_offset__uint32_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1aaff24a22c5321fbbc3715b1642e1bd26"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cur_offset</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT10cur_offsetE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT19buffer_check_offsetE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT19buffer_check_offsetE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT19buffer_check_offsetE"></span><span id="OTA_FUNCTION_STRUCT::buffer_check_offset__uint32_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1ade1d451815ea55bd719b3ec17bbc1ac5"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">buffer_check_offset</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT19buffer_check_offsetE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT20next_subimage_offsetE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT20next_subimage_offsetE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT20next_subimage_offsetE"></span><span id="OTA_FUNCTION_STRUCT::next_subimage_offset__uint32_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a0ff0f907252cd726844ceef87234a75e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">next_subimage_offset</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT20next_subimage_offsetE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT24tmp_next_subimage_offsetE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT24tmp_next_subimage_offsetE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT24tmp_next_subimage_offsetE"></span><span id="OTA_FUNCTION_STRUCT::tmp_next_subimage_offset__uint32_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a43059c6865189efbab6c4ef171d35c43"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tmp_next_subimage_offset</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT24tmp_next_subimage_offsetE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT8image_idE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT8image_idE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT8image_idE"></span><span id="OTA_FUNCTION_STRUCT::image_id__uint16_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a06d32ede2dd77613b2d1ec77fcb702ee"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image_id</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT8image_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT22ota_temp_buf_used_sizeE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT22ota_temp_buf_used_sizeE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT22ota_temp_buf_used_sizeE"></span><span id="OTA_FUNCTION_STRUCT::ota_temp_buf_used_size__uint16_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1ab555893afcd07bb58a90a27dad166784"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ota_temp_buf_used_size</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT22ota_temp_buf_used_sizeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT11buffer_sizeE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT11buffer_sizeE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT11buffer_sizeE"></span><span id="OTA_FUNCTION_STRUCT::buffer_size__uint16_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1adae708b20ac4fe01990712c8041e560a"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">buffer_size</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT11buffer_sizeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT8mtu_sizeE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT8mtu_sizeE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT8mtu_sizeE"></span><span id="OTA_FUNCTION_STRUCT::mtu_size__uint16_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a7494d27aae03bdf1d9092563e1cc1026"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mtu_size</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT8mtu_sizeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT15temp_image_infoE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT15temp_image_infoE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT15temp_image_infoE"></span><span id="OTA_FUNCTION_STRUCT::temp_image_info__T_TEMP_IMAGE_INFOA"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1ad2942eb2e8f90b95a4c4dc8c2fefb425"></span><a class="reference internal" href="#_CPPv417T_TEMP_IMAGE_INFO" title="T_TEMP_IMAGE_INFO"><span class="n"><span class="pre">T_TEMP_IMAGE_INFO</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temp_image_info</span></span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="group___f_l_a_s_h___d_e_v_i_c_e___exported___types.html#_CPPv4N6IMG_ID11IMG_DFU_MAXE" title="IMG_DFU_MAX"><span class="n"><span class="pre">IMG_DFU_MAX</span></span></a><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="w"> </span><a class="reference internal" href="group___f_l_a_s_h___d_e_v_i_c_e___exported___types.html#_CPPv4N6IMG_ID14IMG_BANK_FIRSTE" title="IMG_BANK_FIRST"><span class="n"><span class="pre">IMG_BANK_FIRST</span></span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT15temp_image_infoE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT15force_temp_modeE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT15force_temp_modeE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT15force_temp_modeE"></span><span id="OTA_FUNCTION_STRUCT::force_temp_mode__uint8_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a61c085ab2bea97d07365bffbf6dcbb02"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">force_temp_mode</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT15force_temp_modeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT7bd_addrE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT7bd_addrE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT7bd_addrE"></span><span id="OTA_FUNCTION_STRUCT::bd_addr__uint8_tA"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a624fd24b46be2b40c8731334c9de5d06"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bd_addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT7bd_addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT8bp_levelE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT8bp_levelE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT8bp_levelE"></span><span id="OTA_FUNCTION_STRUCT::bp_level__uint8_t"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a41f919a1634e38df753797a30c240d80"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bp_level</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT8bp_levelE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT32dfu_conn_para_update_in_progressE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT32dfu_conn_para_update_in_progressE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT32dfu_conn_para_update_in_progressE"></span><span id="OTA_FUNCTION_STRUCT::dfu_conn_para_update_in_progress__b"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a1a2ae312d92bfa4c2de60ebc6196e90e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dfu_conn_para_update_in_progress</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT32dfu_conn_para_update_in_progressE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT13is_last_imageE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT13is_last_imageE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT13is_last_imageE"></span><span id="OTA_FUNCTION_STRUCT::is_last_image__b"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a58dc97b5f6e5d66dc1590ba9993da95a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_last_image</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT13is_last_imageE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT8ota_flagE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT8ota_flagE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT8ota_flagE"></span><span id="OTA_FUNCTION_STRUCT::ota_flag__OTA_FLAG"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1a66eea9a83b21d526e41176d80fd36e08"></span><a class="reference internal" href="#_CPPv48OTA_FLAG" title="OTA_FLAG"><span class="n"><span class="pre">OTA_FLAG</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ota_flag</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT8ota_flagE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19OTA_FUNCTION_STRUCT4testE">
+<span id="_CPPv3N19OTA_FUNCTION_STRUCT4testE"></span><span id="_CPPv2N19OTA_FUNCTION_STRUCT4testE"></span><span id="OTA_FUNCTION_STRUCT::test__TEST_ENABLE"></span><span class="target" id="struct_o_t_a___f_u_n_c_t_i_o_n___s_t_r_u_c_t_1af1f4e09663a82d84417883e6d74e9814"></span><a class="reference internal" href="#_CPPv411TEST_ENABLE" title="TEST_ENABLE"><span class="n"><span class="pre">TEST_ENABLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">test</span></span></span><a class="headerlink" href="#_CPPv4N19OTA_FUNCTION_STRUCT4testE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412SHA256_CHECK">
+<span id="_CPPv312SHA256_CHECK"></span><span id="_CPPv212SHA256_CHECK"></span><span id="SHA256_CHECK"></span><span class="target" id="struct_s_h_a256___c_h_e_c_k"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SHA256_CHECK</span></span></span><a class="headerlink" href="#_CPPv412SHA256_CHECK" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA sha256 check. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SHA256_CHECK6img_idE">
+<span id="_CPPv3N12SHA256_CHECK6img_idE"></span><span id="_CPPv2N12SHA256_CHECK6img_idE"></span><span id="SHA256_CHECK::img_id__IMG_ID"></span><span class="target" id="struct_s_h_a256___c_h_e_c_k_1a9a5d7e0f7c67fe4f25f89d3ae07ac142"></span><a class="reference internal" href="group___f_l_a_s_h___d_e_v_i_c_e___exported___types.html#_CPPv46IMG_ID" title="IMG_ID"><span class="n"><span class="pre">IMG_ID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">img_id</span></span></span><a class="headerlink" href="#_CPPv4N12SHA256_CHECK6img_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SHA256_CHECK6sha256E">
+<span id="_CPPv3N12SHA256_CHECK6sha256E"></span><span id="_CPPv2N12SHA256_CHECK6sha256E"></span><span id="SHA256_CHECK::sha256__uint8_tA"></span><span class="target" id="struct_s_h_a256___c_h_e_c_k_1a4bcdce99fdb5f765e1416d02a19b4b04"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sha256</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">32</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12SHA256_CHECK6sha256E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv48IMG_INFO">
+<span id="_CPPv38IMG_INFO"></span><span id="_CPPv28IMG_INFO"></span><span id="IMG_INFO"></span><span class="target" id="struct_i_m_g___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMG_INFO</span></span></span><a class="headerlink" href="#_CPPv48IMG_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA image information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8IMG_INFO6img_idE">
+<span id="_CPPv3N8IMG_INFO6img_idE"></span><span id="_CPPv2N8IMG_INFO6img_idE"></span><span id="IMG_INFO::img_id__uint16_t"></span><span class="target" id="struct_i_m_g___i_n_f_o_1a9b30b456cb897b25bf113ecd45c39e0f"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">img_id</span></span></span><a class="headerlink" href="#_CPPv4N8IMG_INFO6img_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8IMG_INFO4dataE">
+<span id="_CPPv3N8IMG_INFO4dataE"></span><span id="_CPPv2N8IMG_INFO4dataE"></span><span id="IMG_INFO::data__uint8_tA"></span><span class="target" id="struct_i_m_g___i_n_f_o_1ae473d03cfb65dd0998d41b24114b662d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N8IMG_INFO4dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv416DEVICE_INFO_MODE">
+<span id="_CPPv316DEVICE_INFO_MODE"></span><span id="_CPPv216DEVICE_INFO_MODE"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEVICE_INFO_MODE</span></span></span><a class="headerlink" href="#_CPPv416DEVICE_INFO_MODE" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA device information mode. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16DEVICE_INFO_MODE5valueE">
+<span id="_CPPv3N16DEVICE_INFO_MODE5valueE"></span><span id="_CPPv2N16DEVICE_INFO_MODE5valueE"></span><span id="DEVICE_INFO_MODE::value__uint8_t"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1a638e4503e0ae6ce655b7ad2e17e8f0ad"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><a class="headerlink" href="#_CPPv4N16DEVICE_INFO_MODE5valueE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16DEVICE_INFO_MODE14buffercheck_enE">
+<span id="_CPPv3N16DEVICE_INFO_MODE14buffercheck_enE"></span><span id="_CPPv2N16DEVICE_INFO_MODE14buffercheck_enE"></span><span id="DEVICE_INFO_MODE::buffercheck_en__uint8_t"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1a4c1a7b8742c2279afa414dd5cbb95803"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">buffercheck_en</span></span></span><a class="headerlink" href="#_CPPv4N16DEVICE_INFO_MODE14buffercheck_enE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16DEVICE_INFO_MODE6aes_enE">
+<span id="_CPPv3N16DEVICE_INFO_MODE6aes_enE"></span><span id="_CPPv2N16DEVICE_INFO_MODE6aes_enE"></span><span id="DEVICE_INFO_MODE::aes_en__uint8_t"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1a39a129f15e7490f415b4e415921e4811"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">aes_en</span></span></span><a class="headerlink" href="#_CPPv4N16DEVICE_INFO_MODE6aes_enE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16DEVICE_INFO_MODE8aes_modeE">
+<span id="_CPPv3N16DEVICE_INFO_MODE8aes_modeE"></span><span id="_CPPv2N16DEVICE_INFO_MODE8aes_modeE"></span><span id="DEVICE_INFO_MODE::aes_mode__uint8_t"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1a6d85d2d0b605134d4d6df1285ce38413"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">aes_mode</span></span></span><a class="headerlink" href="#_CPPv4N16DEVICE_INFO_MODE8aes_modeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16DEVICE_INFO_MODE18support_multiimageE">
+<span id="_CPPv3N16DEVICE_INFO_MODE18support_multiimageE"></span><span id="_CPPv2N16DEVICE_INFO_MODE18support_multiimageE"></span><span id="DEVICE_INFO_MODE::support_multiimage__uint8_t"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1aa7beb6b882532160d15c4e69645914b7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">support_multiimage</span></span></span><a class="headerlink" href="#_CPPv4N16DEVICE_INFO_MODE18support_multiimageE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16DEVICE_INFO_MODE21is_support_normal_otaE">
+<span id="_CPPv3N16DEVICE_INFO_MODE21is_support_normal_otaE"></span><span id="_CPPv2N16DEVICE_INFO_MODE21is_support_normal_otaE"></span><span id="DEVICE_INFO_MODE::is_support_normal_ota__uint8_t"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1a467a2931b5d92f25a202149dab1a6706"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_support_normal_ota</span></span></span><a class="headerlink" href="#_CPPv4N16DEVICE_INFO_MODE21is_support_normal_otaE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16DEVICE_INFO_MODE30is_ota_support_dual_bank_mergeE">
+<span id="_CPPv3N16DEVICE_INFO_MODE30is_ota_support_dual_bank_mergeE"></span><span id="_CPPv2N16DEVICE_INFO_MODE30is_ota_support_dual_bank_mergeE"></span><span id="DEVICE_INFO_MODE::is_ota_support_dual_bank_merge__uint8_t"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1adff12200bf416301f958ad29664148fb"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_ota_support_dual_bank_merge</span></span></span><a class="headerlink" href="#_CPPv4N16DEVICE_INFO_MODE30is_ota_support_dual_bank_mergeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16DEVICE_INFO_MODE4rsvdE">
+<span id="_CPPv3N16DEVICE_INFO_MODE4rsvdE"></span><span id="_CPPv2N16DEVICE_INFO_MODE4rsvdE"></span><span id="DEVICE_INFO_MODE::rsvd__uint8_t"></span><span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1a12144a8b7d28e438d97bd2606d534990"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rsvd</span></span></span><a class="headerlink" href="#_CPPv4N16DEVICE_INFO_MODE4rsvdE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="union_d_e_v_i_c_e___i_n_f_o___m_o_d_e_1a443ed1c6f09946fa35a2836ac4c987b0"></span><span class="sig-name descname"><span class="pre">struct</span> <span class="pre">DEVICE_INFO_MODE</span></span></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv411DEVICE_INFO">
+<span id="_CPPv311DEVICE_INFO"></span><span id="_CPPv211DEVICE_INFO"></span><span id="DEVICE_INFO"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEVICE_INFO</span></span></span><a class="headerlink" href="#_CPPv411DEVICE_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA device information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO7ic_typeE">
+<span id="_CPPv3N11DEVICE_INFO7ic_typeE"></span><span id="_CPPv2N11DEVICE_INFO7ic_typeE"></span><span id="DEVICE_INFO::ic_type__uint8_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1a09b2570f7eae3b0d40dd2cbaf0218ec4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ic_type</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO7ic_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO8spec_verE">
+<span id="_CPPv3N11DEVICE_INFO8spec_verE"></span><span id="_CPPv2N11DEVICE_INFO8spec_verE"></span><span id="DEVICE_INFO::spec_ver__uint8_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1a5e0326649f7e47568abc6b7950e72828"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spec_ver</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO8spec_verE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO4modeE">
+<span id="_CPPv3N11DEVICE_INFO4modeE"></span><span id="_CPPv2N11DEVICE_INFO4modeE"></span><span id="DEVICE_INFO::mode__DEVICE_INFO_MODE"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1a6e115c824915c9c78c4933aa703e5730"></span><a class="reference internal" href="#_CPPv416DEVICE_INFO_MODE" title="DEVICE_INFO_MODE"><span class="n"><span class="pre">DEVICE_INFO_MODE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mode</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO4modeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO5rsvd0E">
+<span id="_CPPv3N11DEVICE_INFO5rsvd0E"></span><span id="_CPPv2N11DEVICE_INFO5rsvd0E"></span><span id="DEVICE_INFO::rsvd0__uint8_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1a63855018108e12908c327d22b990b98d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rsvd0</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO5rsvd0E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO13ota_temp_sizeE">
+<span id="_CPPv3N11DEVICE_INFO13ota_temp_sizeE"></span><span id="_CPPv2N11DEVICE_INFO13ota_temp_sizeE"></span><span id="DEVICE_INFO::ota_temp_size__uint16_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1ae59d62c5feecadc4e2ebb4d91ffa69c7"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ota_temp_size</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO13ota_temp_sizeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO14active_banknumE">
+<span id="_CPPv3N11DEVICE_INFO14active_banknumE"></span><span id="_CPPv2N11DEVICE_INFO14active_banknumE"></span><span id="DEVICE_INFO::active_banknum__uint8_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1aeb53d10551c07564599e91255174c5d5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">active_banknum</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO14active_banknumE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO24bootpatch_active_banknumE">
+<span id="_CPPv3N11DEVICE_INFO24bootpatch_active_banknumE"></span><span id="_CPPv2N11DEVICE_INFO24bootpatch_active_banknumE"></span><span id="DEVICE_INFO::bootpatch_active_banknum__uint8_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1a152251291b4bf07fe83308bc281ab185"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bootpatch_active_banknum</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO24bootpatch_active_banknumE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO24secureapp_active_banknumE">
+<span id="_CPPv3N11DEVICE_INFO24secureapp_active_banknumE"></span><span id="_CPPv2N11DEVICE_INFO24secureapp_active_banknumE"></span><span id="DEVICE_INFO::secureapp_active_banknum__uint8_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1a23a92c6d350dc0a7d8bf0e08a2c495d6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">secureapp_active_banknum</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO24secureapp_active_banknumE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO18ctrl_header_offsetE">
+<span id="_CPPv3N11DEVICE_INFO18ctrl_header_offsetE"></span><span id="_CPPv2N11DEVICE_INFO18ctrl_header_offsetE"></span><span id="DEVICE_INFO::ctrl_header_offset__uint16_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1a822e8c0622770190ecc0d90f1230f060"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ctrl_header_offset</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO18ctrl_header_offsetE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11DEVICE_INFO5rsvd1E">
+<span id="_CPPv3N11DEVICE_INFO5rsvd1E"></span><span id="_CPPv2N11DEVICE_INFO5rsvd1E"></span><span id="DEVICE_INFO::rsvd1__uint8_t"></span><span class="target" id="struct_d_e_v_i_c_e___i_n_f_o_1ac4d50114b697301d74584a6564ffc2ca"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rsvd1</span></span></span><a class="headerlink" href="#_CPPv4N11DEVICE_INFO5rsvd1E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv411OTA_SETTING">
+<span id="_CPPv311OTA_SETTING"></span><span id="_CPPv211OTA_SETTING"></span><span class="target" id="union_o_t_a___s_e_t_t_i_n_g"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OTA_SETTING</span></span></span><a class="headerlink" href="#_CPPv411OTA_SETTING" title="Link to this definition"></a><br /></dt>
+<dd><p>OTA setting. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11OTA_SETTING5valueE">
+<span id="_CPPv3N11OTA_SETTING5valueE"></span><span id="_CPPv2N11OTA_SETTING5valueE"></span><span id="OTA_SETTING::value__uint32_t"></span><span class="target" id="union_o_t_a___s_e_t_t_i_n_g_1ae7f66047e6e39ba2bb6af8b95f00d1dd"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><a class="headerlink" href="#_CPPv4N11OTA_SETTING5valueE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11OTA_SETTING6enc_enE">
+<span id="_CPPv3N11OTA_SETTING6enc_enE"></span><span id="_CPPv2N11OTA_SETTING6enc_enE"></span><span id="OTA_SETTING::enc_en__uint32_t"></span><span class="target" id="union_o_t_a___s_e_t_t_i_n_g_1adf1fd141c98e770fa75a5017faaf246e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enc_en</span></span></span><a class="headerlink" href="#_CPPv4N11OTA_SETTING6enc_enE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11OTA_SETTING9sha256_enE">
+<span id="_CPPv3N11OTA_SETTING9sha256_enE"></span><span id="_CPPv2N11OTA_SETTING9sha256_enE"></span><span id="OTA_SETTING::sha256_en__uint32_t"></span><span class="target" id="union_o_t_a___s_e_t_t_i_n_g_1a7a71296e5185edb2026a60c0dd8ac01f"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sha256_en</span></span></span><a class="headerlink" href="#_CPPv4N11OTA_SETTING9sha256_enE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11OTA_SETTING14link_loss_stopE">
+<span id="_CPPv3N11OTA_SETTING14link_loss_stopE"></span><span id="_CPPv2N11OTA_SETTING14link_loss_stopE"></span><span id="OTA_SETTING::link_loss_stop__uint32_t"></span><span class="target" id="union_o_t_a___s_e_t_t_i_n_g_1a1faecb7d670abf122ffef9d0754ed132"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">link_loss_stop</span></span></span><a class="headerlink" href="#_CPPv4N11OTA_SETTING14link_loss_stopE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11OTA_SETTING4rsvdE">
+<span id="_CPPv3N11OTA_SETTING4rsvdE"></span><span id="_CPPv2N11OTA_SETTING4rsvdE"></span><span id="OTA_SETTING::rsvd__uint32_t"></span><span class="target" id="union_o_t_a___s_e_t_t_i_n_g_1ac85388da58e586ae119667e0bb2622ec"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rsvd</span></span></span><a class="headerlink" href="#_CPPv4N11OTA_SETTING4rsvdE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="union_o_t_a___s_e_t_t_i_n_g_1a43116dd0f664d15a9b13cd0e218177f9"></span><span class="sig-name descname"><span class="pre">struct</span> <span class="pre">OTA_SETTING</span></span></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___o_t_a___device___feature___bit___set.html" class="btn btn-neutral float-left" title="OTA Device Feature Bit Set" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___b_l_e___d_f_u___t_r_a_n_s_p_o_r_t___exported___variables.html" class="btn btn-neutral float-right" title="BLE DFU Transport Exported Variables" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

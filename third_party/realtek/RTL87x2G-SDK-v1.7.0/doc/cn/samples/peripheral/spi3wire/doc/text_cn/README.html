@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPI3W &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="Polling" href="../../polling/doc/text_cn/README.html" />
+    <link rel="prev" title="GDMA Single Block" href="../../../spi/gdma_singleblock/doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_cn/README.html">蓝牙</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_cn/README.html">外设</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/general_introduction/text_cn/README.html">General Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../adc/doc/text_cn/README.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../aon_qdec/doc/text_cn/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../can/doc/text_cn/README.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../codec/doc/text_cn/README.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enhtimer/doc/text_cn/README.html">ENHTIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gdma/doc/text_cn/README.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gpio/doc/text_cn/README.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2c/doc/text_cn/README.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2s/doc/text_cn/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../idu/doc/text_cn/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ir/doc/text_cn/README.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../keyscan/doc/text_cn/README.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lcdc/doc/text_cn/README.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lpc/doc/text_cn/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ppe/doc/text_cn/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rtc/doc/text_cn/README.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi/doc/text_cn/README.html">SPI</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">SPI3W</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#doc-sample-list-label">示例列表</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../polling/doc/text_cn/README.html">Polling</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">功能概述</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#spi3wire-feature-list-cn">特性列表</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">系统框图</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#spi3wire-data-format">数据格式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#spi3wire-write-operation-cn">写操作</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#spi3wire-read-operation-cn">读操作</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#single-read">Single Read 模式</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#burst-read">Burst Read 模式</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#polling">Polling 模式流程</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id8">Polling 写流程</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id9">Polling 读流程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../timer/doc/text_cn/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../uart/doc/text_cn/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wdt/doc/text_cn/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_cn/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_cn/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">外设</a></li>
+    <li class="breadcrumb-item active">SPI3W</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="spi3w">
+<h1>SPI3W<a class="headerlink" href="#spi3w" title="Link to this heading"></a></h1>
+<section id="doc-sample-list-label">
+<span id="id1"></span><h2>示例列表<a class="headerlink" href="#doc-sample-list-label" title="Link to this heading"></a></h2>
+<p>本章介绍 <a class="reference internal" href="../../../../../doc/glossary.html#term-SPI3W"><span class="xref std std-term">SPI3W</span></a> 示例的详细信息。RTL87x2G 为 SPI3W 外设提供以下示例。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../polling/doc/text_cn/README.html">Polling</a></li>
+</ul>
+</div>
+</section>
+<section id="id2">
+<h2>功能概述<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>3 线串行外设接口（SPI3W）支持单次写入和单次/突发读取。主控制器可以使用 SPI3W 来写入和读取传感器中的寄存器，并读取运动信息。
+通信总是由主控制器发起；传感器从不发起数据传输。SPI3W_CS、SPI3W_CLK 和 SPI3W_DATA 可以直接由主控制器驱动。当从传感器寄存器读取数据时，SPI3W_DATA 也可以由传感器驱动。</p>
+<section id="spi3wire-feature-list-cn">
+<span id="id3"></span><h3>特性列表<a class="headerlink" href="#spi3wire-feature-list-cn" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>支持 2 线和 3 线传输。</p></li>
+<li><p>支持 single write.</p></li>
+<li><p>支持 single/burst read.</p></li>
+<li><p>可编程的写入和读取之间的延迟。</p></li>
+<li><p>SPI3W 最大时钟速率：2MHz。</p></li>
+<li><p>半双工通信。</p></li>
+<li><p>仅支持主设备。</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>系统框图<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>SPI3W 的系统框图如下图所示。
+通过调用 MCU Firmware 固件实现 SPI3W Write/Read 等功能，硬件通过 DATA 线进行数据交互，实现与外部设备的通信。</p>
+<figure class="align-center" id="system-block-diagram-of-spi3w-cn">
+<img alt="../../../../../_images/spi3w_block_diagram.png" src="../../../../../_images/spi3w_block_diagram.png" />
+<figcaption>
+<p><span class="caption-text">SPI3W 系统框图</span><a class="headerlink" href="#system-block-diagram-of-spi3w-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="spi3wire-data-format">
+<span id="id5"></span><h3>数据格式<a class="headerlink" href="#spi3wire-data-format" title="Link to this heading"></a></h3>
+<p>数据包含两个字节，第一个字节是地址位，最高位是读/写控制位，第二个字节是数据字节。如下所示：</p>
+<figure class="align-center" id="wire-spi-data-format-cn">
+<img alt="../../../../../_images/spi3w_data_format.png" src="../../../../../_images/spi3w_data_format.png" />
+<figcaption>
+<p><span class="caption-text">SPI3W 数据格式</span><a class="headerlink" href="#wire-spi-data-format-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="spi3wire-write-operation-cn">
+<span id="id6"></span><h3>写操作<a class="headerlink" href="#spi3wire-write-operation-cn" title="Link to this heading"></a></h3>
+<p>将数据从控制器写入传感器，仅支持 single write 模式，如下图所示。地址字节和数据字节之间无需添加延迟。</p>
+<figure class="align-center" id="spi3-write-mode-format">
+<a class="reference internal image-reference" href="../../../../../_images/spi3w_write_mode_format.png"><img alt="../../../../../_images/spi3w_write_mode_format.png" src="../../../../../_images/spi3w_write_mode_format.png" style="width: 925.2px; height: 138.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">SPI3W 写操作示意图</span><a class="headerlink" href="#spi3-write-mode-format" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="spi3wire-read-operation-cn">
+<span id="id7"></span><h3>读操作<a class="headerlink" href="#spi3wire-read-operation-cn" title="Link to this heading"></a></h3>
+<section id="single-read">
+<span id="spi3wire-single-read-mode-cn"></span><h4>Single Read 模式<a class="headerlink" href="#single-read" title="Link to this heading"></a></h4>
+<p>在 single read 模式下，SPI3W 会先发送一个地址字节，随后 SPI3W_DATA 线变为接收模式，接收对端传感器回复的一个数据字节。</p>
+<p>在第一个字节（地址字节）和第二个字节（数据字节）之间，需要添加一个 <code class="docutils literal notranslate"><span class="pre">T-Hold</span></code> 延迟。
+此延迟由 <a class="reference internal" href="../../../../../doc/api_reference/group___s_p_i3_w___exported___types.html#_CPPv4N17SPI3W_InitTypeDef15SPI3W_ReadDelayE" title="SPI3W_InitTypeDef::SPI3W_ReadDelay"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI3W_InitTypeDef::SPI3W_ReadDelay</span></code></a> 配置。</p>
+<figure class="align-center" id="spi3w-single-read-format-cn">
+<a class="reference internal image-reference" href="../../../../../_images/spi3w_single_read_format.png"><img alt="../../../../../_images/spi3w_single_read_format.png" src="../../../../../_images/spi3w_single_read_format.png" style="width: 1046.7px; height: 166.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">SPI3W single read 示意图</span><a class="headerlink" href="#spi3w-single-read-format-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="burst-read">
+<span id="spi3wire-burst-read-mode-cn"></span><h4>Burst Read 模式<a class="headerlink" href="#burst-read" title="Link to this heading"></a></h4>
+<p>在 burst read 模式下，SPI 可以连续读取多个字节的数据。SPI3W 会先发送一个地址字节，随后 SPI3W_DATA 线变为接收模式，接收对端传感器回复的多个数据字节。</p>
+<p>在第一个字节（地址字节）和第二个字节（数据字节 0）之间，需要加入一个 <code class="docutils literal notranslate"><span class="pre">T-Hold</span></code> 的延迟。
+此延迟由 <a class="reference internal" href="../../../../../doc/api_reference/group___s_p_i3_w___exported___types.html#_CPPv4N17SPI3W_InitTypeDef15SPI3W_ReadDelayE" title="SPI3W_InitTypeDef::SPI3W_ReadDelay"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SPI3W_InitTypeDef::SPI3W_ReadDelay</span></code></a> 配置。从第三个字节（数据字节 1）到第二个字节（数据字节 0）以及直到 burst read 结束之间没有延迟。</p>
+<figure class="align-center" id="spi3w-burst-read-format-cn">
+<a class="reference internal image-reference" href="../../../../../_images/spi3w_burst_read_format.png"><img alt="../../../../../_images/spi3w_burst_read_format.png" src="../../../../../_images/spi3w_burst_read_format.png" style="width: 769.5px; height: 188.1px;" /></a>
+<figcaption>
+<p><span class="caption-text">SPI3W burst read 示意图</span><a class="headerlink" href="#spi3w-burst-read-format-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="polling">
+<h3>Polling 模式流程<a class="headerlink" href="#polling" title="Link to this heading"></a></h3>
+<section id="id8">
+<h4>Polling 写流程<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<p>SPI3W 在 polling 模式下写数据的流程如图所示：</p>
+<figure class="align-center" id="spi3w-polling-write-flow-cn">
+<a class="reference internal image-reference" href="../../../../../_images/spi3w_polling_write_flow.png"><img alt="../../../../../_images/spi3w_polling_write_flow.png" src="../../../../../_images/spi3w_polling_write_flow.png" style="width: 333.0px; height: 737.1px;" /></a>
+<figcaption>
+<p><span class="caption-text">SPI3W polling write flow</span><a class="headerlink" href="#spi3w-polling-write-flow-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">spi3wire_writebyte</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">   </span><span class="cm">/* Check 3wire spi busy or not */</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI3W_GetFlagStatus</span><span class="p">(</span><span class="n">SPI3W_FLAG_BUSY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="n">timeout</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mh">0x1ffff</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="cm">/* Write data */</span>
+<span class="w">   </span><span class="n">SPI3W_StartWrite</span><span class="p">(</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI3W_GetFlagStatus</span><span class="p">(</span><span class="n">SPI3W_FLAG_BUSY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="n">timeout</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mh">0x1ffff</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h4>Polling 读流程<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p>SPI3W 在 polling 模式下读数据的流程如图所示：</p>
+<figure class="align-center" id="spi3w-polling-read-flow-cn">
+<a class="reference internal image-reference" href="../../../../../_images/spi3w_polling_read_flow.png"><img alt="../../../../../_images/spi3w_polling_read_flow.png" src="../../../../../_images/spi3w_polling_read_flow.png" style="width: 599.4px; height: 610.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">SPI3W polling read flow</span><a class="headerlink" href="#spi3w-polling-read-flow-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">spi3wire_readbyte</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">address</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">reg_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">   </span><span class="cm">/* Check spi busy or not */</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI3W_GetFlagStatus</span><span class="p">(</span><span class="n">SPI3W_FLAG_BUSY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="n">timeout</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mh">0x1ffff</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="w">   </span><span class="cm">/* Clear Receive data length */</span>
+<span class="w">   </span><span class="n">SPI3W_ClearRxDataLen</span><span class="p">();</span>
+
+<span class="w">   </span><span class="n">SPI3W_StartRead</span><span class="p">(</span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI3W_GetFlagStatus</span><span class="p">(</span><span class="n">SPI3W_FLAG_BUSY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="n">timeout</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">timeout</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mh">0x1ffff</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="w">   </span><span class="cm">/* Get the length of received data */</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">SPI3W_GetRxDataLen</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">   </span><span class="cm">/* Read data */</span>
+<span class="w">   </span><span class="n">SPI3W_ReadBuf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">reg_value</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">reg_value</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../spi/gdma_singleblock/doc/text_cn/README.html" class="btn btn-neutral float-left" title="GDMA Single Block" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../polling/doc/text_cn/README.html" class="btn btn-neutral float-right" title="Polling" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

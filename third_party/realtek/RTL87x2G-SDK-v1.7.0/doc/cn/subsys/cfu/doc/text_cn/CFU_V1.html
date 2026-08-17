@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CFU V1 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="GUI" href="../../../../doc/subsystems/gui/text_cn/README.html" />
+    <link rel="prev" title="CFU" href="CFU.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../doc/subsystems/text_cn/README.html">子系统</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../dfu/doc/text_cn/README.html">DFU</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../dfu/doc/text_cn/ota.html">OTA</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="CFU.html">CFU</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">CFU V1</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#cfu">CFU 文件介绍</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id1">文件打包</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id3">文件格式</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#offer-bin">Offer Bin</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#payload-bin">Payload Bin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">CFU 流程概述</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id8">过滤设备</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id9">传输过程</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#cfu-firmware-version-request-and-response">CFU Firmware Version Request and Response</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#cfu-offer-request">CFU Offer Request</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#cfu-offer-response">CFU Offer Response</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#cfu-data-request">CFU Data Request</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#cfu-data-response">CFU Data Response</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#id10">升级成功或失败</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#cfu-hid">CFU HID 描述符</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/subsystems/gui/text_cn/README.html">GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../staging/data_uart_cmd/doc/text_cn/README.html">用户命令接口</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+        <li class="breadcrumb-item"><a href="../../../dfu/doc/text_cn/README.html">DFU</a></li>
+        <li class="breadcrumb-item"><a href="CFU.html">CFU</a></li>
+    <li class="breadcrumb-item active">CFU V1</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="cfu-v1">
+<h1>CFU V1<a class="headerlink" href="#cfu-v1" title="Link to this heading"></a></h1>
+<section id="cfu">
+<h2>CFU 文件介绍<a class="headerlink" href="#cfu" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>文件打包<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p><code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">APP</span> <span class="pre">Image</span></code>，<code class="file docutils literal notranslate"><span class="pre">Boot</span> <span class="pre">Patch</span> <span class="pre">Image</span></code>，<code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">System</span> <span class="pre">Patch</span> <span class="pre">Image</span></code>，<code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">BT</span> <span class="pre">Stack</span> <span class="pre">Patch</span> <span class="pre">Image</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">BT</span> <span class="pre">Host</span> <span class="pre">Image</span></code> 这五个 image 是可以被打包升级的。可以单独打包，也可以合并打包进行升级，不过需要确保升级的 image size（不包括 <code class="file docutils literal notranslate"><span class="pre">Boot</span> <span class="pre">Patch</span> <span class="pre">Image</span></code>）不超过 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map</span></code> 配置的 OTA Temp 区的大小。</p>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">MPPackTool.exe</span></code> (选择 CFU V1) 可以选择需要升级的文件进行 CFU 打包，会生成 <code class="file docutils literal notranslate"><span class="pre">offer</span> <span class="pre">bin</span></code> (name.offer.bin) 和 <code class="file docutils literal notranslate"><span class="pre">payload</span> <span class="pre">bin</span></code> (name.payload.bin)，如下图所示。其中打包 Boot Patch Image 的时候，需要把 <code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">Boot</span> <span class="pre">Patch</span> <span class="pre">Image</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">Bank1</span> <span class="pre">Boot</span> <span class="pre">Patch</span> <span class="pre">Image</span></code> 的两个 bin 文件一起打包。</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../_images/CFU_Packaged_Files.png"><img alt="../../../../_images/CFU_Packaged_Files.png" src="../../../../_images/CFU_Packaged_Files.png" style="width: 235.2px; height: 79.1px;" /></a>
+<figcaption>
+<p><span class="caption-text">CFU 打包生成的文件</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3>文件格式<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="offer-bin">
+<span id="id4"></span><h4>Offer Bin<a class="headerlink" href="#offer-bin" title="Link to this heading"></a></h4>
+<p>Offer bin 提供了 images 升级的基本信息，比如 IC ID，固件版本号等，在传输文件内容前和 tool 进行信息交互。</p>
+<table class="docutils align-center" id="offer-bin-data-cn">
+<caption><span class="caption-text">Offer Bin Data</span><a class="headerlink" href="#offer-bin-data-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 12.5%" />
+<col style="width: 25.0%" />
+<col style="width: 62.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Byte1</p></td>
+<td><p>Segment number</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>Byte2</p></td>
+<td><p>Force ignore version (bit 7)</p></td>
+<td><p>0 - 升级的时候固件会检查版本是否允许升级（固件端实现，以实际代码为准）</p>
+<p>1 - 升级的时候固件不会检查版本，进行强制升级</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Force immediate reset (bit6)</p></td>
+<td><p>0 - 传输完成升级文件后 IC 是否重启不做要求</p>
+<p>1 - 传输完成升级文件后 IC 立即重启</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Reserved (bit5-bit2)</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-even"><td><p>Image type (bit1-bit0)</p></td>
+<td><p>0 - Bank0 APP Image</p>
+<p>1 - Bank0 BT Host Image</p>
+<p>2 - Bank0 System Patch Image</p>
+<p>3 - other image</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Byte3</p></td>
+<td><p>Component ID</p></td>
+<td><p>IC 的 ID，其中 87x2G 为 0x0f</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte4</p></td>
+<td><p>Token</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte5-Byte8</p></td>
+<td><p>FW Version</p></td>
+<td><p>低字节在前，version 是 4 段式的（x.x.x.x），但不是按 byte 分段的，需要进行特别的解析，在 tool 中正确的显示，具体可以参考 CFU Tool demo code</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte9-Byte12</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Byte13</p></td>
+<td><p>Reserved (bit7-bit6)</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank (bit5-bit4)</p></td>
+<td><p>0 - bank0 (用于 dual bank 升级)</p>
+<p>1 - bank1 (用于 dual bank 升级)</p>
+<p>2 - single bank</p>
+<p>(CFU V1 只支持单 bank 升级，因此该字段只能为 2)</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Protocol version (bit3-bit0)</p></td>
+<td><p>0x04</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte14-Byte16</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="payload-bin">
+<h4>Payload Bin<a class="headerlink" href="#payload-bin" title="Link to this heading"></a></h4>
+<p>Payload bin 是将待升级文件的 images，按照 Realtek 自定义格式重新组包生成的文件，包含了所有 images 的具体内容。</p>
+<p>其组包过程如下：</p>
+<ol class="arabic simple">
+<li><p>将待升级文件 1 的 MP image，去掉 MP Header，只留真正需要写到 flash 中的 raw data。</p></li>
+<li><p>将待升级文件 1 的 raw data 加上 CFU header，CFU header（52 bytes）结构如下：</p></li>
+</ol>
+<blockquote>
+<div><table class="docutils align-default" id="id12">
+<caption><span class="caption-text">CFU Header Data</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 71.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Size（byte）</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Image ID</p></td>
+<td><p>2</p></td>
+<td><p>0 - Bank0 APP Image</p>
+<p>1 - Bank0 BT Host Image</p>
+<p>2 - Bank0 System Patch Image</p>
+<p>3 - other image</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Image Version</p></td>
+<td><p>4</p></td>
+<td><p>低字节在前，version 是 4 段式的（x.x.x.x），但不是按 byte 分段的</p></td>
+</tr>
+<tr class="row-even"><td><p>End Address</p></td>
+<td><p>4</p></td>
+<td><p>先将该 image raw data 补 0，保证 size 是 52 的倍数后，再加上 CFU header 后的总 image size</p></td>
+</tr>
+<tr class="row-odd"><td><p>Image Length</p></td>
+<td><p>4</p></td>
+<td><p>步骤 1 得到的 image raw data 的实际 size</p></td>
+</tr>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>38</p></td>
+<td><p>0x00</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>将待升级文件 2-N 都按照步骤 1 和 2 处理并拼接。</p></li>
+<li><p>将上述得到的文件内容，每 52 byte 加上 <a class="reference internal" href="../../../../doc/glossary.html#term-MSFT"><span class="xref std std-term">MSFT</span></a> header，<a class="reference internal" href="#id5"><span class="std std-ref">Payload Bin 组包</span></a> 示意图如下所示。</p>
+<table class="docutils align-center" id="msft-header-data-cn">
+<caption><span class="caption-text">MSFT Header Data</span><a class="headerlink" href="#msft-header-data-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Size (byte)</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Address</p></td>
+<td><p>4</p></td>
+<td><p>该 MSFT header 对应的文件内容的起始地址</p></td>
+</tr>
+<tr class="row-odd"><td><p>Length</p></td>
+<td><p>1</p></td>
+<td><p>52</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../../../_images/Payload_Bin_Repackaging_Process.png"><img alt="../../../../_images/Payload_Bin_Repackaging_Process.png" src="../../../../_images/Payload_Bin_Repackaging_Process.png" style="width: 541.6px; height: 327.20000000000005px;" /></a>
+<figcaption>
+<p><span class="caption-text">Payload Bin 组包</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition- admonition">
+<p class="admonition-title">举例</p>
+<div class="line-block">
+<div class="line">文件 address 0x00 开始加上第一个 MSFT header：0x00 0x00 0x00 0x00 0x34</div>
+<div class="line">文件 address 0x34 开始加上第二个 MSFT header：0x34 0x00 0x00 0x00 0x34</div>
+</div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="id6">
+<h2>CFU 流程概述<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../../../../_images/CFU_Process_Flowchart.png"><img alt="../../../../_images/CFU_Process_Flowchart.png" src="../../../../_images/CFU_Process_Flowchart.png" style="width: 529.1999999999999px; height: 554.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">CFU 简要流程图</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id8">
+<h3>过滤设备<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>CFU tool 根据 <code class="file docutils literal notranslate"><span class="pre">CFUTOOLSettings.ini</span></code> 中配置的 <a class="reference internal" href="../../../../doc/glossary.html#term-VID"><span class="xref std std-term">VID</span></a>、 <a class="reference internal" href="../../../../doc/glossary.html#term-PID"><span class="xref std std-term">PID</span></a>、UsagePage、UsageTlc、SerialNumber 这些信息，过滤出当前符合条件的 USB 设备，如下所示。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">CFU_VIA_USB_HID</span><span class="p">]</span>
+<span class="n">Vid</span><span class="o">=</span><span class="mh">0x0bda</span>
+<span class="n">Pid</span><span class="o">=</span><span class="mh">0x4762</span>
+<span class="n">UsagePage</span><span class="o">=</span><span class="mh">0xff0b</span>
+<span class="n">UsageTlc</span><span class="o">=</span><span class="mh">0x0104</span>
+
+<span class="p">...</span>
+
+<span class="p">[</span><span class="n">DEVICE</span><span class="p">]</span>
+<span class="n">SerialNumber</span><span class="o">=</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<ul class="simple">
+<li><p>VID、PID、SerialNumber 都可以在 APP 层通过宏自行设定，其中，如果 <code class="file docutils literal notranslate"><span class="pre">CFUTOOLSettings.ini</span></code> 的 SerialNumber 一栏为空，表示不过滤这项信息。</p></li>
+<li><p>UsagePage、UsageTlc 可以在 CFU interface 的 report map 获取。</p></li>
+</ul>
+</div>
+</section>
+<section id="id9">
+<h3>传输过程<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="cfu-firmware-version-request-and-response">
+<h4>CFU Firmware Version Request and Response<a class="headerlink" href="#cfu-firmware-version-request-and-response" title="Link to this heading"></a></h4>
+<p>CFU tool 通过 get report (report id 0x2A)，获取待升级设备的固件信息，具体信息如下：</p>
+<table class="docutils align-center" id="get-report-data-cn">
+<caption><span class="caption-text">Get Report Data</span><a class="headerlink" href="#get-report-data-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 12.5%" />
+<col style="width: 25.0%" />
+<col style="width: 62.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Byte1</p></td>
+<td><p>Component count</p></td>
+<td><p>0x01</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte2-Byte3</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Byte4</p></td>
+<td><p>Reserved (bit7-bit4)</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-odd"><td><p>Protocol version (bit3-bit0)</p></td>
+<td><p>0x04</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte5-Byte8</p></td>
+<td><p>FW version</p></td>
+<td><p>低字节在前，version 是 4 段式的（x.x.x.x），但不是按 byte 分段的，需要进行特别的解析，在 tool 中正确的显示，具体可以参考 CFU Tool demo code</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Byte9</p></td>
+<td><p>Reserved (bit7-bit2)</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank (bit1-bit0)</p></td>
+<td><p>0x02（表示单 bank）</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte10</p></td>
+<td><p>Component ID</p></td>
+<td><p>IC 的 ID，其中 87x2G 为 0x0f</p>
+<p>CFU tool 目前不做判断</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Byte11-Byte12</p></td>
+<td><p>Platform ID</p></td>
+<td><p>CFU tool 目前不做判断</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte13-Byte60</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cfu-offer-request">
+<h4>CFU Offer Request<a class="headerlink" href="#cfu-offer-request" title="Link to this heading"></a></h4>
+<p>CFU tool 通过 Set report (report id 0x2D)，将 offer bin 的全部内容发送给待升级设备。Offer bin 内容参考 <a class="reference internal" href="#offer-bin"><span class="std std-ref">Offer Bin</span></a>。</p>
+<p>打包工具生成的 offer bin 中 Force ignore version 固定为 0，如果本次升级需要进行强制升级，CFU offer request 中该字段需要改写为 1 后进行传输。</p>
+</section>
+<section id="cfu-offer-response">
+<h4>CFU Offer Response<a class="headerlink" href="#cfu-offer-response" title="Link to this heading"></a></h4>
+<p>待升级设备收到 CFU Offer Request 以后，需要对收到的 offer request 内容进行判断，并通过 USB IN transfer 将带判断结果的 response 发送给 CFU tool (report id 0x2D)。其中 Component ID 必须进行判断；当 Force ignore version 为 0 时，可以对 FW version 进行判断；Protocol version 和 Bank 可以根据需要选择是否要进行判断（默认没有判断）。</p>
+<table class="docutils align-center" id="cfu-offers-response-data-cn">
+<caption><span class="caption-text">CFU Offers Response Data</span><a class="headerlink" href="#cfu-offers-response-data-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Byte1-Byte3</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte4</p></td>
+<td><p>Token</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte5-Byte8</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte9</p></td>
+<td><p><a class="reference internal" href="#reject-reason-cn"><span class="std std-ref">Reject Reason</span></a></p></td>
+<td><p>当 offer status 为 FIRMWARE_UPDATE_OFFER_REJECT (0x02) 时有效</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte10-Byte12</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte13</p></td>
+<td><p><a class="reference internal" href="#offer-status-cn"><span class="std std-ref">Offer Status</span></a></p></td>
+<td><p>FIRMWARE_UPDATE_OFFER_ACCEPT (0x01)：表示可以进行固件升级</p>
+<p>其他值：表示发生 error，CFU tool 会停止升级</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Byte14-Byte16</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="offer-status-cn">
+<caption><span class="caption-text">Offer Status</span><a class="headerlink" href="#offer-status-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 71.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offer Status Code</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Cause</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x00</p></td>
+<td><p>FIRMWARE_UPDATE_OFFER_SKIP</p></td>
+<td><p>这次的 offer request 需要被跳过，提示 CFU 驱动或上位机在下一个周期再次发送 offer</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x01</p></td>
+<td><p>FIRMWARE_UPDATE_OFFER_ACCEPT</p></td>
+<td><p>固件判断 offer request 里的信息是否合适，如果合适，则返回该值</p></td>
+</tr>
+<tr class="row-even"><td><p>0x02</p></td>
+<td><p>FIRMWARE_UPDATE_OFFER_REJECT</p></td>
+<td><p>固件判断 offer request 里的信息是否合适，如果不合适，则返回该值</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x03</p></td>
+<td><p>FIRMWARE_UPDATE_OFFER_BUSY</p></td>
+<td><p>这次的 offer request 需要被跳过，CFU 驱动或上位机不再继续处理 offer，随后会放弃升级、等待并重试相同的 offer、再发出 OFFER_NOTIFY_ON_READY 或 OFFER_INFO_START_ENTIRE_TRANSACTION，进而重新开始整个 offer 流程</p></td>
+</tr>
+<tr class="row-even"><td><p>0x04</p></td>
+<td><p>FIRMWARE_UPDATE_OFFER_COMMAND_READY</p></td>
+<td><p>固件在收到 OFFER_NOTIFY_ON_READY 请求，并且准备好接收 offer 时发出</p></td>
+</tr>
+<tr class="row-odd"><td><p>0xff</p></td>
+<td><p>FIRMWARE_UPDATE_CMD_NOT_SUPPORTED</p></td>
+<td><p>解析 offer 时出现一般性错误</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="reject-reason-cn">
+<caption><span class="caption-text">Reject Reason</span><a class="headerlink" href="#reject-reason-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 71.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Reject Reason Code</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Cause</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x00</p></td>
+<td><p>FIRMWARE_OFFER_REJECT_OLD_FW</p></td>
+<td><p>表明 offer 中的主、次版本号不比当前 image 的版本号新</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x01</p></td>
+<td><p>FIRMWARE_OFFER_REJECT_INV_COMPONENT</p></td>
+<td><p>表明组件 ID (即 IC 的 ID) 和 offer 里的信息不匹配</p></td>
+</tr>
+<tr class="row-even"><td><p>0x02</p></td>
+<td><p>FIRMWARE_UPDATE_OFFER_SWAP_PENDING</p></td>
+<td><p>表明之前的更新已下载但尚未应用</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x03</p></td>
+<td><p>FIRMWARE_OFFER_REJECT_MISMATCH</p></td>
+<td><p>表明打包方式和所需的签名信息不匹配</p></td>
+</tr>
+<tr class="row-even"><td><p>0x04</p></td>
+<td><p>FIRMWARE_OFFER_REJECT_BANK</p></td>
+<td><p>表明设备的 bank 正在被使用，无法更新</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x05</p></td>
+<td><p>FIRMWARE_OFFER_REJECT_PLATFORM</p></td>
+<td><p>表明平台 ID 和 offer 里的信息不匹配</p></td>
+</tr>
+<tr class="row-even"><td><p>0x06</p></td>
+<td><p>FIRMWARE_OFFER_REJECT_MILESTONE</p></td>
+<td><p>表明 Milestone 和 offer 里的信息不匹配</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x07</p></td>
+<td><p>FIRMWARE_OFFER_REJECT_INV_PCOL_REV</p></td>
+<td><p>表明接收到的文件不支持 CFU 或 SFUA 协议修改版</p></td>
+</tr>
+<tr class="row-even"><td><p>0x08</p></td>
+<td><p>FIRMWARE_OFFER_REJECT_VARIANT</p></td>
+<td><p>表明用于此设备的 Variant bit 的掩码为 0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cfu-data-request">
+<h4>CFU Data Request<a class="headerlink" href="#cfu-data-request" title="Link to this heading"></a></h4>
+<p>CFU tool 通过 Set report (report id 0x2A)，将 payload bin 中的升级文件内容（除了 MSFT Header 外的全部内容）发送给待升级设备。待升级设备收到数据并检查通过后，将数据存储到 OTA Temp 区。</p>
+<table class="docutils align-center" id="cfu-data-request-cn">
+<caption><span class="caption-text">CFU Data Request</span><a class="headerlink" href="#cfu-data-request-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 71.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Byte1</p></td>
+<td><p>Flags</p></td>
+<td><p>0x80 - 整个 CFU 传输的第一笔数据</p>
+<p>0x40 - 整个 CFU 传输的最后一笔数据</p>
+<p>0x00/0x08 - 中间的数据</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Byte2</p></td>
+<td><p>Length</p></td>
+<td><p>52</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte3-Byte4</p></td>
+<td><p>Sequence Number</p></td>
+<td><p>从 0 开始每笔加 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte5-Byte8</p></td>
+<td><p>Target Address</p></td>
+<td><p>该笔数据对应的 <a class="reference internal" href="#msft-header-data-cn"><span class="std std-ref">MSFT Header Data</span></a> 的 address</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte9-Byte60</p></td>
+<td><p>CFU data</p></td>
+<td><p>payload bin data（去掉 MSFT Header）</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cfu-data-response">
+<h4>CFU Data Response<a class="headerlink" href="#cfu-data-response" title="Link to this heading"></a></h4>
+<p>待升级设备收到 CFU Data Request 以后，通过 USB IN transfer 将 response 发送给 CFU tool (report id 0x2C)。</p>
+<table class="docutils align-center" id="cfu-data-response-cn">
+<caption><span class="caption-text">CFU Data Response</span><a class="headerlink" href="#cfu-data-response-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 71.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Byte1-Byte2</p></td>
+<td><p>Sequence Number</p></td>
+<td><p>与对应的 CFU Data Request 中的 Sequence Number 值相同</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte3-Byte4</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte5</p></td>
+<td><p><a class="reference internal" href="#status-code-cn"><span class="std std-ref">Status Code</span></a></p></td>
+<td><p>FIRMWARE_UPDATE_SUCCESS（0x00）：表示该笔数据被正确接收、处理和写入 flash</p>
+<p>其他值：表示发生 error，CFU tool 会停止升级</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Byte6-Byte16</p></td>
+<td><p>Reserved</p></td>
+<td><p>0x00</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="status-code-cn">
+<caption><span class="caption-text">Status Code</span><a class="headerlink" href="#status-code-cn" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 71.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Status Code</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x00</p></td>
+<td><p>FIRMWARE_UPDATE_SUCCESS</p></td>
+<td><p>表明没有错误，已调用的函数被成功执行</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x01</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_PREPARE</p></td>
+<td><p>表明无法执行以下操作</p>
+<ol class="arabic simple">
+<li><p>擦除 flash 高位块</p></li>
+<li><p>使之无效或准备更新</p></li>
+</ol>
+<p>将配置数据复制到高位块</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>0x02</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_WRITE</p></td>
+<td><p>表明无法写入</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x03</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_COMPLETE</p></td>
+<td><p>表明在响应 FIRMWARE_UPDATE_FLAG_LAST_BLOCK 时无法调用新的 image</p></td>
+</tr>
+<tr class="row-even"><td><p>0x04</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_VERIFY</p></td>
+<td><p>表明在响应 FIRMWARE_UPDATE_FLAG_VERIFY 时，CFU 数据验证失败</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x05</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_CRC</p></td>
+<td><p>表明在响应 FIRMWARE_UPDATE_FLAG_LAST_BLOCK 时，image 的 CRC 校验失败</p></td>
+</tr>
+<tr class="row-even"><td><p>0x06</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_SIGNATURE</p></td>
+<td><p>表明在响应 FIRMWARE_UPDATE_FLAG_LAST_BLOCK 时，签名验证失败</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x07</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_VERSION</p></td>
+<td><p>表明在响应 FIRMWARE_UPDATE_FLAG_LAST_BLOCK 时，版本验证失败</p></td>
+</tr>
+<tr class="row-even"><td><p>0x08</p></td>
+<td><p>FIRMWARE_UPDATE_SWAP_PENDING</p></td>
+<td><p>表明 CFU 文件已更新并正在等待被调用。在调用完成前，不接受进一步的 CFU offer 和数据</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x09</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_INVALID_ADDR</p></td>
+<td><p>表明目标地址无效</p></td>
+</tr>
+<tr class="row-even"><td><p>0x0a</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_NO_OFFER</p></td>
+<td><p>表明在没有接收到 CFU offer 的情况下，先收到了 CFU 数据报告</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x0b</p></td>
+<td><p>FIRMWARE_UPDATE_ERROR_INVALID</p></td>
+<td><p>一般错误：输入无效，比如数据长度无效或者实现时出现特定问题</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id10">
+<h3>升级成功或失败<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>在传输过程中，CFU tool 可能会收到以下 error response 的情况：</p>
+<ol class="arabic simple">
+<li><p>当 CFU tool 收到 offer response 中的 Offer status 不是 FIRMWARE_UPDATE_OFFER_ACCEPT (0x01)。</p></li>
+<li><p>当 CFU tool 收到 data response 中的 Status Code 不是 FIRMWARE_UPDATE_SUCCESS (0x00)。</p></li>
+</ol>
+<p>当 CFU tool 收到 error response 后，默认处理是认为本次升级失败，立即停止升级。</p>
+<p>当 CFU tool 传输完最后一笔 data request（Flags 为 0x40）后，待升级设备对升级文件进行完整性校验通过后，回复 success response 给 CFU tool，认为本次升级成功。之后，升级设备会自行重启，并搬运 OTA Temp 中存储的升级文件到 flash 运行区域。待升级设备重启后，CFU tool 可以通过 CFU Firmware Version Request 获取版本号以确认是否真的升级成功，如下图所示。</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../../../../_images/CFU_Success_Flowchart.png"><img alt="../../../../_images/CFU_Success_Flowchart.png" src="../../../../_images/CFU_Success_Flowchart.png" style="width: 812.8000000000001px; height: 788.8000000000001px;" /></a>
+<figcaption>
+<p><span class="caption-text">CFU 成功流程图</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>针对 error response 的处理，V2.1.1.0 以及之前版本的 CFU tool 默认做法与最新版本有所区别，只有在收到 FIRMWARE_UPDATE_ERROR_WRITE 时会立即停止升级，其他 error 会进行 retry，依旧收到 error response，才会认为本次升级失败。如果用户想修改 tool 的这部分行为，可以参考 CFU Tool demo code。</p>
+</div>
+</section>
+</section>
+<section id="cfu-hid">
+<h2>CFU HID 描述符<a class="headerlink" href="#cfu-hid" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define REPORT_ID_CFU_FEATURE           0x2A</span>
+<span class="cp">#define REPORT_ID_CFU_FEATURE_EX        0x2B</span>
+<span class="cp">#define REPORT_ID_CFU_OFFER_INPUT       0x2D</span>
+<span class="cp">#define REPORT_ID_CFU_OFFER_OUTPUT      REPORT_ID_CFU_OFFER_INPUT</span>
+<span class="cp">#define REPORT_ID_CFU_PAYLOAD_INPUT     0x2C</span>
+<span class="cp">#define REPORT_ID_CFU_PAYLOAD_OUTPUT    REPORT_ID_CFU_FEATURE</span>
+
+<span class="cp">#define USAGE_ID_CFU_PAYLOAD_OUTPUT     0x61</span>
+<span class="cp">#define USAGE_ID_CFU_FEATURE            0x62</span>
+<span class="cp">#define USAGE_ID_CFU_FEATURE_EX         0x65</span>
+<span class="cp">#define USAGE_ID_CFU_PAYLOAD_INPUT_MIN  0x66</span>
+<span class="cp">#define USAGE_ID_CFU_PAYLOAD_INPUT_MAX  0x69</span>
+<span class="cp">#define USAGE_ID_CFU_OFFER_INPUT_MIN    0x8A</span>
+<span class="cp">#define USAGE_ID_CFU_OFFER_INPUT_MAX    0x8D</span>
+<span class="cp">#define USAGE_ID_CFU_OFFER_OUTPUT_MIN   0x8E</span>
+<span class="cp">#define USAGE_ID_CFU_OFFER_OUTPUT_MAX   0x91</span>
+
+<span class="mh">0x06</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0B</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w">   </span><span class="c1">// Usage Page (Vendor Defined 0xFF0B)</span>
+<span class="mh">0x0A</span><span class="p">,</span><span class="w"> </span><span class="mh">0x04</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">   </span><span class="c1">// Usage (0x0104)</span>
+<span class="mh">0xA1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">         </span><span class="c1">// Collection (Application)</span>
+<span class="c1">// 8-bit data</span>
+<span class="mh">0x15</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Logical Minimum (0)</span>
+<span class="mh">0x26</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Logical Maximum (255)</span>
+<span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x08</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Report Size (8)</span>
+<span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3c</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Report Count (60)</span>
+<span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">REPORT_ID_CFU_FEATURE</span><span class="p">,</span><span class="w">        </span><span class="c1">// Report ID (0x2A)</span>
+<span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="mh">0x60</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Usage (0x60)</span>
+<span class="mh">0x82</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Buffered Bytes)</span>
+<span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_PAYLOAD_OUTPUT</span><span class="p">,</span><span class="w">  </span><span class="c1">// Usage (0x61)</span>
+<span class="mh">0x92</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Output (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile,Buffered Bytes)</span>
+<span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_FEATURE</span><span class="p">,</span><span class="w">         </span><span class="c1">// Usage (0x62)</span>
+<span class="mh">0xB2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Feature (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile,Buffered Bytes)</span>
+<span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">REPORT_ID_CFU_FEATURE_EX</span><span class="p">,</span><span class="w">     </span><span class="c1">// Report ID (0x2B)</span>
+<span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_FEATURE_EX</span><span class="p">,</span><span class="w">      </span><span class="c1">// Usage (0x65)</span>
+<span class="mh">0xB2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Feature (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile,Buffered Bytes)</span>
+<span class="c1">// 32-bit data</span>
+<span class="mh">0x17</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x80</span><span class="p">,</span><span class="w">       </span><span class="c1">// Logical Minimum (-2147483649)</span>
+<span class="mh">0x27</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0x7F</span><span class="p">,</span><span class="w">       </span><span class="c1">// Logical Maximum (2147483646)</span>
+<span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x20</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Report Size (32)</span>
+<span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x04</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Report Count (4)</span>
+<span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">REPORT_ID_CFU_PAYLOAD_INPUT</span><span class="p">,</span><span class="w">  </span><span class="c1">// Report ID (0x2C)</span>
+<span class="mh">0x19</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_PAYLOAD_INPUT_MIN</span><span class="p">,</span><span class="c1">// Usage Minimum (0x66)</span>
+<span class="mh">0x29</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_PAYLOAD_INPUT_MAX</span><span class="p">,</span><span class="c1">// Usage Maximum (0x69)</span>
+<span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)</span>
+<span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">REPORT_ID_CFU_OFFER_INPUT</span><span class="p">,</span><span class="w">    </span><span class="c1">// Report ID (0x2D)</span>
+<span class="mh">0x19</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_OFFER_INPUT_MIN</span><span class="p">,</span><span class="w"> </span><span class="c1">// Usage Minimum (0x8A)</span>
+<span class="mh">0x29</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_OFFER_INPUT_MAX</span><span class="p">,</span><span class="w"> </span><span class="c1">// Usage Maximum (0x8D)</span>
+<span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)</span>
+<span class="mh">0x19</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_OFFER_OUTPUT_MIN</span><span class="p">,</span><span class="c1">// Usage Minimum (0x8E)</span>
+<span class="mh">0x29</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_OFFER_OUTPUT_MAX</span><span class="p">,</span><span class="c1">// Usage Maximum (0x91)</span>
+<span class="mh">0x91</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Output (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile)</span>
+<span class="mh">0xC0</span><span class="p">,</span><span class="w">                               </span><span class="c1">// End Collection</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="CFU.html" class="btn btn-neutral float-left" title="CFU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../../doc/subsystems/gui/text_cn/README.html" class="btn btn-neutral float-right" title="GUI" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

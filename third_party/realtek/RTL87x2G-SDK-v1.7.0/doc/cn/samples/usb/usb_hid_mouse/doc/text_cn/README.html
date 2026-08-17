@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>USB HID Mouse &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="SD" href="../../../../sd/doc/text_cn/README.html" />
+    <link rel="prev" title="USB" href="../../../doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_cn/README.html">蓝牙</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/doc/text_cn/README.html">外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_cn/README.html">USB</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">USB HID Mouse</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">环境需求</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">配置选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">编译和下载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">测试验证</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">代码介绍</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#usb-hid-mouse-source-path-cn">源码路径</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#usb-hid-mouse-initialization-cn">初始化</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#usb-hid-mouse-function-cn">功能实现</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#usb-hid-mouse-faq-cn">常见问题</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#usb">USB 状态说明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#usb-device">USB Device 描述符</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#usb-configuration">USB Configuration 描述符</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_cn/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">USB</a></li>
+    <li class="breadcrumb-item active">USB HID Mouse</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="usb-hid-mouse">
+<h1>USB HID Mouse<a class="headerlink" href="#usb-hid-mouse" title="Link to this heading"></a></h1>
+<p>该示例通过 <a class="reference internal" href="../../../../../doc/glossary.html#term-USB"><span class="xref std std-term">USB</span></a> 控制上报给 <a class="reference internal" href="../../../../../doc/glossary.html#term-PC"><span class="xref std std-term">PC</span></a> 的数据，实现改变 PC 显示器中光标的移动方向和位置。</p>
+<section id="id1">
+<h2>环境需求<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>该示例支持以下开发套件：</p>
+<table class="docutils align-center" id="id10">
+<caption><span class="caption-text">开发套件</span><a class="headerlink" href="#id10" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G HDK</p></td>
+<td><p>RTL87x2G EVB</p></td>
+</tr>
+</tbody>
+</table>
+<p>更多信息请参考：<a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a></p>
+</section>
+<section id="id2">
+<h2>配置选项<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>该示例可配置的宏如下：</p>
+<ol class="arabic">
+<li><p>可配置如下宏选择 USB 在 SUSPEND 后是否进入 <a class="reference internal" href="../../../../../doc/glossary.html#term-DLPS"><span class="xref std std-term">DLPS</span></a> ， <code class="docutils literal notranslate"><span class="pre">1</span></code> 表示允许进入 DLPS ， <code class="docutils literal notranslate"><span class="pre">0</span></code> 表示不允许进入 DLPS 。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DLPS_EN                     0                   </span><span class="cm">/*&lt; Set this macro to configure whether support DLPS. */</span>
+</pre></div>
+</div>
+</li>
+<li><p>可配置如下宏选择是否配置远程唤醒测试流程， <code class="docutils literal notranslate"><span class="pre">1</span></code> 表示配置远程唤醒， <code class="docutils literal notranslate"><span class="pre">0</span></code> 表示不配置远程唤醒。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define REMOTE_WAKEUP_EN             0                   </span><span class="cm">/*&lt; Set this macro to configure whether support remote wakeup function. */</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">REMOTE_WAKEUP_EN</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">1</span></code> ，连接 P0_6 和 VCC ，按下复位按键重新初始化 IC ，等 PC 进入睡眠状态后连接 P0_6 和 VDD ，可以观察到 PC 的屏幕被点亮，即远程唤醒成功。</p>
+</div>
+</section>
+<section id="id3">
+<h2>编译和下载<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p id="usb-hid-mouse-sample-proj-file-cn">该示例的工程路径如下:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\usb\usb_hid_mouse\proj\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\usb\usb_hid_mouse\proj\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>请按照以下步骤操作构建并运行该示例:</p>
+<ol class="arabic simple">
+<li><p>打开工程文件。</p></li>
+<li><p>按照 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#app-image"><span class="std std-ref">编译 APP Image</span></a> 给出的步骤构建目标文件。</p></li>
+<li><p>编译成功后，在路径 <code class="file docutils literal notranslate"><span class="pre">mdk\bin</span></code> 或 <code class="file docutils literal notranslate"><span class="pre">gcc\bin</span></code> 下会生成 app bin <code class="file docutils literal notranslate"><span class="pre">app_MP_xxx.bin</span></code> 文件。</p></li>
+<li><p>按照 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#mptool"><span class="std std-ref">MP Tool</span></a> 给出的步骤将 app bin 烧录到 EVB 内。</p></li>
+<li><p>按下复位按键，开始运行。</p></li>
+</ol>
+</section>
+<section id="id4">
+<h2>测试验证<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>以下是中文翻译：</p>
+<p>当 RTL87x2G 开发板的 USB 数据线插入 PC 时，在设备管理器的鼠标部分会识别出一个额外的 HID 鼠标设备。
+通过查看设备的 <a class="reference internal" href="../../../../../doc/glossary.html#term-PID"><span class="xref std std-term">PID</span></a> 和 <a class="reference internal" href="../../../../../doc/glossary.html#term-VID"><span class="xref std std-term">VID</span></a> 设置，即可判断识别设备枚举过程都成功。
+如果将上报数据的 x 轴数据设置为 1 ，并多次调用上报函数，即可观测到鼠标一直在屏幕上右移。</p>
+</section>
+<section id="id5">
+<h2>代码介绍<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>该章节分为以下几个部分：</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#usb-hid-mouse-source-path-cn"><span class="std std-ref">源码路径</span></a> 。</p></li>
+<li><p>初始化函数将在 <a class="reference internal" href="#usb-hid-mouse-initialization-cn"><span class="std std-ref">初始化</span></a> 章节介绍。</p></li>
+<li><p>初始化后的功能实现将在 <a class="reference internal" href="#usb-hid-mouse-function-cn"><span class="std std-ref">功能实现</span></a> 章节介绍。</p></li>
+</ol>
+<section id="usb-hid-mouse-source-path-cn">
+<span id="id6"></span><h3>源码路径<a class="headerlink" href="#usb-hid-mouse-source-path-cn" title="Link to this heading"></a></h3>
+<p>工程文件和源码路径如下：</p>
+<ul class="simple">
+<li><p>工程路径: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\usb\usb_hid_mouse\proj</span></code></p></li>
+<li><p>源码路径: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\usb\usb_hid_mouse\src</span></code></p></li>
+</ul>
+<p>该工程的工程文件代码架构如下：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: input_polling
+    └── secure_only_app
+        └── Device                   includes startup code
+            ├── startup_rtl.c
+            └── system_rtl.c
+        ├── CMSIS                    includes CMSIS header files
+        ├── CMSE Library             Non-secure callable lib
+        └── Lib                      includes all binary symbol files that user application is built on
+            ├── usb.lib
+            └── usb_hal.lib
+        ├── Peripheral               includes all peripheral drivers and module code used by the application
+        └── APP                      includes the ble_peripheral user application implementation
+            ├── main_ns.c
+            ├── app_task.c
+            ├── app_usb.c
+            ├── usb_dev.c
+            └── usb_hid.c
+</pre></div>
+</div>
+</section>
+<section id="usb-hid-mouse-initialization-cn">
+<span id="id7"></span><h3>初始化<a class="headerlink" href="#usb-hid-mouse-initialization-cn" title="Link to this heading"></a></h3>
+<p>调用 <code class="docutils literal notranslate"><span class="pre">app_usb_init()</span></code> 对 USB 模块进行初始化，包括：注册回调函数，初始化 USB 设备和配置描述符，初始化 USB 接口和端点，初始化 HID 。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">usb_dm_cb_register</span><span class="p">(</span><span class="n">app_usb_dm_cb</span><span class="p">);</span>
+<span class="n">usb_spd_cb_register</span><span class="p">(</span><span class="n">app_usb_spd_cb</span><span class="p">);</span>
+
+<span class="n">T_USB_CORE_CONFIG</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">USB_HIGH_SPEED</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">class_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">hid_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">uac_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">}};</span>
+<span class="n">usb_dm_core_init</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+
+<span class="n">usb_dev_init</span><span class="p">();</span>
+<span class="n">usb_hid_init</span><span class="p">();</span>
+<span class="n">app_usb_start</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">app_usb_init()</span></code> 中包含了如下流程：</p>
+<ol class="arabic">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___dev___manager___exported___functions.html#_CPPv418usb_dm_cb_register9USB_DM_CB" title="usb_dm_cb_register"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">usb_dm_cb_register()</span></code></a> ：注册 USB 动态管理回调函数,可以在 <code class="docutils literal notranslate"><span class="pre">app_usb_dm_cb</span></code> 中查看当前 USB 状态。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">USB_PDN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">USB_ATTACHED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">USB_POWERED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">USB_DEFAULT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">USB_ADDRESSED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="n">USB_CONFIGURED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="n">USB_SUSPENDED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="p">}</span><span class="w"> </span><span class="n">T_USB_POWER_STATE</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>对于 USB 状态的说明，详见 <a class="reference internal" href="#usb-hid-mouse-faq-cn"><span class="std std-ref">常见问题</span></a>。</p>
+</div>
+</li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___d_e_v___driver___exported___functions.html#_CPPv419usb_spd_cb_register10USB_SPD_CB" title="usb_spd_cb_register"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">usb_spd_cb_register()</span></code></a>：注册 USB 速度获取回调函数,可以获取到当前枚举到的 USB 速度是全速还是高速。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___dev___manager___exported___functions.html#_CPPv416usb_dm_core_init17T_USB_CORE_CONFIG" title="usb_dm_core_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">usb_dm_core_init()</span></code></a>：设置 USB 速度以及需要开启的USB功能, 如本示例中想设置速度为高速，开启 USB HID 功能，可以设置 speed 为 <strong>USB_HIGH_SPEED</strong> ，hid_enable为 <strong>1</strong> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usb_dev_init</span></code>：初始化 USB device 相关的描述符。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">T_USB_DEVICE_DESC</span><span class="w"> </span><span class="n">usb_dev_desc</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// The following items are defined in device descriptor.</span>
+<span class="w">    </span><span class="p">.</span><span class="n">idVendor</span><span class="o">=</span><span class="w"> </span><span class="mh">0x0bda</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">idProduct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x8762</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bcdDevice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0200</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">iManufacturer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">STRING_ID_MANUFACTURER</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">iProduct</span><span class="o">=</span><span class="w"> </span><span class="n">STRING_ID_PRODUCT</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">iSerialNumber</span><span class="o">=</span><span class="w"> </span><span class="n">STRING_ID_SERIALNUM</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="k">static</span><span class="w"> </span><span class="n">T_USB_CONFIG_DESC</span><span class="w"> </span><span class="n">usb_cfg_desc</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// The following items are defined in config descriptor.</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bNumInterfaces</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bmAttributes</span><span class="o">=</span><span class="w"> </span><span class="mh">0xA</span><span class="p">,</span><span class="w"> </span><span class="c1">// remote wake up</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bcdDevice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0200</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bMaxPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x32</span><span class="p">,</span><span class="w">  </span><span class="c1">// The unit is 2mA</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>对于 USB 描述符的配置，详见 <a class="reference internal" href="#usb-hid-mouse-faq-cn"><span class="std std-ref">常见问题</span></a>。</p>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usb_hid_init</span></code> ：初始化 USB hid class 相关的描述符以及回调函数。</p>
+<ol class="arabic">
+<li><p>配置 USB HID 接口、端点相关的描述符以及报告描述。</p>
+<ol class="arabic">
+<li><p>USB 接口描述符设置如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">T_USB_INTERFACE_DESC</span><span class="w"> </span><span class="n">hid_std_if_desc</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bLength</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_USB_INTERFACE_DESC</span><span class="p">),</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bDescriptorType</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">USB_DESC_TYPE_INTERFACE</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bInterfaceNumber</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bAlternateSetting</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bNumEndpoints</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bInterfaceClass</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">USB_CLASS_CODE_HID</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bInterfaceSubClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="c1">// Is boot interface supported</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bInterfaceProtocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">iInterface</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>USB 端点描述符设置如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">T_USB_ENDPOINT_DESC</span><span class="w"> </span><span class="n">int_in_ep_desc_fs</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bLength</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_USB_ENDPOINT_DESC</span><span class="p">),</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bDescriptorType</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">USB_DESC_TYPE_ENDPOINT</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bEndpointAddress</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">USB_DIR_IN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bmAttributes</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">USB_EP_TYPE_INT</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">wMaxPacketSize</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mh">0x40</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bInterval</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">T_USB_ENDPOINT_DESC</span><span class="w"> </span><span class="n">int_in_ep_desc_hs</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bLength</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_USB_ENDPOINT_DESC</span><span class="p">),</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bDescriptorType</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">USB_DESC_TYPE_ENDPOINT</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bEndpointAddress</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">USB_DIR_IN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bmAttributes</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">USB_EP_TYPE_INT</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">wMaxPacketSize</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mh">0x40</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bInterval</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>USB HID 描述符如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">T_HID_CS_IF_DESC</span><span class="w">  </span><span class="n">hid_cs_if_desc</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bLength</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_HID_CS_IF_DESC</span><span class="p">),</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bDescriptorType</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">DESC_TYPE_HID</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bcdHID</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0110</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bCountryCode</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">bNumDescriptors</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">desc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w">            </span><span class="o">=</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="p">.</span><span class="n">bDescriptorType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DESC_TYPE_REPORT</span><span class="p">,</span>
+<span class="w">        </span><span class="p">.</span><span class="n">wDescriptorLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">report_descs</span><span class="p">),</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>USB HID 报告描述符如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">report_descs</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="mh">0x06</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0B</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w">   </span><span class="c1">// Usage Page (Vendor Defined 0xFF0B)</span>
+<span class="w">    </span><span class="mh">0x0A</span><span class="p">,</span><span class="w"> </span><span class="mh">0x04</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">   </span><span class="c1">// Usage (0x0104)</span>
+<span class="w">    </span><span class="mh">0xA1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">         </span><span class="c1">// Collection (Application)</span>
+<span class="w">    </span><span class="c1">// 8-bit data</span>
+<span class="w">    </span><span class="mh">0x15</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Logical Minimum (0)</span>
+<span class="w">    </span><span class="mh">0x26</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Logical Maximum (255)</span>
+<span class="w">    </span><span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x08</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Report Size (8)</span>
+<span class="w">    </span><span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3c</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Report Count (60)</span>
+<span class="w">    </span><span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">REPORT_ID_CFU_FEATURE</span><span class="p">,</span><span class="w">        </span><span class="c1">// Report ID (0x2A)</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="mh">0x60</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Usage (0x60)</span>
+<span class="w">    </span><span class="mh">0x82</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Buffered Bytes)</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_PAYLOAD_OUTPUT</span><span class="p">,</span><span class="w">  </span><span class="c1">// Usage (0x61)</span>
+<span class="w">    </span><span class="mh">0x92</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Output (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile,Buffered Bytes)</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_FEATURE</span><span class="p">,</span><span class="w">         </span><span class="c1">// Usage (0x62)</span>
+<span class="w">    </span><span class="mh">0xB2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Feature (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile,Buffered Bytes)</span>
+<span class="w">    </span><span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">REPORT_ID_CFU_FEATURE_EX</span><span class="p">,</span><span class="w">     </span><span class="c1">// Report ID (0x2B)</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_FEATURE_EX</span><span class="p">,</span><span class="w">      </span><span class="c1">// Usage (0x65)</span>
+<span class="w">    </span><span class="mh">0xB2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">                   </span><span class="c1">// Feature (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile,Buffered Bytes)</span>
+<span class="w">    </span><span class="c1">// 32-bit data</span>
+<span class="w">    </span><span class="mh">0x17</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x80</span><span class="p">,</span><span class="w">       </span><span class="c1">// Logical Minimum (-2147483649)</span>
+<span class="w">    </span><span class="mh">0x27</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0x7F</span><span class="p">,</span><span class="w">       </span><span class="c1">// Logical Maximum (2147483646)</span>
+<span class="w">    </span><span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x20</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Report Size (32)</span>
+<span class="w">    </span><span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x04</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Report Count (4)</span>
+<span class="w">    </span><span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">REPORT_ID_CFU_PAYLOAD_INPUT</span><span class="p">,</span><span class="w">  </span><span class="c1">// Report ID (0x2C)</span>
+<span class="w">    </span><span class="mh">0x19</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_PAYLOAD_INPUT_MIN</span><span class="p">,</span><span class="c1">// Usage Minimum (0x66)</span>
+<span class="w">    </span><span class="mh">0x29</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_PAYLOAD_INPUT_MAX</span><span class="p">,</span><span class="c1">// Usage Maximum (0x69)</span>
+<span class="w">    </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)</span>
+<span class="w">    </span><span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">REPORT_ID_CFU_OFFER_INPUT</span><span class="p">,</span><span class="w">    </span><span class="c1">// Report ID (0x2D)</span>
+<span class="w">    </span><span class="mh">0x19</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_OFFER_INPUT_MIN</span><span class="p">,</span><span class="w"> </span><span class="c1">// Usage Minimum (0x8A)</span>
+<span class="w">    </span><span class="mh">0x29</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_OFFER_INPUT_MAX</span><span class="p">,</span><span class="w"> </span><span class="c1">// Usage Maximum (0x8D)</span>
+<span class="w">    </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)</span>
+<span class="w">    </span><span class="mh">0x19</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_OFFER_OUTPUT_MIN</span><span class="p">,</span><span class="c1">// Usage Minimum (0x8E)</span>
+<span class="w">    </span><span class="mh">0x29</span><span class="p">,</span><span class="w"> </span><span class="n">USAGE_ID_CFU_OFFER_OUTPUT_MAX</span><span class="p">,</span><span class="c1">// Usage Maximum (0x91)</span>
+<span class="w">    </span><span class="mh">0x91</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Output (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile)</span>
+<span class="w">    </span><span class="mh">0xC0</span><span class="p">,</span><span class="w">                               </span><span class="c1">// End Collection</span>
+
+<span class="w">    </span><span class="mh">0x05</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE_PAGE       (Generic Desktop) main item*/</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE            (Mouse) */</span>
+<span class="w">    </span><span class="mh">0xa1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* COLLECTION       (Application) */</span>
+<span class="w">    </span><span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">MOUSE_REPORT_ID</span><span class="p">,</span><span class="w"> </span><span class="cm">/* REPORT_ID        (2) */</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE            (Pointer) */</span>
+<span class="w">    </span><span class="mh">0xa1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">     </span><span class="cm">/* COLLECTION       (Physical) */</span>
+<span class="w">    </span><span class="mh">0x05</span><span class="p">,</span><span class="w"> </span><span class="mh">0x09</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE_PAGE       (Button) */</span>
+<span class="w">    </span><span class="mh">0x19</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE_MINIMUM    (Button 1) */</span>
+<span class="w">    </span><span class="mh">0x29</span><span class="p">,</span><span class="w"> </span><span class="mh">0x05</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE_MAXIMUM    (Button 5) */</span>
+<span class="w">    </span><span class="mh">0x15</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">     </span><span class="cm">/* LOGICAL_MINIMUM  (0) */</span>
+<span class="w">    </span><span class="mh">0x25</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* LOGICAL_MAXIMUM  (1) */</span>
+<span class="w">    </span><span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x05</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_COUNT     (5) */</span>
+<span class="w">    </span><span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_SIZE      (1) */</span>
+<span class="w">    </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">     </span><span class="cm">/* INPUT            (Data,Var,Abs) */</span>
+<span class="w">    </span><span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_COUNT     (1) */</span>
+<span class="w">    </span><span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x03</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_SIZE      (3) */</span>
+<span class="w">    </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* INPUT            (Cnst,Var,Abs) */</span>
+<span class="w">    </span><span class="mh">0x05</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE_PAGE       (Generic Desktop) main item*/</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="mh">0x30</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE            (X) */</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="mh">0x31</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE            (Y) */</span>
+<span class="w">    </span><span class="mh">0x16</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x80</span><span class="p">,</span><span class="w">   </span><span class="cm">/* LOGICAL_MINIMUM  (-32767) */</span>
+<span class="w">    </span><span class="mh">0x26</span><span class="p">,</span><span class="w"> </span><span class="mh">0xff</span><span class="p">,</span><span class="w"> </span><span class="mh">0x7f</span><span class="p">,</span><span class="w">   </span><span class="cm">/* LOGICAL_MAXIMUM  (32767) */</span>
+<span class="w">    </span><span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x10</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_SIZE      (16) */</span>
+<span class="w">    </span><span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_COUNT     (2) */</span>
+<span class="w">    </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x06</span><span class="p">,</span><span class="w">     </span><span class="cm">/* INPUT            (Data,Var,Rel) */</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="mh">0x38</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE            (Wheel) */</span>
+<span class="w">    </span><span class="mh">0x15</span><span class="p">,</span><span class="w"> </span><span class="mh">0x81</span><span class="p">,</span><span class="w">     </span><span class="cm">/* LOGICAL_MINIMUM  (-127) */</span>
+<span class="w">    </span><span class="mh">0x25</span><span class="p">,</span><span class="w"> </span><span class="mh">0x7f</span><span class="p">,</span><span class="w">     </span><span class="cm">/* LOGICAL_MAXIMUM  (127) */</span>
+<span class="w">    </span><span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x08</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_SIZE      (8) */</span>
+<span class="w">    </span><span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_COUNT     (1) */</span>
+<span class="w">    </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x06</span><span class="p">,</span><span class="w">     </span><span class="cm">/* INPUT            (Data,Var,Rel) */</span>
+<span class="w">    </span><span class="mh">0x05</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0c</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE_PAGE       (Consumer)*/</span>
+<span class="w">    </span><span class="mh">0x0a</span><span class="p">,</span><span class="w"> </span><span class="mh">0x38</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">   </span><span class="cm">/* USAGE            (AC Pan) */</span>
+<span class="w">    </span><span class="mh">0x15</span><span class="p">,</span><span class="w"> </span><span class="mh">0x81</span><span class="p">,</span><span class="w">     </span><span class="cm">/* LOGICAL_MINIMUM  (-127) */</span>
+<span class="w">    </span><span class="mh">0x25</span><span class="p">,</span><span class="w"> </span><span class="mh">0x7f</span><span class="p">,</span><span class="w">     </span><span class="cm">/* LOGICAL_MAXIMUM  (127) */</span>
+<span class="w">    </span><span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x08</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_SIZE      (8) */</span>
+<span class="w">    </span><span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_COUNT     (1) */</span>
+<span class="w">    </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x06</span><span class="p">,</span><span class="w">     </span><span class="cm">/* INPUT            (Data,Var,Rel) */</span>
+<span class="w">    </span><span class="mh">0xc0</span><span class="p">,</span><span class="w">           </span><span class="cm">/* END_COLLECTION */</span>
+<span class="w">    </span><span class="mh">0xc0</span><span class="p">,</span><span class="w">           </span><span class="cm">/* END_COLLECTION */</span>
+
+<span class="w">    </span><span class="mh">0x06</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0xff</span><span class="p">,</span><span class="w"> </span><span class="cm">/* USAGE_PAGE       (vendor) */</span>
+<span class="w">    </span><span class="mh">0x09</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE            (vendor) */</span>
+<span class="w">    </span><span class="mh">0xa1</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w">     </span><span class="cm">/* COLLECTION       (Application) */</span>
+<span class="w">    </span><span class="mh">0x85</span><span class="p">,</span><span class="w"> </span><span class="n">VENDOR_REPORT_ID</span><span class="p">,</span><span class="w"> </span><span class="cm">/* REPORT_ID        (0x10) */</span>
+<span class="w">    </span><span class="mh">0x19</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE_MINIMUM    (0) */</span>
+<span class="w">    </span><span class="mh">0x29</span><span class="p">,</span><span class="w"> </span><span class="mh">0xff</span><span class="p">,</span><span class="w">     </span><span class="cm">/* USAGE_MAXIMUM    (0xff) */</span>
+<span class="w">    </span><span class="mh">0x15</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">     </span><span class="cm">/* LOGICAL_MINIMUM  (0) */</span>
+<span class="w">    </span><span class="mh">0x26</span><span class="p">,</span><span class="w"> </span><span class="mh">0xff</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w">     </span><span class="cm">/* LOGICAL_MAXIMUM  (0xff) */</span>
+<span class="w">    </span><span class="mh">0x75</span><span class="p">,</span><span class="w"> </span><span class="mh">0x08</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_SIZE      (8) */</span>
+<span class="w">    </span><span class="mh">0x95</span><span class="p">,</span><span class="w"> </span><span class="mh">0x04</span><span class="p">,</span><span class="w">     </span><span class="cm">/* REPORT_COUNT     (4) */</span>
+<span class="w">    </span><span class="mh">0x81</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">,</span><span class="w">     </span><span class="cm">/* INPUT            (Data,Var,Abs) */</span>
+<span class="w">    </span><span class="mh">0xc0</span><span class="p">,</span><span class="w">           </span><span class="cm">/* END_COLLECTION */</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>注册 USB 接口相关请求的回调函数。</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_USB_HID_DRIVER_CBS</span><span class="w"> </span><span class="n">cbs</span><span class="p">;</span>
+<span class="n">cbs</span><span class="p">.</span><span class="n">get_report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usb_hid_get_report</span><span class="p">;</span>
+<span class="n">cbs</span><span class="p">.</span><span class="n">set_report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usb_hid_set_report</span><span class="p">;</span>
+<span class="n">cbs</span><span class="p">.</span><span class="n">get_protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usb_hid_get_protocol</span><span class="p">;</span>
+<span class="n">cbs</span><span class="p">.</span><span class="n">set_protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usb_hid_set_protocol</span><span class="p">;</span>
+<span class="n">cbs</span><span class="p">.</span><span class="n">get_idle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usb_hid_get_idle</span><span class="p">;</span>
+<span class="n">cbs</span><span class="p">.</span><span class="n">set_idle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usb_hid_set_idle</span><span class="p">;</span>
+
+<span class="n">usb_hid_driver_cbs_register</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cbs</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>初始化 USB hid driver 。</p></li>
+</ol>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_usb_start</span></code> : 初始化和使能 USB ，打开 USB clock 。</p></li>
+<li><p>实现控制鼠标发送数据，可以调用 <code class="docutils literal notranslate"><span class="pre">app_cfu_usb_send_data</span></code> 来上报数据给 PC 。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app_cfu_usb_send_data</span></code> 有三个参数，分别是 USB report id ，数据指针和数据长度。</p></li>
+<li><p>初次调用该函数需要先调用 <code class="docutils literal notranslate"><span class="pre">app_cfu_tpl_open()</span></code> 初始化 USB 缓冲队列，以存储 report data 。</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">app_cfu_usb_send_data</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">report_id</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">data_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">report_id</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">data_len</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">header</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">APP_PRINT_ERROR0</span><span class="p">(</span><span class="s">&quot;app_cfu_usb_send_data: no memory for data&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">report_id</span><span class="p">;</span>
+<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">header</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="w">    </span><span class="n">app_cfu_xmit</span><span class="p">(</span><span class="n">header</span><span class="p">,</span><span class="w"> </span><span class="n">data_len</span><span class="p">);</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">header</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="usb-hid-mouse-function-cn">
+<span id="id8"></span><h3>功能实现<a class="headerlink" href="#usb-hid-mouse-function-cn" title="Link to this heading"></a></h3>
+<p>初始化后，调用 <code class="docutils literal notranslate"><span class="pre">app_cfu_usb_send_data</span></code> 上报数据，实现控制 HID 设备发送数据到 PC 。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">Report</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">};</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">ReportLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="n">app_cfu_usb_send_data</span><span class="p">(</span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="n">Report</span><span class="p">,</span><span class="w"> </span><span class="n">ReportLen</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="usb-hid-mouse-faq-cn">
+<span id="id9"></span><h2>常见问题<a class="headerlink" href="#usb-hid-mouse-faq-cn" title="Link to this heading"></a></h2>
+<section id="usb">
+<h3>USB 状态说明<a class="headerlink" href="#usb" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___dev___manager___exported___constants.html#_CPPv4N17T_USB_POWER_STATE7USB_PDNE" title="USB_PDN"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">USB_PDN</span></code></a> ：USB 上电后的默认状态。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___dev___manager___exported___constants.html#_CPPv4N17T_USB_POWER_STATE12USB_ATTACHEDE" title="USB_ATTACHED"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">USB_ATTACHED</span></code></a> ：使能了 USB ，但没有打开 USB clock。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___dev___manager___exported___constants.html#_CPPv4N17T_USB_POWER_STATE11USB_POWEREDE" title="USB_POWERED"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">USB_POWERED</span></code></a> ：使能并打开了 USB clock。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___dev___manager___exported___constants.html#_CPPv4N17T_USB_POWER_STATE13USB_ADDRESSEDE" title="USB_ADDRESSED"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">USB_ADDRESSED</span></code></a> ：USB 设备已经被分配地址。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___dev___manager___exported___constants.html#_CPPv4N17T_USB_POWER_STATE14USB_CONFIGUREDE" title="USB_CONFIGURED"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">USB_CONFIGURED</span></code></a> ：USB 设备已被配置，进入这个状态，一般认为 USB 枚举成功了。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___dev___manager___exported___constants.html#_CPPv4N17T_USB_POWER_STATE13USB_SUSPENDEDE" title="USB_SUSPENDED"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">USB_SUSPENDED</span></code></a> ：USB 进入 suspend 状态。</p></li>
+</ul>
+</section>
+<section id="usb-device">
+<h3>USB Device 描述符<a class="headerlink" href="#usb-device" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>idVender</dt><dd><p>设置为 <kbd class="kbd docutils literal notranslate">0x0bda</kbd>：厂商 ID 号。长度为两字节，实验中选取了 0x0bda 为厂商ID号。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>idProduct</dt><dd><p>设置为 <kbd class="kbd docutils literal notranslate">0x8762</kbd>：产品 ID 号。长度为两字节，实验中选取了 0x8762 为产品ID号。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bcdDevice</dt><dd><p>设置为 <kbd class="kbd docutils literal notranslate">0x0200</kbd>：设备的版本号。长度为 2 字节，实验中选取了 0x0200 ，当同一个产品升级后，可以通过修改设备的版本号来进行区别。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>pManufacturerStr</dt><dd><p>设置为 <kbd class="kbd docutils literal notranslate">RealTek</kbd>：描述厂商的字符串。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>pProductStr</dt><dd><p>设置为 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">USB</kbd> <kbd class="kbd docutils literal notranslate">HID</kbd> <kbd class="kbd docutils literal notranslate">Device</kbd></kbd>：描述产品的字符串。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>pSerialNumberStr</dt><dd><p>设置为 <kbd class="kbd docutils literal notranslate">L&quot;0123456789A</kbd>：描述设备的序列号的字符串。</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="usb-configuration">
+<h3>USB Configuration 描述符<a class="headerlink" href="#usb-configuration" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>bNumInterfaces</dt><dd><p>设置为 <kbd class="kbd docutils literal notranslate">2</kbd> ：即支持 2 个 interface 。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bmAttributes</dt><dd><p>设置 <kbd class="kbd docutils literal notranslate">0xA0</kbd> ：设置设备支持远程唤醒。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bMaxPower</dt><dd><p>设置为 <kbd class="kbd docutils literal notranslate">0x32</kbd> ：设备需要从总线中获得 100mA 的最大电流，单位为 2mA 。</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___u_s_b___group.html#group___u_s_b___group"><span class="std std-ref">USB</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../doc/text_cn/README.html" class="btn btn-neutral float-left" title="USB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../../sd/doc/text_cn/README.html" class="btn btn-neutral float-right" title="SD" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

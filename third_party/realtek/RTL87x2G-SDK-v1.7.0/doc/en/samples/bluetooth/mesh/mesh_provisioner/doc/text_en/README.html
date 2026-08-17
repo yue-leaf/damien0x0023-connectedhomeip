@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh Provisioner &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+    <link rel="next" title="Mesh Device" href="../../../mesh_device/doc/text_en/README.html" />
+    <link rel="prev" title="Bluetooth Mesh" href="../../../doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../../index.html">
+        
+            <img src="../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../doc/text_en/README.html">Bluetooth</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../../ble_broadcaster/doc/text_en/README.html">LE Broadcaster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ble_observer/doc/text_en/README.html">LE Observer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ble_peripheral/doc/text_en/README.html">LE Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ble_central/doc/text_en/README.html">LE Central</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ble_scatternet/doc/text_en/README.html">LE Scatternet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ble_bt5_peripheral/doc/text_en/README.html">LE Peripheral Extended ADV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ble_bt5_central/doc/text_en/README.html">LE Central Extended Scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ble_peripheral_privacy/doc/text_en/README.html">LE Peripheral Privacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dtm/doc/text_en/README.html">LE DTM</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../doc/text_en/README.html">Bluetooth Mesh</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Mesh Provisioner</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#wiring">Wiring</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#building-and-downloading">Building and Downloading</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#experimental-verification">Experimental Verification</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#preparation-stage">Preparation Stage</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#testing-stage">Testing Stage</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#provisioning">Provisioning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#key-management">Key Management</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#subscription-configuration">Subscription Configuration</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#friendship">Friendship</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#remote-provisioning">Remote Provisioning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#directed-forwarding">Directed Forwarding</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#subnet-bridge">Subnet Bridge</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#binary-large-object-transfer">Binary Large Object Transfer</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#device-firmware-update">Device Firmware Update</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#code-overview">Code Overview</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#source-code-directory">Source Code Directory</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#network-management">Network Management</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../mesh_device/doc/text_en/README.html">Mesh Device</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../peripheral/doc/text_en/README.html">Peripheral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../wifi/doc/text_en/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/text_en/README.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">Bluetooth Mesh</a></li>
+    <li class="breadcrumb-item active">Mesh Provisioner</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="mesh-provisioner">
+<h1>Mesh Provisioner<a class="headerlink" href="#mesh-provisioner" title="Link to this heading"></a></h1>
+<p>The Mesh Provisioner Sample demonstrates how to use the Mesh Provisioner and how to develop applications based on it.</p>
+<p>Mesh Provisioner, as the administrator of the mesh network, has the following main functions:</p>
+<ul class="simple">
+<li><p>Distributing addresses and keys when the <a class="reference internal" href="../../../mesh_device/doc/text_en/README.html"><span class="doc">Mesh Device</span></a> joins the network.</p></li>
+<li><p>Managing various nodes.</p></li>
+</ul>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>This example supports the following development kits:</p>
+<table class="docutils align-center" id="table-mesh-provisioner-requirements">
+<caption><span class="caption-text">Requirements</span><a class="headerlink" href="#table-mesh-provisioner-requirements" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G <a class="reference internal" href="../../../../../../doc/glossary.html#term-HDK"><span class="xref std std-term">HDK</span></a></p></td>
+<td><p>RTL87x2G <a class="reference internal" href="../../../../../../doc/glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>This example also requires another device or multiple devices to run Mesh Device Sample as nodes in the network.</p>
+<p>For more information, please refer to the <a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<p>Please refer to <a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html#rtl87x2g-evb-interfaces-and-modules"><span class="std std-ref">EVB Interfaces and Modules</span></a>
+in <a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p>
+</section>
+<section id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>For the configuration needed for <a class="reference internal" href="../../../../../../doc/glossary.html#term-LE"><span class="xref std std-term">LE</span></a>, please refer to <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\mesh\mesh_provisioner\src\app_flags.h</span></code>.</p></li>
+<li><p>For the configuration required for Mesh, please refer to <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\mesh\mesh_provisioner\src\app_mesh_flags.h</span></code>.</p></li>
+</ul>
+</section>
+<section id="building-and-downloading">
+<h2>Building and Downloading<a class="headerlink" href="#building-and-downloading" title="Link to this heading"></a></h2>
+<p>This example can be found in the <a class="reference internal" href="../../../../../../doc/glossary.html#term-SDK"><span class="xref std std-term">SDK</span></a> folder:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\mesh\mesh_provisioner\proj\rtl87x2g\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\mesh\mesh_provisioner\proj\rtl87x2g\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>To compile and run this example, please follow the steps below:</p>
+<ol class="arabic simple">
+<li><p>Open the project file.</p></li>
+<li><p>Compile the target file, please refer to <a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a> for the steps listed in <a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html#generate-app-image"><span class="std std-ref">Generating App Image</span></a>.</p></li>
+<li><p>After successful compilation, the file <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk_xxx.bin</span></code> will be generated in the directory <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\mesh\mesh_provisioner\proj\rtl87x2g\mdk\bin</span></code>.</p></li>
+<li><p>Download the bin to the EVB board, please refer to <a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a> for the steps listed in <a class="reference internal" href="../../../../../../doc/quick_start/text_en/README.html#mp-tool-download"><span class="std std-ref">MP Tool Download</span></a>.</p></li>
+<li><p>Press the reset button on the EVB board, and the program will start running.</p></li>
+</ol>
+</section>
+<section id="experimental-verification">
+<h2>Experimental Verification<a class="headerlink" href="#experimental-verification" title="Link to this heading"></a></h2>
+<p>After downloading the example project to the EVB board,
+users can use another development board running the Mesh Device project for testing.</p>
+<section id="preparation-stage">
+<h3>Preparation Stage<a class="headerlink" href="#preparation-stage" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Prepare a Mesh Provisioner, if necessary, use the <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Analyzer</span></code> to get logs.</p></li>
+<li><p>Prepare one or more Mesh Devices, if necessary, use the <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Analyzer</span></code> to get logs.</p></li>
+</ol>
+</section>
+<section id="testing-stage">
+<span id="mesh-provisioner-testing-stage"></span><h3>Testing Stage<a class="headerlink" href="#testing-stage" title="Link to this heading"></a></h3>
+<p>This section mainly introduces the testing part of Mesh Provisioner and the usage of related User Command,
+which facilitates users' early learning and later debugging.
+For detailed information about User Command, please refer to <a class="reference internal" href="../../../../../../subsys/staging/data_uart_cmd/doc/text_en/README.html"><span class="doc">User Command Interface</span></a>.</p>
+<p>Users can use any serial port assistant software to interact with the EVB board.
+For detailed user commands of Mesh Provisioner,
+please refer to <code class="file docutils literal notranslate"><span class="pre">mesh_cmd.c</span></code>, <code class="file docutils literal notranslate"><span class="pre">provisioner_cmd.c</span></code>, <code class="file docutils literal notranslate"><span class="pre">client_cmd.c</span></code></p>
+<section id="provisioning">
+<span id="provisioning-operation-process"></span><h4>Provisioning<a class="headerlink" href="#provisioning" title="Link to this heading"></a></h4>
+<p>Provisioner can collect and display nearby node information, controlled through the <code class="docutils literal notranslate"><span class="pre">dis</span></code> command.</p>
+<table class="docutils align-center" id="table-mesh-device-information-collection">
+<caption><span class="caption-text">Mesh Device Information Collection</span><a class="headerlink" href="#table-mesh-device-information-collection" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>dis 1</p></td>
+<td><p>Display surrounding mesh devices</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>dis 0</p></td>
+<td><p>Stop searching after collecting the target device's information (device <a class="reference internal" href="../../../../../../doc/glossary.html#term-UUID"><span class="xref std std-term">UUID</span></a> or Bluetooth address)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Device will obtain address and network key during provisioning,
+and will join the network successfully after which mesh communication can be conducted.
+Use the transport layer ping function, namely the <code class="docutils literal notranslate"><span class="pre">tping</span></code> command,
+for network layer testing. Any node within the network can send and receive transport layer ping/pong messages.
+The provisioner can also use the configuration client to communicate with a specified device, e.g.,
+to get composition data page 0.</p>
+<table class="docutils align-center" id="table-pb-adv-provisioning">
+<caption><span class="caption-text"><a class="reference internal" href="../../../../../../doc/glossary.html#term-PB-ADV"><span class="xref std std-term">PB-ADV</span></a> Provisioning</span><a class="headerlink" href="#table-pb-adv-provisioning" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>Device</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>pbadvcon 000102030405060708090a0b0c0d0e0f</p></td>
+<td></td>
+<td><p>Initiate connection to the device with UUID 000102030405060708090a0b0c0d0e0f, wait for a prompt whether PB-ADV bearer is successfully established</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>prov</p></td>
+<td></td>
+<td><p>Wait for a prompt indicating provisioning process completion</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td><p>ls</p></td>
+<td><p>Check if the device has successfully obtained the address and key, assuming the address is 0x0100</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td><p>tping xffff</p></td>
+<td><p>Test if they can communicate at the network layer</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>cdg x100</p></td>
+<td></td>
+<td><p>Get the composition data page 0 of device 0x100</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="table-pb-gatt-provisioning">
+<caption><span class="caption-text"><a class="reference internal" href="../../../../../../doc/glossary.html#term-PB-GATT"><span class="xref std std-term">PB-GATT</span></a> Provisioning</span><a class="headerlink" href="#table-pb-gatt-provisioning" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>Device</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>con ff0011223344</p></td>
+<td></td>
+<td><p>Establish an LE link with the device 0xff0011223344, wait for the link to be successfully established</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>provdis</p></td>
+<td></td>
+<td><p>Discover provision service</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>provcmd 0 1</p></td>
+<td></td>
+<td><p>Enable provision service <a class="reference internal" href="../../../../../../doc/glossary.html#term-CCCD"><span class="xref std std-term">CCCD</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>prov</p></td>
+<td></td>
+<td><p>Wait for provisioning process to complete</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td></td>
+<td><p>ls</p></td>
+<td><p>Check if the device has successfully obtained address and key</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td></td>
+<td><p>tping xffff</p></td>
+<td><p>Test network layer communication between devices</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>cdg x100</p></td>
+<td></td>
+<td><p>Get device 0x100 composition data page 0</p></td>
+</tr>
+</tbody>
+</table>
+<p>A device that has already been provisioned can be restored to the unprovisioned state using the <code class="docutils literal notranslate"><span class="pre">nr</span></code> command.</p>
+</section>
+<section id="key-management">
+<h4>Key Management<a class="headerlink" href="#key-management" title="Link to this heading"></a></h4>
+<p>Devices that have been provisioned can be configured by a configuration client.
+For example, users can add an AppKey and bind it to the ping model.
+The ping model can then send ping messages at the model layer.</p>
+<table class="docutils align-center" id="table-key-management">
+<caption><span class="caption-text">Key Management</span><a class="headerlink" href="#table-key-management" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>Device</p></th>
+<th class="head"><p>Instructions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>aka x100 0 0</p></td>
+<td></td>
+<td><p>Add AppKey 0 to target node 0x100 and bind it to NetKey 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td><p>ls</p></td>
+<td><p>Check if the device successfully added AppKey 0</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>mab x100 0 x5d 0</p></td>
+<td></td>
+<td><p>Bind AppKey 0 to the ping model (model id 0x5d) of the 0th element on the target node 0x100</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td><p>ls</p></td>
+<td><p>Check if the device's ping model has successfully bound AppKey 0</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td></td>
+<td><p>ping xffff 3</p></td>
+<td><p>Test ping model control model</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subscription-configuration">
+<h4>Subscription Configuration<a class="headerlink" href="#subscription-configuration" title="Link to this heading"></a></h4>
+<p>The Provisioner can manage the model subscription addresses of devices.
+For example, adding a subscription address to the ping model.</p>
+<table class="docutils align-center" id="table-model-subscription-configuration">
+<caption><span class="caption-text">Model Subscription Configuration</span><a class="headerlink" href="#table-model-subscription-configuration" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>Device</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>msa x100 0 x5d xc000</p></td>
+<td></td>
+<td><p>Add a subscription address 0xc000 to the ping model with model id 0x5d at element 0 of target node 0x100</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td><p>ls</p></td>
+<td><p>Check if the device model has successfully added the subscription address 0xc000</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>ping xc000 3</p></td>
+<td></td>
+<td><p>Test if the device subscribes to 0xc000</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="friendship">
+<h4>Friendship<a class="headerlink" href="#friendship" title="Link to this heading"></a></h4>
+<p>The low power node device that has been provisioned can start establishing friendship.</p>
+<table class="docutils align-center" id="table-friendship">
+<caption><span class="caption-text">Friendship</span><a class="headerlink" href="#table-friendship" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Friend Node</p></th>
+<th class="head"><p>Low Power Node</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>fninit 1 5</p></td>
+<td><p>lpninit 1</p></td>
+<td><p>Initialize a friend node that supports establishing friendship with 1 LPN node and has a queue size of 5; Initialize an LPN node that supports establishing friendship with 1 friend node</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td><p>lpnreq 0 0</p></td>
+<td><p>Wait for the friendship establishment result</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td><p>tping xffff 3</p></td>
+<td><p>Notice that tping takes longer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="remote-provisioning">
+<h4>Remote Provisioning<a class="headerlink" href="#remote-provisioning" title="Link to this heading"></a></h4>
+<p>A remote provisioning server device that has been provisioned can help
+collect information about nearby nodes and pass it on to the remote provisioning client.</p>
+<table class="docutils align-center" id="table-rpr-information-collection">
+<caption><span class="caption-text"><a class="reference internal" href="../../../../../../doc/glossary.html#term-RPR"><span class="xref std std-term">RPR</span></a> Information Collection</span><a class="headerlink" href="#table-rpr-information-collection" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>RPR server</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>rpsst x100 10 20</p></td>
+<td></td>
+<td><p>Instruct the RPR server to search for nearby mesh devices</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>rpssp x100 0</p></td>
+<td></td>
+<td><p>After collecting information about the target device (device UUID or Bluetooth address), instruct it to stop searching</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="table-remote-provisioning">
+<caption><span class="caption-text">Remote Provisioning</span><a class="headerlink" href="#table-remote-provisioning" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>RPR server</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>rplop x100 0 x000102030405060708090a0b0c0d0e0f 10</p></td>
+<td></td>
+<td><p>Instructs the RPR server to initiate a connection to 000102030405060708090a0b0c0d0e0f, waiting for the RPR server to indicate connection success</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>prov</p></td>
+<td></td>
+<td><p>Wait for the provisioning process to complete</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td><p>ls</p></td>
+<td><p>Check if the device has successfully obtained an address and key</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td><p>tping xffff</p></td>
+<td><p>Test if network layer communication is possible</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>cdg x101</p></td>
+<td></td>
+<td><p>Get device 0x101's composition data page 0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="table-device-key-refresh">
+<caption><span class="caption-text">Device Key Refresh</span><a class="headerlink" href="#table-device-key-refresh" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>RPR server</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>rplod x100 0 0</p></td>
+<td></td>
+<td><p>Initiate a connection to the RPR server and specify the procedure for device key refresh</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>rprdk</p></td>
+<td></td>
+<td><p>Start the refresh device key process</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="table-node-address-refresh">
+<caption><span class="caption-text">Node Address Refresh</span><a class="headerlink" href="#table-node-address-refresh" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>RPR server</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>rplod x100 0 1</p></td>
+<td></td>
+<td><p>Initiate a connection to the RPR server and specify the procedure for node address refresh</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>rprna x103</p></td>
+<td></td>
+<td><p>Start the refresh node address process</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="table-composition-data-refresh">
+<caption><span class="caption-text">Composition Data Refresh</span><a class="headerlink" href="#table-composition-data-refresh" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>RPR server</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td></td>
+<td><p>pids x21</p></td>
+<td><p>Set new data for composition page 128</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>rplod x103 0 2</p></td>
+<td></td>
+<td><p>Initiate a connection to the RPR server and specify the procedure for composition data refresh</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>rprcd</p></td>
+<td></td>
+<td><p>Start the refresh composition data process</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="directed-forwarding">
+<h4>Directed Forwarding<a class="headerlink" href="#directed-forwarding" title="Link to this heading"></a></h4>
+<p>Devices that have already been provisioned and wish to use the
+directed forwarding feature can refer to the following procedure.
+First, configure the directed forwarding control state,
+and set the publish policy of the model already configured with the AppKey to directed forwarding.</p>
+<table class="docutils align-center" id="table-directed-forwarding">
+<caption><span class="caption-text">Directed Forwarding</span><a class="headerlink" href="#table-directed-forwarding" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>Device</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>dcs x100 0 0 1 1 1 1 1</p></td>
+<td></td>
+<td><p>Enable the device's directed forwarding control state</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>dpps x100 0 1 x100 x5d</p></td>
+<td></td>
+<td><p>Set the ping model's publish policy to directed forwarding mode</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td><p>ping x1 3</p></td>
+<td><p>Ping while automatically triggering the path discovery procedure</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td><p>dfpdis 0 x1 0 0</p></td>
+<td><p>Manually trigger the path discovery procedure</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td></td>
+<td><p>dfpsol 0 x100</p></td>
+<td><p>Manually trigger the path solicitation procedure</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td></td>
+<td><p>dfpdupt 0 x100 x120 1</p></td>
+<td><p>Manually trigger the path dependents update procedure</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>fta x100 0 0 1 1 x200 2 x300 2 1 1</p></td>
+<td></td>
+<td><p>Add fixed path via the directed forwarding model</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>ftda x100 0 0 x200 x300 1 1 x700 10 x220 1</p></td>
+<td></td>
+<td><p>Add dependents for the fixed path via the directed forwarding model</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subnet-bridge">
+<h4>Subnet Bridge<a class="headerlink" href="#subnet-bridge" title="Link to this heading"></a></h4>
+<p>When a node is simultaneously in net 0 (NetKey index is 0) and net 1 (NetKey index is 1) networks,
+a subnet bridge client can use the subnet bridge model to configure the subnet bridge table for the node.
+After configuration, the node can forward messages from net 0 to net 1.
+Note that the message in the bridge will be encrypted with the corresponding NetKey during forwarding, but the AppKey will not change.
+Nodes that send and receive messages need the AppKey to be consistent to accurately decrypt the data in the access layer.</p>
+<table class="docutils align-center" id="table-subnet-bridge">
+<caption><span class="caption-text">Subnet Bridge</span><a class="headerlink" href="#table-subnet-bridge" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>Device</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>bta x100 0 1 0 1 x102 x103</p></td>
+<td></td>
+<td><p>Configure subnet bridge table 0x102 (net 0) --&gt; 0x103 (net 1)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="binary-large-object-transfer">
+<h4>Binary Large Object Transfer<a class="headerlink" href="#binary-large-object-transfer" title="Link to this heading"></a></h4>
+<p>Devices that have already been provisioned can refer to the following procedure to use <a class="reference internal" href="../../../../../../doc/glossary.html#term-BLOB"><span class="xref std std-term">BLOB</span></a> models for transfer.</p>
+<table class="docutils align-center" id="table-blob-transfer">
+<caption><span class="caption-text">BLOB Transfer</span><a class="headerlink" href="#table-blob-transfer" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Provisioner</p></th>
+<th class="head"><p>Device</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>mab x100 0 x1400ffff 0</p></td>
+<td></td>
+<td><p>Add AppKey 0 to blob transfer server of 0x100 node</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td><p>btsi 0x1100000000000011 10 3</p></td>
+<td><p>Initialize blob transfer server</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>btccr 0 2 1 x100</p></td>
+<td></td>
+<td><p>Start capability retrieve procedure</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>btcbt x100 0 2 0x1100000000000011 2000 1 1 0 1 x100</p></td>
+<td></td>
+<td><p>Start blob transfer procedure</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>btctc 0x1100000000000011 1 x100</p></td>
+<td></td>
+<td><p>Cancel blob transfer procedure</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="device-firmware-update">
+<h4>Device Firmware Update<a class="headerlink" href="#device-firmware-update" title="Link to this heading"></a></h4>
+<p>Please refer to <a class="reference download internal" download="" href="../../../../../../_downloads/dca92a08de17591f2c165cc890cd156f/Mesh%20OTA%20Application%20Note%20EN.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Mesh</span> <span class="pre">OTA</span> <span class="pre">Application</span> <span class="pre">Note</span></code></a>.</p>
+</section>
+</section>
+</section>
+<section id="code-overview">
+<h2>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading"></a></h2>
+<p>The main purpose of this chapter is to help users get familiar with the development process related to Mesh Provisioner.
+This chapter will introduce according to the following sections:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#source-code-directory">Source Code Directory</a>.</p></li>
+<li><p>The section <a class="reference internal" href="#initialization">Initialization</a> introduces the initialization process of the Mesh Provisioner.</p></li>
+<li><p>The section <a class="reference internal" href="#network-management">Network Management</a> introduces how the Mesh Provisioner manages the network and sends/receives messages.</p></li>
+</ul>
+<section id="source-code-directory">
+<h3>Source Code Directory<a class="headerlink" href="#source-code-directory" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Project directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\bluetooth\mesh\mesh_provisioner\proj</span></code></p></li>
+<li><p>Source code directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\bluetooth\mesh\mesh_provisioner\src</span></code></p></li>
+</ul>
+<p>The source file structure of the Mesh Provisioner application project is shown below.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: mesh_provisioner
+    └── secure_only_app
+        ├── Device                           includes startup code
+        ├── CMSE Library                     Non-secure callable lib
+        ├── lib                              includes all binary symbol files that user application is built on
+            ├── ROM_NS.lib
+            ├── rtl87x2g_sdk.lib
+            ├── rtl87x2g_io.lib
+            ├── gap_utils.lib
+            ├── mesh_prov.lib
+            └── lowerstack.lib
+        ├── io                               includes all peripheral drivers and module code used by the application
+        ├── profile                          includes LE profiles or services used by the application
+        ├── model                            includes mesh models used by the application
+        ├── dfu                              includes dfu source code used by the application
+        └── APP                              includes the mesh_provisioner user application implementation
+            ├── main.c                       includes the io, os, platform, le host and mesh stack initialization
+            ├── app_task.c                   includes app task initialization and main loop
+            ├── provisioner_app.c            includes provisioner application code
+            ├── mesh_sdk.c                   includes mesh sdk version record
+            ├── mesh_cmd.c                   includes mesh user commands
+            ├── provisioner_cmd.c            includes provisioner user commands
+            ├── test_cmd.c                   includes test user commands
+            ├── client_cmd.c                 includes client user commands
+            ├── delay_msg_rsp.c              includes delay message response
+            ├── ping_app.c                   includes ping model application code
+            ├── generic_client_app.c         includes generic client model application code
+            ├── light_client_app.c           includes light client model application code
+            ├── datatrans_client_app.c       includes datatrans client model application code
+            ├── rmt_prov_client_app.c        includes remote provisioning client model application code
+            ├── blob_client_app.c            includes blob client model application code
+            ├── dfu_distributor_app.c        includes dfu distributor application code
+            └── dfu_initiator_app.c          includes dfu Initiator application code
+</pre></div>
+</div>
+<p>Among them, <code class="file docutils literal notranslate"><span class="pre">mesh_prov.lib</span></code> is divided into <code class="docutils literal notranslate"><span class="pre">V1.0</span></code> and <code class="docutils literal notranslate"><span class="pre">V1.1</span></code> according to the Mesh Protocol version,
+users can choose the appropriate lib according to the required features.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">V1.0</label><div class="tab-content docutils">
+<p>Library file: <code class="file docutils literal notranslate"><span class="pre">subsys\bluetooth\mesh\chips\rtl87x2g\lib\v1_0\mdk\mesh_prov.lib</span></code>, <code class="file docutils literal notranslate"><span class="pre">subsys\bluetooth\mesh\chips\rtl87x2g\lib\v1_0\gcc\mesh_prov.a</span></code></p>
+<p>Header file: <code class="file docutils literal notranslate"><span class="pre">subsys\bluetooth\mesh\chips\rtl87x2g\lib\v1_0\mesh_config.h</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">V1.1</label><div class="tab-content docutils">
+<p>Library file: <code class="file docutils literal notranslate"><span class="pre">subsys\bluetooth\mesh\chips\rtl87x2g\lib\v1_1\mdk\mesh_prov.lib</span></code>, <code class="file docutils literal notranslate"><span class="pre">subsys\bluetooth\mesh\chips\rtl87x2g\lib\v1_1\gcc\mesh_prov.a</span></code></p>
+<p>Header file: <code class="file docutils literal notranslate"><span class="pre">subsys\bluetooth\mesh\chips\rtl87x2g\lib\v1_1\mesh_config.h</span></code></p>
+</div>
+</div>
+</div>
+</section>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h3>
+<p>When the EVB board resets, the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function executes, and the initialization process is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">random_seed_value</span><span class="p">;</span>
+<span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="n">random_seed_value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">board_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">driver_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">le_gap_init</span><span class="p">(</span><span class="n">APP_MAX_LINKS</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gap_lib_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">app_le_gap_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">app_le_profile_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">mesh_stack_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">pwr_mgr_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">task_init</span><span class="p">();</span>
+<span class="w">    </span><span class="n">os_sched_start</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_a_p___l_e___c_o_m_m_o_n___exported___functions.html#_CPPv411le_gap_init7uint8_t" title="le_gap_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_gap_init()</span></code></a> is used to initialize <a class="reference internal" href="../../../../../../doc/glossary.html#term-GAP"><span class="xref std std-term">GAP</span></a> and set the number of links.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_le_gap_init()</span></code> is used to initialize GAP parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_le_profile_init()</span></code> is used to initialize the Profiles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mesh_stack_init()</span></code> is used to initialize the Mesh Stack,
+for configuration, refer to <a class="reference internal" href="../../../../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html#mesh-device-information-configuration"><span class="std std-ref">Device Information Configuration</span></a>,
+<a class="reference internal" href="../../../../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html#mesh-device-uuid-configuration"><span class="std std-ref">Device UUID Configuration</span></a>,
+<a class="reference internal" href="../../../../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html#mesh-network-features-and-parameters-configuration"><span class="std std-ref">Network Features and Parameters Configuration</span></a>,
+<a class="reference internal" href="../../../../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html#mesh-log-configuration"><span class="std std-ref">Mesh Log Configuration</span></a>, etc.</p></li>
+</ul>
+<p>Compared to other nodes in the network, the provisioner needs to allocate a mesh address and some keys for itself during initialization, as illustrated below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">......</span>
+<span class="w">    </span><span class="cm">/** init mesh stack */</span>
+<span class="w">    </span><span class="n">mesh_init</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/** configure provisioner */</span>
+<span class="w">    </span><span class="n">mesh_node</span><span class="p">.</span><span class="n">node_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PROV_NODE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">mesh_node</span><span class="p">.</span><span class="n">unicast_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bt_addr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">99</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">net_key</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_NET_KEY</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">net_key1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_NET_KEY1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">app_key</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_APP_KEY</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">app_key1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_APP_KEY1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">net_key_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">net_key_add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">net_key</span><span class="p">);</span>
+<span class="w">    </span><span class="n">app_key_add</span><span class="p">(</span><span class="n">net_key_index</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">app_key</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">net_key_index1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">net_key_add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">net_key1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">app_key_add</span><span class="p">(</span><span class="n">net_key_index1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">app_key1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">mesh_model_bind_all_key</span><span class="p">();</span>
+<span class="w">    </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After calling <a class="reference internal" href="../../../../../../doc/api_reference/group___o_s___s_c_h_e_d___exported___functions.html#_CPPv414os_sched_start" title="os_sched_start"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_sched_start</span></code></a>, <code class="docutils literal notranslate"><span class="pre">app_main_task()</span></code> will get scheduled, and the processing of mesh messages is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define EVENT_MESH                    0x80</span>
+<span class="p">......</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">app_main_task</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_param</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">......</span>
+<span class="w">    </span><span class="n">mesh_start</span><span class="p">(</span><span class="n">EVENT_MESH</span><span class="p">,</span><span class="w"> </span><span class="n">EVENT_IO_TO_APP</span><span class="p">,</span><span class="w"> </span><span class="n">evt_queue_handle</span><span class="p">,</span><span class="w"> </span><span class="n">io_queue_handle</span><span class="p">);</span>
+<span class="w">    </span><span class="p">......</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">os_msg_recv</span><span class="p">(</span><span class="n">evt_queue_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFFFFFFFF</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EVENT_IO_TO_APP</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="p">......</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EVENT_MESH</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">mesh_inner_msg_handle</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="p">......</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="network-management">
+<h3>Network Management<a class="headerlink" href="#network-management" title="Link to this heading"></a></h3>
+<p>As a network administrator, a provisioner needs to manage all nodes joining the network,
+including the provisioning process, the configurations, and subsequent message interactions.</p>
+<ul class="simple">
+<li><p>Provisioning: For details on provisioning, please refer to <a class="reference internal" href="../../../../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html#mesh-provisioning"><span class="std std-ref">Mesh Provisioning</span></a>;
+and for the operation process, please refer to <a class="reference internal" href="#provisioning-operation-process"><span class="std std-ref">Provisioning Operation Process</span></a>.</p></li>
+<li><p>Model: Provisioner will include some fixed models and some user-registered models.
+For details on models, please refer to <a class="reference internal" href="../../../../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html#mesh-model-architecture"><span class="std std-ref">Mesh Model</span></a>.</p></li>
+<li><p>Message Send: For message sending details, please refer to <a class="reference internal" href="../../../../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html#mesh-message-send"><span class="std std-ref">Mesh Message Send</span></a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___b_l_u_e_t_o_o_t_h___m_e_s_h.html#group___b_l_u_e_t_o_o_t_h___m_e_s_h"><span class="std std-ref">Bluetooth Mesh</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../doc/text_en/README.html" class="btn btn-neutral float-left" title="Bluetooth Mesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../mesh_device/doc/text_en/README.html" class="btn btn-neutral float-right" title="Mesh Device" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

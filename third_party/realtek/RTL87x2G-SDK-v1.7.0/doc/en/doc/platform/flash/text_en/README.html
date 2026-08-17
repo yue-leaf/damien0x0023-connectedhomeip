@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flash &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="PSRAM" href="../../psram/text_en/README.html" />
+    <link rel="prev" title="Image Layout" href="../../image_layout/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_en/README.html">Platform</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../platform_overview/text_en/README.html">Platform Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/text_en/README.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_en/README.html">Image Layout</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Flash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flash-layout">Flash Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ftl">FTL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ftl-v1">FTL v1</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#functional-division-of-ftl-v1-space">Functional Division of FTL v1 Space</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#adjust-the-size-of-ftl-v1-space">Adjust the Size of FTL v1 Space</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#ftl-v2">FTL v2</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#functional-division-of-ftl-v2-space">Functional Division of FTL v2 Space</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ftl-apis">FTL APIs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#adjust-the-size-of-the-ftl-v2-space">Adjust the Size of the FTL v2 Space</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#flash-api">Flash API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#read">Read</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write">Write</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#erase">Erase</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bit-modes">Bit Modes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#three-bit-modes">Three Bit Modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bit-mode-switch">Bit Mode Switch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#software-block-protect">Software Block Protect</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#protection-level">Protection Level</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-locking-mechanism">Automatic Locking Mechanism</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#power-saving">Power Saving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xip">XIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_en/README.html">PSRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../low_power_mode/text_en/README.html">Low Power Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/text_en/README.html">Security Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debug_system/text_en/README.html">Debug System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clock/text_en/README.html">Clock Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_en/README.html">Platform</a></li>
+    <li class="breadcrumb-item active">Flash</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="flash">
+<h1>Flash<a class="headerlink" href="#flash" title="Link to this heading"></a></h1>
+<p>Flash is not the same as RAM since it is non-volatile storage.
+RAM enables direct access to read and write data.
+However, if flash is not empty, an erase operation is typically required before performing a flash write operation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Flash has a programming limit of up to 100,000 cycles. Frequent erasing and writing at a specific block can easily lead to bad blocks.</p></li>
+<li><p>When users need to use flash to store data, the flash driver interface is not primarily recommended for APP. It is more advisable to use the <a class="reference internal" href="../../image_layout/text_en/README.html#flash-layout-en"><span class="std std-ref">FTL</span></a> interface.</p></li>
+</ul>
+</div>
+<section id="flash-layout">
+<h2>Flash Layout<a class="headerlink" href="#flash-layout" title="Link to this heading"></a></h2>
+<p>The RTL87x2G chip integrates a flexible memory controller (<a class="reference internal" href="../../../glossary.html#term-FMC"><span class="xref std std-term">FMC</span></a>) that supports external SPI Flash. The FMC supports a maximum address mapping space of 64M bytes, corresponding to the address space 0x04000000~0x07FFFFFF. For a detailed layout of flash, refer to <a class="reference internal" href="../../image_layout/text_en/README.html#flash-layout-en"><span class="std std-ref">Flash Layout</span></a> .</p>
+</section>
+<section id="ftl">
+<span id="memoryftl"></span><h2>FTL<a class="headerlink" href="#ftl" title="Link to this heading"></a></h2>
+<p>FTL (Flash Translation Layer) is a software abstraction layer built on the flash Driver, used for user read and write operations on flash data. The physical space location of FTL can be viewed at <a class="reference internal" href="../../image_layout/text_en/README.html#flash-layout-en"><span class="std std-ref">Flash Layout</span></a>. The purpose of FTL is to simplify the process of modifying data in the flash.</p>
+<p>Without FTL, modifying data on the flash requires the user to erase the flash first. When data is frequently modified, a significant amount of time is wasted on erasing. FTL, however, uses logical addresses instead of physical addresses to access the flash. When modifying data, the original data is not directly altered; instead, the new data is written to a new physical address, and the logical address points to this new physical address. This method avoids frequent flash erasures, saving time required for data modification.</p>
+<p>When FTL detects that there is not enough space to write new records, it triggers the Garbage Collection (GC) mechanism to erase and reclaim outdated or unused records. By cyclically utilizing flash space and evenly distributing erase/write operations, FTL prevents certain blocks from failing prematurely, achieving wear leveling.</p>
+<p>Currently, FTL supports both v1 and v2 versions. The v1 version includes a full implementation of the aforementioned features. Building upon v1, the v2 version improves maximum storage capacity and flash utilization, and supports creating logical space through 'module' partitioning.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>FTL is suitable for data that needs frequent rewriting. On one hand, the API interface is simpler, and on the other hand, it helps to extend the lifespan of the flash (wear leveling).</p></li>
+<li><p>If the data volume is large, read-only (or occasionally rewritten), and does not require OTA upgrade support, it is recommended to use the flash API to store data in the 'APP Defined Section' area.</p></li>
+<li><p>If the data volume is large, read-only (or occasionally rewritten), and requires OTA upgrade support, it is recommended to store data in the App Data1, App Data2, App Data3, App Data4, App Data5, App Data6, and secure app data areas within the OTA bank.</p></li>
+</ul>
+</div>
+<section id="ftl-v1">
+<h3>FTL v1<a class="headerlink" href="#ftl-v1" title="Link to this heading"></a></h3>
+<p>SDK v1.2.0 and previous versions support FTL v1 by default. If FTL v1 is needed in subsequent SDK versions, please follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Open the SDK root directory.</p></li>
+<li><p>Copy <code class="file docutils literal notranslate"><span class="pre">ftl_v1\ftl.h</span></code> to <code class="file docutils literal notranslate"><span class="pre">bsp\sdk_lib\inc\</span></code>, replacing the existing <code class="file docutils literal notranslate"><span class="pre">ftl.h</span></code> in the target path.</p></li>
+<li><p>If using GCC for compilation, copy <code class="file docutils literal notranslate"><span class="pre">ftl_v1\librtl87x2g_sdk.a</span></code> to <code class="file docutils literal notranslate"><span class="pre">bsp\sdk_lib\lib\rtl87x2g\gcc\</span></code>, replacing the existing <code class="file docutils literal notranslate"><span class="pre">librtl87x2g_sdk.a</span></code> in the target path.</p></li>
+<li><p>If using MDK for compilation, copy <code class="file docutils literal notranslate"><span class="pre">ftl_v1\rtl87x2g_sdk.lib</span></code> to <code class="file docutils literal notranslate"><span class="pre">bsp\sdk_lib\lib\rtl87x2g\mdk\</span></code>, replacing the existing <code class="file docutils literal notranslate"><span class="pre">rtl87x2g_sdk.lib</span></code> in the target path.</p></li>
+<li><p>Recompile the APP project.</p></li>
+</ol>
+<section id="functional-division-of-ftl-v1-space">
+<h4>Functional Division of FTL v1 Space<a class="headerlink" href="#functional-division-of-ftl-v1-space" title="Link to this heading"></a></h4>
+<p>Currently, the FTL space is divided into the following two storage spaces according to its functions. Take the default FTL physical space size of 16K as an example.</p>
+<ol class="arabic">
+<li><p><strong>BT Storage Space</strong></p>
+<ol class="arabic simple">
+<li><p>Logic address range: [0x0000, 0x0D00). but the size of this space can be adjusted through the <code class="file docutils literal notranslate"><span class="pre">otp_config.h</span></code> parameter. (Currently not supported by SDK)</p></li>
+<li><p>This region is used to store BT information such as device address, link key, etc.</p></li>
+<li><p>Refer to <a class="reference internal" href="../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html"><span class="doc">LE Host</span></a> for more details.</p></li>
+</ol>
+</li>
+<li><p><strong>APP Storage Space</strong></p>
+<ol class="arabic simple">
+<li><p>Logic address range: [0x0D00, 0x17F0).</p></li>
+<li><p>APP can use this region to store user-defined information.</p></li>
+<li><p>The following APIs can be used to read/write APP storage data.</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">ftl_save</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pdata</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<span class="kt">uint32_t</span><span class="w"> </span><span class="nf">ftl_load</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pdata</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the implementation of the <code class="docutils literal notranslate"><span class="pre">ftl_save</span></code> API and <code class="docutils literal notranslate"><span class="pre">ftl_load</span></code> API, the offset parameter passed in has already been added with the offset 0x0D00 of the APP storage space, so when the APP uses these two APIs, the offset parameter can start from 0.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="adjust-the-size-of-ftl-v1-space">
+<span id="adjust-the-size-of-the-ftl-space"></span><h4>Adjust the Size of FTL v1 Space<a class="headerlink" href="#adjust-the-size-of-ftl-v1-space" title="Link to this heading"></a></h4>
+<p>The physical space size of FTL is configurable, adjusted by modifying the configuration parameters in the config file. The steps are as follows:</p>
+<ol class="arabic simple">
+<li><p>First, use Flash Map Generate Tool (released with MP Tool) to generate <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> and <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> file.</p></li>
+<li><p>Copy the <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> file to the APP project directory, for example: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\bluetooth\ble_peripheral</span></code>, so that the APP can obtain the correct loading address when compiling.</p></li>
+<li><p>Load <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> into MP Tool to generate config file for download. As shown in <a class="reference internal" href="#figure-modify-the-flash-map-configuration-file2"><span class="std std-ref">Modify The Flash Map Configuration File</span></a>, the physical space of FTL will be adjusted to 32K.</p></li>
+</ol>
+<figure class="align-center" id="figure-modify-the-flash-map-configuration-file2">
+<a class="reference internal image-reference" href="../../../../_images/Modify_flash_map.png"><img alt="../../../../_images/Modify_flash_map.png" src="../../../../_images/Modify_flash_map.png" style="width: 887.7px; height: 571.45px;" /></a>
+<figcaption>
+<p><span class="caption-text">Modify The Flash Map Configuration File</span><a class="headerlink" href="#figure-modify-the-flash-map-configuration-file2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>When adjusting the size of the FTL physical space, the logical space available for the APP will also change accordingly. Assuming that the physical space size of the actual FTL is set to mK (m is an integer multiple of 4), the logical space available for the corresponding APP is equal to <span class="math notranslate nohighlight">\(((511*(m-4)-4)-3328)\)</span> bytes.</p></li>
+<li><p>In addition, in order to improve the efficiency of FTL reading, the bottom layer has made a mapping mechanism of physical address and logical address. This mapping table will occupy a certain amount of RAM space. When the FTL physical space size is set to 16K by default, this mapping table occupies 2298 bytes of buffer RAM heap space. Suppose the physical space size of the actual FTL is set to mK (m is an integer multiple of 4), and the RAM space occupied by its mapping table is equal to <span class="math notranslate nohighlight">\(((511*(m-4)-4)*0.375)\)</span> bytes. Therefore, users need to adjust the size of FTL space reasonably according to specific application scenarios. If it is too large, it will waste some RAM resources.</p></li>
+<li><p>On the other hand, if choosing a smaller flash and wanting to compress the space occupied by FTL, ensure that the physical space of FTL is not smaller than 12K. The bit width used to represent the physical address for each logical address in the mapping table is controlled by the <code class="docutils literal notranslate"><span class="pre">FTL_LOGIC_ADDR_MAP_BIT_MAP</span></code> macro in <code class="file docutils literal notranslate"><span class="pre">otp_config.h</span></code>. The actual bit width equals the macro value multiplied by 4, with a valid range of 3~7 (corresponding to 12~28 bits). The default value is 3 (12-bit), which allows the FTL physical space to be adjusted up to a maximum of 32K.</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="ftl-v2">
+<h3>FTL v2<a class="headerlink" href="#ftl-v2" title="Link to this heading"></a></h3>
+<p>SDK v1.3.0 and later versions default to using FTL v2. FTL v2 extends the basic functionalities of v1 and includes optimizations and upgrades in the following areas:</p>
+<ol class="arabic simple">
+<li><p>Expanded mapping table units: Each logical address is represented by 16 bits of a physical address, supporting larger storage spaces.</p></li>
+<li><p>Added functionality to divide logical space through 'modules'.</p>
+<ol class="arabic simple">
+<li><p>Each FTL module can independently set the block_len when created. Choosing the block_len parameter for a 'module' reasonably can reduce the space occupied by auxiliary information and achieve higher flash utilization.</p></li>
+<li><p>Logical spaces between 'modules' are independent of each other, with each 'module' starting its logical address from 0, which aids upper-level applications in organizing and managing data.</p></li>
+</ol>
+</li>
+</ol>
+<section id="functional-division-of-ftl-v2-space">
+<span id="functional-division-of-ftl-space-1"></span><h4>Functional Division of FTL v2 Space<a class="headerlink" href="#functional-division-of-ftl-v2-space" title="Link to this heading"></a></h4>
+<p>When FTL is initialized, the 'system module' is automatically created to ensure the basic functions of FTL and store BT information. Users can create new modules to store user data.</p>
+<ol class="arabic simple">
+<li><p>System module</p>
+<ol class="arabic simple">
+<li><p>Logical address range: [0x0000, 0x0C00). It takes up 6144 bytes of physical space. However, this space size can be changed by <code class="file docutils literal notranslate"><span class="pre">otp_config.h</span></code> parameter. (Currently not supported by SDK)</p></li>
+<li><p>[0x0000, 0x0A20) is used to store BT information such as device address, link key, etc. Refer to <a class="reference internal" href="../../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html"><span class="doc">LE Host</span></a> for more details.</p></li>
+<li><p>[0xA20, 0x0C00) is used to store FTL module information.</p></li>
+</ol>
+</li>
+<li><p>User module</p>
+<ol class="arabic simple">
+<li><p>Users are allowed to create up to 6 modules. Before creating a new module, it is necessary to ensure that the physical space of FTL is sufficient. Refer to <a class="reference internal" href="#id1"><span class="std std-ref">Adjust the Size of the FTL v2 Space</span></a> for the calculation formula.</p></li>
+<li><p>APP can use this region to store user-defined information.</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="ftl-apis">
+<h4>FTL APIs<a class="headerlink" href="#ftl-apis" title="Link to this heading"></a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span><span class="w"> </span><span class="nf">ftl_init_module</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">module_name</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">malloc_size</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">block_len</span><span class="p">);</span>
+<span class="kt">int32_t</span><span class="w"> </span><span class="nf">ftl_save_to_module</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">module_name</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pdata</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+<span class="kt">int32_t</span><span class="w"> </span><span class="nf">ftl_load_from_module</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">module_name</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pdata</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The block_len (the third parameter of <a class="reference internal" href="../../../api_reference/group___f_t_l___exported___functions.html#_CPPv415ftl_init_modulePc8uint16_t7uint8_t" title="ftl_init_module"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ftl_init_module()</span></code></a> ) determines the minimum access logical space of the module, which needs to be aligned with 4 bytes. Based on the actual size of the storage data units, choosing a larger block_len whenever possible can reduce RAM usage and achieve higher flash memory efficiency (as it minimizes the space occupied by auxiliary information).</p></li>
+<li><p>The offset parameter of <a class="reference internal" href="../../../api_reference/group___f_t_l___exported___functions.html#_CPPv418ftl_save_to_modulePcPv8uint16_t8uint16_t" title="ftl_save_to_module"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ftl_save_to_module()</span></code></a>/<a class="reference internal" href="../../../api_reference/group___f_t_l___exported___functions.html#_CPPv420ftl_load_from_modulePcPv8uint16_t8uint16_t" title="ftl_load_from_module"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ftl_load_from_module()</span></code></a>  is the logical address for saving/loading data and needs to be aligned with block_len.</p></li>
+</ul>
+</div>
+<p><a class="reference internal" href="../../../api_reference/group___f_t_l___exported___functions.html#_CPPv415ftl_init_modulePc8uint16_t7uint8_t" title="ftl_init_module"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ftl_init_module()</span></code></a> is used to create an FTL module, and <a class="reference internal" href="../../../api_reference/group___f_t_l___exported___functions.html#_CPPv418ftl_save_to_modulePcPv8uint16_t8uint16_t" title="ftl_save_to_module"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ftl_save_to_module()</span></code></a>/<a class="reference internal" href="../../../api_reference/group___f_t_l___exported___functions.html#_CPPv420ftl_load_from_modulePcPv8uint16_t8uint16_t" title="ftl_load_from_module"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ftl_load_from_module()</span></code></a> are used to write data to or read data from the module. Before creating a new FTL module, please ensure there is sufficient FTL physical space. For more details, see <a class="reference internal" href="#id1"><span class="std std-ref">Adjust the Size of the FTL v2 Space</span></a>.</p>
+<p>The basic example is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define EXT_FTL_NAME &#39;TEST_FTL&#39;</span>
+<span class="cp">#define EXT_FTL_LOGIC_SIZE     (0x1000)</span>
+<span class="cp">#define EXT_FTL_BLOCK_SIZE     (64)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ftl_ext_module_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Init an ext FTL module</span>
+<span class="w">    </span><span class="n">ftl_init_module</span><span class="p">(</span><span class="n">EXT_FTL_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">EXT_FTL_LOGIC_SIZE</span><span class="p">,</span><span class="w"> </span><span class="n">EXT_FTL_BLOCK_SIZE</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Save data</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data_buf</span><span class="p">[</span><span class="n">EXT_FTL_BLOCK_SIZE</span><span class="p">];</span>
+<span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">data_buf</span><span class="p">,</span><span class="w"> </span><span class="mh">0x5A</span><span class="p">,</span><span class="w"> </span><span class="n">EXT_FTL_BLOCK_SIZE</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">test_offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x800</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ftl_save_to_module</span><span class="p">(</span><span class="n">EXT_FTL_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">data_buf</span><span class="p">,</span><span class="w"> </span><span class="n">test_offset</span><span class="p">,</span><span class="w"> </span><span class="n">EXT_FTL_BLOCK_SIZE</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESUCCESS</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// save data error</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// Load data</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">read_buf</span><span class="p">[</span><span class="n">EXT_FTL_BLOCK_SIZE</span><span class="p">];</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ftl_load_from_module</span><span class="p">(</span><span class="n">EXT_FTL_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">read_buf</span><span class="p">,</span><span class="w"> </span><span class="n">test_offset</span><span class="p">,</span><span class="w"> </span><span class="n">EXT_FTL_BLOCK_SIZE</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESUCCESS</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// load data error</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="adjust-the-size-of-the-ftl-v2-space">
+<span id="id1"></span><h4>Adjust the Size of the FTL v2 Space<a class="headerlink" href="#adjust-the-size-of-the-ftl-v2-space" title="Link to this heading"></a></h4>
+<p>The method of adjusting the FTL physical space is similar to FTL v1. For details, please refer to <a class="reference internal" href="#adjust-the-size-of-the-ftl-space"><span class="std std-ref">Adjust the size of the FTL space</span></a>.</p>
+<p>When adjusting the physical space of FTL, it is necessary to ensure that the available physical space of the FTL module meets the requirements; otherwise, the module will fail to be created. The calculation method is shown in the figure below:</p>
+<p>The calculation formula is as follows:</p>
+<figure class="align-center" id="figure-ftlv2-physical-space-calculation">
+<a class="reference internal image-reference" href="../../../../_images/FTLv2_flash_calculation_en.png"><img alt="../../../../_images/FTLv2_flash_calculation_en.png" src="../../../../_images/FTLv2_flash_calculation_en.png" style="width: 969.4999999999999px; height: 457.79999999999995px;" /></a>
+<figcaption>
+<p><span class="caption-text">FTLv2 Physical Space Calculation</span><a class="headerlink" href="#figure-ftlv2-physical-space-calculation" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Additionally, to enhance FTL read efficiency, a mapping table is created for each module to facilitate the conversion between logical and physical addresses. The mapping table for the FTL module occupies RAM space: (malloc_size/block_len*2Bytes) .</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since FTL requires reserved space for the 'system module' and GC mechanism, and the FTL physical space is aligned with 4KB, if a smaller flash is chosen and the FTL space needs to be compressed, it must be ensured that the FTL physical space is no less than 16KB. (The FTL reserved space can be adjusted via the <code class="file docutils literal notranslate"><span class="pre">otp_config.h</span></code> parameter, currently unsupported by the SDK).</p>
+</div>
+</section>
+</section>
+</section>
+<section id="flash-api">
+<h2>Flash API<a class="headerlink" href="#flash-api" title="Link to this heading"></a></h2>
+<p>If the FTL size does not meet the requirements, please refer to the flash interfaces described in the section below.
+There are three basic operations for flash: <a class="reference internal" href="#read"><span class="std std-ref">Read</span></a>, <a class="reference internal" href="#write"><span class="std std-ref">Write</span></a>, and <a class="reference internal" href="#erase"><span class="std std-ref">Erase</span></a> .
+User should invoke the interfaces described in this section to perform these operations.</p>
+<section id="read">
+<span id="id2"></span><h3>Read<a class="headerlink" href="#read" title="Link to this heading"></a></h3>
+<table class="docutils align-left" id="table-read">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>flash_nor_read_locked</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>FLASH_NOR_RET_TYPE   flash_nor_read_locked(uint32_t addr, uint8_t *data, uint32_t len)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>read flash data</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter</p></th>
+<td><p>addr: read address of flash</p>
+<p>data: storage buffer for reading data, note that the storage buffer cannot be located on flash</p>
+<p>len: read data length</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Return Value</p></th>
+<td><p>If the reading is successful, <strong>the returned value is 24 in decimal notation (Corresponding to FLASH_NOR_RET_SUCCESS)</strong></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="write">
+<span id="id3"></span><h3>Write<a class="headerlink" href="#write" title="Link to this heading"></a></h3>
+<table class="docutils align-left" id="table-write">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>flash_nor_write_locked</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>FLASH_NOR_RET_TYPE   flash_nor_write_locked(uint32_t addr, uint8_t *data, uint32_t len)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>write data to flash</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter</p></th>
+<td><p>addr: write address of flash</p>
+<p>data: storage buffer for writing data, note that the storage buffer cannot be located on flash</p>
+<p>len: write data length</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Return Value</p></th>
+<td><p>If the writing is successful, <strong>the returned value is 24 in decimal notation (Corresponding to FLASH_NOR_RET_SUCCESS)</strong></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="erase">
+<span id="id4"></span><h3>Erase<a class="headerlink" href="#erase" title="Link to this heading"></a></h3>
+<table class="docutils align-left" id="table-erase">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>flash_nor_erase_locked</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>FLASH_NOR_RET_TYPE   flash_nor_erase_locked(uint32_t addr, FLASH_NOR_ERASE_MODE mode)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>erase flash</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter</p></th>
+<td><p>addr: erase address of flash</p>
+<p>FLASH_NOR_ERASE_MODE: erase type of flash</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Return Value</p></th>
+<td><p>If the erasing is successful, <strong>the returned value is 24 in decimal notation (corresponding to FLASH_NOR_RET_SUCCESS)</strong></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+<p>Among them, <a class="reference internal" href="../../../api_reference/group___nor___flash___exported___functions.html#_CPPv422flash_nor_erase_locked8uint32_t20FLASH_NOR_ERASE_MODE" title="flash_nor_erase_locked"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">flash_nor_erase_locked()</span></code></a> supports three types of erase (FLASH_NOR_ERASE_MODE)</p>
+<ol class="arabic simple">
+<li><p>Erase Sector (4K-Byte) (FLASH_NOR_ERASE_SECTOR)</p></li>
+<li><p>Erase Block (64K-byte) (FLASH_NOR_ERASE_BLOCK)</p></li>
+<li><p>Erase chip (full flash erase) (FLASH_NOR_ERASE_CHIP)</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It should be noted that there is no usage scenario of chip erase in a normal application, so <code class="docutils literal notranslate"><span class="pre">FLASH_NOR_ERASE_CHIP</span></code> is rarely used.</p>
+</div>
+</section>
+</section>
+<section id="bit-modes">
+<h2>Bit Modes<a class="headerlink" href="#bit-modes" title="Link to this heading"></a></h2>
+<p>Except for the standard Serial Peripheral Interface (SPI), most flash models also support high-performance Dual/Quad modes I/O SPI controlled by six
+pins.</p>
+<ol class="arabic simple">
+<li><p>Serial Clock (CLK)</p></li>
+<li><p>Chip Select (CS#)</p></li>
+<li><p>Serial Data IO0 (DI)</p></li>
+<li><p>Serial Data IO1 (DO)</p></li>
+<li><p>Serial Data IO2 (WP#)</p></li>
+<li><p>Serial Data IO3 (HOLD#)</p></li>
+</ol>
+<section id="three-bit-modes">
+<h3>Three Bit Modes<a class="headerlink" href="#three-bit-modes" title="Link to this heading"></a></h3>
+<ul>
+<li><p><strong>Single Bit Mode</strong></p>
+<p>The standard SPI mode, also known as 1-bit mode, uses only CLK, CS#, DI, and DO. WP# serves as the write-protect input, while HOLD# serves as the hold function input.</p>
+</li>
+<li><p><strong>Dual Bit Mode</strong></p>
+<p>Uses CLK, CS#, and uses DI, DO as IO0, IO1 respectively. The functions of WP# and HOLD# remain the same as in single bit mode.</p>
+</li>
+<li><p><strong>Quad Bit Mode</strong></p>
+<p>Uses CLK, CS#, and uses DI, DO, WP#, HOLD# as IO0, IO1, IO2, IO3 respectively. As all six pins are used, write protection and hold functions are unavailable in quad-bit mode.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>RTL87x2G supports two quad modes: STR and DTR. If users need to use the corresponding quad read mode, it is necessary to check the flash datasheet or AVL for flash features.</p>
+</div>
+</section>
+<section id="bit-mode-switch">
+<h3>Bit Mode Switch<a class="headerlink" href="#bit-mode-switch" title="Link to this heading"></a></h3>
+<p>Before entering the application, RTL87x2G will automatically switch to the fastest bit mode (it switches to 4-bit mode if the Flash supports it, and to 2-bit mode if the Flash only supports that).
+If users need to freely switch bit modes (1-bit, 2-bit, or 4-bit mode), they can call the interface provided in the SDK: <a class="reference internal" href="../../../api_reference/group___nor___flash___exported___functions.html#_CPPv429flash_nor_try_high_speed_mode18FLASH_NOR_IDX_TYPE18FLASH_NOR_BIT_MODE" title="flash_nor_try_high_speed_mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">flash_nor_try_high_speed_mode()</span></code></a> . The parameter 'mode' is used to configure bit mode.
+and if the switch fails, it will revert to 1-bit mode automatically.</p>
+<p>The prototype of the interface function provided by SDK for bit mode switching is as follows.</p>
+<table class="docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function Name</p></th>
+<th class="head"><p>flash_nor_try_high_speed_mode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Function Prototype</p></th>
+<td><p>FLASH_NOR_RET_TYPE flash_nor_try_high_speed_mode( FLASH_NOR_IDX_TYPE idx, FLASH_NOR_BIT_MODE mode )</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Function Description</p></th>
+<td><p>switch flash to high-speed bit mode</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Input Parameter</p></th>
+<td><p>idx: the default value is FLASH_NOR_IDX_SPIC0</p>
+<p>mode: the bit-mode to switch to (FLASH_NOR_1_BIT_MODE, FLASH_NOR_2_BIT_MODE, FLASH_NOR_4_BIT_MODE, FLASH_NOR_DTR_4_BIT_MODE)</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Return Value</p></th>
+<td><p>If the switching is successful, <strong>the returned value is 24 in decimal notation (Corresponding to FLASH_NOR_RET_SUCCESS)</strong></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Prerequisite</p></th>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+<p>Meanwhile, RTL87x2G supports configuring the FMC clock to improve read and write performance. The FMC clock defaults to a 40M clock source.
+After the FMC clock is divided by two for the NOR Flash, the operating clock of the NOR Flash is 20M at this time.
+To increase the frequency, developers can call the interface provided in the SDK: <a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv426fmc_flash_nor_clock_switch18FLASH_NOR_IDX_TYPE8uint32_tP8uint32_t" title="fmc_flash_nor_clock_switch"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">fmc_flash_nor_clock_switch()</span></code></a> . For usage reference, see <a class="reference internal" href="../../clock/text_en/README.html#fmc-clock-switch-en"><span class="std std-ref">FMC Clock Configuration</span></a> .</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It should be noted that since the 1-bit mode supports a relatively low frequency, switching the clock from low speed to high speed requires changing the bit mode first (to 2-bit or 4-bit mode). Conversely, when switching from a high-bit mode (2-bit or 4-bit) back to 1-bit mode, developers must first reduce the clock speed before changing the bit mode.</p>
+</div>
+</section>
+</section>
+<section id="software-block-protect">
+<span id="software-block-protect-en"></span><h2>Software Block Protect<a class="headerlink" href="#software-block-protect" title="Link to this heading"></a></h2>
+<p>Flash has multiple protection mechanisms to prevent accidental erase or writing. The two main protection mechanisms are <strong>software block protection</strong> and <strong>hardware pin protection</strong>.</p>
+<p>Locking the flash via the hardware protection pin (#WP) has the following two drawbacks:</p>
+<ol class="arabic simple">
+<li><p>If the #WP pin is used as a protection function, the flash's quad mode cannot be used.</p></li>
+<li><p>Hardware protection can only choose to protect the entire flash or not protect it at all. It cannot protect a portion of flash.</p></li>
+</ol>
+<p>The RTL87x2G uses a more flexible mechanism, Software Block Protect (BP), to prevent accidental flash erase and writing operations. The principle is to use some BP bits in the flash status register to select the range to be protected. By default, the RTL87x2G uses the BP function to protect some important data (such as configured parameters) and code segments, rather than the entire flash space. Flash uses the BP (X) bits in the status register to identify the number of blocks to be locked, and the TB bit to determine the locking direction. The RTL87x2G only supports locking starting from the low address end of the flash.</p>
+<section id="protection-level">
+<h3>Protection Level<a class="headerlink" href="#protection-level" title="Link to this heading"></a></h3>
+<p>Software block protection levels vary depending on the flash model used. The main models currently in use and their protection levels are as follows:</p>
+<ol class="arabic simple">
+<li><p><strong>Regular</strong> software block protection levels, such as GD25WD80, GD25WD40, ZB25WD80B, and ZB25WD40B.</p></li>
+<li><p><strong>Irregular</strong> software block protection levels, such as P25Q40SU and P25Q80SU.</p></li>
+</ol>
+<p>Below, the software block protection levels of GD25WD80 and P25Q40SU are used as examples to illustrate these two flash locking level patterns.</p>
+<ul>
+<li><p>The software block protection levels of GD25WD80 are shown in the figure below. It supports full lock, no lock, and the minimum lock region is 768KB. For this category, if locking to 1/2 is possible, RTL87x2G supports full lock, no lock, and lock 1/2 these three locking options. Other levels are not supported. If locking to 1/2 is not possible, only full lock and no lock are supported.</p>
+<table class="docutils align-center" id="table-gd25wd80-software-block-protection">
+<caption><span class="caption-text">GD25WD80 Software Block Protection</span><a class="headerlink" href="#table-gd25wd80-software-block-protection" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>BP2</p></th>
+<th class="head"><p>BP1</p></th>
+<th class="head"><p>BP0</p></th>
+<th class="head"><p>Density</p></th>
+<th class="head"><p>Portion</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1016KB</p></td>
+<td><p>Lower 254/256</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1008KB</p></td>
+<td><p>Lower 252/256</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>992KB</p></td>
+<td><p>Lower 248/256</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>960KB</p></td>
+<td><p>Lower 240/256</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>896KB</p></td>
+<td><p>Lower 224/256</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>768KB</p></td>
+<td><p>Lower 192/256</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1024KB</p></td>
+<td><p>ALL</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>The software block protection levels of P25Q40SU are shown in the figure below. Starting from full lock, it can lock 1/2, 1/4, 1/8 until no lock at all. For this regular category, all software block protection levels provided by the flash can be set.</p>
+<table class="docutils align-center" id="table-p25q40su-software-block-protection">
+<caption><span class="caption-text">P25Q40SU Software Block Protection</span><a class="headerlink" href="#table-p25q40su-software-block-protection" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>BP2</p></th>
+<th class="head"><p>BP1</p></th>
+<th class="head"><p>BP0</p></th>
+<th class="head"><p>Density</p></th>
+<th class="head"><p>Portion</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>64KB</p></td>
+<td><p>Lower 1/8</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>128KB</p></td>
+<td><p>Lower 1/4</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>256KB</p></td>
+<td><p>Lower 1/2</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>512KB</p></td>
+<td><p>ALL</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The provided interface functions for BP setting include <a class="reference internal" href="../../../api_reference/group___nor___flash___exported___functions.html#_CPPv426flash_nor_set_bp_lv_locked18FLASH_NOR_IDX_TYPE7uint8_t" title="flash_nor_set_bp_lv_locked"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">flash_nor_set_bp_lv_locked()</span></code></a>, <a class="reference internal" href="../../../api_reference/group___nor___flash___exported___functions.html#_CPPv426flash_nor_get_bp_lv_locked18FLASH_NOR_IDX_TYPEP7uint8_t" title="flash_nor_get_bp_lv_locked"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">flash_nor_get_bp_lv_locked()</span></code></a>.</p>
+</div>
+</section>
+<section id="automatic-locking-mechanism">
+<h3>Automatic Locking Mechanism<a class="headerlink" href="#automatic-locking-mechanism" title="Link to this heading"></a></h3>
+<p>For user convenience, the RTL87x2G provides an automatic locking mechanism controlled by the macro <kbd class="kbd docutils literal notranslate">DEFAULT_FLASH_BP_LEVEL_ENABLE</kbd> . When <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">#define</kbd> <kbd class="kbd docutils literal notranslate">DEFAULT_FLASH_BP_LEVEL_ENABLE</kbd>      <kbd class="kbd docutils literal notranslate">1</kbd></kbd> is defined in the header file <code class="file docutils literal notranslate"><span class="pre">otp_config.h</span></code> , the maximum lockable range will be locked according to the configured flash layout and the chosen flash model, that is,
+from the starting address of the flash to the end address of OTA bank1 (flash layout refer to <a class="reference internal" href="../../image_layout/text_en/README.html#flash-layout-en"><span class="std std-ref">Flash Layout</span></a>).
+Most flash devices support level-based protection, covering different sizes of areas including the initial 64KB, 128KB, 256KB, 512KB, etc.</p>
+<p>When partitioning the flash layout, it's crucial to align the OTA bank1 end address offset with one of the protection levels supported by the flash, as much as possible.
+This ensures that important data and code areas are fully locked, without impacting the data area filled with information that needs to be overwritten,
+like the 'FTL' or 'OTA Tmp' area. Once the flash layout is set, RTL87x2G will automatically parse the flash layout configuration parameters and fetch the selected flash information to determine the BP protection level.
+If the flash model in use solely supports the block protection mode as shown in <a class="reference internal" href="#table-gd25wd80-software-block-protection"><span class="std std-ref">GD25WD80 Software Block Protection</span></a> , RTL87x2G will choose not to enable the lock.</p>
+<p>Summarizing the information provided, the RTL87x2G supports two methods for protecting flash:</p>
+<ul class="simple">
+<li><p>Using the <a class="reference internal" href="../../../api_reference/group___nor___flash___exported___functions.html#_CPPv426flash_nor_set_bp_lv_locked18FLASH_NOR_IDX_TYPE7uint8_t" title="flash_nor_set_bp_lv_locked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">flash_nor_set_bp_lv_locked()</span></code></a> interface: This method is more straightforward and unrestricted. However, the bp_lv parameter needs to be determined by the user based on the corresponding flash's datasheet. For instance, with the <a class="reference internal" href="#table-p25q40su-software-block-protection"><span class="std std-ref">P25Q40SU</span></a>, when setting the lock region to the first 256KB, the status register would have BP2 as 0, BP1 as 1, and BP0 as 1. Hence, the bp_lv parameter for the <a class="reference internal" href="../../../api_reference/group___nor___flash___exported___functions.html#_CPPv426flash_nor_set_bp_lv_locked18FLASH_NOR_IDX_TYPE7uint8_t" title="flash_nor_set_bp_lv_locked"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">flash_nor_set_bp_lv_locked()</span></code></a>  would be 3.</p></li>
+<li><p>Enabling the macro <kbd class="kbd docutils literal notranslate">DEFAULT_FLASH_BP_LEVEL_ENABLE</kbd> to use the automatic locking mechanism: With this method, users do not need to calculate the bp_lv parameter. However, If the flash in use solely supports the block protection mode as shown in <a class="reference internal" href="#table-gd25wd80-software-block-protection"><span class="std std-ref">GD25WD80 Software Block Protection</span></a> , the locking process may fail.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the current version of the <a class="reference internal" href="../../../glossary.html#term-OTA"><span class="xref std std-term">OTA</span></a> demo does not yet support upgrades when flash is locked, it is not recommended to use this feature at this time.</p>
+</div>
+</section>
+</section>
+<section id="power-saving">
+<h2>Power Saving<a class="headerlink" href="#power-saving" title="Link to this heading"></a></h2>
+<p>The power mode of flash is mainly divided into three scenarios.</p>
+<ul class="simple">
+<li><p><strong>Working:</strong> the power consumption is generally around 10 mA.</p></li>
+<li><p><strong>Standby:</strong> the power consumption is typically around the order of 10 uA.</p></li>
+<li><p><strong>Power Down:</strong> the power consumption is lower, where it is even less than 1 uA.</p></li>
+</ul>
+<p>Flash automatically enters standby mode without any access, and automatically enters working state when it needs to be accessed again.
+In order to enter Power Down mode, use a specific command.
+Most flash use the command 0xB9 to enter Power Down mode and use the command 0xAB to exit Power Down mode.
+But MXIC toggles the #CS pin to wake up flash.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>It should be noted that after the flash enters Power Down mode, receiving any command other than the exit Power Down command (0xAB) is dangerous. This is because, after entering Power Down mode, the flash only accepts wake-up commands to exit Power Down mode, all other commands will be ignored, but the flash controller may enter an infinite loop waiting for the flash's response.</p></li>
+<li><p>To prevent the risks associated with the misuse of Flash Power Down mode, the system's DLPS mechanism has incorporated control of the Flash Power Down mode: when entering DLPS, an instruction is automatically issued to put the flash into Power Down mode, and upon exiting DLPS, the flash is awakened.</p></li>
+</ul>
+</div>
+</section>
+<section id="xip">
+<h2>XIP<a class="headerlink" href="#xip" title="Link to this heading"></a></h2>
+<p>XIP (eXecute In Place) is a technique that allows code to be executed directly in flash memory without having to copy it into RAM.
+This saves RAM space and improves the efficiency of code execution.
+If the remaining RAM space is sufficient, APP code can be directly executed on RAM, which is conducive to improving performance and reducing power
+consumption.
+However, if the APP code is so large that the remaining RAM space is not enough, some or all of the APP codes need to be executed on flash (XIP).
+Configuration of XIP on RTL87x2G is as follows.</p>
+<ol class="arabic">
+<li><p><strong>Macro FEATURE_RAM_CODE</strong></p>
+<p>Configured in <code class="file docutils literal notranslate"><span class="pre">mem_config.h</span></code>:</p>
+<ol class="arabic simple">
+<li><p>When set to 1, code without any section modifiers by default will execute on RAM.</p></li>
+<li><p>When set to 0, code without any section modifiers by default will execute in flash.</p></li>
+</ol>
+</li>
+<li><p><strong>Section Decoration</strong></p>
+<p>Reference <code class="file docutils literal notranslate"><span class="pre">app_section.h</span></code></p>
+<ol class="arabic simple">
+<li><p>APP_FLASH_TEXT_SECTION: Specifies that the code section is executed on flash.</p></li>
+<li><p>APP_RAM_TEXT_SECTION: Specifies that the code section is executed on RAM.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If RAM space is insufficient, give higher priority to implementing time-sensitive code on RAM to ensure efficiency.</p>
+</div>
+</li>
+<li><p><strong>Ways to Improve the Efficiency of Executing XIP Code</strong></p>
+<p>Switch the flash to dual or quad mode: Call <a class="reference internal" href="../../../api_reference/group___nor___flash___exported___functions.html#_CPPv429flash_nor_try_high_speed_mode18FLASH_NOR_IDX_TYPE18FLASH_NOR_BIT_MODE" title="flash_nor_try_high_speed_mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">flash_nor_try_high_speed_mode()</span></code></a>.</p>
+</li>
+</ol>
+<p>RTL87x2G can access flash with auto read (directly accessing flash addresses) through FMC, and execute code directly on SPI flash.
+However, the operation of accessing flash in user mode is not atomic.
+Once the accessing is interrupted by higher priority tasks or interrupts, it is possible to cause flash access error.
+To ensure atomicity of flash operations in user mode, XIP should follow the following restrictions and precautions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Accessing flash operations in user mode requires calling APIs with the '_locked' suffix to ensure critical area protection.
+If the time of the flash operation is too long, such as writing a large amount of data at one time, it is not suitable for critical zone
+protection, and can be split into a smaller amount of data written a few times.</p></li>
+<li><p>If the time-critical interrupt needs to be processed, it is also necessary to ensure that the ISR (interrupt service routine) itself cannot be XIP,
+and the ISR also prohibits accessing the flash.</p></li>
+</ul>
+</div>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___a_p_p___s_e_c_t_i_o_n___exported___macros.html#group___a_p_p___s_e_c_t_i_o_n___exported___macros"><span class="std std-ref">APP Section Sets Exported Macros</span></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___n_o_r___f_l_a_s_h.html#group___n_o_r___f_l_a_s_h"><span class="std std-ref">Nor Flash</span></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___f_t_l.html#group___f_t_l"><span class="std std-ref">Flash Transport Layer</span></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___f_m_c.html#group___f_m_c"><span class="std std-ref">Flexible Memory Controller</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../image_layout/text_en/README.html" class="btn btn-neutral float-left" title="Image Layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../psram/text_en/README.html" class="btn btn-neutral float-right" title="PSRAM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

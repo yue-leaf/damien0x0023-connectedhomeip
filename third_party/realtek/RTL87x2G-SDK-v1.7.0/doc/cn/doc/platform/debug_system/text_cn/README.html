@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>调试系统 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="时钟管理" href="../../clock/text_cn/README.html" />
+    <link rel="prev" title="安全机制" href="../../security/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_cn/README.html">平台指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../platform_overview/text_cn/README.html">平台概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/text_cn/README.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_cn/README.html">Image Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flash/text_cn/README.html">Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_cn/README.html">PSRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../low_power_mode/text_cn/README.html">低功耗模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/text_cn/README.html">安全机制</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">调试系统</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#log">Log 机制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#debug-analyzer">Debug Analyzer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Log 打印接口</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id4">基本打印接口</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">封装打印接口</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">辅助打印接口</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id9">直接打印接口</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id10">打印接口示例</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Log 控制</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#mp-tool-config">MP Tool Config 控制</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id12">Log 控制接口</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#swd">SWD 调试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#arm-keil-mdk-swd">ARM Keil MDK SWD 调试</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#j-link-commander-swd">J-Link Commander SWD 调试</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../clock/text_cn/README.html">时钟管理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_cn/README.html">平台指南</a></li>
+    <li class="breadcrumb-item active">调试系统</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="id1">
+<h1>调试系统<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>调试系统（Debug System）是软件开发过程中的一项关键技术，是用于检测和修复软件程序中的错误或问题的工具和技术的集合。其主要目的是帮助开发人员识别和解决程序在开发和运行过程中遇到的各种问题，从而提高软件质量和可靠性。在调试系统中，开发人员可以通过设置断点、单步执行、日记记录等方式，来检查运行代码时的寄存器值，了解运行时代码状态。</p>
+<p>以下是 RTL87x2G 提供的两种调试方式：</p>
+<ol class="arabic simple">
+<li><p>使用 log 机制跟踪代码的执行和数据。</p></li>
+<li><p>使用 ARM Keil MDK 或 J-Link Commander 和 SWD 进行调试，增加/删除断点以及访问/追踪 Memory 等。</p></li>
+</ol>
+<section id="log">
+<h2>Log 机制<a class="headerlink" href="#log" title="Link to this heading"></a></h2>
+<p>Log 机制是软件开发中的一个重要工具，通过记录程序运行期间的各种事件和状态信息，帮助开发人员监控、调试和维护软件系统。RTL87x2G 的 Log 通过 Realtek 提供的 Debug Analyzer 工具查看，该工具旨在简化用户的调试过程。其目标是优化软件问题的识别和解决，促进更高效的开发周期。详情请参考 <a class="reference internal" href="../../../tool_set/text_cn/README.html#debug-analyzer-tool-cn"><span class="std std-ref">Debug Analyzer Tool</span></a>。</p>
+<p>RTL87x2G 预留了 P0_3 默认作为 Log UART 的输出引脚，也可以将 log 功能重新配置到其它引脚。Log UART 的输出引脚经 UART-to-USB 连接到 PC，在 PC 端 COM 口通过 Debug Analyzer 接收 log 数据。下面详细介绍 Debug Analyzer 的使用方式。</p>
+<section id="debug-analyzer">
+<h3>Debug Analyzer<a class="headerlink" href="#debug-analyzer" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>打开 <code class="file docutils literal notranslate"><span class="pre">DebugAnalyzer.exe</span></code>，主界面点击 <span class="guilabel">Settings</span> 即可。</p></li>
+<li><p>在【Detail Settings】界面中：</p>
+<ol class="arabic simple">
+<li><p>在 <span class="guilabel">Serial Port</span> 选择 LOG UART 对应的 COM 口。</p></li>
+<li><p>在 <span class="guilabel">App Trace File</span> 选择对应的 <code class="file docutils literal notranslate"><span class="pre">App.trace</span></code> 以及其它需要的 trace。</p></li>
+<li><p>点击右下角的 <span class="guilabel">confirm</span>。（<code class="file docutils literal notranslate"><span class="pre">App.trace</span></code> 在 APP 程序编译后和 <code class="file docutils literal notranslate"><span class="pre">App.bin</span></code> 生成在同一个目录位置）</p></li>
+</ol>
+</li>
+<li><p>主界面点击 <span class="guilabel">Start</span> 即可。</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../_images/debug_analyzer.png"><img alt="../../../../_images/debug_analyzer.png" src="../../../../_images/debug_analyzer.png" style="width: 1137.6000000000001px; height: 852.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Debug Analyzer 页面</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<p>Debug Analyzer 还提供了一些高级功能。</p>
+<ul class="simple">
+<li><p><span class="guilabel">Log Filter</span>：过滤显示，弹出新窗口，只显示满足过滤条件的 log。</p></li>
+<li><p><span class="guilabel">Clear</span>：清空显示框中的 log。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Debug Analyzer 会自动保存 log 文件，并按照端口号和生成时间命名，如 <code class="file docutils literal notranslate"><span class="pre">COM5_2015-06-12_18-05-00.log</span></code>，保存位置在 DebugAnalyzer 安装路径 <code class="file docutils literal notranslate"><span class="pre">DebugAnalyzer\DataFile</span></code> 中。</p>
+</div>
+</section>
+<section id="id3">
+<h3>Log 打印接口<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>Log 打印接口可以分为以下四种：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id4">基本打印接口</a></p></li>
+<li><p><a class="reference internal" href="#id6">封装打印接口</a></p></li>
+<li><p><a class="reference internal" href="#id7">辅助打印接口</a></p></li>
+<li><p><a class="reference internal" href="#id9">直接打印接口</a></p></li>
+</ul>
+<section id="id4">
+<h4>基本打印接口<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>用于打印实时 log，声明如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DBG_BUFFER</span><span class="p">(</span><span class="n">T_LOG_TYPE</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">T_LOG_SUBTYPE</span><span class="w"> </span><span class="n">sub_type</span><span class="p">,..</span><span class="n">T_MODULE_ID</span><span class="w"> </span><span class="n">module</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">param_num</span><span class="p">,...).</span>
+</pre></div>
+</div>
+<p>参数说明：</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>固定是 TYPE_RTL87X2G</p>
+</dd>
+<dt class="field-even">sub_type<span class="colon">:</span></dt>
+<dd class="field-even"><p>固定是 SUBTYPE_FORMAT</p>
+</dd>
+<dt class="field-odd">module<span class="colon">:</span></dt>
+<dd class="field-odd"><p>T_MODULE_ID 类型中有预定义好几种 module，这些 module 用于将 log 分类别，Debug Analyzer 能够识别这些 module，在每条打印的 log 前自动加到 module 名称</p>
+</dd>
+<dt class="field-even">level<span class="colon">:</span></dt>
+<dd class="field-even"><p>日志级别，表示 log 要打印的级别，定义了以下 4 种类别：</p>
+</dd>
+</dl>
+</div></blockquote>
+<table class="docutils align-center" id="id5">
+<caption><span class="caption-text">日志级别</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>日志级别</p></th>
+<th class="head"><p>使用场景</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LEVEL_ERROR</p></td>
+<td><p>致命错误，程序无法继续运行（Log 标识：!!!）</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEVEL_WARN</p></td>
+<td><p>异常情况发生，程序可以继续运行（Log 标识：!!*）</p></td>
+</tr>
+<tr class="row-even"><td><p>LEVEL_INFO</p></td>
+<td><p>重要信息（Log 标识：!**）</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEVEL_TRACE</p></td>
+<td><p>详细调试信息（Log 标识：无）</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_BUFFER" title="DBG_BUFFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_BUFFER</span></code></a> 接口最多允许 20 个参数。</p>
+</div>
+</section>
+<section id="id6">
+<h4>封装打印接口<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>针对不同的模块，RTL87x2G 封装了相应接口来打印对应的日志，并和基本接口一样，提供了四个日志级别。打印的日志开头会有模块名，例如 [APP] [Flash] 等，声明如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">MODULE</span><span class="p">}</span><span class="n">_PRINT_</span><span class="p">{</span><span class="n">LEVEL</span><span class="p">}</span><span class="n">_</span><span class="p">{</span><span class="n">PARAMNUM</span><span class="p">}(...)</span>
+</pre></div>
+</div>
+<p>参数说明：</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">MODULE<span class="colon">:</span></dt>
+<dd class="field-odd"><p>在 <code class="docutils literal notranslate"><span class="pre">trace.h</span></code> 中定义，包括 APP/GAP/USB/FLASH...</p>
+</dd>
+<dt class="field-even">LEVEL<span class="colon">:</span></dt>
+<dd class="field-even"><p>和基本打印接口的四种 level 相同，ERROR/WARN/INFO/TRACE</p>
+</dd>
+<dt class="field-odd">PARAMNUM<span class="colon">:</span></dt>
+<dd class="field-odd"><p>0 到 8，代表 log 打印参数的个数</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>不要超过 8 个参数（如果使用 <a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_BUFFER" title="DBG_BUFFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_BUFFER</span></code></a> 接口，最多允许 20 个参数）。</p></li>
+<li><p>尽量把所有参数放到一条打印语句中。</p></li>
+</ul>
+</div>
+</section>
+<section id="id7">
+<h4>辅助打印接口<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_BUFFER" title="DBG_BUFFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_BUFFER</span></code></a> 接口只能打印诸如（d，i，u，o，x）的整型、字符（c）和指针类型（p），当要打印 string，binary array 或者 BT 地址时，需用到以下辅助打印接口。</p>
+<table class="docutils align-center" id="id8">
+<caption><span class="caption-text">辅助打印接口</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>接口</p></th>
+<th class="head"><p>说明</p></th>
+<th class="head"><p>注意事项</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TRACE_STRING(char* data)</p></td>
+<td><p>直接打印字符串，转换符 %s</p></td>
+<td><p>字符串的长度最大为 240 字节</p></td>
+</tr>
+<tr class="row-odd"><td><p>TRACE_BINARY(uint16_t length, uint8_t* data)</p></td>
+<td><p>以 16 进制格式打印二进制数据，转换符 %b</p></td>
+<td><p>二进制数据最大为 240 字节</p></td>
+</tr>
+<tr class="row-even"><td><p>TRACE_BDADDR(char* bd_addr)</p></td>
+<td><p>以 BT 地址格式打印二进制字符串，转换字符 %s</p></td>
+<td><p>单条 log 最多可打印 4 个 BT 地址，例如：</p>
+<p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Hex</kbd> <kbd class="kbd docutils literal notranslate">Array:</kbd> <kbd class="kbd docutils literal notranslate">0xaa</kbd> <kbd class="kbd docutils literal notranslate">0xbb</kbd> <kbd class="kbd docutils literal notranslate">0xcc</kbd> <kbd class="kbd docutils literal notranslate">0xdd</kbd> <kbd class="kbd docutils literal notranslate">0xee</kbd> <kbd class="kbd docutils literal notranslate">0xff</kbd> <kbd class="kbd docutils literal notranslate">–&gt;</kbd> <kbd class="kbd docutils literal notranslate">Literal</kbd> <kbd class="kbd docutils literal notranslate">String:</kbd> <kbd class="kbd docutils literal notranslate">FF::EE::DD::CC::BB::AA</kbd></kbd></p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h4>直接打印接口<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p>通过调用基于 <a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_BUFFER" title="DBG_BUFFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_BUFFER</span></code></a> 接口的函数打印 log 对系统性能的影响比较小，但是打印实时性不高，因为通过这些 API 打印的 log 会被缓存到 buffer 中，在系统空闲的时候发送给 Log UART。</p>
+<p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___macros.html#c.DBG_DIRECT" title="DBG_DIRECT"><code class="xref c c-macro docutils literal notranslate"><span class="pre">DBG_DIRECT</span></code></a> 用来打印实时 log。这个 API 打印 log 对系统的影响比较大，因为会直接发送数据给 Log UART，在 log 打印完之前系统不能继续执行，所以 <span class="red-text">强烈建议只在以下一些特定的情况下使用该 API</span>。</p>
+<ul class="simple">
+<li><p>在系统重启前</p></li>
+<li><p>实时性要求高的场景</p></li>
+</ul>
+</section>
+<section id="id10">
+<h4>打印接口示例<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<p>下面的例子展示了 log APIs 的一般用法，以及在 Debug Analyzer 上对应的输出。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">77777</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x5A</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">bd1</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x11</span><span class="p">,</span><span class="w"> </span><span class="mh">0x22</span><span class="p">,</span><span class="w"> </span><span class="mh">0x33</span><span class="p">,</span><span class="w"> </span><span class="mh">0x44</span><span class="p">,</span><span class="w"> </span><span class="mh">0x55</span><span class="p">};</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">bd2</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0xAA</span><span class="p">,</span><span class="w"> </span><span class="mh">0xBB</span><span class="p">,</span><span class="w"> </span><span class="mh">0xCC</span><span class="p">,</span><span class="w"> </span><span class="mh">0xDD</span><span class="p">,</span><span class="w"> </span><span class="mh">0xEE</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">};</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">c1</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;4&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;7&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;9&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">};</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">c2</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;F&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;g&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;H&#39;</span><span class="p">};</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Log Test&quot;</span><span class="p">;</span>
+<span class="n">ADC_PRINT_TRACE1</span><span class="p">(</span><span class="s">&quot;ADC value is %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="n">UART_PRINT_INFO3</span><span class="p">(</span><span class="s">&quot;Serial data: 0x%x, c1[%b], s1[%s]&quot;</span><span class="p">,..</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">TRACE_BINARY</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">),</span><span class="w"> </span><span class="n">TRACE_STRING</span><span class="p">(</span><span class="n">s1</span><span class="p">));</span>
+<span class="n">GAP_PRINT_WARN6</span><span class="p">(</span><span class="s">&quot;n[%d], m[%c] bd1[%s], bd2[%s], c2[%b], s2[%s]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,..</span><span class="n">TRACE_BDADDR</span><span class="p">(</span><span class="n">bd1</span><span class="p">),</span><span class="w"> </span><span class="n">TRACE_BDADDR</span><span class="p">(</span><span class="n">bd2</span><span class="p">),</span><span class="n">TRACE_BINARY</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="p">),</span><span class="w"> </span><span class="n">TRACE_STRING</span><span class="p">(</span><span class="n">s2</span><span class="p">));</span>
+<span class="n">APP_PRINT_ERROR0</span><span class="p">(</span><span class="s">&quot;APP ERROR OCCURRED...&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Debug Analyzer 上对应的输出结果。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>00252 10-25#17:12:02.021 132 10241 [ADC] ADC value is 77777
+00253 10-25#17:12:02.021 133 10241 [UART] !**Serial data:..0x5a, c1[31-32-33-34-35-36-37-38-39-30], s1[Hello world!]
+00254 10-25#17:12:02.022 134 10241 [GAP] !!*n[77777], m[Z] bd1[55::44::33::22::11::00],bd2[FF::EE::DD::CC::BB::AA],c2[61-62-43-64-45-46-67-48], s2[Log Test]
+00255 10-25#17:12:02.022 135 10241 [APP] !!!APP ERROR OCCURRED...
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h3>Log 控制<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>用户可以通过以下两种方式选择打印各个日志级别：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#mp-tool-config">MP Tool Config 控制</a></p></li>
+<li><p><a class="reference internal" href="#id12">Log 控制接口</a></p></li>
+</ul>
+<section id="mp-tool-config">
+<h4>MP Tool Config 控制<a class="headerlink" href="#mp-tool-config" title="Link to this heading"></a></h4>
+<p>MP Tool 作为量产工具，同时支持调试/量产两种模式，可以在调试过程中配置各个模块对应的各个日志级别是否使能，使用方式如下，详情请参考： <a class="reference internal" href="../../../tool_set/text_cn/README.html#mp-tool-cn"><span class="std std-ref">MP Tool</span></a>。</p>
+<ol class="arabic">
+<li><p>首先在主页面点击 <span class="guilabel">Config Set</span>。</p>
+<figure class="align-center" id="mp-tool">
+<a class="reference internal image-reference" href="../../../../_images/MP_Tool_main_page.png"><img alt="../../../../_images/MP_Tool_main_page.png" src="../../../../_images/MP_Tool_main_page.png" style="width: 971.2px; height: 711.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool 主页面</span><a class="headerlink" href="#mp-tool" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>再在【Config Set】页面点击 <span class="guilabel">Log</span> 标签，并在标签页双击修改对应模块及等级的 Enable/Disable，最后点击右下角的  <span class="guilabel">Confirm</span>，生成 System Config File 并烧录。</p>
+<figure class="align-center" id="mp-tool-config-set">
+<a class="reference internal image-reference" href="../../../../_images/MP_Tool_config_log.png"><img alt="../../../../_images/MP_Tool_config_log.png" src="../../../../_images/MP_Tool_config_log.png" style="width: 728.0px; height: 604.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool Config Set 页面</span><a class="headerlink" href="#mp-tool-config-set" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="id12">
+<h4>Log 控制接口<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>有时候需要控制某些 log 的打开和关闭。一种方式是通过设定 MP Tool 中的 Config File，将 Config File 烧录到 RTL87x2G。如果需要频繁改变 log 打印 level，这种方式就不够灵活了，因为每次重烧 System Config File 也不方便，所以 SDK 中提供了 3 个 API 来控制特定 module 的特定 level，分别为：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___functions.html#_CPPv421log_module_trace_initAL4E_8uint64_t" title="log_module_trace_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">log_module_trace_init()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___functions.html#_CPPv420log_module_trace_set11T_MODULE_ID7uint8_tb" title="log_module_trace_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">log_module_trace_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e___exported___functions.html#_CPPv427log_module_bitmap_trace_set8uint64_t7uint8_tb" title="log_module_bitmap_trace_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">log_module_bitmap_trace_set()</span></code></a></p></li>
+</ul>
+<p>这里通过一些场景来帮助用户理解如何在应用程序中使用 log 控制的 APIs。假设 log 打印功能已经打开，并且 Config File 中将所有 log trace mask 置成 1，意味着所有 module 的所有 level 的 log 都会打印出来。</p>
+<ul>
+<li><p><strong>场景 1</strong></p>
+<p>关闭 APP module 的所有 trace 和 info 级别的 log。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="w"> </span><span class="p">(</span><span class="n">MODULE_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul id="scen-2">
+<li><p><strong>场景 2</strong></p>
+<p>只打开 PROFILE module 的 log。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">mask</span><span class="p">[</span><span class="n">LEVEL_NUM</span><span class="p">];</span>
+<span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">mask</span><span class="p">));</span>
+<span class="w">    </span><span class="n">log_module_trace_init</span><span class="p">(</span><span class="n">mask</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_PROFILE</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_ERROR</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_PROFILE</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_WARN</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_PROFILE</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_PROFILE</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>场景 3</strong></p>
+<p>关闭 PROFILE/PROTOCOL/GAP/APP module 的 trace 级别 log。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_module_bitmap_trace_set</span><span class="p">(</span><span class="n">MODULE_BIT_PROFILE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">MODULE_BIT_PROTOCOL</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                              </span><span class="n">MODULE_BIT_GAP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">MODULE_BIT_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul id="scen-4">
+<li><p><strong>场景 4</strong></p>
+<p>关闭除了 APP module 以外的所有 trace 和 info 级别的 log，包括关闭 BT Snoop log。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MODULE_NUM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">log_module_trace_set_update</span><span class="p">((</span><span class="n">T_MODULE_ID</span><span class="p">)</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">        </span><span class="n">log_module_trace_set_update</span><span class="p">((</span><span class="n">T_MODULE_ID</span><span class="p">)</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_INFO</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_APP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log_module_trace_set_update</span><span class="p">(</span><span class="n">MODULE_SNOOP</span><span class="p">,</span><span class="w"> </span><span class="n">LEVEL_ERROR</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>如果 MODULE_SNOOP 的 LEVEL_ERROR log 打开，Debug Analyzer 会产生 BT Snoop 的 log 文件 <code class="file docutils literal notranslate"><span class="pre">*.cfa</span></code>。</p></li>
+<li><p>如果关闭 MODULE_SNOOP 的 log，就不会产生 BT Snoop log，如上 <a class="reference internal" href="#scen-2"><span class="std std-ref">场景2</span></a> 和 <a class="reference internal" href="#scen-4"><span class="std std-ref">场景4</span></a>。</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+<section id="swd">
+<h2>SWD 调试<a class="headerlink" href="#swd" title="Link to this heading"></a></h2>
+<p>RTL87x2G 实现了 3 个基本的调试接口：</p>
+<ul class="simple">
+<li><p>run control</p></li>
+<li><p>breakpoint</p></li>
+<li><p>memory access</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>RTL87x2G 支持 SWD，不支持 JTAG。</p>
+</div>
+<section id="arm-keil-mdk-swd">
+<h3>ARM Keil MDK SWD 调试<a class="headerlink" href="#arm-keil-mdk-swd" title="Link to this heading"></a></h3>
+<p>首先正确安装和配置 ARM Keil MDK 和 SWD RTL87x2G 支持的主要调试特性如 UI 上展示。</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">Running control</span> ：Running/Reset/Step</p></li>
+<li><p><span class="guilabel">Breakpoints</span> ：Add/Delete/Conditional</p></li>
+<li><p>调试功能窗口</p>
+<ul class="simple">
+<li><p><span class="guilabel">Core registers</span>：监视/修改 MCU 寄存器值</p></li>
+<li><p><span class="guilabel">Disassembly</span>：显示程序执行的汇编代码，或者与源代码混合显示</p></li>
+<li><p><span class="guilabel">Source code</span>：查看 C 代码，支持断点以及变量的实时显示</p></li>
+<li><p><span class="guilabel">Variable watch</span>：查看加入监视的变量值</p></li>
+<li><p><span class="guilabel">Memory</span>：显示/修改待查的内存，支持直接的地址输入和可变的地址输入</p></li>
+<li><p><span class="guilabel">Call stack and local variable</span>：显示当前的调用栈，以及 local 变量（即 stack 上的变量）</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>有时候可能会遇到 image 无法成功下载到 flash 上，或者即使与 J-Link 成功连接，但依旧找不到 SWD，这时可做如下检查：</p>
+<ol class="arabic simple">
+<li><p>更改 debug clock 到一个较小的值（例如从 2MHz 降到 1MHz），或者换用更短的 SWD 调试线。</p></li>
+<li><p>IC 可能已经进入了 DLPS 模式，reset IC，这样系统会保持处于 active 状态 5 秒钟。</p></li>
+<li><p>应用程序中是否关闭了 SWD feature。</p></li>
+</ol>
+</div>
+</section>
+<section id="j-link-commander-swd">
+<span id="id13"></span><h3>J-Link Commander SWD 调试<a class="headerlink" href="#j-link-commander-swd" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>在使用 J-Link Commander 之前，先添加 device 信息，配置 flash 算法。这样可以通过 J-Link Commander 直接烧录 bin、data 到 flash。</p>
+<ol class="arabic">
+<li><p>在 J-Link 安装目录（ <code class="file docutils literal notranslate"><span class="pre">JLink.exe</span></code> 所在目录）创建文件夹： <code class="file docutils literal notranslate"><span class="pre">Devices\Realtek\RTL87x2G</span></code>。</p></li>
+<li><p>从 SDK 中( <code class="file docutils literal notranslate"><span class="pre">sdk\tool\flash</span></code> 目录下)找到 <code class="file docutils literal notranslate"><span class="pre">RTL87x2G_FLASH.FLM</span></code>、<code class="file docutils literal notranslate"><span class="pre">RTL876x_LOG_TRACE.FLM</span></code> 文件，拷贝到 <code class="file docutils literal notranslate"><span class="pre">Devices\Realtek\RTL87x2G</span></code>。</p></li>
+<li><p>打开 J-Link 安装目录下的 <code class="file docutils literal notranslate"><span class="pre">JLinkDevices.xml</span></code> 文件，添加如下的 Device 下载算法信息。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Device&gt;</span>
+<span class="w">  </span><span class="nt">&lt;ChipInfo</span><span class="w"> </span><span class="na">Vendor=</span><span class="s">&quot;Realtek&quot;</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;RTL87x2G&quot;</span><span class="w"> </span><span class="na">Core=</span><span class="s">&quot;JLINK_CORE_CORTEX_M33&quot;</span><span class="w"> </span><span class="na">WorkRAMAddr=</span><span class="s">&quot;0x00130000&quot;</span><span class="w"> </span><span class="na">WorkRAMSize=</span><span class="s">&quot;0x8000&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;FlashBankInfo</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;QSPI Flash&quot;</span><span class="w"> </span><span class="na">BaseAddr=</span><span class="s">&quot;0x04000000&quot;</span><span class="w"> </span><span class="na">MaxSize=</span><span class="s">&quot;0x01000000&quot;</span><span class="w"> </span><span class="na">Loader=</span><span class="s">&quot;Devices/Realtek/RTL87X2G/RTL87x2G_FLASH.FLM&quot;</span><span class="w"> </span><span class="na">LoaderType=</span><span class="s">&quot;FLASH_ALGO_TYPE_CMSIS&quot;</span><span class="w"> </span><span class="na">AlwaysPresent=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;FlashBankInfo</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;QSPI Flash&quot;</span><span class="w"> </span><span class="na">BaseAddr=</span><span class="s">&quot;0x08000000&quot;</span><span class="w"> </span><span class="na">MaxSize=</span><span class="s">&quot;0x10400000&quot;</span><span class="w"> </span><span class="na">Loader=</span><span class="s">&quot;Devices/Realtek/RTL87X2G/RTL876x_LOG_TRACE.FLM&quot;</span><span class="w"> </span><span class="na">LoaderType=</span><span class="s">&quot;FLASH_ALGO_TYPE_CMSIS&quot;</span><span class="w"> </span><span class="na">AlwaysPresent=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Device&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p>打开 J-Link Commander 命令窗口，依次输入 <kbd class="kbd docutils literal notranslate">connect</kbd>、<kbd class="kbd docutils literal notranslate">RTL87x2G</kbd> 和 <kbd class="kbd docutils literal notranslate">s</kbd>，看到如下命令 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Cortex</kbd>-<kbd class="kbd docutils literal notranslate">M33</kbd> <kbd class="kbd docutils literal notranslate">identified.</kbd></kbd> 即说明连接成功。</p>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../../../../_images/J-Link_Commander_SWD_debugging.png"><img alt="../../../../_images/J-Link_Commander_SWD_debugging.png" src="../../../../_images/J-Link_Commander_SWD_debugging.png" style="width: 561.0px; height: 842.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">J-Link Commander SWD 调试</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>成功连接上 SWD 之后，进而可以通过 J-Link Commander 中支持的命令调试，常用指令如下：</p>
+<table class="docutils align-center" id="id15">
+<caption><span class="caption-text">常用指令说明</span><a class="headerlink" href="#id15" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>指令</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>h</p></th>
+<td><p>halt cpu</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>r</p></th>
+<td><p>reset cpu</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>g</p></th>
+<td><p>go</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>s</p></th>
+<td><p>单步运行</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>setbp</p></th>
+<td><p>设置断点</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>mem32</p></th>
+<td><p>读取指定地址的数据</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>w4</p></th>
+<td><p>向指定地址写入数据</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>erase</p></th>
+<td><p>擦除 flash</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>loadbin</p></th>
+<td><p>烧录 bin 文件到 flash</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>savebin</p></th>
+<td><p>将 flash 上的数据保存成 bin 文件</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>?</p></th>
+<td><p>直接输入 “?” 可以获取全部支持的命令</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../../../../_images/J-Link_Commander_SWD_debugging_query.png"><img alt="../../../../_images/J-Link_Commander_SWD_debugging_query.png" src="../../../../_images/J-Link_Commander_SWD_debugging_query.png" style="width: 820.8000000000001px; height: 577.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">J-Link Commander SWD 调试命令查询</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___t_r_a_c_e.html#group___t_r_a_c_e"><span class="std std-ref">Trace</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../security/text_cn/README.html" class="btn btn-neutral float-left" title="安全机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../clock/text_cn/README.html" class="btn btn-neutral float-right" title="时钟管理" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

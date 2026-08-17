@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple TRX &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="HID 私有协议" href="../../../ppt_sync/doc/text_cn/README.html" />
+    <link rel="prev" title="2.4G" href="../../../doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_cn/README.html">蓝牙</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/doc/text_cn/README.html">外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_cn/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_cn/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_cn/README.html">2.4G</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Simple TRX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">环境需求</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">硬件连线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">配置选项</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">编译和下载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">测试验证</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id6">测试阶段</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">代码介绍</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id8">源码路径</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id9">初始化</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ptx-prx">PTX/PRX 流程</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id10">初始化和配置</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id11">主循环</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#radio">Radio 中断处理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ppt_sync/doc/text_cn/README.html">HID 私有协议</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">2.4G</a></li>
+    <li class="breadcrumb-item active">Simple TRX</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="simple-trx">
+<h1>Simple TRX<a class="headerlink" href="#simple-trx" title="Link to this heading"></a></h1>
+<p>本示例用两个工程分别扮演 <a class="reference internal" href="../../../../../doc/glossary.html#term-PTX"><span class="xref std std-term">PTX</span></a> 和 <a class="reference internal" href="../../../../../doc/glossary.html#term-PRX"><span class="xref std std-term">PRX</span></a> 两个角色，他们之间可以互相发送消息，演示 Radio 的基本使用方法。</p>
+<section id="id1">
+<h2>环境需求<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>该示例支持以下开发工具包:</p>
+<table class="docutils align-center" id="id12">
+<caption><span class="caption-text">开发套件</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-HDK"><span class="xref std std-term">HDK</span></a></p></td>
+<td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>更多要求，请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 。</p>
+</section>
+<section id="id2">
+<h2>硬件连线<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中的
+<a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id15"><span class="std std-ref">EVB 接口和模块</span></a>。</p>
+</section>
+<section id="id3">
+<h2>配置选项<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../../../../doc/glossary.html#term-APP"><span class="xref std std-term">APP</span></a> 所有需要配置的内容在 <code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\src\ppt_cfg.h</span></code> 中。
+默认配置为 <a class="reference internal" href="../../../../../doc/glossary.html#term-BLE"><span class="xref std std-term">BLE</span></a> Advertising 所需的，开发者可以根据实际需求配置。</p>
+</section>
+<section id="id4">
+<h2>编译和下载<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>该示例可以在 SDK 文件夹中找到:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file:</p>
+<div class="line-block">
+<div class="line"><code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_ptx\rtl87x2g\mdk</span></code></div>
+<div class="line"><code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_prx\rtl87x2g\mdk</span></code></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file:</p>
+<div class="line-block">
+<div class="line"><code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_ptx\rtl87x2g\gcc</span></code></div>
+<div class="line"><code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_prx\rtl87x2g\gcc</span></code></div>
+</div>
+</div>
+</div>
+</div>
+<p>编译和运行该示例请遵循以下步骤：</p>
+<ol class="arabic simple">
+<li><p>打开项目文件。</p></li>
+<li><p>要编译目标文件，请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中
+<a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#app-image"><span class="std std-ref">编译 APP Image</span></a> 中列出的步骤。</p></li>
+<li><p>编译成功后，项目文件所在目录的子目录 <code class="file docutils literal notranslate"><span class="pre">bin</span></code> 下
+会生成 app bin 文件 <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk_xxx.bin</span></code> 。</p></li>
+<li><p>要下载 app bin 到 EVB 板，请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中
+<a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#mptool"><span class="std std-ref">MP Tool</span></a> 中列出的步骤。</p></li>
+<li><p>在 EVB 板上按下 reset 按钮，程序将开始运行。</p></li>
+</ol>
+</section>
+<section id="id5">
+<h2>测试验证<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>将两个示例工程分别烧录到两个 EVB 板后，然后使用 <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Analyzer</span></code> 工具获取日志查看运行结果。</p>
+<section id="id6">
+<h3>测试阶段<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>PTX EVB 按下 reset 按钮后，将开始模拟 BLE Adv 发送广播，并监听应答。PTX 角色是周期性发包，在空闲时可以进入睡眠模式。
+如果成功启动，会打印下面的日志。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">ptx</span><span class="o">:</span><span class="w"> </span><span class="n">statistics</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w"> </span><span class="n">rx</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="n">miss</span><span class="w"> </span><span class="mi">25</span><span class="p">(</span><span class="mf">26.315</span><span class="o">%</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>PRX EVB 按下 reset 按钮后，将开始模拟 BLE Scan 监听广播，并发送应答。
+如果成功启动，会打印下面的日志。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">prx</span><span class="o">:</span><span class="w"> </span><span class="n">rx</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="mi">1774</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="mi">2969</span><span class="p">,</span><span class="w"> </span><span class="n">rx</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="mh">0x0008</span><span class="p">,</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">hp</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="mh">0x00000000</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">05</span><span class="w"> </span><span class="mo">05</span><span class="w"> </span><span class="mi">09</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="mi">2</span><span class="n">E</span><span class="w"> </span><span class="mi">34</span><span class="w"> </span><span class="mi">67</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>因为默认配置是 BLE Advertising Channel 37 信道，即 2402MHz，所以 PTX 可能会听到 BLE 设备应答，PRX 可能会听到 BLE 设备的广播。
+可以修改 <code class="docutils literal notranslate"><span class="pre">FREQUENCY</span></code> 等参数避开 BLE 设备。</p>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2>代码介绍<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>本章的主要目的是帮助 APP 开发人员熟悉相关的开发流程。本章将按照以下几个部分进行介绍：</p>
+<ul class="simple">
+<li><p>章节 <a class="reference internal" href="#id8">源码路径</a> 中介绍工程和源文件路径。</p></li>
+<li><p>章节 <a class="reference internal" href="#id9">初始化</a> 中介绍启动流程。</p></li>
+<li><p>章节 <a class="reference internal" href="#ptx-prx">PTX/PRX 流程</a> 中介绍 Radio 初始化和运行流程。</p></li>
+</ul>
+<section id="id8">
+<h3>源码路径<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Project directory: <code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_xxx</span></code></p></li>
+<li><p>Source code directory: <code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\src</span></code></p></li>
+</ul>
+<p>应用程序项目中的源文件当前被分为几个组，如下所示。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: ptx(prx)
+    └── secure_only_app
+        ├── Device                   includes startup code
+        ├── CMSE Library             Non-secure callable lib
+        ├── Lib                      includes all binary symbol files that user application is built on
+            ├── ROM_NS.lib
+            ├── lowerstack.lib
+            ├── rtl87x2g_sdk.lib
+            └── rtl87x2g_io.lib
+        ├── Peripheral               includes all peripheral drivers and module code used by the application
+        ├── ppt driver               includes radio driver
+            ├── ppt_driver.c         includes hw registers operation
+            └── ppt_simple.c         includes hw management and sw wrapper
+        └── APP                      includes the ble_peripheral user application implementation
+            ├── main_ns.c            includes the io, os and platform initialization
+            ├── app_task.c           includes app task initialization and main loop
+            ├── ppt_cfg.c            includes the radio configurations
+            └── ppt_ptx(prx).c       includes ptx and prx operations and interrupt routine
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3>初始化<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>当 EVB 板启动并且芯片被重置时， <code class="docutils literal notranslate"><span class="pre">main</span></code> 函数将被调用，它执行以下初始化函数：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;Non-Secure World: main&quot;</span><span class="p">);</span>
+
+<span class="cp">#if DLPS_EN</span>
+<span class="w">    </span><span class="n">pwr_mgr_init</span><span class="p">();</span>
+<span class="cp">#endif</span>
+
+<span class="w">    </span><span class="n">app_task_init</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Start scheduler. */</span>
+<span class="w">    </span><span class="n">os_sched_start</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Should not reach here as the scheduler is already started. */</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="p">;)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pwr_mgr_init</span></code> 用于初始化 <a class="reference internal" href="../../../../../doc/glossary.html#term-DLPS"><span class="xref std std-term">DLPS</span></a> 功耗管理模块。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_task_init</span></code> 用于初始化 app task，注册 task 主函数 <code class="docutils literal notranslate"><span class="pre">app_main_task</span></code> 。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___o_s___s_c_h_e_d___exported___functions.html#_CPPv414os_sched_start" title="os_sched_start"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_sched_start</span></code></a> 用于启动 os scheduler。当调度器启动后，app task 的主函数 <code class="docutils literal notranslate"><span class="pre">app_main_task</span></code> 会得到调度，最终调用 PTX/PRX 的主函数 <code class="docutils literal notranslate"><span class="pre">ppt_demo</span></code>，示例如下。</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_main_task</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_param</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">event</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* This task calls secure side functions. So allocate a secure context for</span>
+<span class="cm">     * it. */</span>
+<span class="w">    </span><span class="c1">//must locate at the first line</span>
+<span class="w">    </span><span class="n">os_alloc_secure_ctx</span><span class="p">(</span><span class="n">configMINIMAL_SECURE_STACK_SIZE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* avoid ppt initialization conflict with ble psd procedure */</span>
+<span class="w">    </span><span class="n">os_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">ppt_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ppt_demo</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ptx-prx">
+<h3>PTX/PRX 流程<a class="headerlink" href="#ptx-prx" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ppt_demo</span></code> 会初始化并配置 Radio，然后启动 PTX 或者 PRX 的循环。</p>
+<section id="id10">
+<h4>初始化和配置<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_cfg</span></code> 会初始化并配置 Radio，包括频率、PHY 类型、帧格式、CRC 参数、whitening 参数、access address 和发射功率等。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___driver___exported___functions.html#_CPPv415ppt_reg_handlerPFvvE" title="ppt_reg_handler"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ppt_reg_handler()</span></code></a> 注册 Radio 的中断处理函数。</p></li>
+<li><p>配置 PTX 和 PRX 模式，设置 packet header <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___driver___exported___functions.html#_CPPv417ppt_set_tx_header7uint8_tP12ppt_header_t" title="ppt_set_tx_header"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ppt_set_tx_header()</span></code></a>，并准备待发送的数据 <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___simple___exported___functions.html#_CPPv416ppt_push_tx_data8uint16_tP7uint8_t" title="ppt_push_tx_data"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ppt_push_tx_data()</span></code></a> 。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>PRX 角色还演示了对 2402 MHz 到 2480 MHz 共 79 个信道做 <a class="reference internal" href="../../../../../doc/glossary.html#term-PSD"><span class="xref std std-term">PSD</span></a> 信道扫描的过程，示例如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * psd sample code</span>
+<span class="cm"> * get the channel rssi of different frequencies from 2402 to 2480 MHz</span>
+<span class="cm"> */</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">79</span><span class="p">;</span><span class="w"> </span><span class="n">loop</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ppt_psd_mode_ext_t</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="p">.</span><span class="n">chann_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loop</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">chann_stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loop</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">chann_step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PSD_TIMEOUT_DEFAULT</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">ppt_set_psd_mode_ext</span><span class="p">(</span><span class="o">&amp;</span><span class="n">param</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ppt_enable_psd</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">79</span><span class="p">;</span><span class="w"> </span><span class="n">loop</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">rssi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ppt_get_psd_result</span><span class="p">(</span><span class="n">loop</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;PSD: freq %dMHz rssi = %ddBm&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2402</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loop</span><span class="p">,</span><span class="w"> </span><span class="n">rssi</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h4>主循环<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>PTX 会循环发送数据，流程如下：</strong></p>
+<ol class="arabic simple">
+<li><p>准备数据。</p></li>
+<li><p>使能 PTX，并等待完成。</p></li>
+<li><p>修改数据内容和长度。</p></li>
+<li><p>如果是 periodic 模式，则延时 100ms，间隔发送。</p></li>
+<li><p>返回步骤 1。</p></li>
+</ol>
+</li>
+<li><p><strong>PRX 会循环监听，流程如下：</strong></p>
+<ul>
+<li><p>如果是 oneshot 模式，流程如下：</p>
+<ol class="arabic simple">
+<li><p>使能 PRX，并等待完成。</p></li>
+<li><p>延时 10ms，让 platform 有时间输出 log。</p></li>
+<li><p>返回步骤 1。</p></li>
+</ol>
+</li>
+<li><p>如果是 continuous 模式，PRX 会持续使能，流程如下：</p>
+<ol class="arabic simple">
+<li><p>使能 PRX，不等待完成。</p></li>
+<li><p>延时 10ms，让 platform 有时间输出 log。</p></li>
+<li><p>返回步骤 2。</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="radio">
+<h4>Radio 中断处理<a class="headerlink" href="#radio" title="Link to this heading"></a></h4>
+<p>在使能 PTX 或 PRX 后，Radio 会运行并触发相应的中断，通过 <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___driver___exported___functions.html#_CPPv415ppt_reg_handlerPFvvE" title="ppt_reg_handler"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ppt_reg_handler()</span></code></a> 注册的中断函数会得到调用。
+中断的类型可以参考 <a class="reference internal" href="../../../../../subsys/ppt/driver/doc/text_cn/README.html#id13"><span class="std std-ref">中断</span></a>。</p>
+<ul class="simple">
+<li><p>PTX 会处理 <code class="docutils literal notranslate"><span class="pre">tx_int</span></code>。</p>
+<ul>
+<li><p>如果打开 ACK 模式，还会处理 <code class="docutils literal notranslate"><span class="pre">rx_int</span></code>。</p></li>
+<li><p>如果打开 periodic 模式，会处理 <code class="docutils literal notranslate"><span class="pre">tx_early_int</span></code>。当 periodic 模式的重传次数达到要求后，会在 TRX 中断里关闭 PTX，然后需要再处理 <code class="docutils literal notranslate"><span class="pre">kill_ptx_int</span></code>。</p></li>
+</ul>
+</li>
+<li><p>PRX 会处理 <code class="docutils literal notranslate"><span class="pre">rx_int</span></code>。</p>
+<ul>
+<li><p>如果打开 ACK 模式，还会处理 <code class="docutils literal notranslate"><span class="pre">tx_int</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___driver___a_l_l.html#group___p_p_t___driver___a_l_l"><span class="std std-ref">2.4G Driver</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../doc/text_cn/README.html" class="btn btn-neutral float-left" title="2.4G" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../ppt_sync/doc/text_cn/README.html" class="btn btn-neutral float-right" title="HID 私有协议" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

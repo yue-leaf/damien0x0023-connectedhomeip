@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ENHTIMER &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Timeout" href="../../enhtim_interrupt/doc/text_en/README.html" />
+    <link rel="prev" title="Playback" href="../../../codec/playback/doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_en/README.html">Peripheral</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/general_introduction/text_en/README.html">General Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../adc/doc/text_en/README.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../aon_qdec/doc/text_en/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../can/doc/text_en/README.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../codec/doc/text_en/README.html">CODEC</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ENHTIMER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sample-list">Sample List</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../enhtim_interrupt/doc/text_en/README.html">Timeout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../enhtim_pwm/doc/text_en/README.html">PWM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../pwm%2Bgdma/doc/text_en/README.html">PWM+GDMA</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../latch_gpio/doc/text_en/README.html">GPIO Latch</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#functional-overview">Functional Overview</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#feature-list">Feature List</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#block-diagram">Block Diagram</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#timer-mode">Timer Mode</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#free-run-mode">Free-run Mode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#user-define-mode">User-define Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#pwm-mode">PWM Mode</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#user-define-pwm-manual-mode">User-define PWM Manual Mode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#user-define-pwm-auto-mode">User-define PWM Auto Mode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#complementary-output-and-dead-zone">Complementary Output and Dead Zone</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#one-shot-function">One Shot Function</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gpio-latch-function">GPIO Latch Function</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gdma-handshake">GDMA Handshake</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gdma/doc/text_en/README.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gpio/doc/text_en/README.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2c/doc/text_en/README.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2s/doc/text_en/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../idu/doc/text_en/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ir/doc/text_en/README.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../keyscan/doc/text_en/README.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lcdc/doc/text_en/README.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lpc/doc/text_en/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ppe/doc/text_en/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rtc/doc/text_en/README.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi/doc/text_en/README.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi3wire/doc/text_en/README.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../timer/doc/text_en/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../uart/doc/text_en/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wdt/doc/text_en/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_en/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">Peripheral</a></li>
+    <li class="breadcrumb-item active">ENHTIMER</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="enhtimer">
+<h1>ENHTIMER<a class="headerlink" href="#enhtimer" title="Link to this heading"></a></h1>
+<section id="sample-list">
+<span id="doc-sample-list-label"></span><h2>Sample List<a class="headerlink" href="#sample-list" title="Link to this heading"></a></h2>
+<p>This chapter introduces the details of the <a class="reference internal" href="../../../../../doc/glossary.html#term-ENHTIM"><span class="xref std std-term">ENHTIM</span></a> sample. The RTL87x2G provides the following samples for the ENHTIM peripheral.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../enhtim_interrupt/doc/text_en/README.html">Timeout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enhtim_pwm/doc/text_en/README.html">PWM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pwm%2Bgdma/doc/text_en/README.html">PWM+GDMA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../latch_gpio/doc/text_en/README.html">GPIO Latch</a></li>
+</ul>
+</div>
+</section>
+<section id="functional-overview">
+<h2>Functional Overview<a class="headerlink" href="#functional-overview" title="Link to this heading"></a></h2>
+<p>The RTL87x2G embeds four Enhance-Timer modules which are software controlled, programmable and can be used for various tasks.</p>
+<p>Every 2 Enhance-timer channel (channel0 &amp; channel1, channel2 &amp; channel3) shares the same clock source. Each Enhance-timer channel has its own independent pre-scaler, supporting division options is Div1/2/4/8/16/32/40/64.
+Each Enhance-timer channel supports a dead-time function, and its clock source and clock division can be set independently.</p>
+<figure class="align-center" id="firgue-enhtim-clock-tree">
+<img alt="Here should be enhtim clock tree." src="../../../../../_images/enhtim_clock_tree.png" />
+<figcaption>
+<p><span class="caption-text">Enhance-Timer Clock Tree</span><a class="headerlink" href="#firgue-enhtim-clock-tree" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="feature-list">
+<h3>Feature List<a class="headerlink" href="#feature-list" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>32-bits counter.</p></li>
+<li><p>Support 3 mode:</p>
+<ul>
+<li><p>Free-run mode.</p></li>
+<li><p>User-define PWM auto mode.</p></li>
+<li><p>User-define PWM manual mode.</p></li>
+</ul>
+</li>
+<li><p>Every 2 Enhance-timer channel (channel0 &amp; channel1, channel2 &amp; channel3) shares the same clock source. Each Enhance-timer channel has its own independent pre-scaler, supporting division options.</p></li>
+<li><p>Counting method:</p>
+<ul>
+<li><p>Free-run mode: increase.</p></li>
+<li><p>User-define PWM mode: decrease.</p></li>
+</ul>
+</li>
+<li><p>Each Enhance-timer supports PWM Output function (include all high and all low).</p></li>
+<li><p>Each Enhance-timer supports complementary output &amp; dead zone.</p></li>
+<li><p>Support <a class="reference internal" href="../../../../../doc/glossary.html#term-GDMA"><span class="xref std std-term">GDMA</span></a> interface for each timer's CCR FIFO or Latch count FIFO.</p></li>
+<li><p>Latched count FIFO depth: 32.</p></li>
+<li><p>Support PWM phase shift output.</p></li>
+<li><p>Support One Shot mode.</p></li>
+</ul>
+</section>
+<section id="block-diagram">
+<h3>Block Diagram<a class="headerlink" href="#block-diagram" title="Link to this heading"></a></h3>
+<p>Here is the block diagram of ENHTIM.
+By invoking the MCU Firmware, the ENHTIM timer function, PWM output function, or Latch function can be implemented. The hardware will execute the corresponding operations based on the firmware settings.</p>
+<figure class="align-center" id="system-block-diagram-of-enhtim">
+<img alt="../../../../../_images/enhtim_block_diagram.png" src="../../../../../_images/enhtim_block_diagram.png" />
+<figcaption>
+<p><span class="caption-text">System Block Diagram of ENHTIM</span><a class="headerlink" href="#system-block-diagram-of-enhtim" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="timer-mode">
+<h3>Timer Mode<a class="headerlink" href="#timer-mode" title="Link to this heading"></a></h3>
+<p>The counter increments in Free-run mode and decrements in user-defined mode. If the timer's interrupt is enabled, a timeout flag will be generated and an interrupt will be triggered when the timer underflows or overflows.</p>
+<section id="free-run-mode">
+<h4>Free-run Mode<a class="headerlink" href="#free-run-mode" title="Link to this heading"></a></h4>
+<p>In Free-run mode, the initial value of the counter is 0. After enabling ENHTIM, the 32-bit counter begins to increment. Once the counter counts to 0xFFFFFFFF, it will overflow and wrap around to 0, continuing to increment.</p>
+<p>In the initialization structure, configure <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef11ENHTIM_ModeE" title="ENHTIM_InitTypeDef::ENHTIM_Mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_Mode</span></code></a> to <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___mode.html#_CPPv4N18ENHTIMMode_TypeDef19ENHTIM_MODE_FreeRunE" title="ENHTIM_MODE_FreeRun"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_MODE_FreeRun</span></code></a> to set ENHTIM to Free-run mode.</p>
+</section>
+<section id="user-define-mode">
+<h4>User-define Mode<a class="headerlink" href="#user-define-mode" title="Link to this heading"></a></h4>
+<p>In user-defined mode, the initial value of the counter is user-defined and set through the configuration <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef15ENHTIM_MaxCountE" title="ENHTIM_InitTypeDef::ENHTIM_MaxCount"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_MaxCount</span></code></a> to determine the loaded counter value.</p>
+<p>The counter will count from <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef15ENHTIM_MaxCountE" title="ENHTIM_InitTypeDef::ENHTIM_MaxCount"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_MaxCount</span></code></a> - 1 down to 0, and after underflow, it will reload the counter value to <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef15ENHTIM_MaxCountE" title="ENHTIM_InitTypeDef::ENHTIM_MaxCount"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_MaxCount</span></code></a> - 1.</p>
+</section>
+</section>
+<section id="pwm-mode">
+<h3>PWM Mode<a class="headerlink" href="#pwm-mode" title="Link to this heading"></a></h3>
+<p>Each ENHTIM supports PWM output functionality. During initialization, set <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef18ENHTIM_PWMOutputEnE" title="ENHTIM_InitTypeDef::ENHTIM_PWMOutputEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_PWMOutputEn</span></code></a> to <a class="reference internal" href="../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a> to activate PWM output mode.</p>
+<p>Here are some PWM parameter configuration settings:</p>
+<ul>
+<li><p>The PWM polarity output is set through the <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef23ENHTIM_PWMStartPolarityE" title="ENHTIM_InitTypeDef::ENHTIM_PWMStartPolarity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_PWMStartPolarity</span></code></a>.</p></li>
+<li><p>The PWM period is set through the <strong>MAX-COUNT</strong> <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef15ENHTIM_MaxCountE" title="ENHTIM_InitTypeDef::ENHTIM_MaxCount"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_MaxCount</span></code></a>.</p></li>
+<li><p>The PWM duty cycle is determined by both the <strong>MAX-COUNT</strong> and the <strong>CCR(Capture/Compare Register)</strong>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In user-defined PWM Manual mode, set the counter compare value by using <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef14ENHTIM_CCValueE" title="ENHTIM_InitTypeDef::ENHTIM_CCValue"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_CCValue</span></code></a> into the CCR.</p></li>
+<li><p>In user-defined PWM Auto mode, set the counter compare value into the CCR FIFO by calling the function <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___functions.html#_CPPv418ENHTIM_WriteCCFIFOP14ENHTIM_TypeDef8uint32_t" title="ENHTIM_WriteCCFIFO"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_WriteCCFIFO()</span></code></a>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>When <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef23ENHTIM_PWMStartPolarityE" title="ENHTIM_InitTypeDef::ENHTIM_PWMStartPolarity"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_PWMStartPolarity</span></code></a> is set to <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___p_w_m___polarity.html#_CPPv4N25ENHTIMPWMPolarity_TypeDef25ENHTIM_PWM_START_WITH_LOWE" title="ENHTIM_PWM_START_WITH_LOW"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_PWM_START_WITH_LOW</span></code></a>:</p>
+<ul class="simple">
+<li><p>When <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef14ENHTIM_CCValueE" title="ENHTIM_InitTypeDef::ENHTIM_CCValue"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_CCValue</span></code></a> is set to 0, the PWM will continuously output a high level.</p></li>
+<li><p>When the value set for <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef14ENHTIM_CCValueE" title="ENHTIM_InitTypeDef::ENHTIM_CCValue"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_CCValue</span></code></a> is greater than or equal to <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef15ENHTIM_MaxCountE" title="ENHTIM_InitTypeDef::ENHTIM_MaxCount"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_MaxCount</span></code></a>, the PWM will continuously output a low level.</p></li>
+</ul>
+<p>After calling <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___functions.html#_CPPv410ENHTIM_CmdP14ENHTIM_TypeDef15FunctionalState" title="ENHTIM_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_Cmd()</span></code></a> to enable the TIM,
+the PWM counter will start counting down from MAX-COUNT. When it reaches the counter compare value set in CCR or the CCR FIFO, the PWM output will toggle.
+The counter will continue counting down, and when it underflows, the PWM output will toggle again.
+This process then repeats.</p>
+<figure class="align-center" id="figure-enhtim-pwm-parameter">
+<img alt="Here should be enhtim pwm parameter." src="../../../../../_images/enhtim_pwm_parameter.png" />
+<figcaption>
+<p><span class="caption-text">PWM Waveform</span><a class="headerlink" href="#figure-enhtim-pwm-parameter" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="user-define-pwm-manual-mode">
+<h4>User-define PWM Manual Mode<a class="headerlink" href="#user-define-pwm-manual-mode" title="Link to this heading"></a></h4>
+<p>Set <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef11ENHTIM_ModeE" title="ENHTIM_InitTypeDef::ENHTIM_Mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_Mode</span></code></a> to <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___mode.html#_CPPv4N18ENHTIMMode_TypeDef22ENHTIM_MODE_PWM_MANUALE" title="ENHTIM_MODE_PWM_MANUAL"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_MODE_PWM_MANUAL</span></code></a> during initialization to configure the mode as user-defined PWM Manual mode.</p>
+<p>In the user-defined PWM Manual mode, the timer will load the compare value from the CCR, with the compare value set through <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef14ENHTIM_CCValueE" title="ENHTIM_InitTypeDef::ENHTIM_CCValue"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_CCValue</span></code></a>.</p>
+</section>
+<section id="user-define-pwm-auto-mode">
+<h4>User-define PWM Auto Mode<a class="headerlink" href="#user-define-pwm-auto-mode" title="Link to this heading"></a></h4>
+<p>During initialization, set <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef11ENHTIM_ModeE" title="ENHTIM_InitTypeDef::ENHTIM_Mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_Mode</span></code></a> to <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___mode.html#_CPPv4N18ENHTIMMode_TypeDef20ENHTIM_MODE_PWM_AUTOE" title="ENHTIM_MODE_PWM_AUTO"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_MODE_PWM_AUTO</span></code></a> to configure the mode as User-defined PWM Auto mode.</p>
+<p>In User-defined PWM Auto mode, the timer will load comparison values from the CCR FIFO. Before enabling the timer, the user must call the function <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___functions.html#_CPPv418ENHTIM_WriteCCFIFOP14ENHTIM_TypeDef8uint32_t" title="ENHTIM_WriteCCFIFO"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_WriteCCFIFO()</span></code></a> to set the comparison values.
+Each time a comparison value is loaded, the PWM will output one cycle of a PWM waveform with a duty cycle corresponding to the comparison value, and the comparison value will be removed from the CCR FIFO.
+If the CCR FIFO is empty, the timer will load the previous comparison value from the CCR FIFO. The depth of the CCR FIFO is 8.</p>
+</section>
+<section id="complementary-output-and-dead-zone">
+<h4>Complementary Output and Dead Zone<a class="headerlink" href="#complementary-output-and-dead-zone" title="Link to this heading"></a></h4>
+<p>Each ENHTIM supports PWM complementary output and dead zone functions. Set <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef20ENHTIM_PWMDeadZoneEnE" title="ENHTIM_InitTypeDef::ENHTIM_PWMDeadZoneEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_PWMDeadZoneEn</span></code></a> to <a class="reference internal" href="../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a> during initialization to enable this feature.</p>
+<p>The clock source for the dead zone function can be selected as either a 32kHz clock source or the ENHTIM clock, set through the initialization structure parameter <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef29ENHTIM_PWMDeadZoneClockSourceE" title="ENHTIM_InitTypeDef::ENHTIM_PWMDeadZoneClockSource"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_PWMDeadZoneClockSource</span></code></a>.
+The frequency division factor for the dead zone clock can be set using the initialization structure parameters <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef29ENHTIM_PWMDeadZone_ClockDivEnE" title="ENHTIM_InitTypeDef::ENHTIM_PWMDeadZone_ClockDivEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_PWMDeadZone_ClockDivEn</span></code></a> and <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef27ENHTIM_PWMDeadZone_ClockDivE" title="ENHTIM_InitTypeDef::ENHTIM_PWMDeadZone_ClockDiv"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_PWMDeadZone_ClockDiv</span></code></a>.</p>
+<p>The size of the dead zone can be set using the initialization structure parameter <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef19ENHTIM_DeadZoneSizeE" title="ENHTIM_InitTypeDef::ENHTIM_DeadZoneSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_DeadZoneSize</span></code></a>, with a maximum setting value of 0xFF.
+The formula for calculating dead zone time is deadzone time = dead zone size * dead zone clock period.</p>
+<p>The setting of dead time is divided into the following three situations:</p>
+<ol class="arabic simple">
+<li><p>When the dead time is greater than 0 and less than the duration of the PWM high level/low level, the rising edge output of PWM_P and PWM_N will be delayed by a dead time.</p></li>
+</ol>
+<figure class="align-center" id="figure-enhtim-dead-zone-size-less-than-period">
+<img alt="Here should be enhtim dead zone size less than period." src="../../../../../_images/enhtim_dz_less_high_low_period.png" />
+<figcaption>
+<p><span class="caption-text">PWM Dead Time Diagram (Dead time is greater than 0 and less than PWM high/low level duration)</span><a class="headerlink" href="#figure-enhtim-dead-zone-size-less-than-period" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>When the dead time is greater than the duration of the PWM high level, PWM_P will continuously output a low level.</p></li>
+</ol>
+<figure class="align-center" id="figure-enhtim-dead-zone-size-more-than-high-period">
+<img alt="Here should be enhtim dead zone size more than high period." src="../../../../../_images/enhtim_dz_more_high_period.png" />
+<figcaption>
+<p><span class="caption-text">PWM Dead Time Diagram (Dead Time Greater Than PWM High Level Duration)</span><a class="headerlink" href="#figure-enhtim-dead-zone-size-more-than-high-period" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>When the dead time is greater than the PWM low-level duration, PWM_N will continuously output a low level.</p></li>
+</ol>
+<figure class="align-center" id="figure-enhtim-dead-zone-size-more-than-low-period">
+<img alt="Here should be enhtim dead zone size more than low period." src="../../../../../_images/enhtim_dz_more_low_period.png" />
+<figcaption>
+<p><span class="caption-text">PWM dead time diagram (dead time longer than PWM low-level duration)</span><a class="headerlink" href="#figure-enhtim-dead-zone-size-more-than-low-period" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="one-shot-function">
+<h3>One Shot Function<a class="headerlink" href="#one-shot-function" title="Link to this heading"></a></h3>
+<p>ENHTIM supports the One Shot function in both Free-run mode and user-define mode. In the initialization structure, set <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef16ENHTIM_OneShotEnE" title="ENHTIM_InitTypeDef::ENHTIM_OneShotEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_OneShotEn</span></code></a> to <a class="reference internal" href="../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a> to enable this function.</p>
+<p>After enabling the One Shot function, calling <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___functions.html#_CPPv410ENHTIM_CmdP14ENHTIM_TypeDef15FunctionalState" title="ENHTIM_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_Cmd()</span></code></a> will not start ENHTIM counting; an additional call to <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___functions.html#_CPPv417ENHTIM_OneShotCmdP14ENHTIM_TypeDef15FunctionalState" title="ENHTIM_OneShotCmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_OneShotCmd()</span></code></a> is required to activate the One Shot function and start the timer counting. Regardless of whether the counter underflows or overflows, the timer will stop counting, and the user can call <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___functions.html#_CPPv417ENHTIM_OneShotCmdP14ENHTIM_TypeDef15FunctionalState" title="ENHTIM_OneShotCmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_OneShotCmd()</span></code></a> again to restart the timer counting.</p>
+</section>
+<section id="gpio-latch-function">
+<h3>GPIO Latch Function<a class="headerlink" href="#gpio-latch-function" title="Link to this heading"></a></h3>
+<p>In Free-run mode, Each ENHTIM supports up to three trigger signals per channel to latch the count. If you want to trigger the latch count using a GPIO signal, you can only select Latch Count 0, while the remaining two are used for other external signal-triggered latch count functions.</p>
+<p>In the initialization structure, the Latch Count function is enabled by setting <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef19ENHTIM_LatchCountEnE" title="ENHTIM_InitTypeDef::ENHTIM_LatchCountEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_LatchCountEn</span></code></a>, and the GPIO Latch trigger condition is set by <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef24ENHTIM_LatchCountTriggerE" title="ENHTIM_InitTypeDef::ENHTIM_LatchCountTrigger"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_LatchCountTrigger</span></code></a>. The GPIO pin is set through <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef22ENHTIM_LatchTriggerPadE" title="ENHTIM_InitTypeDef::ENHTIM_LatchTriggerPad"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_LatchTriggerPad</span></code></a>.</p>
+<p>When the timer is enabled and the GPIO signal meets the trigger condition, the stored count value will be recorded in the corresponding Latch Count FIFO. When the data quantity in the Latch Count FIFO reaches the set threshold, it will trigger the <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___interrupts.html#c.ENHTIM_INT_LATCH_CNT_FIFO_THD" title="ENHTIM_INT_LATCH_CNT_FIFO_THD"><code class="xref c c-macro docutils literal notranslate"><span class="pre">ENHTIM_INT_LATCH_CNT_FIFO_THD</span></code></a> interrupt.</p>
+</section>
+<section id="gdma-handshake">
+<h3>GDMA Handshake<a class="headerlink" href="#gdma-handshake" title="Link to this heading"></a></h3>
+<p>ENHTIM supports the GDMA handshake interface for CCR FIFO and Latch Count FIFO, allowing access to FIFO and data transfer via GDMA.</p>
+<p>In the initialization structure, enable GDMA transfer by setting <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef12ENHTIM_DmaEnE" title="ENHTIM_InitTypeDef::ENHTIM_DmaEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_DmaEn</span></code></a>, and set <a class="reference internal" href="../../../../../doc/api_reference/group___e_n_h_t_i_m___exported___types.html#_CPPv4N18ENHTIM_InitTypeDef17ENHTIM_DmaTraggetE" title="ENHTIM_InitTypeDef::ENHTIM_DmaTragget"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENHTIM_InitTypeDef::ENHTIM_DmaTragget</span></code></a> to determine the GDMA transfer target, which can be selected as either CCR FIFO or Latch Count FIFO.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../codec/playback/doc/text_en/README.html" class="btn btn-neutral float-left" title="Playback" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../enhtim_interrupt/doc/text_en/README.html" class="btn btn-neutral float-right" title="Timeout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

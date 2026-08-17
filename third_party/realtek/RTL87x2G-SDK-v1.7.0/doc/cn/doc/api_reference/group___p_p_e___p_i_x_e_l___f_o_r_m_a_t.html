@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPE Pixel Format &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="PPE Exported Functions" href="group___p_p_e___exported___functions.html" />
+    <link rel="prev" title="PPE Interrupt" href="group___p_p_e___i_n_t_e_r_r_u_p_t.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___a_d_c.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___q_d_e_c.html">AON_QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___w_d_t.html">AON_WDT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_a_n.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_o_d_e_c.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_n_h_t_i_m.html">ENHTIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_t_h_e_r_n_e_t.html">ETHERNET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_d_m_a.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_p_i_o.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___h_r_a_d_c.html">HRADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_c.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_s.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_d_u.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_r.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_s_o7816.html">ISO7816</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___k_e_y_s_c_a_n.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_c_d_c.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_p_c.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___n_v_i_c.html">NVIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n___d_e_f_i_n_e.html">PIN DEFINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n_m_u_x.html">PINMUX</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___p_p_e.html">PPE</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="group___p_p_e___exported___constants.html">PPE Exported Constants</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___p_p_e___b_l_e_n_d___m_o_d_e.html">PPE Blend Mode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___p_p_e___e_r_r.html">PPE Error Code</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___p_p_e___i_n_t_e_r_r_u_p_t.html">PPE Interrupt</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">PPE Pixel Format</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv416PPE_PIXEL_FORMAT"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ABGR8888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ARGB8888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XBGR8888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XRGB8888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA8888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRA8888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA8888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBA8888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX8888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRX8888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX8888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBX8888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR4444E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ABGR4444</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB4444E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ARGB4444</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR4444E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XBGR4444</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB4444E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XRGB4444</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA4444E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRA4444</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA4444E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBA4444</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX4444E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRX4444</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX4444E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBX4444</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR2222E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ABGR2222</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB2222E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ARGB2222</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR2222E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XBGR2222</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB2222E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XRGB2222</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA2222E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRA2222</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA2222E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBA2222</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX2222E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRX2222</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX2222E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBX2222</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8565E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ABGR8565</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8565E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ARGB8565</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8565E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XBGR8565</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8565E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XRGB8565</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA5658E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRA5658</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA5658E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBA5658</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX5658E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRX5658</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX5658E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBX5658</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR1555E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ABGR1555</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB1555E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ARGB1555</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR1555E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XBGR1555</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB1555E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XRGB1555</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA5551E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRA5551</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA5551E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBA5551</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX5551E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRX5551</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX5551E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBX5551</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT10PPE_BGR888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGR888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT10PPE_RGB888E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGB888</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT10PPE_BGR565E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGR565</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT10PPE_RGB565E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGB565</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT6PPE_A8E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_A8</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT6PPE_X8E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_X8</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8666E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ABGR8666</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8666E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_ARGB8666</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8666E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XBGR8666</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8666E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_XRGB8666</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA6668E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRA6668</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA6668E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBA6668</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX6668E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_BGRX6668</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX6668E"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_RGBX6668</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#_CPPv4N16PPE_PIXEL_FORMAT22PPE_FORMAT_NOT_SUPPORTE"><code class="docutils literal notranslate"><span class="pre">PPE_PIXEL_FORMAT::PPE_FORMAT_NOT_SUPPORT</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___p_p_e___exported___functions.html">PPE Exported Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___p_p_e___exported___types.html">PPE Exported Types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_c_c.html">RCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_t_c.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_e_g_c_o_m.html">SEGCOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i3_w.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___t_i_m.html">TIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_a_r_t.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_t_i_l_s.html">UTILS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___w_d_t.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+        <li class="breadcrumb-item"><a href="group___p_p_e.html">PPE</a></li>
+        <li class="breadcrumb-item"><a href="group___p_p_e___exported___constants.html">PPE Exported Constants</a></li>
+    <li class="breadcrumb-item active">PPE Pixel Format</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ppe-pixel-format">
+<h1>PPE Pixel Format<a class="headerlink" href="#ppe-pixel-format" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">PPE_PIXEL_FORMAT</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416PPE_PIXEL_FORMAT">
+<span id="_CPPv316PPE_PIXEL_FORMAT"></span><span id="_CPPv216PPE_PIXEL_FORMAT"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1gabf05626cfafa229bba2293bbdf3764e8"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_PIXEL_FORMAT</span></span></span><a class="headerlink" href="#_CPPv416PPE_PIXEL_FORMAT" title="Link to this definition"></a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ABGR8888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ABGR8888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a5023d33cf6a945204f78873336acf10e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ABGR8888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8888E" title="Link to this definition"></a><br /></dt>
+<dd><p>ABGR8888: A(bit 31:24) B(bit 23:16) G(bit 15:8) R(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ARGB8888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ARGB8888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a8eba81c0862a011d7b9a47ec134a8625"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ARGB8888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8888E" title="Link to this definition"></a><br /></dt>
+<dd><p>ARGB8888: A(bit 31:24) R(bit 23:16) G(bit 15:8) B(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XBGR8888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XBGR8888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a2522336e082f0677393497d574c4738b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XBGR8888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8888E" title="Link to this definition"></a><br /></dt>
+<dd><p>XBGR8888: X(bit 31:24) B(bit 23:16) G(bit 15:8) R(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XRGB8888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XRGB8888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8ae6f63d211a8ab7e2535b8febccb1465d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XRGB8888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8888E" title="Link to this definition"></a><br /></dt>
+<dd><p>XRGB8888: X(bit 31:24) R(bit 23:16) G(bit 15:8) B(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA8888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRA8888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRA8888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a96324ea44105706f3633032cf4d22c4b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRA8888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA8888E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRA8888: B(bit 31:24) G(bit 23:16) R(bit 15:8) A(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA8888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBA8888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBA8888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a0da5ae6dc039757758def00aa210f42b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBA8888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA8888E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBA8888: R(bit 31:24) G(bit 23:16) B(bit 15:8) A(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX8888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRX8888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRX8888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a73f0f067a5c66bca71853f7b26a8ad77"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRX8888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX8888E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRX8888: B(bit 31:24) G(bit 23:16) R(bit 15:8) X(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX8888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBX8888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBX8888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a5ff0fe3c85a0a5b86f27d9345156f945"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBX8888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX8888E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBX8888: R(bit 31:24) G(bit 23:16) B(bit 15:8) X(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR4444E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ABGR4444E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ABGR4444E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a36e8ce2d8fc6d3fca0c0048fd8de1825"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ABGR4444</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR4444E" title="Link to this definition"></a><br /></dt>
+<dd><p>ABGR4444: A(bit 15:12) B(bit 11:8) G(bit 7:4) R(bit 3:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB4444E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ARGB4444E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ARGB4444E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a5bd79fb90f1dc0e7c75a37d1f7cdb416"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ARGB4444</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB4444E" title="Link to this definition"></a><br /></dt>
+<dd><p>ARGB4444: A(bit 15:12) R(bit 11:8) G(bit 7:4) B(bit 3:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR4444E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XBGR4444E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XBGR4444E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8acc4341313b1b73c7ce3d2ff4a0a47c3e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XBGR4444</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR4444E" title="Link to this definition"></a><br /></dt>
+<dd><p>XBGR4444: X(bit 15:12) B(bit 11:8) G(bit 7:4) R(bit 3:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB4444E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XRGB4444E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XRGB4444E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8ad88cd76d4fe23cf5ca131276ad3a27b8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XRGB4444</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB4444E" title="Link to this definition"></a><br /></dt>
+<dd><p>XRGB4444: X(bit 15:12) R(bit 11:8) G(bit 7:4) B(bit 3:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA4444E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRA4444E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRA4444E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a1e4fa74684feca610ebe5a0f629ef1d7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRA4444</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA4444E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRA4444: B(bit 15:12) G(bit 11:8) R(bit 7:4) A(bit 3:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA4444E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBA4444E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBA4444E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8ad4dd031319b8d0f9cd4552a0930625a0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBA4444</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA4444E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBA4444: R(bit 15:12) G(bit 11:8) B(bit 7:4) A(bit 3:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX4444E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRX4444E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRX4444E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8aefe73871dde614b371b5931a23ea408d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRX4444</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX4444E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRX4444: B(bit 15:12) G(bit 11:8) R(bit 7:4) X(bit 3:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX4444E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBX4444E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBX4444E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a051312948ce179ab92f031f5861835d6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBX4444</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX4444E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBX4444: R(bit 15:12) G(bit 11:8) B(bit 7:4) X(bit 3:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR2222E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ABGR2222E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ABGR2222E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a13ad59ac03203f9c87491068ca8e5a28"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ABGR2222</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR2222E" title="Link to this definition"></a><br /></dt>
+<dd><p>ABGR2222: A(bit 7:6) B(bit 5:4) G(bit 3:2) R(bit 1:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB2222E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ARGB2222E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ARGB2222E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8ae5029e4682c698b84b7c7fa198ea4921"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ARGB2222</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB2222E" title="Link to this definition"></a><br /></dt>
+<dd><p>ARGB2222: A(bit 7:6) R(bit 5:4) G(bit 3:2) B(bit 1:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR2222E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XBGR2222E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XBGR2222E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a8d0162a5ed5c225c0468fc62c125f9ef"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XBGR2222</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR2222E" title="Link to this definition"></a><br /></dt>
+<dd><p>XBGR2222: X(bit 7:6) B(bit 5:4) G(bit 3:2) R(bit 1:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB2222E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XRGB2222E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XRGB2222E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8ad7c0726ef86404442176b7167c97baae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XRGB2222</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB2222E" title="Link to this definition"></a><br /></dt>
+<dd><p>XRGB2222: X(bit 7:6) R(bit 5:4) G(bit 3:2) B(bit 1:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA2222E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRA2222E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRA2222E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a5eb011bfe4866971f142ac114a294921"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRA2222</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA2222E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRA2222: B(bit 7:6) G(bit 5:4) R(bit 3:2) A(bit 1:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA2222E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBA2222E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBA2222E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8adc9b221641bb4a9d9144de967a236970"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBA2222</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA2222E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBA2222: R(bit 7:6) G(bit 5:4) B(bit 3:2) A(bit 1:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX2222E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRX2222E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRX2222E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a882d20e038c09077d09ffc639298b9af"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRX2222</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX2222E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRX2222: B(bit 7:6) G(bit 5:4) R(bit 3:2) X(bit 1:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX2222E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBX2222E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBX2222E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8ac83af49ee8b3bec46fe55a6f6d82ae23"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBX2222</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX2222E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBX2222: R(bit 7:6) G(bit 5:4) B(bit 3:2) X(bit 1:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8565E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ABGR8565E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ABGR8565E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8af923fb1d6b568c02de5c8d5b3e54cb37"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ABGR8565</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8565E" title="Link to this definition"></a><br /></dt>
+<dd><p>ABGR8565: A(bit 23:16) B(bit 15:11) G(bit 10:5) R(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8565E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ARGB8565E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ARGB8565E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8adbee99fd9b6a7f0570d9f435b394c75d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ARGB8565</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8565E" title="Link to this definition"></a><br /></dt>
+<dd><p>ARGB8565: A(bit 23:16) R(bit 15:11) G(bit 10:5) B(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8565E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XBGR8565E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XBGR8565E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8aca01e89d66f113c253ebf940135db97c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XBGR8565</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8565E" title="Link to this definition"></a><br /></dt>
+<dd><p>XBGR8565: X(bit 23:16) B(bit 15:11) G(bit 10:5) R(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8565E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XRGB8565E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XRGB8565E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8abfe3f7497fa7a415f3ff214d97e8b266"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XRGB8565</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8565E" title="Link to this definition"></a><br /></dt>
+<dd><p>XRGB8565: X(bit 23:16) R(bit 15:11) G(bit 10:5) B(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA5658E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRA5658E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRA5658E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8adeffb93fc77f0ffa65f2a27c5bf30e5d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRA5658</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA5658E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRA5658: B(bit 23:19) G(bit 18:13) R(bit 12:8) A(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA5658E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBA5658E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBA5658E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a1c93697b1310e3e0a52f18529aacb2ab"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBA5658</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA5658E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBA5658: R(bit 23:19) G(bit 18:13) B(bit 12:8) A(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX5658E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRX5658E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRX5658E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a101078b0b3dc323d83cec071887bb658"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRX5658</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX5658E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRX5658: B(bit 23:19) G(bit 18:13) R(bit 12:8) X(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX5658E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBX5658E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBX5658E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a9c675f1c6fdb3ec09ac6f53c2c360e0a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBX5658</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX5658E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBX5658: R(bit 23:19) G(bit 18:13) B(bit 12:8) X(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR1555E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ABGR1555E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ABGR1555E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a64c038efc7ecb066b0120758b9b2d920"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ABGR1555</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR1555E" title="Link to this definition"></a><br /></dt>
+<dd><p>ABGR1555: A(bit 15) B(bit 14:10) G(bit 9:5) R(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB1555E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ARGB1555E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ARGB1555E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a34942fe89c6c3c5ce52d7f6cf6b55372"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ARGB1555</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB1555E" title="Link to this definition"></a><br /></dt>
+<dd><p>ARGB1555: A(bit 15) R(bit 14:10) G(bit 9:5) B(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR1555E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XBGR1555E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XBGR1555E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8ac942f823e0763d57fea48847e483c475"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XBGR1555</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR1555E" title="Link to this definition"></a><br /></dt>
+<dd><p>XBGR1555: X(bit 15) B(bit 14:10) G(bit 9:5) R(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB1555E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XRGB1555E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XRGB1555E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a38c0b79ed0b37dbdfcdbe3ba22389132"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XRGB1555</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB1555E" title="Link to this definition"></a><br /></dt>
+<dd><p>XRGB1555: X(bit 15) R(bit 14:10) G(bit 9:5) B(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA5551E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRA5551E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRA5551E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a97c08366e91f6dfec93033992010960d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRA5551</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA5551E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRA5551: B(bit 15:11) G(bit 10:6) R(bit 5:1) A(bit 0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA5551E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBA5551E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBA5551E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a9a9a7cd077a2599c00a9f2a9c97bafe8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBA5551</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA5551E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBA5551: R(bit 15:11) G(bit 10:6) B(bit 5:1) A(bit 0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX5551E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRX5551E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRX5551E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8acf08a4125a172c70da3163c4b91ee1b7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRX5551</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX5551E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRX5551: B(bit 15:11) G(bit 10:6) R(bit 5:1) X(bit 0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX5551E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBX5551E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBX5551E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a75989d607748a06d0537d9d4d88ccd99"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBX5551</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX5551E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBX5551: R(bit 15:11) G(bit 10:6) B(bit 5:1) X(bit 0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT10PPE_BGR888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT10PPE_BGR888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT10PPE_BGR888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a69217ddf5f789cf65e6eb37d3b93f74b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGR888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT10PPE_BGR888E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGR888: B(bit 23:16) G(bit 15:8) R(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT10PPE_RGB888E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT10PPE_RGB888E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT10PPE_RGB888E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a9487c70b13e9579a7b86e226ca379316"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGB888</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT10PPE_RGB888E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGB888: R(bit 23:16) G(bit 15:8) B(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT10PPE_BGR565E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT10PPE_BGR565E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT10PPE_BGR565E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a8f825bc4c9778c6458537a9f7768ee63"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGR565</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT10PPE_BGR565E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGR565: B(bit 15:11) G(bit 10:5) R(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT10PPE_RGB565E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT10PPE_RGB565E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT10PPE_RGB565E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a4662a9b45f0a89fb2133b751c60f8445"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGB565</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT10PPE_RGB565E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGB565: R(bit 15:11) G(bit 10:5) B(bit 4:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT6PPE_A8E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT6PPE_A8E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT6PPE_A8E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a5fdd7e8f4a7f0778628083cee39ee78b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_A8</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT6PPE_A8E" title="Link to this definition"></a><br /></dt>
+<dd><p>A8: A(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT6PPE_X8E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT6PPE_X8E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT6PPE_X8E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a7c1e03dd10d0f20d37be77ecb2feb08f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_X8</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT6PPE_X8E" title="Link to this definition"></a><br /></dt>
+<dd><p>X8: X(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8666E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ABGR8666E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ABGR8666E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a21c0c81eb42ce346465dc69106c20ec1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ABGR8666</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ABGR8666E" title="Link to this definition"></a><br /></dt>
+<dd><p>ABGR8666: A(bit 31:24) B(bit 23:18) G(bit 15:10) R(bit 8:2) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8666E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_ARGB8666E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_ARGB8666E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a421eb06b31d2ff4cfc9d0410fc913a67"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_ARGB8666</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_ARGB8666E" title="Link to this definition"></a><br /></dt>
+<dd><p>ARGB8666: A(bit 31:24) R(bit 23:18) G(bit 15:10) B(bit 8:2) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8666E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XBGR8666E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XBGR8666E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a8a3c03d3bd7917e8ad7f26a1a7130428"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XBGR8666</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XBGR8666E" title="Link to this definition"></a><br /></dt>
+<dd><p>XBGR8666: X(bit 31:24) B(bit 23:18) G(bit 15:10) R(bit 8:2) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8666E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_XRGB8666E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_XRGB8666E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a843c75c1d527795b7af2e6ab4b40af20"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_XRGB8666</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_XRGB8666E" title="Link to this definition"></a><br /></dt>
+<dd><p>XRGB8666: X(bit 31:24) R(bit 23:18) G(bit 15:10) B(bit 8:2) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA6668E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRA6668E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRA6668E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a20ceda5db29b60c3345e3ddfd1284b14"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRA6668</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRA6668E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRA6668: B(bit 31:26) G(bit 23:18) R(bit 15:10) A(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA6668E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBA6668E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBA6668E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a6c457d93205f2a12998d90e27dd7e096"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBA6668</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBA6668E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBA6668: R(bit 31:26) G(bit 23:18) B(bit 15:10) A(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX6668E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_BGRX6668E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_BGRX6668E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8a99cb8aeb65c158270a3a2443ee92aaa8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_BGRX6668</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_BGRX6668E" title="Link to this definition"></a><br /></dt>
+<dd><p>BGRX6668: B(bit 31:26) G(bit 23:18) R(bit 15:10) X(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX6668E">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT12PPE_RGBX6668E"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT12PPE_RGBX6668E"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8add0109f57b39f0fdf1454a7ffa173ce4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_RGBX6668</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT12PPE_RGBX6668E" title="Link to this definition"></a><br /></dt>
+<dd><p>RGBX6668: R(bit 31:26) G(bit 23:18) B(bit 15:10) X(bit 7:0) </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16PPE_PIXEL_FORMAT22PPE_FORMAT_NOT_SUPPORTE">
+<span id="_CPPv3N16PPE_PIXEL_FORMAT22PPE_FORMAT_NOT_SUPPORTE"></span><span id="_CPPv2N16PPE_PIXEL_FORMAT22PPE_FORMAT_NOT_SUPPORTE"></span><span class="target" id="group___p_p_e___p_i_x_e_l___f_o_r_m_a_t_1ggabf05626cfafa229bba2293bbdf3764e8afb461688bd8122b097a0c491ab2a9694"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PPE_FORMAT_NOT_SUPPORT</span></span></span><a class="headerlink" href="#_CPPv4N16PPE_PIXEL_FORMAT22PPE_FORMAT_NOT_SUPPORTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Other color formats are not supported </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___p_p_e___i_n_t_e_r_r_u_p_t.html" class="btn btn-neutral float-left" title="PPE Interrupt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___p_p_e___exported___functions.html" class="btn btn-neutral float-right" title="PPE Exported Functions" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

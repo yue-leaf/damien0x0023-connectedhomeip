@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Quick Start" href="../../quick_start/text_en/README.html" />
+    <link rel="prev" title="Bluetooth LE SoC SDK - RTL8762G/RTL877xG" href="../../../index.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../index.html">
+        
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-benefit-of-the-realtek-solution">The Benefit of the Realtek Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#soc-hardware-platform-study-guide">SoC Hardware Platform Study Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datasheet">Datasheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-instruction">Hardware Instruction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation-board-guide">Evaluation Board Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sdk-software-study-guide">SDK Software Study Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sdk-quick-start-guide">SDK Quick Start Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-set">Tool Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk-platform">SDK Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk-subsystems">SDK Subsystems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sdk-protocols">SDK Protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-projects">Sample Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#applications">Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tinyml">TinyML</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mobile-application-study-guide">Mobile Application Study Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#android-ota-app-user-manual">Android OTA APP User Manual</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ios-ota-app-user-manual">iOS OTA APP User Manual</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">Overview</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<p>The <a class="reference external" href="https://www.realmcu.com/en/Resources/sdk/RTL8762G-RTL877xG-Series">RTL87x2G series</a> brings higher-capability products to global partners, with a stronger platform computing power and security level upgraded to <a class="reference external" href="https://www.psacertified.org/getting-certified/silicon-vendor/overview/level-2/">PSA-L2</a>. This series not only supports BLE 5.3 version, 2.4GHz proprietary, Zigbee, and Thread Matter, providing the best choice for more Internet applications, but also supports peripherals such as <a class="reference internal" href="../../glossary.html#term-CAN"><span class="xref std std-term">CAN</span></a>/Ethernet/<a class="reference internal" href="../../glossary.html#term-USB-2.0-HS"><span class="xref std std-term">USB 2.0 HS</span></a>, which makes the hardware connection capability of this chip achieve an unprecedented level. The upgraded capabilities such as RGB888 provide more options for supporting LCD besides <a class="reference internal" href="../../glossary.html#term-QSPI"><span class="xref std std-term">QSPI</span></a> and I8080, making it faster and more colorful.</p>
+<p>In this document, we will introduce how the powerful Realtek RTL87x2G series platform provides the capabilities to enrich our developers' applications. More attractive application cases can be found on the official Realtek website: <a class="reference external" href="https://www.realmcu.com/en/Home/Product/RTL8762G-RTL877xG-Series">RealMCU</a>.</p>
+<section id="the-benefit-of-the-realtek-solution">
+<h2>The Benefit of the Realtek Solution<a class="headerlink" href="#the-benefit-of-the-realtek-solution" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Rich and highly compatible peripheral interfaces for <a class="reference internal" href="../../glossary.html#term-IoT"><span class="xref std std-term">IoT</span></a> and wearable devices.</p></li>
+<li><p>High-performance computation environment with low power consumption.</p></li>
+<li><p>Rich development documentation to bridge the gap between Realtek and developers.</p></li>
+<li><p>Mature mass production experience to assist developers in establishing a production line.</p></li>
+</ol>
+<p>Since Realtek provides rich documentation for our developers, below is a study guide that prioritizes the documents to go through for the <a class="reference internal" href="#soc-hardware-platform-study-guide"><span class="std std-ref">SoC Hardware Platform</span></a>, <a class="reference internal" href="#sdk-software-study-guide"><span class="std std-ref">SDK Software</span></a>, and <a class="reference internal" href="#mobile-application-study-guide"><span class="std std-ref">Mobile Application</span></a> topics. This will help better understand our system.</p>
+</section>
+<section id="soc-hardware-platform-study-guide">
+<span id="id1"></span><h2>SoC Hardware Platform Study Guide<a class="headerlink" href="#soc-hardware-platform-study-guide" title="Link to this heading"></a></h2>
+<p>Prior to designing the developer-specified device, developers can begin by reviewing the <a class="reference internal" href="#datasheet">Datasheet</a> (<a class="reference external" href="https://www.realmcu.com/en/Resources/documentation/RTL8762G-RTL877xG-Series">RTL87x2G Datasheet</a>), <a class="reference internal" href="#hardware-instruction">Hardware instruction</a> (<a class="reference external" href="https://www.realmcu.com/en/Resources/hardware/RTL8762G-RTL877xG-Series">RTL87x2G Hardware Instruction</a>), and <a class="reference internal" href="../../evb_guide/text_en/README.html"><span class="doc">Evaluation Board Guide</span></a> to understand the characteristics of the SoC. The Realtek-recognized <a class="reference external" href="https://www.realmcu.com/en/Resources/hardware/RTL8762G-RTL877xG-Series">HDK</a> can then be utilized to finalize the product. Developers can refer to the steps depicted in the following figure.</p>
+<figure class="align-center" id="figure-soc-hardware-platform-study-guide">
+<img alt="../../../_images/hardware_study_guide.png" src="../../../_images/hardware_study_guide.png" />
+<figcaption>
+<p><span class="caption-text">SoC Hardware Platform Study Guide</span><a class="headerlink" href="#figure-soc-hardware-platform-study-guide" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The materials with the <code class="file docutils literal notranslate"><span class="pre">PDF</span></code> and <code class="file docutils literal notranslate"><span class="pre">ZIP</span></code> suffixes in the above image can be obtained from the Realtek official website at RealMCU.</p></li>
+<li><p>Other materials can be found in this online documentation.</p></li>
+</ul>
+</div>
+<section id="datasheet">
+<h3>Datasheet<a class="headerlink" href="#datasheet" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://www.realmcu.com/en/Resources/documentation/RTL8762G-RTL877xG-Series">RTL87x2G Datasheet</a> provides detailed information on the specifications, features, and usage of the RTL87x2G series SoC.</p>
+</section>
+<section id="hardware-instruction">
+<h3>Hardware Instruction<a class="headerlink" href="#hardware-instruction" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://www.realmcu.com/en/Resources/hardware/RTL8762G-RTL877xG-Series">RTL87x2G Hardware Instruction</a> provides detailed information about the various hardware components that make up the EVB. It includes in-depth details about the mechanisms of the flash, microphone, and antenna. Additionally, the document contains various schematic diagrams to help explain these hardware components and their functionalities.</p>
+</section>
+<section id="evaluation-board-guide">
+<h3>Evaluation Board Guide<a class="headerlink" href="#evaluation-board-guide" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../evb_guide/text_en/README.html"><span class="doc">Evaluation Board Guide</span></a> serves as an introduction to the Evaluation Board Hardware. It provides important information about the board, including an explanation of the interface, details about power supply, an overview of different IO ports, and pin allocation. It also covers information related to the design of the board itself.</p>
+</section>
+</section>
+<section id="sdk-software-study-guide">
+<span id="id4"></span><h2>SDK Software Study Guide<a class="headerlink" href="#sdk-software-study-guide" title="Link to this heading"></a></h2>
+<p>The Realtek SoC provides rich development resources to help developers familiarize themselves with the <a class="reference external" href="https://www.realmcu.com/en/Resources/sdk/RTL8762G-RTL877xG-Series">RTL87x2G series</a> and quickly start the actual development process.</p>
+<p>Developers can begin by exploring the SDK background and the required tools, and then utilize the sample applications to gradually acquaint themselves with the Realtek development environment. Here is the study guide for topics related to software development. Developers can refer to the steps depicted in the following figure.</p>
+<figure class="align-center" id="sdk-software-development-study-guide">
+<a class="reference internal image-reference" href="../../../_images/sw_study_guide.png"><img alt="../../../_images/sw_study_guide.png" src="../../../_images/sw_study_guide.png" style="width: 1112.4px; height: 1309.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">SDK Software Development Study Guide</span><a class="headerlink" href="#sdk-software-development-study-guide" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The materials with the <code class="file docutils literal notranslate"><span class="pre">PDF</span></code> and <code class="file docutils literal notranslate"><span class="pre">ZIP</span></code> suffixes in the above image can be obtained from the Realtek official website at RealMCU.</p></li>
+<li><p>Other materials can be found in this online documentation.</p></li>
+</ul>
+</div>
+<section id="sdk-quick-start-guide">
+<h3>SDK Quick Start Guide<a class="headerlink" href="#sdk-quick-start-guide" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../quick_start/text_en/README.html"><span class="doc">Quick Start</span></a> serves as a short guide to assist beginners in quickly setting up and utilizing the EVB. It provides a brief overview of important pins on the EVB, instructions on how to generate and download imagzes onto the EVB, and guidance on printing logs. For those completely new to the EVB development board, this should be the first document to start with.</p>
+</section>
+<section id="tool-set">
+<h3>Tool Set<a class="headerlink" href="#tool-set" title="Link to this heading"></a></h3>
+<p>Besides the extension features developed in the SoC system, tool sets developed in the host are also provided for extended feature development, user application development, or mass production.</p>
+<p><a class="reference internal" href="../../tool_set/text_en/README.html"><span class="doc">Tool Set</span></a> provides a brief introduction to these tools and their release notes, if any. For the user manual for each tool, please navigate to the specific tool directory and refer to the tool user manualon the website: <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a></p>
+</section>
+<section id="sdk-platform">
+<h3>SDK Platform<a class="headerlink" href="#sdk-platform" title="Link to this heading"></a></h3>
+<p>In this chapter, we will start with an introduction to the SDK resources, assisting developers in effectively utilizing these resources for project development. Additionally, we will provide a detailed overview of essential platform components relevant to the development process, including Memory Management, Flash, PSRAM, Low Power Mode, Security Mechanisms, and Debugging System. Through these comprehensive descriptions, we aim to enable developers to fully understand and accurately use the SDK, thereby enhancing development efficiency and project quality.</p>
+<table class="docutils align-left" id="table-sdk-platform">
+<colgroup>
+<col style="width: 18.4%" />
+<col style="width: 81.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Classification</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../platform/platform_overview/text_en/README.html"><span class="doc">Platform Overview</span></a></p></th>
+<td><p>Provides an overview of the basics of the Realtek BLE SoC SDK. It covers topics such as the setup process, the architecture of the SDK, instructions for setting up applications and configuring settings, as well as guidelines for downloading and debugging. The primary goal of this document is to help users gain an understanding of how to effectively utilize the SDK for project setup.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../platform/memory/text_en/README.html"><span class="doc">Memory</span></a></p></th>
+<td><p>Provides a comprehensive description of the memory system of the IC and introduces how to effectively utilize it. The memory system includes ROM, RAM, external SPI Flash, and eFuse.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../platform/flash/text_en/README.html"><span class="doc">Flash</span></a></p></th>
+<td><p>Describes how to use Flash-related APIs and how Flash works in the IC. Flash is a kind of non-volatile storage for code shadowing to RAM, executing code directly, or storing data.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../platform/psram/text_en/README.html"><span class="doc">PSRAM</span></a></p></th>
+<td><p>Describes how to use PSRAM on RTL87x2G.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../platform/low_power_mode/text_en/README.html"><span class="doc">Low Power Mode</span></a></p></th>
+<td><p>Aims to provide developers with a comprehensive understanding of the low power mode features and how to use them to maximize battery life. It describes how the low power mode works, how to enter and exit it, and important related APIs.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../platform/security/text_en/README.html"><span class="doc">Security</span></a></p></th>
+<td><p>Introduces the security mechanisms and their usage in the RTL87x2G chip. The security mechanisms include secure boot, image encryption, factory data encryption, eFuse programming, and debug port control.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../platform/debug_system/text_en/README.html"><span class="doc">Debug System</span></a></p></th>
+<td><p>Debugging is the process of finding and resolving bugs within computer programs, software, or systems. Provides debugging methods in the SDK to debug user applications, such as log mechanism and SWD debugging.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../platform/clock/text_en/README.html"><span class="doc">Clock Manager</span></a></p></th>
+<td><p>Introduces the clock configuration methods for the RTL87x2G chip.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sdk-subsystems">
+<h3>SDK Subsystems<a class="headerlink" href="#sdk-subsystems" title="Link to this heading"></a></h3>
+<p>Here you will find a collection of the official Realtek libraries and sub-systems.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 18.4%" />
+<col style="width: 81.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Classification</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../../subsys/dfu/doc/text_en/ota.html"><span class="doc">OTA</span></a></p></th>
+<td><p>OTA represents a technology that utilizes Bluetooth to update the image (code and data) that runs in the Flash. Provides a comprehensive overview of how to effectively utilize OTA, including detailed explanations of the flash layout, the image header format, and OTA protocols.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../../subsys/cfu/doc/text_en/CFU.html"><span class="doc">CFU</span></a></p></th>
+<td><p>CFU refers to a technology that follows the open-source model provided by the Microsoft Devices team to upgrade images. It is divided into CFU V1 and V2, and incompatible.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../../subsys/staging/data_uart_cmd/doc/text_en/README.html"><span class="doc">User Command Interface</span></a></p></th>
+<td><p>This document is used to introduce users to how to use the user command interface. The User command interface is mainly used as a user command receiving module in Bluetooth example projects.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sdk-protocols">
+<h3>SDK Protocols<a class="headerlink" href="#sdk-protocols" title="Link to this heading"></a></h3>
+<p>The following user guides describe the supported protocols. They introduce concepts that are important to work with the protocol and guide through developing applications.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 18.4%" />
+<col style="width: 81.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Classification</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../../subsys/bluetooth/doc/le_host_stack/text_en/README.html"><span class="doc">Bluetooth LE Host</span></a></p></th>
+<td><p>Aims to give an overview of LE Stack Interfaces. LE Stack Interfaces can be divided into GAP-based interfaces and GATT-based profile interfaces.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../../subsys/bluetooth/doc/le_direction_finding/text_en/README.html"><span class="doc">Bluetooth LE Direction Finding</span></a></p></th>
+<td><p>Aims to give an overview of the direction finding methods to help with product development using AoA/AoD.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_en/README.html"><span class="doc">Bluetooth Host Image</span></a></p></th>
+<td><p>Aims to give an overview of the Bluetooth Host and GAP Lib.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../../subsys/bluetooth/doc/bluetooth_qualification/text_en/README.html"><span class="doc">Bluetooth Qualification</span></a></p></th>
+<td><p>Designed to assist developers in minimizing their effort to pass the Bluetooth qualification program.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html"><span class="doc">Bluetooth Mesh</span></a></p></th>
+<td><p>A mesh networking solution based on Bluetooth Low Energy technology.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../../subsys/ppt/doc/text_en/README.html"><span class="doc">2.4G</span></a></p></th>
+<td><p>A full-featured transceiver working at the 2.4GHz frequency band, which can be flexibly applied to developing any proprietary wireless communication protocol.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../../subsys/openthread/doc/text_en/README.html"><span class="doc">Thread</span></a></p></th>
+<td><p>A 2.4GHz (IEEE 802.15.4) and IPv6-based wireless mesh network protocol, commonly called a Wireless Personal Area Network (WPAN). Thread is specifically built for low-power, low-latency Internet of Things (IoT) devices. It solves the complexities of the IoT, addressing challenges such as interoperability, range, security, energy, and reliability.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../protocols/matter/text_en/README.html"><span class="doc">Matter</span></a></p></th>
+<td><p>Matter (formerly Project CHIP) is a unified, open-source application-layer connectivity standard built to enable developers and device manufacturers to connect and build reliable, and secure ecosystems and increase compatibility among connected home devices. It is built with market-proven technologies using Internet Protocol (IP) and is compatible with Thread and Wi-Fi network transports.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sample-projects">
+<h3>Sample Projects<a class="headerlink" href="#sample-projects" title="Link to this heading"></a></h3>
+<p>The Realtek SDK provides samples that specifically target Realtek devices and show how to implement typical use cases with BLE SoC libraries and drivers.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../samples/bluetooth/doc/text_en/README.html"><span class="doc">Bluetooth</span></a></p></li>
+<li><p><a class="reference internal" href="../../../samples/peripheral/doc/text_en/README.html"><span class="doc">Peripheral</span></a></p></li>
+<li><p><a class="reference internal" href="../../../samples/usb/doc/text_en/README.html"><span class="doc">USB</span></a></p></li>
+<li><p><a class="reference internal" href="../../../samples/sd/doc/text_en/README.html"><span class="doc">SD</span></a></p></li>
+<li><p><a class="reference internal" href="../../../samples/lowpower/doc/text_en/README.html"><span class="doc">Low Power</span></a></p></li>
+<li><p><a class="reference internal" href="../../../samples/ppt/doc/text_en/README.html"><span class="doc">2.4G</span></a></p></li>
+<li><p><a class="reference internal" href="../../../samples/wifi/doc/text_en/README.html"><span class="doc">Wi-Fi</span></a></p></li>
+<li><p><a class="reference internal" href="../../../samples/ethernet/ethernet/doc/text_en/README.html"><span class="doc">Ethernet</span></a></p></li>
+</ul>
+</section>
+<section id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Link to this heading"></a></h3>
+<p>The SDK offers a range of comprehensive sample applications demonstrating how to use Realtek devices to achieve typical user scenarios. These applications can serve as a starting point for product development. They utilize the SDK API to implement specific functionalities.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../applications/86box/doc/text_en/README.html"><span class="doc">86Box</span></a></p></li>
+<li><p><a class="reference internal" href="../../../applications/trimode_mouse/doc/text_en/README.html"><span class="doc">Tri-Mode Mouse</span></a></p></li>
+<li><p><a class="reference internal" href="../../../applications/ppt_transport/doc/text_en/README.html"><span class="doc">PPT Transport</span></a></p></li>
+<li><p><a class="reference internal" href="../../../applications/lvgl/doc/text_en/README.html"><span class="doc">LVGL</span></a></p></li>
+</ul>
+</section>
+<section id="tinyml">
+<h3>TinyML<a class="headerlink" href="#tinyml" title="Link to this heading"></a></h3>
+<p>The <strong>Realtek RTL87x2G TinyML SDK</strong> integrates the full functionality of the TFLite model general-purpose inference framework. With the TinyML SDK, customers can more easily replace their own models, manage and configure the memory in use, and flexibly design their own applications, without having to deal with the complex internal workflow of the inference framework. To make it easier to use, the TinyML SDK provides three different application scenario examples along with an on-device auxiliary project for the TinyML development and debugging stage, which can quickly verify how a model runs on the device.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../samples/tinyml/doc/text_en/application_samples.html"><span class="doc">TinyML Application Samples</span></a></p></li>
+<li><p><a class="reference internal" href="../../../samples/tinyml/tinyml_edge/doc/text_en/README.html"><span class="doc">TinyML Edge Debugging</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="mobile-application-study-guide">
+<span id="id7"></span><h2>Mobile Application Study Guide<a class="headerlink" href="#mobile-application-study-guide" title="Link to this heading"></a></h2>
+<p>Realtek also offers a guide if the product works with the mobile application.</p>
+<figure class="align-center" id="figure-mobile-application-study-guide">
+<img alt="../../../_images/mobile_app_study_guide.png" src="../../../_images/mobile_app_study_guide.png" />
+<figcaption>
+<p><span class="caption-text">Mobile Application Study Guide</span><a class="headerlink" href="#figure-mobile-application-study-guide" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="android-ota-app-user-manual">
+<h3>Android OTA APP User Manual<a class="headerlink" href="#android-ota-app-user-manual" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">This user manual provides instructions for updating the application through OTA using an Android device.</div>
+<div class="line">This document is within Android OTA App packages available on the website: <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a></div>
+</div>
+</section>
+<section id="ios-ota-app-user-manual">
+<h3>iOS OTA APP User Manual<a class="headerlink" href="#ios-ota-app-user-manual" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">This user manual provides instructions for updating the application through OTA using an iOS device.</div>
+<div class="line">This document is within iOS OTA App packages available on the website: <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../index.html" class="btn btn-neutral float-left" title="Bluetooth LE SoC SDK - RTL8762G/RTL877xG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../quick_start/text_en/README.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

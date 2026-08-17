@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GDMA &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Memory to Memory - Single Block" href="../../m2m_single_block/doc/text_en/README.html" />
+    <link rel="prev" title="GPIO Latch" href="../../../enhtimer/latch_gpio/doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_en/README.html">Peripheral</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/general_introduction/text_en/README.html">General Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../adc/doc/text_en/README.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../aon_qdec/doc/text_en/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../can/doc/text_en/README.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../codec/doc/text_en/README.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enhtimer/doc/text_en/README.html">ENHTIMER</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GDMA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sample-list">Sample List</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../m2m_single_block/doc/text_en/README.html">Memory to Memory - Single Block</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../m2m_multi_block/doc/text_en/README.html">Memory to Memory - Multi Block</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#functional-overview">Functional Overview</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#feature-list">Feature List</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#transfer-type">Transfer Type</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hardware-handshake">Hardware Handshake</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#transaction">Transaction</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gdma-block-transfer">GDMA Block Transfer</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#multi-block-transfer-mode">Multi-block Transfer Mode</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#linked-lists">Linked Lists</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#auto-reloading">Auto-reloading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gpio/doc/text_en/README.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2c/doc/text_en/README.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2s/doc/text_en/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../idu/doc/text_en/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ir/doc/text_en/README.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../keyscan/doc/text_en/README.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lcdc/doc/text_en/README.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lpc/doc/text_en/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ppe/doc/text_en/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rtc/doc/text_en/README.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi/doc/text_en/README.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi3wire/doc/text_en/README.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../timer/doc/text_en/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../uart/doc/text_en/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wdt/doc/text_en/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_en/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">Peripheral</a></li>
+    <li class="breadcrumb-item active">GDMA</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="gdma">
+<h1>GDMA<a class="headerlink" href="#gdma" title="Link to this heading"></a></h1>
+<section id="sample-list">
+<span id="doc-sample-list-label"></span><h2>Sample List<a class="headerlink" href="#sample-list" title="Link to this heading"></a></h2>
+<p>This chapter introduces the details of the <a class="reference internal" href="../../../../../doc/glossary.html#term-GDMA"><span class="xref std std-term">GDMA</span></a> sample. The RTL87x2G provides the following samples for the GDMA peripheral.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../m2m_single_block/doc/text_en/README.html">Memory to Memory - Single Block</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../m2m_multi_block/doc/text_en/README.html">Memory to Memory - Multi Block</a></li>
+</ul>
+</div>
+</section>
+<section id="functional-overview">
+<h2>Functional Overview<a class="headerlink" href="#functional-overview" title="Link to this heading"></a></h2>
+<p>GDMA is used to provide high-speed data transfer between peripherals and memory or between memory and memory.
+The data transfer can be done independently of the <a class="reference internal" href="../../../../../doc/glossary.html#term-CPU"><span class="xref std std-term">CPU</span></a> to reduce the CPU overhead.</p>
+<p>GDMA consists of several independent channels, which can transfer data from one place to another.
+Transfer source and destination can be memory or supported peripherals.
+A set of Hardware handshake signals connect the peripheral with GDMA, which is used to control the transaction between them.
+Single transaction and burst transaction are both supported. Transfer data width is also programmable.
+GDMA is capable of working as a flow controller that determines the length of a GDMA block transfer and terminates the transfer.
+GDMA transfer can work as a single block or multi-block. Linked lists multi-block and auto-reloading multi-block are both supported.
+GDMA channel will be disabled automatically after transfer completion. Transfer procedure can be suspended and resumed.
+If resume is not desired, manually aborting the transfer procedure is supported as well.
+The GDMA controller has an arbitrator to coordinate the priority of each GDMA request.</p>
+<section id="feature-list">
+<span id="gdma-feature-list"></span><h3>Feature List<a class="headerlink" href="#feature-list" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Number of channels: 10</p></li>
+<li><p>Programmable GDMA channel priority (priority 0~9)</p></li>
+<li><p>Hardware handshake for peripheral GDMA transfer.</p></li>
+<li><p>Support transfer abort/suspend function.</p></li>
+<li><p>Support single transaction and burst transaction.</p></li>
+<li><p>Programmable source and destination addresses for each channel.</p></li>
+<li><p>Support single-block and multi-block transfer.</p></li>
+<li><p>Support 2 multi-block functions: auto-reloading and linked list.</p></li>
+<li><p>Programmable transfer type for each channel: memory to memory, memory to peripheral, peripheral to memory, peripheral to peripheral.</p></li>
+<li><p>Programmable Block size 1 to 65535 items (item size = Transfer data width).</p></li>
+<li><p>Support transfer data width: byte (8 bits), half-word (16 bits), word (32 bits).</p></li>
+<li><p>Support transfer complete interrupt and block transfer complete interrupt.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GDMA0_channel9 is designated as LOG UART, while in HCI Mode, GDMA0_channel1 is designated as HCI UART TX, and GDMA0_channel2 as HCI UART RX. Be cautious to avoid resource conflicts during use.</p>
+</div>
+</section>
+<section id="transfer-type">
+<h3>Transfer Type<a class="headerlink" href="#transfer-type" title="Link to this heading"></a></h3>
+<p>GDMA supports four types of transfers: memory to memory, memory to peripheral, peripheral to memory, and peripheral to peripheral.
+These can be configured using <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef8GDMA_DIRE" title="GDMA_InitTypeDef::GDMA_DIR"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DIR</span></code></a>.</p>
+<p>Under the four types of transfers, different settings are usually applied to the source and destination addresses.
+If the source or destination address is memory, it is generally set to increment;
+if the source or destination address is a peripheral's FIFO, it is generally set to fixed.
+The specific settings need to be chosen by the user based on the actual situation.
+The changes in the source and destination addresses can be configured using <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef14GDMA_SourceIncE" title="GDMA_InitTypeDef::GDMA_SourceInc"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceInc</span></code></a> and <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef19GDMA_DestinationIncE" title="GDMA_InitTypeDef::GDMA_DestinationInc"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationInc</span></code></a>.</p>
+</section>
+<section id="hardware-handshake">
+<h3>Hardware Handshake<a class="headerlink" href="#hardware-handshake" title="Link to this heading"></a></h3>
+<p>Hardware handshake is supported in GDMA, which conforms to a protocol and handshakes between GDMA and source or destination peripheral in order to control transferring a single or burst transaction between them.
+If the peripheral is the source side of GDMA, hardware handshake should be set. The source handshake is set through <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef20GDMA_SourceHandshakeE" title="GDMA_InitTypeDef::GDMA_SourceHandshake"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceHandshake</span></code></a>.
+If the peripheral is the destination side of GDMA, hardware handshake should be set. The destination handshake is set through <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef18GDMA_DestHandshakeE" title="GDMA_InitTypeDef::GDMA_DestHandshake"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestHandshake</span></code></a>.</p>
+<p>The hardware handshakes supported by GDMA can be referenced in <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___handshake___type.html#group___g_d_m_a___handshake___type"><span class="std std-ref">GDMA Handshake Type</span></a>.</p>
+</section>
+<section id="transaction">
+<h3>Transaction<a class="headerlink" href="#transaction" title="Link to this heading"></a></h3>
+<p>A transaction is the basic unit for GDMA transfers, representing the amount of data handled by the GDMA each time it is triggered.
+Transactions are configured via <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef16GDMA_SourceMsizeE" title="GDMA_InitTypeDef::GDMA_SourceMsize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceMsize</span></code></a> and <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef21GDMA_DestinationMsizeE" title="GDMA_InitTypeDef::GDMA_DestinationMsize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationMsize</span></code></a>.</p>
+<p>GDMA transactions are divided into the following two types:</p>
+<ul class="simple">
+<li><p>Single transaction: Length of a single transaction is always 1 and is converted to a single transfer, corresponding to setting <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef16GDMA_SourceMsizeE" title="GDMA_InitTypeDef::GDMA_SourceMsize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceMsize</span></code></a> to <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___msize.html#_CPPv4N17GDMAMSize_TypeDef12GDMA_Msize_1E" title="GDMA_Msize_1"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Msize_1</span></code></a>.</p></li>
+<li><p>Burst transaction: Length of a burst transaction is programmed into the GDMA.</p></li>
+</ul>
+<p>The setting of Burst transaction is usually related to the FIFO size of the source or destination peripheral. Generally speaking, the larger the Burst transaction Size is set, the faster the GDMA transfer efficiency.
+For some peripherals, when the rate is relatively high, it is not recommended to use Single transaction (for example, SPI).
+Due to the relatively low efficiency of Single transaction, it may cause Tx underflow in the case of SPI TX + GDMA.</p>
+</section>
+<section id="gdma-block-transfer">
+<h3>GDMA Block Transfer<a class="headerlink" href="#gdma-block-transfer" title="Link to this heading"></a></h3>
+<p>GDMA supports single-block and multi-block transfers.</p>
+<ul class="simple">
+<li><p>Single-block: The GDMA data length consists of only one block. When the GDMA transfer is complete, it will trigger the GDMA total transfer complete <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___interrupts.html#c.GDMA_INT_Transfer" title="GDMA_INT_Transfer"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_INT_Transfer</span></code></a> interrupt.</p></li>
+<li><p>Multi-block: The GDMA data length consists of multiple blocks. After the end of the previous block, a new block transfer will automatically start. A block transfer complete <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___interrupts.html#c.GDMA_INT_Block" title="GDMA_INT_Block"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_INT_Block</span></code></a> interrupt will be triggered after each block transfer is completed.</p></li>
+</ul>
+<p>The size of a single block is set by <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef15GDMA_BufferSizeE" title="GDMA_InitTypeDef::GDMA_BufferSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_BufferSize</span></code></a>. The maximum data size of a single block is 65535. If the total amount of data to be transferred by GDMA exceeds 65535, the multi-block mode must be used for the transfer.
+During initialization, multi-block transfer is enabled by setting <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef19GDMA_Multi_Block_EnE" title="GDMA_InitTypeDef::GDMA_Multi_Block_En"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_Multi_Block_En</span></code></a> to <a class="reference internal" href="../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a>.</p>
+<section id="multi-block-transfer-mode">
+<h4>Multi-block Transfer Mode<a class="headerlink" href="#multi-block-transfer-mode" title="Link to this heading"></a></h4>
+<p>Multi-block transmission supports two modes: Linked Lists and Auto-reloading, which can be set through the initialization structure parameter <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef21GDMA_Multi_Block_ModeE" title="GDMA_InitTypeDef::GDMA_Multi_Block_Mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_Multi_Block_Mode</span></code></a>.
+For both source and destination transmissions, the above two modes are supported, so in Multi-block mode, it can be further divided into the following seven transmission modes:</p>
+<table class="docutils align-center" id="id1">
+<caption><span class="caption-text">Multi-block Mode</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Multi-block Mode</p></th>
+<th class="head"><p>Brief</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___multi-block___mode.html#c.AUTO_RELOAD_WITH_CONTIGUOUS_SAR" title="AUTO_RELOAD_WITH_CONTIGUOUS_SAR"><code class="xref c c-macro docutils literal notranslate"><span class="pre">AUTO_RELOAD_WITH_CONTIGUOUS_SAR</span></code></a></p></td>
+<td><p>Auto-Reload destination address with continuous source address</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___multi-block___mode.html#c.AUTO_RELOAD_WITH_CONTIGUOUS_DAR" title="AUTO_RELOAD_WITH_CONTIGUOUS_DAR"><code class="xref c c-macro docutils literal notranslate"><span class="pre">AUTO_RELOAD_WITH_CONTIGUOUS_DAR</span></code></a></p></td>
+<td><p>Auto-Reload source address with continuous destination address</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___multi-block___mode.html#c.AUTO_RELOAD_TRANSFER" title="AUTO_RELOAD_TRANSFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">AUTO_RELOAD_TRANSFER</span></code></a></p></td>
+<td><p>Auto-Reload source address and destination address</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___multi-block___mode.html#c.LLI_WITH_CONTIGUOUS_SAR" title="LLI_WITH_CONTIGUOUS_SAR"><code class="xref c c-macro docutils literal notranslate"><span class="pre">LLI_WITH_CONTIGUOUS_SAR</span></code></a></p></td>
+<td><p>LLI destination address with continuous source address</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___multi-block___mode.html#c.LLI_WITH_AUTO_RELOAD_SAR" title="LLI_WITH_AUTO_RELOAD_SAR"><code class="xref c c-macro docutils literal notranslate"><span class="pre">LLI_WITH_AUTO_RELOAD_SAR</span></code></a></p></td>
+<td><p>LLI destination address with auto-Reload source address</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___multi-block___mode.html#c.LLI_WITH_CONTIGUOUS_DAR" title="LLI_WITH_CONTIGUOUS_DAR"><code class="xref c c-macro docutils literal notranslate"><span class="pre">LLI_WITH_CONTIGUOUS_DAR</span></code></a></p></td>
+<td><p>LLI source address with continuous destination address</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___multi-block___mode.html#c.LLI_WITH_AUTO_RELOAD_DAR" title="LLI_WITH_AUTO_RELOAD_DAR"><code class="xref c c-macro docutils literal notranslate"><span class="pre">LLI_WITH_AUTO_RELOAD_DAR</span></code></a></p></td>
+<td><p>LLI source address with auto-Reload destination address</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___multi-block___mode.html#c.LLI_TRANSFER" title="LLI_TRANSFER"><code class="xref c c-macro docutils literal notranslate"><span class="pre">LLI_TRANSFER</span></code></a></p></td>
+<td><p>LLI source address and destination address</p></td>
+</tr>
+</tbody>
+</table>
+<section id="linked-lists">
+<h5>Linked Lists<a class="headerlink" href="#linked-lists" title="Link to this heading"></a></h5>
+<p>Linked list pointer (LLP) points to the location in system memory where the next linked list item (LLI) exists.
+The LLI is a set of registers that describes the next block (block descriptor) and an LLP register.
+The GDMA fetches the LLI at the beginning of every block when block chaining is enabled.</p>
+<p>In multi-block transfer with linked lists for source and destination, GDMA is enabled by software which starts the block transfer. GDMA fetches the LLI and reprograms the channel registers according to LLI.
+Then GDMA block transfer starts. GDMA reads the source and destination status and writes them back to the corresponding position of LLI.
+After the block transfer, GDMA detects whether LLP and auto-reloading bit of source and destination are all set to 0, which means the whole GDMA transfer has been finished, GDMA transfer complete interrupt will be triggered if it is unmasked.
+Otherwise it means that one of the blocks has been finished and another block will be started automatically after GDMA fetch another LLI.</p>
+<p>In the Linked List transfer mode, after each Block is transmitted, it is necessary to reload the GDMA settings from the LLI into the GDMA registers. Therefore, during initialization, the GDMA settings for each Block must be configured in each LLI.
+The LLI structure can be configured by initializing the structure parameters <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef23GDMA_Multi_Block_StructE" title="GDMA_InitTypeDef::GDMA_Multi_Block_Struct"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_Multi_Block_Struct</span></code></a>.
+The items that need to be configured include the SAR, DAR, CTL_LOW, and CTL_HIGH registers. For specific configuration, please refer to the example code <a class="reference internal" href="../../m2m_multi_block/doc/text_en/README.html"><span class="doc">Memory to Memory - Multi Block</span></a>.</p>
+</section>
+<section id="auto-reloading">
+<h5>Auto-reloading<a class="headerlink" href="#auto-reloading" title="Link to this heading"></a></h5>
+<p>In multi-block transfers, the automatic reloading of the source and destination is enabled by the software, initiating block transfer via GDMA.
+GDMA operates according to the configuration of the channel registers.</p>
+<p>After the block transfer is completed, GDMA automatically reloads the channel registers with the values present when the channel was first enabled.
+GDMA checks if the LLP and auto-reload bits of the source and destination are all set to 0, indicating that the entire GDMA transfer is complete, and if the interrupt is not masked, a GDMA transfer completion interrupt will be triggered.
+Otherwise, this means one block has been completed, and another block will automatically begin.</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../enhtimer/latch_gpio/doc/text_en/README.html" class="btn btn-neutral float-left" title="GPIO Latch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../m2m_single_block/doc/text_en/README.html" class="btn btn-neutral float-right" title="Memory to Memory - Single Block" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

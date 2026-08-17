@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>蓝牙 Mesh &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="2.4G" href="../../../../ppt/doc/text_cn/README.html" />
+    <link rel="prev" title="蓝牙认证" href="../../../doc/bluetooth_qualification/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_cn/README.html">Bluetooth</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/supported_features/text_cn/README.html">功能支持</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/le_host_stack/text_cn/README.html">LE Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/le_direction_finding/text_cn/README.html">LE Direction Finding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/rtl87x2g_bt_host_image/text_cn/README.html">Host Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/bluetooth_qualification/text_cn/README.html">蓝牙认证</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">蓝牙 Mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">术语与概念</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">Mesh 概念</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#device-uuid">Device <span class="xref std std-term">UUID</span></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id3">Mesh 地址</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">应用模型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">安全性</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#provisioning">Provisioning</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#proxy">Proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">Mesh 框架</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#model-layer-foundation">Model Layer (Foundation)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#access-layer">Access Layer</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#transport-layer-upper-lower">Transport Layer (Upper &amp; Lower)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#network-layer">Network Layer</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#bearer-layer">Bearer Layer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">接口提供</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">功能</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#mesh-gap">Mesh <span class="xref std std-term">GAP</span></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#advertising">Advertising</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#scanning">Scanning</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#initiating">Initiating</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#link">Link</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mesh-stack-gap">Mesh Stack 的 GAP 行为</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id12">设备信息配置</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mesh-device-uuid">Device UUID 设置</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id15">网络特性和参数配置</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mesh-log">Mesh Log 配置</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id18">Provisioning</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#pb-adv">PB-ADV</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pb-gatt">PB-GATT</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#model">Model 框架</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id20">消息回调</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id21">消息定义</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id22">消息发送处理</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#publish">Publish 参数配置</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#appkey">AppKey 选择</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#ttl">TTL 选择</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#id24">消息接收处理</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id25">业务逻辑处理</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#configuration-client">Configuration Client 源地址获取</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#friendship">Friendship</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#friend-node">Friend Node</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#low-power-node">Low Power Node</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#transport-ping">Transport Ping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#remote-provisioning">Remote Provisioning</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#directed-forwarding">Directed Forwarding</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#subnet-bridge">Subnet Bridge</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#binary-large-object-transfer">Binary Large Object Transfer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#device-firmware-update">Device Firmware Update</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">常见问题</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id27">节点无法接收消息</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id28">重复利用已删除节点的地址</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id29">示例工程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../openthread/doc/text_cn/README.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../doc/protocols/matter/text_cn/README.html">Matter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">Bluetooth</a></li>
+    <li class="breadcrumb-item active">蓝牙 Mesh</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="mesh">
+<h1>蓝牙 Mesh<a class="headerlink" href="#mesh" title="Link to this heading"></a></h1>
+<p>蓝牙 Mesh 是基于低功耗蓝牙技术（Bluetooth Low Energy）的网状网络解决方案。
+网状网络主要分为两种：泛洪网状网络（flooding-based mesh network）和路由网状网络（routing-based mesh network）。
+这两种网络类型各有利弊，Bluetooth Mesh 对应于这两种网络的转发消息的方式分别称为 Managed Flooding 和 <a class="reference internal" href="#directed-forwarding">Directed Forwarding</a>。</p>
+<p><a class="reference internal" href="../../../../../doc/glossary.html#term-LE"><span class="xref std std-term">LE</span></a> 的通信信道有两类：advertising channel 和 data channel。
+Mesh 主要工作在 advertising channel 上，通过 passive scanning 和 advertising，分别进行接收和发送。
+而 data channel 主要是为了兼容现有的不支持 advertising 的设备，可以通过 LE link 的方式进行通信。</p>
+<section id="id1">
+<h2>术语与概念<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>主要分为两部分介绍： <a class="reference internal" href="#id2">Mesh 概念</a> 和 <a class="reference internal" href="#id7">Mesh 框架</a>。</p>
+<section id="id2">
+<h3>Mesh 概念<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>这部分介绍 Mesh 的主要概念，Mesh Protocol 的详细内容请参考 <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Protocol Specification</a>，
+初步了解可以查阅 Mesh Protocol Specification 的第二章 <em>Mesh system architecture</em>。</p>
+<section id="device-uuid">
+<h4>Device <a class="reference internal" href="../../../../../doc/glossary.html#term-UUID"><span class="xref std std-term">UUID</span></a><a class="headerlink" href="#device-uuid" title="Link to this heading"></a></h4>
+<p>每个设备出厂时被分配一个唯一的 16 字节 UUID，称作 Device UUID，用于唯一标识一个 mesh 设备，不用依赖蓝牙地址来标识设备。
+在建立 <a class="reference internal" href="../../../../../doc/glossary.html#term-PB-ADV"><span class="xref std std-term">PB-ADV</span></a> bearer link 时，需要 Device UUID 字段来标识 device。然而，当 mesh device 获取 mesh address 后，即可用 mesh address 来唯一标识 device。</p>
+</section>
+<section id="id3">
+<h4>Mesh 地址<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<p>除了建立 LE link，Mesh 通信并不依赖蓝牙地址，即节点的蓝牙地址可以一样，或者随机变化。
+Mesh 定义了长度为 2 字节的 Mesh 地址，分为 Unassigned Address、Unicast Address、Virtual Address 和 Group Address，地址范围如下表所示。</p>
+<table class="docutils align-center" id="mesh-address">
+<caption><span class="caption-text">Mesh 地址</span><a class="headerlink" href="#mesh-address" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Range</p></th>
+<th class="head"><p>Address</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>0x0000</p></th>
+<td><p>Unassigned Address</p></td>
+<td><p>未分配地址，device 默认地址，不能用于发送或接收 mesh 消息</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0x0001-0x7FFF</p></th>
+<td><p>Unicast Address</p></td>
+<td><p>单播地址，每个 element 会被分配一个单播地址，message 的源地址一定要是 unicast address</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>0x8000-0xBFFF</p></th>
+<td><p>Virtual Address</p></td>
+<td><p>虚拟地址，由 label uuid 生成，数量多，可以不用集中管理</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0xC000-0xFFFF</p></th>
+<td><p>Group Address</p></td>
+<td><p>组播地址，分为两类</p>
+<p>0xC000-0xFEFF: 自由分配组播地址</p>
+<p>0xFF00~0xFFFF: 固定组播地址</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>其中固定组播地址定义包含如下。如有更新，请参考 <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Protocol Specification</a> 的 <em>Group address</em> 小节。</p>
+<table class="docutils align-center" id="mesh-fixed-group-addresses">
+<caption><span class="caption-text">Mesh 固定组播地址</span><a class="headerlink" href="#mesh-fixed-group-addresses" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Values</p></th>
+<th class="head"><p>Fixed Group Address Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>0xFFFB</p></th>
+<td><p>all-directed-forwarding-nodes</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0xFFFC</p></th>
+<td><p>all-proxies</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>0xFFFD</p></th>
+<td><p>all-friends</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0xFFFE</p></th>
+<td><p>all-relays</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>0xFFFF</p></th>
+<td><p>all-nodes</p></td>
+</tr>
+</tbody>
+</table>
+<p>Mesh 地址并不是出厂时设置的，而是由用户自己统一管理和分配的。
+用户在配置设备入网时，通过 Provisioning 流程给设备分配单播地址。Provisioner 需要确保给每个设备分配的单播地址是不重复的。
+Mesh 设备可能不止一个 单播地址，设备内每个 Element 会被分配一个单播地址，且该地址是连续的。
+多地址被设计用于区分 Mesh 设备上重复的功能模块 Model。</p>
+</section>
+<section id="id5">
+<h4>应用模型<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<p>LE 是 master 连接 slave 的一对一的通信，而 mesh 网络是多对多的通信。
+因而，mesh 网络存在一个天然特性，就是节点之间并不知道其他节点的存在。
+此时需要 Provisioner 作为第三方，将节点之间联系起来。
+例如一个通用的开关，出厂后是未确定要控制哪盏或者哪些灯，
+需要 Provisioner 通过 Configuration Client 配置开关发布 publish 消息（设置目的地址为单播地址、组播地址）。
+如果目的地址是组播地址，则需同时配置相应的灯泡订阅 subscribe 消息（设置分组，即增加组播地址到订阅列表）。
+然后，开关就可以控制这一盏灯、一组灯或者所有灯。</p>
+<p>Mesh 将典型应用场景的操作进行了标准化，每个 mesh 设备上的应用是以 Model 为单位进行组织的。
+Model 定义了一个 Model <a class="reference internal" href="../../../../../doc/glossary.html#term-ID"><span class="xref std std-term">ID</span></a>、一套 Opcodes 和一组状态，规定发送和接收哪些消息，分别操作哪些状态。
+Model 和 LE 的 <a class="reference internal" href="../../../../../doc/glossary.html#term-GATT"><span class="xref std std-term">GATT</span></a> service 是类似的，都用于定义一个特定的应用场景。</p>
+<p>为了支持多个相同的 model，定义了 element 的概念，每个 element 会单独分配一个 element address，且地址是连续的。
+第一个 element（primary element）的 element address 是在 Provisioning 过程中分配的 node address，其他 element 的地址顺序往后排。
+例如一个 mesh 设备上有两盏完全一样的且可以独立控制的灯，开关设备去控制这个灯设备，需要区分控制哪盏灯。
+让这两盏灯对应的两个 Model 分开放在两个 element 中，这样每盏灯分别有一个 mesh address，
+就可以通过 mesh address 将两盏灯区分开来了，进行独立控制。
+当然，两盏灯的 model 也可以订阅同一个组地址，实现同时控制。这样既能独立控制，也能同时控制。</p>
+<p>设备上 element、model 组成情况通过 composition data page 0 表达，
+Provisioner 可以通过获取设备的 composition data page 0 来辨识设备支持的应用。</p>
+</section>
+<section id="id6">
+<h4>安全性<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>Mesh 中有很多保护网络安全和隐私的设计，能够抵挡被动监听、中间人攻击、重放攻击、垃圾桶攻击和暴力破解等常见的攻击。</p>
+<p>Mesh 网络中所有 mesh 消息都会被加密和校验，防止被窃听或篡改。
+mesh 网络中密钥分两层：NetKey 和 AppKey，每层最多可以有 4096 个密钥，通过 12 bit 的 index 标识。AppKey 必须绑定一个 NetKey，且只能绑定该 NetKey。
+应用层发送消息会依次经过 AppKey 和 NetKey 两层加密和校验，接收消息会依次经过 NetKey 和 AppKey 两层解密和校验。
+采用两层密钥，是为了防止 relay 节点窃听或者篡改消息。
+例如节点 A 通过节点 B 转发给节点 C 发数据，A/B/C 有相同的 NetKey，A/C 有相同的 AppKey，而 B 没有该 AppKey。
+那么 A 和 C 间的应用层通信对 B 来说是保密的，B 只是使用 NetKey 在网络层帮忙转发，因为没有 AppKey 而不能进行窃听或者篡改应用层消息。</p>
+<p>NetKey 支持多个密钥，多密钥可以用来划分网络范围，实现设备间的隔离。
+Key index 为 0 的是主网络密钥，其余的都是普通的其他子网络密钥。
+只有主网络中的节点才能参与 <a class="reference internal" href="../../../../../doc/glossary.html#term-IV"><span class="xref std std-term">IV</span></a> Update Procedure，并将 IV 更新信息传递到其他子网中。
+也就是说，只有主网络节点才能更新 IV index 网络参数，其他子网的节点只能被动的接收 IV index 更新。
+这样不平等的网络密钥设计的目的是约束子网络节点的数据发送频次，防止子网络节点滥用 IV index 更新而耗尽 IV index，从而导致网络安全问题。
+通常大部分节点在主网络中，部分节点同时处于主网络和某个子网络，少量节点只处于某个子网络，
+此时这些少量节点只能在子网络内进行局部通信，从而限定这些少量节点的通信范围，例如酒店顾客只能控制自己房间内的灯。</p>
+<p>AppKey 也支持多密钥，密钥之间并无区别。不同的应用可以使用不同的密钥，实现应用间的隔离。
+例如灯控和门控使用不同的 AppKey。一个应用也可以使用多个 AppKey，
+例如一盏灯上支持 2 个 AppKey，AppKey0 给用户 0 用，AppKey1 给用户 1 用，将 AppKey0 删除，那么用户 0 就不能再控制灯，而用户 1 则不受影响。</p>
+<p>Device 上的 NetKey 和 AppKey 是 Provisioner 通过 Provisioning 和 Configuration Client 分发和管理的。
+Provisioner 是网络管理员，管理着所有的 key，即管理网络中各个 device 各自可以使用哪些 key，
+而 device 间只有共享相同的密钥才能互相通信，例如灯和灯的开关使用相同的秘钥。
+Provisioning 过程会分发 mesh address 和有且只有一个 NetKey，
+后续通过 Configuration Models 来管理，例如通过 Configuration Client 增加 NetKey 和 AppKey。</p>
+<p>Provisioning 过程还会生成一种特殊的 AppKey，称作 DevKey。
+DevKey 只有 Provisioner 和 Device 两者知道，不和任何其他 Device 共享，
+保证了 Provisioner 可以单独和某一个 Device 进行秘密的一对一通信。
+Configuration 配置被限制只能使用 DevKey，只有 Provisioner 才知道 Device 的 DevKey，
+所以只有 Provisioner 才可以配置 Device。
+举例而言，开关只能控制灯泡亮灭，而不能去配置灯泡的分组。</p>
+</section>
+<section id="provisioning">
+<h4>Provisioning<a class="headerlink" href="#provisioning" title="Link to this heading"></a></h4>
+<p>Device 出厂默认是没有地址和密钥的，需要通过 Provisioning 过程从 Provisioner 获得。
+Device 被 Provisioning 后被称作 Node。本文和 Sample 中并没有严格区分 Device 和 Node 这两个概念。
+Provisioning 过程采用 <a class="reference internal" href="../../../../../doc/glossary.html#term-ECDH"><span class="xref std std-term">ECDH</span></a> 算法进行密钥协商和分发，通过 authentication data 进行身份鉴权，能够防止窃听、暴力破解和中间人攻击。</p>
+<p>根据 Provisioning 配置不同，会有不同的模式，public key 的交互分为 <a class="reference internal" href="../../../../../doc/glossary.html#term-OOB"><span class="xref std std-term">OOB</span></a> 和 no OOB 两种，
+authentication data 的交互分为 input OOB、output OOB、static OOB 和 no OOB 四种，所以模式最多有8种。
+Device 的应用层可能需要给 stack 提供 public/private key 和 authentication data。
+Provisioner 的应用层可能需要给 stack 提供模式选择、Device 的 public key 和 authentication data。</p>
+<p>Provisioning 流程可以工作在 advertising channel 和 data channel 两种信道上，
+分别对应 PB-ADV 和 <a class="reference internal" href="../../../../../doc/glossary.html#term-PB-GATT"><span class="xref std std-term">PB-GATT</span></a> 两种传输层。
+PB-ADV 使用 LE advertising 传输 Provisioning <a class="reference internal" href="../../../../../doc/glossary.html#term-PDU"><span class="xref std std-term">PDU</span></a>s 进行配网；
+PB-GATT 则是需要建立 LE link，通过 Mesh Provisioning Service 来传输 Provisioning PDUs 进行配网。
+Device 是被强制要求支持 PB-ADV 的，如果同时支持 PB-GATT，在 Provisioning 阶段可以由 Provisioner 任选一个。</p>
+</section>
+<section id="configuration">
+<h4>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h4>
+<p>网络参数的管理是在 model 层实现的，称作 Configuration Models。
+可以配置的网络参数有很多，例如 NetKey 和 AppKey 增加、删除、修改等，model的密钥绑定、消息发布、消息订阅等，
+节点应用结构 Composition data page 0 的获取，节点的默认 <a class="reference internal" href="../../../../../doc/glossary.html#term-TTL"><span class="xref std std-term">TTL</span></a>、支持的 feature、网络重传次数等。</p>
+<p>网络参数的配置被限定为只能使用 DevKey，也就是说只有 Provisioner 才能配置节点的网络参数。</p>
+</section>
+<section id="proxy">
+<h4>Proxy<a class="headerlink" href="#proxy" title="Link to this heading"></a></h4>
+<p>Mesh主要工作在 advertising channel 上，为了兼容一些不能灵活自由的 advertising 的设备，mesh 定义了 proxy 特性。
+基于 LE GATT profile，定义了 proxy service，让这些设备利用 LE link 的方式连接到支持 proxy 的节点上，从而接入到 mesh 网络。</p>
+</section>
+</section>
+<section id="id7">
+<h3>Mesh 框架<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Mesh框架如下图所示，分为 bearer layer、network layer、lower transport layer、
+upper transport layer、access layer、foundation model layer 以及 model layer。</p>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../../../../../_images/mesh_system_architecture.png"><img alt="../../../../../_images/mesh_system_architecture.png" src="../../../../../_images/mesh_system_architecture.png" style="width: 631.4px; height: 496.99999999999994px;" /></a>
+<figcaption>
+<p><span class="caption-text">Mesh 框架</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="model-layer-foundation">
+<h4>Model Layer (Foundation)<a class="headerlink" href="#model-layer-foundation" title="Link to this heading"></a></h4>
+<p>Model 定义了特定应用的一组状态和操作，通过 Model ID 来标识，
+分为 16 bits Model ID 的 <a class="reference internal" href="../../../../../doc/glossary.html#term-SIG"><span class="xref std std-term">SIG</span></a> model 和 32 bits Model ID 的 vendor model 两种。
+实现上，会对 SIG Model ID 进行编码，16 bits SIG Model ID 会被编码成 32 bits Model ID。
+例如 configuration server 和 client 的 Model ID 是 0x0000 和 0x0001，
+但实现上将 configuration model 编码成了 0x0000FFFF 和 0x0001FFFF，具体代码如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MESH_MODEL_CFG_SERVER    0x0000FFFF</span>
+<span class="cp">#define MESH_MODEL_CFG_CLIENT    0x0001FFFF</span>
+</pre></div>
+</div>
+<p>Element 用于隔离相同的 model，即使用了相同 access layer opcode 的 model。
+重复的 model 会发送或接收相同的 opcode，此时无法区分是哪一个 model 在发送或者要接收这个 opcode 对应的 access message。
+而 element 会被分配不同的 element address，这样可以通过 message 的 source address 或者 destination address 来有效的区分 model。
+Mesh stack 采用先创建 element，再在指定 element 下注册 model 的方式。
+如果注册重复的 model，需要为该 model 指定不同的 element，stack 会去检查一个 element 下的 model 是否冲突。</p>
+<p>Mesh Protocol Specification 中强制要求的 Configuration Server Model 不需要 <a class="reference internal" href="../../../../../doc/glossary.html#term-APP"><span class="xref std std-term">APP</span></a> 注册，由 stack 负责注册和处理。</p>
+<p>Health server model 只有在 primary element 是强制要求注册的，其他 element 用户可根据需求自行创建并注册。</p>
+<p>Element 和 Model 创建注册完毕后，就可以生成 composition data page 0 的内容，
+需要APP提供具体的 header 信息，包含 Company ID、Product ID、Version ID、<a class="reference internal" href="../../../../../doc/glossary.html#term-RPL"><span class="xref std std-term">RPL</span></a> 大小以及所支持的 features。</p>
+<p>Element 创建、Model 注册以及 Composition data page 0 生成的具体步骤示例代码如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** create elements and register models */</span>
+<span class="w">   </span><span class="n">mesh_element_create</span><span class="p">(</span><span class="n">GATT_NS_DESC_UNKNOWN</span><span class="p">);</span>
+<span class="w">   </span><span class="n">health_server_reg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">health_server_model</span><span class="p">);</span>
+<span class="w">   </span><span class="n">ping_control_reg</span><span class="p">(</span><span class="n">ping_app_ping_cb</span><span class="p">,</span><span class="w"> </span><span class="n">pong_receive</span><span class="p">);</span>
+<span class="w">   </span><span class="n">compo_data_page0_header_t</span><span class="w"> </span><span class="n">compo_data_page0_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">COMPANY_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PRODUCT_ID</span><span class="p">,</span><span class="w"> </span><span class="n">VERSION_BUILD</span><span class="p">};</span>
+<span class="w">   </span><span class="n">compo_data_page0_gen</span><span class="p">(</span><span class="o">&amp;</span><span class="n">compo_data_page0_header</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="access-layer">
+<h4>Access Layer<a class="headerlink" href="#access-layer" title="Link to this heading"></a></h4>
+<p>Access Layer 定义了上层应用的消息格式，其中包含 operation codes，
+即 access opcode，所有应用消息必须包含统一的 opcode。
+Mesh Protocol Specification 定义了一部分 opcode，也预留了空间让厂商自定义 opcode。
+自定义 opcode 是 3 字节的，第一个字节的高两位为 1，低 6 位为厂商自定义的 opcode，
+后两个字节是 Company ID，即每个 Company 只能自定义 64 个 opcode。</p>
+<p>如下代码所示，0xC0 表示是 0 号 manufacturer-specific opcode，0x005D 对应 Realtek 的 Company ID，需要按字节序填入。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MESH_MSG_PING    0xC05D00</span>
+</pre></div>
+</div>
+<p>Access 层消息首先会被 transport layer 使用 AppKey 加密，
+Transport layer <a class="reference internal" href="../../../../../doc/glossary.html#term-MIC1"><span class="xref std std-term">MIC¹</span></a> 校验长度支持 4 bytes 和 8 bytes。
+如果使用了 4 bytes transport layer MIC，access 层消息最大长度为 380 bytes；
+如果使用了 8 bytes transport layer MIC，则最大长度为 376 bytes。</p>
+</section>
+<section id="transport-layer-upper-lower">
+<h4>Transport Layer (Upper &amp; Lower)<a class="headerlink" href="#transport-layer-upper-lower" title="Link to this heading"></a></h4>
+<p>Transport layer 负责应用层加解密，friendship 维护，heartbeat，directed forwarding 维护和 segmentation &amp; reassembly。</p>
+<p>Access layer 消息采用 4 bytes transport layer MIC，消息长度小于等于 11 bytes（包含 access opcode），
+且不主动要求使用分片包格式传输，则这笔消息不会被分片 segmented，即以一笔 advertising packet 方式发送出去。
+反之，access 消息会被 segmented，根据消息长度不同被一笔或者多笔 advertising packet 发送出去，
+且会要求接收端回复 transport layer 的 acknowledge。</p>
+</section>
+<section id="network-layer">
+<h4>Network Layer<a class="headerlink" href="#network-layer" title="Link to this heading"></a></h4>
+<p>Network Layer 负责网络层加解密、加扰和 relay。</p>
+</section>
+<section id="bearer-layer">
+<h4>Bearer Layer<a class="headerlink" href="#bearer-layer" title="Link to this heading"></a></h4>
+<p>Bearer Layer 分为 loopback bearer、advertising bearer、GATT bearer 和 other bearer。</p>
+<p>Loopback bearer 是自发自收通道，用于 model 间通信。</p>
+<p>Advertising bearer 是使用 LE advertising 和 LE scan 进行发送和接收数据的通道，用于节点间相互通信。</p>
+<p>GATT bearer 是基于 GATT 连接使用 proxy protocol 传输和接收数据的通道，一般用于不支持 advertising bearer 的节点通信。</p>
+<p>Other bearer 是其他接口，用于在 bearer 层扩展 mesh 网络。例如 Gateway 可以通过 other bearer 连接 Mesh 网络和以太网，
+使得 Mesh 网络可以接入 Internet。Other bearer 的注册发送消息函数接口是 <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___bearer___exported___functions.html#_CPPv416bearer_other_reg22pf_bearer_other_send_t" title="bearer_other_reg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">bearer_other_reg()</span></code></a> ，接收消息接口是 <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___bearer___exported___functions.html#_CPPv420bearer_other_receive17bearer_pkt_type_tP7uint8_t8uint16_t" title="bearer_other_receive"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">bearer_other_receive()</span></code></a>。</p>
+</section>
+</section>
+</section>
+<section id="id9">
+<h2>特性<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Relay</dt><dd><p>接收并通过 advertising bearer 重新传输 mesh message，以便扩展网络。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Proxy</dt><dd><p>接收并在 GATT bearer 和 advertising bearer 之间重新传输 mesh message。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Low Power</dt><dd><p>在 mesh 网络中可以大幅降低接收占空比，降低功耗运行，需要支持 Friend feature 的节点配合。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Friend</dt><dd><p>通过存储支持 Low Power feature 节点的消息，帮助其运行。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Enhanced Provisioning Authentication</dt><dd><p>支持 Provisioning Protocol 中更多的算法。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Remote Provisioning</dt><dd><p>当 Provisioner 超出未 unprovisioned devices 的直接无线电范围时，仍可将其添加到 mesh 网络。
+另外，Provisioner 可以使用通过 provisioning 数据包更改 mesh 节点的设备密钥。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Private Beacons</dt><dd><p>提供 Secure Mesh Beacons 的隐私保护。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Directed Forwarding</dt><dd><p>通过选择一部分节点将消息从源点中继到目的地，以帮助提高多跳网络的性能。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Subnet Bridge</dt><dd><p>支持 mesh 网络的子网桥接。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Binary Large Object Transfer</dt><dd><p>使 mesh 设备之间能够传输大量数据。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Device Firmware Update</dt><dd><p>使 mesh 设备可以通过 mesh 网络完成固件升级。</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="id10">
+<h2>接口提供<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<p>Mesh Stack 提供的 API 如下表所示。</p>
+<table class="docutils align-center" id="mesh-stack-provided-apis">
+<caption><span class="caption-text">Mesh Stack Provided APIs</span><a class="headerlink" href="#mesh-stack-provided-apis" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Header File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mesh_provision.h</p></td>
+<td><p>mesh provisioning protocol</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_service.h</p></td>
+<td><p>mesh service advertising</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_access.h</p></td>
+<td><p>mesh access layer</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_transport.h</p></td>
+<td><p>mesh transport layer</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_network.h</p></td>
+<td><p>mesh network layer</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_bearer.h</p></td>
+<td><p>mesh bearer layer</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_common.h</p></td>
+<td><p>mesh common part</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_flash.h</p></td>
+<td><p>mesh flash storage</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_node.h</p></td>
+<td><p>mesh node management</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_api.h</p></td>
+<td><p>mesh application interface</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_beacon.h</p></td>
+<td><p>mesh beacon</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_config.h</p></td>
+<td><p>mesh configuration</p></td>
+</tr>
+<tr class="row-even"><td><p>model_config.h</p></td>
+<td><p>model configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p>provision_adv.h</p></td>
+<td><p>provisioning ADV bearer</p></td>
+</tr>
+<tr class="row-even"><td><p>provision_device.h</p></td>
+<td><p>provisioning device APIs</p></td>
+</tr>
+<tr class="row-odd"><td><p>provision_generic.h</p></td>
+<td><p>provisioning generic layer</p></td>
+</tr>
+<tr class="row-even"><td><p>provision_provisioner.h</p></td>
+<td><p>provisioning provisioner APIs</p></td>
+</tr>
+<tr class="row-odd"><td><p>proxy_protocol.h</p></td>
+<td><p>proxy protocol</p></td>
+</tr>
+<tr class="row-even"><td><p>subnet_bridge.h</p></td>
+<td><p>subnet bridge</p></td>
+</tr>
+<tr class="row-odd"><td><p>directed_forwarding.h</p></td>
+<td><p>directed forwarding</p></td>
+</tr>
+<tr class="row-even"><td><p>friendship_fn.h</p></td>
+<td><p>friend node</p></td>
+</tr>
+<tr class="row-odd"><td><p>friendship_lpn.h</p></td>
+<td><p>low power node</p></td>
+</tr>
+<tr class="row-even"><td><p>heartbeat.h</p></td>
+<td><p>heartbeat</p></td>
+</tr>
+<tr class="row-odd"><td><p>provision_client.h</p></td>
+<td><p>provision service client</p></td>
+</tr>
+<tr class="row-even"><td><p>provision_service.h</p></td>
+<td><p>provision service</p></td>
+</tr>
+<tr class="row-odd"><td><p>proxy_client.h</p></td>
+<td><p>proxy service client</p></td>
+</tr>
+<tr class="row-even"><td><p>proxy_service.h</p></td>
+<td><p>proxy service</p></td>
+</tr>
+<tr class="row-odd"><td><p>remote_provisioning.h</p></td>
+<td><p>remote provisioning</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h2>功能<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<p>本节主要介绍 Mesh Stack 不同功能或者模块如何使用和配置。</p>
+<section id="mesh-gap">
+<h3>Mesh <a class="reference internal" href="../../../../../doc/glossary.html#term-GAP"><span class="xref std std-term">GAP</span></a><a class="headerlink" href="#mesh-gap" title="Link to this heading"></a></h3>
+<p>Mesh 工作在 advertising channel 上，通过 advertising 发数据以及通过 scanning 接收数据。
+LE 的 advertising 和 scanning 是周期性行为，而 mesh 对 advertising channel 的使用比较复杂。
+为了便于使用，Mesh stack 对 LE 的 GAP 接口进行封装，称作 Mesh GAP，此时 APP 不能再直接去调用 LE 的 GAP 接口。</p>
+<section id="advertising">
+<h4>Advertising<a class="headerlink" href="#advertising" title="Link to this heading"></a></h4>
+<p>Mesh 封装后的 advertising 是一次性行为，而非周期性行为。不再有 advertising interval 参数，也不需要 enable 和 disable 动作来开关 advertising。</p>
+<p>Advertising 示例如下，需要先通过 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___scheduler___exported___functions.html#_CPPv418gap_sched_task_getv" title="gap_sched_task_get"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_sched_task_get()</span></code></a> 获取到 <code class="docutils literal notranslate"><span class="pre">buffer</span></code> 之后，再使用 <code class="docutils literal notranslate"><span class="pre">gap_sched_try()</span></code> 进行发送。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">vendor_data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="cm">/* Flags */</span>
+<span class="w">   </span><span class="mh">0x02</span><span class="p">,</span>
+<span class="w">   </span><span class="n">GAP_ADTYPE_FLAGS</span><span class="p">,</span>
+<span class="w">   </span><span class="n">GAP_ADTYPE_FLAGS_LIMITED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED</span><span class="p">,</span>
+<span class="w">   </span><span class="cm">/* Local name */</span>
+<span class="w">   </span><span class="mh">0x07</span><span class="p">,</span>
+<span class="w">   </span><span class="n">GAP_ADTYPE_LOCAL_NAME_COMPLETE</span><span class="p">,</span>
+<span class="w">   </span><span class="sc">&#39;V&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;N&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;D&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;O&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;R&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">advertising_transmit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">pbuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gap_sched_task_get</span><span class="p">();</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pbuffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="n">gap_sched_task_t</span><span class="w"> </span><span class="o">*</span><span class="n">ptask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONTAINER_OF</span><span class="p">(</span><span class="n">pbuffer</span><span class="p">,</span><span class="w"> </span><span class="n">gap_sched_task_t</span><span class="p">,</span><span class="w"> </span><span class="n">adv_data</span><span class="p">);</span>
+<span class="w">   </span><span class="n">memcpy</span><span class="p">(</span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">adv_data</span><span class="p">,</span><span class="w"> </span><span class="n">vendor_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">vendor_data</span><span class="p">));</span><span class="w">  </span><span class="c1">// set adv data</span>
+<span class="w">   </span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">adv_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">vendor_data</span><span class="p">);</span><span class="w">                       </span><span class="c1">// set adv len</span>
+<span class="w">   </span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">adv_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GAP_SCHED_ADV_TYPE_IND</span><span class="p">;</span><span class="w">                   </span><span class="c1">// set adv type</span>
+<span class="w">   </span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">retrans_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">                                   </span><span class="c1">// set adv retrans count</span>
+<span class="w">   </span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">retrans_interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">                               </span><span class="c1">// set adv interval, ms</span>
+<span class="w">   </span><span class="n">gap_sched_try</span><span class="p">(</span><span class="n">ptask</span><span class="p">);</span><span class="w">                                       </span><span class="c1">// send adv</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><code class="docutils literal notranslate"><span class="pre">retrans_count</span></code> 和 <code class="docutils literal notranslate"><span class="pre">retrans_interval</span></code> 指的是 advertising 时一次性行为的传输次数和间隔，传输结束会停止。
+如果 APP 想发送周期性 advertising，需要自行创建定时器定时发送，达到周期性广播的效果。
+例如每隔 1s 调用一次上述函数，实际效果是每隔 1s，设备会发 4 次广播，每次间隔 10ms。</p>
+</div>
+</section>
+<section id="scanning">
+<h4>Scanning<a class="headerlink" href="#scanning" title="Link to this heading"></a></h4>
+<p>对于 mesh 应用而言，scan 通常要一直 enable。mesh stack 启动时，
+根据 <code class="docutils literal notranslate"><span class="pre">mesh_stack_init()</span></code> 里面配置的 <code class="docutils literal notranslate"><span class="pre">features</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">bg_scan</span></code> 置位与否，决定是否立即开始 scan。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** config node parameters */</span>
+<span class="w">   </span><span class="n">mesh_node_features_t</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="p">.</span><span class="n">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_ROLE_DEVICE</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">relay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">lpn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">prov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">udb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">snb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="hll"><span class="w">   </span><span class="p">.</span><span class="n">bg_scan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="c1">// enable background scan</span>
+</span><span class="w">   </span><span class="p">.</span><span class="n">flash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">flash_rpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Scan 的开关通过 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___scheduler___exported___functions.html#_CPPv414gap_sched_scanb" title="gap_sched_scan"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_sched_scan()</span></code></a> 控制；Scan 的参数是由 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___scheduler___exported___functions.html#_CPPv420gap_sched_params_set23gap_sched_params_type_tPv8uint16_t" title="gap_sched_params_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_sched_params_set()</span></code></a> 设置，且在 mesh stack 启动前后调用都可以。</p>
+</section>
+<section id="initiating">
+<h4>Initiating<a class="headerlink" href="#initiating" title="Link to this heading"></a></h4>
+<p>与 LE 一致，未做额外封装，可以作为 master 建立连线。</p>
+</section>
+<section id="link">
+<h4>Link<a class="headerlink" href="#link" title="Link to this heading"></a></h4>
+<p>与 LE 一致，未做额外封装，可以配对，可以添加 GATT Server 和 GATT Client。</p>
+</section>
+<section id="mesh-stack-gap">
+<h4>Mesh Stack 的 GAP 行为<a class="headerlink" href="#mesh-stack-gap" title="Link to this heading"></a></h4>
+<p>Mesh Stack 会有默认的 GAP 行为，无须用户实现。</p>
+<ul>
+<li><dl>
+<dt>Beacon Advertising</dt><dd><div class="line-block">
+<div class="line">设备处于 Unprovisioned 时，需要发送 Unprovisioned Device beacon。</div>
+<div class="line">设备处于 Provisioned 时，需要发送 Secure Network beacon。</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Service Advertising</dt><dd><div class="line-block">
+<div class="line">设备如果支持 PB-GATT，处于 unprovisioned 时，需要发送 provision advertising。</div>
+<div class="line">设备如果支持 Proxy，处于 provisioned 时，需要发送 proxy advertising。</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Receive Scanning</dt><dd><p>Mesh 通信是实时的，任何时刻都有可能需要接收消息。但是 scan 时功耗比较高。可以通过设置 scan 参数降低 scan 占空比来降低功耗，但也因此会牺牲可靠性，有可能会漏掉一些消息。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Relay Scanning</dt><dd><p>如果设备要支持 relay，是要一直开启 scan 才能更好地帮助其他设备转发消息。因此对于 relay 节点 background scan 通常是打开的。</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="id12">
+<span id="id13"></span><h3>设备信息配置<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>应用层可以调用 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___scheduler___exported___functions.html#_CPPv420gap_sched_params_set23gap_sched_params_type_tPv8uint16_t" title="gap_sched_params_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_sched_params_set()</span></code></a> 接口配置 device name 和 appearance 等信息，具体代码如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** set device name and appearance */</span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">dev_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Mesh Device&quot;</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">appearance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GAP_GATT_APPEARANCE_UNKNOWN</span><span class="p">;</span>
+<span class="w">   </span><span class="n">gap_sched_params_set</span><span class="p">(</span><span class="n">GAP_SCHED_PARAMS_DEVICE_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">dev_name</span><span class="p">,</span><span class="w"> </span><span class="n">GAP_DEVICE_NAME_LEN</span><span class="p">);</span>
+<span class="w">   </span><span class="n">gap_sched_params_set</span><span class="p">(</span><span class="n">GAP_SCHED_PARAMS_APPEARANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">appearance</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">appearance</span><span class="p">));</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="mesh-device-uuid">
+<span id="id14"></span><h3>Device UUID 设置<a class="headerlink" href="#mesh-device-uuid" title="Link to this heading"></a></h3>
+<p>Mesh 节点可能拥有相同的蓝牙地址或者随机的蓝牙地址，需要通过 Device UUID 来唯一辨识 mesh 节点，设置 Device UUID 代码如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** set device uuid */</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">dev_uuid</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_DEVICE_UUID</span><span class="p">;</span>
+<span class="w">   </span><span class="n">device_uuid_set</span><span class="p">(</span><span class="n">dev_uuid</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<span id="id16"></span><h3>网络特性和参数配置<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p>Node 支持的 features、密钥个数、virtual address 个数、subscription list 大小、flash 存储、
+advertising 周期等网络参数，需要 APP 根据实际情况配置，具体代码如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** config node parameters */</span>
+<span class="w">   </span><span class="n">mesh_node_features_t</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">.</span><span class="n">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_ROLE_DEVICE</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">relay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">lpn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">prov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">udb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">snb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">bg_scan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">flash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">flash_rpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="n">mesh_node_cfg_t</span><span class="w"> </span><span class="n">node_cfg</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">.</span><span class="n">dev_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">net_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">master_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="c1">// shall &lt;= net_key_num</span>
+<span class="w">      </span><span class="p">.</span><span class="n">app_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">vir_addr_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">rpl_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">sub_addr_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">proxy_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="n">mesh_node_cfg</span><span class="p">(</span><span class="n">features</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">node_cfg</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">注意</p>
+<p>参数配置中与 mesh flash layout 相关的参数如有改动，或者节点注册的 elements 或者 models 数量变化引起 layout 变化，
+节点在初始化时会清除之前已经存储的信息并回到 Unprovisioned 状态。
+会影响 mesh flash layout 的参数包括 <code class="docutils literal notranslate"><span class="pre">dev_key_num</span></code>、 <code class="docutils literal notranslate"><span class="pre">net_key_num</span></code>、 <code class="docutils literal notranslate"><span class="pre">master_key_num</span></code>、 <code class="docutils literal notranslate"><span class="pre">app_key_num</span></code>、 <code class="docutils literal notranslate"><span class="pre">vir_addr_num</span></code>、 <code class="docutils literal notranslate"><span class="pre">rpl_num</span></code>、 <code class="docutils literal notranslate"><span class="pre">sub_addr_num</span></code>、 <code class="docutils literal notranslate"><span class="pre">flash_rpl</span></code>。
+如有新的 feature 支持，上述参数可能会增加。</p>
+</div>
+</section>
+<section id="mesh-log">
+<span id="id17"></span><h3>Mesh Log 配置<a class="headerlink" href="#mesh-log" title="Link to this heading"></a></h3>
+<p>Mesh stack 内部有多个模块，每个模块的各个级别 log 可以单独被开关，默认是都打开的。
+Log 级别共有四级，由高到低等级和输出函数分别是 <code class="docutils literal notranslate"><span class="pre">LEVEL_ERROR</span></code> 和 <code class="docutils literal notranslate"><span class="pre">printe()</span></code>、 <code class="docutils literal notranslate"><span class="pre">LEVEL_WARN</span></code> 和 <code class="docutils literal notranslate"><span class="pre">printw()</span></code>、
+<code class="docutils literal notranslate"><span class="pre">LEVEL_INFO</span></code> 和 <code class="docutils literal notranslate"><span class="pre">printi()</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">LEVEL_TRACE</span></code> 和 <code class="docutils literal notranslate"><span class="pre">printt()</span></code>，越低级别的 log 越不重要。
+由于 log 速率有限，当打印打太多 log 时，log 会丢失。为了保证关键 log 正常打印，可以关掉一些不重要的 log。
+示例如下，关闭所有 mesh 模块 <code class="docutils literal notranslate"><span class="pre">LEVEL_TRACE</span></code> 级别的 log。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** set mesh stack log level, default all on, disable the log of level LEVEL_TRACE */</span>
+<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">module_bitmap</span><span class="p">[</span><span class="n">MESH_LOG_LEVEL_SIZE</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">   </span><span class="n">diag_level_set</span><span class="p">(</span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="n">module_bitmap</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<span id="id19"></span><h3>Provisioning<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<p>Device 出厂设置中是不含任何网络信息的，需要通过 Provisioning 过程从 Provisioner 获取 Address 和 NetKey 等网络信息。</p>
+<p>Device 需要配置 Provisioning capabilities，具体代码如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** configure provisioning parameters */</span>
+<span class="w">   </span><span class="n">prov_capabilities_t</span><span class="w"> </span><span class="n">prov_capabilities</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">.</span><span class="n">algorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PROV_CAP_ALGO_FIPS_P256_ELLIPTIC_CURVE</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">public_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">static_oob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">output_oob_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">output_oob_action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">input_oob_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">input_oob_action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="n">prov_params_set</span><span class="p">(</span><span class="n">PROV_PARAMS_CAPABILITIES</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">prov_capabilities</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">prov_capabilities_t</span><span class="p">));</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Provisioner 和 Device 都需要注册 Provisioning 的 callback 处理函数，如下所示。
+根据 Provisioning 具体流程的不同，需要在 Provisioning callback 里完成不同的处理。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="n">prov_params_set</span><span class="p">(</span><span class="n">PROV_PARAMS_CALLBACK_FUN</span><span class="p">,</span><span class="w"> </span><span class="n">prov_cb</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">_Bool</span><span class="p">(</span><span class="n">prov_cb_type_t</span><span class="p">,</span><span class="w"> </span><span class="n">prov_cb_data_t</span><span class="p">)));</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Provisioner 和 Device 间可以通过 PB-ADV 或者 PB-GATT 两种通道完成 Provisioning 流程。
+通道建立成功后，才可以开始 Provisioning 流程。</p>
+<section id="pb-adv">
+<h4>PB-ADV<a class="headerlink" href="#pb-adv" title="Link to this heading"></a></h4>
+<p>根据 Device 的 Device UUID，Provisioner 调用 <a class="reference internal" href="../../../../../doc/api_reference/group___pb___adv___exported___functions.html#_CPPv416pb_adv_link_open7uint8_tAL16E_7uint8_t" title="pb_adv_link_open"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pb_adv_link_open()</span></code></a> 发起 PB-ADV 链路建立流程。</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">prov_cb()</span></code> 回调函数里，会处理 PB-ADV 链路建立情况，具体代码如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">prov_cb</span><span class="p">(</span><span class="n">prov_cb_type_t</span><span class="w"> </span><span class="n">cb_type</span><span class="p">,</span><span class="w"> </span><span class="n">prov_cb_data_t</span><span class="w"> </span><span class="n">cb_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cb_type</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">PROV_CB_TYPE_PB_ADV_LINK_STATE</span><span class="p">:</span>
+<span class="w">      </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cb_data</span><span class="p">.</span><span class="n">pb_generic_cb_type</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">PB_GENERIC_CB_LINK_OPENED</span><span class="p">:</span>
+<span class="w">         </span><span class="n">data_uart_debug</span><span class="p">(</span><span class="s">&quot;PB-ADV Link Opened!</span><span class="se">\r\n</span><span class="s">&gt;&quot;</span><span class="p">);</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">PB_GENERIC_CB_LINK_OPEN_FAILED</span><span class="p">:</span>
+<span class="w">         </span><span class="n">data_uart_debug</span><span class="p">(</span><span class="s">&quot;PB-ADV Link Open Failed!</span><span class="se">\r\n</span><span class="s">&gt;&quot;</span><span class="p">);</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">PB_GENERIC_CB_LINK_CLOSED</span><span class="p">:</span>
+<span class="w">         </span><span class="n">data_uart_debug</span><span class="p">(</span><span class="s">&quot;PB-ADV Link Closed!</span><span class="se">\r\n</span><span class="s">&gt;&quot;</span><span class="p">);</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="pb-gatt">
+<h4>PB-GATT<a class="headerlink" href="#pb-gatt" title="Link to this heading"></a></h4>
+<p>Provisioner 需要主动和 Device 建立 LE link，查询 Provisioning service，并使能相应的 <a class="reference internal" href="../../../../../doc/glossary.html#term-CCCD"><span class="xref std std-term">CCCD</span></a>。</p>
+</section>
+</section>
+<section id="model">
+<span id="mesh-model"></span><h3>Model 框架<a class="headerlink" href="#model" title="Link to this heading"></a></h3>
+<p>蓝牙 SIG 组织定义了很多标准的 Model，Realtek 的 <a class="reference internal" href="../../../../../doc/glossary.html#term-SDK"><span class="xref std std-term">SDK</span></a> 中已经包含了大部分常用 Model。
+为了降低 APP 发难度，SDK 对 Model 层和 Access 层之间的消息处理进行了封装，
+对 APP 提供一系列预定义的业务消息，使得 APP 只需关注于业务逻辑的开发。
+关于 Mesh Model 的详细内容请参考 <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Model Specification</a>。</p>
+<section id="id20">
+<h4>消息回调<a class="headerlink" href="#id20" title="Link to this heading"></a></h4>
+<p>在使用一个具体的 Model 之前都会定义一个如下所示的 Model 信息的结构体，其中需要用户关注的有如下三个回调函数。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model_receive()</span></code> 函数是 Access 层到 Model 层消息的回调函数，
+Realtek 的 SDK 中已经实现了默认的 <code class="docutils literal notranslate"><span class="pre">model_receive()</span></code> 函数，但用户也可以替换为自定义的函数；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_data_cb()</span></code> 函数是 Model 层到 APP 层业务逻辑处理的回调函数，APP 需要根据应用场景执行相应的动作。
+只有使用默认的 <code class="docutils literal notranslate"><span class="pre">model_receive()</span></code> 函数才会封装该回调给 APP，如果用户自定义了 <code class="docutils literal notranslate"><span class="pre">model_receive()</span></code> 函数，则该函数可以忽略；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_send_cb()</span></code> 函数是 Model 层消息发送结果的回调函数，用户可以根据需求来决定是否需要实现；</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_mesh_model_info_t</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="cm">/** provided by application */</span>
+<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">model_id</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; being equal or greater than 0xffff0000 means that the model is a SIG model.</span>
+<span class="w">   </span><span class="cm">/** callback to receive related access msg</span>
+<span class="cm">      If the model don&#39;t recognize the access opcode, it should return false! */</span>
+<span class="w">   </span><span class="n">model_receive_pf</span><span class="w"> </span><span class="n">model_receive</span><span class="p">;</span>
+<span class="w">   </span><span class="n">model_send_cb_pf</span><span class="w"> </span><span class="n">model_send_cb</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; indicates the msg transmitted state</span>
+<span class="w">   </span><span class="n">model_pub_cb_pf</span><span class="w"> </span><span class="n">model_pub_cb</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; indicates it is time to publishing</span>
+<span class="w">   </span><span class="n">model_data_cb_pf</span><span class="w"> </span><span class="n">model_data_cb</span><span class="p">;</span>
+<span class="cp">#if MESH_MODEL_ENABLE_DEINIT</span>
+<span class="w">   </span><span class="n">model_deinit_cb_pf</span><span class="w"> </span><span class="n">model_deinit</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="w">   </span><span class="cm">/** point to the bound model, sharing the subscription list with the binding model */</span>
+<span class="w">   </span><span class="k">struct</span><span class="w"> </span><span class="nc">_mesh_model_info_t</span><span class="w"> </span><span class="o">*</span><span class="n">pmodel_bound</span><span class="p">;</span>
+<span class="w">   </span><span class="k">struct</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">corresponding_present</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">extended_item_count</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">corresponding_group_id</span><span class="p">;</span>
+<span class="w">      </span><span class="k">struct</span><span class="w"> </span><span class="nc">_mesh_model_info_t</span><span class="w"> </span><span class="o">*</span><span class="n">pmodel_extended_info</span><span class="p">;</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="cm">/** configured by stack */</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">element_index</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">model_index</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pelement</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pmodel</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pargs</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">mesh_model_info_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h4>消息定义<a class="headerlink" href="#id21" title="Link to this heading"></a></h4>
+<p>在每个具体 Model 的头文件中都会有如下所示的预定义业务消息，每个消息对应一个具体的消息结构，以 Generic_OnOff model 为例。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define GENERIC_ON_OFF_SERVER_GET                                        0 </span><span class="c1">//!&lt; @ref generic_on_off_server_get_t</span>
+<span class="cp">#define GENERIC_ON_OFF_SERVER_GET_DEFAULT_TRANSITION_TIME                1 </span><span class="c1">//!&lt; @ref generic_on_off_server_get_default_transition_time_t</span>
+<span class="cp">#define GENERIC_ON_OFF_SERVER_SET                                        2 </span><span class="c1">//!&lt; @ref generic_on_off_server_set_t</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">generic_on_off_t</span><span class="w"> </span><span class="n">on_off</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">generic_on_off_server_get_t</span><span class="p">;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">generic_transition_time_t</span><span class="w"> </span><span class="n">trans_time</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">generic_on_off_server_get_default_transition_time_t</span><span class="p">;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">generic_on_off_t</span><span class="w"> </span><span class="n">on_off</span><span class="p">;</span>
+<span class="w">   </span><span class="n">generic_transition_time_t</span><span class="w"> </span><span class="n">total_time</span><span class="p">;</span>
+<span class="w">   </span><span class="n">generic_transition_time_t</span><span class="w"> </span><span class="n">remaining_time</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">generic_on_off_server_set_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<span id="id23"></span><h4>消息发送处理<a class="headerlink" href="#id22" title="Link to this heading"></a></h4>
+<p>Mesh 消息发送需要明确的参数有地址、应用密钥和 TTL。地址包含源地址和目的地址，分别标记消息的发送者和接收者。
+源地址只能是发送者的单播地址，是 Provisioner 分配的固定值，由 stack 自动配置。
+而目的地址则可以是除 Unassigned address 外任意地址类型，可以是单播地址，也可以是组播地址。</p>
+<p>Mesh 消息参数的设置，需要根据消息类型来区分对待。</p>
+<ul class="simple">
+<li><p>当消息是针对请求消息的应答时，目的地址即原请求消息的源地址，使用相同的 AppKey。此种被动消息的目的地址等参数设置也是被动的。</p></li>
+<li><p>当消息是 mesh 设备主动发出的，此类动作被称作 publish。
+这些参数通常是 Provisioner 利用 Configuration Model 中 Publication Set 消息灵活配置的，stack 也会自动处理的，不需要 APP 干预。
+例如：一个开关的开关灯消息发送给哪盏灯，是可动态配置的。</p></li>
+</ul>
+<p>如果 Provisioner 没有配置 model 的 publish 参数，model 发送消息所需参数如何设置也分情况。</p>
+<ol class="arabic simple">
+<li><p>Provisioner 的 Publish 行为和参数应由用户指定。例如 Provisioner 对不同的设备进行配置。</p></li>
+<li><p>Model 发送消息比较灵活，不希望受限于 Publish 参数，此时可以由用户自由指定。例如 ping control model。</p></li>
+<li><p>Model 自主设定 Publish 参数。例如预先固化协商好的目的地址，地址可以是单播地址、组播地址、虚拟地址，甚至 0xFFFF。</p></li>
+</ol>
+<section id="publish">
+<h5>Publish 参数配置<a class="headerlink" href="#publish" title="Link to this heading"></a></h5>
+<p>用户可以通过 <code class="docutils literal notranslate"><span class="pre">mesh_model_pub_check()</span></code> 来判断该 model 是否被 Provisioner 设置了相关的 publish 参数。</p>
+<p>Node 收到 Provisioner 对 Publish 参数的设置之后都会由 stack 处理，并保存到 Flash，
+用户可以通过 <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a> 提取 default configuration 和 publish 等参数，为发送消息预设参数。</p>
+<p>如果用户不想使用预设的 publish 参数，可以在调用 <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a> 之后，覆盖掉相关参数。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">mesh_msg_send_cause_t</span><span class="w"> </span><span class="nf">ping_control_send</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ttl</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">pmsg</span><span class="p">,</span>
+<span class="w">                                               </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">msg_len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">app_key_index</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">mesh_msg_t</span><span class="w"> </span><span class="n">mesh_msg</span><span class="p">;</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">pmodel_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ping_control</span><span class="p">;</span>
+<span class="w">   </span><span class="n">access_cfg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mesh_msg</span><span class="p">);</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">pbuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pmsg</span><span class="p">;</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">msg_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg_len</span><span class="p">;</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">dst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dst</span><span class="p">;</span><span class="w">  </span><span class="c1">// rewrite dst</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">ttl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ttl</span><span class="p">;</span><span class="w">  </span><span class="c1">// rewrite ttl</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">app_key_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">app_key_index</span><span class="p">;</span><span class="w">   </span><span class="c1">// rewrite app key index</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">access_send</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mesh_msg</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="appkey">
+<h5>AppKey 选择<a class="headerlink" href="#appkey" title="Link to this heading"></a></h5>
+<p>设备可以同时拥有多个 AppKey，实际数量取决于 Provisioner 对 Device 的配置。</p>
+<p>AppKey会在调用 <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a> 时，被配置成 publish AppKey。如果 publish AppKey 没被配置，需要 APP 自主选择一个已经绑定的 AppKey。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Model 不允许使用未绑定的 AppKey 发送消息。</p>
+</div>
+<p>每个 AppKey 都有一个唯一的 global index，但实现上被映射成了 local index。APP 发送消息时，使用的是 AppKey 本地索引 local index。</p>
+<ul class="simple">
+<li><p>如果 model 绑定了多个 AppKey，使用其中任意一个 AppKey 发送消息时，
+可以调用 <code class="docutils literal notranslate"><span class="pre">mesh_model_get_available_key()</span></code> 获取一个可用的 local index。</p></li>
+<li><p>如果 model 需要使用特定的 AppKey，例如应用指定了 AppKey 的 global index，
+此时可以通过 <code class="docutils literal notranslate"><span class="pre">app_key_index_from_global()</span></code> 根据 AppKey 的 global index，获取 local index。</p></li>
+</ul>
+</section>
+<section id="ttl">
+<h5>TTL 选择<a class="headerlink" href="#ttl" title="Link to this heading"></a></h5>
+<p>TTL 会在调用 <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a> 时，被配置成 publish TTL。
+如果 publish TTL 没被配置，会被配成设备 default TTL (默认设置为 7)。
+APP 可以在调用 <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a> 后修改 TTL 参数。</p>
+</section>
+</section>
+<section id="id24">
+<h4>消息接收处理<a class="headerlink" href="#id24" title="Link to this heading"></a></h4>
+<p>本节主要介绍节点接收到消息之后，APP 如何获取和处理消息。</p>
+<section id="id25">
+<h5>业务逻辑处理<a class="headerlink" href="#id25" title="Link to this heading"></a></h5>
+<p>大部分 Model 都已经实现功能封装，APP 只需要向 Model 注册业务逻辑处理的回调函数。
+在 Model 层，消息接收时的消息解析和消息应答都已经被处理好，当需要 APP 层参与业务逻辑处理时，Model 层会通过注册的回调通知 APP。</p>
+<p>如下所示是一个简单的开关灯的业务逻辑的处理，先定义好 Model 的结构并给 <code class="docutils literal notranslate"><span class="pre">model_data_cb()</span></code> 函数指定具体的处理函数，
+当远端发送开灯或者关灯的消息时，SDK 会调用到 <code class="docutils literal notranslate"><span class="pre">generic_on_off_server_data()</span></code> 函数，
+并根据消息类型填上对应的信息，APP 需要在具体的消息下面取到开关灯的值之后对灯执行相应的动作，
+不用关心 Model 层和 Access 层之间的消息处理。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/** generic on/off server model */</span>
+<span class="k">static</span><span class="w"> </span><span class="n">mesh_model_info_t</span><span class="w"> </span><span class="n">generic_on_off_server</span><span class="p">;</span>
+
+<span class="cm">/** light on/off state */</span>
+<span class="n">generic_on_off_t</span><span class="w"> </span><span class="n">current_on_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GENERIC_OFF</span><span class="p">;</span>
+
+<span class="cm">/** light on/off process callback */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="nf">generic_on_off_server_data</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">mesh_model_info_p</span><span class="w"> </span><span class="n">pmodel_info</span><span class="p">,</span>
+<span class="w">                                          </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pargs</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MODEL_SUCCESS</span><span class="p">;</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GENERIC_ON_OFF_SERVER_GET</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="n">generic_on_off_server_get_t</span><span class="w"> </span><span class="o">*</span><span class="n">pdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pargs</span><span class="p">;</span>
+<span class="w">         </span><span class="n">pdata</span><span class="o">-&gt;</span><span class="n">on_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_on_off</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GENERIC_ON_OFF_SERVER_SET</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="n">generic_on_off_server_set_t</span><span class="w"> </span><span class="o">*</span><span class="n">pdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pargs</span><span class="p">;</span>
+<span class="w">         </span><span class="n">current_on_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pdata</span><span class="o">-&gt;</span><span class="n">on_off</span><span class="p">;</span>
+<span class="w">         </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MODEL_STOP_TRANSITION</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">default</span><span class="o">:</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/** light on/off model initialize */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">light_on_off_server_models_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="cm">/* register light on/off models */</span>
+<span class="w">   </span><span class="n">generic_on_off_server</span><span class="p">.</span><span class="n">model_data_cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generic_on_off_server_data</span><span class="p">;</span>
+<span class="w">   </span><span class="n">generic_on_off_server_reg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">generic_on_off_server</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration-client">
+<h5>Configuration Client 源地址获取<a class="headerlink" href="#configuration-client" title="Link to this heading"></a></h5>
+<p>设备在配网的时候，通常 Provisioner 会分发密钥、绑定 model、设置订阅地址等等。
+此时 provisioner 是用 configuration client model 发消息给 configuration server model，这些消息的源地址即 Provisioner 的地址。</p>
+<p>由于 configuration 过程涉及到许多网络参数操作，configuration server 对用户不可见。
+用户想知道 configuration client 在配置 configuration server 时做了哪些操作以及获取 configuration client 地址，可以通过下述方法。</p>
+<p>在第一个 element 创建后，向 configuration server 注册新的 callback <code class="docutils literal notranslate"><span class="pre">cfg_server_receive_peek()</span></code>，参考代码如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">cfg_server_receive_peek</span><span class="p">(</span><span class="n">mesh_msg_p</span><span class="w"> </span><span class="n">pmesh_msg</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cfg_server_receive</span><span class="p">(</span><span class="n">pmesh_msg</span><span class="p">);</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="cm">/* The configuration client message can be peeked now! */</span>
+<span class="w">      </span><span class="n">printi</span><span class="p">(</span><span class="s">&quot;cfg_server_receive_peek: cfg client addr = 0x%04x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pmesh_msg</span><span class="o">-&gt;</span><span class="n">src</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">......</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** create elements and register models */</span>
+<span class="w">   </span><span class="n">mesh_element_create</span><span class="p">(</span><span class="n">GATT_NS_DESC_UNKNOWN</span><span class="p">);</span>
+<span class="w">   </span><span class="n">cfg_server</span><span class="p">.</span><span class="n">model_receive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cfg_server_receive_peek</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果设备端需要将 configuration client 地址记录下来，可以将其存到 Flash 中。如果地址未发生变化，则不需要重复存储。</p>
+</section>
+</section>
+</section>
+<section id="friendship">
+<h3>Friendship<a class="headerlink" href="#friendship" title="Link to this heading"></a></h3>
+<p>为了支持低功耗设备，需要通过 friendship 方式，让 friend node 帮助 low power node 缓存消息。
+low power node 通常是通过调整 scan 占空比来降低功耗。</p>
+<p>friendship 会额外消耗内部 NetKey 空间。friend node 可以设置和建立的最大 friendship 个数小于 NetKey 个数。
+low power node 在一个 NetKey 上只能建立一个 friendship，所以 friendship 个数小于等于总 NetKey 个数的一半。</p>
+<section id="friend-node">
+<h4>Friend Node<a class="headerlink" href="#friend-node" title="Link to this heading"></a></h4>
+<p>如果要使用 friend node feature，需要先调用 <a class="reference internal" href="../../../../../doc/api_reference/group___f_n___exported___functions.html#_CPPv47fn_init7uint8_tP11fn_params_t10pf_fn_cb_t" title="fn_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">fn_init()</span></code></a> 初始化。</p>
+</section>
+<section id="low-power-node">
+<h4>Low Power Node<a class="headerlink" href="#low-power-node" title="Link to this heading"></a></h4>
+<p>如果要使用 low power node feature，需要先调用 <a class="reference internal" href="../../../../../doc/api_reference/group___l_p_n___exported___functions.html#_CPPv48lpn_init7uint8_t11pf_lpn_cb_t" title="lpn_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">lpn_init()</span></code></a> 初始化。发起 friendship 建立流程可以调用 <a class="reference internal" href="../../../../../doc/api_reference/group___l_p_n___exported___functions.html#_CPPv47lpn_req7uint8_t8uint16_tP16lpn_req_params_t" title="lpn_req"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">lpn_req()</span></code></a>。</p>
+</section>
+</section>
+<section id="transport-ping">
+<h3>Transport Ping<a class="headerlink" href="#transport-ping" title="Link to this heading"></a></h3>
+<p>为了方便测试网络层通信，在 transport layer 自定义了 ping / pong 机制 <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___transport___exported___functions.html#_CPPv410trans_ping8uint16_t7uint8_t8uint16_t8uint16_t" title="trans_ping"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">trans_ping()</span></code></a>，消息里面携带 TTL 信息用于计算 hop 次数。
+该消息直接利用 network layer 的服务，只会被 NetKey 加密。
+Device 被 Provisioning 后，就可以使用 transport layer 的 ping 功能测试 network layer 是否正常运行，此时 Device 还没有获得 AppKey。</p>
+</section>
+<section id="remote-provisioning">
+<h3>Remote Provisioning<a class="headerlink" href="#remote-provisioning" title="Link to this heading"></a></h3>
+<p>当 Provisioner 和 Unprovisioned device 的距离较远，超过直接传输数据的无线电范围时，
+可以使用 Remote Provisioning 功能，利用现有的 mesh 网络传输 Provisioning PDUs，将 Unprovisioned device 添加到网络。
+另外，Provisioner 可以通过 Remote Provisioning 功能来改变 Provisioned device 的 Device key、Node address 或者 Composition data。</p>
+</section>
+<section id="directed-forwarding">
+<h3>Directed Forwarding<a class="headerlink" href="#directed-forwarding" title="Link to this heading"></a></h3>
+<p>Directed forwarding 通过选择节点子集将消息从源节点中继到目标节点，来帮助提高 multi-hop 网络的性能。
+该子集（包括源节点和目标节点）构成了定向转发所定义的路径。
+路径由源地址和目标地址标识，目标地址可以是单播地址、组播地址或虚拟地址。</p>
+<p>Directed forwarding 会额外消耗内部 NetKey 空间，且一个 Master key 会衍生出一个 directed forwarding key，
+一个 directed forwarding key 上可以建立多个 directed forwarding path。</p>
+<p>Directed forwarding path 分为 non-fixed path 和 fixed path。</p>
+<ul class="simple">
+<li><p>Non-fixed path 由 directed forwarding node 动态建立，生命周期由 directed forwarding client 控制，且该路径不会存储到 Flash。</p></li>
+<li><p>Fixed path 由 directed forwarding client 通过 directed forwarding model 添加，该路径一直存在，直到被 directed forwarding client 删除，且会存到 Flash。</p></li>
+</ul>
+<p>Directed forwarding path 建立完成之后，源地址可以使用 directed forwarding key 加密发送消息，只有该路径上的节点才会转发这条消息。</p>
+<ul class="simple">
+<li><p>用户可以调用 <code class="docutils literal notranslate"><span class="pre">df_cb_reg()</span></code> 注册 directed forwarding callback 来获取 directed forwarding path discovery、establish、release 等相应的动作。</p></li>
+<li><p>用户可以调用 <code class="docutils literal notranslate"><span class="pre">df_path_discovery()</span></code> 发起 path discovery 流程，这里指的是 non-fixed path。
+在很多场景中，path discovery 流程不需要用户主动发起。
+例如，将某个 model 的 publish policy 设置为 directed forwarding，
+发送消息时（TTL 大于等于 2）会自动触发 path discovery 流程。</p></li>
+<li><p>用户可以调用 <code class="docutils literal notranslate"><span class="pre">df_path_dependents_update()</span></code> 发起 path dependents update 流程。
+在很多场景中，path dependents update 流程不需要用户主动发起。
+例如，dependent node 状态变化时，supporting node 可能会自动触发 path dependents update 流程。</p></li>
+<li><p>用户可以调用 <code class="docutils literal notranslate"><span class="pre">df_path_solicitation()</span></code> 发起 path solicitation 流程。
+在很多场景中，path solicitation 流程不需要用户主动发起。
+例如，low power node 的订阅地址列表变化时，friend node 可能会自动触发 path solicitation 流程。</p></li>
+</ul>
+</section>
+<section id="subnet-bridge">
+<h3>Subnet Bridge<a class="headerlink" href="#subnet-bridge" title="Link to this heading"></a></h3>
+<p>属于多个子网的节点可以支持 subnet bridge 功能。
+支持 subnet bridge 功能的节点经过配置之后，可以将消息从某个子网重传到其他子网。</p>
+</section>
+<section id="binary-large-object-transfer">
+<h3>Binary Large Object Transfer<a class="headerlink" href="#binary-large-object-transfer" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="../../../../../doc/glossary.html#term-BLOB"><span class="xref std std-term">BLOB</span></a> Transfer Model 能传输大于最大 Access Layer PDUs 大小的数据对象，并且能同时多播到多个节点。</p>
+<p>BLOB 接收方（BLOB transfer server），在传输之前需要调用 <a class="reference internal" href="../../../../../doc/api_reference/group___b_l_o_b___t_r_a_n_s_f_e_r___s_e_r_v_e_r___a_p_i.html#_CPPv425blob_transfer_server_initAL8E_7uint8_t8uint16_t7uint8_t" title="blob_transfer_server_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">blob_transfer_server_init()</span></code></a> 进行初始化。</p>
+<p>BLOB 发送方（BLOB transfer client），可以使用model层的接口；
+也可以使用对 client 行为已经封装好的 API <code class="file docutils literal notranslate"><span class="pre">blob_client_app.h</span></code>，
+其中包含 capabilities retrieve 流程 <code class="docutils literal notranslate"><span class="pre">blob_client_caps_retrieve()</span></code>、
+blob transfer 流程 <code class="docutils literal notranslate"><span class="pre">blob_client_blob_transfer()</span></code>、
+transfer cancel 流程 <code class="docutils literal notranslate"><span class="pre">blob_client_transfer_cancel()</span></code>。</p>
+</section>
+<section id="device-firmware-update">
+<h3>Device Firmware Update<a class="headerlink" href="#device-firmware-update" title="Link to this heading"></a></h3>
+<p>请参考 <a class="reference download internal" download="" href="../../../../../_downloads/85936e07275141a452024680e7a75ddf/Mesh%20OTA%20Application%20Note%20CN.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Mesh</span> <span class="pre">OTA</span> <span class="pre">Application</span> <span class="pre">Note</span></code></a>。</p>
+</section>
+</section>
+<section id="id26">
+<h2>常见问题<a class="headerlink" href="#id26" title="Link to this heading"></a></h2>
+<p>列举了一些在 Mesh Stack 使用中常见的问题以及注意事项。</p>
+<section id="id27">
+<h3>节点无法接收消息<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<p>可以通过注册 <code class="docutils literal notranslate"><span class="pre">rpl_cb_reg()</span></code> 确认消息是否被 RPL 机制过滤，
+RPL 的数量会在 stack 初始化阶段确定，该值的大小应该考虑整个网络中会与其通信的节点数量，并留有一定余量便于以后网络的扩展。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="n">mesh_node_cfg_t</span><span class="w"> </span><span class="n">node_cfg</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">.</span><span class="n">dev_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">net_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">master_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">app_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">vir_addr_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="hll"><span class="w">      </span><span class="p">.</span><span class="n">rpl_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+</span><span class="w">      </span><span class="p">.</span><span class="n">sub_addr_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">proxy_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="n">mesh_node_cfg</span><span class="p">(</span><span class="n">features</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">node_cfg</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id28">
+<h3>重复利用已删除节点的地址<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<p>Mesh 网络有 RPL 的机制，会将收到的消息的源地址和 Sequence 存储起来，防止重放攻击，且每次收到消息都会更新一次。
+如果新的节点重复使用相同的地址，且网络中的节点 RPL list 已经存储过该节点的 Sequence 信息，此时新节点和旧节点通信会有异常。
+实际上，已经被删除的地址不可以直接被重复利用，如果想要使用可以参考 Mesh Protocol Specification 的 3.11.7 小节 <em>Node Removal procedure</em>。</p>
+</section>
+</section>
+<section id="id29">
+<h2>示例工程<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Mesh Provisioner 角色参考示例见 <a class="reference internal" href="../../../../../samples/bluetooth/mesh/mesh_provisioner/doc/text_cn/README.html"><span class="doc">Mesh Provisioner</span></a> 。</p></li>
+<li><p>Mesh Device 角色参考示例见 <a class="reference internal" href="../../../../../samples/bluetooth/mesh/mesh_device/doc/text_cn/README.html"><span class="doc">Mesh Device</span></a> 。</p></li>
+</ul>
+</section>
+<section id="id30">
+<h2>参考资料<a class="headerlink" href="#id30" title="Link to this heading"></a></h2>
+<p>[1] <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Protocol Specification</a></p>
+<p>[2] <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Model Specification</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../doc/bluetooth_qualification/text_cn/README.html" class="btn btn-neutral float-left" title="蓝牙认证" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../../ppt/doc/text_cn/README.html" class="btn btn-neutral float-right" title="2.4G" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

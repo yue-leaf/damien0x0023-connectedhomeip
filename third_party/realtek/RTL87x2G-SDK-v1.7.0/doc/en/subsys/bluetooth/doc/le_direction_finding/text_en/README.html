@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LE Direction Finding &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Host Image" href="../../rtl87x2g_bt_host_image/text_en/README.html" />
+    <link rel="prev" title="LE Host" href="../../le_host_stack/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../text_en/README.html">Bluetooth</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../supported_features/text_en/README.html">Supported Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../le_host_stack/text_en/README.html">LE Host</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LE Direction Finding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#terminology-and-concepts">Terminology and Concepts</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#angle-of-arrival-aoa-method">Angle of Arrival (AoA) Method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#angle-of-departure-aod-method">Angle of Departure (AoD) Method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#antenna-switching">Antenna Switching</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#feature-set">Feature Set</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#gap-capacity">GAP Capacity</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#provided-apis">Provided APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#gap-message">GAP Message</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#aoa-aod-in-connection-oriented-scenario">AoA/AoD in Connection-oriented Scenario</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#aoa-aod-in-connection-oriented-scenario-features">AoA/AoD in Connection-oriented Scenario Features</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#initiator-role-required-features">Initiator Role Required Features</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#responder-role-required-features">Responder Role Required Features</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#expose-features">Expose Features</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#constant-tone-extension-request-procedure">Constant Tone Extension Request Procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#aoa-aod-in-connectionless-scenario">AoA/AoD in Connectionless Scenario</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#aoa-aod-in-connectionless-scenario-features">AoA/AoD in Connectionless Scenario Features</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#transmitter-role-required-features">Transmitter Role Required Features</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#receiver-role-required-features">Receiver Role Required Features</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id1">Expose Features</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="#id2">Transmitter Role Required Features</a></li>
+<li class="toctree-l8"><a class="reference internal" href="#id3">Receiver Role Required Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#connectionless-constant-tone-extension-procedure">Connectionless Constant Tone Extension Procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../rtl87x2g_bt_host_image/text_en/README.html">Host Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../bluetooth_qualification/text_en/README.html">Bluetooth Qualification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mesh/doc/text_en/Bluetooth_Mesh_Overview.html">Bluetooth Mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../openthread/doc/text_en/README.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../doc/protocols/matter/text_en/README.html">Matter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+        <li class="breadcrumb-item"><a href="../../text_en/README.html">Bluetooth</a></li>
+    <li class="breadcrumb-item active">LE Direction Finding</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="le-direction-finding">
+<h1>LE Direction Finding<a class="headerlink" href="#le-direction-finding" title="Link to this heading"></a></h1>
+<p>The purpose of this document is to give an overview of the direction finding methods to help with product development using <a class="reference internal" href="../../../../../doc/glossary.html#term-AoA"><span class="xref std std-term">AoA</span></a>/<a class="reference internal" href="../../../../../doc/glossary.html#term-AoD"><span class="xref std std-term">AoD</span></a>.</p>
+<ul class="simple">
+<li><p>AoA/AoD represents two different direction finding methods from which APP can choose based on actual needs. More information can be found in
+chapters <a class="reference internal" href="#angle-of-arrival-aoa-method">Angle of Arrival (AoA) Method</a> and <a class="reference internal" href="#angle-of-departure-aod-method">Angle of Departure (AoD) Method</a>.</p></li>
+<li><p>If multiple antennas are supported and APP needs to switch antennas, developers can refer to the chapter <a class="reference internal" href="#antenna-switching">Antenna Switching</a>
+for more information.</p></li>
+<li><p>AoA/AoD can support two scenarios, more information can be found in chapters <a class="reference internal" href="#aoa-aod-in-connection-oriented-scenario">AoA/AoD in Connection-oriented Scenario</a> and
+<a class="reference internal" href="#aoa-aod-in-connectionless-scenario">AoA/AoD in Connectionless Scenario</a>.</p></li>
+</ul>
+<p>An <a class="reference internal" href="../../../../../doc/glossary.html#term-LE"><span class="xref std std-term">LE</span></a> device can make its direction available for a peer device by transmitting direction finding enabled packets.
+Using direction information from several transmitters and profile-level information giving their locations, an LE radio can calculate its own
+position.</p>
+<p>This feature is supported over the LE Uncoded PHYs, but not over the LE Coded <a class="reference internal" href="../../../../../doc/glossary.html#term-PHY"><span class="xref std std-term">PHY</span></a>.</p>
+<section id="terminology-and-concepts">
+<h2>Terminology and Concepts<a class="headerlink" href="#terminology-and-concepts" title="Link to this heading"></a></h2>
+<section id="angle-of-arrival-aoa-method">
+<h3>Angle of Arrival (AoA) Method<a class="headerlink" href="#angle-of-arrival-aoa-method" title="Link to this heading"></a></h3>
+<p>An LE device can make its direction available to a peer device by transmitting direction finding enabled packets using a single antenna.</p>
+<p>The peer device, consisting of an <a class="reference internal" href="../../../../../doc/glossary.html#term-RF"><span class="xref std std-term">RF</span></a> switch and antenna array, switches antennas while receiving part of those packets and captures IQ samples.
+The <a class="reference internal" href="../../../../../doc/glossary.html#term-IQ"><span class="xref std std-term">IQ</span></a> samples can be used to calculate the phase difference in the radio signal received using different elements of the antenna array, which in turn
+can be used to estimate the angle of arrival (AoA).</p>
+<figure class="align-center" id="figure-angle-of-arrival-method">
+<a class="reference internal image-reference" href="../../../../../_images/Angle_of_Arrival_Method.png"><img alt="../../../../../_images/Angle_of_Arrival_Method.png" src="../../../../../_images/Angle_of_Arrival_Method.png" style="width: 510.0px; height: 394.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">Angle of Arrival Method</span><a class="headerlink" href="#figure-angle-of-arrival-method" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="angle-of-departure-aod-method">
+<h3>Angle of Departure (AoD) Method<a class="headerlink" href="#angle-of-departure-aod-method" title="Link to this heading"></a></h3>
+<p>A device consisting of an RF switch and antenna array can make its angle of departure (AoD) detectable by transmitting direction finding enabled
+packets, switching antennas during transmission.</p>
+<p>The peer device receives those packets using a single antenna and captures IQ samples during part of those packets.
+Determination of the direction is based on the different propagation delays of the LE radio signal between the transmitting elements of the antenna
+array and a receiving single antenna.
+The propagation delays are detectable with IQ measurements.
+Any receiving LE radio with a single antenna that supports the AoD feature can capture IQ samples and, with the aid of profile-level information
+specifying the antenna layout of the transmitter, calculate the angle of incidence of the incoming radio signal.</p>
+<figure class="align-center" id="figure-angle-of-departure-method">
+<a class="reference internal image-reference" href="../../../../../_images/Angle_of_Departure_Method.png"><img alt="Angle of Departure Method" src="../../../../../_images/Angle_of_Departure_Method.png" style="width: 511.2px; height: 393.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Angle of Departure Method</span><a class="headerlink" href="#figure-angle-of-departure-method" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="antenna-switching">
+<h3>Antenna Switching<a class="headerlink" href="#antenna-switching" title="Link to this heading"></a></h3>
+<p>A device may support an antenna array consisting of two or more antennae that are controlled by a switch.
+The device switches between the antennae either while receiving the Constant Tone Extension of a packet (Angle of Arrival method) or while
+transmitting the Constant Tone Extension of a packet (Angle of Departure method).</p>
+</section>
+</section>
+<section id="feature-set">
+<h2>Feature Set<a class="headerlink" href="#feature-set" title="Link to this heading"></a></h2>
+<section id="gap-capacity">
+<h3>GAP Capacity<a class="headerlink" href="#gap-capacity" title="Link to this heading"></a></h3>
+<p>The functions provided by GAP API is as below.</p>
+<ul class="simple">
+<li><p><strong>Antenna Switching:</strong> Including functions to read the switching rates, the sampling rates, the number of antennae, and the maximum length of a transmitted Constant Tone Extension supported by the device.</p></li>
+<li><p><strong>AoA/AoD in Connection-oriented Scenario:</strong> Including functions to initiate the Constant Tone Extension Request Procedure by sending a Connection <a class="reference internal" href="../../../../../doc/glossary.html#term-CTE"><span class="xref std std-term">CTE</span></a> Request in a connection-oriented scenario.</p></li>
+<li><p><strong>AoA/AoD in Connectionless Scenario:</strong> Including functions to initiate the Connectionless Constant Tone Extension Procedure in a connectionless scenario.</p></li>
+</ul>
+</section>
+</section>
+<section id="provided-apis">
+<h2>Provided APIs<a class="headerlink" href="#provided-apis" title="Link to this heading"></a></h2>
+<p>LE Direction Finding APIs can be divided into Antenna Switching APIs, AoA/AoD in Connection-oriented Scenario APIs and AoA/AoD in Connectionless Scenario APIs.</p>
+<p>The table below shows the simple description of Antenna Switching APIs. Antenna Switching related APIs are defined in <code class="docutils literal notranslate"><span class="pre">subsys\bluetooth\bt_host\inc\gap_aox.h</span></code>.</p>
+<table class="docutils align-center" id="id4">
+<caption><span class="caption-text">Definition of Antenna Switching APIs</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 37.5%" />
+<col style="width: 62.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___exported___functions.html#_CPPv431le_aox_read_antenna_informationv" title="le_aox_read_antenna_information"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_read_antenna_information()</span></code></a></p></td>
+<td><p>Read antenna information</p></td>
+</tr>
+</tbody>
+</table>
+<p>The table below shows the simple description of AoA/AoD in Connection-oriented Scenario APIs. AoA/AoD related APIs in a Connection-oriented Scenario are defined in <code class="docutils literal notranslate"><span class="pre">subsys\bluetooth\bt_host\inc\gap_aox_conn.h</span></code>.</p>
+<table class="docutils align-center" id="id5">
+<caption><span class="caption-text">Definition of AoA/AoD in Connection-oriented Scenario APIs</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 37.5%" />
+<col style="width: 62.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___c_o_n_n___exported___functions.html#_CPPv434le_aox_set_conn_cte_receive_params7uint8_t30T_GAP_AOX_SAMPLING_ENABLE_TYPE24T_GAP_SLOT_DUATIONS_TYPE7uint8_tP7uint8_t" title="le_aox_set_conn_cte_receive_params"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_set_conn_cte_receive_params()</span></code></a></p></td>
+<td><p>Set Connection CTE Receive Parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___c_o_n_n___exported___functions.html#_CPPv435le_aox_set_conn_cte_transmit_params7uint8_t7uint8_t7uint8_tP7uint8_t" title="le_aox_set_conn_cte_transmit_params"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_set_conn_cte_transmit_params()</span></code></a></p></td>
+<td><p>Set Connection CTE Transmit Parameters</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___c_o_n_n___exported___functions.html#_CPPv430le_aox_conn_cte_request_enable7uint8_t33T_GAP_AOX_CTE_REQUEST_ENABLE_TYPE8uint16_t7uint8_t14T_GAP_CTE_TYPE" title="le_aox_conn_cte_request_enable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_conn_cte_request_enable()</span></code></a></p></td>
+<td><p>Request the Controller to start or stop initiating the Constant Tone Extension Request procedure</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___c_o_n_n___exported___functions.html#_CPPv431le_aox_conn_cte_response_enable7uint8_t34T_GAP_AOX_CTE_RESPONSE_ENABLE_TYPE" title="le_aox_conn_cte_response_enable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_conn_cte_response_enable()</span></code></a></p></td>
+<td><p>Request the Controller to respond to Constant Tone Extension Request</p></td>
+</tr>
+</tbody>
+</table>
+<p>The table below shows the simple description of AoA/AoD in Connectionless Scenario APIs. AoA/AoD related APIs in Connectionless Scenario are defined in <code class="docutils literal notranslate"><span class="pre">subsys\bluetooth\bt_host\inc\gap_aox_connless_transmitter.h</span></code> and <code class="docutils literal notranslate"><span class="pre">subsys\bluetooth\bt_host\inc\gap_aox_connless_receiver.h</span></code>.</p>
+<table class="docutils align-center" id="id6">
+<caption><span class="caption-text">Definition of AoA/AoD Connectionless Scenario Transmitter APIs</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 37.5%" />
+<col style="width: 62.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___c_o_n_n_l_e_s_s___t_r_a_n_s_m_i_t_t_e_r___exported___functions.html#_CPPv432le_aox_connless_transmitter_init7uint8_t" title="le_aox_connless_transmitter_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_connless_transmitter_init()</span></code></a></p></td>
+<td><p>Initialize the number of advertising sets for the connectionless transmitter</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___c_o_n_n_l_e_s_s___t_r_a_n_s_m_i_t_t_e_r___exported___functions.html#_CPPv451le_aox_connless_transmitter_set_cte_transmit_params7uint8_t7uint8_t40T_GAP_AOX_CONNLESS_TRANSMITTER_CTE_TYPES7uint8_t7uint8_tP7uint8_t" title="le_aox_connless_transmitter_set_cte_transmit_params"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_connless_transmitter_set_cte_transmit_params()</span></code></a></p></td>
+<td><p>Request the Controller to set parameters for the transmission of Constant Tone Extensions in periodic advertising</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___c_o_n_n_l_e_s_s___t_r_a_n_s_m_i_t_t_e_r___exported___functions.html#_CPPv451le_aox_connless_transmitter_set_cte_transmit_enable7uint8_t7uint8_t" title="le_aox_connless_transmitter_set_cte_transmit_enable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_connless_transmitter_set_cte_transmit_enable()</span></code></a></p></td>
+<td><p>Request the Controller to enable or disable the use of Constant Tone Extensions in periodic advertising</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="id7">
+<caption><span class="caption-text">Definition of AoA/AoD Connectionless Scenario Receiver APIs</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 37.5%" />
+<col style="width: 62.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Function Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___a_o_x___c_o_n_n_l_e_s_s___r_e_c_e_i_v_e_r___exported___functions.html#_CPPv447le_aox_connless_receiver_set_iq_sampling_enable7uint8_t7uint8_t24T_GAP_SLOT_DUATIONS_TYPE7uint8_t7uint8_tP7uint8_t" title="le_aox_connless_receiver_set_iq_sampling_enable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_aox_connless_receiver_set_iq_sampling_enable()</span></code></a></p></td>
+<td><p>Request the Controller to enable or disable capturing IQ samples from the Constant Tone Extensions of periodic advertising packets in the periodic advertising train</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<section id="gap-message">
+<h3>GAP Message<a class="headerlink" href="#gap-message" title="Link to this heading"></a></h3>
+<p>GAP LE AoA/AoD callback messages are used to notify the APP about the execution status of a function after the API has been invoked.</p>
+<p>GAP messages are defined in <code class="docutils literal notranslate"><span class="pre">subsys\bluetooth\bt_host\inc\gap_aox.h</span></code>.</p>
+<p>Bluetooth message related to Antenna Switching is the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define GAP_MSG_LE_AOX_READ_ANTENNA_INFORMATION      0x01    </span><span class="c1">//Response msg type for le_aox_read_antenna_information</span>
+</pre></div>
+</div>
+<p>Bluetooth messages related to AoA/AoD in a Connection-oriented Scenario are the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define GAP_MSG_LE_AOX_SET_CONN_CTE_RECEIVE_PARAMS  0x22    </span><span class="c1">//Response msg type for le_aox_set_conn_cte_receive_params</span>
+<span class="cp">#define GAP_MSG_LE_AOX_CONN_CTE_RESPONSE_ENABLE     0x23    </span><span class="c1">//Response msg type for le_aox_conn_cte_response_enable</span>
+<span class="cp">#define GAP_MSG_LE_AOX_CONN_CTE_REQUEST_ENABLE      0x24    </span><span class="c1">//Response msg type for le_aox_conn_cte_request_enable</span>
+<span class="cp">#define GAP_MSG_LE_AOX_CONN_IQ_REPORT_INFO          0x25    </span><span class="c1">//Notification msg type for connection IQ report</span>
+<span class="cp">#define GAP_MSG_LE_AOX_CTE_REQUEST_FAILED_INFO      0x26    </span><span class="c1">//Notification msg type for failure of CTE request</span>
+</pre></div>
+</div>
+<p>Bluetooth messages related to AoA/AoD in a Connectionless Scenario are the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define GAP_MSG_LE_AOX_CONNLESS_TRANSMITTER_SET_CTE_TRANSMIT_PARAMS   0x40   </span><span class="c1">//Response msg type for le_aox_connless_transmitter_set_cte_transmit_params</span>
+<span class="cp">#define GAP_MSG_LE_AOX_CONNLESS_TRANSMITTER_STATE_CHANGE_INFO         0x41   </span><span class="c1">//Connectionless CTE transmitter state change info</span>
+<span class="cp">#define GAP_MSG_LE_AOX_CONNLESS_RECEIVER_SET_IQ_SAMPLING_ENABLE       0x50   </span><span class="c1">//Response msg type for le_aox_connless_receiver_set_iq_sampling_enable</span>
+<span class="cp">#define GAP_MSG_LE_AOX_CONNLESS_RECEIVER_CONNLESS_IQ_REPORT_INFO      0x51   </span><span class="c1">//Notification msg type for LE connectionless IQ report info</span>
+</pre></div>
+</div>
+</section>
+<section id="aoa-aod-in-connection-oriented-scenario">
+<h3>AoA/AoD in Connection-oriented Scenario<a class="headerlink" href="#aoa-aod-in-connection-oriented-scenario" title="Link to this heading"></a></h3>
+<section id="aoa-aod-in-connection-oriented-scenario-features">
+<h4>AoA/AoD in Connection-oriented Scenario Features<a class="headerlink" href="#aoa-aod-in-connection-oriented-scenario-features" title="Link to this heading"></a></h4>
+<p>In AoA/AoD connection-oriented scenario, Initiator and Responder shall support the following features:</p>
+<section id="initiator-role-required-features">
+<h5>Initiator Role Required Features<a class="headerlink" href="#initiator-role-required-features" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p>Connection CTE Request</p>
+<ul>
+<li><p>Support Receiving Constant Tone Extensions feature.</p></li>
+<li><p>Support Extended Reject Indication feature.</p></li>
+<li><p>Support the following sections on all supported PHYs that allow Constant Tone Extensions.</p>
+<ul>
+<li><p>LL_CTE_REQ</p></li>
+<li><p>LL_CTE_RSP</p></li>
+<li><p>Constant Tone Extension Request procedure</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="responder-role-required-features">
+<h5>Responder Role Required Features<a class="headerlink" href="#responder-role-required-features" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p>Connection CTE Response</p>
+<ul>
+<li><p>Support Extended Reject Indication feature.</p></li>
+<li><p>Support the following sections on all supported PHYs that allow Constant Tone Extensions.</p>
+<ul>
+<li><p>LL_CTE_REQ</p></li>
+<li><p>LL_CTE_RSP</p></li>
+<li><p>Transmitting Constant Tone Extensions</p></li>
+<li><p>Constant Tone Extension Request procedure</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="expose-features">
+<h5>Expose Features<a class="headerlink" href="#expose-features" title="Link to this heading"></a></h5>
+<p>The following features shall be enabled as defined in <code class="docutils literal notranslate"><span class="pre">bin\rtl87x2x\bt_host_image\bt_host_x_x\bt_host_config.h</span></code>.</p>
+<ul class="simple">
+<li><p>F_BT_LE_5_1_SUPPORT</p></li>
+<li><p>F_BT_LE_5_1_AOA_AOD_SUPPORT</p></li>
+<li><p>F_BT_LE_5_1_AOX_CONN_SUPPORT</p></li>
+</ul>
+<p>In a connection-oriented scenario, a device that can use AoA/AoD may initiate the Constant Tone Extension Request Procedure by sending a Connection CTE Request.</p>
+</section>
+</section>
+<section id="constant-tone-extension-request-procedure">
+<h4>Constant Tone Extension Request Procedure<a class="headerlink" href="#constant-tone-extension-request-procedure" title="Link to this heading"></a></h4>
+<p>The Start and Stop Constant Tone Extension Request Procedure is shown in the following figure:</p>
+<figure class="align-center" id="figure-start-and-stop-constant-tone-extension-request-procedure">
+<a class="reference internal image-reference" href="../../../../../_images/Constant_Tone_Extension_Request_Procedure.png"><img alt="../../../../../_images/Constant_Tone_Extension_Request_Procedure.png" src="../../../../../_images/Constant_Tone_Extension_Request_Procedure.png" style="width: 1003.8px; height: 783.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Start and Stop Constant Tone Extension Request Procedure</span><a class="headerlink" href="#figure-start-and-stop-constant-tone-extension-request-procedure" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="aoa-aod-in-connectionless-scenario">
+<h3>AoA/AoD in Connectionless Scenario<a class="headerlink" href="#aoa-aod-in-connectionless-scenario" title="Link to this heading"></a></h3>
+<section id="aoa-aod-in-connectionless-scenario-features">
+<h4>AoA/AoD in Connectionless Scenario Features<a class="headerlink" href="#aoa-aod-in-connectionless-scenario-features" title="Link to this heading"></a></h4>
+<p>In AoA/AoD connectionless scenario, Transmitter and Receiver shall support the following features:</p>
+<section id="transmitter-role-required-features">
+<h5>Transmitter Role Required Features<a class="headerlink" href="#transmitter-role-required-features" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p>Connectionless CTE Transmitter</p>
+<ul>
+<li><p>Support LE Periodic Advertising feature in Advertising state.</p></li>
+<li><p>Support the following sections on all supported PHYs that allow Constant Tone Extensions.</p>
+<ul>
+<li><p>Transmitting Constant Tone Extensions</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="receiver-role-required-features">
+<h5>Receiver Role Required Features<a class="headerlink" href="#receiver-role-required-features" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p>Connectionless CTE Receiver</p>
+<ul>
+<li><p>Support LE Periodic Advertising feature in the Synchronization state.</p></li>
+<li><p>Support the following sections on all supported PHYs that allow Constant Tone Extensions.</p>
+<ul>
+<li><p>Receiving Advertising Physical Channel PDUs containing a CTEInfo field in the Extended Header</p></li>
+<li><p>IQ Sampling</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id1">
+<h5>Expose Features<a class="headerlink" href="#id1" title="Link to this heading"></a></h5>
+<p>The following features to be enabled are defined in <code class="docutils literal notranslate"><span class="pre">bin\rtl87x2x\bt_host_image\bt_host_x_x\bt_host_config.h</span></code>.</p>
+<section id="id2">
+<h6>Transmitter Role Required Features<a class="headerlink" href="#id2" title="Link to this heading"></a></h6>
+<ul class="simple">
+<li><p>F_BT_LE_5_1_SUPPORT</p></li>
+<li><p>F_BT_LE_5_1_AOA_AOD_SUPPORT</p></li>
+<li><p>F_BT_LE_5_1_AOX_CONNLESS_SUPPORT</p></li>
+<li><p>F_BT_LE_5_0_SUPPORT</p></li>
+<li><p>F_BT_LE_5_0_PA_SUPPORT</p></li>
+<li><p>F_BT_LE_5_0_PA_ADV_SUPPORT</p></li>
+<li><p>F_BT_LE_5_0_AE_ADV_SUPPORT</p></li>
+</ul>
+</section>
+<section id="id3">
+<h6>Receiver Role Required Features<a class="headerlink" href="#id3" title="Link to this heading"></a></h6>
+<ul class="simple">
+<li><p>F_BT_LE_5_1_SUPPORT</p></li>
+<li><p>F_BT_LE_5_1_AOA_AOD_SUPPORT</p></li>
+<li><p>F_BT_LE_5_1_AOX_CONNLESS_SUPPORT</p></li>
+<li><p>F_BT_LE_5_0_SUPPORT</p></li>
+<li><p>F_BT_LE_5_0_PA_SUPPORT</p></li>
+<li><p>F_BT_LE_5_0_PA_SYNC_SUPPORT</p></li>
+<li><p>F_BT_LE_5_0_AE_SCAN_SUPPORT</p></li>
+</ul>
+<p>A device that can use AoA/AoD in a connectionless scenario shall be able to initiate the Connectionless Constant Tone Extension Procedure.</p>
+</section>
+</section>
+</section>
+<section id="connectionless-constant-tone-extension-procedure">
+<h4>Connectionless Constant Tone Extension Procedure<a class="headerlink" href="#connectionless-constant-tone-extension-procedure" title="Link to this heading"></a></h4>
+<p>Transmitting and Receiving Connectionless Constant Tone Extension Procedure is shown in the following figure:</p>
+<figure class="align-center" id="figure-transmitting-and-receiving-connectionless-constant-tone-extension-procedure">
+<a class="reference internal image-reference" href="../../../../../_images/Connectionless_Constant_Tone_Extension_Procedure.png"><img alt="../../../../../_images/Connectionless_Constant_Tone_Extension_Procedure.png" src="../../../../../_images/Connectionless_Constant_Tone_Extension_Procedure.png" style="width: 1077.0px; height: 1298.3999999999999px;" /></a>
+<figcaption>
+<p><span class="caption-text">Transmitting and Receiving Connectionless Constant Tone Extension Procedure</span><a class="headerlink" href="#figure-transmitting-and-receiving-connectionless-constant-tone-extension-procedure" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../le_host_stack/text_en/README.html" class="btn btn-neutral float-left" title="LE Host" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../rtl87x2g_bt_host_image/text_en/README.html" class="btn btn-neutral float-right" title="Host Image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

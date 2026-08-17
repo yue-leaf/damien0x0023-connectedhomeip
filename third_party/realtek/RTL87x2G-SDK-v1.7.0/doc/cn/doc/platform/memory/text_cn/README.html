@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="Image Layout" href="../../image_layout/text_cn/README.html" />
+    <link rel="prev" title="平台概述" href="../../platform_overview/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_cn/README.html">平台指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../platform_overview/text_cn/README.html">平台概述</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Memory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#memory-map">Memory Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rom">ROM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ram">RAM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">内存空间分布</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#trustzone-disable">TrustZone Disable 内存空间分布</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#trustzone-enable">TrustZone Enable 内存空间分布</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#apis">APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">统计 RAM 使用情况</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#app-ram">统计 APP RAM 使用的静态区大小</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">统计动态区剩余大小</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">调整 APP 可使用 RAM 大小</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flash">Flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#psram">PSRAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#efuse">eFuse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_cn/README.html">Image Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flash/text_cn/README.html">Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_cn/README.html">PSRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../low_power_mode/text_cn/README.html">低功耗模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/text_cn/README.html">安全机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debug_system/text_cn/README.html">调试系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clock/text_cn/README.html">时钟管理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_cn/README.html">平台指南</a></li>
+    <li class="breadcrumb-item active">Memory</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="memory">
+<span id="memory-cn"></span><h1>Memory<a class="headerlink" href="#memory" title="Link to this heading"></a></h1>
+<p>本章主要介绍 RTL87x2G 的内存系统。</p>
+<section id="memory-map">
+<h2>Memory Map<a class="headerlink" href="#memory-map" title="Link to this heading"></a></h2>
+<p>RTL87x2G 的内存系统是基于 Arm Cortex-M55 的内存映射架构设计的，主要由 <a class="reference internal" href="../../../glossary.html#term-ROM"><span class="xref std std-term">ROM</span></a> 、 <a class="reference internal" href="../../../glossary.html#term-RAM"><span class="xref std std-term">RAM</span></a> 、Cache、Flash 和 eFuse 组成。其设计通过将 ARM 地址映射与 Realtek 定义的内存区域进行匹配，如图 <a class="reference internal" href="#rtl87x2g"><span class="std std-ref">RTL87x2G 的内存映射</span></a> 所示。</p>
+<figure class="align-center" id="rtl87x2g">
+<img alt="../../../../_images/Memory_Mapping.png" src="../../../../_images/Memory_Mapping.png" />
+<figcaption>
+<p><span class="caption-text">RTL87x2G 的内存映射</span><a class="headerlink" href="#rtl87x2g" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#realtek"><span class="std std-ref">Realtek 定义的内存区域</span></a> 详细情况如下：</p>
+<table class="docutils align-center" id="realtek">
+<caption><span class="caption-text">Realtek 定义的内存区域</span><a class="headerlink" href="#realtek" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>内存类型</p></th>
+<th class="head"><p>分布</p></th>
+<th class="head"><p>起始地址</p></th>
+<th class="head"><p>结束地址</p></th>
+<th class="head"><p>总大小（字节）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ROM</p></td>
+<td></td>
+<td><p>0x00000000</p></td>
+<td><p>0x0007FFFF</p></td>
+<td><p>512K</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><p>RAM</p></td>
+<td><p>ITCM1</p></td>
+<td><p>0x00100000</p></td>
+<td><p>0x0012FFFF</p></td>
+<td><p>192K</p></td>
+</tr>
+<tr class="row-even"><td><p>DTCM0</p></td>
+<td><p>0x00130000</p></td>
+<td><p>0x0013FFFF</p></td>
+<td><p>64K</p></td>
+</tr>
+<tr class="row-odd"><td><p>DTCM1</p></td>
+<td><p>0x00140000</p></td>
+<td><p>0x0014FFFF</p></td>
+<td><p>64K</p></td>
+</tr>
+<tr class="row-even"><td><p>Data SRAM</p></td>
+<td><p>0x00200000</p></td>
+<td><p>0x00203FFF</p></td>
+<td><p>16K</p></td>
+</tr>
+<tr class="row-odd"><td><p>Buffer SRAM</p></td>
+<td><p>0x00280000</p></td>
+<td><p>0x0028BFFF</p></td>
+<td><p>48K</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Cache</p></td>
+<td><p>I-Cache</p></td>
+<td></td>
+<td></td>
+<td><p>32K</p></td>
+</tr>
+<tr class="row-odd"><td><p>D-Cache</p></td>
+<td></td>
+<td></td>
+<td><p>16K</p></td>
+</tr>
+<tr class="row-even"><td><p>Flash</p></td>
+<td><p>SPI Flash</p></td>
+<td><p>0x04000000</p></td>
+<td><p>0x07FFFFFF</p></td>
+<td><p>64M*</p></td>
+</tr>
+<tr class="row-odd"><td><p>eFuse</p></td>
+<td><p>eFuse</p></td>
+<td></td>
+<td></td>
+<td><p>1K</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><span class="red-text">*</span> 表示映射空间最大是 64M，实际以使用 Flash 大小为准。</p>
+</div>
+</section>
+<section id="rom">
+<h2>ROM<a class="headerlink" href="#rom" title="Link to this heading"></a></h2>
+<p>ROM 的地址空间为 [0x0, 0x7FFFF)，总大小为 512KB，固化了 Bootloader、Flash Driver、Power Manager、Bluetooth Controller 及 Platform features 等程序模块。RTL87x2G ROM 为 APP 开放了一些模块，如 Flash Driver 等。RTL87x2G SDK 提供了这些 ROM 模块的头文件，用户可以访问内置 ROM 函数，以减少应用程序代码的大小和所需的 RAM 大小。</p>
+</section>
+<section id="ram">
+<h2>RAM<a class="headerlink" href="#ram" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>内存空间分布<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>RAM 分三块，分别是 <a class="reference internal" href="../../../glossary.html#term-TCM"><span class="xref std std-term">TCM</span></a>，Data SRAM 和 Buffer SRAM。其中 TCM 又可以分成三块，分别是地址空间为 0x00100000~0x0012FFFF 总大小 192KB 的 ITCM1、地址空间为 0x00130000~0x0013FFFF 总大小 64KB 的 DTCM0 和地址空间为 0x00140000~0x0014FFFF 总大小 64KB 的 DTCM1，三块空间地址连续。</p>
+<ul class="simple">
+<li><p>TCM：一种专门设计的内存类型，着重于提供低延迟、高带宽和确定性访问的特性，包含 ITCM 和 DTCM：</p>
+<ul>
+<li><p><a class="reference internal" href="../../../glossary.html#term-ITCM"><span class="xref std std-term">ITCM</span></a>：专门用于存储程序指令的 TCM 类型，使得 <a class="reference internal" href="../../../glossary.html#term-CPU"><span class="xref std std-term">CPU</span></a> 可以极快速地访问和执行其中的代码。</p></li>
+<li><p><a class="reference internal" href="../../../glossary.html#term-DTCM"><span class="xref std std-term">DTCM</span></a>：一种专门用于存储数据的 TCM 类型，提高这些数据的访问速度。</p></li>
+</ul>
+</li>
+</ul>
+<p>RTL87x2G 的 <a class="reference internal" href="#id2"><span class="std std-ref">RAM 空间</span></a> 分为 5 部分，都可以用来存储数据和执行代码。</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">RAM 空间分布</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>分布</p></th>
+<th class="head"><p>起始地址</p></th>
+<th class="head"><p>地址空间</p></th>
+<th class="head"><p>大小</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ITCM1</p></td>
+<td><p>0x00100000</p></td>
+<td><p>0x00100000~0x0012FFFF</p></td>
+<td><p>192KB</p></td>
+</tr>
+<tr class="row-odd"><td><p>DTCM0</p></td>
+<td><p>0x00130000</p></td>
+<td><p>0x00130000~0x0013FFFF</p></td>
+<td><p>64KB</p></td>
+</tr>
+<tr class="row-even"><td><p>DTCM1</p></td>
+<td><p>0x00140000</p></td>
+<td><p>0x00140000~0x0014FFFF</p></td>
+<td><p>64KB</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data SRAM</p></td>
+<td><p>0x00200000</p></td>
+<td><p>0x00200000~0x00203FFF</p></td>
+<td><p>16KB</p></td>
+</tr>
+<tr class="row-even"><td><p>Buffer SRAM</p></td>
+<td><p>0x00280000</p></td>
+<td><p>0x00280000~0x0028BFFF</p></td>
+<td><p>48KB</p></td>
+</tr>
+</tbody>
+</table>
+<p>对于 TrustZone enable 和 TrustZone disable 其内存空间分布会有所不同，具体如下：</p>
+<section id="trustzone-disable">
+<h4>TrustZone Disable 内存空间分布<a class="headerlink" href="#trustzone-disable" title="Link to this heading"></a></h4>
+<figure class="align-center" id="id8">
+<img alt="../../../../_images/TrustZone_disable_RAM_layout.png" src="../../../../_images/TrustZone_disable_RAM_layout.png" />
+<figcaption>
+<p><span class="caption-text">TrustZone disable RAM 布局</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>TrustZone disable 时，不区分 secure 和 non-secure。</p>
+</div>
+<p><a class="reference internal" href="#trustzone-disable-ram"><span class="std std-ref">TrustZone disable RAM 用途</span></a> 如下，每个部分都有固定的排布顺序和特定的用途。</p>
+<table class="docutils align-default" id="trustzone-disable-ram">
+<caption><span class="caption-text">TrustZone disable RAM 用途</span><a class="headerlink" href="#trustzone-disable-ram" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>内存类型内存</p></th>
+<th class="head"><p>内存用途</p></th>
+<th class="head"><p>内存可变</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>S ROM data</p></td>
+<td><p>存放 Secure ROM Code 中全局变量和静态变量</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-odd"><td><p>Main Stack</p></td>
+<td><p>启动和中断服务例程中使用该 stack</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>Boot Patch RAM</p></td>
+<td><p>存放 Boot Patch 全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-odd"><td><p>System Patch RAM</p></td>
+<td><p>存放 System Patch 全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>Stack Patch RAM</p></td>
+<td><p>存放 Stack Patch 全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-odd"><td><p>NS ROM data</p></td>
+<td><p>存放 Non-Secure ROM Code 中全局变量和静态变量</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>DTCM + ITCM Heap</p></td>
+<td><p>供 Non-Secure ROM code、System Patch code、Bluetooth Host code 和 APP code 动态申请空间使用</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>APP RAM</p></td>
+<td><p>存放 APP 中全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-even"><td><p>Bluetooth Host RAM</p></td>
+<td><p>存放 Bluetooth Host 全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>是</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="trustzone-enable">
+<h4>TrustZone Enable 内存空间分布<a class="headerlink" href="#trustzone-enable" title="Link to this heading"></a></h4>
+<figure class="align-center" id="id9">
+<img alt="../../../../_images/TrustZone_enable_RAM_layout.png" src="../../../../_images/TrustZone_enable_RAM_layout.png" />
+<figcaption>
+<p><span class="caption-text">TrustZone enable RAM 布局</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-default" id="trustzone-enable-ram">
+<caption><span class="caption-text">TrustZone enable RAM 用途</span><a class="headerlink" href="#trustzone-enable-ram" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>内存类型</p></th>
+<th class="head"><p>内存用途</p></th>
+<th class="head"><p>内存可变</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>S ROM data</p></td>
+<td><p>存放 Secure ROM Code 中全局变量和静态变量</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-odd"><td><p>Secure Main Stack</p></td>
+<td><p>Secure 启动和中断服务例程中使用该 stack</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>Boot Patch RAM</p></td>
+<td><p>存放 Boot Patch 全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-odd"><td><p>System Patch RAM</p></td>
+<td><p>存放 System Patch 全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>Stack Patch RAM</p></td>
+<td><p>存放 Stack Patch 全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-odd"><td><p>NS ROM data</p></td>
+<td><p>存放 Non-Secure ROM Code 中全局变量和静态变量</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-even"><td><p>NS Main Stack</p></td>
+<td><p>Non-secure 启动和中断服务例程中使用该 stack</p></td>
+<td><p>否</p></td>
+</tr>
+<tr class="row-odd"><td><p>Secure Heap</p></td>
+<td><p>供 Secure ROM code 和 Secure APP code 动态申请空间使用</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-even"><td><p>Secure APP RAM</p></td>
+<td><p>存放 Secure APP 中全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>NS DTCM + ITCM Heap</p></td>
+<td><p>供 Non-Secure ROM code、System Patch code，Bluetooth Host code 和 APP code 动态申请空间使用</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-even"><td><p>NS APP RAM</p></td>
+<td><p>存放 NS APP 中全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>是</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bluetooth Host RAM</p></td>
+<td><p>存放 Bluetooth Host 全局变量和静态变量以及在 RAM 上执行的 code</p></td>
+<td><p>是</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="#id3"><span class="std std-ref">可调整的 RAM 区域</span></a> 都是统一通过 <code class="docutils literal notranslate"><span class="pre">mem_config.h</span></code> 中不同的宏定义修改。<code class="docutils literal notranslate"><span class="pre">NS_RAM_UPPERSTACK_SIZE</span></code> 必须根据使用的 Bluetooth Host image 的版本对应设定。不同的 Bluetooth Host image 占用不同大小的 DTCM，请注意看 Bluetooth Host 发布文件及其说明。根据应用需要调整 <code class="docutils literal notranslate"><span class="pre">NS_RAM_UPPERSTACK_SIZE</span></code> 的大小。</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">可调整的 RAM 区域</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>内存类型</p></th>
+<th class="head"><p>宏</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bluetooth Host RAM</p></td>
+<td><p>NS_RAM_UPPERSTACK_SIZE</p></td>
+</tr>
+<tr class="row-odd"><td><p>APP RAM</p></td>
+<td><p>NS_RAM_APP_SIZE</p></td>
+</tr>
+<tr class="row-even"><td><p>DTCM + ITCM Heap</p></td>
+<td><p>NS_RAM_APP_RESERVED_SIZE - NS_RAM_APP_SIZE - NS_RAM_UPPERSTACK_SIZE</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="apis">
+<h3>APIs<a class="headerlink" href="#apis" title="Link to this heading"></a></h3>
+<p>通过调用 API：<a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#c.os_mem_alloc" title="os_mem_alloc"><code class="xref c c-macro docutils literal notranslate"><span class="pre">os_mem_alloc</span></code></a> 可从 DTCM Heap、Data SRAM Heap 或者 Buffer SRAM Heap 上动态申请内存，由参数 ram_type 指定申请的类型，分别对应 <code class="docutils literal notranslate"><span class="pre">RAM_TYPE_DATA_ON</span></code>、<code class="docutils literal notranslate"><span class="pre">RAM_TYPE_EXT_DATA_SRAM</span></code> 和 <code class="docutils literal notranslate"><span class="pre">RAM_TYPE_BUFFER_ON</span></code>，具体代码如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">RAM_TYPE_DATA_ON</span><span class="p">,</span><span class="w">        </span><span class="c1">//DTCM Heap</span>
+<span class="w">    </span><span class="n">RAM_TYPE_DATA_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RAM_TYPE_DATA_ON</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RAM_TYPE_BUFFER_ON</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RAM_TYPE_BUFFER_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RAM_TYPE_BUFFER_ON</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RAM_TYPE_EXT_DATA_SRAM</span><span class="p">,</span><span class="w">  </span><span class="c1">//Ext DATA SRAM heap</span>
+<span class="w">    </span><span class="n">RAM_TYPE_NUM</span>
+<span class="p">}</span><span class="w"> </span><span class="n">RAM_TYPE</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm">* @brief  Allocate memory dynamically from Data RAM Heap or Buffer RAM heap</span>
+<span class="cm">* @param  ram_type : specify which heap to allocate memory from</span>
+<span class="cm">* @param  size: memory size in bytes to be allocated</span>
+<span class="cm">* @retval pointer to the allocated memory</span>
+<span class="cm">*/</span>
+<span class="cp">#define os_mem_alloc(ram_type, size)</span>
+<span class="w">        </span><span class="n">os_mem_alloc_intern</span><span class="p">(</span><span class="n">ram_type</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">__func__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>其他动态申请内存的 APIs 如下。（详细信息参考 <code class="file docutils literal notranslate"><span class="pre">os_mem.h</span></code>）</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">动态申请内存 APIs</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>API</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#c.os_mem_zalloc" title="os_mem_zalloc"><code class="xref c c-macro docutils literal notranslate"><span class="pre">os_mem_zalloc</span></code></a></p></td>
+<td><p>申请的内存被初始化为 0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#c.os_mem_aligned_alloc" title="os_mem_aligned_alloc"><code class="xref c c-macro docutils literal notranslate"><span class="pre">os_mem_aligned_alloc</span></code></a></p></td>
+<td><p>申请的内存按照指定的方式对齐</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#_CPPv411os_mem_free" title="os_mem_free"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_mem_free</span></code></a></p></td>
+<td><p>释放申请到的内存</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#_CPPv419os_mem_aligned_free" title="os_mem_aligned_free"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_mem_aligned_free</span></code></a></p></td>
+<td><p>释放按指定方式对齐申请的内存</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#_CPPv411os_mem_peek" title="os_mem_peek"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_mem_peek</span></code></a></p></td>
+<td><p>统计指定 RAM 类型的未使用的内存大小</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>统计 RAM 使用情况<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>根据 APP 使用 RAM 的方式，分为静态区和动态区。</p>
+<section id="app-ram">
+<h4>统计 APP RAM 使用的静态区大小<a class="headerlink" href="#app-ram" title="Link to this heading"></a></h4>
+<p>查找 Build 生成的 <code class="docutils literal notranslate"><span class="pre">app.map</span></code> 文件来找到 APP RAM 中分配的首地址，结束地址以及使用的大小。通过查找加载区 <a class="reference internal" href="#er-iram-ns-map"><span class="std std-ref">ER_IRAM_NS Map</span></a>，可以确定 APP RAM 的静态使用情况。</p>
+<figure class="align-center" id="er-iram-ns-map">
+<a class="reference internal image-reference" href="../../../../_images/ER_IRAM_NS_Map.png"><img alt="../../../../_images/ER_IRAM_NS_Map.png" src="../../../../_images/ER_IRAM_NS_Map.png" style="width: 846.6px; height: 485.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">ER_IRAM_NS Map</span><a class="headerlink" href="#er-iram-ns-map" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
+<h4>统计动态区剩余大小<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>通过 <a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#_CPPv411os_mem_peek" title="os_mem_peek"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_mem_peek</span></code></a> 函数可以获取指定 RAM 类型的剩余 heap size。</p>
+</section>
+</section>
+<section id="id7">
+<h3>调整 APP 可使用 RAM 大小<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>如果想进一步增加 APP 可使用 RAM 的总大小，可通过以下两种方式：</p>
+<ul class="simple">
+<li><p>修改 MP Tool Config Setting 中 Stack 界面的一些 Stack 设定，例如蓝牙链路数目，AE 和 PSD 功能等。</p></li>
+</ul>
+<figure class="align-center" id="mptool-stack-config-setting">
+<a class="reference internal image-reference" href="../../../../_images/MPTool_Stack_Config_Setting.png"><img alt="../../../../_images/MPTool_Stack_Config_Setting.png" src="../../../../_images/MPTool_Stack_Config_Setting.png" style="width: 699.0px; height: 596.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool Config Setting 中 Stack 界面</span><a class="headerlink" href="#mptool-stack-config-setting" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>关闭 log：修改 MP Tool Config Setting 中 Log 界面将 log 改为 <span class="guilabel">disable</span>。</p></li>
+</ul>
+<figure class="align-center" id="mptool-log-config-setting">
+<a class="reference internal image-reference" href="../../../../_images/MPTool_Log_Config_Setting.png"><img alt="../../../../_images/MPTool_Log_Config_Setting.png" src="../../../../_images/MPTool_Log_Config_Setting.png" style="width: 697.1999999999999px; height: 597.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool Config Setting 中 Log 界面</span><a class="headerlink" href="#mptool-log-config-setting" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="cache">
+<h2>Cache<a class="headerlink" href="#cache" title="Link to this heading"></a></h2>
+<p>RTL87x2G 支持 32KB I-Cache 和 16KB D-Cache。</p>
+<p>Cache 默认策略：</p>
+<ul class="simple">
+<li><p>Flash 默认是 cacheable。</p></li>
+<li><p>Data SRAM 和 Buffer SRAM 默认是 non-cacheable。</p></li>
+</ul>
+</section>
+<section id="flash">
+<h2>Flash<a class="headerlink" href="#flash" title="Link to this heading"></a></h2>
+<p>详见 <a class="reference internal" href="../../flash/text_cn/README.html"><span class="doc">Flash</span></a>。</p>
+</section>
+<section id="psram">
+<h2>PSRAM<a class="headerlink" href="#psram" title="Link to this heading"></a></h2>
+<p>详见 <a class="reference internal" href="../../psram/text_cn/README.html"><span class="doc">PSRAM</span></a>。</p>
+</section>
+<section id="efuse">
+<h2>eFuse<a class="headerlink" href="#efuse" title="Link to this heading"></a></h2>
+<p>eFuse 是一种一次编程的存储体，用来存储重要且固定的信息，例如：UUID，security key 以及其它只会配置一次的信息。eFuse 中每一 bit 不能从 0 改成 1，并且也没有擦除的操作，所以更新 eFuse 要十分小心。Realtek 提供 MP Tool 更新 eFuse。</p>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#group___o_s___m_e_m___exported___functions"><span class="std std-ref">OS Memory</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../platform_overview/text_cn/README.html" class="btn btn-neutral float-left" title="平台概述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../image_layout/text_cn/README.html" class="btn btn-neutral float-right" title="Image Layout" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

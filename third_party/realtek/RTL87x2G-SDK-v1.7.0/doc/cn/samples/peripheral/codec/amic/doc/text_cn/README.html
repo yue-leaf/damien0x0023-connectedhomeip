@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analog Microphone &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../../search.html" />
+    <link rel="next" title="Digital Microphone" href="../../../dmic/doc/text_cn/README.html" />
+    <link rel="prev" title="CODEC" href="../../../doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../../index.html">
+        
+            <img src="../../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../bluetooth/doc/text_cn/README.html">蓝牙</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../doc/text_cn/README.html">外设</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html">General Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../adc/doc/text_cn/README.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../aon_qdec/doc/text_cn/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../can/doc/text_cn/README.html">CAN</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../doc/text_cn/README.html">CODEC</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../../doc/text_cn/README.html#doc-sample-list-label">示例列表</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Analog Microphone</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id1">环境需求</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id2">硬件连线</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id3">编译和下载</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">测试验证</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id5">准备阶段</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id6">测试阶段</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#id7">代码介绍</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id8">源码路径</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#codec-amic-initialization-cn">初始化</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id10">功能实现</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../dmic/doc/text_cn/README.html">Digital Microphone</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../playback/doc/text_cn/README.html">Playback</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../doc/text_cn/README.html#codec-functional-overview-cn">功能概述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../enhtimer/doc/text_cn/README.html">ENHTIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../gdma/doc/text_cn/README.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../gpio/doc/text_cn/README.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../i2c/doc/text_cn/README.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../i2s/doc/text_cn/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../idu/doc/text_cn/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ir/doc/text_cn/README.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../keyscan/doc/text_cn/README.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lcdc/doc/text_cn/README.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lpc/doc/text_cn/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../ppe/doc/text_cn/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../rtc/doc/text_cn/README.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../spi/doc/text_cn/README.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../spi3wire/doc/text_cn/README.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../timer/doc/text_cn/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../uart/doc/text_cn/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../wdt/doc/text_cn/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../usb/doc/text_cn/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../sd/doc/text_cn/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/text_cn/README.html">外设</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">CODEC</a></li>
+    <li class="breadcrumb-item active">Analog Microphone</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="analog-microphone">
+<h1>Analog Microphone<a class="headerlink" href="#analog-microphone" title="Link to this heading"></a></h1>
+<p>本示例实现采集 <a class="reference internal" href="../../../../../../doc/glossary.html#term-AMIC"><span class="xref std std-term">AMIC</span></a> 数据，并经 <a class="reference internal" href="../../../../../../doc/glossary.html#term-CODEC"><span class="xref std std-term">CODEC</span></a> 编码为 <a class="reference internal" href="../../../../../../doc/glossary.html#term-PCM"><span class="xref std std-term">PCM</span></a> 语音数据。</p>
+<p>AMIC 采集模拟语音数据，经 CODEC 编码，送到 <a class="reference internal" href="../../../../../../doc/glossary.html#term-I2S"><span class="xref std std-term">I2S</span></a> 接收 <a class="reference internal" href="../../../../../../doc/glossary.html#term-FIFO"><span class="xref std std-term">FIFO</span></a>，利用 <a class="reference internal" href="../../../../../../doc/glossary.html#term-GDMA"><span class="xref std std-term">GDMA</span></a> 将数据搬运到 <a class="reference internal" href="../../../../../../doc/glossary.html#term-UART"><span class="xref std std-term">UART</span></a>。</p>
+<p><a class="reference internal" href="../../../../../../doc/glossary.html#term-PC"><span class="xref std std-term">PC</span></a> 端通过串口助手接收 UART 传输的数据，使用音频解析软件解析数据，并播放录制的语音，本示例中用到的音频解析软件是 Audacity。</p>
+<section id="id1">
+<h2>环境需求<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>该示例的环境需求，可参考 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html#general-requirements-cn"><span class="std std-ref">环境需求</span></a>。</p>
+<p>此外，需要在 PC 终端安装 PuTTY 或 UartAssist 等串口助手工具以及 Audacity 等音频解析工具。</p>
+</section>
+<section id="id2">
+<h2>硬件连线<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>EVB 外接 AMIC 模块，连接 MICBIAS 和 1.8V， GND 和 GND， MIC_P 和 P2_6， MIC_N 和 P2_7;</p>
+<p>EVB 外接 FT232 模块接收 UART 数据，连接 P3_2 和 RXD， P3_3 和 TXD 。</p>
+</section>
+<section id="id3">
+<h2>编译和下载<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>该示例的编译和下载流程，可参考 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html#general-build-download-cn"><span class="std std-ref">编译和下载</span></a>。</p>
+</section>
+<section id="id4">
+<h2>测试验证<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h3>准备阶段<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>启动 PuTTY 或 UartAssist 等 PC 终端， 用 ASCII 接收数据， 打开 UART COM 端口， 并进行以下 UART 设置：</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>波特率: 3000000</p></li>
+<li><p>8 数据位</p></li>
+<li><p>1 停止位</p></li>
+<li><p>无校验</p></li>
+<li><p>无硬件流控</p></li>
+<li><p>可以设置将输出数据字节转向文件。</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>启动音频解析软件， 根据 CODEC 中的设定选择解析格式， 本示例中可以参考如下 Audacity 设定。</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>编码: 16-bit PCM</p></li>
+<li><p>字节序：小尾端</p></li>
+<li><p>声道：1 声道</p></li>
+<li><p>采样率：1600 Hz</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id6">
+<h3>测试阶段<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>开始录音到录音完成， 采集到的语音数据， Codec 编码为 PCM 数据后通过 UART 发送到 PC 终端。</p></li>
+<li><p>使用音频解析软件查看解码后的语音波形，也可以播放语音。</p></li>
+</ol>
+</section>
+</section>
+<section id="id7">
+<h2>代码介绍<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>该章节主要介绍示例中的初始化和相应功能实现的代码和流程说明。</p>
+<section id="id8">
+<h3>源码路径<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>工程文件和源码路径如下：</p>
+<ul class="simple">
+<li><p>工程路径: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\peripheral\codec\amic\proj</span></code></p></li>
+<li><p>源码路径: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\peripheral\codec\amic\src</span></code></p></li>
+</ul>
+</section>
+<section id="codec-amic-initialization-cn">
+<span id="id9"></span><h3>初始化<a class="headerlink" href="#codec-amic-initialization-cn" title="Link to this heading"></a></h3>
+<p>外设的初始化流程可参考 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html"><span class="doc">General Introduction</span></a> 中的 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html#general-peripheral-init-flow-cn"><span class="std std-ref">初始化流程</span></a> 部分。</p>
+<p>初始化流程包括了 CODEC / UART / I2S / GDMA 模块的初始化， 具体流程如下。</p>
+<ol class="arabic">
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv410Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef" title="Pad_Config"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pad_Config()</span></code></a> 与 <a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv413Pinmux_Config7uint8_t7uint8_t" title="Pinmux_Config"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pinmux_Config()</span></code></a>，配置 CODEC 模块对应引脚的 PAD 和 PINMUX。I2S 引脚复用分别为 BCLK_SPORT0、LRC_RX_SPORT0、SDI_CODEC_SLAVE、SDO_CODEC_SLAVE 功能。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_codec_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">AMIC_MSBC_CLK_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_NOT_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_NONE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">AMIC_MSBC_DAT_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_NOT_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_NONE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">CODEC_BCLK_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_NONE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">CODEC_LRCLK_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_NONE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">CODEC_TX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_NONE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">CODEC_RX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_NONE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">CODEC_BCLK_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">BCLK_SPORT0</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">CODEC_LRCLK_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LRC_RX_SPORT0</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">CODEC_TX_PIN</span><span class="p">,</span><span class="w">    </span><span class="n">SDI_CODEC_SLAVE</span><span class="p">);</span>
+<span class="w">   </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">CODEC_RX_PIN</span><span class="p">,</span><span class="w">    </span><span class="n">SDO_CODEC_SLAVE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv410Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef" title="Pad_Config"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pad_Config()</span></code></a> 与 <a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv413Pinmux_Config7uint8_t7uint8_t" title="Pinmux_Config"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pinmux_Config()</span></code></a>，配置 UART 模块对应引脚的 PAD 和 PINMUX。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_uart_init</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">UART_TX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">UART_RX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">UART_TX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">UART5_TX</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">UART_RX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">UART5_RX</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>执行 <a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___functions.html#_CPPv414I2S_StructInitP15I2S_InitTypeDef" title="I2S_StructInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_StructInit()</span></code></a> 和 <a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___functions.html#_CPPv48I2S_InitP11I2S_TypeDefP15I2S_InitTypeDef" title="I2S_Init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_Init()</span></code></a>， 初始化 I2S 外设。I2S0 的初始化参数配置如下：</p></li>
+</ol>
+<table class="docutils align-center" id="id11">
+<caption><span class="caption-text">I2S 初始化参数</span><a class="headerlink" href="#id11" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>I2S Hardware Parameters</p></th>
+<th class="head"><p>Setting in the <code class="docutils literal notranslate"><span class="pre">I2S_InitStruct</span></code></p></th>
+<th class="head"><p>I2S master RX</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sample Rate (Mi)</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___types.html#_CPPv4N15I2S_InitTypeDef14I2S_RxBClockMiE" title="I2S_InitTypeDef::I2S_RxBClockMi"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_InitTypeDef::I2S_RxBClockMi</span></code></a></p></td>
+<td><p>0x271</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample Rate (Ni)</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___types.html#_CPPv4N15I2S_InitTypeDef14I2S_RxBClockNiE" title="I2S_InitTypeDef::I2S_RxBClockNi"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_InitTypeDef::I2S_RxBClockNi</span></code></a></p></td>
+<td><p>0x10</p></td>
+</tr>
+<tr class="row-even"><td><p>Device Mode</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___types.html#_CPPv4N15I2S_InitTypeDef14I2S_DeviceModeE" title="I2S_InitTypeDef::I2S_DeviceMode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_InitTypeDef::I2S_DeviceMode</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___device___mode.html#_CPPv4N21I2SDeviceMode_TypeDef21I2S_DeviceMode_MasterE" title="I2S_DeviceMode_Master"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_DeviceMode_Master</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Channel Type</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___types.html#_CPPv4N15I2S_InitTypeDef17I2S_RxChannelTypeE" title="I2S_InitTypeDef::I2S_RxChannelType"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_InitTypeDef::I2S_RxChannelType</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___channel___type.html#_CPPv4N22I2SChannelType_TypeDef16I2S_Channel_MonoE" title="I2S_Channel_Mono"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_Channel_Mono</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Data Format</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___types.html#_CPPv4N15I2S_InitTypeDef16I2S_RxDataFormatE" title="I2S_InitTypeDef::I2S_RxDataFormat"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_InitTypeDef::I2S_RxDataFormat</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___format___mode.html#_CPPv4N21I2SDataFormat_TypeDef8I2S_ModeE" title="I2S_Mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_Mode</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Data Width</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___types.html#_CPPv4N15I2S_InitTypeDef15I2S_RxDataWidthE" title="I2S_InitTypeDef::I2S_RxDataWidth"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_InitTypeDef::I2S_RxDataWidth</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___data___width.html#_CPPv4N20I2SDataWidth_TypeDef16I2S_Width_16BitsE" title="I2S_Width_16Bits"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_Width_16Bits</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="4">
+<li><p>执行 <a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t___exported___functions.html#_CPPv415UART_StructInitP16UART_InitTypeDef" title="UART_StructInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UART_StructInit()</span></code></a> 和 <a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t___exported___functions.html#_CPPv49UART_InitP12UART_TypeDefP16UART_InitTypeDef" title="UART_Init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UART_Init()</span></code></a>， 初始化 UART 外设。UART 的初始化参数配置如下：</p></li>
+</ol>
+<table class="docutils align-center" id="id12">
+<caption><span class="caption-text">UART 初始化参数</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>UART Hardware Parameters</p></th>
+<th class="head"><p>Setting in the <code class="docutils literal notranslate"><span class="pre">UART_InitStruct</span></code></p></th>
+<th class="head"><p>UART</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>UART Div</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t___exported___types.html#_CPPv4N16UART_InitTypeDef8UART_DivE" title="UART_InitTypeDef::UART_Div"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UART_InitTypeDef::UART_Div</span></code></a></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>UART Ovsr</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t___exported___types.html#_CPPv4N16UART_InitTypeDef9UART_OvsrE" title="UART_InitTypeDef::UART_Ovsr"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UART_InitTypeDef::UART_Ovsr</span></code></a></p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>UART OvsrAdj</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t___exported___types.html#_CPPv4N16UART_InitTypeDef12UART_OvsrAdjE" title="UART_InitTypeDef::UART_OvsrAdj"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UART_InitTypeDef::UART_OvsrAdj</span></code></a></p></td>
+<td><p>0x492</p></td>
+</tr>
+<tr class="row-odd"><td><p>UART Tx Dma En</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t___exported___types.html#_CPPv4N16UART_InitTypeDef12UART_TxDmaEnE" title="UART_InitTypeDef::UART_TxDmaEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UART_InitTypeDef::UART_TxDmaEn</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>UART Dma En</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t___exported___types.html#_CPPv4N16UART_InitTypeDef10UART_DmaEnE" title="UART_InitTypeDef::UART_DmaEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UART_InitTypeDef::UART_DmaEn</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t___d_m_a.html#_CPPv4N15UARTDma_TypeDef15UART_DMA_ENABLEE" title="UART_DMA_ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">UART_DMA_ENABLE</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="5">
+<li><p>执行 <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___functions.html#_CPPv415GDMA_StructInitP16GDMA_InitTypeDef" title="GDMA_StructInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_StructInit()</span></code></a> 和 <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___functions.html#_CPPv49GDMA_InitP19GDMA_ChannelTypeDefP16GDMA_InitTypeDef" title="GDMA_Init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Init()</span></code></a>，初始化 GDMA 外设。GDMA 的初始化参数配置如下：</p></li>
+</ol>
+<table class="docutils align-center" id="id13">
+<caption><span class="caption-text">GDMA 初始化参数</span><a class="headerlink" href="#id13" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>GDMA Hardware Parameters</p></th>
+<th class="head"><p>Setting in the <code class="docutils literal notranslate"><span class="pre">GDMA_InitStruct</span></code></p></th>
+<th class="head"><p>GDMA Channel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Channel Num</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef15GDMA_ChannelNumE" title="GDMA_InitTypeDef::GDMA_ChannelNum"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_ChannelNum</span></code></a></p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Transfer Direction</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef8GDMA_DIRE" title="GDMA_InitTypeDef::GDMA_DIR"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DIR</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___transfer___direction.html#_CPPv4N21GDMADirection_TypeDef31GDMA_DIR_PeripheralToPeripheralE" title="GDMA_DIR_PeripheralToPeripheral"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DIR_PeripheralToPeripheral</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Buffer Size</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef15GDMA_BufferSizeE" title="GDMA_InitTypeDef::GDMA_BufferSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_BufferSize</span></code></a></p></td>
+<td><p>1000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Address Increment or Decrement</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef14GDMA_SourceIncE" title="GDMA_InitTypeDef::GDMA_SourceInc"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceInc</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___source___incremented___mode.html#_CPPv4N18GDMASrcInc_TypeDef17DMA_SourceInc_FixE" title="DMA_SourceInc_Fix"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DMA_SourceInc_Fix</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Address Increment or Decrement</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef19GDMA_DestinationIncE" title="GDMA_InitTypeDef::GDMA_DestinationInc"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationInc</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___destination___incremented___mode.html#_CPPv4N19GDMADestInc_TypeDef22DMA_DestinationInc_FixE" title="DMA_DestinationInc_Fix"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DMA_DestinationInc_Fix</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Data Size</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef19GDMA_SourceDataSizeE" title="GDMA_InitTypeDef::GDMA_SourceDataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceDataSize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___size.html#_CPPv4N20GDMADataSize_TypeDef18GDMA_DataSize_WordE" title="GDMA_DataSize_Word"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DataSize_Word</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Data Size</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef24GDMA_DestinationDataSizeE" title="GDMA_InitTypeDef::GDMA_DestinationDataSize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationDataSize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___data___size.html#_CPPv4N20GDMADataSize_TypeDef18GDMA_DataSize_ByteE" title="GDMA_DataSize_Byte"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_DataSize_Byte</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Burst Transaction Length</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef16GDMA_SourceMsizeE" title="GDMA_InitTypeDef::GDMA_SourceMsize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceMsize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___msize.html#_CPPv4N17GDMAMSize_TypeDef12GDMA_Msize_4E" title="GDMA_Msize_4"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Msize_4</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Burst Transaction Length</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef21GDMA_DestinationMsizeE" title="GDMA_InitTypeDef::GDMA_DestinationMsize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationMsize</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___msize.html#_CPPv4N17GDMAMSize_TypeDef13GDMA_Msize_16E" title="GDMA_Msize_16"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Msize_16</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Address</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef15GDMA_SourceAddrE" title="GDMA_InitTypeDef::GDMA_SourceAddr"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceAddr</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;(I2S1-&gt;I2S_RX_FIFO_RD_ADDR)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Address</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef20GDMA_DestinationAddrE" title="GDMA_InitTypeDef::GDMA_DestinationAddr"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestinationAddr</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;(UART5-&gt;UART_RBR_THR)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Source Handshake</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef20GDMA_SourceHandshakeE" title="GDMA_InitTypeDef::GDMA_SourceHandshake"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceHandshake</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___handshake___type.html#c.GDMA_Handshake_I2S1_TDM0_RX" title="GDMA_Handshake_I2S1_TDM0_RX"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_Handshake_I2S1_TDM0_RX</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Destination Handshake</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef18GDMA_DestHandshakeE" title="GDMA_InitTypeDef::GDMA_DestHandshake"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_DestHandshake</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___handshake___type.html#c.GDMA_Handshake_UART5_TX" title="GDMA_Handshake_UART5_TX"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_Handshake_UART5_TX</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="6">
+<li><p>配置 GDMA 总传输完成中断 <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___interrupts.html#c.GDMA_INT_Transfer" title="GDMA_INT_Transfer"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_INT_Transfer</span></code></a> 和 NVIC，NVIC 相关配置可参考 <a class="reference internal" href="../../../../doc/general_introduction/text_cn/README.html#general-nvic-config-cn"><span class="std std-ref">中断配置</span></a>。</p></li>
+<li><p>对 CODEC 外设的初始化。</p>
+<ol class="arabic simple">
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___functions.html#_CPPv423CODEC_AnalogCircuitInitv" title="CODEC_AnalogCircuitInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_AnalogCircuitInit()</span></code></a> 初始化模拟电路。</p></li>
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___r_c_c___exported___functions.html#_CPPv418RCC_PeriphClockCmd8uint32_t8uint32_t15FunctionalState" title="RCC_PeriphClockCmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">RCC_PeriphClockCmd()</span></code></a> ，开启 CODEC 时钟。</p></li>
+<li><p>执行 <a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___functions.html#_CPPv416CODEC_StructInitP17CODEC_InitTypeDef" title="CODEC_StructInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_StructInit()</span></code></a> 和 <a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___functions.html#_CPPv410CODEC_InitP13CODEC_TypeDefP17CODEC_InitTypeDef" title="CODEC_Init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_Init()</span></code></a>， 初始化 CODEC 外设。CODEC 的初始化参数配置如下：</p></li>
+</ol>
+</li>
+</ol>
+<table class="docutils align-center" id="id14">
+<caption><span class="caption-text">CODEC 初始化参数</span><a class="headerlink" href="#id14" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODEC Hardware Parameters</p></th>
+<th class="head"><p>Setting in the <code class="docutils literal notranslate"><span class="pre">CODEC_InitStruct</span></code></p></th>
+<th class="head"><p>CODEC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mic Type</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___types.html#_CPPv4N17CODEC_InitTypeDef16CODEC_Ch0MicTypeE" title="CODEC_InitTypeDef::CODEC_Ch0MicType"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_InitTypeDef::CODEC_Ch0MicType</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___channel___mic___type.html#_CPPv4N21CodecCHMicSel_TypeDef13CODEC_CH_AMICE" title="CODEC_CH_AMIC"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_CH_AMIC</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>MICBST Mode</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___types.html#_CPPv4N17CODEC_InitTypeDef16CODEC_MicBstModeE" title="CODEC_InitTypeDef::CODEC_MicBstMode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_InitTypeDef::CODEC_MicBstMode</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___m_i_c_b_s_t___mode.html#_CPPv4N22MicbiasModeSel_TypeDef24MICBST_Mode_DifferentialE" title="MICBST_Mode_Differential"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">MICBST_Mode_Differential</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SampleRate</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___types.html#_CPPv4N17CODEC_InitTypeDef17CODEC_SampleRate0E" title="CODEC_InitTypeDef::CODEC_SampleRate0"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_InitTypeDef::CODEC_SampleRate0</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___sample___rate___definition.html#_CPPv4N23CodecSampleRate_TypeDef17SAMPLE_RATE_16KHzE" title="SAMPLE_RATE_16KHz"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">SAMPLE_RATE_16KHz</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>I2S Data Format</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___types.html#_CPPv4N17CODEC_InitTypeDef15CODEC_I2SFormatE" title="CODEC_InitTypeDef::CODEC_I2SFormat"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_InitTypeDef::CODEC_I2SFormat</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___data___format.html#_CPPv4N25CodecI2SFormatSel_TypeDef24CODEC_I2S_DataFormat_I2SE" title="CODEC_I2S_DataFormat_I2S"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_I2S_DataFormat_I2S</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>I2S Channel Len</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___types.html#_CPPv4N17CODEC_InitTypeDef19CODEC_I2SChannelLenE" title="CODEC_InitTypeDef::CODEC_I2SChannelLen"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_InitTypeDef::CODEC_I2SChannelLen</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___channel___lenth.html#_CPPv4N29CodecI2SChannellenSel_TypeDef17I2S_CHANNELLEN_32E" title="I2S_CHANNELLEN_32"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_CHANNELLEN_32</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>I2S Data Width</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___types.html#_CPPv4N17CODEC_InitTypeDef20CODEC_I2SRxDataWidthE" title="CODEC_InitTypeDef::CODEC_I2SRxDataWidth"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_InitTypeDef::CODEC_I2SRxDataWidth</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___rx___data___width.html#_CPPv4N28CodecI2SRxDatalenSel_TypeDef29CODEC_I2S_Rx_DataWidth_16BitsE" title="CODEC_I2S_Rx_DataWidth_16Bits"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_I2S_Rx_DataWidth_16Bits</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>I2S Channel Sequence</p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___exported___types.html#_CPPv4N17CODEC_InitTypeDef19CODEC_I2SChSequenceE" title="CODEC_InitTypeDef::CODEC_I2SChSequence"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_InitTypeDef::CODEC_I2SChSequence</span></code></a></p></td>
+<td><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c___i2_s___channel___sequence.html#_CPPv4N29CodecI2SCHSequenceSel_TypeDef16CODEC_I2S_CH_L_RE" title="CODEC_I2S_CH_L_R"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">CODEC_I2S_CH_L_R</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="8">
+<li><p>调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s___exported___functions.html#_CPPv47I2S_CmdP11I2S_TypeDef8uint32_t15FunctionalState" title="I2S_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">I2S_Cmd()</span></code></a>， 使能 I2S 接收模式。调用 <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___exported___functions.html#_CPPv48GDMA_Cmd7uint8_t15FunctionalState" title="GDMA_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_Cmd()</span></code></a>， 使能 GDMA 传输。</p></li>
+</ol>
+</section>
+<section id="id10">
+<h3>功能实现<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>AMIC 收集到语音数据后，经过 CODEC 模块的 AD 转换，将语音数据放入 I2S RX FIFO 中。I2S RX FIFO 内的数据再通过 GDMA 传输到 UART TX FIFO 中，在串口助手内，将 UART 发送的数据保存到文件内，通过音频解析软件解析文件数据。
+数据在各个模块的传输顺序如下图所示。</p>
+<figure class="align-center" id="codec-amic">
+<a class="reference internal image-reference" href="../../../../../../_images/CODEC_AMIC.png"><img alt="这里应该是 AMIC 波形图片" src="../../../../../../_images/CODEC_AMIC.png" style="width: 1052.0px; height: 177.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">数据传输模块（AMIC）</span><a class="headerlink" href="#codec-amic" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>当 GDMA 传输数据量达到设定的 BlockSize 时，会触发 <a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a___interrupts.html#c.GDMA_INT_Transfer" title="GDMA_INT_Transfer"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GDMA_INT_Transfer</span></code></a> 中断。由于音频数据在通过 CODEC 进行 AD 转换后，其数据量较大，单次 GDMA 传输无法满足需求。在中断处理函数内重新设置源端地址、目的端地址和 BlockSize，并重新使能 GDMA 传输，以确保能够连续传输大量数据。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">GDMA_SetSourceAddress</span><span class="p">(</span><span class="n">GDMA_Channel_AMIC</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">I2S0</span><span class="o">-&gt;</span><span class="n">I2S_RX_FIFO_RD_ADDR</span><span class="p">)));</span>
+<span class="n">GDMA_SetDestinationAddress</span><span class="p">(</span><span class="n">GDMA_Channel_AMIC</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">UART5</span><span class="o">-&gt;</span><span class="n">UART_RBR_THR</span><span class="p">)));</span>
+
+<span class="n">GDMA_SetBufferSize</span><span class="p">(</span><span class="n">GDMA_Channel_AMIC</span><span class="p">,</span><span class="w"> </span><span class="n">AUDIO_FRAME_SIZE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+
+<span class="n">GDMA_ClearINTPendingBit</span><span class="p">(</span><span class="n">GDMA_Channel_AMIC_NUM</span><span class="p">,</span><span class="w"> </span><span class="n">GDMA_INT_Transfer</span><span class="p">);</span>
+<span class="n">GDMA_Cmd</span><span class="p">(</span><span class="n">GDMA_Channel_AMIC_NUM</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___c_o_d_e_c.html#group___c_o_d_e_c"><span class="std std-ref">CODEC</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___p_i_n_m_u_x.html#group___p_i_n_m_u_x"><span class="std std-ref">PINMUX</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___r_c_c.html#group___r_c_c"><span class="std std-ref">RCC</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___g_d_m_a.html#group___g_d_m_a"><span class="std std-ref">GDMA</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___u_a_r_t.html#group___u_a_r_t"><span class="std std-ref">UART</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___i2_s.html#group___i2_s"><span class="std std-ref">I2S</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../../../doc/api_reference/group___n_v_i_c.html#group___n_v_i_c"><span class="std std-ref">NVIC</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../doc/text_cn/README.html" class="btn btn-neutral float-left" title="CODEC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../dmic/doc/text_cn/README.html" class="btn btn-neutral float-right" title="Digital Microphone" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

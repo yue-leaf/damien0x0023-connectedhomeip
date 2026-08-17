@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh Msg &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Model ID" href="group___h_e_a_l_t_h___m_o_d_e_l___i_d.html" />
+    <link rel="prev" title="Client Data" href="group___h_e_a_l_t_h___c_l_i_e_n_t___d_a_t_a.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___application.html">Application</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p.html">GAP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t.html">GATT</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___mesh___model.html">Mesh Model</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___mesh___model___s_i_g.html">SIG</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r.html">BLOB Transfer</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___common.html">Common</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___d_f_u.html">DFU</a></li>
+<li class="toctree-l7 current"><a class="reference internal" href="group___mesh___model___s_i_g___foundation.html">Foundation</a><ul class="current">
+<li class="toctree-l8"><a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n.html">Configuration</a></li>
+<li class="toctree-l8 current"><a class="reference internal" href="group___h_e_a_l_t_h.html">Health</a><ul class="current">
+<li class="toctree-l9"><a class="reference internal" href="group___h_e_a_l_t_h___a_c_c_e_s_s___o_p_c_o_d_e.html">Access Opcode</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___h_e_a_l_t_h___c_l_i_e_n_t___a_p_i.html">Client API</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___h_e_a_l_t_h___c_l_i_e_n_t___d_a_t_a.html">Client Data</a></li>
+<li class="toctree-l9 current"><a class="current reference internal" href="#">Mesh Msg</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418health_curt_stat_t"><code class="docutils literal notranslate"><span class="pre">health_curt_stat_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418health_fault_get_t"><code class="docutils literal notranslate"><span class="pre">health_fault_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv426health_fault_clear_unack_t"><code class="docutils literal notranslate"><span class="pre">health_fault_clear_unack_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420health_fault_clear_t"><code class="docutils literal notranslate"><span class="pre">health_fault_clear_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419health_fault_test_t"><code class="docutils literal notranslate"><span class="pre">health_fault_test_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv425health_fault_test_unack_t"><code class="docutils literal notranslate"><span class="pre">health_fault_test_unack_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419health_fault_stat_t"><code class="docutils literal notranslate"><span class="pre">health_fault_stat_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419health_period_get_t"><code class="docutils literal notranslate"><span class="pre">health_period_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv425health_period_set_unack_t"><code class="docutils literal notranslate"><span class="pre">health_period_set_unack_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419health_period_set_t"><code class="docutils literal notranslate"><span class="pre">health_period_set_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420health_period_stat_t"><code class="docutils literal notranslate"><span class="pre">health_period_stat_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417health_attn_get_t"><code class="docutils literal notranslate"><span class="pre">health_attn_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417health_attn_set_t"><code class="docutils literal notranslate"><span class="pre">health_attn_set_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv423health_attn_set_unack_t"><code class="docutils literal notranslate"><span class="pre">health_attn_set_unack_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418health_attn_stat_t"><code class="docutils literal notranslate"><span class="pre">health_attn_stat_t</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="group___h_e_a_l_t_h___m_o_d_e_l___i_d.html">Model ID</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___h_e_a_l_t_h___s_e_r_v_e_r___a_p_i.html">Server API</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___h_e_a_l_t_h___s_e_r_v_e_r___d_a_t_a.html">Server Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___generics.html">Generics</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___lighting.html">Lighting</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g.html">Remote Provisioning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___sensors.html">Sensors</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___time___scenes.html">Time and Scenes</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___mesh___model___vendor.html">Vendor</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___mesh___protocol.html">Mesh Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model.html">Mesh Model</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g.html">SIG</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g___foundation.html">Foundation</a></li>
+        <li class="breadcrumb-item"><a href="group___h_e_a_l_t_h.html">Health</a></li>
+    <li class="breadcrumb-item active">Mesh Msg</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesh-msg">
+<h1>Mesh Msg<a class="headerlink" href="#mesh-msg" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">HEALTH_MESH_MSG</span></span></dt>
+<dd><p>Mesh message types used by health models. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_STANDARD_TEST_ID">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga91bd2ffe540a289f9846bd801802b9cd"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_STANDARD_TEST_ID</span></span></span> <span class="pre">0</span><a class="headerlink" href="#c.HEALTH_STANDARD_TEST_ID" title="Link to this definition"></a><br /></dt>
+<dd><p>Standard test ID used in health models. Standard test ID. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_NO_FAULT">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gae6b7fe3e4bd54a756721c949bdfe0660"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_NO_FAULT</span></span></span> <span class="pre">0x00</span><a class="headerlink" href="#c.HEALTH_FAULT_NO_FAULT" title="Link to this definition"></a><br /></dt>
+<dd><p>Health fault codes. No fault. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_BATTERY_LOW_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga99a26cadadf090c633636b02b11b4f72"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_BATTERY_LOW_WARNING</span></span></span> <span class="pre">0x01</span><a class="headerlink" href="#c.HEALTH_FAULT_BATTERY_LOW_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Battery low warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_BATTERY_LOW_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga1f8e5f6be9ac2f41e1eed44e8662a5aa"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_BATTERY_LOW_ERROR</span></span></span> <span class="pre">0x02</span><a class="headerlink" href="#c.HEALTH_FAULT_BATTERY_LOW_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Battery low error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_LOW_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaa9b4d8c306140dacf9457b2ca7f8fa63"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_LOW_WARNING</span></span></span> <span class="pre">0x03</span><a class="headerlink" href="#c.HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_LOW_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Supply voltage too low warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_LOW_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaa1802d96ca3e6bf50458e7fa402d8d58"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_LOW_ERROR</span></span></span> <span class="pre">0x04</span><a class="headerlink" href="#c.HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_LOW_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Supply voltage too low error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_HIGH_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gae83d8324b0e0624d6674e803500aea61"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_HIGH_WARNING</span></span></span> <span class="pre">0x05</span><a class="headerlink" href="#c.HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_HIGH_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Supply voltage too high warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_HIGH_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga46a3da9aa310e8734affbca3241ea76c"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_HIGH_ERROR</span></span></span> <span class="pre">0x06</span><a class="headerlink" href="#c.HEALTH_FAULT_SUPPLY_VOLTAGE_TOO_HIGH_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Supply voltage too high error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_POWER_SUPPLY_INTERRUPTED_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga98c9eae6fc3920790e0a98f0638fdfc3"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_POWER_SUPPLY_INTERRUPTED_WARNING</span></span></span> <span class="pre">0x07</span><a class="headerlink" href="#c.HEALTH_FAULT_POWER_SUPPLY_INTERRUPTED_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Power supply interrupted warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_POWER_SUPPLY_INTERRUPTED_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga99874438cc66729ffefbaf39f4640ebd"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_POWER_SUPPLY_INTERRUPTED_ERROR</span></span></span> <span class="pre">0x08</span><a class="headerlink" href="#c.HEALTH_FAULT_POWER_SUPPLY_INTERRUPTED_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Power supply interrupted error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_NO_LOAD_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga45e3843d836d499afae41834e5e05dee"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_NO_LOAD_WARNING</span></span></span> <span class="pre">0x09</span><a class="headerlink" href="#c.HEALTH_FAULT_NO_LOAD_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>No load warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_NO_LOAD_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaf27034ec1b4f041f099bac7fac6a9c9e"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_NO_LOAD_ERROR</span></span></span> <span class="pre">0x0a</span><a class="headerlink" href="#c.HEALTH_FAULT_NO_LOAD_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>No load error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_OVERLOAD_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga8bcb48859f1ffcbf16e77f5a6eaf7937"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_OVERLOAD_WARNING</span></span></span> <span class="pre">0x0b</span><a class="headerlink" href="#c.HEALTH_FAULT_OVERLOAD_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Overload warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_OVERLOAD_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga7043ea6309e2b02b9310091508a4c631"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_OVERLOAD_ERROR</span></span></span> <span class="pre">0x0c</span><a class="headerlink" href="#c.HEALTH_FAULT_OVERLOAD_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Overload error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_OVERHEAT_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gafa5488d4c1d58d72bb65a1163460851e"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_OVERHEAT_WARNING</span></span></span> <span class="pre">0x0d</span><a class="headerlink" href="#c.HEALTH_FAULT_OVERHEAT_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Overheat warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_OVERHEAT_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gafab7650a5fe1bf87bdd764de1c0522d2"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_OVERHEAT_ERROR</span></span></span> <span class="pre">0x0e</span><a class="headerlink" href="#c.HEALTH_FAULT_OVERHEAT_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Overheat error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_CONDENSATION_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gab71da4407a5bc78a9fe23591da63181b"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_CONDENSATION_WARNING</span></span></span> <span class="pre">0x0f</span><a class="headerlink" href="#c.HEALTH_FAULT_CONDENSATION_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Condensation warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_CONDENSATION_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gadfd816d02b6778cbb755593ef3ad2535"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_CONDENSATION_ERROR</span></span></span> <span class="pre">0x10</span><a class="headerlink" href="#c.HEALTH_FAULT_CONDENSATION_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Condensation error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_VIBRATION_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga362eeba5ebc1db3bffced6bbadff498e"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_VIBRATION_WARNING</span></span></span> <span class="pre">0x11</span><a class="headerlink" href="#c.HEALTH_FAULT_VIBRATION_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Vibration warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_VIBRATION_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gab25109f2217ca509b49b5ff5dbdf942c"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_VIBRATION_ERROR</span></span></span> <span class="pre">0x12</span><a class="headerlink" href="#c.HEALTH_FAULT_VIBRATION_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Vibration error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_CONFIGURATION_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga457083308e43f3fbad10d3c1755277fa"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_CONFIGURATION_WARNING</span></span></span> <span class="pre">0x13</span><a class="headerlink" href="#c.HEALTH_FAULT_CONFIGURATION_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Configuration warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_CONFIGURATION_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gac75b166d85e85510550f838cbe3ea0bb"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_CONFIGURATION_ERROR</span></span></span> <span class="pre">0x14</span><a class="headerlink" href="#c.HEALTH_FAULT_CONFIGURATION_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Configuration error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_ELEMENT_NOT_CALIBRATED_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaac350e531852bbedcd82b8826df361e5"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_ELEMENT_NOT_CALIBRATED_WARNING</span></span></span> <span class="pre">0x15</span><a class="headerlink" href="#c.HEALTH_FAULT_ELEMENT_NOT_CALIBRATED_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Element not calibrated warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_ELEMENT_NOT_CALIBRATED_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga172dbd535657e03c967491048e029b08"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_ELEMENT_NOT_CALIBRATED_ERROR</span></span></span> <span class="pre">0x16</span><a class="headerlink" href="#c.HEALTH_FAULT_ELEMENT_NOT_CALIBRATED_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Element not calibrated error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_MEMORY_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gab3d3098b0f33dadfdf03735685fa0976"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_MEMORY_WARNING</span></span></span> <span class="pre">0x17</span><a class="headerlink" href="#c.HEALTH_FAULT_MEMORY_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Memory warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_MEMORY_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaff575cf6a9424ac4393271c9fa9c62a7"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_MEMORY_ERROR</span></span></span> <span class="pre">0x18</span><a class="headerlink" href="#c.HEALTH_FAULT_MEMORY_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Memory error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_SELF_TEST_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gad79f8c27cff2f9b0cafac6fe3bf78861"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_SELF_TEST_WARNING</span></span></span> <span class="pre">0x19</span><a class="headerlink" href="#c.HEALTH_FAULT_SELF_TEST_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Self test warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_SELF_TEST_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga7ff336cf39b4d63bf7905aba3155334f"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_SELF_TEST_ERROR</span></span></span> <span class="pre">0x1a</span><a class="headerlink" href="#c.HEALTH_FAULT_SELF_TEST_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Self test error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_INPUT_TOO_LOW_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga3620f6b88358fc86a1b868a9a78e069c"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_INPUT_TOO_LOW_WARNING</span></span></span> <span class="pre">0x1b</span><a class="headerlink" href="#c.HEALTH_FAULT_INPUT_TOO_LOW_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Input too low warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_INPUT_TOO_LOW_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gad43ab6b26b6618636a3ea21c81116094"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_INPUT_TOO_LOW_ERROR</span></span></span> <span class="pre">0x1c</span><a class="headerlink" href="#c.HEALTH_FAULT_INPUT_TOO_LOW_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Input too low error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_INPUT_TOO_HIGH_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga642750eea8deabfc035bc34bef0d7990"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_INPUT_TOO_HIGH_WARNING</span></span></span> <span class="pre">0x1d</span><a class="headerlink" href="#c.HEALTH_FAULT_INPUT_TOO_HIGH_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Input too high warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_INPUT_TOO_HIGH_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gae580770505fe720d887d338f4cb2d294"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_INPUT_TOO_HIGH_ERROR</span></span></span> <span class="pre">0x1e</span><a class="headerlink" href="#c.HEALTH_FAULT_INPUT_TOO_HIGH_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Input too high error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_INPUT_NO_CHANGE_HIGH_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaacda36e3be1d65a02fc48a35afe078ca"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_INPUT_NO_CHANGE_HIGH_WARNING</span></span></span> <span class="pre">0x1f</span><a class="headerlink" href="#c.HEALTH_FAULT_INPUT_NO_CHANGE_HIGH_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Input no change high warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_INPUT_NO_CHANGE_HIGH_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga14bac01ed48a772aecc35a5315bab113"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_INPUT_NO_CHANGE_HIGH_ERROR</span></span></span> <span class="pre">0x20</span><a class="headerlink" href="#c.HEALTH_FAULT_INPUT_NO_CHANGE_HIGH_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Input no change high error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_ACTUATOR_BLOCKED_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gabe0c2998968ce1000872acb73a46c8ca"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_ACTUATOR_BLOCKED_WARNING</span></span></span> <span class="pre">0x21</span><a class="headerlink" href="#c.HEALTH_FAULT_ACTUATOR_BLOCKED_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Actuator blocked warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_ACTUATOR_BLOCKED_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gae6f852eefaa3f49b633d3b667a4f8aab"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_ACTUATOR_BLOCKED_ERROR</span></span></span> <span class="pre">0x22</span><a class="headerlink" href="#c.HEALTH_FAULT_ACTUATOR_BLOCKED_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Actuator blocked error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_HOUSING_OPENED_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga9b98889725546040efbb5a17b13a5d90"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_HOUSING_OPENED_WARNING</span></span></span> <span class="pre">0x23</span><a class="headerlink" href="#c.HEALTH_FAULT_HOUSING_OPENED_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Housing opened warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_HOUSING_OPENED_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gadad7a27c58df940ae6994ab3208c774a"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_HOUSING_OPENED_ERROR</span></span></span> <span class="pre">0x24</span><a class="headerlink" href="#c.HEALTH_FAULT_HOUSING_OPENED_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Housing opened error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_TAMPER_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaf1e10e13f0800194a1dd8fead19295aa"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_TAMPER_WARNING</span></span></span> <span class="pre">0x25</span><a class="headerlink" href="#c.HEALTH_FAULT_TAMPER_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Tamper warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_TAMPER_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga1131cae3575f3e33b8c5cf24cd62a2a6"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_TAMPER_ERROR</span></span></span> <span class="pre">0x26</span><a class="headerlink" href="#c.HEALTH_FAULT_TAMPER_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Tamper error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_DEVICE_MOVED_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga5f70b4c20525ed4f23b224b688a4a48a"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_DEVICE_MOVED_WARNING</span></span></span> <span class="pre">0x27</span><a class="headerlink" href="#c.HEALTH_FAULT_DEVICE_MOVED_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Device moved warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_DEVICE_MOVED_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga773fb47e13a94e0e2409606e703eccfb"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_DEVICE_MOVED_ERROR</span></span></span> <span class="pre">0x28</span><a class="headerlink" href="#c.HEALTH_FAULT_DEVICE_MOVED_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Device moved error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_DEVICE_DROPPED_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaac5911be12d737eb3f94cade21067439"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_DEVICE_DROPPED_WARNING</span></span></span> <span class="pre">0x29</span><a class="headerlink" href="#c.HEALTH_FAULT_DEVICE_DROPPED_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Device dropped warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_DEVICE_DROPPED_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gae03a1bb9eb543acd58230badeb7a3ab7"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_DEVICE_DROPPED_ERROR</span></span></span> <span class="pre">0x2a</span><a class="headerlink" href="#c.HEALTH_FAULT_DEVICE_DROPPED_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Device dropped error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_OVERFLOW_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaa3d2740c0b7ff297391445c54c8be0ae"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_OVERFLOW_WARNING</span></span></span> <span class="pre">0x2b</span><a class="headerlink" href="#c.HEALTH_FAULT_OVERFLOW_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Overflow warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_OVERFLOW_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gab1f5133a1783519197a01951d808bd7a"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_OVERFLOW_ERROR</span></span></span> <span class="pre">0x2c</span><a class="headerlink" href="#c.HEALTH_FAULT_OVERFLOW_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Overflow error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_EMPTY_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga2300e1932d359f3da49f175083293ba8"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_EMPTY_WARNING</span></span></span> <span class="pre">0x2d</span><a class="headerlink" href="#c.HEALTH_FAULT_EMPTY_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Empty warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_EMPTY_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaf12b2ba2aa50ed637a80f1c3a0239c1d"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_EMPTY_ERROR</span></span></span> <span class="pre">0x2e</span><a class="headerlink" href="#c.HEALTH_FAULT_EMPTY_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Empty error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_INTERNAL_BUS_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaa09c1eab9b9f51398eb4a1e54f57c712"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_INTERNAL_BUS_WARNING</span></span></span> <span class="pre">0x2f</span><a class="headerlink" href="#c.HEALTH_FAULT_INTERNAL_BUS_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Internal bus warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_INTERNAL_BUS_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga7872d2ed3b7b6248be8180a2bc15e02a"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_INTERNAL_BUS_ERROR</span></span></span> <span class="pre">0x30</span><a class="headerlink" href="#c.HEALTH_FAULT_INTERNAL_BUS_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Internal bus error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_MECHANISM_JAMMED_WARNING">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gaff884d408bf183a2fbbaff1058ef8090"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_MECHANISM_JAMMED_WARNING</span></span></span> <span class="pre">0x31</span><a class="headerlink" href="#c.HEALTH_FAULT_MECHANISM_JAMMED_WARNING" title="Link to this definition"></a><br /></dt>
+<dd><p>Mechanism jammed warning. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_MECHAISM_JAMMED_ERROR">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1gabc32fb18bf912799d26456992a51a427"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_MECHAISM_JAMMED_ERROR</span></span></span> <span class="pre">0x32</span><a class="headerlink" href="#c.HEALTH_FAULT_MECHAISM_JAMMED_ERROR" title="Link to this definition"></a><br /></dt>
+<dd><p>Mechanism jammed error. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.HEALTH_FAULT_VENDOR_START">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga5033dbcb0616cc91c7670f8ba7eb2bf0"></span><span class="sig-name descname"><span class="n"><span class="pre">HEALTH_FAULT_VENDOR_START</span></span></span> <span class="pre">0x80</span><a class="headerlink" href="#c.HEALTH_FAULT_VENDOR_START" title="Link to this definition"></a><br /></dt>
+<dd><p>Vendor-specific fault start. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.IS_FAST_PERIOD_DIVISOR_VALID">
+<span class="target" id="group___h_e_a_l_t_h___m_e_s_h___m_s_g_1ga3655bfeb116aaded5a94b21f703bceed"></span><span class="sig-name descname"><span class="n"><span class="pre">IS_FAST_PERIOD_DIVISOR_VALID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">divisor</span></span><span class="sig-paren">)</span> <span class="pre">((divisor)</span> <span class="pre">&lt;=</span> <span class="pre">15)</span><a class="headerlink" href="#c.IS_FAST_PERIOD_DIVISOR_VALID" title="Link to this definition"></a><br /></dt>
+<dd><p>Validates fast period divisor (0-15). </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418health_curt_stat_t">
+<span id="_CPPv318health_curt_stat_t"></span><span id="_CPPv218health_curt_stat_t"></span><span id="health_curt_stat_t"></span><span class="target" id="structhealth__curt__stat__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_curt_stat_t</span></span></span><a class="headerlink" href="#_CPPv418health_curt_stat_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Current Status message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18health_curt_stat_t6opcodeE">
+<span id="_CPPv3N18health_curt_stat_t6opcodeE"></span><span id="_CPPv2N18health_curt_stat_t6opcodeE"></span><span id="health_curt_stat_t::opcode__uint8_tA"></span><span class="target" id="structhealth__curt__stat__t_1a0bf8ed6d32f59c4ac043bbbb3485ac93"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x04</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18health_curt_stat_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18health_curt_stat_t7test_idE">
+<span id="_CPPv3N18health_curt_stat_t7test_idE"></span><span id="_CPPv2N18health_curt_stat_t7test_idE"></span><span id="health_curt_stat_t::test_id__uint8_t"></span><span class="target" id="structhealth__curt__stat__t_1a8510baea193b21c69ed1838a97173644"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">test_id</span></span></span><a class="headerlink" href="#_CPPv4N18health_curt_stat_t7test_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Test ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18health_curt_stat_t10company_idE">
+<span id="_CPPv3N18health_curt_stat_t10company_idE"></span><span id="_CPPv2N18health_curt_stat_t10company_idE"></span><span id="health_curt_stat_t::company_id__uint16_t"></span><span class="target" id="structhealth__curt__stat__t_1a685ae33c442d30cc507fa5415f536e74"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">company_id</span></span></span><a class="headerlink" href="#_CPPv4N18health_curt_stat_t10company_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Company ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18health_curt_stat_t11fault_arrayE">
+<span id="_CPPv3N18health_curt_stat_t11fault_arrayE"></span><span id="_CPPv2N18health_curt_stat_t11fault_arrayE"></span><span id="health_curt_stat_t::fault_array__uint8_tA"></span><span class="target" id="structhealth__curt__stat__t_1aed1c1615b1a31547d86c0ea8bddf798d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_array</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18health_curt_stat_t11fault_arrayE" title="Link to this definition"></a><br /></dt>
+<dd><p>Variable length fault array. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418health_fault_get_t">
+<span id="_CPPv318health_fault_get_t"></span><span id="_CPPv218health_fault_get_t"></span><span id="health_fault_get_t"></span><span class="target" id="structhealth__fault__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_fault_get_t</span></span></span><a class="headerlink" href="#_CPPv418health_fault_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Fault Get message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18health_fault_get_t6opcodeE">
+<span id="_CPPv3N18health_fault_get_t6opcodeE"></span><span id="_CPPv2N18health_fault_get_t6opcodeE"></span><span id="health_fault_get_t::opcode__uint8_tA"></span><span class="target" id="structhealth__fault__get__t_1af05b0450872432be1283f97e80f01be6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8031</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18health_fault_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18health_fault_get_t10company_idE">
+<span id="_CPPv3N18health_fault_get_t10company_idE"></span><span id="_CPPv2N18health_fault_get_t10company_idE"></span><span id="health_fault_get_t::company_id__uint16_t"></span><span class="target" id="structhealth__fault__get__t_1a685ae33c442d30cc507fa5415f536e74"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">company_id</span></span></span><a class="headerlink" href="#_CPPv4N18health_fault_get_t10company_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Company ID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426health_fault_clear_unack_t">
+<span id="_CPPv326health_fault_clear_unack_t"></span><span id="_CPPv226health_fault_clear_unack_t"></span><span id="health_fault_clear_unack_t"></span><span class="target" id="structhealth__fault__clear__unack__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_fault_clear_unack_t</span></span></span><a class="headerlink" href="#_CPPv426health_fault_clear_unack_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Fault Clear Unacknowledged message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26health_fault_clear_unack_t6opcodeE">
+<span id="_CPPv3N26health_fault_clear_unack_t6opcodeE"></span><span id="_CPPv2N26health_fault_clear_unack_t6opcodeE"></span><span id="health_fault_clear_unack_t::opcode__uint8_tA"></span><span class="target" id="structhealth__fault__clear__unack__t_1adab03077dc23bc73f285b943fc3c580a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8030</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N26health_fault_clear_unack_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26health_fault_clear_unack_t10company_idE">
+<span id="_CPPv3N26health_fault_clear_unack_t10company_idE"></span><span id="_CPPv2N26health_fault_clear_unack_t10company_idE"></span><span id="health_fault_clear_unack_t::company_id__uint16_t"></span><span class="target" id="structhealth__fault__clear__unack__t_1a685ae33c442d30cc507fa5415f536e74"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">company_id</span></span></span><a class="headerlink" href="#_CPPv4N26health_fault_clear_unack_t10company_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Company ID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420health_fault_clear_t">
+<span id="_CPPv320health_fault_clear_t"></span><span id="_CPPv220health_fault_clear_t"></span><span id="health_fault_clear_t"></span><span class="target" id="structhealth__fault__clear__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_fault_clear_t</span></span></span><a class="headerlink" href="#_CPPv420health_fault_clear_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Fault Clear message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20health_fault_clear_t6opcodeE">
+<span id="_CPPv3N20health_fault_clear_t6opcodeE"></span><span id="_CPPv2N20health_fault_clear_t6opcodeE"></span><span id="health_fault_clear_t::opcode__uint8_tA"></span><span class="target" id="structhealth__fault__clear__t_1acf3b3cbd37d30438452e546eafd091f7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x802F</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20health_fault_clear_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20health_fault_clear_t10company_idE">
+<span id="_CPPv3N20health_fault_clear_t10company_idE"></span><span id="_CPPv2N20health_fault_clear_t10company_idE"></span><span id="health_fault_clear_t::company_id__uint16_t"></span><span class="target" id="structhealth__fault__clear__t_1a685ae33c442d30cc507fa5415f536e74"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">company_id</span></span></span><a class="headerlink" href="#_CPPv4N20health_fault_clear_t10company_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Company ID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419health_fault_test_t">
+<span id="_CPPv319health_fault_test_t"></span><span id="_CPPv219health_fault_test_t"></span><span id="health_fault_test_t"></span><span class="target" id="structhealth__fault__test__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_fault_test_t</span></span></span><a class="headerlink" href="#_CPPv419health_fault_test_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Fault Test message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_fault_test_t6opcodeE">
+<span id="_CPPv3N19health_fault_test_t6opcodeE"></span><span id="_CPPv2N19health_fault_test_t6opcodeE"></span><span id="health_fault_test_t::opcode__uint8_tA"></span><span class="target" id="structhealth__fault__test__t_1adbfd1b1a9cb6440bbe062f27ece80119"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8032</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19health_fault_test_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_fault_test_t7test_idE">
+<span id="_CPPv3N19health_fault_test_t7test_idE"></span><span id="_CPPv2N19health_fault_test_t7test_idE"></span><span id="health_fault_test_t::test_id__uint8_t"></span><span class="target" id="structhealth__fault__test__t_1a8510baea193b21c69ed1838a97173644"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">test_id</span></span></span><a class="headerlink" href="#_CPPv4N19health_fault_test_t7test_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Test ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_fault_test_t10company_idE">
+<span id="_CPPv3N19health_fault_test_t10company_idE"></span><span id="_CPPv2N19health_fault_test_t10company_idE"></span><span id="health_fault_test_t::company_id__uint16_t"></span><span class="target" id="structhealth__fault__test__t_1a685ae33c442d30cc507fa5415f536e74"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">company_id</span></span></span><a class="headerlink" href="#_CPPv4N19health_fault_test_t10company_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Company ID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425health_fault_test_unack_t">
+<span id="_CPPv325health_fault_test_unack_t"></span><span id="_CPPv225health_fault_test_unack_t"></span><span id="health_fault_test_unack_t"></span><span class="target" id="structhealth__fault__test__unack__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_fault_test_unack_t</span></span></span><a class="headerlink" href="#_CPPv425health_fault_test_unack_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Fault Test Unacknowledged message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25health_fault_test_unack_t6opcodeE">
+<span id="_CPPv3N25health_fault_test_unack_t6opcodeE"></span><span id="_CPPv2N25health_fault_test_unack_t6opcodeE"></span><span id="health_fault_test_unack_t::opcode__uint8_tA"></span><span class="target" id="structhealth__fault__test__unack__t_1a112b518532037cdc90160faa76b78556"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8033</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25health_fault_test_unack_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25health_fault_test_unack_t7test_idE">
+<span id="_CPPv3N25health_fault_test_unack_t7test_idE"></span><span id="_CPPv2N25health_fault_test_unack_t7test_idE"></span><span id="health_fault_test_unack_t::test_id__uint8_t"></span><span class="target" id="structhealth__fault__test__unack__t_1a8510baea193b21c69ed1838a97173644"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">test_id</span></span></span><a class="headerlink" href="#_CPPv4N25health_fault_test_unack_t7test_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Test ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25health_fault_test_unack_t10company_idE">
+<span id="_CPPv3N25health_fault_test_unack_t10company_idE"></span><span id="_CPPv2N25health_fault_test_unack_t10company_idE"></span><span id="health_fault_test_unack_t::company_id__uint16_t"></span><span class="target" id="structhealth__fault__test__unack__t_1a685ae33c442d30cc507fa5415f536e74"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">company_id</span></span></span><a class="headerlink" href="#_CPPv4N25health_fault_test_unack_t10company_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Company ID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419health_fault_stat_t">
+<span id="_CPPv319health_fault_stat_t"></span><span id="_CPPv219health_fault_stat_t"></span><span id="health_fault_stat_t"></span><span class="target" id="structhealth__fault__stat__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_fault_stat_t</span></span></span><a class="headerlink" href="#_CPPv419health_fault_stat_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Fault Status message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_fault_stat_t6opcodeE">
+<span id="_CPPv3N19health_fault_stat_t6opcodeE"></span><span id="_CPPv2N19health_fault_stat_t6opcodeE"></span><span id="health_fault_stat_t::opcode__uint8_tA"></span><span class="target" id="structhealth__fault__stat__t_1a4c9c6249df18914327b8d44e2aab635b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x05</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19health_fault_stat_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_fault_stat_t7test_idE">
+<span id="_CPPv3N19health_fault_stat_t7test_idE"></span><span id="_CPPv2N19health_fault_stat_t7test_idE"></span><span id="health_fault_stat_t::test_id__uint8_t"></span><span class="target" id="structhealth__fault__stat__t_1a8510baea193b21c69ed1838a97173644"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">test_id</span></span></span><a class="headerlink" href="#_CPPv4N19health_fault_stat_t7test_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Test ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_fault_stat_t10company_idE">
+<span id="_CPPv3N19health_fault_stat_t10company_idE"></span><span id="_CPPv2N19health_fault_stat_t10company_idE"></span><span id="health_fault_stat_t::company_id__uint16_t"></span><span class="target" id="structhealth__fault__stat__t_1a685ae33c442d30cc507fa5415f536e74"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">company_id</span></span></span><a class="headerlink" href="#_CPPv4N19health_fault_stat_t10company_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Company ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_fault_stat_t11fault_arrayE">
+<span id="_CPPv3N19health_fault_stat_t11fault_arrayE"></span><span id="_CPPv2N19health_fault_stat_t11fault_arrayE"></span><span id="health_fault_stat_t::fault_array__uint8_tA"></span><span class="target" id="structhealth__fault__stat__t_1aed1c1615b1a31547d86c0ea8bddf798d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fault_array</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19health_fault_stat_t11fault_arrayE" title="Link to this definition"></a><br /></dt>
+<dd><p>Variable length fault array. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419health_period_get_t">
+<span id="_CPPv319health_period_get_t"></span><span id="_CPPv219health_period_get_t"></span><span id="health_period_get_t"></span><span class="target" id="structhealth__period__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_period_get_t</span></span></span><a class="headerlink" href="#_CPPv419health_period_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Period Get message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_period_get_t6opcodeE">
+<span id="_CPPv3N19health_period_get_t6opcodeE"></span><span id="_CPPv2N19health_period_get_t6opcodeE"></span><span id="health_period_get_t::opcode__uint8_tA"></span><span class="target" id="structhealth__period__get__t_1aa22c358efd8451f62863514bb416df2c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8034</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19health_period_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425health_period_set_unack_t">
+<span id="_CPPv325health_period_set_unack_t"></span><span id="_CPPv225health_period_set_unack_t"></span><span id="health_period_set_unack_t"></span><span class="target" id="structhealth__period__set__unack__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_period_set_unack_t</span></span></span><a class="headerlink" href="#_CPPv425health_period_set_unack_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Period Set Unacknowledged message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25health_period_set_unack_t6opcodeE">
+<span id="_CPPv3N25health_period_set_unack_t6opcodeE"></span><span id="_CPPv2N25health_period_set_unack_t6opcodeE"></span><span id="health_period_set_unack_t::opcode__uint8_tA"></span><span class="target" id="structhealth__period__set__unack__t_1a31086af632c2dedd9e123d2eb2652e08"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8036</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25health_period_set_unack_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25health_period_set_unack_t19fast_period_divisorE">
+<span id="_CPPv3N25health_period_set_unack_t19fast_period_divisorE"></span><span id="_CPPv2N25health_period_set_unack_t19fast_period_divisorE"></span><span id="health_period_set_unack_t::fast_period_divisor__uint8_t"></span><span class="target" id="structhealth__period__set__unack__t_1a4e2c057ca32a9c75a6d24d244b7754a5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fast_period_divisor</span></span></span><a class="headerlink" href="#_CPPv4N25health_period_set_unack_t19fast_period_divisorE" title="Link to this definition"></a><br /></dt>
+<dd><p>Fast period divisor. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419health_period_set_t">
+<span id="_CPPv319health_period_set_t"></span><span id="_CPPv219health_period_set_t"></span><span id="health_period_set_t"></span><span class="target" id="structhealth__period__set__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_period_set_t</span></span></span><a class="headerlink" href="#_CPPv419health_period_set_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Period Set message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_period_set_t6opcodeE">
+<span id="_CPPv3N19health_period_set_t6opcodeE"></span><span id="_CPPv2N19health_period_set_t6opcodeE"></span><span id="health_period_set_t::opcode__uint8_tA"></span><span class="target" id="structhealth__period__set__t_1ac6edfcdc19968cacada6c54a1a24bf13"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8035</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19health_period_set_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19health_period_set_t19fast_period_divisorE">
+<span id="_CPPv3N19health_period_set_t19fast_period_divisorE"></span><span id="_CPPv2N19health_period_set_t19fast_period_divisorE"></span><span id="health_period_set_t::fast_period_divisor__uint8_t"></span><span class="target" id="structhealth__period__set__t_1a4e2c057ca32a9c75a6d24d244b7754a5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fast_period_divisor</span></span></span><a class="headerlink" href="#_CPPv4N19health_period_set_t19fast_period_divisorE" title="Link to this definition"></a><br /></dt>
+<dd><p>Fast period divisor. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420health_period_stat_t">
+<span id="_CPPv320health_period_stat_t"></span><span id="_CPPv220health_period_stat_t"></span><span id="health_period_stat_t"></span><span class="target" id="structhealth__period__stat__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_period_stat_t</span></span></span><a class="headerlink" href="#_CPPv420health_period_stat_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Period Status message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20health_period_stat_t6opcodeE">
+<span id="_CPPv3N20health_period_stat_t6opcodeE"></span><span id="_CPPv2N20health_period_stat_t6opcodeE"></span><span id="health_period_stat_t::opcode__uint8_tA"></span><span class="target" id="structhealth__period__stat__t_1ad679821958da90b5af34afae6977963e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8037</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20health_period_stat_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20health_period_stat_t19fast_period_divisorE">
+<span id="_CPPv3N20health_period_stat_t19fast_period_divisorE"></span><span id="_CPPv2N20health_period_stat_t19fast_period_divisorE"></span><span id="health_period_stat_t::fast_period_divisor__uint8_t"></span><span class="target" id="structhealth__period__stat__t_1a4e2c057ca32a9c75a6d24d244b7754a5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fast_period_divisor</span></span></span><a class="headerlink" href="#_CPPv4N20health_period_stat_t19fast_period_divisorE" title="Link to this definition"></a><br /></dt>
+<dd><p>Fast period divisor. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417health_attn_get_t">
+<span id="_CPPv317health_attn_get_t"></span><span id="_CPPv217health_attn_get_t"></span><span id="health_attn_get_t"></span><span class="target" id="structhealth__attn__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_attn_get_t</span></span></span><a class="headerlink" href="#_CPPv417health_attn_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Attention Get message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17health_attn_get_t6opcodeE">
+<span id="_CPPv3N17health_attn_get_t6opcodeE"></span><span id="_CPPv2N17health_attn_get_t6opcodeE"></span><span id="health_attn_get_t::opcode__uint8_tA"></span><span class="target" id="structhealth__attn__get__t_1afa5163131923a1656fd382bd8419039f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8004</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N17health_attn_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417health_attn_set_t">
+<span id="_CPPv317health_attn_set_t"></span><span id="_CPPv217health_attn_set_t"></span><span id="health_attn_set_t"></span><span class="target" id="structhealth__attn__set__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_attn_set_t</span></span></span><a class="headerlink" href="#_CPPv417health_attn_set_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Attention Set message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17health_attn_set_t6opcodeE">
+<span id="_CPPv3N17health_attn_set_t6opcodeE"></span><span id="_CPPv2N17health_attn_set_t6opcodeE"></span><span id="health_attn_set_t::opcode__uint8_tA"></span><span class="target" id="structhealth__attn__set__t_1a214e30f49d4ce1808e2058ee32c8c416"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8005</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N17health_attn_set_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17health_attn_set_t4attnE">
+<span id="_CPPv3N17health_attn_set_t4attnE"></span><span id="_CPPv2N17health_attn_set_t4attnE"></span><span id="health_attn_set_t::attn__uint8_t"></span><span class="target" id="structhealth__attn__set__t_1a0bd571e6f3ed11fbce21a838f337200a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">attn</span></span></span><a class="headerlink" href="#_CPPv4N17health_attn_set_t4attnE" title="Link to this definition"></a><br /></dt>
+<dd><p>Attention timer value. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423health_attn_set_unack_t">
+<span id="_CPPv323health_attn_set_unack_t"></span><span id="_CPPv223health_attn_set_unack_t"></span><span id="health_attn_set_unack_t"></span><span class="target" id="structhealth__attn__set__unack__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_attn_set_unack_t</span></span></span><a class="headerlink" href="#_CPPv423health_attn_set_unack_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Attention Set Unacknowledged message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23health_attn_set_unack_t6opcodeE">
+<span id="_CPPv3N23health_attn_set_unack_t6opcodeE"></span><span id="_CPPv2N23health_attn_set_unack_t6opcodeE"></span><span id="health_attn_set_unack_t::opcode__uint8_tA"></span><span class="target" id="structhealth__attn__set__unack__t_1a7937721825e3a73e8a9229fbb03c35cd"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8006</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23health_attn_set_unack_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23health_attn_set_unack_t4attnE">
+<span id="_CPPv3N23health_attn_set_unack_t4attnE"></span><span id="_CPPv2N23health_attn_set_unack_t4attnE"></span><span id="health_attn_set_unack_t::attn__uint8_t"></span><span class="target" id="structhealth__attn__set__unack__t_1a0bd571e6f3ed11fbce21a838f337200a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">attn</span></span></span><a class="headerlink" href="#_CPPv4N23health_attn_set_unack_t4attnE" title="Link to this definition"></a><br /></dt>
+<dd><p>Attention timer value. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418health_attn_stat_t">
+<span id="_CPPv318health_attn_stat_t"></span><span id="_CPPv218health_attn_stat_t"></span><span id="health_attn_stat_t"></span><span class="target" id="structhealth__attn__stat__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">health_attn_stat_t</span></span></span><a class="headerlink" href="#_CPPv418health_attn_stat_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for Health Attention Status message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18health_attn_stat_t6opcodeE">
+<span id="_CPPv3N18health_attn_stat_t6opcodeE"></span><span id="_CPPv2N18health_attn_stat_t6opcodeE"></span><span id="health_attn_stat_t::opcode__uint8_tA"></span><span class="target" id="structhealth__attn__stat__t_1ae42623e355d9c43ad5e20266db5b2418"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8007</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18health_attn_stat_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18health_attn_stat_t4attnE">
+<span id="_CPPv3N18health_attn_stat_t4attnE"></span><span id="_CPPv2N18health_attn_stat_t4attnE"></span><span id="health_attn_stat_t::attn__uint8_t"></span><span class="target" id="structhealth__attn__stat__t_1a0bd571e6f3ed11fbce21a838f337200a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">attn</span></span></span><a class="headerlink" href="#_CPPv4N18health_attn_stat_t4attnE" title="Link to this definition"></a><br /></dt>
+<dd><p>Attention timer value. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___h_e_a_l_t_h___c_l_i_e_n_t___d_a_t_a.html" class="btn btn-neutral float-left" title="Client Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___h_e_a_l_t_h___m_o_d_e_l___i_d.html" class="btn btn-neutral float-right" title="Model ID" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

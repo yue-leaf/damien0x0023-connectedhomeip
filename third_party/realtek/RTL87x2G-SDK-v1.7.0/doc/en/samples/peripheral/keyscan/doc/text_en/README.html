@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KEYSCAN &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Manual Mode" href="../../keyscan_manual/doc/text_en/README.html" />
+    <link rel="prev" title="IR GDMA Receive" href="../../../ir/rx%2Bgdma/doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_en/README.html">Peripheral</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/general_introduction/text_en/README.html">General Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../adc/doc/text_en/README.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../aon_qdec/doc/text_en/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../can/doc/text_en/README.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../codec/doc/text_en/README.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enhtimer/doc/text_en/README.html">ENHTIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gdma/doc/text_en/README.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gpio/doc/text_en/README.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2c/doc/text_en/README.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2s/doc/text_en/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../idu/doc/text_en/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ir/doc/text_en/README.html">IR</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">KEYSCAN</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sample-list">Sample List</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../keyscan_manual/doc/text_en/README.html">Manual Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#functional-overview">Functional Overview</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#feature-list">Feature List</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#block-diagram">Block Diagram</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#scanning-process">Scanning Process</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#manual-scan-mode">Manual Scan Mode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#automatic-scan-mode">Automatic Scan Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#clock-divider">Clock Divider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lcdc/doc/text_en/README.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lpc/doc/text_en/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ppe/doc/text_en/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rtc/doc/text_en/README.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi/doc/text_en/README.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi3wire/doc/text_en/README.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../timer/doc/text_en/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../uart/doc/text_en/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wdt/doc/text_en/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_en/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">Peripheral</a></li>
+    <li class="breadcrumb-item active">KEYSCAN</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="keyscan">
+<h1>KEYSCAN<a class="headerlink" href="#keyscan" title="Link to this heading"></a></h1>
+<section id="sample-list">
+<span id="doc-sample-list-label"></span><h2>Sample List<a class="headerlink" href="#sample-list" title="Link to this heading"></a></h2>
+<p>This chapter introduces the details of the <a class="reference internal" href="../../../../../doc/glossary.html#term-KeyScan"><span class="xref std std-term">KeyScan</span></a> sample code. The RTL87x2G provides the following samples for the KeyScan peripheral.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../keyscan_manual/doc/text_en/README.html">Manual Mode</a></li>
+</ul>
+</div>
+</section>
+<section id="functional-overview">
+<h2>Functional Overview<a class="headerlink" href="#functional-overview" title="Link to this heading"></a></h2>
+<p>The RTL87x2G supports a configurable 12 rows * 20 columns key matrix with key scan. Each IO PAD could be configured as any row or column pin of key scan.
+KeyScan needs to be used with an external key matrix.</p>
+<section id="feature-list">
+<span id="keyscan-feature-list"></span><h3>Feature List<a class="headerlink" href="#feature-list" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Support 12 (row) * 20 (column) matrix scan.</p></li>
+<li><p>Configurable number of rows (1-12), columns (1-20).</p></li>
+<li><p>Support hardware debounce, configurable debounce time.</p></li>
+<li><p>Configurable scan clock.</p></li>
+<li><p>Support multi-key detection, up to 26 keys can be pressed at the same time.</p></li>
+<li><p>Support periodic scan, configurable scan period.</p></li>
+<li><p>26 bytes <a class="reference internal" href="../../../../../doc/glossary.html#term-FIFO"><span class="xref std std-term">FIFO</span></a> depth.</p></li>
+<li><p>Support auto scan and manual scan.</p></li>
+<li><p>Support all key release hardware detection.</p></li>
+</ul>
+</section>
+<section id="block-diagram">
+<h3>Block Diagram<a class="headerlink" href="#block-diagram" title="Link to this heading"></a></h3>
+<p>Here is the block diagram of Keyscan.
+When an external matrix keyboard detects a key press, the hardware will automatically scan the key information and store it in the Keyscan peripheral. The MCU firmware will then read the key information from Keyscan and perform analysis.</p>
+<figure class="align-center" id="system-block-diagram-of-keyscan">
+<img alt="../../../../../_images/keyscan_block_diagram.png" src="../../../../../_images/keyscan_block_diagram.png" />
+<figcaption>
+<p><span class="caption-text">System Block Diagram of Keyscan</span><a class="headerlink" href="#system-block-diagram-of-keyscan" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="scanning-process">
+<h3>Scanning Process<a class="headerlink" href="#scanning-process" title="Link to this heading"></a></h3>
+<p>The scanning process of Keyscan is as shown in the diagram:</p>
+<figure class="align-center" id="keyscan-clock">
+<img alt="../../../../../_images/keyscan_scan_diagram.png" src="../../../../../_images/keyscan_scan_diagram.png" />
+<figcaption>
+<p><span class="caption-text">KeyScan Scanning Diagram</span><a class="headerlink" href="#keyscan-clock" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>In idle state, all row[x] serve as input, in pull-up state, while all column[y] serve as output, outputting low level.</p></li>
+<li><p>When any key is pressed, a low level will be detected in a certain row, triggering the KeyScan hardware scanning action.</p></li>
+<li><p>After waiting for the debounce timer, the first scan begins.</p></li>
+<li><p>First, pull column[0] low, while the other columns are pulled high, and sequentially detect row[0], row[1], ..., row[N].</p></li>
+<li><p>If row[0] is detected to be pulled low, it can be confirmed that (row[0], column[0]) is pressed; otherwise, the key is not pressed. Continue scanning other rows in this manner.</p></li>
+<li><p>Switch to pulling column[1] low, the other columns are pulled high, sequentially detect row[0], row[1], ..., row[N], until the last column[N] is pulled low and the other columns are pulled high, scanning is complete.</p></li>
+<li><p>At this point, one scan is complete, and the scanning result will be filled into the Keyscan FIFO. If the <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___interrupt.html#c.KEYSCAN_INT_SCAN_END" title="KEYSCAN_INT_SCAN_END"><code class="xref c c-macro docutils literal notranslate"><span class="pre">KEYSCAN_INT_SCAN_END</span></code></a> interrupt is enabled, it will trigger this interrupt.</p></li>
+<li><p>After the scan interval time, a second global scan will be conducted, and the same operation will be performed after the scan ends.</p></li>
+<li><p>If no key press is detected during a scan, the all release timer will start counting, and all columns will be pulled low. If no row is detected to be pulled low after the all release timer finishes counting, it indicates that all keys are released at this time. If the <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___interrupt.html#c.KEYSCAN_INT_ALL_RELEASE" title="KEYSCAN_INT_ALL_RELEASE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">KEYSCAN_INT_ALL_RELEASE</span></code></a> interrupt is enabled, it will trigger this interrupt.</p></li>
+</ol>
+<p>Keyscan scanning is divided into manual scanning mode and automatic scanning mode.</p>
+<section id="manual-scan-mode">
+<h4>Manual Scan Mode<a class="headerlink" href="#manual-scan-mode" title="Link to this heading"></a></h4>
+<p>Configure <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef8scanmodeE" title="KEYSCAN_InitTypeDef::scanmode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::scanmode</span></code></a> as <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___scan___mode.html#_CPPv4N23KEYSCANScanMode_TypeDef24KeyScan_Manual_Scan_ModeE" title="KeyScan_Manual_Scan_Mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KeyScan_Manual_Scan_Mode</span></code></a> during Keyscan initialization to set Keyscan to manual scan mode.</p>
+<p>In manual scan mode, there are two ways to trigger a Keyscan scan: key trigger and register trigger.</p>
+<ul class="simple">
+<li><p>Key Trigger: After enabling Keyscan, a scan is triggered only when an external key press is detected. During initialization, configure <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef10manual_selE" title="KEYSCAN_InitTypeDef::manual_sel"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::manual_sel</span></code></a> as <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___manual___sel___mode.html#_CPPv4N25KEYSCANManualMode_TypeDef22KeyScan_Manual_Sel_KeyE" title="KeyScan_Manual_Sel_Key"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KeyScan_Manual_Sel_Key</span></code></a>.</p></li>
+<li><p>Register Trigger: After initializing Keyscan, call the <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___functions.html#_CPPv411KeyScan_CmdP15KEYSCAN_TypeDef15FunctionalState" title="KeyScan_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KeyScan_Cmd()</span></code></a> function to trigger a Keyscan scan; external keys cannot trigger a scan. During initialization, configure <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef10manual_selE" title="KEYSCAN_InitTypeDef::manual_sel"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::manual_sel</span></code></a> as <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___manual___sel___mode.html#_CPPv4N25KEYSCANManualMode_TypeDef22KeyScan_Manual_Sel_BitE" title="KeyScan_Manual_Sel_Bit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KeyScan_Manual_Sel_Bit</span></code></a>.</p></li>
+</ul>
+<p>In manual scan mode, Keyscan will perform only one scan, and upon completion, it will trigger the <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___interrupt.html#c.KEYSCAN_INT_SCAN_END" title="KEYSCAN_INT_SCAN_END"><code class="xref c c-macro docutils literal notranslate"><span class="pre">KEYSCAN_INT_SCAN_END</span></code></a> interrupt.</p>
+</section>
+<section id="automatic-scan-mode">
+<h4>Automatic Scan Mode<a class="headerlink" href="#automatic-scan-mode" title="Link to this heading"></a></h4>
+<p>Configure <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef8scanmodeE" title="KEYSCAN_InitTypeDef::scanmode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::scanmode</span></code></a> as <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___scan___mode.html#_CPPv4N23KEYSCANScanMode_TypeDef22KeyScan_Auto_Scan_ModeE" title="KeyScan_Auto_Scan_Mode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KeyScan_Auto_Scan_Mode</span></code></a> during Keyscan initialization to set Keyscan to automatic scan mode.</p>
+<p>In automatic scan mode, Keyscan is triggered by external key presses.
+The trigger mode can be modified to edge-triggered (<a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___press___detect___mode.html#_CPPv4N30KEYSCANPressDetectMode_TypeDef24KeyScan_Detect_Mode_EdgeE" title="KeyScan_Detect_Mode_Edge"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KeyScan_Detect_Mode_Edge</span></code></a>) or level-triggered (<a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___press___detect___mode.html#_CPPv4N30KEYSCANPressDetectMode_TypeDef25KeyScan_Detect_Mode_LevelE" title="KeyScan_Detect_Mode_Level"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KeyScan_Detect_Mode_Level</span></code></a>) by setting <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef10detectModeE" title="KEYSCAN_InitTypeDef::detectMode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::detectMode</span></code></a>.</p>
+<p>In automatic scan mode, Keyscan will continuously scan until no keys are pressed, which triggers the <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___interrupt.html#c.KEYSCAN_INT_ALL_RELEASE" title="KEYSCAN_INT_ALL_RELEASE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">KEYSCAN_INT_ALL_RELEASE</span></code></a> interrupt.
+The <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___interrupt.html#c.KEYSCAN_INT_SCAN_END" title="KEYSCAN_INT_SCAN_END"><code class="xref c c-macro docutils literal notranslate"><span class="pre">KEYSCAN_INT_SCAN_END</span></code></a> interrupt can be triggered multiple times.</p>
+<p>The workflow of automatic scanning is shown in the figure below.</p>
+<figure class="align-center" id="auto-scan-flow-chart">
+<img alt="../../../../../_images/keyscan_auto_mode.png" src="../../../../../_images/keyscan_auto_mode.png" />
+<figcaption>
+<p><span class="caption-text">Auto Scan Flow Chart</span><a class="headerlink" href="#auto-scan-flow-chart" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="clock-divider">
+<span id="keyscan-clock-divider"></span><h3>Clock Divider<a class="headerlink" href="#clock-divider" title="Link to this heading"></a></h3>
+<p>Peripheral clock will be divided into 2 channels.</p>
+<p>The KeyScan scan clock is generated by the frequency division of <code class="docutils literal notranslate"><span class="pre">keyscan_clk_div</span></code> .
+Scan clock = Keyscan clock source (5MHz) / <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef8clockdivE" title="KEYSCAN_InitTypeDef::clockdiv"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::clockdiv</span></code></a>.</p>
+<p>The low-level delay clock is generated by the frequency division of <code class="docutils literal notranslate"><span class="pre">keyscan_delay_div</span></code>  for use by the relevant timer.
+Delay clock = Scan clock / <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef8delayclkE" title="KEYSCAN_InitTypeDef::delayclk"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::delayclk</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">key_scan_deb_timer</span></code> is used for debounce timing, where debounce time = Delay clock * <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef11debouncecntE" title="KEYSCAN_InitTypeDef::debouncecnt"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::debouncecnt</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">key_scan_interval_timer</span></code> is used for scan interval timing, where scan interval time = Delay clock * <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef12scanIntervalE" title="KEYSCAN_InitTypeDef::scanInterval"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::scanInterval</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">key_scan_release_timer</span></code> is used for release time timing, where release time = Delay clock * <a class="reference internal" href="../../../../../doc/api_reference/group___k_e_y_s_c_a_n___exported___types.html#_CPPv4N19KEYSCAN_InitTypeDef10releasecntE" title="KEYSCAN_InitTypeDef::releasecnt"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">KEYSCAN_InitTypeDef::releasecnt</span></code></a>.</p>
+<figure class="align-center" id="id1">
+<img alt="../../../../../_images/keyscan_clock.png" src="../../../../../_images/keyscan_clock.png" />
+<figcaption>
+<p><span class="caption-text">Schematic Diagram of KeyScan Clock Divider</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../ir/rx%2Bgdma/doc/text_en/README.html" class="btn btn-neutral float-left" title="IR GDMA Receive" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../keyscan_manual/doc/text_en/README.html" class="btn btn-neutral float-right" title="Manual Mode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

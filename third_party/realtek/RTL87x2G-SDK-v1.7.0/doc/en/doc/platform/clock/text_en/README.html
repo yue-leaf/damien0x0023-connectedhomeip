@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clock Management &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Subsystems" href="../../../subsystems/text_en/README.html" />
+    <link rel="prev" title="Debug System" href="../../debug_system/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_en/README.html">Platform</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../platform_overview/text_en/README.html">Platform Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/text_en/README.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_en/README.html">Image Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flash/text_en/README.html">Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_en/README.html">PSRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../low_power_mode/text_en/README.html">Low Power Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/text_en/README.html">Security Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debug_system/text_en/README.html">Debug System</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Clock Manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clock-source-introduction">Clock Source Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#low-speed-32khz-clock">Low-Speed 32KHz Clock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#high-speed-40mhz-clock">High-Speed 40MHz Clock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ultra-fast-pll-clock">Ultra-Fast PLL Clock</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#pll1-clock">PLL1 Clock</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pll2-clock">PLL2 Clock</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clock-configuration-examples">Clock Configuration Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cpu-and-fmc-clock-configuration">CPU and FMC Clock Configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#cpu-clock-configuration">CPU Clock Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#fmc-clock-configuration">FMC Clock Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#peripheral-clock-configuration">Peripheral Clock Configuration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#ethernet-clock-configuration">Ethernet Clock Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#timer-clock-configuration">Timer Clock Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clock-management-apis">Clock Management APIs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_en/README.html">Platform</a></li>
+    <li class="breadcrumb-item active">Clock Management</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="clock-management">
+<h1>Clock Management<a class="headerlink" href="#clock-management" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The RTL87x2G supports multiple clock sources, allowing the system and external modules to choose different clock sources to achieve the required clock frequencies.</p>
+<p>This document introduces the clock configuration methods for the RTL87x2G chip, mainly including the following sections:</p>
+<ul class="simple">
+<li><p>Supported selectable clock sources: low-speed 32KHz clock, high-speed 40MHz clock, and <a class="reference internal" href="../../../glossary.html#term-PLL"><span class="xref std std-term">PLL</span></a> clocks.</p></li>
+<li><p>Clock configuration examples for different modules.</p></li>
+<li><p>Interfaces related to clock configuration.</p></li>
+</ul>
+<p>The steps for clock configuration are as follows:</p>
+<ul class="simple">
+<li><p>Configure the frequency of the clock source.</p></li>
+<li><p>Select the clock source used by the system and external modules.</p></li>
+<li><p>Configure the necessary frequency divider for the system and external modules, and output the clock.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Modifying the frequency of the clock source for one module may affect the clock for other modules using the same clock source.</p>
+</div>
+</section>
+<section id="clock-source-introduction">
+<h2>Clock Source Introduction<a class="headerlink" href="#clock-source-introduction" title="Link to this heading"></a></h2>
+<p>The support of various clock sources for different modules is shown below.</p>
+<table class="docutils align-center" id="the-support-of-various-clock-sources-for-different-modules">
+<caption><span class="caption-text">The Support of Various Clock Sources for Different Modules</span><a class="headerlink" href="#the-support-of-various-clock-sources-for-different-modules" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+<col style="width: 5.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Clock Source</p></th>
+<th class="head"><p>CPU</p></th>
+<th class="head"><p>FMC</p></th>
+<th class="head"><p>RTC</p></th>
+<th class="head"><p>QDEC</p></th>
+<th class="head"><p>WDT</p></th>
+<th class="head"><p>TRNG</p></th>
+<th class="head"><p>Segment LCD</p></th>
+<th class="head"><p>Display</p></th>
+<th class="head"><p>SDHC</p></th>
+<th class="head"><p>PKE</p></th>
+<th class="head"><p>Ethernet</p></th>
+<th class="head"><p>USB</p></th>
+<th class="head"><p>UART</p></th>
+<th class="head"><p>I2C</p></th>
+<th class="head"><p>Timer</p></th>
+<th class="head"><p>Enhanced Timer</p></th>
+<th class="head"><p>IR</p></th>
+<th class="head"><p>SPI0 Master</p></th>
+<th class="head"><p>SPI0 Slave</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>32KHz Clock</p></th>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>40MHz Clock</p></th>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>PLL Clock</p></th>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>PLL1</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+</tr>
+</tbody>
+</table>
+<section id="low-speed-32khz-clock">
+<h3>Low-Speed 32KHz Clock<a class="headerlink" href="#low-speed-32khz-clock" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>The low-speed 32KHz clock remains active in <a class="reference internal" href="../../../glossary.html#term-DLPS"><span class="xref std std-term">DLPS</span></a> mode.</p></li>
+<li><p>The frequency of the 32KHz clock source cannot be modified.</p></li>
+</ol>
+</section>
+<section id="high-speed-40mhz-clock">
+<h3>High-Speed 40MHz Clock<a class="headerlink" href="#high-speed-40mhz-clock" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>The high-speed 40MHz clock cannot be maintained in DLPS mode.</p></li>
+<li><p>The frequency of the 40MHz clock source cannot be modified.</p></li>
+</ol>
+</section>
+<section id="ultra-fast-pll-clock">
+<span id="platform-pll-clock-en"></span><h3>Ultra-Fast PLL Clock<a class="headerlink" href="#ultra-fast-pll-clock" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>The ultra-fast PLL clock cannot be maintained in DLPS mode.</p></li>
+<li><p>The frequency of the PLL clock source can be changed.</p></li>
+</ol>
+<section id="pll1-clock">
+<h4>PLL1 Clock<a class="headerlink" href="#pll1-clock" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p>The range of the PLL1 clock is 400M - 500MHz, with a step size of 20MHz. The current default frequency is 500MHz.</p></li>
+<li><p>PLL1 clock output is shown in the figure below, and the PLL1 source frequency is CKO_PLL1_VCO.</p>
+<figure class="align-center" id="pll1-clock-output">
+<a class="reference internal image-reference" href="../../../../_images/PLL1.PNG"><img alt="../../../../_images/PLL1.PNG" src="../../../../_images/PLL1.PNG" style="width: 1032.0px; height: 491.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">PLL1 Clock Output</span><a class="headerlink" href="#pll1-clock-output" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<p>PLL1 can output four clocks, the output frequency can be generated by CKO_PLL1_VCO.</p>
+<ul class="simple">
+<li><p>CKO_PLL1_CPU: Can only be used as the clock source for the CPU and <a class="reference internal" href="../../../glossary.html#term-FMC"><span class="xref std std-term">FMC</span></a>, obtained by dividing CKO_PLL1_VCO by 1/2.</p></li>
+<li><p>CKO_PLL1_PERI: Can be used as the clock source for most peripherals, obtained by dividing CKO_PLL1_VCO by 1/2, 1/4, 1/5.</p></li>
+<li><p>CKO_PLL1_ETH: Can only be used as the clock source for Ethernet, obtained by dividing CKO_PLL1_VCO (fixed at 500MHz) by 1/2, 1/4.</p></li>
+<li><p>CKO_PLL1_ETH50M: Can only be used as the clock source for Ethernet, obtained by dividing CKO_PLL1_VCO (fixed at 500MHz) by 1/10.</p></li>
+</ul>
+</section>
+<section id="pll2-clock">
+<h4>PLL2 Clock<a class="headerlink" href="#pll2-clock" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p>The range of the PLL2 clock is 80M - 240MHz. The current default frequency is 160MHz.</p></li>
+<li><p>PLL2 clock output is shown in the figure below, and the PLL2 source frequency is CKO_PLL2_VCO.</p>
+<figure class="align-center" id="pll2-clock-output">
+<a class="reference internal image-reference" href="../../../../_images/PLL2.PNG"><img alt="../../../../_images/PLL2.PNG" src="../../../../_images/PLL2.PNG" style="width: 961.0px; height: 215.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">PLL2 Clock Output</span><a class="headerlink" href="#pll2-clock-output" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<p>PLL2 only outputs one clock, the output frequency can be generated by CKO_PLL2_VCO.</p>
+<ul class="simple">
+<li><p>CKO_PLL2: It can be used as the clock source for the CPU, FMC, and Peripherals, derived through CKO_PLL2_VCO frequency division of 1/1, 1/2.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="clock-configuration-examples">
+<h2>Clock Configuration Examples<a class="headerlink" href="#clock-configuration-examples" title="Link to this heading"></a></h2>
+<section id="cpu-and-fmc-clock-configuration">
+<h3>CPU and FMC Clock Configuration<a class="headerlink" href="#cpu-and-fmc-clock-configuration" title="Link to this heading"></a></h3>
+<section id="cpu-clock-configuration">
+<h4>CPU Clock Configuration<a class="headerlink" href="#cpu-clock-configuration" title="Link to this heading"></a></h4>
+<p>The default CPU clock source is a 40MHz clock. To increase the clock frequency, choose CKO_PLL1_CPU and CKO_PLL2 as the clock source. The maximum CPU clock can be configured to 125MHz.</p>
+<ol class="arabic">
+<li><p>The CPU needs to configure the CPU clock by calling <a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv415pm_cpu_freq_set8uint32_tP8uint32_t" title="pm_cpu_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_cpu_freq_set()</span></code></a> .</p></li>
+<li><p>Configure the CPU clock to 125MHz.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">actual_mhz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">pm_cpu_freq_set</span><span class="p">(</span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">actual_mhz</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The interface automatically implements the following configuration: PLL1 Clock is selected as 500MHz, CKO_PLL1_CPU is 250MHz. CPU selects CKO_PLL1_CPU as the clock source with a divider of 1/2.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="fmc-clock-configuration">
+<span id="fmc-clock-switch-en"></span><h4>FMC Clock Configuration<a class="headerlink" href="#fmc-clock-configuration" title="Link to this heading"></a></h4>
+<p>The default FMC clock source is 40MHz. To increase the clock frequency, you can choose CKO_PLL1_CPU and CKO_PLL2 as the clock source.</p>
+<p>FMC needs to select the corresponding interface based on the specific module. Below is an example for Flash Nor.</p>
+<ol class="arabic">
+<li><p>Flash requires configuring the clock based on the specific Flash Nor ID by calling <a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv426fmc_flash_nor_clock_switch18FLASH_NOR_IDX_TYPE8uint32_tP8uint32_t" title="fmc_flash_nor_clock_switch"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">fmc_flash_nor_clock_switch()</span></code></a>.</p></li>
+<li><p>For Flash Nor, select FLASH_NOR_IDX_SPIC0 ID and configure the clock to 160MHz.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">actual_mhz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">fmc_flash_nor_clock_switch</span><span class="p">(</span><span class="n">FLASH_NOR_IDX_SPIC0</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">actual_mhz</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The interface automatically implements the following configuration: selects 160MHz for PLL2 Clock, sets CKO_PLL2 to 160MHz. SPIC0 selects CKO_PLL2 as the clock source.</p>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="peripheral-clock-configuration">
+<h3>Peripheral Clock Configuration<a class="headerlink" href="#peripheral-clock-configuration" title="Link to this heading"></a></h3>
+<section id="ethernet-clock-configuration">
+<h4>Ethernet Clock Configuration<a class="headerlink" href="#ethernet-clock-configuration" title="Link to this heading"></a></h4>
+<p>When using the Ethernet clock, PLL1 Clock is fixed at 500MHz.</p>
+<p>The Ethernet clock source can only select CKO_PLL1_ETH (125MHz, 250MHz) or CKO_PLL1_ETH50M (50MHz).</p>
+<ol class="arabic">
+<li><p>Configure the required frequency of the clock source for Ethernet by calling <a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv420pm_ethernet_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_ethernet_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_ethernet_freq_set()</span></code></a>.</p></li>
+<li><p>Configure the Ethernet clock frequency to 125MHz (only 50MHz, 125MHz, 250MHz can be selected).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pm_ethernet_freq_set</span><span class="p">(</span><span class="n">CLK_PLL1_SRC</span><span class="p">,</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w"> </span><span class="mi">125</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The interface automatically implements the following configuration: PLL1 clock is set to 500MHz, CKO_PLL1_ETH is 125MHz. Parameter required_mhz is for recording purposes only.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="timer-clock-configuration">
+<h4>Timer Clock Configuration<a class="headerlink" href="#timer-clock-configuration" title="Link to this heading"></a></h4>
+<p>The clock source for the Timer can be selected from 32KHz clock, 40MHz clock, CKO_PLL1_PERI of PLL1 clock, CKO_PLL2 of PLL2 clock.</p>
+<p>Currently, the interface does not support modifying the clock frequencies of PLL1 and PLL2. The PLL1 clock frequency is fixed at 500MHz, and the PLL2 clock frequency is fixed at 160MHz. CKO_PLL1_PERI can only be selected from 100MHz, 125MHz, 250MHz.</p>
+<ol class="arabic">
+<li><p>The Timer needs to configure the frequency of the selected clock source by calling <a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv417pm_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_timer_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_timer_freq_set()</span></code></a>.</p></li>
+<li><p>The Timer sets the frequency of CKO_PLL1_PERI to 250MHz.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pm_timer_freq_set</span><span class="p">(</span><span class="n">CLK_PLL1_SRC</span><span class="p">,</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w"> </span><span class="mi">125</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The interface automatically implements the following configuration: PLL1 clock selects 500MHz, CKO_PLL1_PERI = 250MHz. Parameter required_mhz is for record-keeping only.</p>
+</div>
+</li>
+<li><p>The Timer calls <a class="reference internal" href="../../../api_reference/group___t_i_m___exported___functions.html#_CPPv414TIM_StructInitP23TIM_TimeBaseInitTypeDef" title="TIM_StructInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">TIM_StructInit()</span></code></a> and <a class="reference internal" href="../../../api_reference/group___t_i_m___exported___functions.html#_CPPv416TIM_TimeBaseInitP11TIM_TypeDefP23TIM_TimeBaseInitTypeDef" title="TIM_TimeBaseInit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">TIM_TimeBaseInit()</span></code></a>, to select CKO_PLL1_PERI as the clock source for the Timer, and set the divider to 1/2. The final output frequency is 125MHz.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TIM_TimeBaseInitTypeDef</span><span class="w"> </span><span class="n">TIM_InitStruct</span><span class="p">;</span>
+<span class="n">TIM_StructInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TIM_InitStruct</span><span class="p">);</span>
+<span class="n">TIM_InitStruct</span><span class="p">.</span><span class="n">TIM_ClockSrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CK_PLL1_TIMER</span><span class="p">;</span>
+<span class="n">TIM_InitStruct</span><span class="p">.</span><span class="n">TIM_SOURCE_DIV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TIM_CLOCK_DIVIDER_2</span><span class="p">;</span>
+<span class="n">TIM_TimeBaseInit</span><span class="p">(</span><span class="n">TIMER_NUM</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">TIM_InitStruct</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="clock-management-apis">
+<h2>Clock Management APIs<a class="headerlink" href="#clock-management-apis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv415pm_cpu_freq_set8uint32_tP8uint32_t" title="pm_cpu_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_cpu_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv415pm_cpu_freq_getP8uint32_t" title="pm_cpu_freq_get"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_cpu_freq_get()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv420pm_cpu_slow_freq_set8uint32_t" title="pm_cpu_slow_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_cpu_slow_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv426fmc_flash_nor_clock_switch18FLASH_NOR_IDX_TYPE8uint32_tP8uint32_t" title="fmc_flash_nor_clock_switch"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">fmc_flash_nor_clock_switch()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv422fmc_psram_clock_switch14PSRAM_IDX_TYPE8uint32_tP8uint32_t" title="fmc_psram_clock_switch"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">fmc_psram_clock_switch()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv419pm_display_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_display_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_display_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv421pm_display_freq_unset16PLL_CLK_SRC_TYPE" title="pm_display_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_display_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv416pm_sdhc_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_sdhc_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_sdhc_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv418pm_sdhc_freq_unset16PLL_CLK_SRC_TYPE" title="pm_sdhc_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_sdhc_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv415pm_pke_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_pke_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_pke_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv417pm_pke_freq_unset16PLL_CLK_SRC_TYPE" title="pm_pke_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_pke_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv420pm_ethernet_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_ethernet_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_ethernet_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv422pm_ethernet_freq_unset16PLL_CLK_SRC_TYPE" title="pm_ethernet_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_ethernet_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv415pm_usb_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_usb_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_usb_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv417pm_usb_freq_unset16PLL_CLK_SRC_TYPE" title="pm_usb_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_usb_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv417pm_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_timer_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_timer_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv419pm_timer_freq_unset16PLL_CLK_SRC_TYPE" title="pm_timer_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_timer_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv426pm_enhanced_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_enhanced_timer_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_enhanced_timer_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv428pm_enhanced_timer_freq_unset16PLL_CLK_SRC_TYPE" title="pm_enhanced_timer_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_enhanced_timer_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv414pm_ir_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_ir_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_ir_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv416pm_ir_freq_unset16PLL_CLK_SRC_TYPE" title="pm_ir_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_ir_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv423pm_spi0_master_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_spi0_master_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_spi0_master_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv425pm_spi0_master_freq_unset16PLL_CLK_SRC_TYPE" title="pm_spi0_master_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_spi0_master_freq_unset()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv422pm_spi0_slave_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="pm_spi0_slave_freq_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_spi0_slave_freq_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___c_l_o_c_k___exported___functions.html#_CPPv424pm_spi0_slave_freq_unset16PLL_CLK_SRC_TYPE" title="pm_spi0_slave_freq_unset"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pm_spi0_slave_freq_unset()</span></code></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../debug_system/text_en/README.html" class="btn btn-neutral float-left" title="Debug System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../subsystems/text_en/README.html" class="btn btn-neutral float-right" title="Subsystems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

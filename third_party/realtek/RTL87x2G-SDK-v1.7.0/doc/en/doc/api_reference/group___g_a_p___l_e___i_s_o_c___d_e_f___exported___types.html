@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GAP LE Isochronous Channels Definition Exported Types &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="GAP LE PA ADV Module" href="group___g_a_p___l_e___p_a___a_d_v.html" />
+    <link rel="prev" title="LE Isochronous Channels Definition Setup Data Path Data Path ID Flag" href="group___l_e___i_s_o_c___d_e_f___s_e_t_u_p___d_a_t_a___p_a_t_h___d_a_t_a___p_a_t_h___i_d.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___b_t___d_i_r_e_c_t___m_s_g.html">Bluetooth Direct Message</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___b_t___d_e_f.html">Bluetooth Related Definition</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___c_o_m_m_o_n___m_o_d_u_l_e.html">GAP Common Module</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___g_a_p___l_e.html">GAP LE Module</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___b_r_o_a_d_c_a_s_t_e_r___role.html">GAP Broadcaster Role</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___c_b___m_s_g___m_o_d_u_l_e.html">GAP Callback Message</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___e_c_f_c___m_o_d_u_l_e.html">GAP ECFC Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___c_h_a_n_n_e_l___m_o_d_u_l_e.html">GAP L2CAP Channel Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___a_o_x___c_o_n_n.html">GAP LE AoA/AoD Connection Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___a_o_x___c_o_n_n_l_e_s_s___r_e_c_e_i_v_e_r.html">GAP LE AoA/AoD Connectionless Receiver Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___a_o_x___c_o_n_n_l_e_s_s___t_r_a_n_s_m_i_t_t_e_r.html">GAP LE AoA/AoD Connectionless Transmitter Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___a_o_x.html">GAP LE AoA/AoD Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___b_i_g___m_g_r.html">GAP LE BIG Mgr Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___bond___manager.html">GAP LE Bond Manager</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_i_g___m_g_r.html">GAP LE CIG Mgr Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_o_m_m_o_n.html">GAP LE Common Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_o_n_f_i_g.html">GAP LE Config Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_o_n_n_e_c_t_i_o_n___m_o_d_u_l_e.html">GAP LE Connection Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_r_e_d_i_t___b_a_s_e_d___c_o_n_n.html">GAP LE Credit Based Connection Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___d_t_m.html">GAP LE Direct Test Mode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___e_x_t_e_n_d_e_d___a_d_v.html">GAP LE Extended ADV Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___e_x_t_e_n_d_e_d___s_c_a_n.html">GAP LE Extended Scan Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___i_s_o___d_a_t_a.html">GAP LE ISO Data Module</a></li>
+<li class="toctree-l6 current"><a class="reference internal" href="group___g_a_p___l_e___i_s_o_c___d_e_f.html">GAP LE Isochronous Channels Definition Module</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___macros.html">GAP LE Isochronous Channels Definition Exported Macros</a></li>
+<li class="toctree-l7 current"><a class="current reference internal" href="#">GAP LE Isochronous Channels Definition Exported Types</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv413T_ISOCH_STATE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_STATE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N13T_ISOCH_STATE16ISOCH_STATE_IDLEE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_STATE::ISOCH_STATE_IDLE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N13T_ISOCH_STATE22ISOCH_STATE_CONNECTINGE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_STATE::ISOCH_STATE_CONNECTING</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N13T_ISOCH_STATE16ISOCH_STATE_CONNE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_STATE::ISOCH_STATE_CONN</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N13T_ISOCH_STATE25ISOCH_STATE_DISCONNECTINGE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_STATE::ISOCH_STATE_DISCONNECTING</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N13T_ISOCH_STATE29ISOCH_STATE_CONNECTING_CANCELE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_STATE::ISOCH_STATE_CONNECTING_CANCEL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv412T_ISOCH_ROLE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_ROLE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_ROLE20ISOCH_ROLE_INITIATORE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_ROLE::ISOCH_ROLE_INITIATOR</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_ROLE19ISOCH_ROLE_ACCEPTORE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_ROLE::ISOCH_ROLE_ACCEPTOR</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv412T_ISOCH_INFO"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO5stateE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO4roleE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::role</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO15data_path_flagsE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::data_path_flags</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO21data_path_adding_pathE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::data_path_adding_path</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO16data_path_addingE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::data_path_adding</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO23data_path_removing_pathE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::data_path_removing_path</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO18data_path_removingE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::data_path_removing</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO14cig_sync_delayE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::cig_sync_delay</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO14cis_sync_delayE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::cis_sync_delay</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO24transport_latency_m_to_sE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::transport_latency_m_to_s</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO24transport_latency_s_to_mE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::transport_latency_s_to_m</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO10phy_m_to_sE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::phy_m_to_s</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO10phy_s_to_mE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::phy_s_to_m</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO3nseE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::nse</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO9bn_m_to_sE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::bn_m_to_s</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO9bn_s_to_mE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::bn_s_to_m</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO9ft_m_to_sE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::ft_m_to_s</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO9ft_s_to_mE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::ft_s_to_m</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO14max_pdu_m_to_sE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::max_pdu_m_to_s</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO14max_pdu_s_to_mE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::max_pdu_s_to_m</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO12iso_intervalE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::iso_interval</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO24acceptor_config_sdu_flagE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::acceptor_config_sdu_flag</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO19sdu_interval_m_to_sE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::sdu_interval_m_to_s</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO19sdu_interval_s_to_mE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::sdu_interval_s_to_m</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO14max_sdu_m_to_sE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::max_sdu_m_to_s</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_ISOCH_INFO14max_sdu_s_to_mE"><code class="docutils literal notranslate"><span class="pre">T_ISOCH_INFO::max_sdu_s_to_m</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___p_a___a_d_v.html">GAP LE PA ADV Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___p_a___s_y_n_c.html">GAP LE PA Sync Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___p_a_s_t___r_e_c_i_p_i_e_n_t.html">GAP LE PAST Recipient</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___p_a_s_t___s_e_n_d_e_r.html">GAP LE PAST Sender Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___p_r_i_v_a_c_y___m_o_d_u_l_e.html">GAP LE Privacy</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___r_f.html">GAP LE RF Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s.html">GAP LE Related Definitions</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___s_t_o_r_a_g_e.html">GAP LE Storage</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___v_e_n_d_o_r.html">GAP LE Vendor</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___m_s_g___m_o_d_u_l_e.html">GAP Message</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___observer___role.html">GAP Observer Role</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___g_a_t_t___s_e_r_v_i_c_e.html">GAP and GATT Inbox Services</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___c_l_i_e_n_t___a_p_i.html">GATT Client API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___c_o_m_m_o_n.html">GATT Common</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___a_p_i.html">GATT Server API</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_t___host.html">Bluetooth Host</a></li>
+        <li class="breadcrumb-item"><a href="group___g_a_p___l_e.html">GAP LE Module</a></li>
+        <li class="breadcrumb-item"><a href="group___g_a_p___l_e___i_s_o_c___d_e_f.html">GAP LE Isochronous Channels Definition Module</a></li>
+    <li class="breadcrumb-item active">GAP LE Isochronous Channels Definition Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gap-le-isochronous-channels-definition-exported-types">
+<h1>GAP LE Isochronous Channels Definition Exported Types<a class="headerlink" href="#gap-le-isochronous-channels-definition-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">GAP_LE_ISOC_DEF_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv413T_ISOCH_STATE">
+<span id="_CPPv313T_ISOCH_STATE"></span><span id="_CPPv213T_ISOCH_STATE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ga5953a571896127326e3766a61fa86451"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_ISOCH_STATE</span></span></span><a class="headerlink" href="#_CPPv413T_ISOCH_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>GAP LE Isochronous Channels CIS Connection State. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_ISOCH_STATE16ISOCH_STATE_IDLEE">
+<span id="_CPPv3N13T_ISOCH_STATE16ISOCH_STATE_IDLEE"></span><span id="_CPPv2N13T_ISOCH_STATE16ISOCH_STATE_IDLEE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1gga5953a571896127326e3766a61fa86451a03668045fe126ebfed05ac65a69e7320"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ISOCH_STATE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N13T_ISOCH_STATE16ISOCH_STATE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>CIS idle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_ISOCH_STATE22ISOCH_STATE_CONNECTINGE">
+<span id="_CPPv3N13T_ISOCH_STATE22ISOCH_STATE_CONNECTINGE"></span><span id="_CPPv2N13T_ISOCH_STATE22ISOCH_STATE_CONNECTINGE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1gga5953a571896127326e3766a61fa86451a1edbae8b77cd016c5c4ab790bf645c95"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ISOCH_STATE_CONNECTING</span></span></span><a class="headerlink" href="#_CPPv4N13T_ISOCH_STATE22ISOCH_STATE_CONNECTINGE" title="Link to this definition"></a><br /></dt>
+<dd><p>CIS connecting. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_ISOCH_STATE16ISOCH_STATE_CONNE">
+<span id="_CPPv3N13T_ISOCH_STATE16ISOCH_STATE_CONNE"></span><span id="_CPPv2N13T_ISOCH_STATE16ISOCH_STATE_CONNE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1gga5953a571896127326e3766a61fa86451a139437c9b7bedd826eb8e268c12ccc21"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ISOCH_STATE_CONN</span></span></span><a class="headerlink" href="#_CPPv4N13T_ISOCH_STATE16ISOCH_STATE_CONNE" title="Link to this definition"></a><br /></dt>
+<dd><p>CIS connected. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_ISOCH_STATE25ISOCH_STATE_DISCONNECTINGE">
+<span id="_CPPv3N13T_ISOCH_STATE25ISOCH_STATE_DISCONNECTINGE"></span><span id="_CPPv2N13T_ISOCH_STATE25ISOCH_STATE_DISCONNECTINGE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1gga5953a571896127326e3766a61fa86451ab074320cba7fb939e907df66930750e8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ISOCH_STATE_DISCONNECTING</span></span></span><a class="headerlink" href="#_CPPv4N13T_ISOCH_STATE25ISOCH_STATE_DISCONNECTINGE" title="Link to this definition"></a><br /></dt>
+<dd><p>CIS disconnecting. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N13T_ISOCH_STATE29ISOCH_STATE_CONNECTING_CANCELE">
+<span id="_CPPv3N13T_ISOCH_STATE29ISOCH_STATE_CONNECTING_CANCELE"></span><span id="_CPPv2N13T_ISOCH_STATE29ISOCH_STATE_CONNECTING_CANCELE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1gga5953a571896127326e3766a61fa86451a03d8ee7e6d0cfc2572deca8982533043"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ISOCH_STATE_CONNECTING_CANCEL</span></span></span><a class="headerlink" href="#_CPPv4N13T_ISOCH_STATE29ISOCH_STATE_CONNECTING_CANCELE" title="Link to this definition"></a><br /></dt>
+<dd><p>Cancel CIS connecting. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv412T_ISOCH_ROLE">
+<span id="_CPPv312T_ISOCH_ROLE"></span><span id="_CPPv212T_ISOCH_ROLE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1gacfa61c950a8f11c8b3a402c3ac4b1550"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_ISOCH_ROLE</span></span></span><a class="headerlink" href="#_CPPv412T_ISOCH_ROLE" title="Link to this definition"></a><br /></dt>
+<dd><p>GAP LE Isochronous Channels CIS role. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_ROLE20ISOCH_ROLE_INITIATORE">
+<span id="_CPPv3N12T_ISOCH_ROLE20ISOCH_ROLE_INITIATORE"></span><span id="_CPPv2N12T_ISOCH_ROLE20ISOCH_ROLE_INITIATORE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550a576636b244cd0936ef442d1c3c053949"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ISOCH_ROLE_INITIATOR</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_ROLE20ISOCH_ROLE_INITIATORE" title="Link to this definition"></a><br /></dt>
+<dd><p>CIS - Central role. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_ROLE19ISOCH_ROLE_ACCEPTORE">
+<span id="_CPPv3N12T_ISOCH_ROLE19ISOCH_ROLE_ACCEPTORE"></span><span id="_CPPv2N12T_ISOCH_ROLE19ISOCH_ROLE_ACCEPTORE"></span><span class="target" id="group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550aad1f3e1c9ff0697a7732fe4c1d1b1788"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ISOCH_ROLE_ACCEPTOR</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_ROLE19ISOCH_ROLE_ACCEPTORE" title="Link to this definition"></a><br /></dt>
+<dd><p>CIS - Peripheral role. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412T_ISOCH_INFO">
+<span id="_CPPv312T_ISOCH_INFO"></span><span id="_CPPv212T_ISOCH_INFO"></span><span id="T_ISOCH_INFO"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_ISOCH_INFO</span></span></span><a class="headerlink" href="#_CPPv412T_ISOCH_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>Definition of LE Isochronous Channels CIS connection handle. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO5stateE">
+<span id="_CPPv3N12T_ISOCH_INFO5stateE"></span><span id="_CPPv2N12T_ISOCH_INFO5stateE"></span><span id="T_ISOCH_INFO::state__T_ISOCH_STATE"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a76e2f5c320533c090980c423c329d6b2"></span><a class="reference internal" href="#_CPPv413T_ISOCH_STATE" title="T_ISOCH_STATE"><span class="n"><span class="pre">T_ISOCH_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO5stateE" title="Link to this definition"></a><br /></dt>
+<dd><p>CIS Connection State. <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ga5953a571896127326e3766a61fa86451"><span class="std std-ref">T_ISOCH_STATE</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO4roleE">
+<span id="_CPPv3N12T_ISOCH_INFO4roleE"></span><span id="_CPPv2N12T_ISOCH_INFO4roleE"></span><span id="T_ISOCH_INFO::role__T_ISOCH_ROLE"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a87de8a8f0b9937287d550ca971a834ad"></span><a class="reference internal" href="#_CPPv412T_ISOCH_ROLE" title="T_ISOCH_ROLE"><span class="n"><span class="pre">T_ISOCH_ROLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">role</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO4roleE" title="Link to this definition"></a><br /></dt>
+<dd><p>CIS role. <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ga5953a571896127326e3766a61fa86451"><span class="std std-ref">T_ISOCH_STATE</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO15data_path_flagsE">
+<span id="_CPPv3N12T_ISOCH_INFO15data_path_flagsE"></span><span id="_CPPv2N12T_ISOCH_INFO15data_path_flagsE"></span><span id="T_ISOCH_INFO::data_path_flags__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a2ee9a5ab3329a54a09ffa2f9d7abac03"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_path_flags</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO15data_path_flagsE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify which directions have been configured. <a class="reference internal" href="group___l_e___i_s_o_c___d_e_f___d_a_t_a___p_a_t_h___d_i_r_e_c_t_i_o_n___f_l_a_g.html#group___l_e___i_s_o_c___d_e_f___d_a_t_a___p_a_t_h___d_i_r_e_c_t_i_o_n___f_l_a_g"><span class="std std-ref">LE Isochronous Channels Definition Data Path Direction Flag</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO21data_path_adding_pathE">
+<span id="_CPPv3N12T_ISOCH_INFO21data_path_adding_pathE"></span><span id="_CPPv2N12T_ISOCH_INFO21data_path_adding_pathE"></span><span id="T_ISOCH_INFO::data_path_adding_path__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1ae2542ed1185513ed52e3ab9ebcd66ae7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_path_adding_path</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO21data_path_adding_pathE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___l_e___i_s_o_c___d_e_f___s_e_t_u_p___d_a_t_a___p_a_t_h___d_a_t_a___p_a_t_h___d_i_r_e_c_t_i_o_n.html#group___l_e___i_s_o_c___d_e_f___s_e_t_u_p___d_a_t_a___p_a_t_h___d_a_t_a___p_a_t_h___d_i_r_e_c_t_i_o_n"><span class="std std-ref">LE Isochronous Channels Definition Setup Data Path Data Path Direction Flag</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO16data_path_addingE">
+<span id="_CPPv3N12T_ISOCH_INFO16data_path_addingE"></span><span id="_CPPv2N12T_ISOCH_INFO16data_path_addingE"></span><span id="T_ISOCH_INFO::data_path_adding__b"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1aa1d541b88ef44d570da73eff6f7c00a8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_path_adding</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO16data_path_addingE" title="Link to this definition"></a><br /></dt>
+<dd><p>Indicate whether data path is setup. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO23data_path_removing_pathE">
+<span id="_CPPv3N12T_ISOCH_INFO23data_path_removing_pathE"></span><span id="_CPPv2N12T_ISOCH_INFO23data_path_removing_pathE"></span><span id="T_ISOCH_INFO::data_path_removing_path__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1ae268800b13cdadd5b2c715106c06cf8d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_path_removing_path</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO23data_path_removing_pathE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify which directions are to have the data path removed. <a class="reference internal" href="group___l_e___i_s_o_c___d_e_f___d_a_t_a___p_a_t_h___d_i_r_e_c_t_i_o_n___f_l_a_g.html#group___l_e___i_s_o_c___d_e_f___d_a_t_a___p_a_t_h___d_i_r_e_c_t_i_o_n___f_l_a_g"><span class="std std-ref">LE Isochronous Channels Definition Data Path Direction Flag</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO18data_path_removingE">
+<span id="_CPPv3N12T_ISOCH_INFO18data_path_removingE"></span><span id="_CPPv2N12T_ISOCH_INFO18data_path_removingE"></span><span id="T_ISOCH_INFO::data_path_removing__b"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a8486c4f517c1ef7eadec007d00261f5d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_path_removing</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO18data_path_removingE" title="Link to this definition"></a><br /></dt>
+<dd><p>Indicate whether data path is removing. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO14cig_sync_delayE">
+<span id="_CPPv3N12T_ISOCH_INFO14cig_sync_delayE"></span><span id="_CPPv2N12T_ISOCH_INFO14cig_sync_delayE"></span><span id="T_ISOCH_INFO::cig_sync_delay__uint32_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1aa0a0ca9fc6a21ccdc7beb5001e1356da"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cig_sync_delay</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO14cig_sync_delayE" title="Link to this definition"></a><br /></dt>
+<dd><p>The maximum time, in microseconds, for transmission of PDUs of all CISes in a CIG event.<ul class="simple">
+<li><p>Range: 0x0000EA to 0x7FFFFF. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO14cis_sync_delayE">
+<span id="_CPPv3N12T_ISOCH_INFO14cis_sync_delayE"></span><span id="_CPPv2N12T_ISOCH_INFO14cis_sync_delayE"></span><span id="T_ISOCH_INFO::cis_sync_delay__uint32_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1ac1008e5379881c6048bfb4ffadab874c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cis_sync_delay</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO14cis_sync_delayE" title="Link to this definition"></a><br /></dt>
+<dd><p>The maximum time, in microseconds, for transmission of PDUs of the specified CIS in a CIG event.<ul class="simple">
+<li><p>Range: 0x0000EA to 0x7FFFFF. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO24transport_latency_m_to_sE">
+<span id="_CPPv3N12T_ISOCH_INFO24transport_latency_m_to_sE"></span><span id="_CPPv2N12T_ISOCH_INFO24transport_latency_m_to_sE"></span><span id="T_ISOCH_INFO::transport_latency_m_to_s__uint32_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1ab9df9bf918fb0741112102fee468b072"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transport_latency_m_to_s</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO24transport_latency_m_to_sE" title="Link to this definition"></a><br /></dt>
+<dd><p>The actual transport latency, in microseconds, from Central to Peripheral.<ul class="simple">
+<li><p>Range: 0x0000EA to 0x7FFFFF. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO24transport_latency_s_to_mE">
+<span id="_CPPv3N12T_ISOCH_INFO24transport_latency_s_to_mE"></span><span id="_CPPv2N12T_ISOCH_INFO24transport_latency_s_to_mE"></span><span id="T_ISOCH_INFO::transport_latency_s_to_m__uint32_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a5adcb7cd7cc1ef6e3772ba9f096b7744"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transport_latency_s_to_m</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO24transport_latency_s_to_mE" title="Link to this definition"></a><br /></dt>
+<dd><p>The actual transport latency, in microseconds, from Peripheral to Central.<ul class="simple">
+<li><p>Range: 0x0000EA to 0x7FFFFF. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO10phy_m_to_sE">
+<span id="_CPPv3N12T_ISOCH_INFO10phy_m_to_sE"></span><span id="_CPPv2N12T_ISOCH_INFO10phy_m_to_sE"></span><span id="T_ISOCH_INFO::phy_m_to_s__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1abc24b2e6899064162a534e283bdac425"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">phy_m_to_s</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO10phy_m_to_sE" title="Link to this definition"></a><br /></dt>
+<dd><p>Indicate the PHY selected for packets from the Central to Peripheral. <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1ga76ee08d96b6fe454d78c7098da491aa3"><span class="std std-ref">T_GAP_PHYS_TYPE</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO10phy_s_to_mE">
+<span id="_CPPv3N12T_ISOCH_INFO10phy_s_to_mE"></span><span id="_CPPv2N12T_ISOCH_INFO10phy_s_to_mE"></span><span id="T_ISOCH_INFO::phy_s_to_m__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a1b80f781c156de653fe53cdf546a8394"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">phy_s_to_m</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO10phy_s_to_mE" title="Link to this definition"></a><br /></dt>
+<dd><p>Indicate the PHY selected for packets from the Peripheral to Central. <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1ga76ee08d96b6fe454d78c7098da491aa3"><span class="std std-ref">T_GAP_PHYS_TYPE</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO3nseE">
+<span id="_CPPv3N12T_ISOCH_INFO3nseE"></span><span id="_CPPv2N12T_ISOCH_INFO3nseE"></span><span id="T_ISOCH_INFO::nse__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1ad75411cb46f846c9519a60db467c464c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nse</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO3nseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum number of subevents in each isochronous event. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO9bn_m_to_sE">
+<span id="_CPPv3N12T_ISOCH_INFO9bn_m_to_sE"></span><span id="_CPPv2N12T_ISOCH_INFO9bn_m_to_sE"></span><span id="T_ISOCH_INFO::bn_m_to_s__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1abdd6f3cf4845bcb5edbff9fb113a8560"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bn_m_to_s</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO9bn_m_to_sE" title="Link to this definition"></a><br /></dt>
+<dd><p>0x00: No isochronous data from the Central to the Peripheral. 0x01 to 0x0F: The burst number for Central to Peripheral transmission. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO9bn_s_to_mE">
+<span id="_CPPv3N12T_ISOCH_INFO9bn_s_to_mE"></span><span id="_CPPv2N12T_ISOCH_INFO9bn_s_to_mE"></span><span id="T_ISOCH_INFO::bn_s_to_m__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a841d391148842512becf420465680b4b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bn_s_to_m</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO9bn_s_to_mE" title="Link to this definition"></a><br /></dt>
+<dd><p>0x00: No isochronous data from the Peripheral to the Central. 0x01 to 0x0F: The burst number for Peripheral to Central transmission. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO9ft_m_to_sE">
+<span id="_CPPv3N12T_ISOCH_INFO9ft_m_to_sE"></span><span id="_CPPv2N12T_ISOCH_INFO9ft_m_to_sE"></span><span id="T_ISOCH_INFO::ft_m_to_s__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a0a2c8a360ac8c7ce59daa3a340132d41"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ft_m_to_s</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO9ft_m_to_sE" title="Link to this definition"></a><br /></dt>
+<dd><p>The flush timeout, in multiples of the ISO_Interval for the CIS, for each payload sent from the Central to the Peripheral.<ul class="simple">
+<li><p>Range: 0x01 to 0xFF. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO9ft_s_to_mE">
+<span id="_CPPv3N12T_ISOCH_INFO9ft_s_to_mE"></span><span id="_CPPv2N12T_ISOCH_INFO9ft_s_to_mE"></span><span id="T_ISOCH_INFO::ft_s_to_m__uint8_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a09eb18f87e1343a932345028cb37bad9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ft_s_to_m</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO9ft_s_to_mE" title="Link to this definition"></a><br /></dt>
+<dd><p>The flush timeout, in multiples of the ISO_Interval for the CIS, for each payload sent from the Peripheral to the Central.<ul class="simple">
+<li><p>Range: 0x01 to 0xFF. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO14max_pdu_m_to_sE">
+<span id="_CPPv3N12T_ISOCH_INFO14max_pdu_m_to_sE"></span><span id="_CPPv2N12T_ISOCH_INFO14max_pdu_m_to_sE"></span><span id="T_ISOCH_INFO::max_pdu_m_to_s__uint16_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a2b22ed900951635acc70d33c6ee703df"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_pdu_m_to_s</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO14max_pdu_m_to_sE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum size, in octets, of the payload from Central to Peripheral. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO14max_pdu_s_to_mE">
+<span id="_CPPv3N12T_ISOCH_INFO14max_pdu_s_to_mE"></span><span id="_CPPv2N12T_ISOCH_INFO14max_pdu_s_to_mE"></span><span id="T_ISOCH_INFO::max_pdu_s_to_m__uint16_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1af7e5429fc4229b11f10e6855d7a6a23e"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_pdu_s_to_m</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO14max_pdu_s_to_mE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum size, in octets, of the payload from Peripheral to Central. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO12iso_intervalE">
+<span id="_CPPv3N12T_ISOCH_INFO12iso_intervalE"></span><span id="_CPPv2N12T_ISOCH_INFO12iso_intervalE"></span><span id="T_ISOCH_INFO::iso_interval__uint16_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a49e7eb174320231deae5ec255b46e5d7"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">iso_interval</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO12iso_intervalE" title="Link to this definition"></a><br /></dt>
+<dd><p>The time between two consecutive CIS anchor points.<ul class="simple">
+<li><p>Range: 0x0004 to 0x0C80.</p></li>
+<li><p>Time = N * 1.25 ms.</p></li>
+<li><p>Time Range: 5 ms to 4 s. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO24acceptor_config_sdu_flagE">
+<span id="_CPPv3N12T_ISOCH_INFO24acceptor_config_sdu_flagE"></span><span id="_CPPv2N12T_ISOCH_INFO24acceptor_config_sdu_flagE"></span><span id="T_ISOCH_INFO::acceptor_config_sdu_flag__b"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1aaa9cfd812c9cfac075b8cfdc1cfe86dc"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">acceptor_config_sdu_flag</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO24acceptor_config_sdu_flagE" title="Link to this definition"></a><br /></dt>
+<dd><p>Only used by <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550aad1f3e1c9ff0697a7732fe4c1d1b1788"><span class="std std-ref">ISOCH_ROLE_ACCEPTOR</span></a>.<ul class="simple">
+<li><p>true: SDU parameters listed below are configured by the application. Check SDU length when <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550aad1f3e1c9ff0697a7732fe4c1d1b1788"><span class="std std-ref">ISOCH_ROLE_ACCEPTOR</span></a> calls <a class="reference internal" href="group___g_a_p___l_e___i_s_o___d_a_t_a___exported___functions.html#group___g_a_p___l_e___i_s_o___d_a_t_a___exported___functions_1ga378c7ce1cf671f1f10b999ee5012ff00"><span class="std std-ref">gap_iso_send_data</span></a>.</p></li>
+<li><p>false: Default value. SDU parameters listed below are not configured by the application. Do not check SDU length when <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550aad1f3e1c9ff0697a7732fe4c1d1b1788"><span class="std std-ref">ISOCH_ROLE_ACCEPTOR</span></a> calls <a class="reference internal" href="group___g_a_p___l_e___i_s_o___d_a_t_a___exported___functions.html#group___g_a_p___l_e___i_s_o___d_a_t_a___exported___functions_1ga378c7ce1cf671f1f10b999ee5012ff00"><span class="std std-ref">gap_iso_send_data</span></a>. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO19sdu_interval_m_to_sE">
+<span id="_CPPv3N12T_ISOCH_INFO19sdu_interval_m_to_sE"></span><span id="_CPPv2N12T_ISOCH_INFO19sdu_interval_m_to_sE"></span><span id="T_ISOCH_INFO::sdu_interval_m_to_s__uint32_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1aa7617237c4e8b3841b0a9e8106986d65"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sdu_interval_m_to_s</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO19sdu_interval_m_to_sE" title="Link to this definition"></a><br /></dt>
+<dd><p>Valid for <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550a576636b244cd0936ef442d1c3c053949"><span class="std std-ref">ISOCH_ROLE_INITIATOR</span></a>. Valid for <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550aad1f3e1c9ff0697a7732fe4c1d1b1788"><span class="std std-ref">ISOCH_ROLE_ACCEPTOR</span></a> if <a class="reference internal" href="#struct_t___i_s_o_c_h___i_n_f_o_1aaa9cfd812c9cfac075b8cfdc1cfe86dc"><span class="std std-ref">acceptor_config_sdu_flag</span></a> is true. The interval, in microseconds, between the start of consecutive SDUs from the Central's Host for all the CISes in the CIG.<ul class="simple">
+<li><p>Range: 0x0000FF to 0x0FFFFF. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO19sdu_interval_s_to_mE">
+<span id="_CPPv3N12T_ISOCH_INFO19sdu_interval_s_to_mE"></span><span id="_CPPv2N12T_ISOCH_INFO19sdu_interval_s_to_mE"></span><span id="T_ISOCH_INFO::sdu_interval_s_to_m__uint32_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1a29073e931ecdfbeb6ddc164ce30ff650"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sdu_interval_s_to_m</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO19sdu_interval_s_to_mE" title="Link to this definition"></a><br /></dt>
+<dd><p>Valid for <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550a576636b244cd0936ef442d1c3c053949"><span class="std std-ref">ISOCH_ROLE_INITIATOR</span></a>. Valid for <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550aad1f3e1c9ff0697a7732fe4c1d1b1788"><span class="std std-ref">ISOCH_ROLE_ACCEPTOR</span></a> if <a class="reference internal" href="#struct_t___i_s_o_c_h___i_n_f_o_1aaa9cfd812c9cfac075b8cfdc1cfe86dc"><span class="std std-ref">acceptor_config_sdu_flag</span></a> is true. The interval, in microseconds, between the start of consecutive SDUs from the Peripheral's Host for all the CISes in the CIG.<ul class="simple">
+<li><p>Range: 0x0000FF to 0x0FFFFF. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO14max_sdu_m_to_sE">
+<span id="_CPPv3N12T_ISOCH_INFO14max_sdu_m_to_sE"></span><span id="_CPPv2N12T_ISOCH_INFO14max_sdu_m_to_sE"></span><span id="T_ISOCH_INFO::max_sdu_m_to_s__uint16_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1aee7bff2070024221c463ddbb67936885"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_sdu_m_to_s</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO14max_sdu_m_to_sE" title="Link to this definition"></a><br /></dt>
+<dd><p>Valid for <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550a576636b244cd0936ef442d1c3c053949"><span class="std std-ref">ISOCH_ROLE_INITIATOR</span></a>. Valid for <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550aad1f3e1c9ff0697a7732fe4c1d1b1788"><span class="std std-ref">ISOCH_ROLE_ACCEPTOR</span></a> if <a class="reference internal" href="#struct_t___i_s_o_c_h___i_n_f_o_1aaa9cfd812c9cfac075b8cfdc1cfe86dc"><span class="std std-ref">acceptor_config_sdu_flag</span></a> is true. Maximum size, in octets, of the payload from the Central's Host. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_ISOCH_INFO14max_sdu_s_to_mE">
+<span id="_CPPv3N12T_ISOCH_INFO14max_sdu_s_to_mE"></span><span id="_CPPv2N12T_ISOCH_INFO14max_sdu_s_to_mE"></span><span id="T_ISOCH_INFO::max_sdu_s_to_m__uint16_t"></span><span class="target" id="struct_t___i_s_o_c_h___i_n_f_o_1add321a97a1bfd846ad075774ce46f9ff"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_sdu_s_to_m</span></span></span><a class="headerlink" href="#_CPPv4N12T_ISOCH_INFO14max_sdu_s_to_mE" title="Link to this definition"></a><br /></dt>
+<dd><p>Valid for <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550a576636b244cd0936ef442d1c3c053949"><span class="std std-ref">ISOCH_ROLE_INITIATOR</span></a>. Valid for <a class="reference internal" href="#group___g_a_p___l_e___i_s_o_c___d_e_f___exported___types_1ggacfa61c950a8f11c8b3a402c3ac4b1550aad1f3e1c9ff0697a7732fe4c1d1b1788"><span class="std std-ref">ISOCH_ROLE_ACCEPTOR</span></a> if <a class="reference internal" href="#struct_t___i_s_o_c_h___i_n_f_o_1aaa9cfd812c9cfac075b8cfdc1cfe86dc"><span class="std std-ref">acceptor_config_sdu_flag</span></a> is true. Maximum size, in octets, of the payload from the Peripheral's Host. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___l_e___i_s_o_c___d_e_f___s_e_t_u_p___d_a_t_a___p_a_t_h___d_a_t_a___p_a_t_h___i_d.html" class="btn btn-neutral float-left" title="LE Isochronous Channels Definition Setup Data Path Data Path ID Flag" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___g_a_p___l_e___p_a___a_d_v.html" class="btn btn-neutral float-right" title="GAP LE PA ADV Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

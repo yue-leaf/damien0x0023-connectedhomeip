@@ -1,0 +1,154 @@
+ENTRY(Reset_Handler)
+MEMORY
+{
+NS_APP (r) : ORIGIN = 0x0405F000, LENGTH = 0x000C8000
+RAM_VECTOR_SECTION (rwx) : ORIGIN = ((0x00100000 + ((192*1024) + (64*1024) + (64*1024)) - (5*1024))), LENGTH = ((187)*4)
+NS_RAM_GLOBAL (rwx) : ORIGIN = ((0x00100000) + (3*1024)), LENGTH = (150*1024)
+EXT_DATA_RAM (rwx) : ORIGIN = 0x00200000, LENGTH = (0*1024)
+NS_STACK (rwx): ORIGIN = ((0x00100000 + ((192*1024) + (64*1024) + (64*1024)) - (5*1024)) - (3*1024)), LENGTH = (3*1024)
+NS_HEAP(rwx): ORIGIN = (((0x00100000) + (3*1024)) + (150*1024)), LENGTH = ((((192*1024) + (64*1024) + (64*1024)) - (20*1024) - (57*1024)) - (150*1024) - (3*1024))
+PSRAM_SECTION(rwx): ORIGIN = 0x08000000, LENGTH = (64*1024*1024)
+APP_TRACE (r): ORIGIN = 0x18100000, LENGTH = 0x80000
+}
+SECTIONS
+{
+    . = 0x0405F000;
+    app_ns.bin 0x0405F000 :
+    {
+        KEEP(* (.app.flash.header))
+    }AT > NS_APP
+    __app_flash_load_ad__ = 0x0405F000;
+    FLASH_HEADER_EXT :
+    {
+       KEEP(* (.app.flash.header_ext))
+    }AT > NS_APP
+    FLASH_TEXT :
+    {
+        * (.image_entry)
+        *(.text*)
+        . = ALIGN(4);
+        *(.rodata*)
+        . = ALIGN(4);
+        * (.isr.text)
+        * (.app.flash.text)
+        * (.app.flash.rodata)
+        *(.ARM.exidx*)
+    }AT > NS_APP
+    RAM_VECTOR_TABLE :
+    {
+        __ram_vector_table_start__ = .;
+        KEEP(*(.vectors_table))
+        __ram_vector_table_end__ = .;
+    } > RAM_VECTOR_SECTION AT > NS_APP
+    RAM_VECTOR_TABLE_WRAPPER_NS ((0x00100000) + (3*1024)) :
+    {
+        __ram_vector_table_wrapper_ns_start__ = .;
+        KEEP(* (.bss.ram_vector_table_wrapper))
+        __ram_vector_table_wrapper_ns_end__ = .;
+    } > NS_RAM_GLOBAL AT > NS_APP
+    __ram_vector_load_ad__ = LOADADDR(RAM_VECTOR_TABLE);
+    __ram_vector_table_length__ = __ram_vector_table_end__ - __ram_vector_table_start__;
+    __ram_vector_exe_ad__ = ADDR(RAM_VECTOR_TABLE);
+    __ram_vector_wrapper_ns_load_ad__ = LOADADDR(RAM_VECTOR_TABLE_WRAPPER_NS);
+    __ram_vector_wrapper_ns_length__ = __ram_vector_table_wrapper_ns_end__ - __ram_vector_table_wrapper_ns_start__;
+    ER_IRAM_NS :
+    {
+       . = ALIGN(0x20);
+        __enter_iram_ns_ro_start__ = .;
+        * (.app.ram.text)
+        __enter_iram_ns_ro_end__ = .;
+        __enter_iram_ns_rw_start__ = .;
+        *(.data*)
+        * (.app.ram.data)
+        __enter_iram_ns_rw_end__ = .;
+    }> NS_RAM_GLOBAL AT > NS_APP
+    .preinit_array :
+    {
+      PROVIDE_HIDDEN (__preinit_array_start = .);
+      KEEP (*(.preinit_array*))
+      PROVIDE_HIDDEN (__preinit_array_end = .);
+    } >NS_APP
+    .init_array :
+    {
+      _init_array = .;
+        KEEP(*(SORT(.init_array.*)))
+        KEEP(*(.init_array*))
+      _einit_array = .;
+    } >NS_APP
+    .fini_array :
+    {
+      PROVIDE_HIDDEN (__fini_array_start = .);
+      KEEP (*(SORT(.fini_array.*)))
+      KEEP (*(.fini_array*))
+      PROVIDE_HIDDEN (__fini_array_end = .);
+    } >NS_APP
+    ER_IRAM_NS_BSS (NOLOAD):
+    {
+        . = ALIGN(4);
+         __enter_iram_ns_zi_start__ = .;
+        *(.bss*)
+        *(COMMON)
+        . = ALIGN(4);
+        __enter_iram_ns_zi_end__ = .;
+    }> NS_RAM_GLOBAL AT > NS_APP
+    __enter_iram_ns_ro_load_ad__ = LOADADDR(ER_IRAM_NS);
+    __enter_iram_ns_ro_exe_ad__ = ADDR(ER_IRAM_NS);
+    __enter_iram_ns_ro_length__ = __enter_iram_ns_ro_end__ - __enter_iram_ns_ro_start__;
+    __enter_iram_ns_rw_length__ = __enter_iram_ns_rw_end__ - __enter_iram_ns_rw_start__;
+    __enter_iram_ns_zi_length__ = __enter_iram_ns_zi_end__ - __enter_iram_ns_zi_start__;
+    __enter_iram_ns_rw_load_ad__ = LOADADDR(ER_IRAM_NS) + __enter_iram_ns_ro_length__;
+    DATA_SRAM_SECTION 0x00200000 :
+    {
+        __data_sram_section_ro_start__ = .;
+        __data_sram_section_ro_end__ = .;
+        __data_sram_section_rw_start__ = .;
+        *(.app.ext.datasram.data)
+        __data_sram_section_rw_end__ = .;
+        __data_sram_section_zi_start__ = .;
+        __data_sram_section_zi_end__ = .;
+    } > EXT_DATA_RAM AT > NS_APP
+    __data_sram_section_ro_load_ad__ = LOADADDR(DATA_SRAM_SECTION);
+    __data_sram_section_ro_length__ = __data_sram_section_ro_end__ - __data_sram_section_ro_start__;
+    __data_sram_section_rw_load_ad__ = LOADADDR(DATA_SRAM_SECTION) + __data_sram_section_ro_length__;
+    __data_sram_section_rw_length__ = __data_sram_section_rw_end__ - __data_sram_section_rw_start__;
+    __data_sram_section_rw_exe_ad__ = ADDR(DATA_SRAM_SECTION) + __data_sram_section_ro_length__;
+    __data_sram_section_zi_length__ = __data_sram_section_zi_end__ - __data_sram_section_zi_start__;
+    .heap (NOLOAD):
+    {
+        . = ALIGN(4);
+        PROVIDE ( end = . );
+        _sheap = .;
+        . = . + ((((192*1024) + (64*1024) + (64*1024)) - (20*1024) - (57*1024)) - (150*1024) - (3*1024));
+        . = ALIGN(4);
+        _eheap = .;
+    } >NS_HEAP
+    .stack (NOLOAD):
+    {
+        . = ALIGN(4);
+        _sstack = .;
+        . = . + (3*1024);
+        . = ALIGN(4);
+        _estack = .;
+    } > NS_STACK
+    PSRAM 0x08000000 (NOLOAD):
+    {
+        __psram_section_ro_start__ = .;
+        __psram_section_rw_start__ = .;
+        *(.app.psram.data)
+        __psram_section_ro_end__ = .;
+        __psram_section_rw_end__ = .;
+        __psram_section_zi_start__ = .;
+        *(.bss*)
+        __psram_section_zi_end__ = .;
+    } > PSRAM_SECTION
+    __psram_section_ro_load_ad__ = LOADADDR(PSRAM);
+    __psram_section_ro_length__ = __psram_section_ro_end__ - __psram_section_ro_start__;
+    __psram_section_rw_load_ad__ = LOADADDR(PSRAM) + __psram_section_ro_length__;
+    __psram_section_rw_length__ = __psram_section_rw_end__ - __psram_section_rw_start__;
+    __psram_section_rw_exe_ad__ = ADDR(PSRAM) + __psram_section_ro_length__;
+    __psram_section_zi_length__ = __psram_section_zi_end__ - __psram_section_zi_start__;
+    App.trace 0x18100000 :
+    {
+        *(.TRACE*)
+    }>APP_TRACE
+}

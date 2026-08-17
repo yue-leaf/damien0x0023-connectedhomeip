@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PINMUX Exported Functions &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="PPE" href="group___p_p_e.html" />
+    <link rel="prev" title="PINMUX Defines" href="group___p_i_n_m_u_x___defines.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___a_d_c.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___q_d_e_c.html">AON_QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___w_d_t.html">AON_WDT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_a_n.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_o_d_e_c.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_n_h_t_i_m.html">ENHTIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_t_h_e_r_n_e_t.html">ETHERNET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_d_m_a.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_p_i_o.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___h_r_a_d_c.html">HRADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_c.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_s.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_d_u.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_r.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_s_o7816.html">ISO7816</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___k_e_y_s_c_a_n.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_c_d_c.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_p_c.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___n_v_i_c.html">NVIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n___d_e_f_i_n_e.html">PIN DEFINE</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___p_i_n_m_u_x.html">PINMUX</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___p_i_n_m_u_x___exported___constants.html">PINMUX Exported Constants</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">PINMUX Exported Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv412Pinmux_Resetv"><code class="docutils literal notranslate"><span class="pre">Pinmux_Reset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv413Pinmux_Deinit7uint8_t"><code class="docutils literal notranslate"><span class="pre">Pinmux_Deinit()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv413Pinmux_Config7uint8_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">Pinmux_Config()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv417Pinmux_AON_Config8uint16_t"><code class="docutils literal notranslate"><span class="pre">Pinmux_AON_Config()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416Pinmux_HS_Config8uint32_t"><code class="docutils literal notranslate"><span class="pre">Pinmux_HS_Config()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv410Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef"><code class="docutils literal notranslate"><span class="pre">Pad_Config()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv420Pad_Dedicated_Config7uint8_t15FunctionalState"><code class="docutils literal notranslate"><span class="pre">Pad_Dedicated_Config()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv422System_WakeUpPinEnable7uint8_t7uint8_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">System_WakeUpPinEnable()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv423System_WakeUpPinDisable7uint8_t"><code class="docutils literal notranslate"><span class="pre">System_WakeUpPinDisable()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv427System_WakeUpInterruptValue7uint8_t"><code class="docutils literal notranslate"><span class="pre">System_WakeUpInterruptValue()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv424System_WakeUpDebounceCmd7uint8_t20PADWakeupCmd_TypeDef"><code class="docutils literal notranslate"><span class="pre">System_WakeUpDebounceCmd()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv425System_WakeUpDebounceTime7uint8_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">System_WakeUpDebounceTime()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv427System_WakeUpDebounceTimeUs7uint8_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">System_WakeUpDebounceTimeUs()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv427System_WakeupDebounceStatus7uint8_t"><code class="docutils literal notranslate"><span class="pre">System_WakeupDebounceStatus()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv426System_WakeupDebounceClear7uint8_t"><code class="docutils literal notranslate"><span class="pre">System_WakeupDebounceClear()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv421Pad_SetDrivingCurrent7uint8_t25PADDrivingCurrent_TypeDef"><code class="docutils literal notranslate"><span class="pre">Pad_SetDrivingCurrent()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418Pad_SetControlMode7uint8_t15PADMode_TypeDef"><code class="docutils literal notranslate"><span class="pre">Pad_SetControlMode()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv413Pad_OutputCmd7uint8_t21PADOutputMode_TypeDef"><code class="docutils literal notranslate"><span class="pre">Pad_OutputCmd()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418Pad_SetOutputLevel7uint8_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">Pad_SetOutputLevel()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv411Pad_PullCmd7uint8_t15FunctionalState"><code class="docutils literal notranslate"><span class="pre">Pad_PullCmd()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv415Pad_SetPullMode7uint8_t19PADPullMode_TypeDef"><code class="docutils literal notranslate"><span class="pre">Pad_SetPullMode()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv419Pad_SetPullStrength7uint8_t27PADPullStrengthMode_TypeDef"><code class="docutils literal notranslate"><span class="pre">Pad_SetPullStrength()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv412Pad_PowerCmd7uint8_t20PADPowerMode_TypeDef"><code class="docutils literal notranslate"><span class="pre">Pad_PowerCmd()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv428Pad_ClearWakeupINTPendingBit7uint8_t"><code class="docutils literal notranslate"><span class="pre">Pad_ClearWakeupINTPendingBit()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv421Pad_ClearAllWakeupINTv"><code class="docutils literal notranslate"><span class="pre">Pad_ClearAllWakeupINT()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv423Pad_ShortPulseWakeUpCmd22PADSPWakeupCmd_TypeDef"><code class="docutils literal notranslate"><span class="pre">Pad_ShortPulseWakeUpCmd()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_e.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_c_c.html">RCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_t_c.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_e_g_c_o_m.html">SEGCOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i3_w.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___t_i_m.html">TIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_a_r_t.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_t_i_l_s.html">UTILS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___w_d_t.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+        <li class="breadcrumb-item"><a href="group___p_i_n_m_u_x.html">PINMUX</a></li>
+    <li class="breadcrumb-item active">PINMUX Exported Functions</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pinmux-exported-functions">
+<h1>PINMUX Exported Functions<a class="headerlink" href="#pinmux-exported-functions" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___p_i_n_m_u_x___exported___functions"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">PINMUX_Exported_Functions</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412Pinmux_Resetv">
+<span id="_CPPv312Pinmux_Resetv"></span><span id="_CPPv212Pinmux_Resetv"></span><span id="Pinmux_Reset__void"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga7028f1439f4291711080c959ab03b14e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pinmux_Reset</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412Pinmux_Resetv" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure or reset all pins to idle mode. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="c1">//XXX represents the name of the peripheral to be configured.</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pinmux_Reset</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413Pinmux_Deinit7uint8_t">
+<span id="_CPPv313Pinmux_Deinit7uint8_t"></span><span id="_CPPv213Pinmux_Deinit7uint8_t"></span><span id="Pinmux_Deinit__uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga19581fb52859af147e7dd20ee73e9245"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pinmux_Deinit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413Pinmux_Deinit7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure the specified pin to idle mode. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pinmux_Deinit</span><span class="p">(</span><span class="n">P2_2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413Pinmux_Config7uint8_t7uint8_t">
+<span id="_CPPv313Pinmux_Config7uint8_t7uint8_t"></span><span id="_CPPv213Pinmux_Config7uint8_t7uint8_t"></span><span id="Pinmux_Config__uint8_t.uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga54f185f00ccea46d0645189f40a4f8d0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pinmux_Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413Pinmux_Config7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure the specified pin to its corresponding IO function. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span>
+<span class="w">            </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">P2_1</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span>
+<span class="w">            </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">UART0_TX</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_Config</span><span class="p">(</span><span class="n">P2_1</span><span class="p">,</span><span class="w"> </span><span class="n">UART0_RX</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>Pin_Func</strong> -- <strong>[in]</strong> IO function of pin. Refer to <a class="reference internal" href="group___p_i_n___function.html#group___p_i_n___function"><span class="std std-ref">PIN Function</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417Pinmux_AON_Config8uint16_t">
+<span id="_CPPv317Pinmux_AON_Config8uint16_t"></span><span id="_CPPv217Pinmux_AON_Config8uint16_t"></span><span id="Pinmux_AON_Config__uint16_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1gabef0fc79c34d0f703c7aa361a056ede9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pinmux_AON_Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417Pinmux_AON_Config8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure the specified pin to its corresponding pin AON function. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_uart_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">XI32K</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pinmux_AON_Config</span><span class="p">(</span><span class="n">RTC_IN_PAD_32K_XI</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Func</strong> -- <strong>[in]</strong> AON function of pin. Refer to PINMUX_AON_Function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416Pinmux_HS_Config8uint32_t">
+<span id="_CPPv316Pinmux_HS_Config8uint32_t"></span><span id="_CPPv216Pinmux_HS_Config8uint32_t"></span><span id="Pinmux_HS_Config__uint32_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga89c2d9f9a86fbff512fccd48f999f28c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pinmux_HS_Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416Pinmux_HS_Config8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure the specified pin to its corresponding pin high speed function. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_spi_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">     </span><span class="n">Pinmux_HS_Config</span><span class="p">(</span><span class="n">SPI0_HS</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Func</strong> -- <strong>[in]</strong> High Speed function. Refer to PINMUX_HS_Function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv410Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef">
+<span id="_CPPv310Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef"></span><span id="_CPPv210Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef"></span><span id="Pad_Config__uint8_t.PADMode_TypeDef.PADPowerMode_TypeDef.PADPullMode_TypeDef.PADOutputMode_TypeDef.PADOutputValue_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga04379e97a03b946e6dad06202f7649d1"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___p_a_d___mode.html#_CPPv415PADMode_TypeDef" title="PADMode_TypeDef"><span class="n"><span class="pre">PADMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">AON_PAD_Mode</span></span>, <a class="reference internal" href="group___p_a_d___power___mode.html#_CPPv420PADPowerMode_TypeDef" title="PADPowerMode_TypeDef"><span class="n"><span class="pre">PADPowerMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">AON_PAD_PwrOn</span></span>, <a class="reference internal" href="group___p_a_d___pull___mode.html#_CPPv419PADPullMode_TypeDef" title="PADPullMode_TypeDef"><span class="n"><span class="pre">PADPullMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">AON_PAD_Pull</span></span>, <a class="reference internal" href="group___p_a_d___output___config.html#_CPPv421PADOutputMode_TypeDef" title="PADOutputMode_TypeDef"><span class="n"><span class="pre">PADOutputMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">AON_PAD_E</span></span>, <a class="reference internal" href="group___p_a_d___output___value.html#_CPPv422PADOutputValue_TypeDef" title="PADOutputValue_TypeDef"><span class="n"><span class="pre">PADOutputValue_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">AON_PAD_O</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410Pad_Config7uint8_t15PADMode_TypeDef20PADPowerMode_TypeDef19PADPullMode_TypeDef21PADOutputMode_TypeDef22PADOutputValue_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure the relevant operation mode, peripheral circuit and output level value in software mode of the specified pin. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_adc_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_NONE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">P2_1</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_NONE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>AON_PAD_Mode</strong> -- <strong>[in]</strong> Use software mode or pinmux mode. This parameter can be one of the following values: <ul>
+<li><p>PAD_SW_MODE: pad pin is configured software mode. </p></li>
+<li><p>PAD_PINMUX_MODE: pad pin is configured pinmux mode. </p></li>
+</ul>
+</p></li>
+<li><p><strong>AON_PAD_PwrOn</strong> -- <strong>[in]</strong> Config power of pad. This parameter can be one of the following values: <ul>
+<li><p>PAD_NOT_PWRON: pad is not power. </p></li>
+<li><p>PAD_IS_PWRON: pad is power on. </p></li>
+</ul>
+</p></li>
+<li><p><strong>AON_PAD_Pull</strong> -- <strong>[in]</strong> Config pad pull mode. This parameter can be one of the following values: <ul>
+<li><p>PAD_PULL_NONE: Pull None. </p></li>
+<li><p>PAD_PULL_UP: Pull up. </p></li>
+<li><p>PAD_PULL_DOWN: Pull down. </p></li>
+</ul>
+</p></li>
+<li><p><strong>AON_PAD_E</strong> -- <strong>[in]</strong> Config pad out put function. This parameter can be one of the following values: <ul>
+<li><p>PAD_OUT_DISABLE: Disable pin output. </p></li>
+<li><p>PAD_OUT_ENABLE: Enable pad output. </p></li>
+</ul>
+</p></li>
+<li><p><strong>AON_PAD_O</strong> -- <strong>[in]</strong> Config pin output level. This parameter can be one of the following values:<ul>
+<li><p>PAD_OUT_LOW: Pad output low level.</p></li>
+<li><p>PAD_OUT_HIGH: Pad output high level.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420Pad_Dedicated_Config7uint8_t15FunctionalState">
+<span id="_CPPv320Pad_Dedicated_Config7uint8_t15FunctionalState"></span><span id="_CPPv220Pad_Dedicated_Config7uint8_t15FunctionalState"></span><span id="Pad_Dedicated_Config__uint8_t.FunctionalState"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga4f653cbe2753530413f485c8ac52fe75"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_Dedicated_Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___functional_state.html#_CPPv415FunctionalState" title="FunctionalState"><span class="n"><span class="pre">FunctionalState</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">Status</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420Pad_Dedicated_Config7uint8_t15FunctionalState" title="Link to this definition"></a><br /></dt>
+<dd><p>Config the corresponding pad dedicated function. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">driver_adc_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Dedicated_Config</span><span class="p">(</span><span class="n">P2_2</span><span class="p">,</span><span class="w"> </span><span class="n">Enable</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. This parameter is specific to certain Pins that support dedicated IO. </p></li>
+<li><p><strong>Status</strong> -- <strong>[in]</strong> Enable or disable the pad dedicate dedicated function.<ul>
+<li><p>ENABLE: Enable the pad dedicated function.</p></li>
+<li><p>DISABLE: Disable the pad dedicated function.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422System_WakeUpPinEnable7uint8_t7uint8_t7uint8_t">
+<span id="_CPPv322System_WakeUpPinEnable7uint8_t7uint8_t7uint8_t"></span><span id="_CPPv222System_WakeUpPinEnable7uint8_t7uint8_t7uint8_t"></span><span id="System_WakeUpPinEnable__uint8_t.uint8_t.uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga9a7e99caff1cd608c49db8070138e294"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">System_WakeUpPinEnable</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Polarity</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">DebounceEn</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422System_WakeUpPinEnable7uint8_t7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable the function of the wake-up system of the specified pin. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//IO enter dlps call back function.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">io_uart_dlps_enter</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Switch pad to software mode</span>
+<span class="w">    </span><span class="n">Pad_ControlSelectValue</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">);</span><span class="c1">//tx pin</span>
+<span class="w">    </span><span class="n">Pad_ControlSelectValue</span><span class="p">(</span><span class="n">P2_1</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">);</span><span class="c1">//rx pin</span>
+
+<span class="w">    </span><span class="n">System_WakeUpPinEnable</span><span class="p">(</span><span class="n">P2_1</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_POL_LOW</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WK_DEBOUNCE_DISABLE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>Polarity</strong> -- <strong>[in]</strong> Polarity of wake-up system. This parameter can be the following: <ul>
+<li><p>PAD_WAKEUP_POL_HIGH: Use high level wake-up polarity. </p></li>
+<li><p>PAD_WAKEUP_POL_LOW: Use low level wake-up polarity. </p></li>
+</ul>
+</p></li>
+<li><p><strong>DebounceEn</strong> -- <strong>[in]</strong> Enable delay function.<ul>
+<li><p>PAD_WK_DEBOUNCE_DISABLE: Disable wake-up debounce function.</p></li>
+<li><p>PAD_WK_DEBOUNCE_ENABLE: Enable wake-up debounce function.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423System_WakeUpPinDisable7uint8_t">
+<span id="_CPPv323System_WakeUpPinDisable7uint8_t"></span><span id="_CPPv223System_WakeUpPinDisable7uint8_t"></span><span id="System_WakeUpPinDisable__uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1gaf7c2681b49d5ef3542f6d8b91a5d8bef"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">System_WakeUpPinDisable</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423System_WakeUpPinDisable7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Disable the function of the wake-up system of the specified pin. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define UART_RX_PIN                P4_1</span>
+
+<span class="c1">//System interrupt handler function, for wake-up pin.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">System_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">System_WakeUpInterruptValue</span><span class="p">(</span><span class="n">UART_RX_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Pad_ClearWakeupINTPendingBit</span><span class="p">(</span><span class="n">UART_RX_PIN</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System_WakeUpPinDisable</span><span class="p">(</span><span class="n">UART_RX_PIN</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">//Add user code here.</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427System_WakeUpInterruptValue7uint8_t">
+<span id="_CPPv327System_WakeUpInterruptValue7uint8_t"></span><span id="_CPPv227System_WakeUpInterruptValue7uint8_t"></span><span id="System_WakeUpInterruptValue__uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga631663f36376f69f38f75935d6a436a4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">System_WakeUpInterruptValue</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427System_WakeUpInterruptValue7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Get pin interrupt status. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define UART_RX_PIN                P4_1</span>
+
+<span class="c1">//System interrupt handler function, for wakeup pin.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">System_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">System_WakeUpInterruptValue</span><span class="p">(</span><span class="n">UART_RX_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Pad_ClearWakeupINTPendingBit</span><span class="p">(</span><span class="n">UART_RX_PIN</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System_WakeUpPinDisable</span><span class="p">(</span><span class="n">UART_RX_PIN</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">//Add user code here.</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>.</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Interrupt status.<ul class="simple">
+<li><p>1: Pin wake up interrupt status is true.</p></li>
+<li><p>0: Pin wake up interrupt status is false.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424System_WakeUpDebounceCmd7uint8_t20PADWakeupCmd_TypeDef">
+<span id="_CPPv324System_WakeUpDebounceCmd7uint8_t20PADWakeupCmd_TypeDef"></span><span id="_CPPv224System_WakeUpDebounceCmd7uint8_t20PADWakeupCmd_TypeDef"></span><span id="System_WakeUpDebounceCmd__uint8_t.PADWakeupCmd_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga3b7a792daa7b56dfee4e4d496931867c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">System_WakeUpDebounceCmd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___p_a_d___wake_up.html#_CPPv420PADWakeupCmd_TypeDef" title="PADWakeupCmd_TypeDef"><span class="n"><span class="pre">PADWakeupCmd_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">Status</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424System_WakeUpDebounceCmd7uint8_t20PADWakeupCmd_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable or disable wake-up debounce function. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="kt">void</span><span class="w"> </span><span class="n">System_WakeUpPinEnable</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">Pin_Num</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">Polarity</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">DebounceEn</span><span class="p">)</span>
+<span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="n">Pin_Num</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">MAX_PIN_NUM</span><span class="p">)</span>
+<span class="w">     </span><span class="p">{</span>
+<span class="w">         </span><span class="k">return</span><span class="p">;</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w"> </span>
+<span class="w">     </span><span class="n">Pad_SetWakeupPolarity</span><span class="p">(</span><span class="n">Pin_Num</span><span class="p">,</span><span class="w"> </span><span class="n">Polarity</span><span class="p">);</span>
+<span class="w">     </span><span class="n">Pad_WakeupDebounce_Cmd</span><span class="p">(</span><span class="n">Pin_Num</span><span class="p">,</span><span class="w"> </span><span class="n">DebounceEn</span><span class="p">);</span>
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PAD_WAKEUP_DEB_ENABLE</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DebounceEn</span><span class="p">)</span>
+<span class="w">     </span><span class="p">{</span>
+<span class="w">         </span><span class="n">System_WakeUpDebounceCmd</span><span class="p">(</span><span class="n">Pin_Num</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_ENABLE</span><span class="p">);</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w">     </span><span class="n">Pad_Wakeup_Cmd</span><span class="p">(</span><span class="n">Pin_Num</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Pin_Num is invalid parameter for rtl87x2g series so that any pin can be filled in. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>PADWakeupCmd_TypeDef</strong> -- <strong>[in]</strong> Wake-up system enable or disable<ul>
+<li><p>PAD_WAKEUP_DISABLE: Disable wake-up function.</p></li>
+<li><p>PAD_WAKEUP_DISABLE: Enable wake-up function.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425System_WakeUpDebounceTime7uint8_t7uint8_t">
+<span id="_CPPv325System_WakeUpDebounceTime7uint8_t7uint8_t"></span><span id="_CPPv225System_WakeUpDebounceTime7uint8_t7uint8_t"></span><span id="System_WakeUpDebounceTime__uint8_t.uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga5207f14fd9a4a7c5e05c19bd741a233a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">System_WakeUpDebounceTime</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">time_ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425System_WakeUpDebounceTime7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config wake up system debounce time. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">System_WakeUpDebounceTime</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Pin_Num is invalid parameter for rtl87x2g series so that any pin can be filled in. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>time_ms</strong> -- <strong>[in]</strong> Debounce time. Unit: ms.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427System_WakeUpDebounceTimeUs7uint8_t7uint8_t">
+<span id="_CPPv327System_WakeUpDebounceTimeUs7uint8_t7uint8_t"></span><span id="_CPPv227System_WakeUpDebounceTimeUs7uint8_t7uint8_t"></span><span id="System_WakeUpDebounceTimeUs__uint8_t.uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1gaa2d6c111c29a207eba0aa83e823b1fb9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">System_WakeUpDebounceTimeUs</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">time_us</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427System_WakeUpDebounceTimeUs7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config wake up system debounce time. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">System_WakeUpDebounceTimeUs</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Pin_Num is invalid parameter for rtl87x2g series so that any pin can be filled in. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>time_us</strong> -- <strong>[in]</strong> Debounce time. Unit: us.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427System_WakeupDebounceStatus7uint8_t">
+<span id="_CPPv327System_WakeupDebounceStatus7uint8_t"></span><span id="_CPPv227System_WakeupDebounceStatus7uint8_t"></span><span id="System_WakeupDebounceStatus__uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga45f28f5e55cabc5c5bd44f7ca1f8bf2e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">System_WakeupDebounceStatus</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427System_WakeupDebounceStatus7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Get debounce wake up status. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">WakeupDebounceStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System_WakeupDebounceStatus</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Pin_Num is invalid parameter for rtl87x2g series so that any pin can be filled in.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Debounce wakeup status.<ul class="simple">
+<li><p>1: Pin debounce wakeup status is true.</p></li>
+<li><p>0: Pin debounce wakeup status is false.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426System_WakeupDebounceClear7uint8_t">
+<span id="_CPPv326System_WakeupDebounceClear7uint8_t"></span><span id="_CPPv226System_WakeupDebounceClear7uint8_t"></span><span id="System_WakeupDebounceClear__uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga1e55d39fe0e08f37aa068590d3ee1171"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">System_WakeupDebounceClear</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426System_WakeupDebounceClear7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Clear debounce wake up status. Call this API will clear the debunce wakeup status bit. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">dlps_store</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">System_WakeupDebounceClear</span><span class="p">(</span><span class="n">P0_0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Pin_Num is invalid parameter for rtl87x2g series so that any pin can be filled in.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421Pad_SetDrivingCurrent7uint8_t25PADDrivingCurrent_TypeDef">
+<span id="_CPPv321Pad_SetDrivingCurrent7uint8_t25PADDrivingCurrent_TypeDef"></span><span id="_CPPv221Pad_SetDrivingCurrent7uint8_t25PADDrivingCurrent_TypeDef"></span><span id="Pad_SetDrivingCurrent__uint8_t.PADDrivingCurrent_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1gabaa38e5999aff8f2d3e06c0d19eec843"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_SetDrivingCurrent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___p_a_d___driving___current___value.html#_CPPv425PADDrivingCurrent_TypeDef" title="PADDrivingCurrent_TypeDef"><span class="n"><span class="pre">PADDrivingCurrent_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">PAD_Driving_Current</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421Pad_SetDrivingCurrent7uint8_t25PADDrivingCurrent_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure the driving current. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_SetDrivingCurrent</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_DRIVING_CURRENT_4mA</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>PAD_Driving_Current</strong> -- <strong>[in]</strong> This parameter sets the driving current. Refer to <a class="reference internal" href="group___p_a_d___driving___current___value.html#group___p_a_d___driving___current___value_1ga1fed829db442a4d8fb93971be1497784"><span class="std std-ref">PADDrivingCurrent_TypeDef</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418Pad_SetControlMode7uint8_t15PADMode_TypeDef">
+<span id="_CPPv318Pad_SetControlMode7uint8_t15PADMode_TypeDef"></span><span id="_CPPv218Pad_SetControlMode7uint8_t15PADMode_TypeDef"></span><span id="Pad_SetControlMode__uint8_t.PADMode_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1gae5b91c1f5de63b91c5a04f5aa0c0127c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_SetControlMode</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___p_a_d___mode.html#_CPPv415PADMode_TypeDef" title="PADMode_TypeDef"><span class="n"><span class="pre">PADMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">PAD_Mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418Pad_SetControlMode7uint8_t15PADMode_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Set pin control mode. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_SetControlMode</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>value</strong> -- <strong>[in]</strong> This parameter sets the pin mode. This parameter can be the following:<ul>
+<li><p>PAD_SW_MODE: Software mode.</p></li>
+<li><p>PAD_PINMUX_MODE: Pinmux mode.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413Pad_OutputCmd7uint8_t21PADOutputMode_TypeDef">
+<span id="_CPPv313Pad_OutputCmd7uint8_t21PADOutputMode_TypeDef"></span><span id="_CPPv213Pad_OutputCmd7uint8_t21PADOutputMode_TypeDef"></span><span id="Pad_OutputCmd__uint8_t.PADOutputMode_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga0e71a0c6c53298073c7422a91e214b7b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_OutputCmd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___p_a_d___output___config.html#_CPPv421PADOutputMode_TypeDef" title="PADOutputMode_TypeDef"><span class="n"><span class="pre">PADOutputMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">Status</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413Pad_OutputCmd7uint8_t21PADOutputMode_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable or disable pad output mode. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">pad_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_OutputEnableValue</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_ENABLE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>value</strong> -- <strong>[in]</strong> This parameter sets whether the pin outputs the level in software mode. This parameter can be enumerated <a class="reference internal" href="group___p_a_d___output___config.html#group___p_a_d___output___config"><span class="std std-ref">PAD Output Config</span></a> of the values:<ul>
+<li><p>PAD_OUT_DISABLE: Disable output.</p></li>
+<li><p>PAD_OUT_ENABLE: Enable output.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418Pad_SetOutputLevel7uint8_t7uint8_t">
+<span id="_CPPv318Pad_SetOutputLevel7uint8_t7uint8_t"></span><span id="_CPPv218Pad_SetOutputLevel7uint8_t7uint8_t"></span><span id="Pad_SetOutputLevel__uint8_t.uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga1631fd5718eff72c34847eb34ac643c5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_SetOutputLevel</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418Pad_SetOutputLevel7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure pad output level. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_OutputControlValue</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_HIGH</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>value</strong> -- <strong>[in]</strong> Config pin output level. This parameter can be one of the following values:<ul>
+<li><p>PAD_OUT_LOW: Pad output low.</p></li>
+<li><p>PAD_OUT_HIGH: Pad output high.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411Pad_PullCmd7uint8_t15FunctionalState">
+<span id="_CPPv311Pad_PullCmd7uint8_t15FunctionalState"></span><span id="_CPPv211Pad_PullCmd7uint8_t15FunctionalState"></span><span id="Pad_PullCmd__uint8_t.FunctionalState"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1gaba164b1dfa9313061aaf57ad716055b8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_PullCmd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___functional_state.html#_CPPv415FunctionalState" title="FunctionalState"><span class="n"><span class="pre">FunctionalState</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">Status</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411Pad_PullCmd7uint8_t15FunctionalState" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable or disable pad pull resistance. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_PullEnableValue</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>value</strong> -- <strong>[in]</strong> This parameter enable or disable the the pad pin pull resistance. This parameter can be the following value:<ul>
+<li><p>DISABLE: Disable pad pull function.</p></li>
+<li><p>ENABLE: Enable pad pull function.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415Pad_SetPullMode7uint8_t19PADPullMode_TypeDef">
+<span id="_CPPv315Pad_SetPullMode7uint8_t19PADPullMode_TypeDef"></span><span id="_CPPv215Pad_SetPullMode7uint8_t19PADPullMode_TypeDef"></span><span id="Pad_SetPullMode__uint8_t.PADPullMode_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga8da6c6cf208f04293b00f8a4d99caf1d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_SetPullMode</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___p_a_d___pull___mode.html#_CPPv419PADPullMode_TypeDef" title="PADPullMode_TypeDef"><span class="n"><span class="pre">PADPullMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">PAD_Pull_Mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415Pad_SetPullMode7uint8_t19PADPullMode_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Pad pull-up/pull-down resistance function selection. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_PullUpOrDownValue</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>PAD_Pull_Mode</strong> -- <strong>[in]</strong> Config pad pull mode. This parameter can be the following values, refer to <a class="reference internal" href="group___p_a_d___pull___mode.html#group___p_a_d___pull___mode"><span class="std std-ref">PAD Pull Mode</span></a>.<ul>
+<li><p>PAD_PULL_NONE: No pull.</p></li>
+<li><p>PAD_PULL_UP: Pull this pin up</p></li>
+<li><p>PAD_PULL_DOWN: Pull this pin down.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419Pad_SetPullStrength7uint8_t27PADPullStrengthMode_TypeDef">
+<span id="_CPPv319Pad_SetPullStrength7uint8_t27PADPullStrengthMode_TypeDef"></span><span id="_CPPv219Pad_SetPullStrength7uint8_t27PADPullStrengthMode_TypeDef"></span><span id="Pad_SetPullStrength__uint8_t.PADPullStrengthMode_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga52a5bd9dc92d962240733f8cc642e189"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_SetPullStrength</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___p_a_d___pull___strength___mode.html#_CPPv427PADPullStrengthMode_TypeDef" title="PADPullStrengthMode_TypeDef"><span class="n"><span class="pre">PADPullStrengthMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">PAD_Pull_Strength_Mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419Pad_SetPullStrength7uint8_t27PADPullStrengthMode_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure the strength of pull-up/pull-down resistance. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_PullConfigValue</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_STRONG</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>PAD_Pull_Strength_Mode</strong> -- <strong>[in]</strong> This parameter sets the strength of pull-up/pull-down resistance. This parameter can be the following values, refer to <a class="reference internal" href="group___p_a_d___pull___strength___mode.html#group___p_a_d___pull___strength___mode"><span class="std std-ref">PAD Pull Strength Mode</span></a>.<ul>
+<li><p>PAD_PULL_WEAK: Resistance weak pull.</p></li>
+<li><p>PAD_PULL_STRONG: Resistance strong pull.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412Pad_PowerCmd7uint8_t20PADPowerMode_TypeDef">
+<span id="_CPPv312Pad_PowerCmd7uint8_t20PADPowerMode_TypeDef"></span><span id="_CPPv212Pad_PowerCmd7uint8_t20PADPowerMode_TypeDef"></span><span id="Pad_PowerCmd__uint8_t.PADPowerMode_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga34748214164a700045868a398a470973"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_PowerCmd</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span>, <a class="reference internal" href="group___p_a_d___power___mode.html#_CPPv420PADPowerMode_TypeDef" title="PADPowerMode_TypeDef"><span class="n"><span class="pre">PADPowerMode_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">PWR_Mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412Pad_PowerCmd7uint8_t20PADPowerMode_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Set pin power mode. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_PowerOrShutDownValue</span><span class="p">(</span><span class="n">P2_0</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_NOT_PWRON</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>. </p></li>
+<li><p><strong>PWR_Mode</strong> -- <strong>[in]</strong> Config power of pad. This parameter can be the following values, refer to <a class="reference internal" href="group___p_a_d___power___mode.html#group___p_a_d___power___mode"><span class="std std-ref">PAD Power Mode</span></a>.<ul>
+<li><p>PAD_NOT_PWRON: Power off.</p></li>
+<li><p>PAD_IS_PWRON: Power on.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428Pad_ClearWakeupINTPendingBit7uint8_t">
+<span id="_CPPv328Pad_ClearWakeupINTPendingBit7uint8_t"></span><span id="_CPPv228Pad_ClearWakeupINTPendingBit7uint8_t"></span><span id="Pad_ClearWakeupINTPendingBit__uint8_t"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga23d9c6219866900da261457658b838ee"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_ClearWakeupINTPendingBit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Pin_Num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428Pad_ClearWakeupINTPendingBit7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Clear the interrupt pending bit of the specified pin. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_ClearWakeupINTPendingBit</span><span class="p">(</span><span class="n">P2_0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421Pad_ClearAllWakeupINTv">
+<span id="_CPPv321Pad_ClearAllWakeupINTv"></span><span id="_CPPv221Pad_ClearAllWakeupINTv"></span><span id="Pad_ClearAllWakeupINT__void"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga8b2fd823da7d11c2c6997eea95240558"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_ClearAllWakeupINT</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421Pad_ClearAllWakeupINTv" title="Link to this definition"></a><br /></dt>
+<dd><p>Clear all wake up pin interrupt pending bit. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_ClearAllWakeupINT</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Pin_Num</strong> -- <strong>[in]</strong> Pin number to be configured. Refer to <a class="reference internal" href="group___pin___number.html#group___pin___number"><span class="std std-ref">Pin Number</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Pad_ShortPulseWakeUpCmd22PADSPWakeupCmd_TypeDef">
+<span id="_CPPv323Pad_ShortPulseWakeUpCmd22PADSPWakeupCmd_TypeDef"></span><span id="_CPPv223Pad_ShortPulseWakeUpCmd22PADSPWakeupCmd_TypeDef"></span><span id="Pad_ShortPulseWakeUpCmd__PADSPWakeupCmd_TypeDef"></span><span class="target" id="group___p_i_n_m_u_x___exported___functions_1ga9a78d1e8bbd1c775932a857aa52f1758"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pad_ShortPulseWakeUpCmd</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___p_a_d___short___pulse___wake_up.html#_CPPv422PADSPWakeupCmd_TypeDef" title="PADSPWakeupCmd_TypeDef"><span class="n"><span class="pre">PADSPWakeupCmd_TypeDef</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">Status</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Pad_ShortPulseWakeUpCmd22PADSPWakeupCmd_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>Short pulse wakeup function. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">board_xxx_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_ShortPulseWakeUpCmd</span><span class="p">(</span><span class="n">PAD_SHORT_PULSE_WAKEUP_ENABLE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Status</strong> -- <strong>[in]</strong> PAD_SHORT_PULSE_WAKEUP_DISABLE or PAD_SHORT_PULSE_WAKEUP_ENABLE. This parameter refer to PAD_SHORT_PULSE_WAKEUP_EN.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___p_i_n_m_u_x___defines.html" class="btn btn-neutral float-left" title="PINMUX Defines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___p_p_e.html" class="btn btn-neutral float-right" title="PPE" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

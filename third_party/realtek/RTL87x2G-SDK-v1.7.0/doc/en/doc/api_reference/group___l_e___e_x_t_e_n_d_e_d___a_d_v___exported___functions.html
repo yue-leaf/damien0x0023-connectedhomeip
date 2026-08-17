@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LE Extended ADV Exported Functions &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">LE Extended ADV Exported Functions</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="le-extended-adv-exported-functions">
+<h1>LE Extended ADV Exported Functions<a class="headerlink" href="#le-extended-adv-exported-functions" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">LE_EXTENDED_ADV_Exported_Functions</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433ble_ext_adv_mgr_register_callback16P_FUN_GAP_APP_CB7uint8_t">
+<span id="_CPPv333ble_ext_adv_mgr_register_callback16P_FUN_GAP_APP_CB7uint8_t"></span><span id="_CPPv233ble_ext_adv_mgr_register_callback16P_FUN_GAP_APP_CB7uint8_t"></span><span id="ble_ext_adv_mgr_register_callback__P_FUN_GAP_APP_CB.uint8_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga21de10157b31a9041d2e7e7dc862e912"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_register_callback</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___g_a_p___c_o_m_m_o_n___e_x_p_o_r_t___functions.html#_CPPv416P_FUN_GAP_APP_CB" title="P_FUN_GAP_APP_CB"><span class="n"><span class="pre">P_FUN_GAP_APP_CB</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">app_callback</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433ble_ext_adv_mgr_register_callback16P_FUN_GAP_APP_CB7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to register the application callback function for each ADV set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_callback</strong> -- <strong>[in]</strong> Application callback function: <a class="reference internal" href="group___g_a_p___c_o_m_m_o_n___e_x_p_o_r_t___functions.html#group___g_a_p___c_o_m_m_o_n___e_x_p_o_r_t___functions_1gab9b94b320c159ffe857b6c88d2f6f7b8"><span class="std std-ref">P_FUN_GAP_APP_CB</span></a>. </p></li>
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431ble_ext_adv_mgr_init_adv_paramsP7uint8_t8uint16_t8uint32_t8uint32_t21T_GAP_LOCAL_ADDR_TYPE22T_GAP_REMOTE_ADDR_TYPEP7uint8_t23T_GAP_ADV_FILTER_POLICY8uint16_tP7uint8_t8uint16_tP7uint8_tP7uint8_t">
+<span id="_CPPv331ble_ext_adv_mgr_init_adv_paramsP7uint8_t8uint16_t8uint32_t8uint32_t21T_GAP_LOCAL_ADDR_TYPE22T_GAP_REMOTE_ADDR_TYPEP7uint8_t23T_GAP_ADV_FILTER_POLICY8uint16_tP7uint8_t8uint16_tP7uint8_tP7uint8_t"></span><span id="_CPPv231ble_ext_adv_mgr_init_adv_paramsP7uint8_t8uint16_t8uint32_t8uint32_t21T_GAP_LOCAL_ADDR_TYPE22T_GAP_REMOTE_ADDR_TYPEP7uint8_t23T_GAP_ADV_FILTER_POLICY8uint16_tP7uint8_t8uint16_tP7uint8_tP7uint8_t"></span><span id="ble_ext_adv_mgr_init_adv_params__uint8_tP.uint16_t.uint32_t.uint32_t.T_GAP_LOCAL_ADDR_TYPE.T_GAP_REMOTE_ADDR_TYPE.uint8_tP.T_GAP_ADV_FILTER_POLICY.uint16_t.uint8_tP.uint16_t.uint8_tP.uint8_tP"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_init_adv_params</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_event_prop</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">primary_adv_interval_min</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">primary_adv_interval_max</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv421T_GAP_LOCAL_ADDR_TYPE" title="T_GAP_LOCAL_ADDR_TYPE"><span class="n"><span class="pre">T_GAP_LOCAL_ADDR_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">own_address_type</span></span>, <a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv422T_GAP_REMOTE_ADDR_TYPE" title="T_GAP_REMOTE_ADDR_TYPE"><span class="n"><span class="pre">T_GAP_REMOTE_ADDR_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">peer_address_type</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_peer_address</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv423T_GAP_ADV_FILTER_POLICY" title="T_GAP_ADV_FILTER_POLICY"><span class="n"><span class="pre">T_GAP_ADV_FILTER_POLICY</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">filter_policy</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_data_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_adv_data</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">scan_data_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_scan_data</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">random_address</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431ble_ext_adv_mgr_init_adv_paramsP7uint8_t8uint16_t8uint32_t8uint32_t21T_GAP_LOCAL_ADDR_TYPE22T_GAP_REMOTE_ADDR_TYPEP7uint8_t23T_GAP_ADV_FILTER_POLICY8uint16_tP7uint8_t8uint16_tP7uint8_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to create an ADV handle and initialize ADV parameters, ADV data, scan response data, and random address. </p>
+<p>This API shall only be called after <a class="reference internal" href="group___l_e___m_g_r___i_n_i_t___exported___functions.html#group___l_e___m_g_r___i_n_i_t___exported___functions_1ga9da52972f80798ac2d87254a8231fcd6"><span class="std std-ref">ble_mgr_init</span></a> and shall only be called once. This API cannot be used with <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> at the same time. That means in an ADV set <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> and <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a> can only choose one.</p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_ble_common_adv_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span><span class="w">   </span><span class="c1">//app_ble_common_adv_data and scan_rsp_data shall point to a global memory.</span>
+<span class="w">    </span><span class="n">ble_ext_adv_mgr_init_adv_params</span><span class="p">(</span><span class="o">&amp;</span><span class="n">le_common_adv</span><span class="p">.</span><span class="n">adv_handle</span><span class="p">,</span><span class="w"> </span><span class="n">adv_event_prop</span><span class="p">,</span><span class="w"> </span><span class="n">adv_interval_min</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">adv_interval_max</span><span class="p">,</span><span class="w"> </span><span class="n">own_address_type</span><span class="p">,</span><span class="w"> </span><span class="n">peer_address_type</span><span class="p">,</span><span class="w"> </span><span class="n">peer_address</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">filter_policy</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">data_len</span><span class="p">,</span><span class="w"> </span><span class="n">app_ble_common_adv_data</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">scan_rsp_data_len</span><span class="p">,</span><span class="w"> </span><span class="n">scan_rsp_data</span><span class="p">,</span><span class="w"> </span><span class="n">le_random_addr</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">ble_ext_adv_mgr_register_callback</span><span class="p">(</span><span class="n">app_ble_common_adv_callback</span><span class="p">,</span><span class="w"> </span><span class="n">le_common_adv</span><span class="p">.</span><span class="n">adv_handle</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[out]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>adv_event_prop</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types.html#group___g_a_p___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types_1gaac37315eefb7c0b74fb9daad93b5fd2b"><span class="std std-ref">T_LE_EXT_ADV_LEGACY_ADV_PROPERTY</span></a>. </p></li>
+<li><p><strong>primary_adv_interval_min</strong> -- <strong>[in]</strong> Minimum advertising interval for undirected and low duty directed advertising. In units of 0.625ms, range: 0x000020 to 0xFFFFFF. </p></li>
+<li><p><strong>primary_adv_interval_max</strong> -- <strong>[in]</strong> Maximum advertising interval for undirected and low duty directed advertising. In units of 0.625ms, range: 0x000020 to 0xFFFFFF. </p></li>
+<li><p><strong>own_address_type</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1ga6a4a22188186cb0102eafa5628d4cb98"><span class="std std-ref">T_GAP_LOCAL_ADDR_TYPE</span></a>. </p></li>
+<li><p><strong>peer_address_type</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga41dd9d848e985c7c492f8f43e1da9249"><span class="std std-ref">T_GAP_REMOTE_ADDR_TYPE</span></a>. </p></li>
+<li><p><strong>p_peer_address</strong> -- <strong>[in]</strong> If not used, set default value NULL. </p></li>
+<li><p><strong>filter_policy</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1gac0433c68ddb7484621ec659b7f8edd76"><span class="std std-ref">T_GAP_ADV_FILTER_POLICY</span></a>. </p></li>
+<li><p><strong>adv_data_len</strong> -- <strong>[in]</strong> If APP doesn't want to set ADV data, set default length 0. </p></li>
+<li><p><strong>p_adv_data</strong> -- <strong>[in]</strong> LE ext ADV mgr will not reallocate memory for ADV data, so p_adv_data shall point to a global memory. If APP doesn't want to set ADV data, set default value NULL. </p></li>
+<li><p><strong>scan_data_len</strong> -- <strong>[in]</strong> If APP doesn't want to set scan response data, set default length 0. </p></li>
+<li><p><strong>p_scan_data</strong> -- <strong>[in]</strong> LE ext ADV mgr will not reallocate memory for scan response data, so p_scan_data shall point to a global memory. If APP doesn't want to set scan response data, set default value NULL. </p></li>
+<li><p><strong>random_address</strong> -- <strong>[in]</strong> If APP doesn't want to set a random address, set default value NULL. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cause. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435ble_ext_adv_mgr_init_adv_params_allP7uint8_t8uint16_t7uint8_t7uint8_t8uint32_t8uint32_t7uint8_t24T_GAP_PHYS_PRIM_ADV_TYPE7uint8_t15T_GAP_PHYS_TYPE21T_GAP_LOCAL_ADDR_TYPE22T_GAP_REMOTE_ADDR_TYPEP7uint8_t23T_GAP_ADV_FILTER_POLICY8uint16_tP7uint8_t8uint16_tP7uint8_tP7uint8_t">
+<span id="_CPPv335ble_ext_adv_mgr_init_adv_params_allP7uint8_t8uint16_t7uint8_t7uint8_t8uint32_t8uint32_t7uint8_t24T_GAP_PHYS_PRIM_ADV_TYPE7uint8_t15T_GAP_PHYS_TYPE21T_GAP_LOCAL_ADDR_TYPE22T_GAP_REMOTE_ADDR_TYPEP7uint8_t23T_GAP_ADV_FILTER_POLICY8uint16_tP7uint8_t8uint16_tP7uint8_tP7uint8_t"></span><span id="_CPPv235ble_ext_adv_mgr_init_adv_params_allP7uint8_t8uint16_t7uint8_t7uint8_t8uint32_t8uint32_t7uint8_t24T_GAP_PHYS_PRIM_ADV_TYPE7uint8_t15T_GAP_PHYS_TYPE21T_GAP_LOCAL_ADDR_TYPE22T_GAP_REMOTE_ADDR_TYPEP7uint8_t23T_GAP_ADV_FILTER_POLICY8uint16_tP7uint8_t8uint16_tP7uint8_tP7uint8_t"></span><span id="ble_ext_adv_mgr_init_adv_params_all__uint8_tP.uint16_t.uint8_t.uint8_t.uint32_t.uint32_t.uint8_t.T_GAP_PHYS_PRIM_ADV_TYPE.uint8_t.T_GAP_PHYS_TYPE.T_GAP_LOCAL_ADDR_TYPE.T_GAP_REMOTE_ADDR_TYPE.uint8_tP.T_GAP_ADV_FILTER_POLICY.uint16_t.uint8_tP.uint16_t.uint8_tP.uint8_tP"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_init_adv_params_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_event_prop</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_sid</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tx_power</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">primary_adv_interval_min</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">primary_adv_interval_max</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">primary_adv_channel_map</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv424T_GAP_PHYS_PRIM_ADV_TYPE" title="T_GAP_PHYS_PRIM_ADV_TYPE"><span class="n"><span class="pre">T_GAP_PHYS_PRIM_ADV_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">primary_adv_phy</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">secondary_adv_max_skip</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv415T_GAP_PHYS_TYPE" title="T_GAP_PHYS_TYPE"><span class="n"><span class="pre">T_GAP_PHYS_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">secondary_adv_phy</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv421T_GAP_LOCAL_ADDR_TYPE" title="T_GAP_LOCAL_ADDR_TYPE"><span class="n"><span class="pre">T_GAP_LOCAL_ADDR_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">own_address_type</span></span>, <a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv422T_GAP_REMOTE_ADDR_TYPE" title="T_GAP_REMOTE_ADDR_TYPE"><span class="n"><span class="pre">T_GAP_REMOTE_ADDR_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">peer_address_type</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_peer_address</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv423T_GAP_ADV_FILTER_POLICY" title="T_GAP_ADV_FILTER_POLICY"><span class="n"><span class="pre">T_GAP_ADV_FILTER_POLICY</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">filter_policy</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_data_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_adv_data</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">scan_data_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_scan_data</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">random_address</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435ble_ext_adv_mgr_init_adv_params_allP7uint8_t8uint16_t7uint8_t7uint8_t8uint32_t8uint32_t7uint8_t24T_GAP_PHYS_PRIM_ADV_TYPE7uint8_t15T_GAP_PHYS_TYPE21T_GAP_LOCAL_ADDR_TYPE22T_GAP_REMOTE_ADDR_TYPEP7uint8_t23T_GAP_ADV_FILTER_POLICY8uint16_tP7uint8_t8uint16_tP7uint8_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to create an ADV handle and initialize ADV parameters, ADV data, scan response data, and random address. </p>
+<p>This API shall only be called after <a class="reference internal" href="group___l_e___m_g_r___i_n_i_t___exported___functions.html#group___l_e___m_g_r___i_n_i_t___exported___functions_1ga9da52972f80798ac2d87254a8231fcd6"><span class="std std-ref">ble_mgr_init</span></a> and shall only be called once. This API cannot be used with <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a> at the same time. That means in an ADV set <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> and <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a> can only choose one.</p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_ble_common_adv_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span><span class="w">   </span><span class="c1">//app_ble_common_adv_data and scan_rsp_data shall point to a global memory.</span>
+<span class="w">    </span><span class="n">ble_ext_adv_mgr_init_adv_params_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">le_common_adv</span><span class="p">.</span><span class="n">adv_handle</span><span class="p">,</span><span class="w"> </span><span class="n">adv_event_prop</span><span class="p">,</span><span class="w"> </span><span class="n">adv_sid</span><span class="p">,</span><span class="w"> </span><span class="n">tx_power</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">primary_adv_interval_min</span><span class="p">,</span><span class="w"> </span><span class="n">primary_adv_interval_max</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">primary_adv_channel_map</span><span class="p">,</span><span class="w"> </span><span class="n">primary_adv_phy</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">secondary_adv_max_skip</span><span class="p">,</span><span class="w"> </span><span class="n">secondary_adv_phy</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">own_address_type</span><span class="p">,</span><span class="w"> </span><span class="n">peer_address_type</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">p_peer_address</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">filter_policy</span><span class="p">,</span><span class="w"> </span><span class="n">adv_data_len</span><span class="p">,</span><span class="w"> </span><span class="n">p_adv_data</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">scan_data_len</span><span class="p">,</span><span class="w"> </span><span class="n">p_scan_data</span><span class="p">,</span><span class="w"> </span><span class="n">random_address</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">ble_ext_adv_mgr_register_callback</span><span class="p">(</span><span class="n">app_ble_common_adv_callback</span><span class="p">,</span><span class="w"> </span><span class="n">le_common_adv</span><span class="p">.</span><span class="n">adv_handle</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[out]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>adv_event_prop</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types.html#group___g_a_p___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types_1gaac37315eefb7c0b74fb9daad93b5fd2b"><span class="std std-ref">T_LE_EXT_ADV_LEGACY_ADV_PROPERTY</span></a>. </p></li>
+<li><p><strong>adv_sid</strong> -- <strong>[in]</strong> Specify the value to be transmitted in the Advertising SID subfield of those advertising channels. </p></li>
+<li><p><strong>tx_power</strong> -- <strong>[in]</strong> Advertising Tx power. </p></li>
+<li><p><strong>primary_adv_interval_min</strong> -- <strong>[in]</strong> Minimum advertising interval for undirected and low duty directed advertising. In units of 0.625ms, range: 0x000020 to 0xFFFFFF. </p></li>
+<li><p><strong>primary_adv_interval_max</strong> -- <strong>[in]</strong> Maximum advertising interval for undirected and low duty directed advertising. In units of 0.625ms, range: 0x000020 to 0xFFFFFF. </p></li>
+<li><p><strong>primary_adv_channel_map</strong> -- <strong>[in]</strong> A bit field that indicates the advertising channels that shall be used when transmitting advertising packets. <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p"><span class="std std-ref">Advertising Channel Map</span></a>. </p></li>
+<li><p><strong>primary_adv_phy</strong> -- <strong>[in]</strong> Indicate the PHY on which the advertising packets are transmitted on the primary advertising channel. </p></li>
+<li><p><strong>secondary_adv_max_skip</strong> -- <strong>[in]</strong> Maximum number of advertising events that can be skipped. Usually set to zero. </p></li>
+<li><p><strong>secondary_adv_phy</strong> -- <strong>[in]</strong> Indicate the PHY on which the advertising packets are transmitted on the secondary advertising channel. </p></li>
+<li><p><strong>own_address_type</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1ga6a4a22188186cb0102eafa5628d4cb98"><span class="std std-ref">T_GAP_LOCAL_ADDR_TYPE</span></a>. </p></li>
+<li><p><strong>peer_address_type</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga41dd9d848e985c7c492f8f43e1da9249"><span class="std std-ref">T_GAP_REMOTE_ADDR_TYPE</span></a>. </p></li>
+<li><p><strong>p_peer_address</strong> -- <strong>[in]</strong> If not used, set default value NULL. </p></li>
+<li><p><strong>filter_policy</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1gac0433c68ddb7484621ec659b7f8edd76"><span class="std std-ref">T_GAP_ADV_FILTER_POLICY</span></a>. </p></li>
+<li><p><strong>adv_data_len</strong> -- <strong>[in]</strong> If APP doesn't want to set ADV data, set default length 0. </p></li>
+<li><p><strong>p_adv_data</strong> -- <strong>[in]</strong> LE ext ADV mgr will not reallocate memory for ADV data, so p_adv_data shall point to a global memory. If APP doesn't want to set ADV data, set default value NULL. </p></li>
+<li><p><strong>scan_data_len</strong> -- <strong>[in]</strong> If APP doesn't want to set scan response data, set default length 0. </p></li>
+<li><p><strong>p_scan_data</strong> -- <strong>[in]</strong> LE ext ADV mgr will not reallocate memory for scan response data, so p_scan_data shall point to a global memory. If APP doesn't want to set scan response data, set default value NULL. </p></li>
+<li><p><strong>random_address</strong> -- <strong>[in]</strong> If APP doesn't want to set a random address, set default value NULL. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ble_ext_adv_mgr_enable7uint8_t8uint16_t">
+<span id="_CPPv322ble_ext_adv_mgr_enable7uint8_t8uint16_t"></span><span id="_CPPv222ble_ext_adv_mgr_enable7uint8_t8uint16_t"></span><span id="ble_ext_adv_mgr_enable__uint8_t.uint16_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga067f5b6b7afd1eb38cf2897c889177fb"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_enable</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">duration_10ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ble_ext_adv_mgr_enable7uint8_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable an advertising set. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ble_ext_adv_mgr_get_adv_state</span><span class="p">(</span><span class="n">adv_handle</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BLE_EXT_ADV_MGR_ADV_DISABLED</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">     </span><span class="n">ble_ext_adv_mgr_enable</span><span class="p">(</span><span class="n">adv_handle</span><span class="p">,</span><span class="n">duration</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">     </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;this ADV set has already in enabled state&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If APP wants to use <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga067f5b6b7afd1eb38cf2897c889177fb"><span class="std std-ref">ble_ext_adv_mgr_enable</span></a> to enable an ADV set, please get LE ADV mgr ADV state firstly, and when LE ADV mgr ADV state is BLE_EXT_ADV_MGR_ADV_DISABLED, APP can use <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga067f5b6b7afd1eb38cf2897c889177fb"><span class="std std-ref">ble_ext_adv_mgr_enable</span></a> to enable this ADV set; otherwise, this ADV set is already in enabled state, there is no need to call this API again. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> Identify an advertising set, which is assigned by <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>. </p></li>
+<li><p><strong>duration_10ms</strong> -- <strong>[in]</strong> If non-zero, indicates the duration that advertising set is enabled.<ul>
+<li><p>0x0000: No advertising duration.</p></li>
+<li><p>0x0001-0xFFFF: Advertising duration, in units of 10ms. </p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ble_ext_adv_mgr_disable7uint8_t7uint8_t">
+<span id="_CPPv323ble_ext_adv_mgr_disable7uint8_t7uint8_t"></span><span id="_CPPv223ble_ext_adv_mgr_disable7uint8_t7uint8_t"></span><span id="ble_ext_adv_mgr_disable__uint8_t.uint8_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaec65ef9f72086bd98fd6dfd83fe4a60a"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_disable</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_cause</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ble_ext_adv_mgr_disable7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Disable an advertising set. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">ble_ext_adv_mgr_get_adv_state</span><span class="p">(</span><span class="n">adv_handle</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BLE_EXT_ADV_MGR_ADV_ENABLED</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ble_ext_adv_mgr_disable</span><span class="p">(</span><span class="n">adv_handle</span><span class="p">,</span><span class="mh">0xFF</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">else</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">    </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;this ADV set has already in disabled state&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If wanting to use <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaec65ef9f72086bd98fd6dfd83fe4a60a"><span class="std std-ref">ble_ext_adv_mgr_disable</span></a> to disable an ADV set, please get LE ADV mgr ADV state firstly, and when LE ADV mgr ADV state is <a class="reference internal" href="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types.html#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types_1ggac36a5ae5a7b98cc2dffe340704c8f2e3a3ad5f9978c6861ed2042360cef5e5186"><span class="std std-ref">BLE_EXT_ADV_MGR_ADV_ENABLED</span></a>, it is possible to use <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaec65ef9f72086bd98fd6dfd83fe4a60a"><span class="std std-ref">ble_ext_adv_mgr_disable</span></a> to disable this ADV set; otherwise, this ADV set is already in disabled state, there is no need to call this API again. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> Identify an advertising set, which is assigned by <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>. </p></li>
+<li><p><strong>app_cause</strong> -- <strong>[in]</strong> The reason for disabling an ADV set. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ble_ext_adv_mgr_disable_all7uint8_t">
+<span id="_CPPv327ble_ext_adv_mgr_disable_all7uint8_t"></span><span id="_CPPv227ble_ext_adv_mgr_disable_all7uint8_t"></span><span id="ble_ext_adv_mgr_disable_all__uint8_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga561441a0d82b11030cd6229489bd44c0"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_disable_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_cause</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ble_ext_adv_mgr_disable_all7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Disable all advertising sets. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>app_cause</strong> -- <strong>[in]</strong> The reason for disabling all ADV sets. </p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428ble_ext_adv_mgr_set_adv_data7uint8_t8uint16_tP7uint8_t">
+<span id="_CPPv328ble_ext_adv_mgr_set_adv_data7uint8_t8uint16_tP7uint8_t"></span><span id="_CPPv228ble_ext_adv_mgr_set_adv_data7uint8_t8uint16_tP7uint8_t"></span><span id="ble_ext_adv_mgr_set_adv_data__uint8_t.uint16_t.uint8_tP"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga622a25fde393572f22a7db82345488f8"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_set_adv_data</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_data_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_adv_data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428ble_ext_adv_mgr_set_adv_data7uint8_t8uint16_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update ADV data. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> Identify an advertising set, which is assigned by <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>. </p></li>
+<li><p><strong>adv_data_len</strong> -- <strong>[in]</strong> ADV data length. </p></li>
+<li><p><strong>p_adv_data</strong> -- <strong>[in]</strong> LE ext ADV mgr will not reallocate memory for ADV data, so p_adv_data shall point to a global memory. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426ble_ext_adv_mgr_set_random7uint8_tP7uint8_t">
+<span id="_CPPv326ble_ext_adv_mgr_set_random7uint8_tP7uint8_t"></span><span id="_CPPv226ble_ext_adv_mgr_set_random7uint8_tP7uint8_t"></span><span id="ble_ext_adv_mgr_set_random__uint8_t.uint8_tP"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga6756396eee77befbe5bbc0d34cf9f1eb"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_set_random</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">random_address</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426ble_ext_adv_mgr_set_random7uint8_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update random address. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> Identify an advertising set, which is assigned by <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>. </p></li>
+<li><p><strong>random_address</strong> -- <strong>[in]</strong> Random address. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv438ble_ext_adv_mgr_set_scan_response_data7uint8_t8uint16_tP7uint8_t">
+<span id="_CPPv338ble_ext_adv_mgr_set_scan_response_data7uint8_t8uint16_tP7uint8_t"></span><span id="_CPPv238ble_ext_adv_mgr_set_scan_response_data7uint8_t8uint16_tP7uint8_t"></span><span id="ble_ext_adv_mgr_set_scan_response_data__uint8_t.uint16_t.uint8_tP"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaec19668934fdd3e83655b4caea624670"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_set_scan_response_data</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">scan_data_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_scan_data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438ble_ext_adv_mgr_set_scan_response_data7uint8_t8uint16_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update scan response data. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> Identify an advertising set, which is assigned by <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>. </p></li>
+<li><p><strong>scan_data_len</strong> -- <strong>[in]</strong> Scan response data length. </p></li>
+<li><p><strong>p_scan_data</strong> -- <strong>[in]</strong> LE ext ADV mgr will not reallocate memory for scan response data, so p_scan_data shall point to a global memory. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431ble_ext_adv_mgr_set_multi_param7uint8_tP7uint8_t8uint16_t8uint16_tP7uint8_t8uint16_tP7uint8_t">
+<span id="_CPPv331ble_ext_adv_mgr_set_multi_param7uint8_tP7uint8_t8uint16_t8uint16_tP7uint8_t8uint16_tP7uint8_t"></span><span id="_CPPv231ble_ext_adv_mgr_set_multi_param7uint8_tP7uint8_t8uint16_t8uint16_tP7uint8_t8uint16_tP7uint8_t"></span><span id="ble_ext_adv_mgr_set_multi_param__uint8_t.uint8_tP.uint16_t.uint16_t.uint8_tP.uint16_t.uint8_tP"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga9a7519c3faa33b9eb28ea4e5fe001f61"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_set_multi_param</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">random_address</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_interval</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_data_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_adv_data</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">scan_data_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_scan_data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431ble_ext_adv_mgr_set_multi_param7uint8_tP7uint8_t8uint16_t8uint16_tP7uint8_t8uint16_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to set random_address, ADV interval, ADV data and scan response data. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>random_address</strong> -- <strong>[in]</strong> Random address. </p></li>
+<li><p><strong>adv_interval</strong> -- <strong>[in]</strong> ADV interval. </p></li>
+<li><p><strong>adv_data_len</strong> -- <strong>[in]</strong> ADV data length. </p></li>
+<li><p><strong>p_adv_data</strong> -- <strong>[in]</strong> LE ext ADV mgr will not reallocate memory for ADV data, so p_adv_data shall point to a global memory. </p></li>
+<li><p><strong>scan_data_len</strong> -- <strong>[in]</strong> Scan response data length. </p></li>
+<li><p><strong>p_scan_data</strong> -- <strong>[in]</strong> LE ext ADV mgr will not reallocate memory for scan response data, so p_scan_data shall point to a global memory. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435ble_ext_adv_mgr_change_adv_interval7uint8_t8uint16_t">
+<span id="_CPPv335ble_ext_adv_mgr_change_adv_interval7uint8_t8uint16_t"></span><span id="_CPPv235ble_ext_adv_mgr_change_adv_interval7uint8_t8uint16_t"></span><span id="ble_ext_adv_mgr_change_adv_interval__uint8_t.uint16_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaedc9bf24a6420c104ad0267bc5d179d6"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_change_adv_interval</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_interval</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435ble_ext_adv_mgr_change_adv_interval7uint8_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update ADV interval. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>adv_interval</strong> -- <strong>[in]</strong> ADV interval. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435ble_ext_adv_mgr_change_adv_tx_power7uint8_t6int8_t">
+<span id="_CPPv335ble_ext_adv_mgr_change_adv_tx_power7uint8_t6int8_t"></span><span id="_CPPv235ble_ext_adv_mgr_change_adv_tx_power7uint8_t6int8_t"></span><span id="ble_ext_adv_mgr_change_adv_tx_power__uint8_t.int8_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga26894d7fcfe7a7c530038fc325fa59ae"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_change_adv_tx_power</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_tx_power</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435ble_ext_adv_mgr_change_adv_tx_power7uint8_t6int8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update ADV tx power. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>adv_tx_power</strong> -- <strong>[in]</strong> Range: -127 to +20, Units: dBm, 0x7F Host has no preference, the default value is 0x7F. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437ble_ext_adv_mgr_change_adv_event_prop7uint8_t8uint16_t">
+<span id="_CPPv337ble_ext_adv_mgr_change_adv_event_prop7uint8_t8uint16_t"></span><span id="_CPPv237ble_ext_adv_mgr_change_adv_event_prop7uint8_t8uint16_t"></span><span id="ble_ext_adv_mgr_change_adv_event_prop__uint8_t.uint16_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa8a844e9e77d7097f468917c9b1cf913"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_change_adv_event_prop</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_event_prop</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv437ble_ext_adv_mgr_change_adv_event_prop7uint8_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update adv_event_prop. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>adv_event_prop</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types.html#group___g_a_p___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types_1gaac37315eefb7c0b74fb9daad93b5fd2b"><span class="std std-ref">T_LE_EXT_ADV_LEGACY_ADV_PROPERTY</span></a>. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430ble_ext_adv_mgr_change_adv_phy7uint8_t24T_GAP_PHYS_PRIM_ADV_TYPE15T_GAP_PHYS_TYPE">
+<span id="_CPPv330ble_ext_adv_mgr_change_adv_phy7uint8_t24T_GAP_PHYS_PRIM_ADV_TYPE15T_GAP_PHYS_TYPE"></span><span id="_CPPv230ble_ext_adv_mgr_change_adv_phy7uint8_t24T_GAP_PHYS_PRIM_ADV_TYPE15T_GAP_PHYS_TYPE"></span><span id="ble_ext_adv_mgr_change_adv_phy__uint8_t.T_GAP_PHYS_PRIM_ADV_TYPE.T_GAP_PHYS_TYPE"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7a7260ca0c8c4322524fb9c1e52a5e17"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_change_adv_phy</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv424T_GAP_PHYS_PRIM_ADV_TYPE" title="T_GAP_PHYS_PRIM_ADV_TYPE"><span class="n"><span class="pre">T_GAP_PHYS_PRIM_ADV_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">primary_adv_phy</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv415T_GAP_PHYS_TYPE" title="T_GAP_PHYS_TYPE"><span class="n"><span class="pre">T_GAP_PHYS_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">secondary_adv_phy</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430ble_ext_adv_mgr_change_adv_phy7uint8_t24T_GAP_PHYS_PRIM_ADV_TYPE15T_GAP_PHYS_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update primary and secondary ADV phy. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>primary_adv_phy</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1ga207ac05c13e9ceaa5724eda068dcf5ab"><span class="std std-ref">T_GAP_PHYS_PRIM_ADV_TYPE</span></a>. </p></li>
+<li><p><strong>secondary_adv_phy</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1ga76ee08d96b6fe454d78c7098da491aa3"><span class="std std-ref">T_GAP_PHYS_TYPE</span></a>. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432ble_ext_adv_mgr_change_peer_addr7uint8_t22T_GAP_REMOTE_ADDR_TYPEP7uint8_t">
+<span id="_CPPv332ble_ext_adv_mgr_change_peer_addr7uint8_t22T_GAP_REMOTE_ADDR_TYPEP7uint8_t"></span><span id="_CPPv232ble_ext_adv_mgr_change_peer_addr7uint8_t22T_GAP_REMOTE_ADDR_TYPEP7uint8_t"></span><span id="ble_ext_adv_mgr_change_peer_addr__uint8_t.T_GAP_REMOTE_ADDR_TYPE.uint8_tP"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gabc1e7d9d8b30cb762e7a9128b15edcab"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_change_peer_addr</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv422T_GAP_REMOTE_ADDR_TYPE" title="T_GAP_REMOTE_ADDR_TYPE"><span class="n"><span class="pre">T_GAP_REMOTE_ADDR_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">peer_addr_type</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">peer_addr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432ble_ext_adv_mgr_change_peer_addr7uint8_t22T_GAP_REMOTE_ADDR_TYPEP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update peer address. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>peer_addr_type</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga41dd9d848e985c7c492f8f43e1da9249"><span class="std std-ref">T_GAP_REMOTE_ADDR_TYPE</span></a>. </p></li>
+<li><p><strong>peer_addr</strong> -- <strong>[in]</strong> Peer address. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>GAP_CAUSE_SUCCESS</strong> -- Operation success. </p></li>
+<li><p><strong>GAP_CAUSE_NOT_FIND</strong> -- Operation failure, the advertising handle is not found. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434ble_ext_adv_mgr_change_channel_map7uint8_t7uint8_t">
+<span id="_CPPv334ble_ext_adv_mgr_change_channel_map7uint8_t7uint8_t"></span><span id="_CPPv234ble_ext_adv_mgr_change_channel_map7uint8_t7uint8_t"></span><span id="ble_ext_adv_mgr_change_channel_map__uint8_t.uint8_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gacc2240d34d85079e7c4e542725e55425"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_change_channel_map</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">primary_adv_channel_map</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434ble_ext_adv_mgr_change_channel_map7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update primary_adv_channel_map. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<p>
+Used to update primary_adv_channel_map.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Added</span> <span class="pre">Since</span> <span class="pre">2.12.1.0:</span></em></dt>
+<dd></dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>primary_adv_channel_map</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p_1ga957a6ec415a265f5fef7cbd8f240d8c3"><span class="std std-ref">GAP_ADVCHAN_ALL</span></a> or <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p_1ga96144fa0f7c3456a9435d11ce7d36c0a"><span class="std std-ref">GAP_ADVCHAN_37</span></a> or <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p_1ga6f308f4f703271ad1811209c51c4071b"><span class="std std-ref">GAP_ADVCHAN_38</span></a> or <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p_1gab327343edfe88903a20fbf60024b4d58"><span class="std std-ref">GAP_ADVCHAN_39</span></a>. </p></li>
+<li><p><strong>adv_handle</strong> -- ble adv handle, each adv set has a adv handle. </p></li>
+<li><p><strong>primary_adv_channel_map</strong> -- <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p_1ga957a6ec415a265f5fef7cbd8f240d8c3"><span class="std std-ref">GAP_ADVCHAN_ALL</span></a> or <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p_1ga96144fa0f7c3456a9435d11ce7d36c0a"><span class="std std-ref">GAP_ADVCHAN_37</span></a> or <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p_1ga6f308f4f703271ad1811209c51c4071b"><span class="std std-ref">GAP_ADVCHAN_38</span></a> or <a class="reference internal" href="group___a_d_v___c_h_a_n_n_e_l___m_a_p.html#group___a_d_v___c_h_a_n_n_e_l___m_a_p_1gab327343edfe88903a20fbf60024b4d58"><span class="std std-ref">GAP_ADVCHAN_39</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>T_GAP_CAUSE </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv436ble_ext_adv_mgr_change_filter_policy7uint8_t23T_GAP_ADV_FILTER_POLICY">
+<span id="_CPPv336ble_ext_adv_mgr_change_filter_policy7uint8_t23T_GAP_ADV_FILTER_POLICY"></span><span id="_CPPv236ble_ext_adv_mgr_change_filter_policy7uint8_t23T_GAP_ADV_FILTER_POLICY"></span><span id="ble_ext_adv_mgr_change_filter_policy__uint8_t.T_GAP_ADV_FILTER_POLICY"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga1ef0a07e68c11cdab8e5faeaba30bf7f"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_change_filter_policy</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv423T_GAP_ADV_FILTER_POLICY" title="T_GAP_ADV_FILTER_POLICY"><span class="n"><span class="pre">T_GAP_ADV_FILTER_POLICY</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">filter_policy</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv436ble_ext_adv_mgr_change_filter_policy7uint8_t23T_GAP_ADV_FILTER_POLICY" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update filter policy. </p>
+<p>This API shall be used after <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaa3adf8d61eb9fb5867a5fc81bcecc161"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params_all</span></a> or <a class="reference internal" href="#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga7b8bcbea5cf112ca7c19ce757a89eeb0"><span class="std std-ref">ble_ext_adv_mgr_init_adv_params</span></a>.</p>
+<p>
+Used to update filter policy.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Added</span> <span class="pre">Since</span> <span class="pre">2.12.1.0:</span></em></dt>
+<dd></dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>filter_policy</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1gac0433c68ddb7484621ec659b7f8edd76"><span class="std std-ref">T_GAP_ADV_FILTER_POLICY</span></a>. </p></li>
+<li><p><strong>adv_handle</strong> -- ble adv handle, each adv set has a adv handle. </p></li>
+<li><p><strong>filter_policy</strong> -- <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1gac0433c68ddb7484621ec659b7f8edd76"><span class="std std-ref">T_GAP_ADV_FILTER_POLICY</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>T_GAP_CAUSE </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv439ble_ext_adv_mgr_change_own_address_type7uint8_t21T_GAP_LOCAL_ADDR_TYPE">
+<span id="_CPPv339ble_ext_adv_mgr_change_own_address_type7uint8_t21T_GAP_LOCAL_ADDR_TYPE"></span><span id="_CPPv239ble_ext_adv_mgr_change_own_address_type7uint8_t21T_GAP_LOCAL_ADDR_TYPE"></span><span id="ble_ext_adv_mgr_change_own_address_type__uint8_t.T_GAP_LOCAL_ADDR_TYPE"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga65b426aa8479b6956c35e56ecf945163"></span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv411T_GAP_CAUSE" title="T_GAP_CAUSE"><span class="n"><span class="pre">T_GAP_CAUSE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_change_own_address_type</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#_CPPv421T_GAP_LOCAL_ADDR_TYPE" title="T_GAP_LOCAL_ADDR_TYPE"><span class="n"><span class="pre">T_GAP_LOCAL_ADDR_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">own_addr_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv439ble_ext_adv_mgr_change_own_address_type7uint8_t21T_GAP_LOCAL_ADDR_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to update own address type, this API shall be used after GAP init ready. </p>
+<p>
+Used to update own address type, this API shall be used after GAP init ready.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Added</span> <span class="pre">Since</span> <span class="pre">2.14.0.0:</span></em></dt>
+<dd></dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>own_addr_type</strong> -- <strong>[in]</strong> <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1ga6a4a22188186cb0102eafa5628d4cb98"><span class="std std-ref">T_GAP_LOCAL_ADDR_TYPE</span></a>. </p></li>
+<li><p><strong>adv_handle</strong> -- ble adv handle, each adv set has a adv handle. </p></li>
+<li><p><strong>own_addr_type</strong> -- <a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s___exported___types.html#group___g_a_p___l_e___t_y_p_e_s___exported___types_1ga6a4a22188186cb0102eafa5628d4cb98"><span class="std std-ref">T_GAP_LOCAL_ADDR_TYPE</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Operation result. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga99268bc0507cd918edbd1c9d12c802ab"><span class="std std-ref">T_GAP_CAUSE</span></a>.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>T_GAP_CAUSE </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429ble_ext_adv_mgr_get_adv_state7uint8_t">
+<span id="_CPPv329ble_ext_adv_mgr_get_adv_state7uint8_t"></span><span id="_CPPv229ble_ext_adv_mgr_get_adv_state7uint8_t"></span><span id="ble_ext_adv_mgr_get_adv_state__uint8_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga0482f4ff222ecb99d9ce8b4ca54580f8"></span><a class="reference internal" href="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types.html#_CPPv423T_BLE_EXT_ADV_MGR_STATE" title="T_BLE_EXT_ADV_MGR_STATE"><span class="n"><span class="pre">T_BLE_EXT_ADV_MGR_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_get_adv_state</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429ble_ext_adv_mgr_get_adv_state7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to get ble_ext_adv_mgr_adv_state <a class="reference internal" href="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types.html#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types_1gac36a5ae5a7b98cc2dffe340704c8f2e3"><span class="std std-ref">T_BLE_EXT_ADV_MGR_STATE</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>T_BLE_EXT_ADV_MGR_STATE <a class="reference internal" href="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types.html#group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___types_1gac36a5ae5a7b98cc2dffe340704c8f2e3"><span class="std std-ref">T_BLE_EXT_ADV_MGR_STATE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432ble_ext_adv_mgr_get_adv_interval7uint8_t">
+<span id="_CPPv332ble_ext_adv_mgr_get_adv_interval7uint8_t"></span><span id="_CPPv232ble_ext_adv_mgr_get_adv_interval7uint8_t"></span><span id="ble_ext_adv_mgr_get_adv_interval__uint8_t"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gacd602a9ae0a706b2d790cebaea84b19d"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_mgr_get_adv_interval</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432ble_ext_adv_mgr_get_adv_interval7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to get current used maximum advertising interval. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Get the interval failed. </p></li>
+<li><p><strong>0x0020-0x4000</strong> -- The current used maximum ADV interval. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ADV interval. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ble_ext_adv_print_infov">
+<span id="_CPPv322ble_ext_adv_print_infov"></span><span id="_CPPv222ble_ext_adv_print_infov"></span><span id="ble_ext_adv_print_info__void"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga1b2176b866eb186bb78ae82148fc093b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_print_info</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ble_ext_adv_print_infov" title="Link to this definition"></a><br /></dt>
+<dd><p>Print ADV set information. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ble_ext_adv_is_ongoingv">
+<span id="_CPPv322ble_ext_adv_is_ongoingv"></span><span id="_CPPv222ble_ext_adv_is_ongoingv"></span><span id="ble_ext_adv_is_ongoing__void"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1gaafc2f10d4462e42b55bef792bb4e984f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_is_ongoing</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ble_ext_adv_is_ongoingv" title="Link to this definition"></a><br /></dt>
+<dd><p>Used to determine if LE advertising is ongoing. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Return values<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> -- LE advertising is ongoing. </p></li>
+<li><p><strong>false</strong> -- LE advertising is not ongoing. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv438ble_ext_adv_update_rpa_for_irk_changedv">
+<span id="_CPPv338ble_ext_adv_update_rpa_for_irk_changedv"></span><span id="_CPPv238ble_ext_adv_update_rpa_for_irk_changedv"></span><span id="ble_ext_adv_update_rpa_for_irk_changed__void"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga1d98ce72d108320433cbf32c1ca95935"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_update_rpa_for_irk_changed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438ble_ext_adv_update_rpa_for_irk_changedv" title="Link to this definition"></a><br /></dt>
+<dd><p>When irk changed, rpa shall be updated. </p>
+<p>When irk changed, rpa shall be updated.</p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Added</span> <span class="pre">Since</span> <span class="pre">2.13.0.0:</span></em></dt>
+<dd></dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p></p>
+</div>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433ble_ext_adv_get_rpa_by_adv_handle7uint8_tP7uint8_t">
+<span id="_CPPv333ble_ext_adv_get_rpa_by_adv_handle7uint8_tP7uint8_t"></span><span id="_CPPv233ble_ext_adv_get_rpa_by_adv_handle7uint8_tP7uint8_t"></span><span id="ble_ext_adv_get_rpa_by_adv_handle__uint8_t.uint8_tP"></span><span class="target" id="group___l_e___e_x_t_e_n_d_e_d___a_d_v___exported___functions_1ga60d9b119eb685002a037e636123abb88"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_ext_adv_get_rpa_by_adv_handle</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_random_addr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433ble_ext_adv_get_rpa_by_adv_handle7uint8_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>ble_ext_adv_get_rpa_by_adv_handle get rpa by adv handle </p>
+<p><dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Added</span> <span class="pre">Since</span> <span class="pre">2.13.0.0:</span></em></dt>
+<dd></dd></dl>
+
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>p_random_addr</strong> -- <strong>[out]</strong> rpa find by adv handle. </p></li>
+<li><p><strong>adv_handle</strong> -- <strong>[in]</strong> LE ADV handle, each ADV set has an ADV handle. </p></li>
+<li><p><strong>p_random_addr</strong> -- <strong>[out]</strong> rpa find by adv handle. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- return valid rpa </p></li>
+<li><p><strong>false</strong> -- not find valid rpa</p></li>
+<li><p><strong>true</strong> -- return valid rpa </p></li>
+<li><p><strong>false</strong> -- not find valid rpa </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAN Exported Types &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CODEC" href="group___c_o_d_e_c.html" />
+    <link rel="prev" title="CAN Exported Functions" href="group___c_a_n___exported___functions.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___a_d_c.html">ADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___q_d_e_c.html">AON_QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_o_n___w_d_t.html">AON_WDT</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___c_a_n.html">CAN</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___c_a_n___exported___constants.html">CAN Exported Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___c_a_n___exported___functions.html">CAN Exported Functions</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">CAN Exported Types</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv422CANBusStateSel_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANBusStateSel_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N22CANBusStateSel_TypeDef17CAN_BUS_STATE_OFFE"><code class="docutils literal notranslate"><span class="pre">CANBusStateSel_TypeDef::CAN_BUS_STATE_OFF</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N22CANBusStateSel_TypeDef16CAN_BUS_STATE_ONE"><code class="docutils literal notranslate"><span class="pre">CANBusStateSel_TypeDef::CAN_BUS_STATE_ON</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv422CANRamStateSel_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANRamStateSel_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N22CANRamStateSel_TypeDef18CAN_RAM_STATE_IDLEE"><code class="docutils literal notranslate"><span class="pre">CANRamStateSel_TypeDef::CAN_RAM_STATE_IDLE</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N22CANRamStateSel_TypeDef24CAN_RAM_STATE_EXCHANGINGE"><code class="docutils literal notranslate"><span class="pre">CANRamStateSel_TypeDef::CAN_RAM_STATE_EXCHANGING</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv422CANTestModeSel_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANTestModeSel_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N22CANTestModeSel_TypeDef21CAN_TEST_MODE_SILENCEE"><code class="docutils literal notranslate"><span class="pre">CANTestModeSel_TypeDef::CAN_TEST_MODE_SILENCE</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N22CANTestModeSel_TypeDef26CAN_TEST_MODE_INT_LOOPBACKE"><code class="docutils literal notranslate"><span class="pre">CANTestModeSel_TypeDef::CAN_TEST_MODE_INT_LOOPBACK</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N22CANTestModeSel_TypeDef18CAN_TEST_MODE_NONEE"><code class="docutils literal notranslate"><span class="pre">CANTestModeSel_TypeDef::CAN_TEST_MODE_NONE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv417CANRtrSel_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANRtrSel_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N17CANRtrSel_TypeDef18CAN_RTR_DATA_FRAMEE"><code class="docutils literal notranslate"><span class="pre">CANRtrSel_TypeDef::CAN_RTR_DATA_FRAME</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N17CANRtrSel_TypeDef20CAN_RTR_REMOTE_FRAMEE"><code class="docutils literal notranslate"><span class="pre">CANRtrSel_TypeDef::CAN_RTR_REMOTE_FRAME</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv417CANIdeSel_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANIdeSel_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N17CANIdeSel_TypeDef23CAN_IDE_STANDARD_FORMATE"><code class="docutils literal notranslate"><span class="pre">CANIdeSel_TypeDef::CAN_IDE_STANDARD_FORMAT</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N17CANIdeSel_TypeDef21CAN_IDE_EXTEND_FORMATE"><code class="docutils literal notranslate"><span class="pre">CANIdeSel_TypeDef::CAN_IDE_EXTEND_FORMAT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv417CANEdlSel_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANEdlSel_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N17CANEdlSel_TypeDef22CAN_EDL_STARDARD_FRAMEE"><code class="docutils literal notranslate"><span class="pre">CANEdlSel_TypeDef::CAN_EDL_STARDARD_FRAME</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv423CANDataFrameSel_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANDataFrameSel_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CANDataFrameSel_TypeDef22CAN_INVALID_DATA_FRAMEE"><code class="docutils literal notranslate"><span class="pre">CANDataFrameSel_TypeDef::CAN_INVALID_DATA_FRAME</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CANDataFrameSel_TypeDef18CAN_STD_DATA_FRAMEE"><code class="docutils literal notranslate"><span class="pre">CANDataFrameSel_TypeDef::CAN_STD_DATA_FRAME</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CANDataFrameSel_TypeDef18CAN_EXT_DATA_FRAMEE"><code class="docutils literal notranslate"><span class="pre">CANDataFrameSel_TypeDef::CAN_EXT_DATA_FRAME</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CANDataFrameSel_TypeDef20CAN_STD_REMOTE_FRAMEE"><code class="docutils literal notranslate"><span class="pre">CANDataFrameSel_TypeDef::CAN_STD_REMOTE_FRAME</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CANDataFrameSel_TypeDef20CAN_EXT_REMOTE_FRAMEE"><code class="docutils literal notranslate"><span class="pre">CANDataFrameSel_TypeDef::CAN_EXT_REMOTE_FRAME</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416CANError_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANError_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N16CANError_TypeDef10CAN_NO_ERRE"><code class="docutils literal notranslate"><span class="pre">CANError_TypeDef::CAN_NO_ERR</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N16CANError_TypeDef14CAN_MSG_ID_ERRE"><code class="docutils literal notranslate"><span class="pre">CANError_TypeDef::CAN_MSG_ID_ERR</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N16CANError_TypeDef10CAN_ID_ERRE"><code class="docutils literal notranslate"><span class="pre">CANError_TypeDef::CAN_ID_ERR</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N16CANError_TypeDef16CAN_DATA_LEN_ERRE"><code class="docutils literal notranslate"><span class="pre">CANError_TypeDef::CAN_DATA_LEN_ERR</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N16CANError_TypeDef12CAN_TYPE_ERRE"><code class="docutils literal notranslate"><span class="pre">CANError_TypeDef::CAN_TYPE_ERR</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N16CANError_TypeDef17CAN_RAM_STATE_ERRE"><code class="docutils literal notranslate"><span class="pre">CANError_TypeDef::CAN_RAM_STATE_ERR</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N16CANError_TypeDef15CAN_TIMEOUT_ERRE"><code class="docutils literal notranslate"><span class="pre">CANError_TypeDef::CAN_TIMEOUT_ERR</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv419CANClockDiv_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANClockDiv_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_1E"><code class="docutils literal notranslate"><span class="pre">CANClockDiv_TypeDef::CAN_CLOCK_DIVIDER_1</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_2E"><code class="docutils literal notranslate"><span class="pre">CANClockDiv_TypeDef::CAN_CLOCK_DIVIDER_2</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv419CANClockSrc_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANClockSrc_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N19CANClockSrc_TypeDef17CAN_CLOCK_SRC_40ME"><code class="docutils literal notranslate"><span class="pre">CANClockSrc_TypeDef::CAN_CLOCK_SRC_40M</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv427CAN_BIT_TIMING_TYPE_TypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef3d32E"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef::d32</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef2d8E"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef::d8</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg1E"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef::can_tseg1</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg2E"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef::can_tseg2</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef7can_sjwE"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef::can_sjw</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef10RESERVED_0E"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef::RESERVED_0</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef7can_brpE"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef::can_brp</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef1bE"><code class="docutils literal notranslate"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef::b</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv427CAN_TIME_STAMP_TYPE_TypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef3d32E"><code class="docutils literal notranslate"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef::d32</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef2d8E"><code class="docutils literal notranslate"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef::d8</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef14can_time_stampE"><code class="docutils literal notranslate"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef::can_time_stamp</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef18can_time_stamp_divE"><code class="docutils literal notranslate"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef::can_time_stamp_div</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef10RESERVED_0E"><code class="docutils literal notranslate"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef::RESERVED_0</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef17can_time_stamp_enE"><code class="docutils literal notranslate"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef::can_time_stamp_en</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef1bE"><code class="docutils literal notranslate"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef::b</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv424CAN_RAM_ARB_TYPE_TypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef3d32E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef::d32</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef2d8E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef::d8</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef10can_ram_idE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef::can_ram_id</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_ideE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef::can_ram_ide</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_rtrE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef::can_ram_rtr</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef1bE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef::b</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv425CAN_RAM_MASK_TYPE_TypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef3d32E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef::d32</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef2d8E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef::d8</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef15can_ram_id_maskE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef::can_ram_id_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_ide_maskE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef::can_ram_ide_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_rtr_maskE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef::can_ram_rtr_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef1bE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef::b</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv423CAN_RAM_CS_TYPE_TypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef3d32E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::d32</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef2d8E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::d8</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef11can_ram_dlcE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::can_ram_dlc</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef12can_ram_lostE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::can_ram_lost</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef12can_ram_rxtxE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::can_ram_rxtx</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef17can_ram_autoreplyE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::can_ram_autoreply</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_1E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::RESERVED_1</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef5resetE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::reset</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_2E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::RESERVED_2</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef11can_ram_esiE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::can_ram_esi</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_0E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::RESERVED_0</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef17can_ram_timestampE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::can_ram_timestamp</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef1bE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CS_TYPE_TypeDef::b</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv424CAN_RAM_CMD_TYPE_TypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef3d32E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::d32</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef2d8E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::d8</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_numE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_num</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_maskE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef14can_ram_acc_csE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_cs</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_arbE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_arb</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_dataE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_data</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef10RESERVED_0E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::RESERVED_0</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef17can_ram_buffer_enE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::can_ram_buffer_en</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef11can_ram_dirE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::can_ram_dir</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef13can_ram_startE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::can_ram_start</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef1bE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef::b</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv425CAN_RAM_DATA_TYPE_TypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef3d32E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef::d32</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef2d8E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef::d8</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data0E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef::can_ram_data0</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data1E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef::can_ram_data1</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data2E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef::can_ram_data2</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data3E"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef::can_ram_data3</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef1bE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef::b</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv415CAN_InitTypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_InitTypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_InitTypeDef14CAN_AutoReTxEnE"><code class="docutils literal notranslate"><span class="pre">CAN_InitTypeDef::CAN_AutoReTxEn</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_InitTypeDef12CAN_RxFifoEnE"><code class="docutils literal notranslate"><span class="pre">CAN_InitTypeDef::CAN_RxFifoEn</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_InitTypeDef11CAN_RxDmaEnE"><code class="docutils literal notranslate"><span class="pre">CAN_InitTypeDef::CAN_RxDmaEn</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_InitTypeDef15CAN_TestModeSelE"><code class="docutils literal notranslate"><span class="pre">CAN_InitTypeDef::CAN_TestModeSel</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_InitTypeDef16CAN_ErrorWarnThdE"><code class="docutils literal notranslate"><span class="pre">CAN_InitTypeDef::CAN_ErrorWarnThd</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_InitTypeDef13CAN_BitTimingE"><code class="docutils literal notranslate"><span class="pre">CAN_InitTypeDef::CAN_BitTiming</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_InitTypeDef13CAN_TimeStampE"><code class="docutils literal notranslate"><span class="pre">CAN_InitTypeDef::CAN_TimeStamp</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418CANTxFrame_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANTxFrame_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANTxFrame_TypeDef10msg_buf_idE"><code class="docutils literal notranslate"><span class="pre">CANTxFrame_TypeDef::msg_buf_id</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANTxFrame_TypeDef14auto_reply_bitE"><code class="docutils literal notranslate"><span class="pre">CANTxFrame_TypeDef::auto_reply_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANTxFrame_TypeDef10frame_typeE"><code class="docutils literal notranslate"><span class="pre">CANTxFrame_TypeDef::frame_type</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANTxFrame_TypeDef17standard_frame_idE"><code class="docutils literal notranslate"><span class="pre">CANTxFrame_TypeDef::standard_frame_id</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANTxFrame_TypeDef15extend_frame_idE"><code class="docutils literal notranslate"><span class="pre">CANTxFrame_TypeDef::extend_frame_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418CANRxFrame_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef10msg_buf_idE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::msg_buf_id</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef9rx_dma_enE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::rx_dma_en</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef14frame_rtr_maskE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::frame_rtr_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef14frame_ide_maskE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::frame_ide_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef13frame_id_maskE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::frame_id_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef13frame_rtr_bitE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::frame_rtr_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef13frame_ide_bitE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::frame_ide_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef14auto_reply_bitE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::auto_reply_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef17standard_frame_idE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::standard_frame_id</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef15extend_frame_idE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::extend_frame_id</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N18CANRxFrame_TypeDef17rx_msg_buf_enableE"><code class="docutils literal notranslate"><span class="pre">CANRxFrame_TypeDef::rx_msg_buf_enable</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv421CANMsgBufInfo_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef8rtr_maskE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::rtr_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef8ide_maskE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::ide_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef7id_maskE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::id_mask</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef7esi_bitE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::esi_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef14auto_reply_bitE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::auto_reply_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef8rxtx_bitE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::rxtx_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef11rx_lost_bitE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::rx_lost_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef11data_lengthE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::data_length</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef9rx_dma_enE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::rx_dma_en</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef7rtr_bitE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::rtr_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef7ide_bitE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::ide_bit</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef12rx_timestampE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::rx_timestamp</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef17standard_frame_idE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::standard_frame_id</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANMsgBufInfo_TypeDef15extend_frame_idE"><code class="docutils literal notranslate"><span class="pre">CANMsgBufInfo_TypeDef::extend_frame_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv421CANFifoStatus_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANFifoStatus_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANFifoStatus_TypeDef12fifo_msg_lvlE"><code class="docutils literal notranslate"><span class="pre">CANFifoStatus_TypeDef::fifo_msg_lvl</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANFifoStatus_TypeDef17fifo_msg_overflowE"><code class="docutils literal notranslate"><span class="pre">CANFifoStatus_TypeDef::fifo_msg_overflow</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANFifoStatus_TypeDef14fifo_msg_emptyE"><code class="docutils literal notranslate"><span class="pre">CANFifoStatus_TypeDef::fifo_msg_empty</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N21CANFifoStatus_TypeDef13fifo_msg_fullE"><code class="docutils literal notranslate"><span class="pre">CANFifoStatus_TypeDef::fifo_msg_full</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv420CANRxDmaData_TypeDef"><code class="docutils literal notranslate"><span class="pre">CANRxDmaData_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N20CANRxDmaData_TypeDef11can_ram_arbE"><code class="docutils literal notranslate"><span class="pre">CANRxDmaData_TypeDef::can_ram_arb</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N20CANRxDmaData_TypeDef10can_ram_csE"><code class="docutils literal notranslate"><span class="pre">CANRxDmaData_TypeDef::can_ram_cs</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N20CANRxDmaData_TypeDef11rx_dma_dataE"><code class="docutils literal notranslate"><span class="pre">CANRxDmaData_TypeDef::rx_dma_data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv415CAN_RAM_TypeDef"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef</span></code></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef12CAN_RAM_DATAE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_DATA</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef11CAN_RAM_ARBE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_ARB</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef16CAN_RAM_ARB_BITSE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_ARB_BITS</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef13u_CAN_RAM_ARBE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::u_CAN_RAM_ARB</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef12CAN_RAM_MASKE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_MASK</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef17CAN_RAM_MASK_BITSE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_MASK_BITS</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef14u_CAN_RAM_MASKE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::u_CAN_RAM_MASK</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef10CAN_RAM_CSE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_CS</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef15CAN_RAM_CS_BITSE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_CS_BITS</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef12u_CAN_RAM_CSE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::u_CAN_RAM_CS</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef11CAN_RAM_CMDE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_CMD</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef16CAN_RAM_CMD_BITSE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::CAN_RAM_CMD_BITS</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#_CPPv4N15CAN_RAM_TypeDef13u_CAN_RAM_CMDE"><code class="docutils literal notranslate"><span class="pre">CAN_RAM_TypeDef::u_CAN_RAM_CMD</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_o_d_e_c.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_n_h_t_i_m.html">ENHTIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___e_t_h_e_r_n_e_t.html">ETHERNET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_d_m_a.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___g_p_i_o.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___h_r_a_d_c.html">HRADC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_c.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i2_s.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_d_u.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_r.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_s_o7816.html">ISO7816</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___k_e_y_s_c_a_n.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_c_d_c.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___l_p_c.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___n_v_i_c.html">NVIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n___d_e_f_i_n_e.html">PIN DEFINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_i_n_m_u_x.html">PINMUX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_e.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_c_c.html">RCC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_t_c.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_e_g_c_o_m.html">SEGCOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_p_i3_w.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___t_i_m.html">TIM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_a_r_t.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_t_i_l_s.html">UTILS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___w_d_t.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+        <li class="breadcrumb-item"><a href="group___c_a_n.html">CAN</a></li>
+    <li class="breadcrumb-item active">CAN Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="can-exported-types">
+<h1>CAN Exported Types<a class="headerlink" href="#can-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___c_a_n___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">CAN_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422CANBusStateSel_TypeDef">
+<span id="_CPPv322CANBusStateSel_TypeDef"></span><span id="_CPPv222CANBusStateSel_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1gab0aeb1ad371877c1b9b580eeccb09e2a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANBusStateSel_TypeDef</span></span></span><a class="headerlink" href="#_CPPv422CANBusStateSel_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The state of CAN. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22CANBusStateSel_TypeDef17CAN_BUS_STATE_OFFE">
+<span id="_CPPv3N22CANBusStateSel_TypeDef17CAN_BUS_STATE_OFFE"></span><span id="_CPPv2N22CANBusStateSel_TypeDef17CAN_BUS_STATE_OFFE"></span><span class="target" id="group___c_a_n___exported___types_1ggab0aeb1ad371877c1b9b580eeccb09e2aa1eefb9ae9deffb5c74434069d3afc572"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_BUS_STATE_OFF</span></span></span><a class="headerlink" href="#_CPPv4N22CANBusStateSel_TypeDef17CAN_BUS_STATE_OFFE" title="Link to this definition"></a><br /></dt>
+<dd><p>CAN state on. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22CANBusStateSel_TypeDef16CAN_BUS_STATE_ONE">
+<span id="_CPPv3N22CANBusStateSel_TypeDef16CAN_BUS_STATE_ONE"></span><span id="_CPPv2N22CANBusStateSel_TypeDef16CAN_BUS_STATE_ONE"></span><span class="target" id="group___c_a_n___exported___types_1ggab0aeb1ad371877c1b9b580eeccb09e2aa446dcd5af727c44baf76701ddcd24660"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_BUS_STATE_ON</span></span></span><a class="headerlink" href="#_CPPv4N22CANBusStateSel_TypeDef16CAN_BUS_STATE_ONE" title="Link to this definition"></a><br /></dt>
+<dd><p>CAN state off. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422CANRamStateSel_TypeDef">
+<span id="_CPPv322CANRamStateSel_TypeDef"></span><span id="_CPPv222CANRamStateSel_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1ga0d3c4577cf67557e5fb0d2af602a09a5"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANRamStateSel_TypeDef</span></span></span><a class="headerlink" href="#_CPPv422CANRamStateSel_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The state of CAN RAM. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22CANRamStateSel_TypeDef18CAN_RAM_STATE_IDLEE">
+<span id="_CPPv3N22CANRamStateSel_TypeDef18CAN_RAM_STATE_IDLEE"></span><span id="_CPPv2N22CANRamStateSel_TypeDef18CAN_RAM_STATE_IDLEE"></span><span class="target" id="group___c_a_n___exported___types_1gga0d3c4577cf67557e5fb0d2af602a09a5ac81b1f2d2fde8dc88cae81287f4bf547"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_STATE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N22CANRamStateSel_TypeDef18CAN_RAM_STATE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>CAN RAM is idle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22CANRamStateSel_TypeDef24CAN_RAM_STATE_EXCHANGINGE">
+<span id="_CPPv3N22CANRamStateSel_TypeDef24CAN_RAM_STATE_EXCHANGINGE"></span><span id="_CPPv2N22CANRamStateSel_TypeDef24CAN_RAM_STATE_EXCHANGINGE"></span><span class="target" id="group___c_a_n___exported___types_1gga0d3c4577cf67557e5fb0d2af602a09a5a72a554bbb7dcae13582dc70eb53a2abd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_STATE_EXCHANGING</span></span></span><a class="headerlink" href="#_CPPv4N22CANRamStateSel_TypeDef24CAN_RAM_STATE_EXCHANGINGE" title="Link to this definition"></a><br /></dt>
+<dd><p>CAN RAM is exchanging. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422CANTestModeSel_TypeDef">
+<span id="_CPPv322CANTestModeSel_TypeDef"></span><span id="_CPPv222CANTestModeSel_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1ga8308633527d1d45a0cd8834c93ccb376"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANTestModeSel_TypeDef</span></span></span><a class="headerlink" href="#_CPPv422CANTestModeSel_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The test mode of CAN. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22CANTestModeSel_TypeDef21CAN_TEST_MODE_SILENCEE">
+<span id="_CPPv3N22CANTestModeSel_TypeDef21CAN_TEST_MODE_SILENCEE"></span><span id="_CPPv2N22CANTestModeSel_TypeDef21CAN_TEST_MODE_SILENCEE"></span><span class="target" id="group___c_a_n___exported___types_1gga8308633527d1d45a0cd8834c93ccb376a55d4d63fdd44a608eb33899e49de894a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_TEST_MODE_SILENCE</span></span></span><a class="headerlink" href="#_CPPv4N22CANTestModeSel_TypeDef21CAN_TEST_MODE_SILENCEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Silence mode. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22CANTestModeSel_TypeDef26CAN_TEST_MODE_INT_LOOPBACKE">
+<span id="_CPPv3N22CANTestModeSel_TypeDef26CAN_TEST_MODE_INT_LOOPBACKE"></span><span id="_CPPv2N22CANTestModeSel_TypeDef26CAN_TEST_MODE_INT_LOOPBACKE"></span><span class="target" id="group___c_a_n___exported___types_1gga8308633527d1d45a0cd8834c93ccb376ae436df23704415bcaf3eb7f788e40bfd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_TEST_MODE_INT_LOOPBACK</span></span></span><a class="headerlink" href="#_CPPv4N22CANTestModeSel_TypeDef26CAN_TEST_MODE_INT_LOOPBACKE" title="Link to this definition"></a><br /></dt>
+<dd><p>Internal loopback mode. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22CANTestModeSel_TypeDef18CAN_TEST_MODE_NONEE">
+<span id="_CPPv3N22CANTestModeSel_TypeDef18CAN_TEST_MODE_NONEE"></span><span id="_CPPv2N22CANTestModeSel_TypeDef18CAN_TEST_MODE_NONEE"></span><span class="target" id="group___c_a_n___exported___types_1gga8308633527d1d45a0cd8834c93ccb376a52c8b4a3d6d69c41feef58caa9eb0070"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_TEST_MODE_NONE</span></span></span><a class="headerlink" href="#_CPPv4N22CANTestModeSel_TypeDef18CAN_TEST_MODE_NONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>No test mode. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417CANRtrSel_TypeDef">
+<span id="_CPPv317CANRtrSel_TypeDef"></span><span id="_CPPv217CANRtrSel_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1ga62006d702992a44f9af0fd36d418b0cb"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANRtrSel_TypeDef</span></span></span><a class="headerlink" href="#_CPPv417CANRtrSel_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The data type of CAN frame. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17CANRtrSel_TypeDef18CAN_RTR_DATA_FRAMEE">
+<span id="_CPPv3N17CANRtrSel_TypeDef18CAN_RTR_DATA_FRAMEE"></span><span id="_CPPv2N17CANRtrSel_TypeDef18CAN_RTR_DATA_FRAMEE"></span><span class="target" id="group___c_a_n___exported___types_1gga62006d702992a44f9af0fd36d418b0cbaf3054401f8f143fbd3b69fee6d8d4a1b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RTR_DATA_FRAME</span></span></span><a class="headerlink" href="#_CPPv4N17CANRtrSel_TypeDef18CAN_RTR_DATA_FRAMEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Data frame. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17CANRtrSel_TypeDef20CAN_RTR_REMOTE_FRAMEE">
+<span id="_CPPv3N17CANRtrSel_TypeDef20CAN_RTR_REMOTE_FRAMEE"></span><span id="_CPPv2N17CANRtrSel_TypeDef20CAN_RTR_REMOTE_FRAMEE"></span><span class="target" id="group___c_a_n___exported___types_1gga62006d702992a44f9af0fd36d418b0cba2dfc10fd07d8fe5867906cd0927d8a0b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RTR_REMOTE_FRAME</span></span></span><a class="headerlink" href="#_CPPv4N17CANRtrSel_TypeDef20CAN_RTR_REMOTE_FRAMEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Remote frame. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417CANIdeSel_TypeDef">
+<span id="_CPPv317CANIdeSel_TypeDef"></span><span id="_CPPv217CANIdeSel_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1ga4184f8ac3151ea007c8ffc4f2c3ad7c7"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANIdeSel_TypeDef</span></span></span><a class="headerlink" href="#_CPPv417CANIdeSel_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The type of CAN ID. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17CANIdeSel_TypeDef23CAN_IDE_STANDARD_FORMATE">
+<span id="_CPPv3N17CANIdeSel_TypeDef23CAN_IDE_STANDARD_FORMATE"></span><span id="_CPPv2N17CANIdeSel_TypeDef23CAN_IDE_STANDARD_FORMATE"></span><span class="target" id="group___c_a_n___exported___types_1gga4184f8ac3151ea007c8ffc4f2c3ad7c7ab11d268a6ba6de450dc08c2db4874676"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_IDE_STANDARD_FORMAT</span></span></span><a class="headerlink" href="#_CPPv4N17CANIdeSel_TypeDef23CAN_IDE_STANDARD_FORMATE" title="Link to this definition"></a><br /></dt>
+<dd><p>Standard ID. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17CANIdeSel_TypeDef21CAN_IDE_EXTEND_FORMATE">
+<span id="_CPPv3N17CANIdeSel_TypeDef21CAN_IDE_EXTEND_FORMATE"></span><span id="_CPPv2N17CANIdeSel_TypeDef21CAN_IDE_EXTEND_FORMATE"></span><span class="target" id="group___c_a_n___exported___types_1gga4184f8ac3151ea007c8ffc4f2c3ad7c7a40ea297907f87a6071120e30b89c79d1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_IDE_EXTEND_FORMAT</span></span></span><a class="headerlink" href="#_CPPv4N17CANIdeSel_TypeDef21CAN_IDE_EXTEND_FORMATE" title="Link to this definition"></a><br /></dt>
+<dd><p>Extend ID. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv417CANEdlSel_TypeDef">
+<span id="_CPPv317CANEdlSel_TypeDef"></span><span id="_CPPv217CANEdlSel_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1gae81605d92154db2c93790189324fe94d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANEdlSel_TypeDef</span></span></span><a class="headerlink" href="#_CPPv417CANEdlSel_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The type of CAN frame ID. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N17CANEdlSel_TypeDef22CAN_EDL_STARDARD_FRAMEE">
+<span id="_CPPv3N17CANEdlSel_TypeDef22CAN_EDL_STARDARD_FRAMEE"></span><span id="_CPPv2N17CANEdlSel_TypeDef22CAN_EDL_STARDARD_FRAMEE"></span><span class="target" id="group___c_a_n___exported___types_1ggae81605d92154db2c93790189324fe94da80e1d2fe6c5ffac5437fe7ace7938c82"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_EDL_STARDARD_FRAME</span></span></span><a class="headerlink" href="#_CPPv4N17CANEdlSel_TypeDef22CAN_EDL_STARDARD_FRAMEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Standard frame. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423CANDataFrameSel_TypeDef">
+<span id="_CPPv323CANDataFrameSel_TypeDef"></span><span id="_CPPv223CANDataFrameSel_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1ga11ed18e9d9ea38d528109c2836a57a86"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANDataFrameSel_TypeDef</span></span></span><a class="headerlink" href="#_CPPv423CANDataFrameSel_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The type of CAN frame. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23CANDataFrameSel_TypeDef22CAN_INVALID_DATA_FRAMEE">
+<span id="_CPPv3N23CANDataFrameSel_TypeDef22CAN_INVALID_DATA_FRAMEE"></span><span id="_CPPv2N23CANDataFrameSel_TypeDef22CAN_INVALID_DATA_FRAMEE"></span><span class="target" id="group___c_a_n___exported___types_1gga11ed18e9d9ea38d528109c2836a57a86a3ee2aba89254c8fa06df760c001db6cf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_INVALID_DATA_FRAME</span></span></span><a class="headerlink" href="#_CPPv4N23CANDataFrameSel_TypeDef22CAN_INVALID_DATA_FRAMEE" title="Link to this definition"></a><br /></dt>
+<dd><p>invalide data frame. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23CANDataFrameSel_TypeDef18CAN_STD_DATA_FRAMEE">
+<span id="_CPPv3N23CANDataFrameSel_TypeDef18CAN_STD_DATA_FRAMEE"></span><span id="_CPPv2N23CANDataFrameSel_TypeDef18CAN_STD_DATA_FRAMEE"></span><span class="target" id="group___c_a_n___exported___types_1gga11ed18e9d9ea38d528109c2836a57a86a6e44b396119e485c5c1c2586684ca6a7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_STD_DATA_FRAME</span></span></span><a class="headerlink" href="#_CPPv4N23CANDataFrameSel_TypeDef18CAN_STD_DATA_FRAMEE" title="Link to this definition"></a><br /></dt>
+<dd><p>standard data frame. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23CANDataFrameSel_TypeDef18CAN_EXT_DATA_FRAMEE">
+<span id="_CPPv3N23CANDataFrameSel_TypeDef18CAN_EXT_DATA_FRAMEE"></span><span id="_CPPv2N23CANDataFrameSel_TypeDef18CAN_EXT_DATA_FRAMEE"></span><span class="target" id="group___c_a_n___exported___types_1gga11ed18e9d9ea38d528109c2836a57a86acad6b7449ca0a87b513ec2a9209a8cb0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_EXT_DATA_FRAME</span></span></span><a class="headerlink" href="#_CPPv4N23CANDataFrameSel_TypeDef18CAN_EXT_DATA_FRAMEE" title="Link to this definition"></a><br /></dt>
+<dd><p>extend data frame. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23CANDataFrameSel_TypeDef20CAN_STD_REMOTE_FRAMEE">
+<span id="_CPPv3N23CANDataFrameSel_TypeDef20CAN_STD_REMOTE_FRAMEE"></span><span id="_CPPv2N23CANDataFrameSel_TypeDef20CAN_STD_REMOTE_FRAMEE"></span><span class="target" id="group___c_a_n___exported___types_1gga11ed18e9d9ea38d528109c2836a57a86a4e66e109cb66e15aed41068f134b2f64"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_STD_REMOTE_FRAME</span></span></span><a class="headerlink" href="#_CPPv4N23CANDataFrameSel_TypeDef20CAN_STD_REMOTE_FRAMEE" title="Link to this definition"></a><br /></dt>
+<dd><p>standard remote frame. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23CANDataFrameSel_TypeDef20CAN_EXT_REMOTE_FRAMEE">
+<span id="_CPPv3N23CANDataFrameSel_TypeDef20CAN_EXT_REMOTE_FRAMEE"></span><span id="_CPPv2N23CANDataFrameSel_TypeDef20CAN_EXT_REMOTE_FRAMEE"></span><span class="target" id="group___c_a_n___exported___types_1gga11ed18e9d9ea38d528109c2836a57a86ae6dcd96b239bee2920b34fbbe404ab5f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_EXT_REMOTE_FRAME</span></span></span><a class="headerlink" href="#_CPPv4N23CANDataFrameSel_TypeDef20CAN_EXT_REMOTE_FRAMEE" title="Link to this definition"></a><br /></dt>
+<dd><p>extend remote frame. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416CANError_TypeDef">
+<span id="_CPPv316CANError_TypeDef"></span><span id="_CPPv216CANError_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1ga650f92d2166a56912d4cc3602dc4fa74"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANError_TypeDef</span></span></span><a class="headerlink" href="#_CPPv416CANError_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The error of CAN. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16CANError_TypeDef10CAN_NO_ERRE">
+<span id="_CPPv3N16CANError_TypeDef10CAN_NO_ERRE"></span><span id="_CPPv2N16CANError_TypeDef10CAN_NO_ERRE"></span><span class="target" id="group___c_a_n___exported___types_1gga650f92d2166a56912d4cc3602dc4fa74af4d34bad3569398a771789b26a298d12"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_NO_ERR</span></span></span><a class="headerlink" href="#_CPPv4N16CANError_TypeDef10CAN_NO_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>no error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16CANError_TypeDef14CAN_MSG_ID_ERRE">
+<span id="_CPPv3N16CANError_TypeDef14CAN_MSG_ID_ERRE"></span><span id="_CPPv2N16CANError_TypeDef14CAN_MSG_ID_ERRE"></span><span class="target" id="group___c_a_n___exported___types_1gga650f92d2166a56912d4cc3602dc4fa74a9defdb50024d2274b019db0a38e3f7a0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_MSG_ID_ERR</span></span></span><a class="headerlink" href="#_CPPv4N16CANError_TypeDef14CAN_MSG_ID_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>can message id error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16CANError_TypeDef10CAN_ID_ERRE">
+<span id="_CPPv3N16CANError_TypeDef10CAN_ID_ERRE"></span><span id="_CPPv2N16CANError_TypeDef10CAN_ID_ERRE"></span><span class="target" id="group___c_a_n___exported___types_1gga650f92d2166a56912d4cc3602dc4fa74a0f4a12863eceab4da0efdd7ead1e1eee"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_ID_ERR</span></span></span><a class="headerlink" href="#_CPPv4N16CANError_TypeDef10CAN_ID_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame id error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16CANError_TypeDef16CAN_DATA_LEN_ERRE">
+<span id="_CPPv3N16CANError_TypeDef16CAN_DATA_LEN_ERRE"></span><span id="_CPPv2N16CANError_TypeDef16CAN_DATA_LEN_ERRE"></span><span class="target" id="group___c_a_n___exported___types_1gga650f92d2166a56912d4cc3602dc4fa74adb407c9dc4fe656b7e5820e9e75a9f03"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_DATA_LEN_ERR</span></span></span><a class="headerlink" href="#_CPPv4N16CANError_TypeDef16CAN_DATA_LEN_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame data length error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16CANError_TypeDef12CAN_TYPE_ERRE">
+<span id="_CPPv3N16CANError_TypeDef12CAN_TYPE_ERRE"></span><span id="_CPPv2N16CANError_TypeDef12CAN_TYPE_ERRE"></span><span class="target" id="group___c_a_n___exported___types_1gga650f92d2166a56912d4cc3602dc4fa74a9ad0db429045ebc12f081185937dc16b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_TYPE_ERR</span></span></span><a class="headerlink" href="#_CPPv4N16CANError_TypeDef12CAN_TYPE_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame type error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16CANError_TypeDef17CAN_RAM_STATE_ERRE">
+<span id="_CPPv3N16CANError_TypeDef17CAN_RAM_STATE_ERRE"></span><span id="_CPPv2N16CANError_TypeDef17CAN_RAM_STATE_ERRE"></span><span class="target" id="group___c_a_n___exported___types_1gga650f92d2166a56912d4cc3602dc4fa74ac7a65aae6889326e4d75a59c951a9c58"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_STATE_ERR</span></span></span><a class="headerlink" href="#_CPPv4N16CANError_TypeDef17CAN_RAM_STATE_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame ram status error. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16CANError_TypeDef15CAN_TIMEOUT_ERRE">
+<span id="_CPPv3N16CANError_TypeDef15CAN_TIMEOUT_ERRE"></span><span id="_CPPv2N16CANError_TypeDef15CAN_TIMEOUT_ERRE"></span><span class="target" id="group___c_a_n___exported___types_1gga650f92d2166a56912d4cc3602dc4fa74a43b89e33ac184c481a8da90842540a9f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_TIMEOUT_ERR</span></span></span><a class="headerlink" href="#_CPPv4N16CANError_TypeDef15CAN_TIMEOUT_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>can timeout error. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv419CANClockDiv_TypeDef">
+<span id="_CPPv319CANClockDiv_TypeDef"></span><span id="_CPPv219CANClockDiv_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1gaba2f63c9b785a0fa9e57ea03af90b7fd"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANClockDiv_TypeDef</span></span></span><a class="headerlink" href="#_CPPv419CANClockDiv_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>CAN clock divider definition. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_1E">
+<span id="_CPPv3N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_1E"></span><span id="_CPPv2N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_1E"></span><span class="target" id="group___c_a_n___exported___types_1ggaba2f63c9b785a0fa9e57ea03af90b7fda8b6792453ee0e91d452fbe1294bb3050"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_CLOCK_DIVIDER_1</span></span></span><a class="headerlink" href="#_CPPv4N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_1E" title="Link to this definition"></a><br /></dt>
+<dd><p>DVI = 1 (40M / 1). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_2E">
+<span id="_CPPv3N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_2E"></span><span id="_CPPv2N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_2E"></span><span class="target" id="group___c_a_n___exported___types_1ggaba2f63c9b785a0fa9e57ea03af90b7fda4416a1a403a94325e192715a4b75b9ff"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_CLOCK_DIVIDER_2</span></span></span><a class="headerlink" href="#_CPPv4N19CANClockDiv_TypeDef19CAN_CLOCK_DIVIDER_2E" title="Link to this definition"></a><br /></dt>
+<dd><p>DVI = 2 (40M / 2). </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv419CANClockSrc_TypeDef">
+<span id="_CPPv319CANClockSrc_TypeDef"></span><span id="_CPPv219CANClockSrc_TypeDef"></span><span class="target" id="group___c_a_n___exported___types_1ga46113c3582b0991edbe0519241cf86ce"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANClockSrc_TypeDef</span></span></span><a class="headerlink" href="#_CPPv419CANClockSrc_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>CAN clock source definition. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19CANClockSrc_TypeDef17CAN_CLOCK_SRC_40ME">
+<span id="_CPPv3N19CANClockSrc_TypeDef17CAN_CLOCK_SRC_40ME"></span><span id="_CPPv2N19CANClockSrc_TypeDef17CAN_CLOCK_SRC_40ME"></span><span class="target" id="group___c_a_n___exported___types_1gga46113c3582b0991edbe0519241cf86cea77feea31dd841acb0022fa074ef6bd19"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_CLOCK_SRC_40M</span></span></span><a class="headerlink" href="#_CPPv4N19CANClockSrc_TypeDef17CAN_CLOCK_SRC_40ME" title="Link to this definition"></a><br /></dt>
+<dd><p>The clock source of can is 40MHz. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv427CAN_BIT_TIMING_TYPE_TypeDef">
+<span id="_CPPv327CAN_BIT_TIMING_TYPE_TypeDef"></span><span id="_CPPv227CAN_BIT_TIMING_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef</span></span></span><a class="headerlink" href="#_CPPv427CAN_BIT_TIMING_TYPE_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>CAN init structure definition. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef3d32E">
+<span id="_CPPv3N27CAN_BIT_TIMING_TYPE_TypeDef3d32E"></span><span id="_CPPv2N27CAN_BIT_TIMING_TYPE_TypeDef3d32E"></span><span id="CAN_BIT_TIMING_TYPE_TypeDef::d32__uint32_t"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def_1a134240bc6149d901e426171a82068094"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d32</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef3d32E" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef2d8E">
+<span id="_CPPv3N27CAN_BIT_TIMING_TYPE_TypeDef2d8E"></span><span id="_CPPv2N27CAN_BIT_TIMING_TYPE_TypeDef2d8E"></span><span id="CAN_BIT_TIMING_TYPE_TypeDef::d8__uint8_tA"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def_1a363167c55085449e4a54ee51f02de74e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d8</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef2d8E" title="Link to this definition"></a><br /></dt>
+<dd><p>The four byte array members in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg1E">
+<span id="_CPPv3N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg1E"></span><span id="_CPPv2N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg1E"></span><span id="CAN_BIT_TIMING_TYPE_TypeDef::can_tseg1__uint32_t"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def_1aa86ba30d69236a6d0bdbe48957262d7a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_tseg1</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg1E" title="Link to this definition"></a><br /></dt>
+<dd><p>The TSEG1 of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg2E">
+<span id="_CPPv3N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg2E"></span><span id="_CPPv2N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg2E"></span><span id="CAN_BIT_TIMING_TYPE_TypeDef::can_tseg2__uint32_t"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def_1a65f6cad2338f11e0f1167ee10bdc81a8"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_tseg2</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef9can_tseg2E" title="Link to this definition"></a><br /></dt>
+<dd><p>The TSEG2 of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef7can_sjwE">
+<span id="_CPPv3N27CAN_BIT_TIMING_TYPE_TypeDef7can_sjwE"></span><span id="_CPPv2N27CAN_BIT_TIMING_TYPE_TypeDef7can_sjwE"></span><span id="CAN_BIT_TIMING_TYPE_TypeDef::can_sjw__uint32_t"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def_1a6356342bc96285eb51f5dbf04c11d6ca"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_sjw</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef7can_sjwE" title="Link to this definition"></a><br /></dt>
+<dd><p>The SJW of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef10RESERVED_0E">
+<span id="_CPPv3N27CAN_BIT_TIMING_TYPE_TypeDef10RESERVED_0E"></span><span id="_CPPv2N27CAN_BIT_TIMING_TYPE_TypeDef10RESERVED_0E"></span><span id="CAN_BIT_TIMING_TYPE_TypeDef::RESERVED_0__uint32_t"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def_1ac6c1181a197155a78d13c5c188dd26d6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RESERVED_0</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef10RESERVED_0E" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef7can_brpE">
+<span id="_CPPv3N27CAN_BIT_TIMING_TYPE_TypeDef7can_brpE"></span><span id="_CPPv2N27CAN_BIT_TIMING_TYPE_TypeDef7can_brpE"></span><span id="CAN_BIT_TIMING_TYPE_TypeDef::can_brp__uint32_t"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def_1aa47ac71652fa484a753eacdd097db3a5"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_brp</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef7can_brpE" title="Link to this definition"></a><br /></dt>
+<dd><p>The BRP of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef1bE">
+<span id="_CPPv3N27CAN_BIT_TIMING_TYPE_TypeDef1bE"></span><span id="_CPPv2N27CAN_BIT_TIMING_TYPE_TypeDef1bE"></span><span id="CAN_BIT_TIMING_TYPE_TypeDef::b__CAN_BIT_TIMING_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def_1a888e78e4fdefe58dba99b8175f191185"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv427CAN_BIT_TIMING_TYPE_TypeDef" title="CAN_BIT_TIMING_TYPE_TypeDef"><span class="n"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">b</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_BIT_TIMING_TYPE_TypeDef1bE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv427CAN_TIME_STAMP_TYPE_TypeDef">
+<span id="_CPPv327CAN_TIME_STAMP_TYPE_TypeDef"></span><span id="_CPPv227CAN_TIME_STAMP_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef</span></span></span><a class="headerlink" href="#_CPPv427CAN_TIME_STAMP_TYPE_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef3d32E">
+<span id="_CPPv3N27CAN_TIME_STAMP_TYPE_TypeDef3d32E"></span><span id="_CPPv2N27CAN_TIME_STAMP_TYPE_TypeDef3d32E"></span><span id="CAN_TIME_STAMP_TYPE_TypeDef::d32__uint32_t"></span><span class="target" id="union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def_1a134240bc6149d901e426171a82068094"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d32</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef3d32E" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef2d8E">
+<span id="_CPPv3N27CAN_TIME_STAMP_TYPE_TypeDef2d8E"></span><span id="_CPPv2N27CAN_TIME_STAMP_TYPE_TypeDef2d8E"></span><span id="CAN_TIME_STAMP_TYPE_TypeDef::d8__uint8_tA"></span><span class="target" id="union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def_1a363167c55085449e4a54ee51f02de74e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d8</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef2d8E" title="Link to this definition"></a><br /></dt>
+<dd><p>The four byte array members in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef14can_time_stampE">
+<span id="_CPPv3N27CAN_TIME_STAMP_TYPE_TypeDef14can_time_stampE"></span><span id="_CPPv2N27CAN_TIME_STAMP_TYPE_TypeDef14can_time_stampE"></span><span id="CAN_TIME_STAMP_TYPE_TypeDef::can_time_stamp__uint32_tC"></span><span class="target" id="union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def_1ac8d4952bca54a494a7f9ed883c429471"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_time_stamp</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef14can_time_stampE" title="Link to this definition"></a><br /></dt>
+<dd><p>The time stamp of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef18can_time_stamp_divE">
+<span id="_CPPv3N27CAN_TIME_STAMP_TYPE_TypeDef18can_time_stamp_divE"></span><span id="_CPPv2N27CAN_TIME_STAMP_TYPE_TypeDef18can_time_stamp_divE"></span><span id="CAN_TIME_STAMP_TYPE_TypeDef::can_time_stamp_div__uint32_t"></span><span class="target" id="union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def_1a4ede175851286e03ca7dafb8ede4f4f4"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_time_stamp_div</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef18can_time_stamp_divE" title="Link to this definition"></a><br /></dt>
+<dd><p>The div of time stamp. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef10RESERVED_0E">
+<span id="_CPPv3N27CAN_TIME_STAMP_TYPE_TypeDef10RESERVED_0E"></span><span id="_CPPv2N27CAN_TIME_STAMP_TYPE_TypeDef10RESERVED_0E"></span><span id="CAN_TIME_STAMP_TYPE_TypeDef::RESERVED_0__uint32_t"></span><span class="target" id="union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def_1ac6c1181a197155a78d13c5c188dd26d6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RESERVED_0</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef10RESERVED_0E" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef17can_time_stamp_enE">
+<span id="_CPPv3N27CAN_TIME_STAMP_TYPE_TypeDef17can_time_stamp_enE"></span><span id="_CPPv2N27CAN_TIME_STAMP_TYPE_TypeDef17can_time_stamp_enE"></span><span id="CAN_TIME_STAMP_TYPE_TypeDef::can_time_stamp_en__uint32_t"></span><span class="target" id="union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def_1afc53fe5a7088a51aadf55f0edc151984"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_time_stamp_en</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef17can_time_stamp_enE" title="Link to this definition"></a><br /></dt>
+<dd><p>The enable bit of time stamp. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef1bE">
+<span id="_CPPv3N27CAN_TIME_STAMP_TYPE_TypeDef1bE"></span><span id="_CPPv2N27CAN_TIME_STAMP_TYPE_TypeDef1bE"></span><span id="CAN_TIME_STAMP_TYPE_TypeDef::b__CAN_TIME_STAMP_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def_1a26643c381df74ad826de4d4e07c86ec2"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv427CAN_TIME_STAMP_TYPE_TypeDef" title="CAN_TIME_STAMP_TYPE_TypeDef"><span class="n"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">b</span></span></span><a class="headerlink" href="#_CPPv4N27CAN_TIME_STAMP_TYPE_TypeDef1bE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv424CAN_RAM_ARB_TYPE_TypeDef">
+<span id="_CPPv324CAN_RAM_ARB_TYPE_TypeDef"></span><span id="_CPPv224CAN_RAM_ARB_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___a_r_b___t_y_p_e___type_def"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef</span></span></span><a class="headerlink" href="#_CPPv424CAN_RAM_ARB_TYPE_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef3d32E">
+<span id="_CPPv3N24CAN_RAM_ARB_TYPE_TypeDef3d32E"></span><span id="_CPPv2N24CAN_RAM_ARB_TYPE_TypeDef3d32E"></span><span id="CAN_RAM_ARB_TYPE_TypeDef::d32__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___a_r_b___t_y_p_e___type_def_1a134240bc6149d901e426171a82068094"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d32</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef3d32E" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef2d8E">
+<span id="_CPPv3N24CAN_RAM_ARB_TYPE_TypeDef2d8E"></span><span id="_CPPv2N24CAN_RAM_ARB_TYPE_TypeDef2d8E"></span><span id="CAN_RAM_ARB_TYPE_TypeDef::d8__uint8_tA"></span><span class="target" id="union_c_a_n___r_a_m___a_r_b___t_y_p_e___type_def_1a363167c55085449e4a54ee51f02de74e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d8</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef2d8E" title="Link to this definition"></a><br /></dt>
+<dd><p>The four byte array members in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef10can_ram_idE">
+<span id="_CPPv3N24CAN_RAM_ARB_TYPE_TypeDef10can_ram_idE"></span><span id="_CPPv2N24CAN_RAM_ARB_TYPE_TypeDef10can_ram_idE"></span><span id="CAN_RAM_ARB_TYPE_TypeDef::can_ram_id__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___a_r_b___t_y_p_e___type_def_1aab822f14ab0e357cda0cdd35ac03c105"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_id</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef10can_ram_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>The ID of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_ideE">
+<span id="_CPPv3N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_ideE"></span><span id="_CPPv2N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_ideE"></span><span id="CAN_RAM_ARB_TYPE_TypeDef::can_ram_ide__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___a_r_b___t_y_p_e___type_def_1abc799991c6b8bcd276f2fea423af584e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_ide</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_ideE" title="Link to this definition"></a><br /></dt>
+<dd><p>The IDE of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_rtrE">
+<span id="_CPPv3N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_rtrE"></span><span id="_CPPv2N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_rtrE"></span><span id="CAN_RAM_ARB_TYPE_TypeDef::can_ram_rtr__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___a_r_b___t_y_p_e___type_def_1aeb8ee9b69a2862e189bc735dda45223f"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_rtr</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef11can_ram_rtrE" title="Link to this definition"></a><br /></dt>
+<dd><p>The RTR of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef1bE">
+<span id="_CPPv3N24CAN_RAM_ARB_TYPE_TypeDef1bE"></span><span id="_CPPv2N24CAN_RAM_ARB_TYPE_TypeDef1bE"></span><span id="CAN_RAM_ARB_TYPE_TypeDef::b__CAN_RAM_ARB_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___a_r_b___t_y_p_e___type_def_1a633ec380bb35f424907b1dcb76aa839c"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv424CAN_RAM_ARB_TYPE_TypeDef" title="CAN_RAM_ARB_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">b</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_ARB_TYPE_TypeDef1bE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv425CAN_RAM_MASK_TYPE_TypeDef">
+<span id="_CPPv325CAN_RAM_MASK_TYPE_TypeDef"></span><span id="_CPPv225CAN_RAM_MASK_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___m_a_s_k___t_y_p_e___type_def"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef</span></span></span><a class="headerlink" href="#_CPPv425CAN_RAM_MASK_TYPE_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef3d32E">
+<span id="_CPPv3N25CAN_RAM_MASK_TYPE_TypeDef3d32E"></span><span id="_CPPv2N25CAN_RAM_MASK_TYPE_TypeDef3d32E"></span><span id="CAN_RAM_MASK_TYPE_TypeDef::d32__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___m_a_s_k___t_y_p_e___type_def_1a134240bc6149d901e426171a82068094"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d32</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef3d32E" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef2d8E">
+<span id="_CPPv3N25CAN_RAM_MASK_TYPE_TypeDef2d8E"></span><span id="_CPPv2N25CAN_RAM_MASK_TYPE_TypeDef2d8E"></span><span id="CAN_RAM_MASK_TYPE_TypeDef::d8__uint8_tA"></span><span class="target" id="union_c_a_n___r_a_m___m_a_s_k___t_y_p_e___type_def_1a363167c55085449e4a54ee51f02de74e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d8</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef2d8E" title="Link to this definition"></a><br /></dt>
+<dd><p>The four byte array members in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef15can_ram_id_maskE">
+<span id="_CPPv3N25CAN_RAM_MASK_TYPE_TypeDef15can_ram_id_maskE"></span><span id="_CPPv2N25CAN_RAM_MASK_TYPE_TypeDef15can_ram_id_maskE"></span><span id="CAN_RAM_MASK_TYPE_TypeDef::can_ram_id_mask__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___m_a_s_k___t_y_p_e___type_def_1aae685cc516dce722732256feb7644481"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_id_mask</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef15can_ram_id_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>The mask of CAN ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_ide_maskE">
+<span id="_CPPv3N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_ide_maskE"></span><span id="_CPPv2N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_ide_maskE"></span><span id="CAN_RAM_MASK_TYPE_TypeDef::can_ram_ide_mask__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___m_a_s_k___t_y_p_e___type_def_1aebf28bb2fe10478af43eb57a5c0661c3"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_ide_mask</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_ide_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>The mask of CAN IDE. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_rtr_maskE">
+<span id="_CPPv3N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_rtr_maskE"></span><span id="_CPPv2N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_rtr_maskE"></span><span id="CAN_RAM_MASK_TYPE_TypeDef::can_ram_rtr_mask__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___m_a_s_k___t_y_p_e___type_def_1aaae334475f598a3634b56f72258d0460"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_rtr_mask</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef16can_ram_rtr_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>The mask of CAN RTR. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef1bE">
+<span id="_CPPv3N25CAN_RAM_MASK_TYPE_TypeDef1bE"></span><span id="_CPPv2N25CAN_RAM_MASK_TYPE_TypeDef1bE"></span><span id="CAN_RAM_MASK_TYPE_TypeDef::b__CAN_RAM_MASK_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___m_a_s_k___t_y_p_e___type_def_1abea467220521799aa39f79f4ec3ea6cc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv425CAN_RAM_MASK_TYPE_TypeDef" title="CAN_RAM_MASK_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">b</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_MASK_TYPE_TypeDef1bE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv423CAN_RAM_CS_TYPE_TypeDef">
+<span id="_CPPv323CAN_RAM_CS_TYPE_TypeDef"></span><span id="_CPPv223CAN_RAM_CS_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_CS_TYPE_TypeDef</span></span></span><a class="headerlink" href="#_CPPv423CAN_RAM_CS_TYPE_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef3d32E">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef3d32E"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef3d32E"></span><span id="CAN_RAM_CS_TYPE_TypeDef::d32__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1a134240bc6149d901e426171a82068094"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d32</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef3d32E" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef2d8E">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef2d8E"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef2d8E"></span><span id="CAN_RAM_CS_TYPE_TypeDef::d8__uint8_tA"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1a363167c55085449e4a54ee51f02de74e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d8</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef2d8E" title="Link to this definition"></a><br /></dt>
+<dd><p>The four byte array members in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef11can_ram_dlcE">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef11can_ram_dlcE"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef11can_ram_dlcE"></span><span id="CAN_RAM_CS_TYPE_TypeDef::can_ram_dlc__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1a427fca1a7f4d6feba63b0c4f119d126d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_dlc</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef11can_ram_dlcE" title="Link to this definition"></a><br /></dt>
+<dd><p>The data length. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef12can_ram_lostE">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef12can_ram_lostE"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef12can_ram_lostE"></span><span id="CAN_RAM_CS_TYPE_TypeDef::can_ram_lost__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1ad1883b8711408d13bc7c482508f551b0"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_lost</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef12can_ram_lostE" title="Link to this definition"></a><br /></dt>
+<dd><p>Value 1 indicates that data have lost in the read buffer, means more than one frame have beed received since last read. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef12can_ram_rxtxE">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef12can_ram_rxtxE"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef12can_ram_rxtxE"></span><span id="CAN_RAM_CS_TYPE_TypeDef::can_ram_rxtx__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1a432e15c000b68a865d480966c138f9ba"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_rxtx</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef12can_ram_rxtxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Can frame RX or TX, 0 is for RX, 1 is for TX. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef17can_ram_autoreplyE">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef17can_ram_autoreplyE"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef17can_ram_autoreplyE"></span><span id="CAN_RAM_CS_TYPE_TypeDef::can_ram_autoreply__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1add904a98836740452fa21ce0e2b5f6cc"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_autoreply</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef17can_ram_autoreplyE" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the message buffer with remote frame auto reply function. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_1E">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_1E"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_1E"></span><span id="CAN_RAM_CS_TYPE_TypeDef::RESERVED_1__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1ac005cb4f3a35efeba9b14a07647125e7"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RESERVED_1</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_1E" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef5resetE">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef5resetE"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef5resetE"></span><span id="CAN_RAM_CS_TYPE_TypeDef::reset__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1aa0110dfcd1a7cfdd3fae2a5676f7901d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reset</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef5resetE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_2E">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_2E"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_2E"></span><span id="CAN_RAM_CS_TYPE_TypeDef::RESERVED_2__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1a51c13fc19c823a6f21b54cfa2f083a9a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RESERVED_2</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_2E" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef11can_ram_esiE">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef11can_ram_esiE"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef11can_ram_esiE"></span><span id="CAN_RAM_CS_TYPE_TypeDef::can_ram_esi__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1a03b0084e405feb2983128e2ee512642b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_esi</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef11can_ram_esiE" title="Link to this definition"></a><br /></dt>
+<dd><p>The ESI of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_0E">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_0E"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_0E"></span><span id="CAN_RAM_CS_TYPE_TypeDef::RESERVED_0__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1ac6c1181a197155a78d13c5c188dd26d6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RESERVED_0</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef10RESERVED_0E" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef17can_ram_timestampE">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef17can_ram_timestampE"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef17can_ram_timestampE"></span><span id="CAN_RAM_CS_TYPE_TypeDef::can_ram_timestamp__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1a6023d3b5a7ce2dd2626f236868005855"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_timestamp</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef17can_ram_timestampE" title="Link to this definition"></a><br /></dt>
+<dd><p>The received message time stamp. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23CAN_RAM_CS_TYPE_TypeDef1bE">
+<span id="_CPPv3N23CAN_RAM_CS_TYPE_TypeDef1bE"></span><span id="_CPPv2N23CAN_RAM_CS_TYPE_TypeDef1bE"></span><span id="CAN_RAM_CS_TYPE_TypeDef::b__CAN_RAM_CS_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___c_s___t_y_p_e___type_def_1abb055ef0404d3185429adf86c68667f9"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv423CAN_RAM_CS_TYPE_TypeDef" title="CAN_RAM_CS_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_CS_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">b</span></span></span><a class="headerlink" href="#_CPPv4N23CAN_RAM_CS_TYPE_TypeDef1bE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv424CAN_RAM_CMD_TYPE_TypeDef">
+<span id="_CPPv324CAN_RAM_CMD_TYPE_TypeDef"></span><span id="_CPPv224CAN_RAM_CMD_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef</span></span></span><a class="headerlink" href="#_CPPv424CAN_RAM_CMD_TYPE_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef3d32E">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef3d32E"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef3d32E"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::d32__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1a134240bc6149d901e426171a82068094"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d32</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef3d32E" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef2d8E">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef2d8E"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef2d8E"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::d8__uint8_tA"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1a363167c55085449e4a54ee51f02de74e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d8</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef2d8E" title="Link to this definition"></a><br /></dt>
+<dd><p>The four byte array members in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_numE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_numE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_numE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_num__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1a4795b7561ee07bd428e20860b9361c83"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_acc_num</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_numE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access message buffer number. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_maskE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_maskE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_maskE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_mask__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1a973c27c46e73c73d2489e3172a32b1ae"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_acc_mask</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access CAN_RAM_MASK field, the field will exchange with RAM spaces. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef14can_ram_acc_csE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef14can_ram_acc_csE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef14can_ram_acc_csE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_cs__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1a81d98c5cc6419ea76890e6f93a8a7a19"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_acc_cs</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef14can_ram_acc_csE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access CAN_RAM_CS field, the field will exchange with RAM space. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_arbE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_arbE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_arbE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_arb__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1ac33e4a9bb6c5b824ea1bef8ce76bf99f"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_acc_arb</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef15can_ram_acc_arbE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access CAN_RAM_ARB field, the field will exchange with RAM space. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_dataE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_dataE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_dataE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::can_ram_acc_data__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1a75caf6f1a3ae1a08cf557af1dbb12c98"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_acc_data</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef16can_ram_acc_dataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access CAN_RAM_DATA field, the field will exchange with RAM space. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef10RESERVED_0E">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef10RESERVED_0E"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef10RESERVED_0E"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::RESERVED_0__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1ac6c1181a197155a78d13c5c188dd26d6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RESERVED_0</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef10RESERVED_0E" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef17can_ram_buffer_enE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef17can_ram_buffer_enE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef17can_ram_buffer_enE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::can_ram_buffer_en__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1ae89914837f319cc2a9a2a4cc56379f48"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_buffer_en</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef17can_ram_buffer_enE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable the can_ram_acc_num specified message buffer for rx/tx. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef11can_ram_dirE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef11can_ram_dirE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef11can_ram_dirE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::can_ram_dir__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1af5da71c82cc1a6db184ba03cfe864c5e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_dir</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef11can_ram_dirE" title="Link to this definition"></a><br /></dt>
+<dd><p>0 is for read from RAM to CAN_RAM_* registers, 1 is for write from CAN_RAM_* to RAM. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef13can_ram_startE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef13can_ram_startE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef13can_ram_startE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::can_ram_start__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1a385e21d41065ba5013c5a72227f68ca4"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_start</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef13can_ram_startE" title="Link to this definition"></a><br /></dt>
+<dd><p>start to exchange data with RAM, the bit will clear automatically after the data change is finshed. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef1bE">
+<span id="_CPPv3N24CAN_RAM_CMD_TYPE_TypeDef1bE"></span><span id="_CPPv2N24CAN_RAM_CMD_TYPE_TypeDef1bE"></span><span id="CAN_RAM_CMD_TYPE_TypeDef::b__CAN_RAM_CMD_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def_1ae9884eed07547f77de7cb7d3b9020638"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv424CAN_RAM_CMD_TYPE_TypeDef" title="CAN_RAM_CMD_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">b</span></span></span><a class="headerlink" href="#_CPPv4N24CAN_RAM_CMD_TYPE_TypeDef1bE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv425CAN_RAM_DATA_TYPE_TypeDef">
+<span id="_CPPv325CAN_RAM_DATA_TYPE_TypeDef"></span><span id="_CPPv225CAN_RAM_DATA_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___d_a_t_a___t_y_p_e___type_def"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef</span></span></span><a class="headerlink" href="#_CPPv425CAN_RAM_DATA_TYPE_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef3d32E">
+<span id="_CPPv3N25CAN_RAM_DATA_TYPE_TypeDef3d32E"></span><span id="_CPPv2N25CAN_RAM_DATA_TYPE_TypeDef3d32E"></span><span id="CAN_RAM_DATA_TYPE_TypeDef::d32__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___d_a_t_a___t_y_p_e___type_def_1a134240bc6149d901e426171a82068094"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d32</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef3d32E" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef2d8E">
+<span id="_CPPv3N25CAN_RAM_DATA_TYPE_TypeDef2d8E"></span><span id="_CPPv2N25CAN_RAM_DATA_TYPE_TypeDef2d8E"></span><span id="CAN_RAM_DATA_TYPE_TypeDef::d8__uint8_tA"></span><span class="target" id="union_c_a_n___r_a_m___d_a_t_a___t_y_p_e___type_def_1a363167c55085449e4a54ee51f02de74e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">d8</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef2d8E" title="Link to this definition"></a><br /></dt>
+<dd><p>The four byte array members in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data0E">
+<span id="_CPPv3N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data0E"></span><span id="_CPPv2N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data0E"></span><span id="CAN_RAM_DATA_TYPE_TypeDef::can_ram_data0__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___d_a_t_a___t_y_p_e___type_def_1af95c6120be611d61505265f9e0be643d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_data0</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data0E" title="Link to this definition"></a><br /></dt>
+<dd><p>The data0 of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data1E">
+<span id="_CPPv3N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data1E"></span><span id="_CPPv2N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data1E"></span><span id="CAN_RAM_DATA_TYPE_TypeDef::can_ram_data1__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___d_a_t_a___t_y_p_e___type_def_1a94e3bc4d1c815cbe238a2f735aba4e60"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_data1</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data1E" title="Link to this definition"></a><br /></dt>
+<dd><p>The data1 of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data2E">
+<span id="_CPPv3N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data2E"></span><span id="_CPPv2N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data2E"></span><span id="CAN_RAM_DATA_TYPE_TypeDef::can_ram_data2__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___d_a_t_a___t_y_p_e___type_def_1a6b717b5fb8a3445eddea745d3b862fb6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_data2</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data2E" title="Link to this definition"></a><br /></dt>
+<dd><p>The data2 of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data3E">
+<span id="_CPPv3N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data3E"></span><span id="_CPPv2N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data3E"></span><span id="CAN_RAM_DATA_TYPE_TypeDef::can_ram_data3__uint32_t"></span><span class="target" id="union_c_a_n___r_a_m___d_a_t_a___t_y_p_e___type_def_1a8e39f663fd279ab51d27ed063c3cb445"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_data3</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef13can_ram_data3E" title="Link to this definition"></a><br /></dt>
+<dd><p>The data3 of CAN. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef1bE">
+<span id="_CPPv3N25CAN_RAM_DATA_TYPE_TypeDef1bE"></span><span id="_CPPv2N25CAN_RAM_DATA_TYPE_TypeDef1bE"></span><span id="CAN_RAM_DATA_TYPE_TypeDef::b__CAN_RAM_DATA_TYPE_TypeDef"></span><span class="target" id="union_c_a_n___r_a_m___d_a_t_a___t_y_p_e___type_def_1a7fca5891578c5d47c313e88403ad00dc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv425CAN_RAM_DATA_TYPE_TypeDef" title="CAN_RAM_DATA_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_DATA_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">b</span></span></span><a class="headerlink" href="#_CPPv4N25CAN_RAM_DATA_TYPE_TypeDef1bE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415CAN_InitTypeDef">
+<span id="_CPPv315CAN_InitTypeDef"></span><span id="_CPPv215CAN_InitTypeDef"></span><span id="CAN_InitTypeDef"></span><span class="target" id="struct_c_a_n___init_type_def"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_InitTypeDef</span></span></span><a class="headerlink" href="#_CPPv415CAN_InitTypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>CAN init structure definition. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_InitTypeDef14CAN_AutoReTxEnE">
+<span id="_CPPv3N15CAN_InitTypeDef14CAN_AutoReTxEnE"></span><span id="_CPPv2N15CAN_InitTypeDef14CAN_AutoReTxEnE"></span><span id="CAN_InitTypeDef::CAN_AutoReTxEn__uint8_t"></span><span class="target" id="struct_c_a_n___init_type_def_1ab804b826831c6a3b6f2ab5e3b20641ed"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_AutoReTxEn</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_InitTypeDef14CAN_AutoReTxEnE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify Whether the auto re-transmission function is enable. This parameter can be a value of ENABLE or DISABLE. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_InitTypeDef12CAN_RxFifoEnE">
+<span id="_CPPv3N15CAN_InitTypeDef12CAN_RxFifoEnE"></span><span id="_CPPv2N15CAN_InitTypeDef12CAN_RxFifoEnE"></span><span id="CAN_InitTypeDef::CAN_RxFifoEn__uint8_t"></span><span class="target" id="struct_c_a_n___init_type_def_1a6d539fb77ca57484b813e8ccbf915872"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RxFifoEn</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_InitTypeDef12CAN_RxFifoEnE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify Whether the RX FIFO function is enable. This parameter can be a value of ENABLE or DISABLE. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_InitTypeDef11CAN_RxDmaEnE">
+<span id="_CPPv3N15CAN_InitTypeDef11CAN_RxDmaEnE"></span><span id="_CPPv2N15CAN_InitTypeDef11CAN_RxDmaEnE"></span><span id="CAN_InitTypeDef::CAN_RxDmaEn__uint8_t"></span><span class="target" id="struct_c_a_n___init_type_def_1ac61e1b834164202fe30cefba1a97b2df"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RxDmaEn</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_InitTypeDef11CAN_RxDmaEnE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify Whether the RX DMA function is enable. This parameter can be a value of ENABLE or DISABLE. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_InitTypeDef15CAN_TestModeSelE">
+<span id="_CPPv3N15CAN_InitTypeDef15CAN_TestModeSelE"></span><span id="_CPPv2N15CAN_InitTypeDef15CAN_TestModeSelE"></span><span id="CAN_InitTypeDef::CAN_TestModeSel__uint8_t"></span><span class="target" id="struct_c_a_n___init_type_def_1ab5024c95b17bc84ed8b0a4fba7e795f6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_TestModeSel</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_InitTypeDef15CAN_TestModeSelE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify the test mode of CAN. This parameter can be a value of <a class="reference internal" href="#group___c_a_n___exported___types_1ga8308633527d1d45a0cd8834c93ccb376"><span class="std std-ref">CANTestModeSel_TypeDef</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_InitTypeDef16CAN_ErrorWarnThdE">
+<span id="_CPPv3N15CAN_InitTypeDef16CAN_ErrorWarnThdE"></span><span id="_CPPv2N15CAN_InitTypeDef16CAN_ErrorWarnThdE"></span><span id="CAN_InitTypeDef::CAN_ErrorWarnThd__uint16_t"></span><span class="target" id="struct_c_a_n___init_type_def_1ae3807c88dcd23c984c2944990cda6d60"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_ErrorWarnThd</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_InitTypeDef16CAN_ErrorWarnThdE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify error counter warning threshold. This parameter can be set from 0x1 to 0x1ff. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_InitTypeDef13CAN_BitTimingE">
+<span id="_CPPv3N15CAN_InitTypeDef13CAN_BitTimingE"></span><span id="_CPPv2N15CAN_InitTypeDef13CAN_BitTimingE"></span><span id="CAN_InitTypeDef::CAN_BitTiming__CAN_BIT_TIMING_TYPE_TypeDef"></span><span class="target" id="struct_c_a_n___init_type_def_1a29f7fc905c78176c82eec64a4d2c3cec"></span><a class="reference internal" href="#_CPPv427CAN_BIT_TIMING_TYPE_TypeDef" title="CAN_BIT_TIMING_TYPE_TypeDef"><span class="n"><span class="pre">CAN_BIT_TIMING_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_BitTiming</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_InitTypeDef13CAN_BitTimingE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify the bit timing of CAN. <a class="reference internal" href="#union_c_a_n___b_i_t___t_i_m_i_n_g___t_y_p_e___type_def"><span class="std std-ref">CAN_BIT_TIMING_TYPE_TypeDef</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_InitTypeDef13CAN_TimeStampE">
+<span id="_CPPv3N15CAN_InitTypeDef13CAN_TimeStampE"></span><span id="_CPPv2N15CAN_InitTypeDef13CAN_TimeStampE"></span><span id="CAN_InitTypeDef::CAN_TimeStamp__CAN_TIME_STAMP_TYPE_TypeDef"></span><span class="target" id="struct_c_a_n___init_type_def_1a99dc1a647ab35bbf0662ffbe99d5fe32"></span><a class="reference internal" href="#_CPPv427CAN_TIME_STAMP_TYPE_TypeDef" title="CAN_TIME_STAMP_TYPE_TypeDef"><span class="n"><span class="pre">CAN_TIME_STAMP_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_TimeStamp</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_InitTypeDef13CAN_TimeStampE" title="Link to this definition"></a><br /></dt>
+<dd><p>Specify the timestamp function of CAN. <a class="reference internal" href="#union_c_a_n___t_i_m_e___s_t_a_m_p___t_y_p_e___type_def"><span class="std std-ref">CAN_TIME_STAMP_TYPE_TypeDef</span></a></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418CANTxFrame_TypeDef">
+<span id="_CPPv318CANTxFrame_TypeDef"></span><span id="_CPPv218CANTxFrame_TypeDef"></span><span id="CANTxFrame_TypeDef"></span><span class="target" id="struct_c_a_n_tx_frame___type_def"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANTxFrame_TypeDef</span></span></span><a class="headerlink" href="#_CPPv418CANTxFrame_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The members of CAN frame. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANTxFrame_TypeDef10msg_buf_idE">
+<span id="_CPPv3N18CANTxFrame_TypeDef10msg_buf_idE"></span><span id="_CPPv2N18CANTxFrame_TypeDef10msg_buf_idE"></span><span id="CANTxFrame_TypeDef::msg_buf_id__uint8_t"></span><span class="target" id="struct_c_a_n_tx_frame___type_def_1af50f97233571f2325a42865f8499870b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">msg_buf_id</span></span></span><a class="headerlink" href="#_CPPv4N18CANTxFrame_TypeDef10msg_buf_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Message buffer ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANTxFrame_TypeDef14auto_reply_bitE">
+<span id="_CPPv3N18CANTxFrame_TypeDef14auto_reply_bitE"></span><span id="_CPPv2N18CANTxFrame_TypeDef14auto_reply_bitE"></span><span id="CANTxFrame_TypeDef::auto_reply_bit__uint8_t"></span><span class="target" id="struct_c_a_n_tx_frame___type_def_1aa10e8a943517c6099811771aad8cd000"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">auto_reply_bit</span></span></span><a class="headerlink" href="#_CPPv4N18CANTxFrame_TypeDef14auto_reply_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>The auto reply bit of frame. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANTxFrame_TypeDef10frame_typeE">
+<span id="_CPPv3N18CANTxFrame_TypeDef10frame_typeE"></span><span id="_CPPv2N18CANTxFrame_TypeDef10frame_typeE"></span><span id="CANTxFrame_TypeDef::frame_type__CANDataFrameSel_TypeDef"></span><span class="target" id="struct_c_a_n_tx_frame___type_def_1a80ac0c4d59cc14dce9a4f3b4ed9f93dd"></span><a class="reference internal" href="#_CPPv423CANDataFrameSel_TypeDef" title="CANDataFrameSel_TypeDef"><span class="n"><span class="pre">CANDataFrameSel_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frame_type</span></span></span><a class="headerlink" href="#_CPPv4N18CANTxFrame_TypeDef10frame_typeE" title="Link to this definition"></a><br /></dt>
+<dd><p>The type of frame. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANTxFrame_TypeDef17standard_frame_idE">
+<span id="_CPPv3N18CANTxFrame_TypeDef17standard_frame_idE"></span><span id="_CPPv2N18CANTxFrame_TypeDef17standard_frame_idE"></span><span id="CANTxFrame_TypeDef::standard_frame_id__uint16_t"></span><span class="target" id="struct_c_a_n_tx_frame___type_def_1af75a6e3c813760013ad865f1ef238245"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">standard_frame_id</span></span></span><a class="headerlink" href="#_CPPv4N18CANTxFrame_TypeDef17standard_frame_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>The standard frame ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANTxFrame_TypeDef15extend_frame_idE">
+<span id="_CPPv3N18CANTxFrame_TypeDef15extend_frame_idE"></span><span id="_CPPv2N18CANTxFrame_TypeDef15extend_frame_idE"></span><span id="CANTxFrame_TypeDef::extend_frame_id__uint32_t"></span><span class="target" id="struct_c_a_n_tx_frame___type_def_1a1711596acdbb412d2290a84b1ce6c473"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">extend_frame_id</span></span></span><a class="headerlink" href="#_CPPv4N18CANTxFrame_TypeDef15extend_frame_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>The extend frame ID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418CANRxFrame_TypeDef">
+<span id="_CPPv318CANRxFrame_TypeDef"></span><span id="_CPPv218CANRxFrame_TypeDef"></span><span id="CANRxFrame_TypeDef"></span><span class="target" id="struct_c_a_n_rx_frame___type_def"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANRxFrame_TypeDef</span></span></span><a class="headerlink" href="#_CPPv418CANRxFrame_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The members of CAN RX frame. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef10msg_buf_idE">
+<span id="_CPPv3N18CANRxFrame_TypeDef10msg_buf_idE"></span><span id="_CPPv2N18CANRxFrame_TypeDef10msg_buf_idE"></span><span id="CANRxFrame_TypeDef::msg_buf_id__uint8_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1af50f97233571f2325a42865f8499870b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">msg_buf_id</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef10msg_buf_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Message buffer ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef9rx_dma_enE">
+<span id="_CPPv3N18CANRxFrame_TypeDef9rx_dma_enE"></span><span id="_CPPv2N18CANRxFrame_TypeDef9rx_dma_enE"></span><span id="CANRxFrame_TypeDef::rx_dma_en__uint8_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1aa3cfe736b7eb3f2bdcc8784e61642135"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_dma_en</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef9rx_dma_enE" title="Link to this definition"></a><br /></dt>
+<dd><p>The DMA enable bit of RX frame. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef14frame_rtr_maskE">
+<span id="_CPPv3N18CANRxFrame_TypeDef14frame_rtr_maskE"></span><span id="_CPPv2N18CANRxFrame_TypeDef14frame_rtr_maskE"></span><span id="CANRxFrame_TypeDef::frame_rtr_mask__uint8_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1a37d3597e71902f2a39553deb4dd6c623"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frame_rtr_mask</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef14frame_rtr_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame RTR mask, 1 means don't care, 0 means the bit should match. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef14frame_ide_maskE">
+<span id="_CPPv3N18CANRxFrame_TypeDef14frame_ide_maskE"></span><span id="_CPPv2N18CANRxFrame_TypeDef14frame_ide_maskE"></span><span id="CANRxFrame_TypeDef::frame_ide_mask__uint8_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1ab711dcb62432d65850faff7a5657c4b0"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frame_ide_mask</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef14frame_ide_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame IDE mask, 1 means don't care, 0 means the bit should match. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef13frame_id_maskE">
+<span id="_CPPv3N18CANRxFrame_TypeDef13frame_id_maskE"></span><span id="_CPPv2N18CANRxFrame_TypeDef13frame_id_maskE"></span><span id="CANRxFrame_TypeDef::frame_id_mask__uint32_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1af6b4e25ad756dbfa5674b5e4a0f654e6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frame_id_mask</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef13frame_id_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame ID mask, 1 means the ID bit in CAN_RAM_ARB don't care, 0 means the bit should match. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef13frame_rtr_bitE">
+<span id="_CPPv3N18CANRxFrame_TypeDef13frame_rtr_bitE"></span><span id="_CPPv2N18CANRxFrame_TypeDef13frame_rtr_bitE"></span><span id="CANRxFrame_TypeDef::frame_rtr_bit__uint8_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1a6f1f5e5ba9d6fd841ea5c25eea283796"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frame_rtr_bit</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef13frame_rtr_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame RTR bit, determine DATA or REMOTE frame. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef13frame_ide_bitE">
+<span id="_CPPv3N18CANRxFrame_TypeDef13frame_ide_bitE"></span><span id="_CPPv2N18CANRxFrame_TypeDef13frame_ide_bitE"></span><span id="CANRxFrame_TypeDef::frame_ide_bit__uint8_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1a601b7a2be16bc6e16c13e16a709fe77a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frame_ide_bit</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef13frame_ide_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>can frame IDE bit, determine standard or extend format. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef14auto_reply_bitE">
+<span id="_CPPv3N18CANRxFrame_TypeDef14auto_reply_bitE"></span><span id="_CPPv2N18CANRxFrame_TypeDef14auto_reply_bitE"></span><span id="CANRxFrame_TypeDef::auto_reply_bit__uint8_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1aa10e8a943517c6099811771aad8cd000"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">auto_reply_bit</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef14auto_reply_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>The auto reply bit of RX frame. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef17standard_frame_idE">
+<span id="_CPPv3N18CANRxFrame_TypeDef17standard_frame_idE"></span><span id="_CPPv2N18CANRxFrame_TypeDef17standard_frame_idE"></span><span id="CANRxFrame_TypeDef::standard_frame_id__uint16_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1af75a6e3c813760013ad865f1ef238245"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">standard_frame_id</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef17standard_frame_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Standard frame ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef15extend_frame_idE">
+<span id="_CPPv3N18CANRxFrame_TypeDef15extend_frame_idE"></span><span id="_CPPv2N18CANRxFrame_TypeDef15extend_frame_idE"></span><span id="CANRxFrame_TypeDef::extend_frame_id__uint32_t"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1a1711596acdbb412d2290a84b1ce6c473"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">extend_frame_id</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef15extend_frame_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Extend frame ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CANRxFrame_TypeDef17rx_msg_buf_enableE">
+<span id="_CPPv3N18CANRxFrame_TypeDef17rx_msg_buf_enableE"></span><span id="_CPPv2N18CANRxFrame_TypeDef17rx_msg_buf_enableE"></span><span id="CANRxFrame_TypeDef::rx_msg_buf_enable__b"></span><span class="target" id="struct_c_a_n_rx_frame___type_def_1a2c067a9cde3b622ae46325a97a3702de"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_msg_buf_enable</span></span></span><a class="headerlink" href="#_CPPv4N18CANRxFrame_TypeDef17rx_msg_buf_enableE" title="Link to this definition"></a><br /></dt>
+<dd><p>Message buffer enable. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421CANMsgBufInfo_TypeDef">
+<span id="_CPPv321CANMsgBufInfo_TypeDef"></span><span id="_CPPv221CANMsgBufInfo_TypeDef"></span><span id="CANMsgBufInfo_TypeDef"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANMsgBufInfo_TypeDef</span></span></span><a class="headerlink" href="#_CPPv421CANMsgBufInfo_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The members of message buffer. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef8rtr_maskE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef8rtr_maskE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef8rtr_maskE"></span><span id="CANMsgBufInfo_TypeDef::rtr_mask__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1a53bf751e2db2d6b0eb564265079c04cd"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rtr_mask</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef8rtr_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>The mask of rtr. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef8ide_maskE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef8ide_maskE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef8ide_maskE"></span><span id="CANMsgBufInfo_TypeDef::ide_mask__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1a82cf516bd3f6fa55c67570450509675e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ide_mask</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef8ide_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>The mask of ide. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef7id_maskE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef7id_maskE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef7id_maskE"></span><span id="CANMsgBufInfo_TypeDef::id_mask__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1a1e50b63af0d0bd44cd9acfb1354f02f3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">id_mask</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef7id_maskE" title="Link to this definition"></a><br /></dt>
+<dd><p>The mask of id. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef7esi_bitE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef7esi_bitE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef7esi_bitE"></span><span id="CANMsgBufInfo_TypeDef::esi_bit__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1abb59bb34d7c3c6cdf1227b61e950ea44"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">esi_bit</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef7esi_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>The mask of esi. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef14auto_reply_bitE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef14auto_reply_bitE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef14auto_reply_bitE"></span><span id="CANMsgBufInfo_TypeDef::auto_reply_bit__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1aa10e8a943517c6099811771aad8cd000"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">auto_reply_bit</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef14auto_reply_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>The auto reply bit. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef8rxtx_bitE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef8rxtx_bitE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef8rxtx_bitE"></span><span id="CANMsgBufInfo_TypeDef::rxtx_bit__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1a0f1e1ab5825a6945abc572c036f379c5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rxtx_bit</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef8rxtx_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>The rxtx bit. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef11rx_lost_bitE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef11rx_lost_bitE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef11rx_lost_bitE"></span><span id="CANMsgBufInfo_TypeDef::rx_lost_bit__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1a327519b8bc376b7e48135ee14733a7c1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_lost_bit</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef11rx_lost_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>The RX lost bit. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef11data_lengthE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef11data_lengthE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef11data_lengthE"></span><span id="CANMsgBufInfo_TypeDef::data_length__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1ad97c802f66f41e937c3f8b33337b8c6d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_length</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef11data_lengthE" title="Link to this definition"></a><br /></dt>
+<dd><p>The data length. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef9rx_dma_enE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef9rx_dma_enE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef9rx_dma_enE"></span><span id="CANMsgBufInfo_TypeDef::rx_dma_en__uint8_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1aa3cfe736b7eb3f2bdcc8784e61642135"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_dma_en</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef9rx_dma_enE" title="Link to this definition"></a><br /></dt>
+<dd><p>The DMA enable bit. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef7rtr_bitE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef7rtr_bitE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef7rtr_bitE"></span><span id="CANMsgBufInfo_TypeDef::rtr_bit__CANRtrSel_TypeDef"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1a96d4c11730e24f0258e6941529178f93"></span><a class="reference internal" href="#_CPPv417CANRtrSel_TypeDef" title="CANRtrSel_TypeDef"><span class="n"><span class="pre">CANRtrSel_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rtr_bit</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef7rtr_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>The rtr bit <a class="reference internal" href="#group___c_a_n___exported___types_1ga62006d702992a44f9af0fd36d418b0cb"><span class="std std-ref">CANRtrSel_TypeDef</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef7ide_bitE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef7ide_bitE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef7ide_bitE"></span><span id="CANMsgBufInfo_TypeDef::ide_bit__CANIdeSel_TypeDef"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1aef8f7da1b1908c49db613e637560fde0"></span><a class="reference internal" href="#_CPPv417CANIdeSel_TypeDef" title="CANIdeSel_TypeDef"><span class="n"><span class="pre">CANIdeSel_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ide_bit</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef7ide_bitE" title="Link to this definition"></a><br /></dt>
+<dd><p>The ide bit <a class="reference internal" href="#group___c_a_n___exported___types_1ga4184f8ac3151ea007c8ffc4f2c3ad7c7"><span class="std std-ref">CANIdeSel_TypeDef</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef12rx_timestampE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef12rx_timestampE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef12rx_timestampE"></span><span id="CANMsgBufInfo_TypeDef::rx_timestamp__uint16_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1ab8877aebcfd61e0b450f7225fb5fdc2a"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_timestamp</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef12rx_timestampE" title="Link to this definition"></a><br /></dt>
+<dd><p>The time stamp. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef17standard_frame_idE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef17standard_frame_idE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef17standard_frame_idE"></span><span id="CANMsgBufInfo_TypeDef::standard_frame_id__uint16_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1af75a6e3c813760013ad865f1ef238245"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">standard_frame_id</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef17standard_frame_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Standard frame ID. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANMsgBufInfo_TypeDef15extend_frame_idE">
+<span id="_CPPv3N21CANMsgBufInfo_TypeDef15extend_frame_idE"></span><span id="_CPPv2N21CANMsgBufInfo_TypeDef15extend_frame_idE"></span><span id="CANMsgBufInfo_TypeDef::extend_frame_id__uint32_t"></span><span class="target" id="struct_c_a_n_msg_buf_info___type_def_1a1711596acdbb412d2290a84b1ce6c473"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">extend_frame_id</span></span></span><a class="headerlink" href="#_CPPv4N21CANMsgBufInfo_TypeDef15extend_frame_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Extend frame ID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421CANFifoStatus_TypeDef">
+<span id="_CPPv321CANFifoStatus_TypeDef"></span><span id="_CPPv221CANFifoStatus_TypeDef"></span><span id="CANFifoStatus_TypeDef"></span><span class="target" id="struct_c_a_n_fifo_status___type_def"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANFifoStatus_TypeDef</span></span></span><a class="headerlink" href="#_CPPv421CANFifoStatus_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The status of CAN FIFO. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANFifoStatus_TypeDef12fifo_msg_lvlE">
+<span id="_CPPv3N21CANFifoStatus_TypeDef12fifo_msg_lvlE"></span><span id="_CPPv2N21CANFifoStatus_TypeDef12fifo_msg_lvlE"></span><span id="CANFifoStatus_TypeDef::fifo_msg_lvl__uint8_t"></span><span class="target" id="struct_c_a_n_fifo_status___type_def_1a56f69ea2cbdaa9e99e5cc14d752dac5c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fifo_msg_lvl</span></span></span><a class="headerlink" href="#_CPPv4N21CANFifoStatus_TypeDef12fifo_msg_lvlE" title="Link to this definition"></a><br /></dt>
+<dd><p>Indicates the number of message in FIFO. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANFifoStatus_TypeDef17fifo_msg_overflowE">
+<span id="_CPPv3N21CANFifoStatus_TypeDef17fifo_msg_overflowE"></span><span id="_CPPv2N21CANFifoStatus_TypeDef17fifo_msg_overflowE"></span><span id="CANFifoStatus_TypeDef::fifo_msg_overflow__uint8_t"></span><span class="target" id="struct_c_a_n_fifo_status___type_def_1a36ae01094a16002db270e98260808ee4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fifo_msg_overflow</span></span></span><a class="headerlink" href="#_CPPv4N21CANFifoStatus_TypeDef17fifo_msg_overflowE" title="Link to this definition"></a><br /></dt>
+<dd><p>Indicates whether the FIFO is overflow. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANFifoStatus_TypeDef14fifo_msg_emptyE">
+<span id="_CPPv3N21CANFifoStatus_TypeDef14fifo_msg_emptyE"></span><span id="_CPPv2N21CANFifoStatus_TypeDef14fifo_msg_emptyE"></span><span id="CANFifoStatus_TypeDef::fifo_msg_empty__uint8_t"></span><span class="target" id="struct_c_a_n_fifo_status___type_def_1ac75168273bb20f9581850ed21438c5d3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fifo_msg_empty</span></span></span><a class="headerlink" href="#_CPPv4N21CANFifoStatus_TypeDef14fifo_msg_emptyE" title="Link to this definition"></a><br /></dt>
+<dd><p>Indicates whether the FIFO is empty. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21CANFifoStatus_TypeDef13fifo_msg_fullE">
+<span id="_CPPv3N21CANFifoStatus_TypeDef13fifo_msg_fullE"></span><span id="_CPPv2N21CANFifoStatus_TypeDef13fifo_msg_fullE"></span><span id="CANFifoStatus_TypeDef::fifo_msg_full__uint8_t"></span><span class="target" id="struct_c_a_n_fifo_status___type_def_1af0ba7f7961239129e197a3b6258b9032"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fifo_msg_full</span></span></span><a class="headerlink" href="#_CPPv4N21CANFifoStatus_TypeDef13fifo_msg_fullE" title="Link to this definition"></a><br /></dt>
+<dd><p>Indicates whether the FIFO is full. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420CANRxDmaData_TypeDef">
+<span id="_CPPv320CANRxDmaData_TypeDef"></span><span id="_CPPv220CANRxDmaData_TypeDef"></span><span id="CANRxDmaData_TypeDef"></span><span class="target" id="struct_c_a_n_rx_dma_data___type_def"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CANRxDmaData_TypeDef</span></span></span><a class="headerlink" href="#_CPPv420CANRxDmaData_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The members of RX DMA data. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20CANRxDmaData_TypeDef11can_ram_arbE">
+<span id="_CPPv3N20CANRxDmaData_TypeDef11can_ram_arbE"></span><span id="_CPPv2N20CANRxDmaData_TypeDef11can_ram_arbE"></span><span id="CANRxDmaData_TypeDef::can_ram_arb__CAN_RAM_ARB_TYPE_TypeDef"></span><span class="target" id="struct_c_a_n_rx_dma_data___type_def_1ab08e83d161bf6e0113d6d3bccbe1c9fa"></span><a class="reference internal" href="#_CPPv424CAN_RAM_ARB_TYPE_TypeDef" title="CAN_RAM_ARB_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_arb</span></span></span><a class="headerlink" href="#_CPPv4N20CANRxDmaData_TypeDef11can_ram_arbE" title="Link to this definition"></a><br /></dt>
+<dd><p>ARB. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20CANRxDmaData_TypeDef10can_ram_csE">
+<span id="_CPPv3N20CANRxDmaData_TypeDef10can_ram_csE"></span><span id="_CPPv2N20CANRxDmaData_TypeDef10can_ram_csE"></span><span id="CANRxDmaData_TypeDef::can_ram_cs__CAN_RAM_CS_TYPE_TypeDef"></span><span class="target" id="struct_c_a_n_rx_dma_data___type_def_1ad2ebb5329ec5a48f90ddbafa42801aec"></span><a class="reference internal" href="#_CPPv423CAN_RAM_CS_TYPE_TypeDef" title="CAN_RAM_CS_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_CS_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">can_ram_cs</span></span></span><a class="headerlink" href="#_CPPv4N20CANRxDmaData_TypeDef10can_ram_csE" title="Link to this definition"></a><br /></dt>
+<dd><p>CS. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20CANRxDmaData_TypeDef11rx_dma_dataE">
+<span id="_CPPv3N20CANRxDmaData_TypeDef11rx_dma_dataE"></span><span id="_CPPv2N20CANRxDmaData_TypeDef11rx_dma_dataE"></span><span id="CANRxDmaData_TypeDef::rx_dma_data__uint8_tA"></span><span class="target" id="struct_c_a_n_rx_dma_data___type_def_1a1a63091a38a076c52024eb6a98b17264"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rx_dma_data</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">8</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20CANRxDmaData_TypeDef11rx_dma_dataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Data. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415CAN_RAM_TypeDef">
+<span id="_CPPv315CAN_RAM_TypeDef"></span><span id="_CPPv215CAN_RAM_TypeDef"></span><span id="CAN_RAM_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_TypeDef</span></span></span><a class="headerlink" href="#_CPPv415CAN_RAM_TypeDef" title="Link to this definition"></a><br /></dt>
+<dd><p>The members of TX DMA data. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef12CAN_RAM_DATAE">
+<span id="_CPPv3N15CAN_RAM_TypeDef12CAN_RAM_DATAE"></span><span id="_CPPv2N15CAN_RAM_TypeDef12CAN_RAM_DATAE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_DATA__uint32_tA"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1a7efc6bf5be6248bf168e8b8d791a2526"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_DATA</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef12CAN_RAM_DATAE" title="Link to this definition"></a><br /></dt>
+<dd><p>The data of CAN frame. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef11CAN_RAM_ARBE">
+<span id="_CPPv3N15CAN_RAM_TypeDef11CAN_RAM_ARBE"></span><span id="_CPPv2N15CAN_RAM_TypeDef11CAN_RAM_ARBE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_ARB__uint32_t"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1a1e9acad0af04bbcf196c070374b4beef"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_ARB</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef11CAN_RAM_ARBE" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef16CAN_RAM_ARB_BITSE">
+<span id="_CPPv3N15CAN_RAM_TypeDef16CAN_RAM_ARB_BITSE"></span><span id="_CPPv2N15CAN_RAM_TypeDef16CAN_RAM_ARB_BITSE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_ARB_BITS__CAN_RAM_ARB_TYPE_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1aa08607994f6c892c8b077ba4e424522e"></span><a class="reference internal" href="#_CPPv424CAN_RAM_ARB_TYPE_TypeDef" title="CAN_RAM_ARB_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_ARB_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_ARB_BITS</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef16CAN_RAM_ARB_BITSE" title="Link to this definition"></a><br /></dt>
+<dd><p>The ARB of CAN. <a class="reference internal" href="#union_c_a_n___r_a_m___a_r_b___t_y_p_e___type_def"><span class="std std-ref">CAN_RAM_ARB_TYPE_TypeDef</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef13u_CAN_RAM_ARBE">
+<span id="_CPPv3N15CAN_RAM_TypeDef13u_CAN_RAM_ARBE"></span><span id="_CPPv2N15CAN_RAM_TypeDef13u_CAN_RAM_ARBE"></span><span id="CAN_RAM_TypeDef::u_CAN_RAM_ARB__CAN_RAM_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1a5a8c62657edd19eafa16c3e9d60a4ddf"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415CAN_RAM_TypeDef" title="CAN_RAM_TypeDef"><span class="n"><span class="pre">CAN_RAM_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u_CAN_RAM_ARB</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef13u_CAN_RAM_ARBE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef12CAN_RAM_MASKE">
+<span id="_CPPv3N15CAN_RAM_TypeDef12CAN_RAM_MASKE"></span><span id="_CPPv2N15CAN_RAM_TypeDef12CAN_RAM_MASKE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_MASK__uint32_t"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1ad64fb05fa1fb47bad965528548da3ab8"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_MASK</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef12CAN_RAM_MASKE" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef17CAN_RAM_MASK_BITSE">
+<span id="_CPPv3N15CAN_RAM_TypeDef17CAN_RAM_MASK_BITSE"></span><span id="_CPPv2N15CAN_RAM_TypeDef17CAN_RAM_MASK_BITSE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_MASK_BITS__CAN_RAM_MASK_TYPE_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1aa7791dd571f1c26b9019170596b3453e"></span><a class="reference internal" href="#_CPPv425CAN_RAM_MASK_TYPE_TypeDef" title="CAN_RAM_MASK_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_MASK_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_MASK_BITS</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef17CAN_RAM_MASK_BITSE" title="Link to this definition"></a><br /></dt>
+<dd><p>The mask of CAN. <a class="reference internal" href="#union_c_a_n___r_a_m___m_a_s_k___t_y_p_e___type_def"><span class="std std-ref">CAN_RAM_MASK_TYPE_TypeDef</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef14u_CAN_RAM_MASKE">
+<span id="_CPPv3N15CAN_RAM_TypeDef14u_CAN_RAM_MASKE"></span><span id="_CPPv2N15CAN_RAM_TypeDef14u_CAN_RAM_MASKE"></span><span id="CAN_RAM_TypeDef::u_CAN_RAM_MASK__CAN_RAM_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1aa442f4d65cb91ded236cbcd6669426ff"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415CAN_RAM_TypeDef" title="CAN_RAM_TypeDef"><span class="n"><span class="pre">CAN_RAM_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u_CAN_RAM_MASK</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef14u_CAN_RAM_MASKE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef10CAN_RAM_CSE">
+<span id="_CPPv3N15CAN_RAM_TypeDef10CAN_RAM_CSE"></span><span id="_CPPv2N15CAN_RAM_TypeDef10CAN_RAM_CSE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_CS__uint32_t"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1acb00ef842773806b30e71c43a18efe1e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_CS</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef10CAN_RAM_CSE" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef15CAN_RAM_CS_BITSE">
+<span id="_CPPv3N15CAN_RAM_TypeDef15CAN_RAM_CS_BITSE"></span><span id="_CPPv2N15CAN_RAM_TypeDef15CAN_RAM_CS_BITSE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_CS_BITS__CAN_RAM_CS_TYPE_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1a082da59e6c0366de24eb9cb1976d647c"></span><a class="reference internal" href="#_CPPv423CAN_RAM_CS_TYPE_TypeDef" title="CAN_RAM_CS_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_CS_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_CS_BITS</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef15CAN_RAM_CS_BITSE" title="Link to this definition"></a><br /></dt>
+<dd><p>The CS of CAN. <a class="reference internal" href="#union_c_a_n___r_a_m___c_s___t_y_p_e___type_def"><span class="std std-ref">CAN_RAM_CS_TYPE_TypeDef</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef12u_CAN_RAM_CSE">
+<span id="_CPPv3N15CAN_RAM_TypeDef12u_CAN_RAM_CSE"></span><span id="_CPPv2N15CAN_RAM_TypeDef12u_CAN_RAM_CSE"></span><span id="CAN_RAM_TypeDef::u_CAN_RAM_CS__CAN_RAM_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1a7c40cbcd4fcd2bed5eb7eddc7b9830ea"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415CAN_RAM_TypeDef" title="CAN_RAM_TypeDef"><span class="n"><span class="pre">CAN_RAM_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u_CAN_RAM_CS</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef12u_CAN_RAM_CSE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef11CAN_RAM_CMDE">
+<span id="_CPPv3N15CAN_RAM_TypeDef11CAN_RAM_CMDE"></span><span id="_CPPv2N15CAN_RAM_TypeDef11CAN_RAM_CMDE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_CMD__uint32_t"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1a79b4cdd68f3669ba8f4a0215400a1d04"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_CMD</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef11CAN_RAM_CMDE" title="Link to this definition"></a><br /></dt>
+<dd><p>The word member in the union. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef16CAN_RAM_CMD_BITSE">
+<span id="_CPPv3N15CAN_RAM_TypeDef16CAN_RAM_CMD_BITSE"></span><span id="_CPPv2N15CAN_RAM_TypeDef16CAN_RAM_CMD_BITSE"></span><span id="CAN_RAM_TypeDef::CAN_RAM_CMD_BITS__CAN_RAM_CMD_TYPE_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1aa1dbdd3074afb75a66bbe873c0011a4a"></span><a class="reference internal" href="#_CPPv424CAN_RAM_CMD_TYPE_TypeDef" title="CAN_RAM_CMD_TYPE_TypeDef"><span class="n"><span class="pre">CAN_RAM_CMD_TYPE_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CAN_RAM_CMD_BITS</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef16CAN_RAM_CMD_BITSE" title="Link to this definition"></a><br /></dt>
+<dd><p>The CMD of CAN. <a class="reference internal" href="#union_c_a_n___r_a_m___c_m_d___t_y_p_e___type_def"><span class="std std-ref">CAN_RAM_CMD_TYPE_TypeDef</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15CAN_RAM_TypeDef13u_CAN_RAM_CMDE">
+<span id="_CPPv3N15CAN_RAM_TypeDef13u_CAN_RAM_CMDE"></span><span id="_CPPv2N15CAN_RAM_TypeDef13u_CAN_RAM_CMDE"></span><span id="CAN_RAM_TypeDef::u_CAN_RAM_CMD__CAN_RAM_TypeDef"></span><span class="target" id="struct_c_a_n___r_a_m___type_def_1abb27505fdf8b9037e9c2047ae2607c53"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415CAN_RAM_TypeDef" title="CAN_RAM_TypeDef"><span class="n"><span class="pre">CAN_RAM_TypeDef</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u_CAN_RAM_CMD</span></span></span><a class="headerlink" href="#_CPPv4N15CAN_RAM_TypeDef13u_CAN_RAM_CMDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___c_a_n___exported___functions.html" class="btn btn-neutral float-left" title="CAN Exported Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___c_o_d_e_c.html" class="btn btn-neutral float-right" title="CODEC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

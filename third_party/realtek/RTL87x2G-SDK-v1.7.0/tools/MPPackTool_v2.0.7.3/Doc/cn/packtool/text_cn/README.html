@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MP Pack Tool &mdash; BLE SoC Tool v1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=00424ab5" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=6845a736"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/purify.min.js?v=7ce85736"></script>
+        <script src="../../_static/js/marked.min.js?v=3a8efef5"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=9cf10cc1"></script>
+        <script src="../../_static/js/versions.js?v=a2b2aea2"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/chatwidget.js?v=b20ddea3"></script>
+        <script src="../../_static/js/hljs.min.js?v=229bdcb2"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Glossary" href="../../glossary.html" />
+    <link rel="prev" title="Bluetooth LE SoC Tool" href="../../index.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "True";
+    window.leftNavWidth = "docs.blesoctool.siderbar.width";
+    window.chatAIBase = "RS_ble_soc_tool";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="target-container">
+            <select name="target-selector" id="target-selector" onchange="change_target()">
+            </select>
+        </div>
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="change_version()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MP Pack Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">打包步骤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mp">MP 打包</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-data">添加 User Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mp-raw-data">MP Raw Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ota">OTA 打包</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">添加 User Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ota-raw-data">OTA Raw Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compress">Compress 模式</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cfu">CFU 打包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">文件内存分布</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">解包</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">专业术语</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">BLE SoC Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MP Pack Tool</li>
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+    
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="mp-pack-tool">
+<h1>MP Pack Tool<a class="headerlink" href="#mp-pack-tool" title="Link to this heading"></a></h1>
+<p>本文档主要介绍 MP Pack Tool 工具的功能及其使用，支持 RTL8762C、RTL8762D、RTL8762E、RTL8762G_VA、RTL8762G_VB 和 RTL8752H 等芯片 。
+MP Pack Tool 用于合并子文件并生成 <a class="reference internal" href="../../glossary.html#term-MP"><span class="xref std std-term">MP</span></a>、<a class="reference internal" href="../../glossary.html#term-OTA"><span class="xref std std-term">OTA</span></a> 或 <a class="reference internal" href="../../glossary.html#term-CFU"><span class="xref std std-term">CFU</span></a> 等数据包文件。</p>
+<ul class="simple">
+<li><p>MP 包：用于批量生产，可以使用 MP Tool 烧录到 flash 中。</p></li>
+<li><p>OTA 包：用于空中下载更新，可以使用 Android OTA APP 或 iOS OTA APP 进行升级。</p></li>
+<li><p>CFU 包：用于组件固件更新，可以使用 CFU Tool 进行升级。</p></li>
+</ul>
+<p>可以前往 <a class="reference external" href="https://www.realmcu.com/zh/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU</a> 平台获取 MP Pack Tool 程序。</p>
+<section id="id1">
+<h2>打包步骤<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../../_images/Pack_Guide.png"><img alt="../../_images/Pack_Guide.png" src="../../_images/Pack_Guide.png" style="width: 1117.3500000000001px; height: 867.75px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Pack 打包流程</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>打包模式选择</p>
+<p>有如下三种模式，此处以 MP 模式为例，OTA 、CFU 打包流程基本一致。</p>
+<ul class="simple">
+<li><p><span class="guilabel">ForMP</span></p></li>
+<li><p><span class="guilabel">ForOTA</span></p></li>
+<li><p><span class="guilabel">ForCFU</span></p></li>
+</ul>
+</li>
+<li><p>导入 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code></p>
+<ul class="simple">
+<li><p>Flash map 是指示 flash layout 的文件，具体可以参考 <span class="xref std std-doc">Flash Map Generate Tool</span>。</p></li>
+</ul>
+</li>
+<li><p>导入其他文件</p>
+<ul class="simple">
+<li><p>点击 <span class="guilabel">Browse</span> 选择文件后，点击 <span class="guilabel">打开</span> 按键导入待打包的文件。</p></li>
+<li><p>MP Pack Tool 会检查这些导入的文件是否符合要求，包含 MD5 验证，IC 验证等等。符合要求的导入文件会显示在步骤 4 所示的列表中。</p></li>
+</ul>
+</li>
+<li><p>导入的文件列表</p>
+<ul class="simple">
+<li><p>包含：文件名称、文件路径、文件地址、文件大小、文件版本。</p></li>
+</ul>
+</li>
+<li><p>删除文件（如果有必要）</p>
+<ul class="simple">
+<li><p>如果有添加错的文件，可以选择需要移除的文件并点击 <span class="guilabel">Remove</span> 按键，移除选定的文件。</p></li>
+<li><p>点击 <span class="guilabel">Remove All</span> 按键可移除全部文件。</p></li>
+<li><p>移除文件将会清空 “File Path”、“Size” 及 “Version” 栏中的内容，并将 “Address” 栏中的地址设置为默认值。</p></li>
+</ul>
+</li>
+<li><p>导入 User Data（可选）</p>
+<ul class="simple">
+<li><p>User Data 是用户自定义文件，详细介绍请参考 <a class="reference internal" href="#mp">MP 打包</a> 和 <a class="reference internal" href="#ota">OTA 打包</a> 相关章节。</p></li>
+</ul>
+</li>
+<li><p>修改保存路径和文件名称（可选）</p>
+<ul class="simple">
+<li><p>勾选 <span class="guilabel">Save Path</span> 前面的选择框后，可以点击 <span class="guilabel">...</span> 对文件生成路径进行选择，默认的文件生成位置是 MP Pack Tool 根目录。</p></li>
+<li><p>勾选 <span class="guilabel">File Name</span> 前面的选择框后，可以在文本框中对生成文件的文件名进行设置，默认的文件名称为：<code class="docutils literal notranslate"><span class="pre">ImgPacketFile-MD5.bin</span></code></p></li>
+</ul>
+</li>
+<li><p>生成打包文件</p>
+<ul class="simple">
+<li><p>点击 <span class="guilabel">Confirm</span> 后会在指定的位置生成打包文件。</p></li>
+</ul>
+</li>
+<li><p>Log 窗体</p>
+<ul class="simple">
+<li><p>显示一些提示信息，如果有报错可以查看窗口中的信息。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="mp">
+<h2>MP 打包<a class="headerlink" href="#mp" title="Link to this heading"></a></h2>
+<p>MP 包主要用于批量生产，可以使用 MP Tool 烧录到 flash 中。</p>
+<figure class="align-center" id="packtool-mp">
+<a class="reference internal image-reference" href="../../_images/PackTool_MP.png"><img alt="../../_images/PackTool_MP.png" src="../../_images/PackTool_MP.png" style="width: 851.5px; height: 692.9px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP 打包界面</span><a class="headerlink" href="#packtool-mp" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>勾选 <span class="guilabel">ForMP</span> 选择框后，MP Pack Tool 将打出 MP 包。</p>
+<section id="user-data">
+<h3>添加 User Data<a class="headerlink" href="#user-data" title="Link to this heading"></a></h3>
+<p>MP 模式支持打包用户自定义数据（User Data），添加步骤见下图：</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../../_images/User_Data1.png"><img alt="../../_images/User_Data1.png" src="../../_images/User_Data1.png" style="width: 1004.25px; height: 771.5500000000001px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP 添加 User Data</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>点击 <span class="guilabel">User Data</span> 打开 User Data 添加窗口。</p></li>
+<li><p>点击 <span class="guilabel">Browse</span> ，选择需要添加的 User Data 文件。</p></li>
+<li><p>如果有添加错的文件，可以选择需要移除的文件并点击 <span class="guilabel">Remove</span> 按键，可移除选定的文件；点击 <span class="guilabel">Remove All</span> 按键可移除全部文件。</p></li>
+<li><p>用户需要手动修改 User Data 文件的地址，并确保该地址不会和其他文件有冲突，否则在点击 <span class="guilabel">Confirm</span> 按键后会弹窗提示：<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Overlapping</kbd> <kbd class="kbd docutils literal notranslate">Exists!</kbd></kbd></p></li>
+<li><p>点击 <span class="guilabel">Confirm</span> 按键完成 User Data 添加</p></li>
+<li><p>上述步骤完成后，此处 User Data 选择框会自动勾选，表示 User Data 会被打包。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>用户需要确保添加的 User Data 不会与其他文件发生重叠等冲突。</p></li>
+<li><p>添加 User Data 后，MP Pack Tool 打包将额外生成一个包含 <code class="docutils literal notranslate"><span class="pre">WithUserData</span></code> 的打包文件。</p></li>
+</ul>
+</div>
+</section>
+<section id="mp-raw-data">
+<h3>MP Raw Data<a class="headerlink" href="#mp-raw-data" title="Link to this heading"></a></h3>
+<p>勾选 <span class="guilabel">Raw Data</span> 选择框时，将会生成 Raw 数据包，如下图所示：</p>
+<figure class="align-center" id="mp-raw">
+<a class="reference internal image-reference" href="../../_images/MP_RawData_Setting.png"><img alt="../../_images/MP_RawData_Setting.png" src="../../_images/MP_RawData_Setting.png" style="width: 913.4999999999999px; height: 150.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Raw 数据包</span><a class="headerlink" href="#mp-raw" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>勾选 <span class="guilabel">Raw Data</span> 后，打包将生成两份文件：</p>
+<ul class="simple">
+<li><p>普通 MP 数据包文件</p></li>
+<li><p><a class="reference internal" href="#id2"><span class="std std-ref">MP Raw Data 格式</span></a> 的文件</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/MP_RawData.png"><img alt="../../_images/MP_RawData.png" src="../../_images/MP_RawData.png" style="width: 366.0px; height: 451.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Raw Data 格式</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="ota">
+<h2>OTA 打包<a class="headerlink" href="#ota" title="Link to this heading"></a></h2>
+<p>OTA 包用于空中下载更新，可以使用 Android OTA APP 或 iOS OTA APP 进行升级。</p>
+<figure class="align-center" id="packtool-ota">
+<a class="reference internal image-reference" href="../../_images/PackTool_OTA.png"><img alt="../../_images/PackTool_OTA.png" src="../../_images/PackTool_OTA.png" style="width: 851.5px; height: 692.9px;" /></a>
+<figcaption>
+<p><span class="caption-text">OTA 打包界面</span><a class="headerlink" href="#packtool-ota" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>勾选 <span class="guilabel">ForOTA</span> 选择框后，MP Pack Tool 将打出 OTA 包。</p>
+<section id="id3">
+<h3>添加 User Data<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>对于 RTL8762C、RTL8762G_VB、RTL8752H 等型号的 IC，提供了下图所示的 User Data 打包方式；对于其他型号的 IC，不支持打包 User Data 进行 OTA。</p>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../../_images/User_Data2.png"><img alt="../../_images/User_Data2.png" src="../../_images/User_Data2.png" style="width: 852.15px; height: 693.5500000000001px;" /></a>
+<figcaption>
+<p><span class="caption-text">OTA 添加 User Data</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>这种方式添加的 User Data，需要包含 MP Header 和 Image Header，此时 User Data 按其他 Image 相同的方式打包，且可以用作 OTA 升级。</p>
+</div>
+</section>
+<section id="ota-raw-data">
+<h3>OTA Raw Data<a class="headerlink" href="#ota-raw-data" title="Link to this heading"></a></h3>
+<p>勾选 <span class="guilabel">Raw Data</span> 选择框时，将会生成 Raw 数据包，如下图所示：</p>
+<figure class="align-center" id="ota-raw">
+<a class="reference internal image-reference" href="../../_images/OTA_RawData_Setting.png"><img alt="../../_images/OTA_RawData_Setting.png" src="../../_images/OTA_RawData_Setting.png" style="width: 912.8px; height: 111.3px;" /></a>
+<figcaption>
+<p><span class="caption-text">OTA Raw 数据包</span><a class="headerlink" href="#ota-raw" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>根据 bank 配置不同，将生成如下的打包文件：</p>
+<ul class="simple">
+<li><p>Single bank：</p>
+<ul>
+<li><p>普通 OTA 模式下打包的文件</p></li>
+<li><p>OTA Raw Data 文件</p></li>
+</ul>
+</li>
+<li><p>Dual bank：</p>
+<ul>
+<li><p>普通 OTA 模式下打包的文件</p></li>
+<li><p>Bank0 OTA Raw Data 文件</p></li>
+<li><p>Bank1 OTA Raw Data 文件</p></li>
+<li><p>全 Bank OTA Raw Data 文件</p></li>
+</ul>
+</li>
+</ul>
+<p>OTA Raw Data 数据包的格式如下图所示：</p>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="../../_images/OTA_RawData.png"><img alt="../../_images/OTA_RawData.png" src="../../_images/OTA_RawData.png" style="width: 1031.0px; height: 464.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">OTA Raw Data 格式</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="compress">
+<h3>Compress 模式<a class="headerlink" href="#compress" title="Link to this heading"></a></h3>
+<p>OTA 打包可以选择 Compress 模式，勾选后，MP Pack Tool 会压缩比 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> 中 OTA_TMP_SIZE 大的 image。如下图所示：</p>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="../../_images/OTA_Compress_Setting.png"><img alt="../../_images/OTA_Compress_Setting.png" src="../../_images/OTA_Compress_Setting.png" style="width: 914.1999999999999px; height: 107.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">OTA Compress 模式</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="cfu">
+<h2>CFU 打包<a class="headerlink" href="#cfu" title="Link to this heading"></a></h2>
+<p>CFU 包用于组件固件更新，可以使用 CFU Tool 进行升级。</p>
+<figure class="align-center" id="packtool-cfu">
+<a class="reference internal image-reference" href="../../_images/PackTool_CFU.png"><img alt="../../_images/PackTool_CFU.png" src="../../_images/PackTool_CFU.png" style="width: 851.5px; height: 692.9px;" /></a>
+<figcaption>
+<p><span class="caption-text">CFU 打包界面</span><a class="headerlink" href="#packtool-cfu" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>勾选 <span class="guilabel">ForCFU</span> 选择框后，MP Pack Tool 将打出 CFU 包。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>有两种 CFU 打包格式：</p>
+<ul class="simple">
+<li><p>V1：多个 Image 打包成一个 <code class="docutils literal notranslate"><span class="pre">.payload</span></code> 文件和 <code class="docutils literal notranslate"><span class="pre">.offer</span></code> 文件</p></li>
+<li><p>V2：每个 Image 打包成一个 <code class="docutils literal notranslate"><span class="pre">.payload</span></code> 文件和 <code class="docutils literal notranslate"><span class="pre">.offer</span></code> 文件</p></li>
+</ul>
+<p>可以点击 <span class="guilabel">V1</span> 和 <span class="guilabel">V2</span> 进行切换。具体使用哪种格式，请咨询 FAE。</p>
+</div>
+</section>
+<section id="id4">
+<h2>文件内存分布<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>MP Pack Tool 提供显示存储分布的功能，可以用来检查文件是否会出现重叠。点击 <span class="guilabel">Show Detail</span> / <span class="guilabel">Hide</span> 按键即可显示/关闭存储分布对话框，如下图所示：</p>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../../_images/Layout.png"><img alt="../../_images/Layout.png" src="../../_images/Layout.png" style="width: 851.5px; height: 693.5500000000001px;" /></a>
+<figcaption>
+<p><span class="caption-text">文件内存分布</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>生成打包文件时，MP Pack Tool 会检查文件是否存在重叠，如果存在则会禁止打包，在配置 flash map 时需要保证文件之间不存在任何重叠。</p>
+</div>
+</section>
+<section id="id5">
+<h2>解包<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>MP Pack Tool 可以将打包好的包文件进行解包，该功能适用于 MP、OTA 包，不支持 Raw Data 格式的包文件。</p>
+<p>点击 <span class="guilabel">UnPack</span> 按键并在文件选择对话框中选择包文件，解包功能将会清空子文件配置并添加包文件中所有的子文件，解包的子文件会生成在与包文件同目录的同名文件夹中。如下图所示：</p>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../../_images/Unpack.png"><img alt="../../_images/Unpack.png" src="../../_images/Unpack.png" style="width: 1324.5px; height: 533.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">解包</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../index.html" class="btn btn-neutral float-left" title="Bluetooth LE SoC Tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子有限公司 2026. All rights reserved. <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

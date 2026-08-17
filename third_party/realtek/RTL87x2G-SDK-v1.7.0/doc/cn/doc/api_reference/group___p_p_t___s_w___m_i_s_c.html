@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Misc &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Exported Types" href="group___p_p_t___driver___exported___types.html" />
+    <link rel="prev" title="Section" href="group___p_p_t___s_e_c_t_i_o_n.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="group___p_p_t.html">2.4G</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="group___p_p_t___driver___a_l_l.html">2.4G Driver</a><ul class="current">
+<li class="toctree-l5 current"><a class="reference internal" href="group___p_p_t___driver.html">Basic Driver</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="group___p_p_t___driver___exported___functions.html">Exported Functions</a></li>
+<li class="toctree-l6 current"><a class="reference internal" href="group___p_p_t___driver___exported___macros.html">Exported Macros</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___p_p_t___hardware___channels.html">Hardware Channels</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___p_p_t___h_w___m_i_s_c.html">Hardware Misc</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___p_p_t___r_e_g___a_c_c_e_s_s.html">Register Access</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___p_p_t___s_e_c_t_i_o_n.html">Section</a></li>
+<li class="toctree-l7 current"><a class="current reference internal" href="#">Software Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___p_p_t___driver___exported___types.html">Exported Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___p_p_t___register.html">Register</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___p_p_t___simple.html">Simple Wrapper</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___p_p_t___s_y_n_c___a_l_l.html">Sync Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___p_p_t.html">2.4G</a></li>
+        <li class="breadcrumb-item"><a href="group___p_p_t___driver___a_l_l.html">2.4G Driver</a></li>
+        <li class="breadcrumb-item"><a href="group___p_p_t___driver.html">Basic Driver</a></li>
+        <li class="breadcrumb-item"><a href="group___p_p_t___driver___exported___macros.html">Exported Macros</a></li>
+    <li class="breadcrumb-item active">Software Misc</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="software-misc">
+<h1>Software Misc<a class="headerlink" href="#software-misc" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">PPT_SW_MISC</span></span></dt>
+<dd><p>Software miscellaneous definition. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PPT_REG_OFFSET">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c_1gac3d7eef647164c36faddc9b1e69d4ea4"></span><span class="sig-name descname"><span class="n"><span class="pre">PPT_REG_OFFSET</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">entry</span></span>, <span class="n"><span class="pre">offset0</span></span>, <span class="n"><span class="pre">size0</span></span>, <span class="n"><span class="pre">offset1</span></span>, <span class="n"><span class="pre">size1</span></span><span class="sig-paren">)</span> <span class="pre">(((entry)</span> <span class="pre">&lt;</span> <a class="reference internal" href="group___p_p_t___hardware___channels.html#group___p_p_t___hardware___channels_1ga9ab0a17d4191575b1d31211eca343cbf"><span class="std std-ref"><span class="pre">PPT_ENTRY_NUM_ORI</span></span></a><span class="pre">)</span> <span class="pre">?</span> <span class="pre">((size0)*(entry)</span> <span class="pre">+</span> <span class="pre">(offset0))</span> <span class="pre">:</span> <span class="pre">((size1)</span> <span class="pre">*</span> <span class="pre">((entry)</span> <span class="pre">-</span> <a class="reference internal" href="group___p_p_t___hardware___channels.html#group___p_p_t___hardware___channels_1ga9ab0a17d4191575b1d31211eca343cbf"><span class="std std-ref"><span class="pre">PPT_ENTRY_NUM_ORI</span></span></a><span class="pre">)</span> <span class="pre">+</span> <span class="pre">(offset1)))</span><a class="headerlink" href="#c.PPT_REG_OFFSET" title="Link to this definition"></a><br /></dt>
+<dd><p>Obtain the register offset of the specific entry. </p>
+<p>Some registers have specific offsets at different entry to facilitate obtaining the register address offset for the specific entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entry</strong> -- <strong>[in]</strong> Channel index. </p></li>
+<li><p><strong>offset0</strong> -- <strong>[in]</strong> Register offset0. </p></li>
+<li><p><strong>size0</strong> -- <strong>[in]</strong> Entry step size0. </p></li>
+<li><p><strong>offset1</strong> -- <strong>[in]</strong> Register offset1. </p></li>
+<li><p><strong>size1</strong> -- <strong>[in]</strong> Entry step size1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Register address offset. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PPT_TX_STACK_ENTRY">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c_1ga621100c791567b36692dcf53eb76f32d"></span><span class="sig-name descname"><span class="n"><span class="pre">PPT_TX_STACK_ENTRY</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">tx_stack</span></span>, <span class="n"><span class="pre">tx_len</span></span><span class="sig-paren">)</span> <span class="pre">(tx_stack.tx_entry_1_0</span> <span class="pre">+</span> <span class="pre">(tx_len.tx_entry_2</span> <span class="pre">&lt;&lt;</span> <span class="pre">2))</span><a class="headerlink" href="#c.PPT_TX_STACK_ENTRY" title="Link to this definition"></a><br /></dt>
+<dd><p>Obtain the tx entry in the tx stack information. </p>
+<p>The tx entry value is contained in <a class="reference internal" href="group___p_p_t___r_e_g___n_a_m_e___a_d_d_r.html#group___p_p_t___r_e_g___n_a_m_e___a_d_d_r_1gae68641de2dc4c3fe5b1ddf2c0ea37dcd"><span class="std std-ref">PRO_TX_STACK</span></a> and <a class="reference internal" href="group___p_p_t___r_e_g___n_a_m_e___a_d_d_r.html#group___p_p_t___r_e_g___n_a_m_e___a_d_d_r_1ga504e37491e3675ac8bc96e503aaceb71"><span class="std std-ref">PRO_TX_LENGTH</span></a> two registers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tx_stack</strong> -- <strong>[in]</strong> Refer to <a class="reference internal" href="group___p_p_t___r_e_g___d_e_f.html#group___p_p_t___r_e_g___d_e_f_1gac7300e4a2e57547c348db9173f342541"><span class="std std-ref">PRO_TX_STACK_TYPE</span></a>. </p></li>
+<li><p><strong>tx_len</strong> -- <strong>[in]</strong> Refer to <a class="reference internal" href="group___p_p_t___r_e_g___d_e_f.html#group___p_p_t___r_e_g___d_e_f_1gaad6b7d918f11e102b568be0fdd827c27"><span class="std std-ref">PRO_TX_LENGTH_TYPE</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>The tx entry in the tx stack information. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PPT_RX_STACK_ENTRY">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c_1gaba909d414f9ed09dfd4a42a0682a16c8"></span><span class="sig-name descname"><span class="n"><span class="pre">PPT_RX_STACK_ENTRY</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">rx_stack</span></span><span class="sig-paren">)</span> <span class="pre">(rx_stack.entry_0</span> <span class="pre">+</span> <span class="pre">(rx_stack.entry_2_1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1))</span><a class="headerlink" href="#c.PPT_RX_STACK_ENTRY" title="Link to this definition"></a><br /></dt>
+<dd><p>Obtain the rx entry in the rx stack information. </p>
+<p>The rx entry value is contained in two discontinuous fields of <a class="reference internal" href="group___p_p_t___r_e_g___n_a_m_e___a_d_d_r.html#group___p_p_t___r_e_g___n_a_m_e___a_d_d_r_1gadfc24397ae25667471dab9aea846df1b"><span class="std std-ref">PRO_RX_STACK</span></a> register.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rx_stack</strong> -- <strong>[in]</strong> Refer to <a class="reference internal" href="group___p_p_t___r_e_g___d_e_f.html#group___p_p_t___r_e_g___d_e_f_1ga742141e7651aefb7ee87d7c439914335"><span class="std std-ref">PRO_RX_STACK_TYPE</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>The rx entry in the rx stack information. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PPT_RX_FIFO_HEADER_SIZE">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c_1ga2c5d16375662cc5f9a0b44cfad66f4b6"></span><span class="sig-name descname"><span class="n"><span class="pre">PPT_RX_FIFO_HEADER_SIZE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">hp_size</span></span>, <span class="n"><span class="pre">length_size</span></span>, <span class="n"><span class="pre">hs_size</span></span><span class="sig-paren">)</span> <span class="pre">((((hp_size)</span> <span class="pre">+</span> <span class="pre">(length_size)</span> <span class="pre">+</span> <span class="pre">(hs_size)</span> <span class="pre">+</span> <span class="pre">15)</span> <span class="pre">&gt;&gt;</span> <span class="pre">4)</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span><a class="headerlink" href="#c.PPT_RX_FIFO_HEADER_SIZE" title="Link to this definition"></a><br /></dt>
+<dd><p>Obtain the header size pushed to the Rx FIFO. </p>
+<p>The Rx FIFO is filled with the header and the payload of a packet. The header contains the header prefix, length and header suffix. The total size will be aligned to 16 bits when filling to the Rx FIFO.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hp_size</strong> -- <strong>[in]</strong> Header prefix size in bits. </p></li>
+<li><p><strong>length_size</strong> -- <strong>[in]</strong> Payload length size in bits. </p></li>
+<li><p><strong>hs_size</strong> -- <strong>[in]</strong> Header suffix size in bits.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Header size in bytes. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PPT_RX_FIFO_HEADER_SIZE_BYTE">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c_1ga4fdcc744e25d3da4d35c3c0040bb3c71"></span><span class="sig-name descname"><span class="n"><span class="pre">PPT_RX_FIFO_HEADER_SIZE_BYTE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">hp_size</span></span>, <span class="n"><span class="pre">length_size</span></span>, <span class="n"><span class="pre">hs_size</span></span><span class="sig-paren">)</span> <a class="reference internal" href="#group___p_p_t___s_w___m_i_s_c_1ga2c5d16375662cc5f9a0b44cfad66f4b6"><span class="std std-ref"><span class="pre">PPT_RX_FIFO_HEADER_SIZE</span></span></a><span class="pre">(hp_size</span> <span class="pre">&lt;&lt;</span> <span class="pre">3,</span> <span class="pre">length_size</span> <span class="pre">&lt;&lt;</span> <span class="pre">3,</span> <span class="pre">hs_size</span> <span class="pre">&lt;&lt;</span> <span class="pre">3)</span><a class="headerlink" href="#c.PPT_RX_FIFO_HEADER_SIZE_BYTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Obtain the header size pushed to the Rx FIFO. </p>
+<p>The Rx FIFO is filled with the header and the payload of a packet. The header contains the header prefix, length and header suffix. The total size will be aligned to 16 bits when filling to the Rx FIFO.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hp_size</strong> -- <strong>[in]</strong> Header prefix size in bytes. </p></li>
+<li><p><strong>length_size</strong> -- <strong>[in]</strong> Payload length size in bytes. </p></li>
+<li><p><strong>hs_size</strong> -- <strong>[in]</strong> Header suffix size in bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Header size in bytes. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PPT_ISR_ENABLE">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c_1gae5bf9f6ca48402939dbad7ac71f271ff"></span><span class="sig-name descname"><span class="n"><span class="pre">PPT_ISR_ENABLE</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="pre">NVIC_EnableIRQ(</span><a class="reference internal" href="group___v_e_c_t_o_r___t_a_b_l_e___exported___types.html#group___v_e_c_t_o_r___t_a_b_l_e___exported___types_1gga666eb0caeb12ec0e281415592ae89083aa853674b1d857bdc362116aee03b9990"><span class="std std-ref"><span class="pre">BTMAC_IRQn</span></span></a><span class="pre">)</span><a class="headerlink" href="#c.PPT_ISR_ENABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Enable radio interrupt. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PPT_ISR_DISABLE">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c_1ga426afb1b24935fc76f8300a83051dce1"></span><span class="sig-name descname"><span class="n"><span class="pre">PPT_ISR_DISABLE</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="pre">NVIC_DisableIRQ(</span><a class="reference internal" href="group___v_e_c_t_o_r___t_a_b_l_e___exported___types.html#group___v_e_c_t_o_r___t_a_b_l_e___exported___types_1gga666eb0caeb12ec0e281415592ae89083aa853674b1d857bdc362116aee03b9990"><span class="std std-ref"><span class="pre">BTMAC_IRQn</span></span></a><span class="pre">)</span><a class="headerlink" href="#c.PPT_ISR_DISABLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Disable radio interrupt. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ppt_native_time_elapse">
+<span class="target" id="group___p_p_t___s_w___m_i_s_c_1ga9d1e9b9d9e9fa07d59ae82c8c8a94dd3"></span><span class="sig-name descname"><span class="n"><span class="pre">ppt_native_time_elapse</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">time_end</span></span>, <span class="n"><span class="pre">time_start</span></span><span class="sig-paren">)</span> <span class="pre">((time_end)</span> <span class="pre">&gt;=</span> <span class="pre">(time_start)</span> <span class="pre">?</span> <span class="pre">(time_end)</span> <span class="pre">-</span> <span class="pre">(time_start)</span> <span class="pre">:</span> <a class="reference internal" href="group___p_p_t___h_w___m_i_s_c.html#group___p_p_t___h_w___m_i_s_c_1ga432321b93ac441e0ba60b6ffff2b5224"><span class="std std-ref"><span class="pre">PPT_NATIVE_TIME_MAX_VALUE</span></span></a> <span class="pre">-</span> <span class="pre">(time_start)</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">(time_end))</span><a class="headerlink" href="#c.ppt_native_time_elapse" title="Link to this definition"></a><br /></dt>
+<dd><p>Calculate elapsed time of two native time timestamps. </p>
+<p>Use <a class="reference internal" href="group___p_p_t___driver___exported___functions.html#group___p_p_t___driver___exported___functions_1ga6a6ab65d013ec10f3ddfdd1ec2a4e5c3"><span class="std std-ref">ppt_native_time_read</span></a> to attain the native time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_end</strong> -- <strong>[in]</strong> Time ending point. </p></li>
+<li><p><strong>time_start</strong> -- <strong>[in]</strong> Time starting point.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elapsed time in microsecond. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___p_p_t___s_e_c_t_i_o_n.html" class="btn btn-neutral float-left" title="Section" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___p_p_t___driver___exported___types.html" class="btn btn-neutral float-right" title="Exported Types" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

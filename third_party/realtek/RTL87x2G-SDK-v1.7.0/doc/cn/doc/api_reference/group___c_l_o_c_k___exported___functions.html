@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clock Exported Functions &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Clock Exported Variables" href="group___c_l_o_c_k___exported___variables.html" />
+    <link rel="prev" title="Clock" href="group___c_l_o_c_k.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___a_d_c___l_i_b.html">ADC LIB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_e_s___a_p_i.html">AES API Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_e_s___c_m_a_c.html">AES CMAC API Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___a_p_p___s_e_c_t_i_o_n.html">APP Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_r_c___f_c_s.html">CRC Implementation</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___c_l_o_c_k.html">Clock</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Clock Exported Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv421pm_clock_src_freq_get12CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_clock_src_freq_get()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv415pm_cpu_freq_set8uint32_tP8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_cpu_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv415pm_cpu_freq_getP8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_cpu_freq_get()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv420pm_cpu_slow_freq_set8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_cpu_slow_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv426fmc_flash_nor_clock_switch18FLASH_NOR_IDX_TYPE8uint32_tP8uint32_t"><code class="docutils literal notranslate"><span class="pre">fmc_flash_nor_clock_switch()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv422fmc_psram_clock_switch14PSRAM_IDX_TYPE8uint32_tP8uint32_t"><code class="docutils literal notranslate"><span class="pre">fmc_psram_clock_switch()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv419pm_display_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_display_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv421pm_display_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_display_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416pm_sdhc_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_sdhc_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv418pm_sdhc_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_sdhc_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv415pm_pke_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_pke_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv417pm_pke_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_pke_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv420pm_ethernet_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_ethernet_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv422pm_ethernet_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_ethernet_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv415pm_usb_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_usb_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv417pm_usb_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_usb_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv417pm_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_timer_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv419pm_timer_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_timer_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv426pm_enhanced_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_enhanced_timer_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv428pm_enhanced_timer_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_enhanced_timer_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv414pm_ir_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_ir_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv416pm_ir_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_ir_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv423pm_spi0_master_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_spi0_master_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv425pm_spi0_master_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_spi0_master_freq_unset()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv422pm_spi0_slave_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">pm_spi0_slave_freq_set()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#_CPPv424pm_spi0_slave_freq_unset16PLL_CLK_SRC_TYPE"><code class="docutils literal notranslate"><span class="pre">pm_spi0_slave_freq_unset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html">Clock Exported Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___h_a_l___c_f_g___i_t_e_m___a_p_i.html">Config Item Api</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___c_r_y_p_t_o___e_n_g_i_n_e.html">Crypto Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_b_g___m_o_n_i_t_o_r.html">Debug Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___f_l_a_s_h___d_e_v_i_c_e.html">Flash Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___f_t_l.html">Flash Transport Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___f_m_c.html">Flexible Memory Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___h_a_l___w_d_t.html">HAL WDT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___i_o___d_l_p_s.html">IO DLPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___m_e_m___c_o_n_f_i_g.html">Memory Configure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___n_o_r___f_l_a_s_h.html">Nor Flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_s_r_a_m.html">PSRAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_m_u.html">Performance Manager Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_l_a_t_f_o_r_m___u_t_i_l_s.html">Platform Utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___p_o_w_e_r___m_a_n_a_g_e_r.html">Power Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___r_t_l876_x___l_i_b___p_l_a_t_f_o_r_m.html">RTL876x LIB Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_y_s_t_e_m___r_t_l876_x___a_p_i.html">System RTL876x</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___t_e_s_t___m_o_d_e___a_p_i.html">Test Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___t_r_a_c_e.html">Trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___v_e_c_t_o_r___t_a_b_l_e.html">Vector Table</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+        <li class="breadcrumb-item"><a href="group___c_l_o_c_k.html">Clock</a></li>
+    <li class="breadcrumb-item active">Clock Exported Functions</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="clock-exported-functions">
+<h1>Clock Exported Functions<a class="headerlink" href="#clock-exported-functions" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___c_l_o_c_k___exported___functions"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">CLOCK_Exported_Functions</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421pm_clock_src_freq_get12CLK_SRC_TYPE">
+<span id="_CPPv321pm_clock_src_freq_get12CLK_SRC_TYPE"></span><span id="_CPPv221pm_clock_src_freq_get12CLK_SRC_TYPE"></span><span id="pm_clock_src_freq_get__CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga5a8d2b3771cc260781e56e43789f7d3d"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_clock_src_freq_get</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv412CLK_SRC_TYPE" title="CLK_SRC_TYPE"><span class="n"><span class="pre">CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clock_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421pm_clock_src_freq_get12CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Get clock source frequency. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clock_src_type</strong> -- <strong>[in]</strong> Clock source type.</p>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Clock source frequency. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415pm_cpu_freq_set8uint32_tP8uint32_t">
+<span id="_CPPv315pm_cpu_freq_set8uint32_tP8uint32_t"></span><span id="_CPPv215pm_cpu_freq_set8uint32_tP8uint32_t"></span><span id="pm_cpu_freq_set__uint32_t.uint32_tP"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga2c9fba9ab17277261ecbacac89ea2a5e"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_cpu_freq_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">actual_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415pm_cpu_freq_set8uint32_tP8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the CPU clock frequency. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Required frequency, unit: MHz. </p></li>
+<li><p><strong>actual_mhz</strong> -- <strong>[out]</strong> Actual frequency after requirement, unit: MHz.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the CPU clock frequency. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415pm_cpu_freq_getP8uint32_t">
+<span id="_CPPv315pm_cpu_freq_getP8uint32_t"></span><span id="_CPPv215pm_cpu_freq_getP8uint32_t"></span><span id="pm_cpu_freq_get__uint32_tP"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gae62261104c2d5109cb4b9a7926055319"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_cpu_freq_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">current_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415pm_cpu_freq_getP8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Retrieve the current CPU clock frequency. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_mhz</strong> -- <strong>[out]</strong> The current CPU clock frequency in MHz.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420pm_cpu_slow_freq_set8uint32_t">
+<span id="_CPPv320pm_cpu_slow_freq_set8uint32_t"></span><span id="_CPPv220pm_cpu_slow_freq_set8uint32_t"></span><span id="pm_cpu_slow_freq_set__uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gaede6f147f0f9c5f6eb5211dc4ffa07cf"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_cpu_slow_freq_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420pm_cpu_slow_freq_set8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the CPU slow clock. After the system enters WFI, the CPU will automatically slow down to this frequency to reduce power consumption. </p>
+<p><ul class="simple">
+<li><p>When clock source is CLK_40M, CPU slow clock frequency can be set to 40MHz divided by 1 to 1/64.</p></li>
+<li><p>When clock source is CKO_PLL1_CPU, CPU slow clock frequency can be set to CKO_PLL1_CPU divided by 1 to 1/64.</p></li>
+<li><p>When clock source is CKO_PLL2, CPU slow clock frequency can be set to CKO_PLL2 divided by 1 to 1/64. </p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>required_mhz</strong> -- <strong>[in]</strong> Required CPU slow clock frequency.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the CPU slow clock frequency. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426fmc_flash_nor_clock_switch18FLASH_NOR_IDX_TYPE8uint32_tP8uint32_t">
+<span id="_CPPv326fmc_flash_nor_clock_switch18FLASH_NOR_IDX_TYPE8uint32_tP8uint32_t"></span><span id="_CPPv226fmc_flash_nor_clock_switch18FLASH_NOR_IDX_TYPE8uint32_tP8uint32_t"></span><span id="fmc_flash_nor_clock_switch__FLASH_NOR_IDX_TYPE.uint32_t.uint32_tP"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga87c70b6591710ad8198c5ea436bd46c3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fmc_flash_nor_clock_switch</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___f_m_c___exported___types.html#_CPPv418FLASH_NOR_IDX_TYPE" title="FLASH_NOR_IDX_TYPE"><span class="n"><span class="pre">FLASH_NOR_IDX_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">idx</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">actual_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426fmc_flash_nor_clock_switch18FLASH_NOR_IDX_TYPE8uint32_tP8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the Flash Nor clock frequency. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> -- <strong>[in]</strong> Corresponding SPIC ID for Flash Nor, refer to <a class="reference internal" href="group___f_m_c___exported___types.html#group___f_m_c___exported___types_1gaf830923ccaf81cdea36256941ee61de8"><span class="std std-ref">FLASH_NOR_IDX_TYPE</span></a> . </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Required frequency, unit: MHz. </p></li>
+<li><p><strong>actual_mhz</strong> -- <strong>[out]</strong> Actual frequency after requirement, unit: MHz.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>True</strong> -- Success. </p></li>
+<li><p><strong>False</strong> -- Fail to set the Flash Nor clock frequency. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422fmc_psram_clock_switch14PSRAM_IDX_TYPE8uint32_tP8uint32_t">
+<span id="_CPPv322fmc_psram_clock_switch14PSRAM_IDX_TYPE8uint32_tP8uint32_t"></span><span id="_CPPv222fmc_psram_clock_switch14PSRAM_IDX_TYPE8uint32_tP8uint32_t"></span><span id="fmc_psram_clock_switch__PSRAM_IDX_TYPE.uint32_t.uint32_tP"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga53908992676e16b696037795e4789dff"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fmc_psram_clock_switch</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___f_m_c___exported___types.html#_CPPv414PSRAM_IDX_TYPE" title="PSRAM_IDX_TYPE"><span class="n"><span class="pre">PSRAM_IDX_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">idx</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">actual_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422fmc_psram_clock_switch14PSRAM_IDX_TYPE8uint32_tP8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the PSRAM clock frequency. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> -- <strong>[in]</strong> Corresponding SPIC ID for PSRAM, refer to <a class="reference internal" href="group___f_m_c___exported___types.html#group___f_m_c___exported___types_1gac622e964f16110dc409f46ea1516095e"><span class="std std-ref">PSRAM_IDX_TYPE</span></a> . </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Required frequency, unit: MHz. </p></li>
+<li><p><strong>actual_mhz</strong> -- <strong>[out]</strong> Actual frequency after requirement, unit: MHz.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>True</strong> -- Success. </p></li>
+<li><p><strong>False</strong> -- Fail to set the PSRAM clock frequency. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419pm_display_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv319pm_display_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv219pm_display_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_display_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gae95ee28885972569c2c2ea09c613e9e0"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_display_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419pm_display_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the display's corresponding PLL clock source. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for display. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the display's corresponding PLL clock source. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421pm_display_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv321pm_display_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv221pm_display_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_display_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga109a84b30ae6de1d3cee18994d4a0e2e"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_display_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421pm_display_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to the display. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for display.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416pm_sdhc_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv316pm_sdhc_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv216pm_sdhc_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_sdhc_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gae7f646a2dac26ab733ec798190b152e1"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_sdhc_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416pm_sdhc_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to SDHC (SDIO Host Controller). </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for SDHC. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to SDHC. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418pm_sdhc_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv318pm_sdhc_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv218pm_sdhc_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_sdhc_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga007e96aa29770f02f8ba75d6f8a7b4a7"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_sdhc_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418pm_sdhc_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to SDHC. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for SDHC.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415pm_pke_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv315pm_pke_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv215pm_pke_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_pke_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga3daf2b1ab7df0b1b4012e76b2e463448"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_pke_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415pm_pke_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to PKE (Public Key Engine). </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for PKE. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to PKE. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417pm_pke_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv317pm_pke_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv217pm_pke_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_pke_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga1f0c4f7034b2a7e6f3368d3332f46a17"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_pke_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417pm_pke_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to PKE. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for PKE.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420pm_ethernet_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv320pm_ethernet_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv220pm_ethernet_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_ethernet_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga06c6833a30eaf258b639b079b8e2d9bf"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_ethernet_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420pm_ethernet_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to Ethernet. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The Ethernet clock source can only select CKO_PLL1_ETH (125MHz, 250MHz) or CKO_PLL1_ETH50M (50MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for Ethernet. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to Ethernet. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422pm_ethernet_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv322pm_ethernet_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv222pm_ethernet_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_ethernet_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gacc9919eff640a929cdeb422288eb466f"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_ethernet_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422pm_ethernet_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to Ethernet. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for Ethernet.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415pm_usb_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv315pm_usb_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv215pm_usb_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_usb_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga8aaca7ca811b818ba34359aa7d74f5d9"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_usb_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415pm_usb_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to USB. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for USB. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to USB. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417pm_usb_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv317pm_usb_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv217pm_usb_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_usb_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga7462394ecfe0178cb8cec5a39c455054"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_usb_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417pm_usb_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to USB. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for USB.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417pm_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv317pm_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv217pm_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_timer_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gaf8e0b1368009e4780f0ad64a0d5d1fae"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_timer_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417pm_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to Timer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for Timer. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to Timer. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419pm_timer_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv319pm_timer_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv219pm_timer_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_timer_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga73a1fdc8afe24f8d21a991c35d3293d5"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_timer_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419pm_timer_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to Timer. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for Timer.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426pm_enhanced_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv326pm_enhanced_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv226pm_enhanced_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_enhanced_timer_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gaf3a6b6b896a770b37290866b84f9dd55"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_enhanced_timer_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426pm_enhanced_timer_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to Enhanced Timer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for Enhanced Timer. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to Enhanced Timer. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428pm_enhanced_timer_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv328pm_enhanced_timer_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv228pm_enhanced_timer_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_enhanced_timer_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga1fd165f749029bdc287e38caca90322f"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_enhanced_timer_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428pm_enhanced_timer_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to Enhanced Timer. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for Enhanced Timer.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414pm_ir_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv314pm_ir_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv214pm_ir_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_ir_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga01d9af2720eebbd94343beba82f4027d"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_ir_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414pm_ir_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to IR (Infrared Radiation). </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for IR. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to IR. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416pm_ir_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv316pm_ir_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv216pm_ir_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_ir_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga14a1670371c11b7df9674e03a1d5d546"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_ir_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416pm_ir_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to IR. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for IR.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423pm_spi0_master_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv323pm_spi0_master_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv223pm_spi0_master_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_spi0_master_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gaf72a88a9b99183f0c6fe7e94ae6ff7b4"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_spi0_master_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423pm_spi0_master_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to SPI0 master. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for SPI0 master. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to SPI0 master. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425pm_spi0_master_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv325pm_spi0_master_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv225pm_spi0_master_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_spi0_master_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga3e733725c7e0398c250743ff36e40a64"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_spi0_master_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425pm_spi0_master_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to SPI0 master. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for SPI0 master.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422pm_spi0_slave_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t">
+<span id="_CPPv322pm_spi0_slave_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="_CPPv222pm_spi0_slave_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t"></span><span id="pm_spi0_slave_freq_set__PLL_CLK_SRC_TYPE.uint32_t.uint32_t"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1ga11ed5d814d186c1cd2ffe4ed053af84a"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_spi0_slave_freq_set</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pll_output_mhz</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">required_mhz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422pm_spi0_slave_freq_set16PLL_CLK_SRC_TYPE8uint32_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the frequency of the PLL clock source corresponding to SPI0 slave. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source selection: Choose the PLL clock source that needs to be initialized. </p></li>
+<li><p><strong>pll_output_mhz</strong> -- <strong>[in]</strong> PLL clock source frequency: The current frequency of the PLL2 clock source is fixed at 160MHz. Only when the PLL clock source is selected as PLL1, the frequency of CKO_PLL1_PERI can be modified (100MHz, 125MHz, 250MHz), unit: MHz. </p></li>
+<li><p><strong>required_mhz</strong> -- <strong>[in]</strong> Actual required frequency for SPI0 slave. Unit: MHz. For reference only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>0</strong> -- Success. </p></li>
+<li><p><strong>Others</strong> -- Fail to set the frequency of the PLL clock source corresponding to SPI0 slave. This may happen when the require_mhz is not supported. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424pm_spi0_slave_freq_unset16PLL_CLK_SRC_TYPE">
+<span id="_CPPv324pm_spi0_slave_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="_CPPv224pm_spi0_slave_freq_unset16PLL_CLK_SRC_TYPE"></span><span id="pm_spi0_slave_freq_unset__PLL_CLK_SRC_TYPE"></span><span class="target" id="group___c_l_o_c_k___exported___functions_1gad025f5778f20f20c907ef6b0c38bea62"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pm_spi0_slave_freq_unset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___c_l_o_c_k___exported___variables.html#_CPPv416PLL_CLK_SRC_TYPE" title="PLL_CLK_SRC_TYPE"><span class="n"><span class="pre">PLL_CLK_SRC_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clk_src_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424pm_spi0_slave_freq_unset16PLL_CLK_SRC_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Request to turn off the PLL clock source corresponding to SPI0 slave. Only when all modules using the same PLL clock source are turned off, will the PLL clock source be turned off. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>clk_src_type</strong> -- <strong>[in]</strong> PLL clock source for SPI0 slave.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Success. </p>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Status of Operation, and will always return 0. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___c_l_o_c_k.html" class="btn btn-neutral float-left" title="Clock" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___c_l_o_c_k___exported___variables.html" class="btn btn-neutral float-right" title="Clock Exported Variables" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

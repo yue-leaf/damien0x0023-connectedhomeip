@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bluetooth SDP Profile Attributes &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Bluetooth SM Error Code" href="group___b_t___s_m___e_r_r_o_r.html" />
+    <link rel="prev" title="Bluetooth SDP Header" href="group___b_t___s_d_p___h_e_a_d_e_r.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___b_t___d_i_r_e_c_t___m_s_g.html">Bluetooth Direct Message</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___b_t___d_e_f.html">Bluetooth Related Definition</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___b_t___t_y_p_e_s.html">Bluetooth Types</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___a_p_p___e_r_r_o_r.html">Bluetooth APP Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___a_t_t___e_r_r_o_r.html">Bluetooth ATT Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___a_v___m_i_n_o_r___c_l_a_s_s.html">Bluetooth AUDIO/VIDEO Minor Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___b_t_i_f___e_r_r_o_r.html">Bluetooth BTIF Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___b_y_t_e___o_r_d_e_r.html">Bluetooth Byte-Order</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___c_o_d___m_a_j_o_r___c_l_a_s_s.html">Bluetooth COD Major Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___c_o_d___m_a_s_k.html">Bluetooth COD Mask</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___c_o_m_p_u_t_e_r___m_i_n_o_r___c_l_a_s_s.html">Bluetooth COMPUTER Minor Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___g_a_p___e_r_r_o_r.html">Bluetooth GAP Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___g_a_t_t___e_r_r_o_r.html">Bluetooth GATT Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___h_c_i___e_r_r_o_r.html">Bluetooth HCI Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___h_e_a_l_t_h___m_i_n_o_r___c_l_a_s_s.html">Bluetooth HEALTH Minor Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___h_o_s_t___m_o_d_u_l_e___e_r_r_o_r.html">Bluetooth Host Module Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___i_m_a_g_i_n_g___m_i_n_o_r___c_l_a_s_s.html">Bluetooth IMAGING Minor Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___l2_c_a_p___e_r_r_o_r.html">Bluetooth L2CAP Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___l_a_n___a_c_c_e_s_s___p_o_i_n_t___m_i_n_o_r___c_l_a_s_s.html">Bluetooth LAN_ACCESS_POINT Minor Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___l_e___l2_c_a_p___f_i_x_e_d___c_i_d.html">Bluetooth LE L2CAP Fixed CID</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___l_e___l_o_c_a_l___s_u_p_p_o_r_t_e_d___f_e_a_t_u_r_e_s.html">Bluetooth LE Local Supported Features</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___l_e___s_e_t___h_o_s_t___f_e_a_t_u_r_e.html">Bluetooth LE Set Host Feature</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___p_e_r_i_p_h_e_r_a_l___m_i_n_o_r___c_l_a_s_s.html">Bluetooth PERIPHERAL Minor Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___p_h_o_n_e___m_i_n_o_r___c_l_a_s_s.html">Bluetooth PHONE Minor Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___u_u_i_d.html">Bluetooth Protocol/Profile UUID</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___p_s_m.html">Bluetooth Protocol/Service Multiplexer</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___r_f_c___e_r_r_o_r.html">Bluetooth RFCOMM Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___s_d_p___a_t_t_r_i_b_u_t_e_s.html">Bluetooth SDP Attributes</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___s_d_p___e_r_r_o_r.html">Bluetooth SDP Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___s_d_p___h_e_a_d_e_r.html">Bluetooth SDP Header</a></li>
+<li class="toctree-l7 current"><a class="current reference internal" href="#">Bluetooth SDP Profile Attributes</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___s_m___e_r_r_o_r.html">Bluetooth SM Error Code</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___s_e_r_v_i_c_e___c_l_a_s_s.html">Bluetooth Service Class</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___b_t___u_n_c_l_a_s_s_i_f_i_e_d___m_i_n_o_r___c_l_a_s_s.html">Bluetooth Unclassified Minor Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___c_o_m_m_o_n___m_o_d_u_l_e.html">GAP Common Module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___l_e.html">GAP LE Module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___g_a_t_t___s_e_r_v_i_c_e.html">GAP and GATT Inbox Services</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___c_l_i_e_n_t___a_p_i.html">GATT Client API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___c_o_m_m_o_n.html">GATT Common</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___a_p_i.html">GATT Server API</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_t___host.html">Bluetooth Host</a></li>
+        <li class="breadcrumb-item"><a href="group___b_t___d_e_f.html">Bluetooth Related Definition</a></li>
+        <li class="breadcrumb-item"><a href="group___b_t___t_y_p_e_s.html">Bluetooth Types</a></li>
+    <li class="breadcrumb-item active">Bluetooth SDP Profile Attributes</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bluetooth-sdp-profile-attributes">
+<h1>Bluetooth SDP Profile Attributes<a class="headerlink" href="#bluetooth-sdp-profile-attributes" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">BT_SDP_PROFILE_ATTRIBUTES</span></span></dt>
+<dd><p>Bluetooth SDP Profile Attribute definitions. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_L2C_PSM">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga39084a08425c2c65188bbc291f86acc9"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_L2C_PSM</span></span></span> <span class="pre">0x0200</span><a class="headerlink" href="#c.SDP_ATTR_L2C_PSM" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_SRV_VER">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga496bfa21636a9b460119aa87d8d707b4"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_SRV_VER</span></span></span> <span class="pre">0x0300</span><a class="headerlink" href="#c.SDP_ATTR_SRV_VER" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_EXT_NETWORK">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga6d71eca31646fcabba3a6b70075dc128"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_EXT_NETWORK</span></span></span> <span class="pre">0x0301</span><a class="headerlink" href="#c.SDP_ATTR_EXT_NETWORK" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_FAX_CLASS1_SUPPORT">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga0c16afaef161f902a7ba3447e1c6ede8"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_FAX_CLASS1_SUPPORT</span></span></span> <span class="pre">0x0302</span><a class="headerlink" href="#c.SDP_ATTR_FAX_CLASS1_SUPPORT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_RMT_AUDIO_VOL_CTRL">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga353792b0144b8d2a6a3a9741606fe53f"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_RMT_AUDIO_VOL_CTRL</span></span></span> <span class="pre">0x0302</span><a class="headerlink" href="#c.SDP_ATTR_RMT_AUDIO_VOL_CTRL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_FAX_CLASS20_SUPPORT">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga4973f238dd918741be958f7c342fccf9"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_FAX_CLASS20_SUPPORT</span></span></span> <span class="pre">0x0303</span><a class="headerlink" href="#c.SDP_ATTR_FAX_CLASS20_SUPPORT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_SUPPORTED_FORMATS_LIST">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga1dfb441d1eabd4f64c28646bb9878748"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_SUPPORTED_FORMATS_LIST</span></span></span> <span class="pre">0x0303</span><a class="headerlink" href="#c.SDP_ATTR_SUPPORTED_FORMATS_LIST" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_FAX_CLASS2_SUPPORT">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga81c900883717cb776d38e85b8a8c4239"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_FAX_CLASS2_SUPPORT</span></span></span> <span class="pre">0x0304</span><a class="headerlink" href="#c.SDP_ATTR_FAX_CLASS2_SUPPORT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_AUDIO_FEEDBACK_SUPPORT">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga9010775ac86f2aee8486f116d175ed4f"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_AUDIO_FEEDBACK_SUPPORT</span></span></span> <span class="pre">0x0305</span><a class="headerlink" href="#c.SDP_ATTR_AUDIO_FEEDBACK_SUPPORT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_NETWORK_ADDR">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga7b82e8d10512a9e9941c329dc67d356f"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_NETWORK_ADDR</span></span></span> <span class="pre">0x0306</span><a class="headerlink" href="#c.SDP_ATTR_NETWORK_ADDR" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_WAP_GATEWAY">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gaf904ae963386b004b6b804edf99a8855"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_WAP_GATEWAY</span></span></span> <span class="pre">0x0307</span><a class="headerlink" href="#c.SDP_ATTR_WAP_GATEWAY" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HOME_PAGE_URL">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gae4cc38474cfb9f11a2238f8bcffece0d"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HOME_PAGE_URL</span></span></span> <span class="pre">0x0308</span><a class="headerlink" href="#c.SDP_ATTR_HOME_PAGE_URL" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_WAP_STACK_TYPE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga55d3e27f7b3d0217786c61f3825df948"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_WAP_STACK_TYPE</span></span></span> <span class="pre">0x0309</span><a class="headerlink" href="#c.SDP_ATTR_WAP_STACK_TYPE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_SECURITY_DESC">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga76a2e83141c5c7204d6608d451ef69ca"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_SECURITY_DESC</span></span></span> <span class="pre">0x030A</span><a class="headerlink" href="#c.SDP_ATTR_SECURITY_DESC" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_NET_ACCESS_TYPE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga42dec8c4c939d48b0e303c4015e447d3"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_NET_ACCESS_TYPE</span></span></span> <span class="pre">0x030B</span><a class="headerlink" href="#c.SDP_ATTR_NET_ACCESS_TYPE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_MAX_NET_ACCESS_RATE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gac87c4ee78bccdc57423cba0ad9358735"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_MAX_NET_ACCESS_RATE</span></span></span> <span class="pre">0x030C</span><a class="headerlink" href="#c.SDP_ATTR_MAX_NET_ACCESS_RATE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_IPV4_SUBNET">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gad8a99df9962bab8cc1df868d7296f0f9"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_IPV4_SUBNET</span></span></span> <span class="pre">0x030D</span><a class="headerlink" href="#c.SDP_ATTR_IPV4_SUBNET" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_IPV6_SUBNET">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga49bcfca9e5f12c93a835c660a899500c"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_IPV6_SUBNET</span></span></span> <span class="pre">0x030E</span><a class="headerlink" href="#c.SDP_ATTR_IPV6_SUBNET" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_SUPPORTED_CAPABILITIES">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga3475245efd025b39e2112cecacf57023"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_SUPPORTED_CAPABILITIES</span></span></span> <span class="pre">0x0310</span><a class="headerlink" href="#c.SDP_ATTR_SUPPORTED_CAPABILITIES" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_SUPPORTED_FEATURES">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga1d91531d2bd55bfc1bd089e36ad45816"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_SUPPORTED_FEATURES</span></span></span> <span class="pre">0x0311</span><a class="headerlink" href="#c.SDP_ATTR_SUPPORTED_FEATURES" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_SUPPORTED_FUNCTIONS">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga0ea0ff95217bf15a312056065b9d5338"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_SUPPORTED_FUNCTIONS</span></span></span> <span class="pre">0x0312</span><a class="headerlink" href="#c.SDP_ATTR_SUPPORTED_FUNCTIONS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_TOTAL_IMAGING_CAPACITY">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga48dc737b34c96551190982ad3adf7e51"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_TOTAL_IMAGING_CAPACITY</span></span></span> <span class="pre">0x0313</span><a class="headerlink" href="#c.SDP_ATTR_TOTAL_IMAGING_CAPACITY" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_SUPPORTED_REPOSITORIES">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga875d88204e712c39f69af71191bd5a52"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_SUPPORTED_REPOSITORIES</span></span></span> <span class="pre">0x0314</span><a class="headerlink" href="#c.SDP_ATTR_SUPPORTED_REPOSITORIES" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_MAS_INSTANCE_ID">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gaa2eb2eaf02a995513ad29ab99faddfb1"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_MAS_INSTANCE_ID</span></span></span> <span class="pre">0x0315</span><a class="headerlink" href="#c.SDP_ATTR_MAS_INSTANCE_ID" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_SUPPORTED_MSG_TYPES">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gaea8205932f2df702fe184251b9f3e1fe"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_SUPPORTED_MSG_TYPES</span></span></span> <span class="pre">0x0316</span><a class="headerlink" href="#c.SDP_ATTR_SUPPORTED_MSG_TYPES" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_MAP_SUPPERTED_FEATS">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga56d824186c4e89fcd8023a54426d47b6"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_MAP_SUPPERTED_FEATS</span></span></span> <span class="pre">0x0317</span><a class="headerlink" href="#c.SDP_ATTR_MAP_SUPPERTED_FEATS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_DEV_RELEASE_NUM">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gab1b53d203fb215386b6df131eecacd5f"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_DEV_RELEASE_NUM</span></span></span> <span class="pre">0x0200</span><a class="headerlink" href="#c.SDP_ATTR_HID_DEV_RELEASE_NUM" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_PARSER_VER">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gabf12c7b563b02cf9386ac717d8f81b0d"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_PARSER_VER</span></span></span> <span class="pre">0x0201</span><a class="headerlink" href="#c.SDP_ATTR_HID_PARSER_VER" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_DEV_SUB_CLASS">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga32dec193867250598c17dbba84d0fc39"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_DEV_SUB_CLASS</span></span></span> <span class="pre">0x0202</span><a class="headerlink" href="#c.SDP_ATTR_HID_DEV_SUB_CLASS" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_COUNTRY_CODE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gab8efab58672afd6937782eac53a2f16f"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_COUNTRY_CODE</span></span></span> <span class="pre">0x0203</span><a class="headerlink" href="#c.SDP_ATTR_HID_COUNTRY_CODE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_VIRTUAL_CABLE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga4d5613bc62183c70961552dcc6eef2c0"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_VIRTUAL_CABLE</span></span></span> <span class="pre">0x0204</span><a class="headerlink" href="#c.SDP_ATTR_HID_VIRTUAL_CABLE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_RECONN_INIT">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga9172088c169ccd99e715813ace1b0e78"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_RECONN_INIT</span></span></span> <span class="pre">0x0205</span><a class="headerlink" href="#c.SDP_ATTR_HID_RECONN_INIT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_DESC_LIST">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga7a8a98159dbff51b68e4fe78e9eabcf2"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_DESC_LIST</span></span></span> <span class="pre">0x0206</span><a class="headerlink" href="#c.SDP_ATTR_HID_DESC_LIST" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_LANG_ID_BASE_LIST">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gafb02eab16c2bad738b97dfeced1269a2"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_LANG_ID_BASE_LIST</span></span></span> <span class="pre">0x0207</span><a class="headerlink" href="#c.SDP_ATTR_HID_LANG_ID_BASE_LIST" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_SDP_DISABLE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gaed14e861a8133eaf5f275deddc4874a6"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_SDP_DISABLE</span></span></span> <span class="pre">0x0208</span><a class="headerlink" href="#c.SDP_ATTR_HID_SDP_DISABLE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_BATTERY_POWER">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gaeca95166508f540fb7eab2b2170fde2a"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_BATTERY_POWER</span></span></span> <span class="pre">0x0209</span><a class="headerlink" href="#c.SDP_ATTR_HID_BATTERY_POWER" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_REMOTE_WAKE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga6258cbd55539283316c18e388f8a3fc8"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_REMOTE_WAKE</span></span></span> <span class="pre">0x020A</span><a class="headerlink" href="#c.SDP_ATTR_HID_REMOTE_WAKE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_PROFILE_VER">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga590f884555c75fa9154e7ce256a3e111"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_PROFILE_VER</span></span></span> <span class="pre">0x020B</span><a class="headerlink" href="#c.SDP_ATTR_HID_PROFILE_VER" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_SUPERVISION_TIMEOUT">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga58baac400b6d8aae966b5ee64eabe1ea"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_SUPERVISION_TIMEOUT</span></span></span> <span class="pre">0x020C</span><a class="headerlink" href="#c.SDP_ATTR_HID_SUPERVISION_TIMEOUT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_NORMALLY_CONNECTABLE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga4e83b69cc289b71febade9a5801e658f"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_NORMALLY_CONNECTABLE</span></span></span> <span class="pre">0x020D</span><a class="headerlink" href="#c.SDP_ATTR_HID_NORMALLY_CONNECTABLE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_HID_BOOT_DEV">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga0f34f48ce53e2b8a0f81b72a2f818fa6"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_HID_BOOT_DEV</span></span></span> <span class="pre">0x020E</span><a class="headerlink" href="#c.SDP_ATTR_HID_BOOT_DEV" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_PBAP_SUPPORTED_FEAT">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga4c0ada0b9605314f8f48a360c0682753"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_PBAP_SUPPORTED_FEAT</span></span></span> <span class="pre">0x0317</span><a class="headerlink" href="#c.SDP_ATTR_PBAP_SUPPORTED_FEAT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_DIP_SPECIFICATION_ID">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga77ad0a0bba95ad0adfb566e79c99a974"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_DIP_SPECIFICATION_ID</span></span></span> <span class="pre">0x0200</span><a class="headerlink" href="#c.SDP_ATTR_DIP_SPECIFICATION_ID" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_DIP_VENDOR_ID">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gaa43f68828a4db575d36a5ac41884024c"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_DIP_VENDOR_ID</span></span></span> <span class="pre">0x0201</span><a class="headerlink" href="#c.SDP_ATTR_DIP_VENDOR_ID" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_DIP_PRODUCT_ID">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga2951514bc455efe053a2f1e72a00ebf6"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_DIP_PRODUCT_ID</span></span></span> <span class="pre">0x0202</span><a class="headerlink" href="#c.SDP_ATTR_DIP_PRODUCT_ID" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_DIP_PRODUCT_VERSION">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1gaacf91f4b22cca3d86e9c200757e35159"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_DIP_PRODUCT_VERSION</span></span></span> <span class="pre">0x0203</span><a class="headerlink" href="#c.SDP_ATTR_DIP_PRODUCT_VERSION" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_DIP_PRIMARY_RECORD">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga229dd781d0947d93ef2023562106dcfd"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_DIP_PRIMARY_RECORD</span></span></span> <span class="pre">0x0204</span><a class="headerlink" href="#c.SDP_ATTR_DIP_PRIMARY_RECORD" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SDP_ATTR_DIP_VENDOR_ID_SOURCE">
+<span class="target" id="group___b_t___s_d_p___p_r_o_f_i_l_e___a_t_t_r_i_b_u_t_e_s_1ga9c728c9abce4d40a4340197279074b77"></span><span class="sig-name descname"><span class="n"><span class="pre">SDP_ATTR_DIP_VENDOR_ID_SOURCE</span></span></span> <span class="pre">0x0205</span><a class="headerlink" href="#c.SDP_ATTR_DIP_VENDOR_ID_SOURCE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___b_t___s_d_p___h_e_a_d_e_r.html" class="btn btn-neutral float-left" title="Bluetooth SDP Header" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___b_t___s_m___e_r_r_o_r.html" class="btn btn-neutral float-right" title="Bluetooth SM Error Code" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

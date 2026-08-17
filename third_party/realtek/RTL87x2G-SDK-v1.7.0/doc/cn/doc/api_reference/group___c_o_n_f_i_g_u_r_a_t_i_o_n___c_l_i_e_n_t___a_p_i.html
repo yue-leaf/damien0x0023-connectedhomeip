@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client API &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Mesh Msg" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___m_e_s_h___m_s_g.html" />
+    <link rel="prev" title="Access Opcode" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___a_c_c_e_s_s___o_p_c_o_d_e.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___application.html">Application</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p.html">GAP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t.html">GATT</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___mesh___model.html">Mesh Model</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___mesh___model___s_i_g.html">SIG</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r.html">BLOB Transfer</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___common.html">Common</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___d_f_u.html">DFU</a></li>
+<li class="toctree-l7 current"><a class="reference internal" href="group___mesh___model___s_i_g___foundation.html">Foundation</a><ul class="current">
+<li class="toctree-l8 current"><a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n.html">Configuration</a><ul class="current">
+<li class="toctree-l9"><a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___a_c_c_e_s_s___o_p_c_o_d_e.html">Access Opcode</a></li>
+<li class="toctree-l9 current"><a class="current reference internal" href="#">Client API</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414cfg_client_regv"><code class="docutils literal notranslate"><span class="pre">cfg_client_reg()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418cfg_client_key_set8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_client_key_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418cfg_compo_data_get8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_compo_data_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414cfg_beacon_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_beacon_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414cfg_beacon_set8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_beacon_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419cfg_default_ttl_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_default_ttl_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419cfg_default_ttl_set8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_default_ttl_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv413cfg_proxy_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_proxy_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv413cfg_proxy_set8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_proxy_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv413cfg_relay_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_relay_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv413cfg_relay_set8uint16_t7uint8_t7uint8_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_relay_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420cfg_net_transmit_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_net_transmit_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420cfg_net_transmit_set8uint16_t7uint8_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_net_transmit_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417cfg_model_pub_get8uint16_t8uint16_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_pub_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417cfg_model_pub_set8uint16_t8uint16_tbP7uint8_t14pub_key_info_t7uint8_t12pub_period_t18pub_retrans_info_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_pub_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417cfg_model_sub_add8uint16_t8uint16_tbP7uint8_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_sub_add()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420cfg_model_sub_delete8uint16_t8uint16_tbP7uint8_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_sub_delete()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv424cfg_model_sub_delete_all8uint16_t8uint16_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_sub_delete_all()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv423cfg_model_sub_overwrite8uint16_t8uint16_tbP7uint8_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_sub_overwrite()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417cfg_model_sub_get8uint16_t8uint16_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_sub_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv415cfg_net_key_add8uint16_t8uint16_tAL16E_7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_net_key_add()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418cfg_net_key_update8uint16_t8uint16_tAL16E_7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_net_key_update()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418cfg_net_key_delete8uint16_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_net_key_delete()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv415cfg_net_key_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_net_key_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv415cfg_app_key_add8uint16_t8uint16_t8uint16_tAL16E_7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_app_key_add()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418cfg_app_key_update8uint16_t8uint16_t8uint16_tAL16E_7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_app_key_update()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418cfg_app_key_delete8uint16_t8uint16_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_app_key_delete()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv415cfg_app_key_get8uint16_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_app_key_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv421cfg_node_identity_get8uint16_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_node_identity_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv421cfg_node_identity_set8uint16_t8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_node_identity_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418cfg_model_app_bind8uint16_t8uint16_t8uint16_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_app_bind()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420cfg_model_app_unbind8uint16_t8uint16_t8uint16_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_app_unbind()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417cfg_model_app_get8uint16_t8uint16_t8uint32_t"><code class="docutils literal notranslate"><span class="pre">cfg_model_app_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414cfg_node_reset8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_node_reset()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv412cfg_frnd_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_frnd_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv412cfg_frnd_set8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_frnd_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv424cfg_lpn_poll_timeout_get8uint16_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_lpn_poll_timeout_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv425cfg_key_refresh_phase_get8uint16_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_key_refresh_phase_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv425cfg_key_refresh_phase_set8uint16_t8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_key_refresh_phase_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414cfg_hb_pub_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_hb_pub_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414cfg_hb_pub_set8uint16_t8uint16_t7uint8_t7uint8_t7uint8_t17hb_pub_features_t8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_hb_pub_set()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414cfg_hb_sub_get8uint16_t"><code class="docutils literal notranslate"><span class="pre">cfg_hb_sub_get()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414cfg_hb_sub_set8uint16_t8uint16_t8uint16_t7uint8_t"><code class="docutils literal notranslate"><span class="pre">cfg_hb_sub_set()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___m_e_s_h___m_s_g.html">Mesh Msg</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___m_o_d_e_l___i_d.html">Model ID</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___s_e_r_v_e_r___a_p_i.html">Server API</a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="group___h_e_a_l_t_h.html">Health</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___generics.html">Generics</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___lighting.html">Lighting</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g.html">Remote Provisioning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___sensors.html">Sensors</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___time___scenes.html">Time and Scenes</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___mesh___model___vendor.html">Vendor</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___mesh___protocol.html">Mesh Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model.html">Mesh Model</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g.html">SIG</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g___foundation.html">Foundation</a></li>
+        <li class="breadcrumb-item"><a href="group___c_o_n_f_i_g_u_r_a_t_i_o_n.html">Configuration</a></li>
+    <li class="breadcrumb-item active">Client API</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="client-api">
+<h1>Client API<a class="headerlink" href="#client-api" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">CONFIGURATION_CLIENT_API</span></span></dt>
+<dd><p>Functions declaration for configuration client models. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414cfg_client_regv">
+<span id="_CPPv314cfg_client_regv"></span><span id="_CPPv214cfg_client_regv"></span><span id="cfg_client_reg__void"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga500c895773f0f6248038a6a149f97828"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_client_reg</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414cfg_client_regv" title="Link to this definition"></a><br /></dt>
+<dd><p>Register configuration client model. </p>
+<dl class="field-list simple">
+<dt class="field-odd">返回值<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true</strong> -- If registration is successful. </p></li>
+<li><p><strong>false</strong> -- If registration fails. Check client model configurations. </p></li>
+</ul>
+</dd>
+<dt class="field-even">返回<span class="colon">:</span></dt>
+<dd class="field-even"><p>Registration result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418cfg_client_key_set8uint16_t">
+<span id="_CPPv318cfg_client_key_set8uint16_t"></span><span id="_CPPv218cfg_client_key_set8uint16_t"></span><span id="cfg_client_key_set__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gae99a9a3dc3b05e4f5e14d8f10df6ea49"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_client_key_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418cfg_client_key_set8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Configuration client key set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key_index</strong> -- <strong>[in]</strong> Key index for the configuration.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- If the key set operation is successful. </p></li>
+<li><p><strong>false</strong> -- If the key set operation fails. Verify key index validity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418cfg_compo_data_get8uint16_t7uint8_t">
+<span id="_CPPv318cfg_compo_data_get8uint16_t7uint8_t"></span><span id="_CPPv218cfg_compo_data_get8uint16_t7uint8_t"></span><span id="cfg_compo_data_get__uint16_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga09cf30ca233b6b4965ddf62b19fe5e9c"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_compo_data_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">page</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418cfg_compo_data_get8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config composition data get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>page</strong> -- <strong>[in]</strong> Page number to retrieve.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails due to network issues. Retry the request or check connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414cfg_beacon_get8uint16_t">
+<span id="_CPPv314cfg_beacon_get8uint16_t"></span><span id="_CPPv214cfg_beacon_get8uint16_t"></span><span id="cfg_beacon_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gac9cd1081e1a471951cc17e25ef341497"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_beacon_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414cfg_beacon_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config beacon get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails due to network issues. Consider retrying the request. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414cfg_beacon_set8uint16_t7uint8_t">
+<span id="_CPPv314cfg_beacon_set8uint16_t7uint8_t"></span><span id="_CPPv214cfg_beacon_set8uint16_t7uint8_t"></span><span id="cfg_beacon_set__uint16_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gae72684af8bb4cbfcb20341dc94307a46"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_beacon_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">state</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414cfg_beacon_set8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config beacon set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>state</strong> -- <strong>[in]</strong> New beacon state. Enable or Disable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If setting is successful. </p></li>
+<li><p><strong>Others</strong> -- If setting fails. Verify parameters and retry if necessary. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419cfg_default_ttl_get8uint16_t">
+<span id="_CPPv319cfg_default_ttl_get8uint16_t"></span><span id="_CPPv219cfg_default_ttl_get8uint16_t"></span><span id="cfg_default_ttl_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gad00bdb613d0e2e81a03f64c7455145d1"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_default_ttl_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419cfg_default_ttl_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config default TTL get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails due to network issues. Retry the request or check connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419cfg_default_ttl_set8uint16_t7uint8_t">
+<span id="_CPPv319cfg_default_ttl_set8uint16_t7uint8_t"></span><span id="_CPPv219cfg_default_ttl_set8uint16_t7uint8_t"></span><span id="cfg_default_ttl_set__uint16_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga23f39d11e541b92ea59ffc4c279781e8"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_default_ttl_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ttl</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419cfg_default_ttl_set8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config default TTL set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>ttl</strong> -- <strong>[in]</strong> New TTL value to be set on the device.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If the set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If the operation fails due to network issues. Consider retrying the operation. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413cfg_proxy_get8uint16_t">
+<span id="_CPPv313cfg_proxy_get8uint16_t"></span><span id="_CPPv213cfg_proxy_get8uint16_t"></span><span id="cfg_proxy_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gad753cf185fc1442dbb1f8aa85b11bbd5"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_proxy_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413cfg_proxy_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config proxy get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails. Retry the request or verify network conditions. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413cfg_proxy_set8uint16_t7uint8_t">
+<span id="_CPPv313cfg_proxy_set8uint16_t7uint8_t"></span><span id="_CPPv213cfg_proxy_set8uint16_t7uint8_t"></span><span id="cfg_proxy_set__uint16_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga21a16592221a7a34c43f9fc598e5b71b"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_proxy_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">state</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413cfg_proxy_set8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config proxy set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>state</strong> -- <strong>[in]</strong> New proxy state. Enable or Disable the proxy feature.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails due to network issues. Verify settings and consider retrying the operation. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413cfg_relay_get8uint16_t">
+<span id="_CPPv313cfg_relay_get8uint16_t"></span><span id="_CPPv213cfg_relay_get8uint16_t"></span><span id="cfg_relay_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gaff927756d1435fe950e747903aecdc82"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_relay_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413cfg_relay_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config relay get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid node address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails. Consider retrying or check connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413cfg_relay_set8uint16_t7uint8_t7uint8_t7uint8_t">
+<span id="_CPPv313cfg_relay_set8uint16_t7uint8_t7uint8_t7uint8_t"></span><span id="_CPPv213cfg_relay_set8uint16_t7uint8_t7uint8_t7uint8_t"></span><span id="cfg_relay_set__uint16_t.uint8_t.uint8_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga984ed25cdaf3ca3cd2935af772aa9959"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_relay_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">state</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">steps</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413cfg_relay_set8uint16_t7uint8_t7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config relay set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>state</strong> -- <strong>[in]</strong> New relay state. Enable or Disable. </p></li>
+<li><p><strong>count</strong> -- <strong>[in]</strong> Retransmission count for each Network PDU. </p></li>
+<li><p><strong>steps</strong> -- <strong>[in]</strong> Retransmission interval steps. Number of 10-millisecond steps.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails. Verify parameters or retry if necessary. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420cfg_net_transmit_get8uint16_t">
+<span id="_CPPv320cfg_net_transmit_get8uint16_t"></span><span id="_CPPv220cfg_net_transmit_get8uint16_t"></span><span id="cfg_net_transmit_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga560165e6a9f25efd97d8b7942091a351"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_net_transmit_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420cfg_net_transmit_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config network transmit get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails. Retry the request or check network conditions. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420cfg_net_transmit_set8uint16_t7uint8_t7uint8_t">
+<span id="_CPPv320cfg_net_transmit_set8uint16_t7uint8_t7uint8_t"></span><span id="_CPPv220cfg_net_transmit_set8uint16_t7uint8_t7uint8_t"></span><span id="cfg_net_transmit_set__uint16_t.uint8_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga46de8625bb1fa31fb218e771947d8257"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_net_transmit_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">steps</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420cfg_net_transmit_set8uint16_t7uint8_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config network transmit set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>count</strong> -- <strong>[in]</strong> Number of transmissions for each Network PDU originating from the node. </p></li>
+<li><p><strong>steps</strong> -- <strong>[in]</strong> Number of 10-millisecond steps between network transmissions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails due to network issues. Verify parameters and retry if needed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417cfg_model_pub_get8uint16_t8uint16_t8uint32_t">
+<span id="_CPPv317cfg_model_pub_get8uint16_t8uint16_t8uint32_t"></span><span id="_CPPv217cfg_model_pub_get8uint16_t8uint16_t8uint32_t"></span><span id="cfg_model_pub_get__uint16_t.uint16_t.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga566d7eac06e23d11366e24cc516dcc48"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_pub_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417cfg_model_pub_get8uint16_t8uint16_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config model publication get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails. Verify parameters or retry if necessary. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417cfg_model_pub_set8uint16_t8uint16_tbP7uint8_t14pub_key_info_t7uint8_t12pub_period_t18pub_retrans_info_t8uint32_t">
+<span id="_CPPv317cfg_model_pub_set8uint16_t8uint16_tbP7uint8_t14pub_key_info_t7uint8_t12pub_period_t18pub_retrans_info_t8uint32_t"></span><span id="_CPPv217cfg_model_pub_set8uint16_t8uint16_tbP7uint8_t14pub_key_info_t7uint8_t12pub_period_t18pub_retrans_info_t8uint32_t"></span><span id="cfg_model_pub_set__uint16_t.uint16_t.b.uint8_tP.pub_key_info_t.uint8_t.pub_period_t.pub_retrans_info_t.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga33364618ee645b5964885e4c345b12e4"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_pub_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">va_flag</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pub_addr</span></span>, <a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___m_e_s_h___m_s_g.html#_CPPv414pub_key_info_t" title="pub_key_info_t"><span class="n"><span class="pre">pub_key_info_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">pub_key_info</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pub_ttl</span></span>, <a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___m_e_s_h___m_s_g.html#_CPPv412pub_period_t" title="pub_period_t"><span class="n"><span class="pre">pub_period_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">pub_period</span></span>, <a class="reference internal" href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___m_e_s_h___m_s_g.html#_CPPv418pub_retrans_info_t" title="pub_retrans_info_t"><span class="n"><span class="pre">pub_retrans_info_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">pub_retrans_info</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417cfg_model_pub_set8uint16_t8uint16_tbP7uint8_t14pub_key_info_t7uint8_t12pub_period_t18pub_retrans_info_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config model publication set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>va_flag</strong> -- <strong>[in]</strong> Virtual address flag. True for virtual address, false otherwise. </p></li>
+<li><p><strong>pub_addr</strong> -- <strong>[in]</strong> Pointer to publication address. </p></li>
+<li><p><strong>pub_key_info</strong> -- <strong>[in]</strong> Publication key information. </p></li>
+<li><p><strong>pub_ttl</strong> -- <strong>[in]</strong> Publication time-to-live. </p></li>
+<li><p><strong>pub_period</strong> -- <strong>[in]</strong> Publication period. </p></li>
+<li><p><strong>pub_retrans_info</strong> -- <strong>[in]</strong> Publication retransmission information. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails. Verify parameters or network conditions. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417cfg_model_sub_add8uint16_t8uint16_tbP7uint8_t8uint32_t">
+<span id="_CPPv317cfg_model_sub_add8uint16_t8uint16_tbP7uint8_t8uint32_t"></span><span id="_CPPv217cfg_model_sub_add8uint16_t8uint16_tbP7uint8_t8uint32_t"></span><span id="cfg_model_sub_add__uint16_t.uint16_t.b.uint8_tP.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga88cbfedc7a1ddd73c063e30f8b24711a"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_sub_add</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">va_flag</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">addr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417cfg_model_sub_add8uint16_t8uint16_tbP7uint8_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config model subscription add. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>va_flag</strong> -- <strong>[in]</strong> Virtual address flag. True for virtual address, false otherwise. </p></li>
+<li><p><strong>addr</strong> -- <strong>[in]</strong> Pointer to subscription address. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If add operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If add operation fails. Check parameters or network connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420cfg_model_sub_delete8uint16_t8uint16_tbP7uint8_t8uint32_t">
+<span id="_CPPv320cfg_model_sub_delete8uint16_t8uint16_tbP7uint8_t8uint32_t"></span><span id="_CPPv220cfg_model_sub_delete8uint16_t8uint16_tbP7uint8_t8uint32_t"></span><span id="cfg_model_sub_delete__uint16_t.uint16_t.b.uint8_tP.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gac9b5595fd2a5d0ddf2c444f152ab0a08"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_sub_delete</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">va_flag</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">addr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420cfg_model_sub_delete8uint16_t8uint16_tbP7uint8_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config model subscription delete. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>va_flag</strong> -- <strong>[in]</strong> Virtual address flag. True for virtual address, false otherwise. </p></li>
+<li><p><strong>addr</strong> -- <strong>[in]</strong> Pointer to subscription address. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If delete operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If delete operation fails. Verify parameters or network conditions. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424cfg_model_sub_delete_all8uint16_t8uint16_t8uint32_t">
+<span id="_CPPv324cfg_model_sub_delete_all8uint16_t8uint16_t8uint32_t"></span><span id="_CPPv224cfg_model_sub_delete_all8uint16_t8uint16_t8uint32_t"></span><span id="cfg_model_sub_delete_all__uint16_t.uint16_t.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gad05b6db6c55c8b472c07e0436dbabca8"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_sub_delete_all</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424cfg_model_sub_delete_all8uint16_t8uint16_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config model subscription delete all. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If delete all operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If operation fails. Verify parameters or network connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423cfg_model_sub_overwrite8uint16_t8uint16_tbP7uint8_t8uint32_t">
+<span id="_CPPv323cfg_model_sub_overwrite8uint16_t8uint16_tbP7uint8_t8uint32_t"></span><span id="_CPPv223cfg_model_sub_overwrite8uint16_t8uint16_tbP7uint8_t8uint32_t"></span><span id="cfg_model_sub_overwrite__uint16_t.uint16_t.b.uint8_tP.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gad248030f37a9b91740188d3f1b2cbe07"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_sub_overwrite</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">va_flag</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">addr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423cfg_model_sub_overwrite8uint16_t8uint16_tbP7uint8_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config model subscription overwrite. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>va_flag</strong> -- <strong>[in]</strong> Virtual address flag. True for virtual address, false otherwise. </p></li>
+<li><p><strong>addr</strong> -- <strong>[in]</strong> Pointer to subscription address. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If overwrite operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If operation fails. Verify parameters or retry. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417cfg_model_sub_get8uint16_t8uint16_t8uint32_t">
+<span id="_CPPv317cfg_model_sub_get8uint16_t8uint16_t8uint32_t"></span><span id="_CPPv217cfg_model_sub_get8uint16_t8uint16_t8uint32_t"></span><span id="cfg_model_sub_get__uint16_t.uint16_t.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga8e5aff1bcfdb7268529caf33511a89b1"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_sub_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417cfg_model_sub_get8uint16_t8uint16_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config model subscription get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails. Verify parameters or network conditions. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415cfg_net_key_add8uint16_t8uint16_tAL16E_7uint8_t">
+<span id="_CPPv315cfg_net_key_add8uint16_t8uint16_tAL16E_7uint8_t"></span><span id="_CPPv215cfg_net_key_add8uint16_t8uint16_tA16_7uint8_t"></span><span id="cfg_net_key_add__uint16_t.uint16_t.uint8_tA"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gaf621035d272f994e3f730eb11e8aa1f4"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_net_key_add</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415cfg_net_key_add8uint16_t8uint16_tAL16E_7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config NetKey add. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index. </p></li>
+<li><p><strong>net_key</strong> -- <strong>[in]</strong> NetKey value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If add operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If add operation fails. Check parameters or connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418cfg_net_key_update8uint16_t8uint16_tAL16E_7uint8_t">
+<span id="_CPPv318cfg_net_key_update8uint16_t8uint16_tAL16E_7uint8_t"></span><span id="_CPPv218cfg_net_key_update8uint16_t8uint16_tA16_7uint8_t"></span><span id="cfg_net_key_update__uint16_t.uint16_t.uint8_tA"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gac265c84aa6fac474159fed7892d98efa"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_net_key_update</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418cfg_net_key_update8uint16_t8uint16_tAL16E_7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config NetKey update. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index. </p></li>
+<li><p><strong>net_key</strong> -- <strong>[in]</strong> NetKey value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If update operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If update operation fails. Verify parameters or retry. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418cfg_net_key_delete8uint16_t8uint16_t">
+<span id="_CPPv318cfg_net_key_delete8uint16_t8uint16_t"></span><span id="_CPPv218cfg_net_key_delete8uint16_t8uint16_t"></span><span id="cfg_net_key_delete__uint16_t.uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga3cc3fb994f79b4723f78b2d531d7b014"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_net_key_delete</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418cfg_net_key_delete8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config NetKey delete. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If delete operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If delete operation fails. Check parameters or connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415cfg_net_key_get8uint16_t">
+<span id="_CPPv315cfg_net_key_get8uint16_t"></span><span id="_CPPv215cfg_net_key_get8uint16_t"></span><span id="cfg_net_key_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gadfe8cb7d948944d5b09e09bf5fdbf4ff"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_net_key_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415cfg_net_key_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config NetKey get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails. Verify parameters or network connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415cfg_app_key_add8uint16_t8uint16_t8uint16_tAL16E_7uint8_t">
+<span id="_CPPv315cfg_app_key_add8uint16_t8uint16_t8uint16_tAL16E_7uint8_t"></span><span id="_CPPv215cfg_app_key_add8uint16_t8uint16_t8uint16_tA16_7uint8_t"></span><span id="cfg_app_key_add__uint16_t.uint16_t.uint16_t.uint8_tA"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga7447d37958b0ba8b1b6898569b126238"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_app_key_add</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_key_index</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_key</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415cfg_app_key_add8uint16_t8uint16_t8uint16_tAL16E_7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config AppKey add. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index where AppKey will be added. </p></li>
+<li><p><strong>app_key_index</strong> -- <strong>[in]</strong> AppKey index for the new key. </p></li>
+<li><p><strong>app_key</strong> -- <strong>[in]</strong> AppKey value. Must be 16 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If AppKey add is successful. </p></li>
+<li><p><strong>Others</strong> -- If add operation fails. Verify indices and retry. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418cfg_app_key_update8uint16_t8uint16_t8uint16_tAL16E_7uint8_t">
+<span id="_CPPv318cfg_app_key_update8uint16_t8uint16_t8uint16_tAL16E_7uint8_t"></span><span id="_CPPv218cfg_app_key_update8uint16_t8uint16_t8uint16_tA16_7uint8_t"></span><span id="cfg_app_key_update__uint16_t.uint16_t.uint16_t.uint8_tA"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga569aaa5e5f9332dcdcc651fcfd69deb6"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_app_key_update</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_key_index</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_key</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418cfg_app_key_update8uint16_t8uint16_t8uint16_tAL16E_7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config AppKey Update. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index associated with the AppKey. </p></li>
+<li><p><strong>app_key_index</strong> -- <strong>[in]</strong> AppKey index to be updated. </p></li>
+<li><p><strong>app_key</strong> -- <strong>[in]</strong> New AppKey value to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If update operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If update operation fails. Verify parameters or network issues. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418cfg_app_key_delete8uint16_t8uint16_t8uint16_t">
+<span id="_CPPv318cfg_app_key_delete8uint16_t8uint16_t8uint16_t"></span><span id="_CPPv218cfg_app_key_delete8uint16_t8uint16_t8uint16_t"></span><span id="cfg_app_key_delete__uint16_t.uint16_t.uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gaf8887fbabac67365f179b001c8afffb6"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_app_key_delete</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_key_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418cfg_app_key_delete8uint16_t8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config AppKey Delete. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index associated with AppKey. </p></li>
+<li><p><strong>app_key_index</strong> -- <strong>[in]</strong> AppKey index to be deleted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If delete operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If delete operation fails. Verify parameters or retry. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv415cfg_app_key_get8uint16_t8uint16_t">
+<span id="_CPPv315cfg_app_key_get8uint16_t8uint16_t"></span><span id="_CPPv215cfg_app_key_get8uint16_t8uint16_t"></span><span id="cfg_app_key_get__uint16_t.uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga7835425064a77ae6e2431d9e06bc9a27"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_app_key_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415cfg_app_key_get8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config AppKey Get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index associated with AppKey list retrieval.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails due to network issues. Retry the request or verify connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421cfg_node_identity_get8uint16_t8uint16_t">
+<span id="_CPPv321cfg_node_identity_get8uint16_t8uint16_t"></span><span id="_CPPv221cfg_node_identity_get8uint16_t8uint16_t"></span><span id="cfg_node_identity_get__uint16_t.uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gaca7ca0d6093499cebb2e2f135567b865"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_node_identity_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421cfg_node_identity_get8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config Node Identity Get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index for this operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails due to network issues. Verify connectivity or parameters. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421cfg_node_identity_set8uint16_t8uint16_t7uint8_t">
+<span id="_CPPv321cfg_node_identity_set8uint16_t8uint16_t7uint8_t"></span><span id="_CPPv221cfg_node_identity_set8uint16_t8uint16_t7uint8_t"></span><span id="cfg_node_identity_set__uint16_t.uint16_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gad6eff61f8e5d364309ab4030f84ab16d"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_node_identity_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">identity</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421cfg_node_identity_set8uint16_t8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config Node Identity Set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index related to Node Identity. </p></li>
+<li><p><strong>identity</strong> -- <strong>[in]</strong> New Node Identity state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails. Verify parameters or retry. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418cfg_model_app_bind8uint16_t8uint16_t8uint16_t8uint32_t">
+<span id="_CPPv318cfg_model_app_bind8uint16_t8uint16_t8uint16_t8uint32_t"></span><span id="_CPPv218cfg_model_app_bind8uint16_t8uint16_t8uint16_t8uint32_t"></span><span id="cfg_model_app_bind__uint16_t.uint16_t.uint16_t.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gae7de88462b559faa1b8786ae5de4306b"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_app_bind</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_key_index</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418cfg_model_app_bind8uint16_t8uint16_t8uint16_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config Model App Bind. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element for the AppKey bind. </p></li>
+<li><p><strong>app_key_index</strong> -- <strong>[in]</strong> AppKey index. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If bind operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If bind operation fails. Verify parameters or network conditions. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420cfg_model_app_unbind8uint16_t8uint16_t8uint16_t8uint32_t">
+<span id="_CPPv320cfg_model_app_unbind8uint16_t8uint16_t8uint16_t8uint32_t"></span><span id="_CPPv220cfg_model_app_unbind8uint16_t8uint16_t8uint16_t8uint32_t"></span><span id="cfg_model_app_unbind__uint16_t.uint16_t.uint16_t.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga7c9eba73f4582b61b882180e5fba4486"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_app_unbind</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">app_key_index</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420cfg_model_app_unbind8uint16_t8uint16_t8uint16_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config Model App Unbind. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>app_key_index</strong> -- <strong>[in]</strong> AppKey index to unbind. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If unbind operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If unbind operation fails. Verify parameters or retry if necessary. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417cfg_model_app_get8uint16_t8uint16_t8uint32_t">
+<span id="_CPPv317cfg_model_app_get8uint16_t8uint16_t8uint32_t"></span><span id="_CPPv217cfg_model_app_get8uint16_t8uint16_t8uint32_t"></span><span id="cfg_model_app_get__uint16_t.uint16_t.uint32_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gaa9cd5b0c8c71e7e2bf91dc64fe0fd068"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_model_app_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">element_addr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417cfg_model_app_get8uint16_t8uint16_t8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config model app get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>element_addr</strong> -- <strong>[in]</strong> Address of the element. </p></li>
+<li><p><strong>model_id</strong> -- <strong>[in]</strong> Model ID. Can be 2 bytes or 4 bytes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If get operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If get operation fails. Check parameters or retry if necessary. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414cfg_node_reset8uint16_t">
+<span id="_CPPv314cfg_node_reset8uint16_t"></span><span id="_CPPv214cfg_node_reset8uint16_t"></span><span id="cfg_node_reset__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gad909ee0d66492387e9d28d6018922098"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_node_reset</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414cfg_node_reset8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config node reset. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If reset is successful. </p></li>
+<li><p><strong>Others</strong> -- If reset fails. Retry the operation or verify server status. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412cfg_frnd_get8uint16_t">
+<span id="_CPPv312cfg_frnd_get8uint16_t"></span><span id="_CPPv212cfg_frnd_get8uint16_t"></span><span id="cfg_frnd_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga5f02404933b6eadabf7fae7ba9e667c4"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_frnd_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412cfg_frnd_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config friend get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If friend get operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If operation fails. Verify parameters or network connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412cfg_frnd_set8uint16_t7uint8_t">
+<span id="_CPPv312cfg_frnd_set8uint16_t7uint8_t"></span><span id="_CPPv212cfg_frnd_set8uint16_t7uint8_t"></span><span id="cfg_frnd_set__uint16_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gab9505025bcfcfe3fd25d5ca313873e9d"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_frnd_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">state</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412cfg_frnd_set8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config friend set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>state</strong> -- <strong>[in]</strong> New friend state. Enable or Disable the friend feature.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails. Verify parameters or retry. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424cfg_lpn_poll_timeout_get8uint16_t8uint16_t">
+<span id="_CPPv324cfg_lpn_poll_timeout_get8uint16_t8uint16_t"></span><span id="_CPPv224cfg_lpn_poll_timeout_get8uint16_t8uint16_t"></span><span id="cfg_lpn_poll_timeout_get__uint16_t.uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gab8fcc5fd199c51601c62a0ea4291c6d1"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_lpn_poll_timeout_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">lpn_addr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424cfg_lpn_poll_timeout_get8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config low power mode PollTimeout get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>lpn_addr</strong> -- <strong>[in]</strong> The unicast address of the low power node.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If request is successful. </p></li>
+<li><p><strong>Others</strong> -- If request fails. Verify parameters or retry if necessary. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425cfg_key_refresh_phase_get8uint16_t8uint16_t">
+<span id="_CPPv325cfg_key_refresh_phase_get8uint16_t8uint16_t"></span><span id="_CPPv225cfg_key_refresh_phase_get8uint16_t8uint16_t"></span><span id="cfg_key_refresh_phase_get__uint16_t.uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga559a4c28dfd080422ba8f1a71c8fced6"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_key_refresh_phase_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425cfg_key_refresh_phase_get8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config key refresh phase get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If get operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If get operation fails. Verify parameters or network issues. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425cfg_key_refresh_phase_set8uint16_t8uint16_t7uint8_t">
+<span id="_CPPv325cfg_key_refresh_phase_set8uint16_t8uint16_t7uint8_t"></span><span id="_CPPv225cfg_key_refresh_phase_set8uint16_t8uint16_t7uint8_t"></span><span id="cfg_key_refresh_phase_set__uint16_t.uint16_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gaef7e7026e6b71ddce076a830538789d0"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_key_refresh_phase_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">state</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425cfg_key_refresh_phase_set8uint16_t8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config key refresh phase set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index. </p></li>
+<li><p><strong>state</strong> -- <strong>[in]</strong> New Key Refresh Phase Transition.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails. Verify parameters or retry. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414cfg_hb_pub_get8uint16_t">
+<span id="_CPPv314cfg_hb_pub_get8uint16_t"></span><span id="_CPPv214cfg_hb_pub_get8uint16_t"></span><span id="cfg_hb_pub_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gaaf191cb5bc5823f9466e3906e9d16dda"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_hb_pub_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414cfg_hb_pub_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config Heartbeat publication get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If get operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If get operation fails. Verify parameters or network connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414cfg_hb_pub_set8uint16_t8uint16_t7uint8_t7uint8_t7uint8_t17hb_pub_features_t8uint16_t">
+<span id="_CPPv314cfg_hb_pub_set8uint16_t8uint16_t7uint8_t7uint8_t7uint8_t17hb_pub_features_t8uint16_t"></span><span id="_CPPv214cfg_hb_pub_set8uint16_t8uint16_t7uint8_t7uint8_t7uint8_t17hb_pub_features_t8uint16_t"></span><span id="cfg_hb_pub_set__uint16_t.uint16_t.uint8_t.uint8_t.uint8_t.hb_pub_features_t.uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga2177ee18c560f919267137dfdeaf80ed"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_hb_pub_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst_pub</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count_log</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">period_log</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ttl</span></span>, <a class="reference internal" href="group___h_b___exported___types.html#_CPPv417hb_pub_features_t" title="hb_pub_features_t"><span class="n"><span class="pre">hb_pub_features_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">features</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">net_key_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414cfg_hb_pub_set8uint16_t8uint16_t7uint8_t7uint8_t7uint8_t17hb_pub_features_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config Heartbeat publication set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>dst_pub</strong> -- <strong>[in]</strong> Destination address for Heartbeat messages. </p></li>
+<li><p><strong>count_log</strong> -- <strong>[in]</strong> Number of Heartbeat messages to be sent. </p></li>
+<li><p><strong>period_log</strong> -- <strong>[in]</strong> Period for sending Heartbeat messages. </p></li>
+<li><p><strong>ttl</strong> -- <strong>[in]</strong> TTL to be used when sending Heartbeat messages. </p></li>
+<li><p><strong>features</strong> -- <strong>[in]</strong> Bit field indicating features that trigger Heartbeat messages when changed. </p></li>
+<li><p><strong>net_key_index</strong> -- <strong>[in]</strong> NetKey index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails. Verify parameters or network conditions. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414cfg_hb_sub_get8uint16_t">
+<span id="_CPPv314cfg_hb_sub_get8uint16_t"></span><span id="_CPPv214cfg_hb_sub_get8uint16_t"></span><span id="cfg_hb_sub_get__uint16_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1ga9275d8deedb34bb2acce6126ec2e3353"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_hb_sub_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414cfg_hb_sub_get8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config Heartbeat subscription get. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address.</p>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If get operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If get operation fails. Verify parameters or network connectivity. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414cfg_hb_sub_set8uint16_t8uint16_t8uint16_t7uint8_t">
+<span id="_CPPv314cfg_hb_sub_set8uint16_t8uint16_t8uint16_t7uint8_t"></span><span id="_CPPv214cfg_hb_sub_set8uint16_t8uint16_t8uint16_t7uint8_t"></span><span id="cfg_hb_sub_set__uint16_t.uint16_t.uint16_t.uint8_t"></span><span class="target" id="group___c_o_n_f_i_g_u_r_a_t_i_o_n___c_l_i_e_n_t___a_p_i_1gae35414cf132ad0a843aa116361b4882c"></span><a class="reference internal" href="group___mesh___access___exported___types.html#_CPPv421mesh_msg_send_cause_t" title="mesh_msg_send_cause_t"><span class="n"><span class="pre">mesh_msg_send_cause_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cfg_hb_sub_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">src</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dst_set</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">period_log</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414cfg_hb_sub_set8uint16_t8uint16_t8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Config Heartbeat subscription set. </p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dst</strong> -- <strong>[in]</strong> Destination address. Must be a valid address. </p></li>
+<li><p><strong>src</strong> -- <strong>[in]</strong> Source address for Heartbeat messages. </p></li>
+<li><p><strong>dst_set</strong> -- <strong>[in]</strong> Destination address for Heartbeat messages. </p></li>
+<li><p><strong>period_log</strong> -- <strong>[in]</strong> Period for receiving Heartbeat messages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回值<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MESH_MSG_SEND_CAUSE_SUCCESS</strong> -- If set operation is successful. </p></li>
+<li><p><strong>Others</strong> -- If set operation fails. Verify parameters or retry. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">返回<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Send status. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___a_c_c_e_s_s___o_p_c_o_d_e.html" class="btn btn-neutral float-left" title="Access Opcode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___c_o_n_f_i_g_u_r_a_t_i_o_n___m_e_s_h___m_s_g.html" class="btn btn-neutral float-right" title="Mesh Msg" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

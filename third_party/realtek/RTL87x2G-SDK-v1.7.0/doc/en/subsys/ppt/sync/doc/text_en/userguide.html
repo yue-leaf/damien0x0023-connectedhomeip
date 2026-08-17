@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HID Proprietary Protocol User Guide &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Thread" href="../../../../openthread/doc/text_en/README.html" />
+    <link rel="prev" title="HID Proprietary Protocol Specification" href="spec.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_en/README.html">2.4G</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/text_en/SupportedFeatures.html">Supported Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../driver/doc/text_en/README.html">Radio User Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spec.html">HID Proprietary Protocol Specification</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">HID Proprietary Protocol User Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#terminology-and-concepts">Terminology and Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#feature-set">Feature Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#provided-apis">Provided APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialization-and-configurations">Initialization and Configurations</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#mp-tool-configuration">MP Tool Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#initialization">Initialization</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#channels">Channels</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tx-power">Tx Power</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pairing-rssi-threshold">Pairing <span class="xref std std-term">RSSI</span> Threshold</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#bond-information">Bond Information</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#synchronous-parameters">Synchronous Parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#heartbeat-parameters">Heartbeat Parameters</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#retransmit-buffer">Retransmit &amp; Buffer</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#log-on-off">Log On Off</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#callback">Callback</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#event-callback">Event Callback</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#message-send-result-callback">Message Send Result Callback</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#message-receive-callback">Message Receive Callback</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#message-send-prepare-callback">Message Send Prepare Callback</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#state-machine-operation">State Machine Operation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#message-sending-and-receiving">Message Sending and Receiving</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#dlps"><span class="xref std std-term">DLPS</span></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#resources-occupied">Resources Occupied</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#interrupt-priority">Interrupt Priority</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-projects">Sample Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../openthread/doc/text_en/README.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../doc/protocols/matter/text_en/README.html">Matter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">2.4G</a></li>
+    <li class="breadcrumb-item active">HID Proprietary Protocol User Guide</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="hid-proprietary-protocol-user-guide">
+<h1>HID Proprietary Protocol User Guide<a class="headerlink" href="#hid-proprietary-protocol-user-guide" title="Link to this heading"></a></h1>
+<p>This article introduces how to use the HID Proprietary Protocol, including the framework, process and function description etc.</p>
+<section id="terminology-and-concepts">
+<h2>Terminology and Concepts<a class="headerlink" href="#terminology-and-concepts" title="Link to this heading"></a></h2>
+<p>This protocol is Realtek's private wireless protocol for point-to-point communication.
+The communication roles are shown in Figure <a class="reference internal" href="#figure-communication-role"><span class="std std-ref">Communication Role</span></a>.
+This article introduces how to use this protocol.
+For details on this protocol, please refer to the document <a class="reference internal" href="spec.html"><span class="doc">HID Proprietary Protocol Specification</span></a>.</p>
+<figure class="align-center" id="figure-communication-role">
+<a class="reference internal image-reference" href="../../../../../_images/CommunicationRole.png"><img alt="this should be Communication Role" src="../../../../../_images/CommunicationRole.png" style="width: 460.0px; height: 87.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">Communication Role</span><a class="headerlink" href="#figure-communication-role" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The protocol is divided into 5 states, and the state machine is shown in Figure <a class="reference internal" href="#figure-protocol-state-machine"><span class="std std-ref">Protocol State Machine</span></a>.</p>
+<p>The initial state is the unpaired state, that is, there is no bond information and no link.</p>
+<p>The paired unconnected state has bond information but no link.
+In the paired unconnected state, if the bond information is ignored, it will enter the unpaired state and can be paired again, that is, re-pairing.
+After successful re-pairing, the original bond information will be overwritten.
+Once re-pairing fails, the application can reuse the original bond information (in Figure, the bond information abbreviation as BI) to restore the
+unpaired state to the paired unconnected state.</p>
+<p>In the pairing state and the paired connecting state, the behavior of the master and slave is slightly different.
+The master side has a timeout mechanism, that is, it will automatically exit if it times out.
+There is no timeout mechanism on the slave side.
+If the slave side needs to exit this state, the application should stop the state machine manually.</p>
+<p>In the paired connected state, the master and slave perform bidirectional data communication.
+Bidirectional data communication performs periodic communication based on the sync interval.
+When there is no data exchange between the two parties, the communication speed can be reduced, that is, entering the heartbeat state, and
+communicating periodically with the heartbeat interval to reduce power consumption.</p>
+<figure class="align-center" id="figure-protocol-state-machine">
+<a class="reference internal image-reference" href="../../../../../_images/ProtocolFSM.png"><img alt="this should be Protocol State Machine" src="../../../../../_images/ProtocolFSM.png" style="width: 702.4000000000001px; height: 427.20000000000005px;" /></a>
+<figcaption>
+<p><span class="caption-text">Protocol State Machine</span><a class="headerlink" href="#figure-protocol-state-machine" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="feature-set">
+<h2>Feature Set<a class="headerlink" href="#feature-set" title="Link to this heading"></a></h2>
+<p>Features of this protocol:</p>
+<ul class="simple">
+<li><p>Support 4K ultra-high reporting rate</p></li>
+<li><p>Support multiple retransmission mechanisms to meet the reliability requirements of different services</p></li>
+<li><p>Use frequency hopping technology to improve anti-interference ability</p></li>
+<li><p>Support pairing for fast binding</p></li>
+<li><p>Support automatic switching to low power mode when idle</p></li>
+</ul>
+<p>The operations involving the protocol mainly include initialization, parameter configuration, pairing, connection, data sending and receiving, and
+their callbacks, as shown in Figure <a class="reference internal" href="#figure-protocol-interface"><span class="std std-ref">Protocol Interface</span></a>.
+The subsequent chapters of this article describe how to use these operations.</p>
+<figure class="align-center" id="figure-protocol-interface">
+<a class="reference internal image-reference" href="../../../../../_images/ProtocolInterface.png"><img alt="this should be Protocol Interface" src="../../../../../_images/ProtocolInterface.png" style="width: 687.2px; height: 316.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Protocol Interface</span><a class="headerlink" href="#figure-protocol-interface" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="provided-apis">
+<h2>Provided APIs<a class="headerlink" href="#provided-apis" title="Link to this heading"></a></h2>
+<p>The interface provided by the protocol is declared in the following files:</p>
+<ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">subsys\ppt\sync\inc\ppt_sync.h</span></code></p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">subsys\ppt\sync\inc\ppt_sync_master.h</span></code></p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">subsys\ppt\sync\inc\ppt_sync_slave.h</span></code></p></li>
+</ul>
+</section>
+<section id="initialization-and-configurations">
+<h2>Initialization and Configurations<a class="headerlink" href="#initialization-and-configurations" title="Link to this heading"></a></h2>
+<section id="mp-tool-configuration">
+<h3>MP Tool Configuration<a class="headerlink" href="#mp-tool-configuration" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../../../doc/glossary.html#term-BLE"><span class="xref std std-term">BLE</span></a> master link needs to be configured. For details, please refer to <a class="reference internal" href="../../../driver/doc/text_en/README.html#guserguide-mp-tool-configuration"><span class="std std-ref">MP Tool Configuration</span></a>.</p>
+</section>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h3>
+<p>The protocol running process is shown in Figure <a class="reference internal" href="#figure-run-flow"><span class="std std-ref">Run Flow</span></a>.
+The initialization process needs to be performed first, then state machine operations and data communication such as pair and connect can be
+performed.</p>
+<p>All <a class="reference internal" href="../../../../../doc/glossary.html#term-API"><span class="xref std std-term">API</span></a> of this protocol start with the prefix <code class="docutils literal notranslate"><span class="pre">sync_</span></code>.</p>
+<figure class="align-center" id="figure-run-flow">
+<a class="reference internal image-reference" href="../../../../../_images/RunningFlow.png"><img alt="this should be Run Flow" src="../../../../../_images/RunningFlow.png" style="width: 224.8px; height: 544.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Run Flow</span><a class="headerlink" href="#figure-run-flow" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The specific process of initialization is as follows:</p>
+<ol class="arabic simple">
+<li><p>Call <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv49sync_init11sync_role_t" title="sync_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_init()</span></code></a> to initialize the protocol and confirm the device role.</p></li>
+<li><p>Configure parameters.</p></li>
+<li><p>Configure callbacks.</p></li>
+<li><p>Call <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv411sync_enablev" title="sync_enable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_enable()</span></code></a> to enable the protocol.</p></li>
+</ol>
+<p>Parameters and callbacks are introduced in subsequent chapters.</p>
+</section>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<p>This section mainly introduces how to use and configure the different functions or modules of the HID proprietary protocol.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<p>This section mainly explains the meaning of parameters in the protocol and how to configure them.</p>
+<section id="channels">
+<h4>Channels<a class="headerlink" href="#channels" title="Link to this heading"></a></h4>
+<p>The channels used by the protocol have default values 2432, 2447, 2462, 2477, 2407, 2422, 2437, 2452, 2442, 2457, 2472, and 2413 MHz, a total of 12
+channels.
+Channel grouping is used for fast reconnection in the fast sync stage.
+By default, it is divided into 3 groups, and each group has 4 channels.</p>
+<p>If users have customized needs, they can call API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv416sync_channel_set7uint8_t7uint8_tA_8uint16_t" title="sync_channel_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_channel_set()</span></code></a>.</p>
+</section>
+<section id="tx-power">
+<h4>Tx Power<a class="headerlink" href="#tx-power" title="Link to this heading"></a></h4>
+<p>If dynamic power control is used, the transmit power will vary within the range of <code class="docutils literal notranslate"><span class="pre">tx_power_dbm_min</span></code> and <code class="docutils literal notranslate"><span class="pre">tx_power_dbm_max</span></code>.
+When the link quality is good, the transmit power is reduced; otherwise, the transmit power is increased.
+If dynamic power control is not used, the transmit power is fixed to <code class="docutils literal notranslate"><span class="pre">tx_power_dbm_max</span></code>.</p>
+<p>For transmit power configuration, you can call API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv417sync_tx_power_setb6int8_t6int8_t" title="sync_tx_power_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_tx_power_set()</span></code></a>.</p>
+</section>
+<section id="pairing-rssi-threshold">
+<h4>Pairing <a class="reference internal" href="../../../../../doc/glossary.html#term-RSSI"><span class="xref std std-term">RSSI</span></a> Threshold<a class="headerlink" href="#pairing-rssi-threshold" title="Link to this heading"></a></h4>
+<p>The protocol supports using RSSI threshold to limit the pairing distance when pairing.
+Pairing is only allowed if the signal strength is greater than the threshold.</p>
+<p>Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv418sync_pair_rssi_set6int8_t" title="sync_pair_rssi_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_pair_rssi_set()</span></code></a> to set the RSSI threshold.</p>
+</section>
+<section id="bond-information">
+<h4>Bond Information<a class="headerlink" href="#bond-information" title="Link to this heading"></a></h4>
+<p>Bond information will be generated during pairing and automatically stored in the FTL space.
+When connecting, the application needs to retrieve the bond information to connect.
+The application can also delete itself or overwrite the bond information.</p>
+<div class="line-block">
+<div class="line">Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv422sync_nvm_get_bond_infoP16sync_bond_info_t" title="sync_nvm_get_bond_info"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_nvm_get_bond_info()</span></code></a> to attain the bond information.</div>
+<div class="line">Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv422sync_nvm_set_bond_infoP16sync_bond_info_t" title="sync_nvm_set_bond_info"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_nvm_set_bond_info()</span></code></a> to set the bond information.</div>
+<div class="line">Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv424sync_nvm_clear_bond_infov" title="sync_nvm_clear_bond_info"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_nvm_clear_bond_info()</span></code></a> to clear the bond information.</div>
+</div>
+</section>
+<section id="synchronous-parameters">
+<h4>Synchronous Parameters<a class="headerlink" href="#synchronous-parameters" title="Link to this heading"></a></h4>
+<p>The master device can configure the synchronization interval to correspond to the reporting rate of application data.
+When the synchronization interval is greater than the transmission speed supported by the protocol, the master device can configure the retransmission
+interval to allow the protocol to retransmit at the retransmission interval speed within a synchronization interval.</p>
+<p>Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv413sync_time_set17sync_time_param_t8uint32_t" title="sync_time_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_time_set()</span></code></a> to set the synchronization interval and retransmission interval.</p>
+<p>For example:</p>
+<ul>
+<li><p>sync interval is 1000 us, and retransmit interval is 1000 us, corresponding to the 1K reporting rate, with no retransmission opportunities.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sync_time_set</span><span class="p">(</span><span class="n">SYNC_TIME_PARAM_CONNECT_INTERVAL</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">sync_time_set</span><span class="p">(</span><span class="n">SYNC_TIME_PARAM_CONNECT_INTERVAL_HIGH</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>sync interval is 1000 us, and retransmit interval is 250 us, corresponding to the 1K reporting rate, with 3 times retransmission opportunities.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sync_time_set</span><span class="p">(</span><span class="n">SYNC_TIME_PARAM_CONNECT_INTERVAL</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">sync_time_set</span><span class="p">(</span><span class="n">SYNC_TIME_PARAM_CONNECT_INTERVAL_HIGH</span><span class="p">,</span><span class="w"> </span><span class="mi">250</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>sync interval is 250 us, and retransmit interval is 250 us, corresponding to the 4K reporting rate, with no retransmission opportunities.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sync_time_set</span><span class="p">(</span><span class="n">SYNC_TIME_PARAM_CONNECT_INTERVAL</span><span class="p">,</span><span class="w"> </span><span class="mi">250</span><span class="p">);</span>
+<span class="n">sync_time_set</span><span class="p">(</span><span class="n">SYNC_TIME_PARAM_CONNECT_INTERVAL_HIGH</span><span class="p">,</span><span class="w"> </span><span class="mi">250</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="heartbeat-parameters">
+<h4>Heartbeat Parameters<a class="headerlink" href="#heartbeat-parameters" title="Link to this heading"></a></h4>
+<p>There are three levels of heartbeat: 0/1/2.
+Each level has a heartbeat interval and number.
+The higher the level, the larger the heartbeat interval, corresponding to a lower power consumption state.
+The 0th level is the synchronization interval used and does not require additional heartbeat interval settings.
+The 2nd level does not require additional heartbeat count settings.</p>
+<p>Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___m_a_s_t_e_r___exported___functions.html#_CPPv424sync_master_set_hb_param7uint8_t8uint32_t8uint32_t" title="sync_master_set_hb_param"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_master_set_hb_param()</span></code></a> to set the heartbeat parameters.</p>
+<p>For example, turn off the heartbeat.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sync_master_set_hb_param</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SYNC_MASTER_HB_RHY_PERIOD_MAX</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>For example, turn on the heartbeat, and the level 0 is 40 times, the level 1 is 10 ms with beat time by 200 times, and level 2 is 100 ms.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sync_master_set_hb_param</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">);</span>
+<span class="n">sync_master_set_hb_param</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="n">sync_master_set_hb_param</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="retransmit-buffer">
+<h4>Retransmit &amp; Buffer<a class="headerlink" href="#retransmit-buffer" title="Link to this heading"></a></h4>
+<p>According to the number of retransmissions, messages are divided into the following four categories:</p>
+<ul class="simple">
+<li><p>Zero retransmission: The message is only sent once, regardless of whether it is responded to or not.</p></li>
+<li><p>Limited retransmission: If the message is not responded to, it will be retransmitted.
+If there is no response after retransmitting a certain number of times, the retransmission will be canceled.</p></li>
+<li><p>Infinite retransmission: If the message is not answered, it will be retransmitted until it is answered.</p></li>
+<li><p>Dynamic retransmission: If a message is not answered and needs to be retransmitted, if there are other messages to be sent, the retransmission will be canceled.
+If no other messages are sent, the retransmission will continue.</p></li>
+</ul>
+<p>Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv427sync_msg_set_finite_retrans7uint8_t" title="sync_msg_set_finite_retrans"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_msg_set_finite_retrans()</span></code></a> to configure the finite retransmit number.</p>
+<p>Each message type has an independent buffer pool, and the number of buffered messages can be configured together using <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv418sync_msg_set_quotaA17SYNC_MSG_TYPE_NUM_7uint8_t" title="sync_msg_set_quota"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_msg_set_quota()</span></code></a> or separately by message type using <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv426sync_msg_set_quota_by_type15sync_msg_type_t7uint8_t" title="sync_msg_set_quota_by_type"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_msg_set_quota_by_type()</span></code></a>.</p>
+</section>
+<section id="log-on-off">
+<h4>Log On Off<a class="headerlink" href="#log-on-off" title="Link to this heading"></a></h4>
+<p>When the protocol is running, the application can open or close part of the log.
+It is open by default.</p>
+<p>Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv412sync_log_set7uint8_tb" title="sync_log_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_log_set()</span></code></a> to turn on-off the log.</p>
+</section>
+</section>
+<section id="callback">
+<h3>Callback<a class="headerlink" href="#callback" title="Link to this heading"></a></h3>
+<p>There are four types of callbacks for protocol notification applications:</p>
+<ul class="simple">
+<li><p>event callback: notify pairing and connection status.</p></li>
+<li><p>message send result callback: notify message send result.</p></li>
+<li><p>message receive callback: notification message reception.</p></li>
+<li><p>send prepare callback: master notifies the message to send preparation, which is used to trigger the application to collect and send data.</p></li>
+</ul>
+<section id="event-callback">
+<h4>Event Callback<a class="headerlink" href="#event-callback" title="Link to this heading"></a></h4>
+<p>The registration function of event callback is <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv417sync_event_cb_reg15sync_event_cb_t" title="sync_event_cb_reg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_event_cb_reg()</span></code></a>.
+The function pointer type is <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___types.html#_CPPv415sync_event_cb_t" title="sync_event_cb_t"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_event_cb_t</span></code></a>.</p>
+<p>The event type details are shown as follows:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Event Summary</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Event Type</p></th>
+<th class="head"><p>Condition</p></th>
+<th class="head"><p>Callback Timing</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SYNC_EVENT_PAIRED</p></td>
+<td><p>pair</p></td>
+<td><p>pair success</p></td>
+<td><p>inform pair success</p></td>
+</tr>
+<tr class="row-odd"><td><p>SYNC_EVENT_PAIR_TIMEOUT</p></td>
+<td><p>pair</p></td>
+<td><p>pair timeout</p></td>
+<td><p>master inform pair timeout</p></td>
+</tr>
+<tr class="row-even"><td><p>SYNC_EVENT_CONNECTED</p></td>
+<td><p>pair or connect</p></td>
+<td><p>pair success connect success</p></td>
+<td><p>inform connect success</p></td>
+</tr>
+<tr class="row-odd"><td><p>SYNC_EVENT_CONNECT_TIMEOUT</p></td>
+<td><p>connect</p></td>
+<td><p>connect timeout</p></td>
+<td><p>master inform connect timeout</p></td>
+</tr>
+<tr class="row-even"><td><p>SYNC_EVENT_CONNECT_LOST</p></td>
+<td><p>link</p></td>
+<td><p>link timeout</p></td>
+<td><p>inform link disconnected</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="message-send-result-callback">
+<span id="hidppug-message-send-result-callback"></span><h4>Message Send Result Callback<a class="headerlink" href="#message-send-result-callback" title="Link to this heading"></a></h4>
+<p>The message send result callback is an independent callback for each message, which is registered when the message is sent using <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv413sync_msg_send15sync_msg_type_tP7uint8_t8uint16_t18sync_msg_send_cb_t" title="sync_msg_send"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_msg_send()</span></code></a>.
+The function pointer type for sending the result callback is <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___types.html#_CPPv418sync_msg_send_cb_t" title="sync_msg_send_cb_t"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_msg_send_cb_t</span></code></a>.</p>
+</section>
+<section id="message-receive-callback">
+<span id="hidppug-message-receive-callback"></span><h4>Message Receive Callback<a class="headerlink" href="#message-receive-callback" title="Link to this heading"></a></h4>
+<p>The registration function of a message receive callback is <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv423sync_msg_reg_receive_cb21sync_msg_receive_cb_t" title="sync_msg_reg_receive_cb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_msg_reg_receive_cb()</span></code></a>.
+The function pointer type is <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___types.html#_CPPv421sync_msg_receive_cb_t" title="sync_msg_receive_cb_t"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_msg_receive_cb_t</span></code></a>.</p>
+</section>
+<section id="message-send-prepare-callback">
+<h4>Message Send Prepare Callback<a class="headerlink" href="#message-send-prepare-callback" title="Link to this heading"></a></h4>
+<p>Message send prepare callback is triggered before master tx and can be used to allow the application to collect and send data according to the rhythm
+of protocol tx.</p>
+<p>Its registration function is <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___m_a_s_t_e_r___exported___functions.html#_CPPv429sync_master_reg_tx_prepare_cb20sync_tx_prepare_cb_t" title="sync_master_reg_tx_prepare_cb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_master_reg_tx_prepare_cb()</span></code></a>.</p>
+</section>
+</section>
+<section id="state-machine-operation">
+<h3>State Machine Operation<a class="headerlink" href="#state-machine-operation" title="Link to this heading"></a></h3>
+<p>The operation types of state machines are:</p>
+<ul class="simple">
+<li><p>pair: start pairing</p></li>
+<li><p>connect: start connecting</p></li>
+<li><p>stop: stop pairing, connecting, or disconnect the link</p></li>
+</ul>
+<div class="line-block">
+<div class="line">Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv49sync_pairv" title="sync_pair"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_pair()</span></code></a> to trigger the pair operation.</div>
+<div class="line">Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv412sync_connectP16sync_bond_info_t" title="sync_connect"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_connect()</span></code></a> to trigger the connect operation.</div>
+<div class="line">Using the API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv49sync_stopv" title="sync_stop"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_stop()</span></code></a> to trigger the stop operation.</div>
+</div>
+</section>
+<section id="message-sending-and-receiving">
+<h3>Message Sending and Receiving<a class="headerlink" href="#message-sending-and-receiving" title="Link to this heading"></a></h3>
+<p>Message sending is the same as in Section <a class="reference internal" href="#hidppug-message-send-result-callback"><span class="std std-ref">Message Send Result Callback</span></a>.</p>
+<p>Message reception is the same as in Section <a class="reference internal" href="#hidppug-message-receive-callback"><span class="std std-ref">Message Receive Callback</span></a>.</p>
+</section>
+<section id="dlps">
+<h3><a class="reference internal" href="../../../../../doc/glossary.html#term-DLPS"><span class="xref std std-term">DLPS</span></a><a class="headerlink" href="#dlps" title="Link to this heading"></a></h3>
+<p>If the application wants to support DLPS, the protocol's DLPS initialization API <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv414sync_dlps_initv" title="sync_dlps_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_dlps_init()</span></code></a> should be called after <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___exported___functions.html#_CPPv49sync_init11sync_role_t" title="sync_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">sync_init()</span></code></a>, and should be called
+before platform DLPS init (<a class="reference internal" href="../../../../../doc/api_reference/group___i_o___d_l_p_s___exported___functions.html#_CPPv425DLPS_IORegUserDlpsEnterCb19DLPS_IO_EnterDlpsCB" title="DLPS_IORegUserDlpsEnterCb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DLPS_IORegUserDlpsEnterCb()</span></code></a>, <a class="reference internal" href="../../../../../doc/api_reference/group___i_o___d_l_p_s___exported___functions.html#_CPPv424DLPS_IORegUserDlpsExitCb18DLPS_IO_ExitDlpsCB" title="DLPS_IORegUserDlpsExitCb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DLPS_IORegUserDlpsExitCb()</span></code></a>, <a class="reference internal" href="../../../../../doc/api_reference/group___i_o___d_l_p_s___exported___functions.html#_CPPv415DLPS_IORegisterv" title="DLPS_IORegister"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DLPS_IORegister()</span></code></a> and other APIs).</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>This section introduces some common issues and precautions.</p>
+<section id="resources-occupied">
+<h3>Resources Occupied<a class="headerlink" href="#resources-occupied" title="Link to this heading"></a></h3>
+<p>The operation of the protocol will occupy some resources, and the application needs to avoid these occupied resources.</p>
+<p>Resources occupied:</p>
+<ul>
+<li><p>ENHANCE TIMER</p>
+<p>When DLPS is supported, the macro <code class="docutils literal notranslate"><span class="pre">USE_ENHTIM_DLPS</span></code> needs to be turned on in <code class="file docutils literal notranslate"><span class="pre">board.h</span></code>.</p>
+<p>The ENHANCE TIMER API is not interrupt safe.
+If the application also uses ENHANCE TIMER, it needs to call <code class="docutils literal notranslate"><span class="pre">__disable_irq</span></code> and <code class="docutils literal notranslate"><span class="pre">__enable_irq</span></code> for protection.
+For example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__disable_irq</span><span class="p">();</span>
+<span class="n">ENHTIM_Cmd</span><span class="p">(</span><span class="n">ENH_TIM2</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="n">__enable_irq</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The details are as follows:</p>
+</li>
+</ul>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Timer Occupied</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Timer Occupied</p></th>
+<th class="head"><p>&lt;=4K</p></th>
+<th class="head"><p>8K</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Master (Mouseetc.)</p></td>
+<td><p>ENH_TIM1</p></td>
+<td><p>ENH_TIM0 / ENH_TIM1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Slave (Dongle)</p></td>
+<td><p>ENH_TIM1</p></td>
+<td><p>ENH_TIM0 / ENH_TIM1 / ENH_TIM2</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>FTL space: offset 0, length 8 Bytes.</p></li>
+</ul>
+</section>
+<section id="interrupt-priority">
+<h3>Interrupt Priority<a class="headerlink" href="#interrupt-priority" title="Link to this heading"></a></h3>
+<p>In order to avoid interfering with the operation of the protocol, the interrupt priority of the peripherals used by the application should be ≥ 3, and
+please try to reduce the execution time of the critical section as much as possible.</p>
+</section>
+</section>
+<section id="sample-projects">
+<h2>Sample Projects<a class="headerlink" href="#sample-projects" title="Link to this heading"></a></h2>
+<p>This protocol provides examples for user reference, see <a class="reference internal" href="../../../../../samples/ppt/ppt_sync/doc/text_en/README.html"><span class="doc">Sync Example</span></a> for details.</p>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___s_y_n_c___a_l_l.html#group___p_p_t___s_y_n_c___a_l_l"><span class="std std-ref">Sync Protocol</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="spec.html" class="btn btn-neutral float-left" title="HID Proprietary Protocol Specification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../../openthread/doc/text_en/README.html" class="btn btn-neutral float-right" title="Thread" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

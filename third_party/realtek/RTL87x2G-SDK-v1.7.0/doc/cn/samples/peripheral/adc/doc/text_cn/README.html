@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADC &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="One Shot Polling" href="../../oneshot_polling/doc/text_cn/README.html" />
+    <link rel="prev" title="概述" href="../../../doc/general_introduction/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_cn/README.html">蓝牙</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_cn/README.html">外设</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/general_introduction/text_cn/README.html">General Introduction</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ADC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#doc-sample-list-label">示例列表</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../oneshot_polling/doc/text_cn/README.html">One Shot Polling</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../oneshot_interrupt/doc/text_cn/README.html">One Shot Interrupt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../continuous_gdma/doc/text_cn/README.html">Continuous Mode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../oneshot_tim_trigger/doc/text_cn/README.html">One Shot Mode - Timer Trigger</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#adc-functional-overview-cn">功能概述</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id3">特性列表</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">系统框图</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">外部通道</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">通道模式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">外部通道输入模式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id8">工作模式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#schedule-table">Schedule Table 索引</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id9">ADC 采样时钟</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id10">ADC 数据格式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#adc-gdma">ADC GDMA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../aon_qdec/doc/text_cn/README.html">AON QDEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../can/doc/text_cn/README.html">CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../codec/doc/text_cn/README.html">CODEC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../enhtimer/doc/text_cn/README.html">ENHTIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gdma/doc/text_cn/README.html">GDMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gpio/doc/text_cn/README.html">GPIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2c/doc/text_cn/README.html">I2C</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../i2s/doc/text_cn/README.html">I2S</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../idu/doc/text_cn/README.html">IDU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ir/doc/text_cn/README.html">IR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../keyscan/doc/text_cn/README.html">KEYSCAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lcdc/doc/text_cn/README.html">LCDC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lpc/doc/text_cn/README.html">LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ppe/doc/text_cn/README.html">PPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../rtc/doc/text_cn/README.html">RTC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi/doc/text_cn/README.html">SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../spi3wire/doc/text_cn/README.html">SPI3W</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../timer/doc/text_cn/README.html">TIMER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../uart/doc/text_cn/README.html">UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wdt/doc/text_cn/README.html">WDT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_cn/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_cn/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">外设</a></li>
+    <li class="breadcrumb-item active">ADC</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="adc">
+<h1>ADC<a class="headerlink" href="#adc" title="Link to this heading"></a></h1>
+<section id="doc-sample-list-label">
+<span id="id1"></span><h2>示例列表<a class="headerlink" href="#doc-sample-list-label" title="Link to this heading"></a></h2>
+<p>本章介绍 <a class="reference internal" href="../../../../../doc/glossary.html#term-ADC"><span class="xref std std-term">ADC</span></a> 示例的详细信息。RTL87x2G 为 ADC 外设提供以下示例。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../oneshot_polling/doc/text_cn/README.html">One Shot Polling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oneshot_interrupt/doc/text_cn/README.html">One Shot Interrupt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../continuous_gdma/doc/text_cn/README.html">Continuous Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oneshot_tim_trigger/doc/text_cn/README.html">One Shot Mode - Timer Trigger</a></li>
+</ul>
+</div>
+</section>
+<section id="adc-functional-overview-cn">
+<span id="id2"></span><h2>功能概述<a class="headerlink" href="#adc-functional-overview-cn" title="Link to this heading"></a></h2>
+<p>模拟多路复用器 ADC 最多有 8 个输入通道，用于模拟到数字转换。对于所有 ADC 通道，最大输入电压不得超过 VDDIO 电平。</p>
+<section id="id3">
+<h3>特性列表<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>12-bits 精度</p></li>
+<li><p>支持 8 个外部输入通道和 VBAT 内部通道。</p></li>
+<li><p>支持外部单端模式。</p></li>
+<li><p>两种外部通道输入模式：bypass mode 和 divide mode.</p></li>
+<li><p>两种工作模式：单次采样模式和连续采样模式。</p></li>
+<li><p>16 index schedule table.</p></li>
+<li><p>TIM7 触发 ADC 单次模式采样。</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/glossary.html#term-FIFO"><span class="xref std std-term">FIFO</span></a> 深度 32。</p></li>
+<li><p>支持 hardware average，最大平均数为 256。（仅 schIndex[0] 支持）</p></li>
+<li><p>支持 <a class="reference internal" href="../../../../../doc/glossary.html#term-GDMA"><span class="xref std std-term">GDMA</span></a> 传输（连续模式）。</p></li>
+<li><p>最大采样率：1M。</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>系统框图<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>ADC 的系统框图如下图所示。通过调用 MCU Firmware 固件实现 ADC 采样电压值的功能，ADC 外设获取配置的采样通道，并由 Hardware 采集对应通道的电压值。</p>
+<figure class="align-center" id="system-block-diagram-of-adc">
+<img alt="../../../../../_images/adc_block_diagram.png" src="../../../../../_images/adc_block_diagram.png" />
+<figcaption>
+<p><span class="caption-text">ADC 系统框图</span><a class="headerlink" href="#system-block-diagram-of-adc" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id5">
+<h3>外部通道<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>RTL87x2G 支持 8 个外部通道：0、1、2、3、4、5、6 和 7 分别对应引脚 P2_0、P2_1、P2_2、P2_3、P2_4、P2_5、P2_6 和 P2_7。
+RTL87x2G 支持 VBAT 内部通道。</p>
+</section>
+<section id="id6">
+<h3>通道模式<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ul>
+<li><p>单端模式</p>
+<p>单端模式占用一个通道，仅使用一个引脚进行采样。调用 API <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___schedule___table.html#c.EXT_SINGLE_ENDED" title="EXT_SINGLE_ENDED"><code class="xref c c-macro docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED</span></code></a> 将相应的 ADC 通道设置到调度表 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef12ADC_SchIndexE" title="ADC_InitTypeDef::ADC_SchIndex"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_SchIndex</span></code></a>。</p>
+</li>
+<li><p>内部 VBAT 模式</p>
+<p>内部 VBAT 模式用于测量 VBAT 电压。调用 API <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___schedule___table.html#c.INTERNAL_VBAT_MODE" title="INTERNAL_VBAT_MODE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">INTERNAL_VBAT_MODE</span></code></a> 将 VBAT 通道设置到调度表 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef12ADC_SchIndexE" title="ADC_InitTypeDef::ADC_SchIndex"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_SchIndex</span></code></a>。</p>
+</li>
+</ul>
+</section>
+<section id="id7">
+<h3>外部通道输入模式<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Bypass Mode</p>
+<p>ADC bypass mode 的输入范围是 0 到 0.9V。调用 API <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___functions.html#_CPPv413ADC_BypassCmd7uint8_t15FunctionalState" title="ADC_BypassCmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_BypassCmd()</span></code></a> 将相应通道设置为旁路模式。</p>
+</li>
+<li><p>Divide Mode</p>
+<p>ADC divide mode 的输入范围是 0 到 3.3V。默认设置为 divide mode。</p>
+</li>
+</ul>
+</section>
+<section id="id8">
+<h3>工作模式<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>单次采样模式</p>
+<ul>
+<li><p>启用 ADC 后，仅进行一次采样。如果需要再次采样，用户需要手动重新启动采样。</p></li>
+<li><p>数据默认存储在 schedule table 中。如果将 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef19ADC_DataWriteToFifoE" title="ADC_InitTypeDef::ADC_DataWriteToFifo"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_DataWriteToFifo</span></code></a> 设置为 <a class="reference internal" href="../../../../../doc/api_reference/group___functional_state.html#_CPPv4N15FunctionalState6ENABLEE" title="ENABLE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ENABLE</span></code></a>，则可以选择在单次模式下将数据存储在 FIFO 中。</p></li>
+<li><p>在 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___functions.html#_CPPv47ADC_CmdP11ADC_TypeDef24ADCOperationMode_TypeDef15FunctionalState" title="ADC_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_Cmd()</span></code></a> API 中填写 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___operation___mode.html#_CPPv4N24ADCOperationMode_TypeDef17ADC_ONE_SHOT_MODEE" title="ADC_ONE_SHOT_MODE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_ONE_SHOT_MODE</span></code></a> 以启用 ADC 单次模式采样。</p></li>
+<li><p>可以与 TIM7 外设配合实现定时连续采样。</p></li>
+</ul>
+</li>
+<li><p>连续采样模式</p>
+<ul>
+<li><p>启用 ADC 后，采样会持续进行直到 ADC 被禁用。</p></li>
+<li><p>数据默认存储在 ADC FIFO 中。</p></li>
+<li><p>可以与 <a class="reference internal" href="../../../../../doc/glossary.html#term-GDMA"><span class="xref std std-term">GDMA</span></a> 连续采样配合使用。</p></li>
+<li><p>在 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___functions.html#_CPPv47ADC_CmdP11ADC_TypeDef24ADCOperationMode_TypeDef15FunctionalState" title="ADC_Cmd"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_Cmd()</span></code></a> API 中填写 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___operation___mode.html#_CPPv4N24ADCOperationMode_TypeDef19ADC_CONTINUOUS_MODEE" title="ADC_CONTINUOUS_MODE"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_CONTINUOUS_MODE</span></code></a> 以启用 ADC 连续模式采样。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="schedule-table">
+<h3>Schedule Table 索引<a class="headerlink" href="#schedule-table" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>ADC 支持 16 个 schedule tables，每个 schedule table 支持下表中的输入参数。将下表中的参数写入 schIndex[0] ~ schIndex[15] 以设置通道模式和通道号。</p></li>
+<li><p>然后设置 bitmap，schIndex[0] ~ schIndex[15] 对应 bitmap 的第 0 位至第 15 位。如果 bitmap 的特定位设置为 1，则表示启用该位对应的时间表。例如，如果配置 schIndex[0] 和 schIndex[1]，则 bitmap 为 <code class="docutils literal notranslate"><span class="pre">0000</span> <span class="pre">0000</span> <span class="pre">0011</span></code> （即 <code class="docutils literal notranslate"><span class="pre">0x0003</span></code> ）。Bitmap 参数通过 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef10ADC_BitmapE" title="ADC_InitTypeDef::ADC_Bitmap"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_Bitmap</span></code></a> 进行设置。</p></li>
+<li><p>使能 ADC 后，ADC 将会根据 schedule table 中配置的采样通道进行采样。</p></li>
+</ol>
+<table class="docutils align-center" id="id11">
+<caption><span class="caption-text">Schedule Table Parameters</span><a class="headerlink" href="#id11" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef12ADC_SchIndexE" title="ADC_InitTypeDef::ADC_SchIndex"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_SchIndex</span></code></a> Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED(0)</span></code></p></td>
+<td><p>Single-Ended mode, the input is external channel 0.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED(1)</span></code></p></td>
+<td><p>Single-Ended mode, the input is external channel 1.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED(2)</span></code></p></td>
+<td><p>Single-Ended mode, the input is external channel 2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED(3)</span></code></p></td>
+<td><p>Single-Ended mode, the input is external channel 3.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED(4)</span></code></p></td>
+<td><p>Single-Ended mode, the input is external channel 4.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED(5)</span></code></p></td>
+<td><p>Single-Ended mode, the input is external channel 5.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED(6)</span></code></p></td>
+<td><p>Single-Ended mode, the input is external channel 6.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EXT_SINGLE_ENDED(7)</span></code></p></td>
+<td><p>Single-Ended mode, the input is external channel 7.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">INTERNAL_VBAT_MODE</span></code></p></td>
+<td><p>Internal battery voltage detection channel.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ol class="arabic simple">
+<li><p>schedule 索引需要按顺序配置，顺序不能被打乱。例如仅配置 schIndex[0] 和 schIndex[2] 是不允许的，必须要配置 schIndex[0]， schIndex[1] 再到 schIndex[2]。</p></li>
+<li><p>在单次采样模式下，将按顺序从计划 0 到 15 执行采样，禁用的 schedule 索引将不会被执行采样。</p></li>
+<li><p>在单次采样模式下，执行完最后一个 schedule 索引后会自动停止。在连续模式下，执行完最后一个 schedule 索引后会自动循环。</p></li>
+</ol>
+</div>
+</section>
+<section id="id9">
+<h3>ADC 采样时钟<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>ADC 的采样时序如图所示。</p>
+<figure class="align-center" id="adc-sample-period-clock-cn">
+<img alt="../../../../../_images/adc_sample_clock.png" src="../../../../../_images/adc_sample_clock.png" />
+<figcaption>
+<p><span class="caption-text">ADC Sample Period Clock</span><a class="headerlink" href="#adc-sample-period-clock-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>开始 ADC 采样后，开始输出 ADC 采样时钟。其中高电平表示 ADC Sample time，低电平表示 ADC Convert time。
+每个 schedule 的采样周期由 Sample time 和 Convert time 组成。单次采样所需的时间即为所有已配置的 schedule 的采样时间之和。
+其中 ADC Sample time 由 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef14ADC_SampleTimeE" title="ADC_InitTypeDef::ADC_SampleTime"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_SampleTime</span></code></a> 决定，具体计算公式为 (<a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef14ADC_SampleTimeE" title="ADC_InitTypeDef::ADC_SampleTime"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_SampleTime</span></code></a> + 1) / 10MHz。
+ADC Convert time 由 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef15ADC_ConvertTimeE" title="ADC_InitTypeDef::ADC_ConvertTime"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_ConvertTime</span></code></a> 决定，可选择的时间分别为 500ns，700ns，900ns 和 1100ns。</p>
+</section>
+<section id="id10">
+<h3>ADC 数据格式<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>ADC 的数据由 12bits 构成。ADC 的数据存储方式支持左对齐（MSB）和右对齐（LSB），可通过 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef13ADC_DataAlignE" title="ADC_InitTypeDef::ADC_DataAlign"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_DataAlign</span></code></a> 进行设置。
+ADC 的数据存储格式如图所示：</p>
+<figure class="align-center" id="adc-data-format-cn">
+<img alt="../../../../../_images/adc_data_align.png" src="../../../../../_images/adc_data_align.png" />
+<figcaption>
+<p><span class="caption-text">ADC 数据格式</span><a class="headerlink" href="#adc-data-format-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ADC 支持最高 256 的 Hardware Average 模式。其中数据存储格式变为 10bit 整数 + 2bit 小数。可通过 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef13ADC_DataAvgEnE" title="ADC_InitTypeDef::ADC_DataAvgEn"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_DataAvgEn</span></code></a> 开启 Hardware Average 功能，通过 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef14ADC_DataAvgSelE" title="ADC_InitTypeDef::ADC_DataAvgSel"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_DataAvgSel</span></code></a> 设置平均系数。
+开启 Hardware Average 功能后，ADC 的数据存储格式如图所示：</p>
+<figure class="align-center" id="adc-data-format-enable-hardware-average-cn">
+<img alt="../../../../../_images/adc_data_format_average.png" src="../../../../../_images/adc_data_format_average.png" />
+<figcaption>
+<p><span class="caption-text">ADC 数据格式 - 开启 Hardware Average 功能</span><a class="headerlink" href="#adc-data-format-enable-hardware-average-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="adc-gdma">
+<h3>ADC GDMA<a class="headerlink" href="#adc-gdma" title="Link to this heading"></a></h3>
+<p>当 ADC 在 Continuous Mode 下采样时，数据会默认储存在 ADC FIFO 中，可以通过 GDMA 将 ADC FIFO 内的数据搬运到 Memory 中。</p>
+<p>当 ADC FIFO 内数据的数量大于等于初始化中设置的 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef14ADC_WaterLevelE" title="ADC_InitTypeDef::ADC_WaterLevel"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_WaterLevel</span></code></a> 时，会触发一次 GDMA burst 搬运。
+GDMA 一次 burst 会从 ADC FIFO 中获取 <a class="reference internal" href="../../../../../doc/api_reference/group___g_d_m_a___exported___types.html#_CPPv4N16GDMA_InitTypeDef16GDMA_SourceMsizeE" title="GDMA_InitTypeDef::GDMA_SourceMsize"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">GDMA_InitTypeDef::GDMA_SourceMsize</span></code></a> 个数据。</p>
+<p>ADC GDMA 传输时，推荐设置 <a class="reference internal" href="../../../../../doc/api_reference/group___a_d_c___exported___types.html#_CPPv4N15ADC_InitTypeDef14ADC_WaterLevelE" title="ADC_InitTypeDef::ADC_WaterLevel"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ADC_InitTypeDef::ADC_WaterLevel</span></code></a> 的值为 <code class="docutils literal notranslate"><span class="pre">MSize</span></code> 。</p>
+<figure class="align-center" id="adc-dma-diagram-cn">
+<img alt="Here should be adc dma diagram" src="../../../../../_images/adc_dma_diagram.png" />
+<figcaption>
+<p><span class="caption-text">ADC GDMA 示意图</span><a class="headerlink" href="#adc-dma-diagram-cn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../doc/general_introduction/text_cn/README.html" class="btn btn-neutral float-left" title="概述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../oneshot_polling/doc/text_cn/README.html" class="btn btn-neutral float-right" title="One Shot Polling" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

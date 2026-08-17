@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>快速入门 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="评估板指南" href="../../evb_guide/text_cn/README.html" />
+    <link rel="prev" title="概述" href="../../overview/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../index.html">
+        
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">快速入门</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evb">准备 EVB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">准备文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">软件工具</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#arm-keil-mdk">ARM Keil MDK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">GNU Toolchain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mingw-cn">MinGW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mp-tool-mpcli-tool">MP Tool/MPCLI Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mp-pack-tool-packcli-tool">MP Pack Tool/PACKCLI Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debug-analyzer">Debug Analyzer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">启动 EVB</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">硬件开发环境</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">EVB 接口和模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">供电</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#swd">SWD 接线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uart">UART</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reset">Reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log">LOG 接线</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">下载模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">工作模式</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">编译和下载</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flash-map">生成 Flash Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ota-header">生成 OTA Header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-config-file">生成 System Config File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app-image">编译 APP Image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#keil-mdk">Keil MDK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gcc">GCC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">文件下载</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mp-tool">MP Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#j-link">J-Link 下载</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id35">示例验证</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app">手机 App 验证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">Log 验证</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">快速入门</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="id1">
+<span id="id2"></span><h1>快速入门<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>本文档旨在指导用户快速配置 RTL87x2G 的开发环境，包括编译 SDK，烧录固件，升级固件及抓取 Log。用户可以下载 SDK 中的测试文件，确保 EVB 可以正常工作，并与开发环境兼容且具备相应功能。</p>
+<section id="id3">
+<h2>概述<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>RTL87x2G SDK 支持 Windows 和 Linux 系统，用户可以通过 Keil/GCC 来编译SDK中的工程，使用 MP Tool 将文件烧录到 EVB 中，然后通过 Debug Analyzer 来抓取 SoC 端的日志，硬件接线配置及对应 PC 机软体架构可以参考 <a class="reference internal" href="#evbworkingdiagram"><span class="std std-ref">EVB 工作原理图</span></a>。</p>
+<figure class="align-center" id="evbworkingdiagram">
+<a class="reference internal image-reference" href="../../../_images/EVBWorkingDiagram.png"><img alt="../../../_images/EVBWorkingDiagram.png" src="../../../_images/EVBWorkingDiagram.png" style="width: 781.6px; height: 480.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">EVB 工作原理图</span><a class="headerlink" href="#evbworkingdiagram" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="evb">
+<h3>准备 EVB<a class="headerlink" href="#evb" title="Link to this heading"></a></h3>
+<p>EVB 评估板提供了用户开发的 <a class="reference internal" href="#hardwareenvironment"><span class="std std-ref">硬件环境</span></a>，用于开发和应用调试设计。它由一块母板和一块子板组成，用户需要准备两条 USB 数据线连接 EVB 和 PC 机，EVB 的外围接口接线请参考 <a class="reference internal" href="#evbinterfacedistribution"><span class="std std-ref">EVB 接口分布图</span></a>，更多信息请查阅 <a class="reference internal" href="../../evb_guide/text_cn/README.html"><span class="doc">评估板指南</span></a>。</p>
+<figure class="align-center" id="hardwareenvironment">
+<img alt="../../../_images/HardwareEnvironment.png" src="../../../_images/HardwareEnvironment.png" />
+<figcaption>
+<p><span class="caption-text">硬件环境</span><a class="headerlink" href="#hardwareenvironment" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h3>准备文件<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>EVB 正常工作需要烧录以下文件。</p>
+<ul class="simple">
+<li><p><strong>基础文件：</strong>包括了 RTL87x2G 所需固件和配置设置文件。</p></li>
+<li><p><strong>应用文件：</strong>包括了目标工程的具体代码和功能实现。</p></li>
+</ul>
+<p>以下是 RTL87x2G 正常运行需要的 <a class="reference internal" href="#rtl87x2g-mptool"><span class="std std-ref">默认烧录文件</span></a>，其中 <code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">APP</span> <span class="pre">Config</span> <span class="pre">File</span></code> 为可选烧录文件，文件说明可以参考 <a class="reference internal" href="#id23"><span class="std std-ref">编译和下载</span></a> 章节。</p>
+<table class="docutils align-center" id="rtl87x2g-mptool">
+<caption><span class="caption-text">RTL87x2G 默认烧录文件</span><a class="headerlink" href="#rtl87x2g-mptool" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>文件</p></th>
+<th class="head"><p>Realtek 提供</p></th>
+<th class="head"><p>文件类别</p></th>
+<th class="head"><p>文件烧录选项</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>System Config File</p></th>
+<td><p>X（通过 MP Tool 生成）</p></td>
+<td><p>基础文件</p></td>
+<td><p>√</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Bank0 Boot Patch Image</p></th>
+<td><p>√</p></td>
+<td><p>基础文件</p></td>
+<td><p>√</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Bank1 Boot Patch Image</p></th>
+<td><p>√</p></td>
+<td><p>基础文件</p></td>
+<td><p>√</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Bank0 OTA Header File</p></th>
+<td><p>X（通过 MP Tool 生成）</p></td>
+<td><p>基础文件</p></td>
+<td><p>√</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Bank0 System Patch Image</p></th>
+<td><p>√</p></td>
+<td><p>基础文件</p></td>
+<td><p>√</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Bank0 BT Stack Patch Image</p></th>
+<td><p>√</p></td>
+<td><p>基础文件</p></td>
+<td><p>√</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Bank0 BT Host Image</p></th>
+<td><p>√</p></td>
+<td><p>基础文件</p></td>
+<td><p>√</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Bank0 APP Image</p></th>
+<td><p>X（工程编译生成）</p></td>
+<td><p>应用文件</p></td>
+<td><p>√</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Bank0 APP Config File</p></th>
+<td><p>X（通过 MP Tool 生成）</p></td>
+<td><p>基础文件</p></td>
+<td><p>非必选</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<span id="id6"></span><h3>软件工具<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>用户在开发 RTL87x2G SDK 的过程中，需要使用到 Realtek 的 <a class="reference internal" href="#id7"><span class="std std-ref">开发工具包及 ARM/GCC 开发套件</span></a>，具体如下。</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">开发工具包 &amp; ARM/GCC 开发套件</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.8%" />
+<col style="width: 51.9%" />
+<col style="width: 14.8%" />
+<col style="width: 18.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>工具</p></th>
+<th class="head"><p>链接/路径</p></th>
+<th class="head"><p>版本</p></th>
+<th class="head"><p>OS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>ARM Keil MDK</p></th>
+<td><p><a class="reference external" href="https://developer.arm.com">ARM 链接</a></p></td>
+<td><p>uVision: V5.36</p>
+<p>ARMCC: V6.17</p>
+</td>
+<td><p>Win10</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>GNU Toolchain</p></th>
+<td><p><a class="reference external" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">GNU Toolchain 链接</a></p></td>
+<td><p>13.2.Rel1(或更新)</p></td>
+<td><p>Windows/Linux</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>MinGW</p></th>
+<td><p><a class="reference external" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/">MinGW 链接</a></p></td>
+<td><p>V3.82.90(或更新)</p></td>
+<td><p>Windows</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>MP Tool</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\tools\\BeeMPTool_vx.x.x.x\\BeeMPTool\\MPTool.exe</span></code></p></td>
+<td></td>
+<td><p>Win10</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>MPCLI Tool</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\tools\\MPCLI</span></code></p></td>
+<td></td>
+<td><p>Windows/Linux/MAC OS</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>MP Pack Tool</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\tools\\BeeMPTool_vx.x.x.x\\BeeMPTool\\tools\\MPPackTool.exe</span></code></p></td>
+<td></td>
+<td><p>Win10</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>PACKCLI Tool</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\tools\\PACKCLI</span></code></p></td>
+<td></td>
+<td><p>Windows/Linux/MAC OS</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Debug Analyzer</p></th>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\tools\\DebugAnalyzer-vx.x.x.x\\DebugAnalyzer.exe</span></code></p></td>
+<td></td>
+<td><p>Win10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>路径下的安装包均为 <code class="file docutils literal notranslate"><span class="pre">.zip</span></code> 格式，需要用户自行解压缩。</p></li>
+<li><p>MPCLI Tool 为 MP Tool 的跨平台版本，PACKCLI 是 MP Pack Tool 的跨平台版本，如果用户不是基于 Windows 系统进行开发，可以使用跨平台版本的工具。</p></li>
+</ul>
+</div>
+<section id="arm-keil-mdk">
+<h4>ARM Keil MDK<a class="headerlink" href="#arm-keil-mdk" title="Link to this heading"></a></h4>
+<p>用户可以通过 Keil Microcontroller Development Kit(<a class="reference internal" href="../../glossary.html#term-MDK"><span class="xref std std-term">MDK</span></a>) 编译 SDK 中的应用，更多信息请查阅 <a class="reference internal" href="#keil-mdk-cn"><span class="std std-ref">Keil MDK</span></a> 章节。</p>
+</section>
+<section id="id8">
+<span id="id9"></span><h4>GNU Toolchain<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<p>用户可以通过 GNU Toolchain 编译 SDK 中的应用，开发前请先安装 <a class="reference external" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">gcc-arm-none-eabi</a>，更多信息请查阅 <a class="reference internal" href="#gcc-cn"><span class="std std-ref">GCC</span></a> 章节 。</p>
+</section>
+<section id="mingw-cn">
+<span id="id10"></span><h4>MinGW<a class="headerlink" href="#mingw-cn" title="Link to this heading"></a></h4>
+<p>用户可以使用 <a class="reference external" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/">MinGW</a> 来解析 <code class="file docutils literal notranslate"><span class="pre">Makefile</span></code> 。</p>
+</section>
+<section id="mp-tool-mpcli-tool">
+<h4>MP Tool/MPCLI Tool<a class="headerlink" href="#mp-tool-mpcli-tool" title="Link to this heading"></a></h4>
+<p>用户可以通过 MP Tool/MPCLI Tool 来烧录文件，MPCLI Tool 是 MP Tool 的跨平台版本。MP Tool 有 <strong>量产</strong> 和 <strong>调试</strong> 两种烧录模式，量产烧录模式适用于大规模生产，本文主要描述调试烧录模式，适用于开发者在软件开发的前期阶段的，更多信息请参考 <a class="reference internal" href="../../tool_set/text_cn/README.html#mp-tool-cn"><span class="std std-ref">MP Tool</span></a> 。</p>
+</section>
+<section id="mp-pack-tool-packcli-tool">
+<h4>MP Pack Tool/PACKCLI Tool<a class="headerlink" href="#mp-pack-tool-packcli-tool" title="Link to this heading"></a></h4>
+<p>用户可以通过 MP Pack Tool 来打包文件，适用于 <a class="reference internal" href="../../glossary.html#term-OTA"><span class="xref std std-term">OTA</span></a> （空中升级）和量产烧录，PACKCLI Tool 是 MP Pack Tool 的跨平台版本，更多信息请参考 <a class="reference internal" href="../../tool_set/text_cn/README.html#mp-pack-tool-cn"><span class="std std-ref">MP Pack Tool</span></a>。</p>
+</section>
+<section id="debug-analyzer">
+<h4>Debug Analyzer<a class="headerlink" href="#debug-analyzer" title="Link to this heading"></a></h4>
+<p>用户可以通过 Debug Analyzer 进行 <a class="reference internal" href="#id37"><span class="std std-ref">Log 验证</span></a>，更多信息请参考 <a class="reference internal" href="../../tool_set/text_cn/README.html#debug-analyzer-tool-cn"><span class="std std-ref">Debug Analyzer Tool</span></a> 。</p>
+</section>
+</section>
+<section id="id12">
+<span id="id13"></span><h3>启动 EVB<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>为确保 EVB 可以正常使用，用户可以按照以下步骤进行烧录测试：</p>
+<ol class="arabic simple">
+<li><p>准备一块EVB，确认 <a class="reference internal" href="#evbinterfacedistribution"><span class="std std-ref">EVB 接口</span></a> 接线正确，让 EVB 进入 <a class="reference internal" href="#id19"><span class="std std-ref">下载模式</span></a>，给 EVB <a class="reference internal" href="#id17"><span class="std std-ref">供电</span></a>。</p></li>
+<li><p>双击运行 <span class="guilabel">MPTool.exe</span>，具体操作步骤和文件路径请参考 <a class="reference internal" href="#mptool"><span class="std std-ref">MP Tool</span></a> 章节。</p>
+<ol class="arabic simple">
+<li><p>在 <span class="guilabel">Load Layout</span> 处点击 <span class="guilabel">..</span>，加载 <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> 文件。</p></li>
+<li><p>点击 <span class="guilabel">Browse</span> 加载所有 <a class="reference internal" href="#id33"><span class="std std-ref">烧录文件</span></a>。</p></li>
+<li><p>点击 <span class="guilabel">Detect</span> 成功识别 EVB 的 COM 口。</p></li>
+<li><p>点击 <span class="guilabel">Open</span> 成功打开 COM 口。</p></li>
+<li><p>勾选 <span class="guilabel">Erase All for Download</span>，点击 <span class="guilabel">Download</span> 进行烧录，进度条显示当前烧录进度。</p></li>
+<li><p>进度条显示 <span class="guilabel">OK</span> 表示文件烧录成功。</p></li>
+</ol>
+</li>
+<li><p>程序烧录完成后，让 EVB 进入 <a class="reference internal" href="#id21"><span class="std std-ref">工作模式</span></a>。</p></li>
+<li><p>观察 EVB 行为，可以通过 <a class="reference internal" href="#app"><span class="std std-ref">手机 App 验证</span></a>，或者通过 SoC 端 <a class="reference internal" href="#id37"><span class="std std-ref">Log 验证</span></a> 是否符合预期。</p></li>
+</ol>
+<figure class="align-center" id="mptoolburninginterface">
+<a class="reference internal image-reference" href="../../../_images/MPToolBurningInterface.png"><img alt="../../../_images/MPToolBurningInterface.png" src="../../../_images/MPToolBurningInterface.png" style="width: 1119.0px; height: 858.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool 烧录界面</span><a class="headerlink" href="#mptoolburninginterface" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>请将 SDK、Tool 等资料存放在不含空格的非中文路径下。</p></li>
+<li><p>在下载时勾选 <span class="guilabel">Erase All for Download</span>，会先将 Flash 进行全擦，然后再开始烧写，如果没有勾选，烧录时只根据需要下载的文件进行擦除。</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="id14">
+<h2>硬件开发环境<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<p>EVB 提供了用户开发和应用调试的 <a class="reference internal" href="#hardwareenvironment"><span class="std std-ref">硬件环境</span></a>，它由主板和子板组成。EVB 有 <a class="reference internal" href="#id19"><span class="std std-ref">下载模式</span></a> 和 <a class="reference internal" href="#id21"><span class="std std-ref">工作模式</span></a>，用户需要使用不同的接线方法来设置正确的模式。</p>
+<section id="id15">
+<span id="id16"></span><h3>EVB 接口和模块<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<figure class="align-center" id="evbinterfacedistribution">
+<img alt="../../../_images/EVBInterfaceDistribution.png" src="../../../_images/EVBInterfaceDistribution.png" />
+<figcaption>
+<p><span class="caption-text">EVB 接口分布图</span><a class="headerlink" href="#evbinterfacedistribution" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="evbmodulesdistribution">
+<img alt="../../../_images/EVBModulesDistribution.png" src="../../../_images/EVBModulesDistribution.png" />
+<figcaption>
+<p><span class="caption-text">EVB 模块分布图</span><a class="headerlink" href="#evbmodulesdistribution" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id17">
+<span id="id18"></span><h4>供电<a class="headerlink" href="#id17" title="Link to this heading"></a></h4>
+<p>CON1 和 CON2 的 USB 接口均需要与电脑连接给 EVB 供电。</p>
+<figure class="align-center" id="evbpowersupply">
+<img alt="../../../_images/EVBPowerSupply.png" src="../../../_images/EVBPowerSupply.png" />
+<figcaption>
+<p><span class="caption-text">EVB 供电接线</span><a class="headerlink" href="#evbpowersupply" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="swd">
+<h4>SWD 接线<a class="headerlink" href="#swd" title="Link to this heading"></a></h4>
+<table class="docutils align-center" id="rtl87x2g-swd">
+<caption><span class="caption-text">RTL87x2G - SWD对应接口</span><a class="headerlink" href="#rtl87x2g-swd" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>RTL87x2G</p></th>
+<th class="head"><p>SWD</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-odd"><td><p>SWDIO</p></td>
+<td><p>SWIO</p></td>
+</tr>
+<tr class="row-even"><td><p>SWDCLK</p></td>
+<td><p>SWCK</p></td>
+</tr>
+<tr class="row-odd"><td><p>VDDIO</p></td>
+<td><p>Vterf/3.3V</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="swdwiring">
+<img alt="../../../_images/SWDWiring.png" src="../../../_images/SWDWiring.png" />
+<figcaption>
+<p><span class="caption-text">SWD 接线</span><a class="headerlink" href="#swdwiring" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="uart">
+<h4>UART<a class="headerlink" href="#uart" title="Link to this heading"></a></h4>
+<figure class="align-center" id="uartinterface">
+<a class="reference internal image-reference" href="../../../_images/UARTInterface.png"><img alt="../../../_images/UARTInterface.png" src="../../../_images/UARTInterface.png" style="width: 560.0px; height: 277.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">UART 接口</span><a class="headerlink" href="#uartinterface" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="reset">
+<h4>Reset<a class="headerlink" href="#reset" title="Link to this heading"></a></h4>
+<figure class="align-center" id="resetkey">
+<img alt="../../../_images/ResetKey.png" src="../../../_images/ResetKey.png" />
+<figcaption>
+<p><span class="caption-text">Reset 按键</span><a class="headerlink" href="#resetkey" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="log">
+<h4>LOG 接线<a class="headerlink" href="#log" title="Link to this heading"></a></h4>
+<p>在 EVB 的正反面各有一个拨码开关，将两个开关均拨至 “1” 端，RX和LOG用跳线帽相接，连接完成后可以通过 <a class="reference internal" href="#id37"><span class="std std-ref">Log 验证</span></a> 是否符合预期。</p>
+<figure class="align-center" id="logwiring">
+<img alt="../../../_images/LogWiring.png" src="../../../_images/LogWiring.png" />
+<figcaption>
+<p><span class="caption-text">LOG 接线</span><a class="headerlink" href="#logwiring" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id19">
+<span id="id20"></span><h3>下载模式<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>给 EVB 上电前，用户需要先将 LOG Pin(P0_3)接地，有以下两种方法：</p>
+<ul class="simple">
+<li><p><strong>方法一：</strong>在 EVB 的正反面各有一个拨码开关，任意一个拨至 “ON”，即表示 LOG 接地。</p></li>
+</ul>
+<figure class="align-center" id="groundinglogpinmethod1">
+<img alt="../../../_images/GroundingLogPinMethod1.png" src="../../../_images/GroundingLogPinMethod1.png" />
+<figcaption>
+<p><span class="caption-text">LOG 接地方法一</span><a class="headerlink" href="#groundinglogpinmethod1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>方法二：</strong>在 EVB 的正反面各有一个拨码开关，将开关均拨至 “1”，连接 LOG 和 GND。</p></li>
+</ul>
+<figure class="align-center" id="groundinglogpinmethod2">
+<img alt="../../../_images/GroundingLogPinMethod2.png" src="../../../_images/GroundingLogPinMethod2.png" />
+<figcaption>
+<p><span class="caption-text">LOG 接地方法二</span><a class="headerlink" href="#groundinglogpinmethod2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>EVB 进入下载模式后，可以通过 <a class="reference internal" href="#mptool"><span class="std std-ref">MP Tool</span></a> 进行程序烧录。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>使用方法一，程序烧录完成后，EVB 进入工作模式，需要将两个拨码开关均拨至 “1”。</p></li>
+<li><p>使用方法二，程序烧录完成后，EVB 进入工作模式，需要断开 LOG 和 GND 之间的连线。</p></li>
+<li><p>芯片在上电后会读取 LOG Pin 的电平信号，电平为低，则 Bypass Flash 进入下载模式，否则进入工作模式，运行应用层程序。</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</section>
+<section id="id21">
+<span id="id22"></span><h3>工作模式<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<p>EVB 正常工作需要将正反面的拨码开关均拨至 “1”，断开 LOG 和 GND。</p>
+<figure class="align-center" id="normalmode">
+<img alt="../../../_images/NormalMode.png" src="../../../_images/NormalMode.png" />
+<figcaption>
+<p><span class="caption-text">工作模式</span><a class="headerlink" href="#normalmode" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id23">
+<span id="id24"></span><h2>编译和下载<a class="headerlink" href="#id23" title="Link to this heading"></a></h2>
+<p>以下是 <a class="reference internal" href="#rtl87x2g"><span class="std std-ref">RTL87x2G 的烧录文件说明</span></a>：</p>
+<table class="docutils align-center" id="rtl87x2g">
+<caption><span class="caption-text">RTL87x2G 的烧录文件说明</span><a class="headerlink" href="#rtl87x2g" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 6.2%" />
+<col style="width: 18.8%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>序号</p></th>
+<th class="head"><p>文件名称</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>1</p></th>
+<td><p>System Config File</p></td>
+<td><p>用于记录 IC 硬件配置和蓝牙配置等信息，例如：配置 BT 地址，修改 Link 数目等，参数设置项的具体含义可以参考 <a class="reference internal" href="../../tool_set/text_cn/README.html#mp-tool-cn"><span class="std std-ref">MP Tool</span></a> 的相关介绍。</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>2</p></th>
+<td><p>Boot Patch Image</p></td>
+<td><p>包含 Bank0 Boot Patch Image 和 Bank1 Boot Patch Image 两份文件，ROM code 中保留了 Patch 函数入口，通过 Patch 可以优化 Boot flow、修改 secure ROM code 原有行为、扩充 ROM code 功能等。</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>3</p></th>
+<td><p>Bank0 OTA Header File</p></td>
+<td><p>定义 Flash Bank layout 的文件。</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>4</p></th>
+<td><p>Bank0 System Patch Image</p></td>
+<td><p>ROM code 中保留了 Patch 函数入口，通过 Patch 可以修改 non-secure ROM code 原有行为、扩充 ROM code 功能等。</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>5</p></th>
+<td><p>Bank0 BT Stack Patch Image</p></td>
+<td><p>BT Controller中stack 相关 feature 的支持。</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>6</p></th>
+<td><p>Bank0 BT Host Image</p></td>
+<td><p>实现了 BLE Upperstack。</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>7</p></th>
+<td><p>Bank0 APP Image</p></td>
+<td><p>开发者开发的 BLE 应用程序，由 Keil/GCC 工程编译生成，并经过 fromelf 等工具处理。</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>8</p></th>
+<td><p>Bank0 APP Config File</p></td>
+<td><p>用于记录 App 配置等信息，例如：配置 GAP Config 信息等，参数设置项的具体含义可以参考 <a class="reference internal" href="../../tool_set/text_cn/README.html#mp-tool-cn"><span class="std std-ref">MP Tool</span></a> 的相关介绍。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Boot Patch Image、System Patch Image、BT Host Image、BT Stack Patch Image 由 Realtek 直接提供。用户可以通过 Anchor（Realtek 文件释放系统）下载上述资料，如果没有 Anchor 账号，请向 Agent/PM/FAE 申请注册，或者可以登录 <a class="reference external" href="https://www.realmcu.com/zh/Resources/sdk/RTL8762G-RTL877xG-Series">RealMCU</a> 直接下载。</p>
+</div>
+<section id="flash-map">
+<span id="id25"></span><h3>生成 Flash Map<a class="headerlink" href="#flash-map" title="Link to this heading"></a></h3>
+<p>使用 MP Tool，点击 <span class="guilabel">Flash Map Tool</span>，界面会跳转到 Flash Map Generate Tool，点击 <span class="guilabel">Confirm</span> 可生成 <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code>，同步还会生成一份 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> 文件。</p>
+<p>如果没有参数需要修改，可以跳过此章节，直接加载SDK中的 <a class="reference internal" href="#id33"><span class="std std-ref">默认文件</span></a> 。</p>
+<figure class="align-center" id="flash-map-ini">
+<a class="reference internal image-reference" href="../../../_images/flash_map.ini.png"><img alt="../../../_images/flash_map.ini.png" src="../../../_images/flash_map.ini.png" style="width: 1411.0px; height: 1266.16px;" /></a>
+<figcaption>
+<p><span class="caption-text">flash_map.ini</span><a class="headerlink" href="#flash-map-ini" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>烧录文件前需要先加载 <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> 文件，<code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> 即为生成的 flash layout，可以理解为是各部分在 Flash 中的地址分配。</p></li>
+<li><p>在 <a class="reference internal" href="#flashmapgenerate"><span class="std std-ref">Flash Map Generate Tool</span></a> 界面，点击下拉 <span class="guilabel">Flash Size</span> 选项，用户可以根据 Flash 的实际使用情况，选择合适的 Flash Size。</p></li>
+<li><p>用户可以根据实际需求，自行修改Flash Layout，点击 <span class="guilabel">Layout Init</span>，调整各区域大小，确认后点击 <span class="guilabel">Confirm</span>，更多详细信息请参考 <a class="reference internal" href="../../platform/memory/text_cn/README.html"><span class="doc">Memory</span></a>。</p></li>
+<li><p>根据 Flash 布局排布的不同，分成两种 OTA 方案：<span class="guilabel">支持 Bank 切换</span> 和 <span class="guilabel">不支持 Bank 切换</span>，用户根据实际情况点击 <span class="guilabel">Support OTA Switch</span> 进行选择，默认选择 Disable，更多详细信息请参考 <a class="reference internal" href="../../../subsys/dfu/doc/text_cn/ota.html"><span class="doc">OTA</span></a>。</p></li>
+</ul>
+</div>
+<figure class="align-center" id="flashmapgenerate">
+<a class="reference internal image-reference" href="../../../_images/FlashMapGenerate.png"><img alt="../../../_images/FlashMapGenerate.png" src="../../../_images/FlashMapGenerate.png" style="width: 1125.0px; height: 1011.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">Flash Map Generate Tool</span><a class="headerlink" href="#flashmapgenerate" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>如果 Flash Layout 有被修改，请将新生成的 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> 文件复制到 <a class="reference internal" href="#id26"><span class="std std-ref">图示路径</span></a>，生成正确的加载地址，供 Bank0 APP Image 使用，更多详细信息请参考 <a class="reference internal" href="../../platform/memory/text_cn/README.html"><span class="doc">Memory</span></a>。</p></li>
+<li><p><a class="reference internal" href="#id26"><span class="std std-ref">图示路径</span></a> 是 SDK 默认的 flash_map.h 路径，适用于大多数示例工程，如果应用工程使用其他路径下的 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code>，需要更新对应路径下的文件。</p></li>
+</ul>
+</div>
+<figure class="align-center" id="id26">
+<a class="reference internal image-reference" href="../../../_images/flash_map.png"><img alt="../../../_images/flash_map.png" src="../../../_images/flash_map.png" style="width: 941.4px; height: 593.1px;" /></a>
+<figcaption>
+<p><span class="caption-text">flash_map.h</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ota-header">
+<span id="id27"></span><h3>生成 OTA Header<a class="headerlink" href="#ota-header" title="Link to this heading"></a></h3>
+<p>使用 MP Tool，点击 <span class="guilabel">Flash Map Tool</span>，界面会跳转到 Flash Map Generate Tool，点击 <span class="guilabel">Confirm</span>，生成 <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> 的同时也会同步生成 <code class="file docutils literal notranslate"><span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">File</span></code>。BootLoader 会按照此文件读取各 Image 的布局分布。</p>
+<p>如果没有参数需要修改，可以跳过此章节，直接加载 SDK 中的 <a class="reference internal" href="#id33"><span class="std std-ref">默认文件</span></a>。</p>
+<figure class="align-center" id="otaheader">
+<a class="reference internal image-reference" href="../../../_images/OTAHeader.png"><img alt="../../../_images/OTAHeader.png" src="../../../_images/OTAHeader.png" style="width: 1348.75px; height: 1210.3px;" /></a>
+<figcaption>
+<p><span class="caption-text">OTA Header File</span><a class="headerlink" href="#otaheader" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果 Flash Layout 有被修改，<code class="file docutils literal notranslate"><span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">File</span></code> 也会同步更新，请注意 <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">File</span></code> 的一致性。</p>
+</div>
+</section>
+<section id="system-config-file">
+<span id="id28"></span><h3>生成 System Config File<a class="headerlink" href="#system-config-file" title="Link to this heading"></a></h3>
+<p>使用 MP Tool，点击 <span class="guilabel">Config Set</span>，在 Config Setting 界面调整相关参数，点击 <span class="guilabel">Confirm</span> 后会直接生成 <code class="file docutils literal notranslate"><span class="pre">System</span> <span class="pre">Config</span> <span class="pre">File</span></code> 并加载到对应区域。对于初次使用的开发者，Config Setting 界面的参数设置建议保持默认配置，更多参数设置可以参考 <a class="reference internal" href="../../tool_set/text_cn/README.html#mp-tool-cn"><span class="std std-ref">MP Tool</span></a>。</p>
+<p>如果没有参数需要修改，可以跳过此章节，直接加载 SDK 中的 <a class="reference internal" href="#id33"><span class="std std-ref">烧录文件</span></a>。</p>
+<figure class="align-center" id="systemconfigfile">
+<a class="reference internal image-reference" href="../../../_images/SystemConfigFile.png"><img alt="../../../_images/SystemConfigFile.png" src="../../../_images/SystemConfigFile.png" style="width: 1205.3999999999999px; height: 1431.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">System Config File</span><a class="headerlink" href="#systemconfigfile" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果 Flash Layout 有被修改，需要重新生成 <code class="file docutils literal notranslate"><span class="pre">System</span> <span class="pre">Config</span> <span class="pre">File</span></code>。</p>
+</div>
+</section>
+<section id="app-image">
+<span id="id29"></span><h3>编译 APP Image<a class="headerlink" href="#app-image" title="Link to this heading"></a></h3>
+<p>SDK 中所有的应用都能够通过 Keil Microcontroller Development Kit(MDK)/GCC 编译以及使用。在进行软件开发之前，需要先安装 Keil 或 GCC 编译环境。为了方便快速建立开发工程，用户可以拷贝或直接打开现有的示例工程，在此基础上增加功能代码。</p>
+<section id="keil-mdk">
+<span id="keil-mdk-cn"></span><h4>Keil MDK<a class="headerlink" href="#keil-mdk" title="Link to this heading"></a></h4>
+<p>Keil MDK 是一套完整的软件开发环境，适用于多种基于 Arm Cortex-M 的微控制器设备。MDK 包括了 µVision 集成开发环境和调试器、Arm C/C++ 编译器，以及必要的中间件组件。</p>
+<p>SDK 中所有的应用能够通过 Keil Microcontroller Development Kit(MDK) 编译以及使用。所以在进行软件开发之前，要先取得并安装 Keil。有关 Keil 的更多信息请访问 <a class="reference external" href="http://www.keil.com">www.keil.com</a>。</p>
+<p>Realtek 使用的工具链版本信息如图所示。为避免产生 ROM 可执行程序和应用之间的兼容性问题，建议使用 uVision V5.36 版本或者更新的版本，并将 ARMCLANG 默认编译器配置成 compiler 6.17。</p>
+<figure class="align-center" id="keilversioninformation">
+<a class="reference internal image-reference" href="../../../_images/KeilVersionInformation.png"><img alt="../../../_images/KeilVersionInformation.png" src="../../../_images/KeilVersionInformation.png" style="width: 610.8px; height: 349.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">Keil 版本信息</span><a class="headerlink" href="#keilversioninformation" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="keilcompilerversionconfiguration">
+<a class="reference internal image-reference" href="../../../_images/KeilCompilerVersionConfiguration.png"><img alt="../../../_images/KeilCompilerVersionConfiguration.png" src="../../../_images/KeilCompilerVersionConfiguration.png" style="width: 1127.0px; height: 996.0999999999999px;" /></a>
+<figcaption>
+<p><span class="caption-text">Keil 编译器版本配置</span><a class="headerlink" href="#keilcompilerversionconfiguration" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>以 <em>ble_peripheral</em> 工程为例，编译成功后会在工程的 bin 文件夹下生成带 MD5 校验的 <code class="file docutils literal notranslate"><span class="pre">.bin</span></code> 文件和对应的 <code class="file docutils literal notranslate"><span class="pre">.trace</span></code> 文件，其中 <code class="file docutils literal notranslate"><span class="pre">.trace</span></code> 文件用于解析 SoC 端 Log。</p>
+<figure class="align-center" id="compileble-peripheralproject">
+<a class="reference internal image-reference" href="../../../_images/Compileble_peripheralProject.png"><img alt="../../../_images/Compileble_peripheralProject.png" src="../../../_images/Compileble_peripheralProject.png" style="width: 946.8px; height: 666.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">编译 ble_peripheral 工程</span><a class="headerlink" href="#compileble-peripheralproject" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="projectcompilegeneratefiles">
+<a class="reference internal image-reference" href="../../../_images/ProjectCompileGenerateFiles.png"><img alt="../../../_images/ProjectCompileGenerateFiles.png" src="../../../_images/ProjectCompileGenerateFiles.png" style="width: 792.9px; height: 310.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">工程编译生成文件</span><a class="headerlink" href="#projectcompilegeneratefiles" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>MP Tool 采用 MD5 作为烧录文件的校验值，并要求将 MD5 值加入到待烧录文件的文件名后缀中，所以烧录的是带 “MP” 前缀的 APP Image。</p>
+</div>
+<p>Keil 工程默认关闭生成 <code class="file docutils literal notranslate"><span class="pre">app.disasm</span></code> 反汇编文件。如果用户调试需要打开此项功能，可以修改 <code class="file docutils literal notranslate"><span class="pre">after_build_script.bat</span></code> 文件。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>//将注释符号&quot;::&quot;删除
+::%keil_compiler_include_floder%\..\bin\fromelf.exe -acd --interleave=source -o &quot;bin\%linker_output_file_name%.disasm&quot; &quot;%full_name_path%&quot;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">-</kbd>-<kbd class="kbd docutils literal notranslate">interleave=source</kbd></kbd> 标志会将源代码与反汇编代码交错排列，有助于将源代码与反汇编代码相关联，但文件会包含用户源代码，因此请保护其机密性。</p>
+</div>
+</section>
+<section id="gcc">
+<span id="gcc-cn"></span><h4>GCC<a class="headerlink" href="#gcc" title="Link to this heading"></a></h4>
+<p>编译 GCC 工程，需要对 <a class="reference internal" href="#id8"><span class="std std-ref">GNU Toolchain</span></a> 和 <a class="reference internal" href="#mingw-cn"><span class="std std-ref">MinGW</span></a> 进行正确的环境变量配置，以 D 盘为安装根路径为例，添加如下路径到环境变量。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>D:\GCC\MinGW\bin;
+D:\GCC\MinGW\include;
+D:\GCC\MinGW\lib;
+D:\GCC\gcc-arm-none-eabi-10-2020-q4-major-win32\gcc-arm-none-eabi-10-2020-q4-major\bin;
+</pre></div>
+</div>
+<p>以 <em>ble_peripheral</em> 为例，在工程所在的 gcc 目录下运行 cmd 指令，输入指令 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">mingw32</kbd>-<kbd class="kbd docutils literal notranslate">make</kbd></kbd>，GCC 工程编译成功后会在工程的 bin 文件夹下生成带 MD5 校验的 <code class="file docutils literal notranslate"><span class="pre">.bin</span></code> 文件。</p>
+<figure class="align-center" id="gccprojectcompilation">
+<a class="reference internal image-reference" href="../../../_images/GCCProjectCompilation.png"><img alt="../../../_images/GCCProjectCompilation.png" src="../../../_images/GCCProjectCompilation.png" style="width: 765.5px; height: 603.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">GCC 工程编译</span><a class="headerlink" href="#gccprojectcompilation" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="gccappimagepath">
+<a class="reference internal image-reference" href="../../../_images/GCCAPPImagePath.png"><img alt="../../../_images/GCCAPPImagePath.png" src="../../../_images/GCCAPPImagePath.png" style="width: 572.5999999999999px; height: 193.89999999999998px;" /></a>
+<figcaption>
+<p><span class="caption-text">GCC 下的 AppImage 文件路径</span><a class="headerlink" href="#gccappimagepath" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>GCC 工程默认关闭生成 <code class="file docutils literal notranslate"><span class="pre">app.dis</span></code> 反汇编文件。如果用户调试需要打开此项功能，可以修改 <code class="file docutils literal notranslate"><span class="pre">Makefile</span></code> 文件。</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span># 将注释符号&quot;#&quot;删除
+#$(OD) -D -S build/$(TARGET).elf &gt; bin/$(TARGET).dis
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p><kbd class="kbd docutils literal notranslate">-S</kbd> 标志会将源代码与反汇编代码交错排列，有助于将源代码与反汇编代码相关联，但文件会包含用户源代码，因此请保护其机密性。</p>
+</div>
+</section>
+</section>
+<section id="id30">
+<span id="id31"></span><h3>文件下载<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<section id="mp-tool">
+<span id="mptool"></span><h4>MP Tool<a class="headerlink" href="#mp-tool" title="Link to this heading"></a></h4>
+<p>设置 EVB 进入下载模式，然后用户可以通过 MP Tool 给设备烧录程序，软件版本不低于 V1.1.0.x。</p>
+<ol class="arabic simple">
+<li><p>双击运行 <code class="docutils literal notranslate"><span class="pre">MPTool.exe</span></code>。</p></li>
+</ol>
+<figure class="align-center" id="mptool-exe">
+<a class="reference internal image-reference" href="../../../_images/MPTool.exe.png"><img alt="../../../_images/MPTool.exe.png" src="../../../_images/MPTool.exe.png" style="width: 475.2px; height: 330.59999999999997px;" /></a>
+<figcaption>
+<p><span class="caption-text">MPTool.exe</span><a class="headerlink" href="#mptool-exe" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>【芯片类型】选择：RTL8762G_VB。</p></li>
+</ol>
+<figure class="align-center" id="mptoolictypeselection">
+<a class="reference internal image-reference" href="../../../_images/MPToolICTypeSelection.png"><img alt="../../../_images/MPToolICTypeSelection.png" src="../../../_images/MPToolICTypeSelection.png" style="width: 639.0999999999999px; height: 389.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool 芯片选型</span><a class="headerlink" href="#mptoolictypeselection" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" id="id32" start="3">
+<li><p>【类型】选择：调试。</p></li>
+</ol>
+<figure class="align-center" id="mptoolmodeselectioncn">
+<a class="reference internal image-reference" href="../../../_images/MPToolModeSelectionCN.png"><img alt="../../../_images/MPToolModeSelectionCN.png" src="../../../_images/MPToolModeSelectionCN.png" style="width: 873.5999999999999px; height: 709.0999999999999px;" /></a>
+<figcaption>
+<p><span class="caption-text">MP Tool 模式选择</span><a class="headerlink" href="#mptoolmodeselectioncn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="4">
+<li><p>在 <a class="reference internal" href="#mptoolburninginterface"><span class="std std-ref">MP Tool 烧录界面</span></a> 的 <span class="guilabel">Load Layout</span> 处点击 <span class="guilabel">..</span> 按钮，加载 <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> 文件。</p></li>
+<li><p>点击 <span class="guilabel">Browse</span>，加载所有烧录文件，文件类型和加载路径如下表所示。</p>
+<ol class="arabic simple">
+<li><p>Bank0 APP Image：建议加载 <a class="reference internal" href="#id33"><span class="std std-ref">默认文件</span></a> 中的 APP Image。</p></li>
+<li><p>设备上电后会发出广播，可以通过 <a class="reference internal" href="#app"><span class="std std-ref">手机App验证</span></a>，测试设备端程序是否正常运行。­</p></li>
+</ol>
+<table class="docutils align-center" id="id33">
+<caption><span class="caption-text">RTL87x2G 烧录文件和路径</span><a class="headerlink" href="#id33" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>文件类型</p></th>
+<th class="head"><p>文件名</p></th>
+<th class="head"><p>文件路径</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>System Config File</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">configFile_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 Boot Patch Image</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BANK0_boot_patch_MP_release_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Bank1 Boot Patch Image</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BANK1_boot_patch_MP_release_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 OTA Header File</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OTAHeader_Bank0_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common\\bank0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 System Patch Image</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sys_patch_MP_release_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common\\bank0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 BT Stack Patch Image</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bt_stack_patch_MP_master_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common\\bank0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 BT Host Image</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bt_host_MP_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common\\bank0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 APP Image</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">app_MP_sdk_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common\\bank0\\ble_peripheral</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 APP Config File</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">appConfigFile_xxx.bin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\\bin\\rtl87x2g\\default_bin\\disable_bank_switch\\trustzone_disable\\common\\bank0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>点击 <span class="guilabel">Detect</span>，界面会显示识别到的设备 COM 口。</p></li>
+<li><div class="line-block">
+<div class="line">点击 <span class="guilabel">Open</span>，如果 COM 口可以正常打开，进度条右侧会显示 <kbd class="kbd docutils literal notranslate">OK</kbd>，否则显示 <kbd class="kbd docutils literal notranslate">Fail</kbd>。</div>
+<div class="line">如果显示 <kbd class="kbd docutils literal notranslate">Fail</kbd>，用户可以参照常见错误逐一排查，检查无误后重复步骤，点击 <span class="menuselection">Detect ‣ Open</span>。</div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">常见错误如下</p>
+<ul class="simple">
+<li><p>检查串口 Tx/Rx 是否接反</p></li>
+<li><p>检查设备 P0_3 即 LOG Pin 接地再上电</p></li>
+<li><p>检查串口转接板是否支持 1M 波特率</p></li>
+<li><p>检查 COM 被占用</p></li>
+</ul>
+</div>
+</li>
+<li><p>串口打开成功，点击 <span class="guilabel">Download</span>，COM 口右侧进度条显示当前程序下载进度。</p>
+<ol class="arabic simple">
+<li><p>Download 完成后会显示 <kbd class="kbd docutils literal notranslate">OK</kbd>。</p></li>
+<li><p>如果显示 <kbd class="kbd docutils literal notranslate">Fail</kbd>，按下 EVB 上的 Reset 按键或给 EVB 重新上电后重复上述步骤。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>MP Tool 支持两种烧录模式：</p>
+<ul>
+<li><p><strong>量产模式：</strong>用于产线生产</p></li>
+<li><p><strong>调试模式：</strong>用于开发人员开发调试时使用</p></li>
+</ul>
+</li>
+<li><p>­­MP Tool 可烧录单个或者多个文件，如果只是烧录单个文件，比如 Bank0 APP Image，<span class="red-text">不要勾选</span> <span class="guilabel">Erase All for Download</span>。</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</section>
+<section id="j-link">
+<span id="id34"></span><h4>J-Link 下载<a class="headerlink" href="#j-link" title="Link to this heading"></a></h4>
+<p>J-Link 是由 SEGGER 公司开发的一种仿真器/调试器。它是一款专门针对 Arm 处理器的工具，可用于开发、调试和测试嵌入式设备的固件。J-Link 具有高速且可靠的仿真性能，支持实时调试和快速下载固件，可以帮助开发人员加快调试和验证嵌入式系统的过程，提高开发效率和质量。</p>
+<p>J-Link 支持多种连接接口，如 JTAG、SWD 等，因为 SWD 使用的接线更少，所以 RTL87x2G 采用这种接口。另外，J-Link 也可以与多种开发环境和 IDE（如 Keil MDK、IAR Embedded Workbench 等）兼容，请正确设置 <a class="reference internal" href="#keil-mdk-cn"><span class="std std-ref">Keil</span></a> 环境。</p>
+<p>建议使用 J-Link Software v6.44（或更新）版本，更多信息请参考 <a class="reference internal" href="../../platform/debug_system/text_cn/README.html#id13"><span class="std std-ref">SWD 调试</span></a>。</p>
+<p><a class="reference internal" href="#swdwiring"><span class="std std-ref">SWD 接线</span></a> 完成后用户可以通过 J-Link 来烧录 app image，请确保其余文件已通过 <a class="reference internal" href="#mptool"><span class="std std-ref">MP Tool</span></a> 完成烧录。使用 J-Link 烧录前，先将 SDK 目录下的 Flash 算法复制到 KEIL 安装目录下的如图路径位置，复制完成后请参照以下界面准确设置相关参数。</p>
+<figure class="align-center" id="copyfilepath">
+<a class="reference internal image-reference" href="../../../_images/CopyFilePath.png"><img alt="../../../_images/CopyFilePath.png" src="../../../_images/CopyFilePath.png" style="width: 626.4px; height: 481.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Copy File Path</span><a class="headerlink" href="#copyfilepath" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="keilsetting-1">
+<a class="reference internal image-reference" href="../../../_images/KEILSetting-1.png"><img alt="../../../_images/KEILSetting-1.png" src="../../../_images/KEILSetting-1.png" style="width: 951.5000000000001px; height: 752.4000000000001px;" /></a>
+<figcaption>
+<p><span class="caption-text">KEIL 界面配置-1</span><a class="headerlink" href="#keilsetting-1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="keilsetting-2">
+<a class="reference internal image-reference" href="../../../_images/KEILSetting-2.png"><img alt="../../../_images/KEILSetting-2.png" src="../../../_images/KEILSetting-2.png" style="width: 872.0px; height: 571.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">KEIL 界面配置-2</span><a class="headerlink" href="#keilsetting-2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="keilsetting-3">
+<a class="reference internal image-reference" href="../../../_images/KEILSetting-3.png"><img alt="../../../_images/KEILSetting-3.png" src="../../../_images/KEILSetting-3.png" style="width: 921.1999999999999px; height: 1154.3px;" /></a>
+<figcaption>
+<p><span class="caption-text">KEIL 界面配置-3</span><a class="headerlink" href="#keilsetting-3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="keilsetting-4">
+<a class="reference internal image-reference" href="../../../_images/KEILSetting-4.png"><img alt="../../../_images/KEILSetting-4.png" src="../../../_images/KEILSetting-4.png" style="width: 882.0px; height: 578.1999999999999px;" /></a>
+<figcaption>
+<p><span class="caption-text">KEIL 界面配置-4</span><a class="headerlink" href="#keilsetting-4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>系统在 DLPS 模式下无法进行 J-Link 调试，建议用户在使用 J-Link 调试程序时先关闭 DLPS 模式，更多信息请参考文档 <a class="reference internal" href="../../platform/low_power_mode/text_cn/README.html"><span class="doc">低功耗模式</span></a>。</p></li>
+<li><p>使用 J-Link 调试需要确保 SWDIO(P1_0) 和 SWDCLK(P1_1) 这两个引脚没有在程序中被复用。</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+<section id="id35">
+<h2>示例验证<a class="headerlink" href="#id35" title="Link to this heading"></a></h2>
+<section id="app">
+<span id="id36"></span><h3>手机 App 验证<a class="headerlink" href="#app" title="Link to this heading"></a></h3>
+<p>以 <em>ble_peripheral</em> 工程为例，确认 <a class="reference internal" href="#evbinterfacedistribution"><span class="std std-ref">EVB 接口</span></a> 接线正确，让 EVB 进入 <a class="reference internal" href="#id19"><span class="std std-ref">下载模式</span></a> ，加载 SDK 中的 <a class="reference internal" href="#id33"><span class="std std-ref">默认文件</span></a>，烧录完成让 EVB 进入 <a class="reference internal" href="#id21"><span class="std std-ref">工作模式</span></a>。</p>
+<p>用户可以通过手机蓝牙 APP 搜索 BLE 广播，广播名称默认是 <kbd class="kbd docutils literal notranslate">BLE_PERIPHERAL</kbd>，点击 <span class="guilabel">Connect</span>，手机与设备成功连接后，会在手机端显示对端设备的 Service。</p>
+<figure class="align-center" id="bleadvertising">
+<a class="reference internal image-reference" href="../../../_images/BLEAdvertising.png"><img alt="../../../_images/BLEAdvertising.png" src="../../../_images/BLEAdvertising.png" style="width: 398.4px; height: 315.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">设备广播</span><a class="headerlink" href="#bleadvertising" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="connectionsuccess">
+<a class="reference internal image-reference" href="../../../_images/ConnectionSuccess.png"><img alt="../../../_images/ConnectionSuccess.png" src="../../../_images/ConnectionSuccess.png" style="width: 398.4px; height: 805.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">手机连接广播成功</span><a class="headerlink" href="#connectionsuccess" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id37">
+<span id="id38"></span><h3>Log 验证<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
+<p>用户可以通过 Debug Aanlyzer 抓取 SoC 端 Log 确认程序是否正确运行，请正确完成 <a class="reference internal" href="#logwiring"><span class="std std-ref">LOG 接线</span></a>。</p>
+<figure class="align-center" id="debuganalyzer-exe">
+<a class="reference internal image-reference" href="../../../_images/DebugAnalyzer.exe.png"><img alt="../../../_images/DebugAnalyzer.exe.png" src="../../../_images/DebugAnalyzer.exe.png" style="width: 386.4px; height: 355.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">DebugAnalyzer.exe</span><a class="headerlink" href="#debuganalyzer-exe" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>双击运行 <code class="docutils literal notranslate"><span class="pre">DebugAnalyzer.exe</span></code>，点击 <span class="guilabel">Setting</span>，<span class="guilabel">Baud rate</span> 默认是 2M，在 <span class="guilabel">App Trace File</span> 处加载对应工程的 <code class="file docutils literal notranslate"><span class="pre">.trace</span></code> 文件，最后点击 <span class="guilabel">Confirm</span> 确认设置。</p>
+<figure class="align-center" id="debuganalyzerparametersetting">
+<a class="reference internal image-reference" href="../../../_images/DebugAnalyzerParameterSetting.png"><img alt="../../../_images/DebugAnalyzerParameterSetting.png" src="../../../_images/DebugAnalyzerParameterSetting.png" style="width: 1082.5px; height: 705.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Debug Analyzer 参数设置界面</span><a class="headerlink" href="#debuganalyzerparametersetting" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>选择正确的 Serial Port，点击 <span class="guilabel">Start</span>，Debug Aanlyzer 开始工作，PC 会将抓取的原始数据（Raw Data）保存在 <code class="file docutils literal notranslate"><span class="pre">.bin</span></code> 文件中，并根据用户设置的 <code class="file docutils literal notranslate"><span class="pre">.trace</span></code> 文件，将原始数据解析为明文 Log，保存在 <code class="file docutils literal notranslate"><span class="pre">.log</span></code> 中。</p>
+<p>以 <em>ble_peripheral</em> 工程为例，EVB 板上电后，如果有 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">GAP</kbd> <kbd class="kbd docutils literal notranslate">adv</kbd> <kbd class="kbd docutils literal notranslate">start</kbd></kbd> 的 Log，代表设备开始广播。点击手机蓝牙 APP 界面的 <span class="guilabel">Connect</span>，Log 打印 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">GAP</kbd> <kbd class="kbd docutils literal notranslate">adv</kbd> <kbd class="kbd docutils literal notranslate">stoped:because</kbd> <kbd class="kbd docutils literal notranslate">connection</kbd> <kbd class="kbd docutils literal notranslate">created</kbd></kbd>，代表手机与设备连接成功。</p>
+<figure class="align-center" id="adv">
+<a class="reference internal image-reference" href="../../../_images/ADV.png"><img alt="../../../_images/ADV.png" src="../../../_images/ADV.png" style="width: 905.4px; height: 612.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">ADV Start</span><a class="headerlink" href="#adv" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="connectioncreate">
+<a class="reference internal image-reference" href="../../../_images/ConnectionCreate.png"><img alt="../../../_images/ConnectionCreate.png" src="../../../_images/ConnectionCreate.png" style="width: 942.5999999999999px; height: 630.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">Connection Create</span><a class="headerlink" href="#connectioncreate" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="logdatafile">
+<a class="reference internal image-reference" href="../../../_images/LogDataFile.png"><img alt="../../../_images/LogDataFile.png" src="../../../_images/LogDataFile.png" style="width: 322.8px; height: 126.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">Log Data File</span><a class="headerlink" href="#logdatafile" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>Log 文件默认保存路径如上图所示：<code class="docutils literal notranslate"><span class="pre">DebugAnalyzer.exe</span></code> 同目录下的 <a class="reference internal" href="#logdatafile"><span class="std std-ref">DataFile 文件夹</span></a>。</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">.trace</span></code> 文件是用于解析串口接收到的二进制 Log 流，工程每次编译完成后都会生成新的 <code class="file docutils literal notranslate"><span class="pre">.trace</span></code> 文件，需要确保 <code class="file docutils literal notranslate"><span class="pre">.trace</span></code> 文件与当前 SoC 运行代码匹配。</p></li>
+<li><p>开发过程中如遇到问题，请提供上图 <a class="reference internal" href="#logdatafile"><span class="std std-ref">DataFile 文件夹</span></a> 路径下的 <code class="file docutils literal notranslate"><span class="pre">.log</span></code> <code class="file docutils literal notranslate"><span class="pre">.bin</span></code> <code class="file docutils literal notranslate"><span class="pre">.cfa</span></code> 文件以及 <code class="file docutils literal notranslate"><span class="pre">.trace</span></code> 文件，以便 Realtek 解析定位问题。</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../overview/text_cn/README.html" class="btn btn-neutral float-left" title="概述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../evb_guide/text_cn/README.html" class="btn btn-neutral float-right" title="评估板指南" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

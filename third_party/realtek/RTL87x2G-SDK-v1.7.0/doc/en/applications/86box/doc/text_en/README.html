@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>86Box &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Tri-Mode Mouse" href="../../../trimode_mouse/doc/text_en/README.html" />
+    <link rel="prev" title="Applications" href="../../../../doc/applications/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../doc/applications/text_en/README.html">Applications</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">86Box</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#practical-application-case">Practical Application Case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supported-features">Supported Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wiring">Wiring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#evb">EVB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wi-fi-module">Wi-Fi Module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-and-downloading">Building and Downloading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#experimental-verification">Experimental Verification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gui-testing">GUI Testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mesh-testing">Mesh Testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matter-testing">Matter Testing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wi-fi-testing">Wi-Fi Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#software-design-introduction">Software Design Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#source-code-directory">Source Code Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flash-layout">Flash Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#software-architecture">Software Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-and-priority">Task and Priority</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gui-task">GUI Task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mesh-task">Mesh Task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matter-task">Matter Task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wi-fi-task">Wi-Fi Task</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../trimode_mouse/doc/text_en/README.html">Tri-Mode Mouse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ppt_transport/doc/text_en/README.html">PPT Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lvgl/doc/text_en/README.html">LVGL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/applications/text_en/README.html">Applications</a></li>
+    <li class="breadcrumb-item active">86Box</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="box">
+<h1>86Box<a class="headerlink" href="#box" title="Link to this heading"></a></h1>
+<p>The 86Box controller in the smart home system is an important component that provides centralized management and control of various smart home appliances. It is designed similar to a regular switch socket and can be conveniently installed on the wall or embedded into it. Users can remotely control various devices such as air conditioners, TVs, lights, curtains, and door locks through dedicated applications on their smartphones or tablets. The 86Box controller makes home automation management efficient and convenient, greatly enhancing the quality of family life.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This document introduces relevant information about the 86Box Smart Home solution based on Realtek RTL8772GWP. Its purpose is to assist users in setting up the development environment, including understanding the SDK, compiling and flashing firmware, and system testing methods. Developers can flash the test files from the SDK to ensure proper development environment configuration and that the EVB is functioning correctly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The example solution described in this article uses the Realtek RTL8772GWP EVB with an RGB (480 * 480) LCD display driven by st7701s and a touch screen module driven by gt911. If developers choose the same hardware environment as described in this article, they can directly run the sample project in the SDK.</p></li>
+<li><p>If you need to adapt to other models of displays and input devices, please refer to  <a class="reference external" href="https://docs.realmcu.com/gui/en/latest/Porting/index.html">Porting</a> for instructions on adapting to new display and input device drivers.</p></li>
+<li><p>The Realtek RTL8772GWP chip supports display interfaces such as i8080, qspi/spi, and RGB888/RGB565.</p></li>
+</ul>
+</div>
+<section id="practical-application-case">
+<h3>Practical Application Case<a class="headerlink" href="#practical-application-case" title="Link to this heading"></a></h3>
+<p>The following diagram illustrates the modules included in the 86Box application:</p>
+<figure class="align-center" id="box-systemmodule">
+<a class="reference internal image-reference" href="../../../../_images/fig_module.jpeg"><img alt="../../../../_images/fig_module.jpeg" src="../../../../_images/fig_module.jpeg" style="width: 927.5999999999999px; height: 624.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">86Box Application Modules</span><a class="headerlink" href="#box-systemmodule" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="supported-features">
+<h3>Supported Features<a class="headerlink" href="#supported-features" title="Link to this heading"></a></h3>
+<p>The Realtek 86Box application provides comprehensive functionality support:</p>
+<ul class="simple">
+<li><p>Support Bluetooth Mesh 1.1/1.0 protocol</p></li>
+<li><p>Support Matter protocol</p></li>
+<li><p>Support Wi-Fi network connection</p></li>
+<li><p>Support visual UI development</p></li>
+</ul>
+</section>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Hardware Requirements</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>RTL87x2GWP <a class="reference internal" href="../../../../doc/glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a></p></li>
+<li><p>LCD display module</p></li>
+<li><p>Wi-Fi module</p></li>
+<li><p>Mesh dongle module</p></li>
+<li><p>Matter device</p></li>
+</ol>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Tool Requirements</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>ARM Keil MDK: <a class="reference external" href="https://developer.arm.com">ArmMDK</a></p></li>
+<li><p>MPTool_kits: <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU-Tool</a></p></li>
+<li><p>DebugAnalyzer: <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU-Tool</a></p></li>
+<li><p>RVisualDesigner: <a class="reference external" href="https://www.realmcu.com/en/Resources/tools/RTL87x2x_RTL877xG-Series">RealMCU-Tool</a></p></li>
+<li><p>scons 4.4.0: run command in python environment <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">pip</kbd> <kbd class="kbd docutils literal notranslate">install</kbd> <kbd class="kbd docutils literal notranslate">scons==4.4.0</kbd></kbd></p></li>
+<li><p>GCC: Matter <a class="reference external" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">arm-gcc</a></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<section id="evb">
+<h3>EVB<a class="headerlink" href="#evb" title="Link to this heading"></a></h3>
+<p>The EVB provides a hardware environment for user development and application debugging. The 86Box application uses the Model B EVB for demonstration, which consists of a mainboard and a daughterboard. The EVB has a download mode and a working mode. The download mode is used for functions like firmware burning, while the working mode is for normal operation of the application. Developer need to configure the EVB to enter the desired mode. For detailed information and instructions on using the EVB mainboard, please refer to  <a class="reference internal" href="../../../../doc/evb_guide/text_en/model_b.html"><span class="doc">Evaluation Board User Manual</span></a>.</p>
+<figure class="align-center" id="box-evb-en">
+<a class="reference internal image-reference" href="../../../../_images/fig_evb.png"><img alt="../../../../_images/fig_evb.png" src="../../../../_images/fig_evb.png" style="width: 498.59999999999997px; height: 658.1999999999999px;" /></a>
+<figcaption>
+<p><span class="caption-text">86Box EVB Wiring</span><a class="headerlink" href="#box-evb-en" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="wi-fi-module">
+<h3>Wi-Fi Module<a class="headerlink" href="#wi-fi-module" title="Link to this heading"></a></h3>
+<p>Please refer to section <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_en/README.html#wifi-nic-chapter-wiring"><span class="std std-ref">Wiring</span></a> of document <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_en/README.html"><span class="doc">Wi-Fi</span></a> for instructions on
+how to install the Wi-Fi module on the EVB.</p>
+</section>
+</section>
+<section id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Link to this heading"></a></h2>
+<p>The configuration of the 86Box solution in the SDK is located in  <code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj\menu_config.h</span></code>, the default configuration of the find my feature in the SDK is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="cp">#define CONFIG_REALTEK_BUILD_GUI_OS_HEAP      </span><span class="cm">/* RTK GUI Use OS Heap */</span>
+
+<span class="c1">// #define CONFIG_REALTEK_BUILD_MATTER_SWITCH  /* Enable Matter Switch */</span>
+<span class="cp">#define CONFIG_REALTEK_BUILD_MESH_SWITCH   0   </span><span class="cm">/* Enable Mesh Provisioner, 0: disable, 1: enable */</span>
+<span class="cp">#define CONFIG_REALTEK_BUILD_WIFI_NIC    0     </span><span class="cm">/* Enable WIFI NIC, 0: disable, 1: enable */</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After making configuration changes, the configuration will take effect when the project is rebuilt according to the supported compilation method. Please refer to the  <a class="reference internal" href="#en-86box-compile-download"><span class="std std-ref">Building and Downloading</span></a> steps for the building method.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_REALTEK_BUILD_GUI_OS_HEAP</span></code>: Configures whether to use internal RAM as the main RAM resource. It can be configured to use PSRAM as the main RAM resource.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_REALTEK_BUILD_MATTER_SWITCH</span></code>: Configures whether to enable the Matter module. The Matter module only supports GCC compilation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_REALTEK_BUILD_MESH_SWITCH</span></code>: Configures whether to enable the Mesh module. The Mesh module only supports arm-compiler compilation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_REALTEK_BUILD_WIFI_NIC</span></code>: Configures whether to enable the Wi-Fi Nic module. The Wi-Fi Nic module only supports arm-compiler compilation.</p></li>
+</ul>
+</div>
+</section>
+<section id="building-and-downloading">
+<span id="en-86box-compile-download"></span><h2>Building and Downloading<a class="headerlink" href="#building-and-downloading" title="Link to this heading"></a></h2>
+<p>Refer to <a class="reference internal" href="../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a> to build and download.
+It is worth noting that:</p>
+<ol class="arabic">
+<li><div class="line-block">
+<div class="line">In <a class="reference internal" href="../../../../doc/quick_start/text_en/README.html#generating-flash-map"><span class="std std-ref">Generating Flash Map</span></a> sevtion:</div>
+<div class="line">the developer need to generate the <code class="file docutils literal notranslate"><span class="pre">flash_map.ini</span></code> according to the <code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj\flash_map.h</span></code>.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">In <a class="reference internal" href="../../../../doc/quick_start/text_en/README.html#generating-system-config-file"><span class="std std-ref">Generating System Config File</span></a> section:</div>
+<div class="line">make sure to enable psram power. Other features can be configured as needed.</div>
+</div>
+</li>
+</ol>
+<figure class="align-center" id="system-config-enable-psram-power-86box">
+<a class="reference internal image-reference" href="../../../../_images/fig_system_config.png"><img alt="../../../../_images/fig_system_config.png" src="../../../../_images/fig_system_config.png" style="width: 685.8px; height: 553.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">System Config Enable Psram Power</span><a class="headerlink" href="#system-config-enable-psram-power-86box" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic" start="3">
+<li><p>In <a class="reference internal" href="../../../../doc/quick_start/text_en/README.html#generate-app-image"><span class="std std-ref">Generating App Image</span></a> section:</p>
+<ol class="arabic">
+<li><p>The 86Box SDK project path is <code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj</span></code>.</p></li>
+<li><p>The Keil MDK project path is <code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj\mdk</span></code>.</p></li>
+<li><p>After modifying the project configuration, the project needs to be rebuilt, which will generate a completely new project file to overwrite the original project file.</p></li>
+<li><p>To build the project, open a cmd window in the project path.</p>
+<ol class="arabic">
+<li><p>For projects that support arm-compiler, run the command <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">scons</kbd> <kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate"></kbd>-<kbd class="kbd docutils literal notranslate">target=mdk5</kbd></kbd> to build the mdk project. Open the mdk project for compilation. The APP image will be generated in <code class="file docutils literal notranslate"><span class="pre">SDK\applications\86box\proj\mdk\bin</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">SDK\applications\86box\proj&gt; scons --target=mdk5</span>
+</span><span class="go">scons: Reading SConscript files ...</span>
+<span class="go">...</span>
+<span class="go">CC xxxx.o</span>
+<span class="go">CC xxxx.o</span>
+<span class="go">...</span>
+<span class="go">LINK app.elf</span>
+<span class="go">fromelf --bin app.elf --output rtthread.bin</span>
+<span class="go">fromelf -z app.elf</span>
+<span class="go">scons: done building targets.</span>
+</pre></div>
+</div>
+</li>
+<li><p>For projects that support gcc, run <kbd class="kbd docutils literal notranslate">scons</kbd> to build and compile the project. The APP image will be generated in the project path.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="go">SDK\applications\86box\proj&gt; scons</span>
+</span><span class="go">scons: Reading SConscript files ...</span>
+<span class="go">...</span>
+<span class="go">CC xxxx.o</span>
+<span class="go">CC xxxx.o</span>
+<span class="go">...</span>
+<span class="go">arm-none-eabi-size app.elf</span>
+<span class="go">text    data     bss     dec     hex filename</span>
+<span class="go">974942       0  221424 1196366  12414e app.elf</span>
+<span class="go">..\..\..\tools\md5\md5.exe app_MP.bin</span>
+<span class="go">MD5 v1.0.4</span>
+<span class="go">Output Image: app_MP_sdk_1.0.5.16_5870d5e6-ecdd77cad50adfc46b584686317c7199.bin</span>
+<span class="go">scons: done building targets.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Generating and downloading User Data:</p>
+<ol class="arabic simple">
+<li><p>Please use the  <span class="guilabel">User Data</span>  feature of the MPTool to download  <code class="file docutils literal notranslate"><span class="pre">root(0x4600000).bin</span></code> and write it to the address <code class="docutils literal notranslate"><span class="pre">0x04600000</span></code>.</p></li>
+<li><p>The demo User Data path is <code class="file docutils literal notranslate"><span class="pre">SDK\subsys\gui\gui_engine\example\screen_480_480\</span></code>.</p></li>
+<li><p>When exporting a custom UI using RVisualDesigner, the path is  <code class="file docutils literal notranslate"><span class="pre">RVisualDesigner</span> <span class="pre">prj\Export\bin</span></code>.</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="experimental-verification">
+<h2>Experimental Verification<a class="headerlink" href="#experimental-verification" title="Link to this heading"></a></h2>
+<section id="gui-testing">
+<h3>GUI Testing<a class="headerlink" href="#gui-testing" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>After successfully flashing the firmware and UserData, switch the EVB to working mode and perform a reset to restart.</p></li>
+<li><p>After the device restarts, you will see a 86Box icon. Click on the icon to enter the application. The application has multiple horizontal tabs that can be sequentially switched by swiping left or right. The bottom dots indicate the current tab position, and you can click on them to quickly jump to a specific tab. The tabs include the main page, switch page, air conditioning page, curtain page, and WiFi speed test page. The controls within each page, such as buttons, can be interacted with. For more demonstrations of interactive controls, please refer to the <a class="reference external" href="https://docs.realmcu.com/gui/en/latest/sample/86box/86box.html">Demo An 86box Application</a>.</p></li>
+</ol>
+<figure class="align-center" id="uidemo-86box">
+<a class="reference internal image-reference" href="../../../../_images/fig_uiDemo.png"><img alt="../../../../_images/fig_uiDemo.png" src="../../../../_images/fig_uiDemo.png" style="width: 786.0px; height: 434.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">86Box UI Demo</span><a class="headerlink" href="#uidemo-86box" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="mesh-testing">
+<h3>Mesh Testing<a class="headerlink" href="#mesh-testing" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Configure the Mesh module in the project, build and compile it, and then flash and download it.</p></li>
+<li><p>Power on the Mesh Dongle and ensure that the switch on the dongle is in the <span class="guilabel">ON</span> position. When the switch is turned to the <span class="guilabel">ON</span> position, the dongle will blink one-time.</p></li>
+<li><p>After restarting the EVB, click on the 'bird' icon to enter the 86Box application. Swipe to the switch page and click on the corresponding switch to observe the Mesh Dongle lighting up or turning off, consistent with the status of the lights on the screen.</p></li>
+<li><p>For more detail information, please refer to  <a class="reference internal" href="../../../../samples/bluetooth/mesh/mesh_provisioner/doc/text_en/README.html"><span class="doc">Mesh Provisioner</span></a>.</p></li>
+</ol>
+<figure class="align-center" id="meshdemo-en">
+<a class="reference internal image-reference" href="../../../../_images/fig_meshDemo.png"><img alt="../../../../_images/fig_meshDemo.png" src="../../../../_images/fig_meshDemo.png" style="width: 393.3px; height: 675.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">86Box Mesh Demo</span><a class="headerlink" href="#meshdemo-en" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="matter-testing">
+<h3>Matter Testing<a class="headerlink" href="#matter-testing" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Please refer to section <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/light_switch/text_en/README.html#building">Building</a> in the <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/light_switch/text_en/README.html">Light Switch</a> document for the building part of Matter light switch. The generated Matter libs will be included in 86Box app.</p></li>
+<li><p>Configure the Matter module in the project, build and compile it, and then flash and download it.</p></li>
+<li><p>Please refer to section <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/light_switch/text_en/README.html#experimental-verification">Experimental Verification</a> in the <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/light_switch/text_en/README.html">Light Switch</a> document for the testing procedures of device commissioning, device binding and light control. Replace the 'Light Switch' app with '86Box' app.</p></li>
+</ol>
+</section>
+<section id="wi-fi-testing">
+<h3>Wi-Fi Testing<a class="headerlink" href="#wi-fi-testing" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Configure the Mesh module in the project, build and compile it, and then flash and download it.</p></li>
+<li><p>Please refer to section <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_en/README.html#wifi-nic-chapter-verification"><span class="std std-ref">Experimental Verification</span></a> in the <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_en/README.html"><span class="doc">Wi-Fi</span></a> document for the testing procedures of Wi-Fi scanning, connection, and other functionalities.</p></li>
+</ol>
+</section>
+</section>
+<section id="software-design-introduction">
+<h2>Software Design Introduction<a class="headerlink" href="#software-design-introduction" title="Link to this heading"></a></h2>
+<p>This chapter provides an overview of the software-related technical specifications and behavior specifications for the RTL8772GWP 86Box solution. It covers all the functionalities of 86Box, including GUI tasks, Mesh communication tasks, Matter communication tasks, Wi-Fi communication tasks, etc. These specifications are intended to guide the development of 86Box and troubleshoot software testing issues.</p>
+<section id="source-code-directory">
+<h3>Source Code Directory<a class="headerlink" href="#source-code-directory" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Project directory:  <code class="file docutils literal notranslate"><span class="pre">sdk\application\86box\proj</span></code>.</p></li>
+<li><p>Source code directory: <code class="file docutils literal notranslate"><span class="pre">sdk\application\86box\src</span></code>.</p></li>
+</ul>
+<p>Source files in 86Box application project are currently categorized into several groups as below.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: 86box
+    └── app                            includes the 86Box user application implementation
+        ├── menu_config.h              project construct configurations
+        ├── main.c
+        └── 86box_init.c
+    ├── lib
+    ├── device
+    ├── peripheral                     includes all peripheral drivers and module code used by the application
+    ├── profile                        includes BLE profiles or services
+    ├── dfu
+    ├── dfu_task
+    ├── rtk_gui                        includes all gui porting
+        ├── gui_port_acc.c
+        ├── gui_port_dc.c              display controller port
+        ├── gui_port_filesystem.c      filesystem api port
+        ├── gui_port_ftl.c
+        ├── gui_port_indev.c
+        └── gui_port_os.c              os api port
+    ├── realgui/3rd
+    ├── JerryScript
+    ├── JerryScriptPort
+    ├── realgui/app
+    ├── realgui/dc
+    ├── realgui/engine
+    ├── realgui/input
+    ├── realgui/misc
+    ├── realgui/SaaA                   includes js middle layer function implementation
+    ├── realgui/server
+    ├── realgui/widget                 includes all the realgui widgets implementation
+    ├── database
+    ├── fs
+    ├── hal_drivers
+    ├── lcd_low_driver                 includes display pannel IC driver implementation
+    ├── Compiler
+    └── touch_driver                   includes touch IC driver implementation
+    :
+    └── matter_switch                  includes Matter switch function implementation
+    :
+    ├── mesh switch                    includes mesh driver support
+    └── mesh app                       includes mesh application implementation
+    :
+    └── wifi_nic                       includes Wi-Fi function implementation
+</pre></div>
+</div>
+</section>
+<section id="flash-layout">
+<h3>Flash Layout<a class="headerlink" href="#flash-layout" title="Link to this heading"></a></h3>
+<p>Application default flash layout header file: <code class="file docutils literal notranslate"><span class="pre">sdk\application\86box\proj\flash_map.h</span></code>.</p>
+<table class="docutils align-default" id="sample-flash-layout-en">
+<caption><span class="caption-text">Flash Layout</span><a class="headerlink" href="#sample-flash-layout-en" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example layout with a total flash size of 16 MB</p></th>
+<th class="head"><p>Size(byte)</p></th>
+<th class="head"><p>Start Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>4K</p></td>
+<td><p>0x04000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OEM Header</p></td>
+<td><p>4K</p></td>
+<td><p>0x04001000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x04002000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x0400A000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Bank0</p></td>
+<td><p>2456K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>OTA Header</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>System Patch code</p></li>
+</ul>
+</td>
+<td><p>32K</p></td>
+<td><p>0x04013000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>BT Lowerstack Patch code</p></li>
+</ul>
+</td>
+<td><p>60K</p></td>
+<td><p>0x0401B000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>BT Host code</p></li>
+</ul>
+</td>
+<td><p>212K</p></td>
+<td><p>0x0402A000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP code</p></li>
+</ul>
+</td>
+<td><p>2148K</p></td>
+<td><p>0x0405F000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP Config File</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data1</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data2</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data3</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data4</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data5</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data6</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OTA Bank1</p></td>
+<td><p>0K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Secure APP code</p></td>
+<td><p>16K</p></td>
+<td><p>0x04278000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AC000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank1 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x0427C000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x0427C000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Temp</p></td>
+<td><p>2148K</p></td>
+<td><p>0x0427C000</p></td>
+</tr>
+<tr class="row-odd"><td><p>FTL</p></td>
+<td><p>16K</p></td>
+<td><p>0x04495000</p></td>
+</tr>
+<tr class="row-even"><td><p>APP Defined Section1</p></td>
+<td><p>0K</p></td>
+<td><p>0x04499000</p></td>
+</tr>
+<tr class="row-odd"><td><p>APP Defined Section2</p></td>
+<td><p>0K</p></td>
+<td><p>0x04499000</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>To adjust flash layout, flow the steps listed on the <a class="reference internal" href="../../../../doc/quick_start/text_en/README.html#generating-flash-map"><span class="std std-ref">Generating Flash Map</span></a> in
+<a class="reference internal" href="../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a></p></li>
+<li><p>After flash layout adjustment, you must flow the steps listed on the <a class="reference internal" href="../../../../doc/quick_start/text_en/README.html#generating-ota-header"><span class="std std-ref">Generating OTA Header</span></a>
+and <a class="reference internal" href="../../../../doc/quick_start/text_en/README.html#generating-system-config-file"><span class="std std-ref">Generating System Config File</span></a> with new flash layout file.</p></li>
+</ul>
+</div>
+</section>
+<section id="software-architecture">
+<h3>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading"></a></h3>
+<p>The software architecture of the system is shown below:</p>
+<figure class="align-center" id="software-architecture-86box">
+<a class="reference internal image-reference" href="../../../../_images/fig_swArch.png"><img alt="../../../../_images/fig_swArch.png" src="../../../../_images/fig_swArch.png" style="width: 691.2px; height: 521.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">Software Architecture</span><a class="headerlink" href="#software-architecture-86box" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Platform feature</strong>: Includes OTA, Flash, <a class="reference internal" href="../../../../doc/glossary.html#term-FTL"><span class="xref std std-term">FTL</span></a> and etc.</p></li>
+<li><p><strong>Peripheral driver</strong>: Provide application layer access to the interface of RTL87x2G peripherals.</p></li>
+<li><p><strong>OSIF</strong>: Abstraction layer for real-time operating systems.</p></li>
+<li><p><strong>GAP</strong>: Abstraction layer which user application communicates with BLE stack.</p></li>
+<li><p><strong>Application</strong>: The application layer contains user-defined application tasks.</p></li>
+</ul>
+</section>
+<section id="task-and-priority">
+<h3>Task and Priority<a class="headerlink" href="#task-and-priority" title="Link to this heading"></a></h3>
+<p>As shown below, eight tasks have been created:</p>
+<figure class="align-center" id="tasks-86box">
+<a class="reference internal image-reference" href="../../../../_images/fig_swTask.png"><img alt="../../../../_images/fig_swTask.png" src="../../../../_images/fig_swTask.png" style="width: 795.2px; height: 542.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">System Software Architecture</span><a class="headerlink" href="#tasks-86box" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The description of each task and its priority is shown in table:</p>
+<table class="docutils align-center" id="id7">
+<caption><span class="caption-text">Task and Priority</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Priority</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Timer</p></td>
+<td><p>Implement the software timer required by FreeRTOS</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lower stack</p></td>
+<td><p>Implement BT stack protocols below <a class="reference internal" href="../../../../doc/glossary.html#term-HCI"><span class="xref std std-term">HCI</span></a></p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>Upper stack</p></td>
+<td><p>Implement BT stack protocols above <a class="reference internal" href="../../../../doc/glossary.html#term-HCI"><span class="xref std std-term">HCI</span></a></p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wi-Fi</p></td>
+<td><p>init Wi-Fi</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Mesh</p></td>
+<td><p>init Mesh</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Matter</p></td>
+<td><p>init Matte</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>GUI</p></td>
+<td><p>Handling UI display and interaction</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Idle</p></td>
+<td><p>Run background tasks</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multiple application tasks can be created, and memory resources will be allocated accordingly.</p>
+</div>
+</section>
+<section id="gui-task">
+<h3>GUI Task<a class="headerlink" href="#gui-task" title="Link to this heading"></a></h3>
+<p>The software architecture of the GUI task is shown in the following diagram:</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../../../_images/fig_swUI.png"><img alt="../../../../_images/fig_swUI.png" src="../../../../_images/fig_swUI.png" style="width: 680.0px; height: 328.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">GUI Task Software Architecture</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The GUI of the 86Box application is developed using a scripting language in collaboration with the visual UI design tool, RVisualDesigner. Developers use the UI design tool for UI layout design and resource configuration, and then utilize JS scripting language for interactive logic design. This development approach and software architecture are flexible and convenient. It uses JS middleware and XML parsing libraries to encapsulate common controls and interaction methods, reducing the learning curve for developers and shortening the development cycle. For details on how to use JS scripts and RVisualDesigner for UI design and development, please refer to <a class="reference external" href="https://docs.realmcu.com/gui/en/latest/GUI-APP/SaaA/index.html">Use Script Design An Application</a>.</p>
+<p>In the GUI task, the GUI utilizes the HMI (Human Machine Interface) with hardware device drivers to instantly capture and process user interactions, including touchpad and displays. The GUI then transfers the information to the corresponding controls. Developers can listen for user actions and control events in the JS script using APIs to further handle callbacks. Additionally, the GUI uses message queues to achieve information synchronization with other tasks, such as Mesh messages, Matter messages, Wi-Fi messages, etc. When developers need to port or adapt to other hardware platforms, they only need to modify the relevant interface files. For more information, please refer to <a class="reference external" href="https://docs.realmcu.com/gui/en/latest/Porting/index.html">Porting</a>.</p>
+</section>
+<section id="mesh-task">
+<h3>Mesh Task<a class="headerlink" href="#mesh-task" title="Link to this heading"></a></h3>
+<p>The software architecture for the Mesh task can be found in <a class="reference internal" href="../../../../subsys/bluetooth/mesh/doc/text_en/Bluetooth_Mesh_Overview.html"><span class="doc">Mesh Overview</span></a> document.</p>
+</section>
+<section id="matter-task">
+<h3>Matter Task<a class="headerlink" href="#matter-task" title="Link to this heading"></a></h3>
+<p>The Matter task is mainly used for initializing Matter stack. The Matter stack is developed on the official
+<a class="reference external" href="https://github.com/rtkconnectivity/connectedhomeip">Matter GitHub repository</a> and is open-sourced.</p>
+</section>
+<section id="wi-fi-task">
+<h3>Wi-Fi Task<a class="headerlink" href="#wi-fi-task" title="Link to this heading"></a></h3>
+<p>The software architecture for the Wi-Fi task can be found in
+section <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_en/README.html#wifi-nic-chapter-system-architecture"><span class="std std-ref">Software Architecture</span></a> of the <a class="reference internal" href="../../../../samples/wifi/wifi_nic/doc/text_en/README.html"><span class="doc">Wi-Fi</span></a> document.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../../doc/applications/text_en/README.html" class="btn btn-neutral float-left" title="Applications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../trimode_mouse/doc/text_en/README.html" class="btn btn-neutral float-right" title="Tri-Mode Mouse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

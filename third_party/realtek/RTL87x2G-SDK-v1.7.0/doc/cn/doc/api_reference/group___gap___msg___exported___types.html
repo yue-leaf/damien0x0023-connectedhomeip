@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GAP Msg Exported Types &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="GAP Observer Role" href="group___observer___role.html" />
+    <link rel="prev" title="GAP Scan State" href="group___g_a_p___s_c_a_n___s_t_a_t_e.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___b_t___d_i_r_e_c_t___m_s_g.html">Bluetooth Direct Message</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___b_t___d_e_f.html">Bluetooth Related Definition</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___c_o_m_m_o_n___m_o_d_u_l_e.html">GAP Common Module</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___g_a_p___l_e.html">GAP LE Module</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___b_r_o_a_d_c_a_s_t_e_r___role.html">GAP Broadcaster Role</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___c_b___m_s_g___m_o_d_u_l_e.html">GAP Callback Message</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___e_c_f_c___m_o_d_u_l_e.html">GAP ECFC Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___c_h_a_n_n_e_l___m_o_d_u_l_e.html">GAP L2CAP Channel Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___a_o_x___c_o_n_n.html">GAP LE AoA/AoD Connection Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___a_o_x___c_o_n_n_l_e_s_s___r_e_c_e_i_v_e_r.html">GAP LE AoA/AoD Connectionless Receiver Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___a_o_x___c_o_n_n_l_e_s_s___t_r_a_n_s_m_i_t_t_e_r.html">GAP LE AoA/AoD Connectionless Transmitter Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___a_o_x.html">GAP LE AoA/AoD Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___b_i_g___m_g_r.html">GAP LE BIG Mgr Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___bond___manager.html">GAP LE Bond Manager</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_i_g___m_g_r.html">GAP LE CIG Mgr Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_o_m_m_o_n.html">GAP LE Common Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_o_n_f_i_g.html">GAP LE Config Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_o_n_n_e_c_t_i_o_n___m_o_d_u_l_e.html">GAP LE Connection Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___c_r_e_d_i_t___b_a_s_e_d___c_o_n_n.html">GAP LE Credit Based Connection Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___d_t_m.html">GAP LE Direct Test Mode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___e_x_t_e_n_d_e_d___a_d_v.html">GAP LE Extended ADV Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___e_x_t_e_n_d_e_d___s_c_a_n.html">GAP LE Extended Scan Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___i_s_o___d_a_t_a.html">GAP LE ISO Data Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___i_s_o_c___d_e_f.html">GAP LE Isochronous Channels Definition Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___p_a___a_d_v.html">GAP LE PA ADV Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___p_a___s_y_n_c.html">GAP LE PA Sync Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___p_a_s_t___r_e_c_i_p_i_e_n_t.html">GAP LE PAST Recipient</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___p_a_s_t___s_e_n_d_e_r.html">GAP LE PAST Sender Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___p_r_i_v_a_c_y___m_o_d_u_l_e.html">GAP LE Privacy</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___r_f.html">GAP LE RF Module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___t_y_p_e_s.html">GAP LE Related Definitions</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___s_t_o_r_a_g_e.html">GAP LE Storage</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_a_p___l_e___v_e_n_d_o_r.html">GAP LE Vendor</a></li>
+<li class="toctree-l6 current"><a class="reference internal" href="group___g_a_p___m_s_g___m_o_d_u_l_e.html">GAP Message</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___gap___msg___exported___macros.html">GAP Msg Exported Macros</a></li>
+<li class="toctree-l7 current"><a class="current reference internal" href="#">GAP Msg Exported Types</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv416T_GAP_CONN_STATE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_GAP_CONN_STATE27GAP_CONN_STATE_DISCONNECTEDE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE::GAP_CONN_STATE_DISCONNECTED</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_GAP_CONN_STATE25GAP_CONN_STATE_CONNECTINGE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE::GAP_CONN_STATE_CONNECTING</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_GAP_CONN_STATE24GAP_CONN_STATE_CONNECTEDE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE::GAP_CONN_STATE_CONNECTED</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_GAP_CONN_STATE28GAP_CONN_STATE_DISCONNECTINGE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE::GAP_CONN_STATE_DISCONNECTING</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv415T_GAP_DEV_STATE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N15T_GAP_DEV_STATE14gap_init_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE::gap_init_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N15T_GAP_DEV_STATE17gap_adv_sub_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE::gap_adv_sub_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N15T_GAP_DEV_STATE13gap_adv_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE::gap_adv_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N15T_GAP_DEV_STATE14gap_scan_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE::gap_scan_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N15T_GAP_DEV_STATE14gap_conn_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE::gap_conn_state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv422T_GAP_DEV_STATE_CHANGE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE_CHANGE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GAP_DEV_STATE_CHANGE9new_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE_CHANGE::new_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N22T_GAP_DEV_STATE_CHANGE5causeE"><code class="docutils literal notranslate"><span class="pre">T_GAP_DEV_STATE_CHANGE::cause</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv423T_GAP_CONN_STATE_CHANGE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE_CHANGE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GAP_CONN_STATE_CHANGE7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE_CHANGE::conn_id</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GAP_CONN_STATE_CHANGE9new_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE_CHANGE::new_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GAP_CONN_STATE_CHANGE10disc_causeE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_STATE_CHANGE::disc_cause</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv423T_GAP_CONN_PARAM_UPDATE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_PARAM_UPDATE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GAP_CONN_PARAM_UPDATE7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_PARAM_UPDATE::conn_id</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GAP_CONN_PARAM_UPDATE6statusE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_PARAM_UPDATE::status</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_GAP_CONN_PARAM_UPDATE5causeE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_PARAM_UPDATE::cause</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv418T_GAP_AUTHEN_STATE"><code class="docutils literal notranslate"><span class="pre">T_GAP_AUTHEN_STATE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N18T_GAP_AUTHEN_STATE7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_AUTHEN_STATE::conn_id</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N18T_GAP_AUTHEN_STATE9new_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_AUTHEN_STATE::new_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N18T_GAP_AUTHEN_STATE6statusE"><code class="docutils literal notranslate"><span class="pre">T_GAP_AUTHEN_STATE::status</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv426T_GAP_BOND_PASSKEY_DISPLAY"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_PASSKEY_DISPLAY</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N26T_GAP_BOND_PASSKEY_DISPLAY7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_PASSKEY_DISPLAY::conn_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv420T_GAP_BOND_USER_CONF"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_USER_CONF</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N20T_GAP_BOND_USER_CONF7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_USER_CONF::conn_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv425T_GAP_BOND_JUST_WORK_CONF"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_JUST_WORK_CONF</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N25T_GAP_BOND_JUST_WORK_CONF7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_JUST_WORK_CONF::conn_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv424T_GAP_BOND_PASSKEY_INPUT"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_PASSKEY_INPUT</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N24T_GAP_BOND_PASSKEY_INPUT7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_PASSKEY_INPUT::conn_id</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N24T_GAP_BOND_PASSKEY_INPUT9key_pressE"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_PASSKEY_INPUT::key_press</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv420T_GAP_BOND_OOB_INPUT"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_OOB_INPUT</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N20T_GAP_BOND_OOB_INPUT7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_BOND_OOB_INPUT::conn_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv419T_GAP_CONN_MTU_INFO"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_MTU_INFO</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N19T_GAP_CONN_MTU_INFO7conn_idE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_MTU_INFO::conn_id</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N19T_GAP_CONN_MTU_INFO8mtu_sizeE"><code class="docutils literal notranslate"><span class="pre">T_GAP_CONN_MTU_INFO::mtu_size</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv426T_GAP_EXT_ADV_STATE_CHANGE"><code class="docutils literal notranslate"><span class="pre">T_GAP_EXT_ADV_STATE_CHANGE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE10adv_handleE"><code class="docutils literal notranslate"><span class="pre">T_GAP_EXT_ADV_STATE_CHANGE::adv_handle</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE9new_stateE"><code class="docutils literal notranslate"><span class="pre">T_GAP_EXT_ADV_STATE_CHANGE::new_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE5causeE"><code class="docutils literal notranslate"><span class="pre">T_GAP_EXT_ADV_STATE_CHANGE::cause</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv417T_LE_GAP_MSG_DATA"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA20gap_dev_state_changeE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_dev_state_change</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA21gap_conn_state_changeE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_conn_state_change</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA21gap_conn_param_updateE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_conn_param_update</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA17gap_conn_mtu_infoE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_conn_mtu_info</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA16gap_authen_stateE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_authen_state</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA24gap_bond_passkey_displayE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_bond_passkey_display</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA22gap_bond_passkey_inputE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_bond_passkey_input</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA18gap_bond_oob_inputE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_bond_oob_input</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA18gap_bond_user_confE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_bond_user_conf</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA23gap_bond_just_work_confE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_bond_just_work_conf</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N17T_LE_GAP_MSG_DATA24gap_ext_adv_state_changeE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG_DATA::gap_ext_adv_state_change</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv412T_LE_GAP_MSG"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N12T_LE_GAP_MSG8msg_dataE"><code class="docutils literal notranslate"><span class="pre">T_LE_GAP_MSG::msg_data</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___observer___role.html">GAP Observer Role</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p___g_a_t_t___s_e_r_v_i_c_e.html">GAP and GATT Inbox Services</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___c_l_i_e_n_t___a_p_i.html">GATT Client API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___c_o_m_m_o_n.html">GATT Common</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___a_p_i.html">GATT Server API</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_t___host.html">Bluetooth Host</a></li>
+        <li class="breadcrumb-item"><a href="group___g_a_p___l_e.html">GAP LE Module</a></li>
+        <li class="breadcrumb-item"><a href="group___g_a_p___m_s_g___m_o_d_u_l_e.html">GAP Message</a></li>
+    <li class="breadcrumb-item active">GAP Msg Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gap-msg-exported-types">
+<h1>GAP Msg Exported Types<a class="headerlink" href="#gap-msg-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___gap___msg___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Gap_Msg_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416T_GAP_CONN_STATE">
+<span id="_CPPv316T_GAP_CONN_STATE"></span><span id="_CPPv216T_GAP_CONN_STATE"></span><span class="target" id="group___gap___msg___exported___types_1gae236f1ba42a45ef51d2178ffa9acc44e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_CONN_STATE</span></span></span><a class="headerlink" href="#_CPPv416T_GAP_CONN_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>GAP Connection States. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GAP_CONN_STATE27GAP_CONN_STATE_DISCONNECTEDE">
+<span id="_CPPv3N16T_GAP_CONN_STATE27GAP_CONN_STATE_DISCONNECTEDE"></span><span id="_CPPv2N16T_GAP_CONN_STATE27GAP_CONN_STATE_DISCONNECTEDE"></span><span class="target" id="group___gap___msg___exported___types_1ggae236f1ba42a45ef51d2178ffa9acc44ea1f99834fae71c71c7ad9e178f6cee6d9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GAP_CONN_STATE_DISCONNECTED</span></span></span><a class="headerlink" href="#_CPPv4N16T_GAP_CONN_STATE27GAP_CONN_STATE_DISCONNECTEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Disconnected. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GAP_CONN_STATE25GAP_CONN_STATE_CONNECTINGE">
+<span id="_CPPv3N16T_GAP_CONN_STATE25GAP_CONN_STATE_CONNECTINGE"></span><span id="_CPPv2N16T_GAP_CONN_STATE25GAP_CONN_STATE_CONNECTINGE"></span><span class="target" id="group___gap___msg___exported___types_1ggae236f1ba42a45ef51d2178ffa9acc44ea0c9f4740bbcfdd7a32fb036663ef9b06"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GAP_CONN_STATE_CONNECTING</span></span></span><a class="headerlink" href="#_CPPv4N16T_GAP_CONN_STATE25GAP_CONN_STATE_CONNECTINGE" title="Link to this definition"></a><br /></dt>
+<dd><p>Connecting. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GAP_CONN_STATE24GAP_CONN_STATE_CONNECTEDE">
+<span id="_CPPv3N16T_GAP_CONN_STATE24GAP_CONN_STATE_CONNECTEDE"></span><span id="_CPPv2N16T_GAP_CONN_STATE24GAP_CONN_STATE_CONNECTEDE"></span><span class="target" id="group___gap___msg___exported___types_1ggae236f1ba42a45ef51d2178ffa9acc44eaf55da45e50c905e90a11f4b73bc00f78"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GAP_CONN_STATE_CONNECTED</span></span></span><a class="headerlink" href="#_CPPv4N16T_GAP_CONN_STATE24GAP_CONN_STATE_CONNECTEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Connected. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GAP_CONN_STATE28GAP_CONN_STATE_DISCONNECTINGE">
+<span id="_CPPv3N16T_GAP_CONN_STATE28GAP_CONN_STATE_DISCONNECTINGE"></span><span id="_CPPv2N16T_GAP_CONN_STATE28GAP_CONN_STATE_DISCONNECTINGE"></span><span class="target" id="group___gap___msg___exported___types_1ggae236f1ba42a45ef51d2178ffa9acc44ea8d4bbf58375d4401fcc49676d9de5407"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GAP_CONN_STATE_DISCONNECTING</span></span></span><a class="headerlink" href="#_CPPv4N16T_GAP_CONN_STATE28GAP_CONN_STATE_DISCONNECTINGE" title="Link to this definition"></a><br /></dt>
+<dd><p>Disconnecting. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415T_GAP_DEV_STATE">
+<span id="_CPPv315T_GAP_DEV_STATE"></span><span id="_CPPv215T_GAP_DEV_STATE"></span><span id="T_GAP_DEV_STATE"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_DEV_STATE</span></span></span><a class="headerlink" href="#_CPPv415T_GAP_DEV_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>Device State. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15T_GAP_DEV_STATE14gap_init_stateE">
+<span id="_CPPv3N15T_GAP_DEV_STATE14gap_init_stateE"></span><span id="_CPPv2N15T_GAP_DEV_STATE14gap_init_stateE"></span><span id="T_GAP_DEV_STATE::gap_init_state__uint8_t"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e_1afa2a6bc3885c633950d87ae625b6bab4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_init_state</span></span></span><a class="headerlink" href="#_CPPv4N15T_GAP_DEV_STATE14gap_init_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___g_a_p___i_n_i_t___s_t_a_t_e.html#group___g_a_p___i_n_i_t___s_t_a_t_e"><span class="std std-ref">GAP Initial State</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15T_GAP_DEV_STATE17gap_adv_sub_stateE">
+<span id="_CPPv3N15T_GAP_DEV_STATE17gap_adv_sub_stateE"></span><span id="_CPPv2N15T_GAP_DEV_STATE17gap_adv_sub_stateE"></span><span id="T_GAP_DEV_STATE::gap_adv_sub_state__uint8_t"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e_1afa67638004f4a165547051d9eab991b5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_adv_sub_state</span></span></span><a class="headerlink" href="#_CPPv4N15T_GAP_DEV_STATE17gap_adv_sub_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___g_a_p___a_d_v___s_u_b___s_t_a_t_e.html#group___g_a_p___a_d_v___s_u_b___s_t_a_t_e"><span class="std std-ref">GAP Advertising Substate</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15T_GAP_DEV_STATE13gap_adv_stateE">
+<span id="_CPPv3N15T_GAP_DEV_STATE13gap_adv_stateE"></span><span id="_CPPv2N15T_GAP_DEV_STATE13gap_adv_stateE"></span><span id="T_GAP_DEV_STATE::gap_adv_state__uint8_t"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e_1a3e0c56e4030e8a65a67c54100483026e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_adv_state</span></span></span><a class="headerlink" href="#_CPPv4N15T_GAP_DEV_STATE13gap_adv_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___g_a_p___a_d_v___s_t_a_t_e.html#group___g_a_p___a_d_v___s_t_a_t_e"><span class="std std-ref">GAP Advertising State</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15T_GAP_DEV_STATE14gap_scan_stateE">
+<span id="_CPPv3N15T_GAP_DEV_STATE14gap_scan_stateE"></span><span id="_CPPv2N15T_GAP_DEV_STATE14gap_scan_stateE"></span><span id="T_GAP_DEV_STATE::gap_scan_state__uint8_t"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e_1a6a2612c1b253a71eaed5613ea7dbb4e9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_scan_state</span></span></span><a class="headerlink" href="#_CPPv4N15T_GAP_DEV_STATE14gap_scan_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___g_a_p___s_c_a_n___s_t_a_t_e.html#group___g_a_p___s_c_a_n___s_t_a_t_e"><span class="std std-ref">GAP Scan State</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15T_GAP_DEV_STATE14gap_conn_stateE">
+<span id="_CPPv3N15T_GAP_DEV_STATE14gap_conn_stateE"></span><span id="_CPPv2N15T_GAP_DEV_STATE14gap_conn_stateE"></span><span id="T_GAP_DEV_STATE::gap_conn_state__uint8_t"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e_1a29c134a279511591376fff5b0097edb5"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_conn_state</span></span></span><a class="headerlink" href="#_CPPv4N15T_GAP_DEV_STATE14gap_conn_stateE" title="Link to this definition"></a><br /></dt>
+<dd><p><a class="reference internal" href="group___g_a_p___c_o_n_n___s_t_a_t_e.html#group___g_a_p___c_o_n_n___s_t_a_t_e"><span class="std std-ref">GAP Connection State</span></a>. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422T_GAP_DEV_STATE_CHANGE">
+<span id="_CPPv322T_GAP_DEV_STATE_CHANGE"></span><span id="_CPPv222T_GAP_DEV_STATE_CHANGE"></span><span id="T_GAP_DEV_STATE_CHANGE"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e___c_h_a_n_g_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_DEV_STATE_CHANGE</span></span></span><a class="headerlink" href="#_CPPv422T_GAP_DEV_STATE_CHANGE" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1gae9874bb97b4d115932f5f124be42ad92"><span class="std std-ref">GAP_MSG_LE_DEV_STATE_CHANGE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GAP_DEV_STATE_CHANGE9new_stateE">
+<span id="_CPPv3N22T_GAP_DEV_STATE_CHANGE9new_stateE"></span><span id="_CPPv2N22T_GAP_DEV_STATE_CHANGE9new_stateE"></span><span id="T_GAP_DEV_STATE_CHANGE::new_state__T_GAP_DEV_STATE"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e___c_h_a_n_g_e_1a7c69580dcb030e2dc78819f2e6cafdbc"></span><a class="reference internal" href="#_CPPv415T_GAP_DEV_STATE" title="T_GAP_DEV_STATE"><span class="n"><span class="pre">T_GAP_DEV_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">new_state</span></span></span><a class="headerlink" href="#_CPPv4N22T_GAP_DEV_STATE_CHANGE9new_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GAP_DEV_STATE_CHANGE5causeE">
+<span id="_CPPv3N22T_GAP_DEV_STATE_CHANGE5causeE"></span><span id="_CPPv2N22T_GAP_DEV_STATE_CHANGE5causeE"></span><span id="T_GAP_DEV_STATE_CHANGE::cause__uint16_t"></span><span class="target" id="struct_t___g_a_p___d_e_v___s_t_a_t_e___c_h_a_n_g_e_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N22T_GAP_DEV_STATE_CHANGE5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423T_GAP_CONN_STATE_CHANGE">
+<span id="_CPPv323T_GAP_CONN_STATE_CHANGE"></span><span id="_CPPv223T_GAP_CONN_STATE_CHANGE"></span><span id="T_GAP_CONN_STATE_CHANGE"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___s_t_a_t_e___c_h_a_n_g_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_CONN_STATE_CHANGE</span></span></span><a class="headerlink" href="#_CPPv423T_GAP_CONN_STATE_CHANGE" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1ga3937cafa580489feee23b58296957e01"><span class="std std-ref">GAP_MSG_LE_CONN_STATE_CHANGE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GAP_CONN_STATE_CHANGE7conn_idE">
+<span id="_CPPv3N23T_GAP_CONN_STATE_CHANGE7conn_idE"></span><span id="_CPPv2N23T_GAP_CONN_STATE_CHANGE7conn_idE"></span><span id="T_GAP_CONN_STATE_CHANGE::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___s_t_a_t_e___c_h_a_n_g_e_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N23T_GAP_CONN_STATE_CHANGE7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GAP_CONN_STATE_CHANGE9new_stateE">
+<span id="_CPPv3N23T_GAP_CONN_STATE_CHANGE9new_stateE"></span><span id="_CPPv2N23T_GAP_CONN_STATE_CHANGE9new_stateE"></span><span id="T_GAP_CONN_STATE_CHANGE::new_state__uint8_t"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___s_t_a_t_e___c_h_a_n_g_e_1a58f2bd48909950e16039c2319519f79f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">new_state</span></span></span><a class="headerlink" href="#_CPPv4N23T_GAP_CONN_STATE_CHANGE9new_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GAP_CONN_STATE_CHANGE10disc_causeE">
+<span id="_CPPv3N23T_GAP_CONN_STATE_CHANGE10disc_causeE"></span><span id="_CPPv2N23T_GAP_CONN_STATE_CHANGE10disc_causeE"></span><span id="T_GAP_CONN_STATE_CHANGE::disc_cause__uint16_t"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___s_t_a_t_e___c_h_a_n_g_e_1a15f45b2c898ca276b537e9c749fced6b"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">disc_cause</span></span></span><a class="headerlink" href="#_CPPv4N23T_GAP_CONN_STATE_CHANGE10disc_causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423T_GAP_CONN_PARAM_UPDATE">
+<span id="_CPPv323T_GAP_CONN_PARAM_UPDATE"></span><span id="_CPPv223T_GAP_CONN_PARAM_UPDATE"></span><span id="T_GAP_CONN_PARAM_UPDATE"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___p_a_r_a_m___u_p_d_a_t_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_CONN_PARAM_UPDATE</span></span></span><a class="headerlink" href="#_CPPv423T_GAP_CONN_PARAM_UPDATE" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1ga0d1a35f4e8a0e57d172fe10f12807066"><span class="std std-ref">GAP_MSG_LE_CONN_PARAM_UPDATE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GAP_CONN_PARAM_UPDATE7conn_idE">
+<span id="_CPPv3N23T_GAP_CONN_PARAM_UPDATE7conn_idE"></span><span id="_CPPv2N23T_GAP_CONN_PARAM_UPDATE7conn_idE"></span><span id="T_GAP_CONN_PARAM_UPDATE::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___p_a_r_a_m___u_p_d_a_t_e_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N23T_GAP_CONN_PARAM_UPDATE7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GAP_CONN_PARAM_UPDATE6statusE">
+<span id="_CPPv3N23T_GAP_CONN_PARAM_UPDATE6statusE"></span><span id="_CPPv2N23T_GAP_CONN_PARAM_UPDATE6statusE"></span><span id="T_GAP_CONN_PARAM_UPDATE::status__uint8_t"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___p_a_r_a_m___u_p_d_a_t_e_1ade818037fd6c985038ff29656089758d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N23T_GAP_CONN_PARAM_UPDATE6statusE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_GAP_CONN_PARAM_UPDATE5causeE">
+<span id="_CPPv3N23T_GAP_CONN_PARAM_UPDATE5causeE"></span><span id="_CPPv2N23T_GAP_CONN_PARAM_UPDATE5causeE"></span><span id="T_GAP_CONN_PARAM_UPDATE::cause__uint16_t"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___p_a_r_a_m___u_p_d_a_t_e_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N23T_GAP_CONN_PARAM_UPDATE5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418T_GAP_AUTHEN_STATE">
+<span id="_CPPv318T_GAP_AUTHEN_STATE"></span><span id="_CPPv218T_GAP_AUTHEN_STATE"></span><span id="T_GAP_AUTHEN_STATE"></span><span class="target" id="struct_t___g_a_p___a_u_t_h_e_n___s_t_a_t_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_AUTHEN_STATE</span></span></span><a class="headerlink" href="#_CPPv418T_GAP_AUTHEN_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1gaf4e6edb01c279d7966d8114ad2f55437"><span class="std std-ref">GAP_MSG_LE_AUTHEN_STATE_CHANGE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GAP_AUTHEN_STATE7conn_idE">
+<span id="_CPPv3N18T_GAP_AUTHEN_STATE7conn_idE"></span><span id="_CPPv2N18T_GAP_AUTHEN_STATE7conn_idE"></span><span id="T_GAP_AUTHEN_STATE::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___a_u_t_h_e_n___s_t_a_t_e_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N18T_GAP_AUTHEN_STATE7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GAP_AUTHEN_STATE9new_stateE">
+<span id="_CPPv3N18T_GAP_AUTHEN_STATE9new_stateE"></span><span id="_CPPv2N18T_GAP_AUTHEN_STATE9new_stateE"></span><span id="T_GAP_AUTHEN_STATE::new_state__uint8_t"></span><span class="target" id="struct_t___g_a_p___a_u_t_h_e_n___s_t_a_t_e_1a58f2bd48909950e16039c2319519f79f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">new_state</span></span></span><a class="headerlink" href="#_CPPv4N18T_GAP_AUTHEN_STATE9new_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GAP_AUTHEN_STATE6statusE">
+<span id="_CPPv3N18T_GAP_AUTHEN_STATE6statusE"></span><span id="_CPPv2N18T_GAP_AUTHEN_STATE6statusE"></span><span id="T_GAP_AUTHEN_STATE::status__uint16_t"></span><span class="target" id="struct_t___g_a_p___a_u_t_h_e_n___s_t_a_t_e_1a5393c99e246925076b1dfd69a64177ef"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N18T_GAP_AUTHEN_STATE6statusE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426T_GAP_BOND_PASSKEY_DISPLAY">
+<span id="_CPPv326T_GAP_BOND_PASSKEY_DISPLAY"></span><span id="_CPPv226T_GAP_BOND_PASSKEY_DISPLAY"></span><span id="T_GAP_BOND_PASSKEY_DISPLAY"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___p_a_s_s_k_e_y___d_i_s_p_l_a_y"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_BOND_PASSKEY_DISPLAY</span></span></span><a class="headerlink" href="#_CPPv426T_GAP_BOND_PASSKEY_DISPLAY" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1gae4f8067dc7ca40f371ae85922619205c"><span class="std std-ref">GAP_MSG_LE_BOND_PASSKEY_DISPLAY</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GAP_BOND_PASSKEY_DISPLAY7conn_idE">
+<span id="_CPPv3N26T_GAP_BOND_PASSKEY_DISPLAY7conn_idE"></span><span id="_CPPv2N26T_GAP_BOND_PASSKEY_DISPLAY7conn_idE"></span><span id="T_GAP_BOND_PASSKEY_DISPLAY::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___p_a_s_s_k_e_y___d_i_s_p_l_a_y_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N26T_GAP_BOND_PASSKEY_DISPLAY7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420T_GAP_BOND_USER_CONF">
+<span id="_CPPv320T_GAP_BOND_USER_CONF"></span><span id="_CPPv220T_GAP_BOND_USER_CONF"></span><span id="T_GAP_BOND_USER_CONF"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___u_s_e_r___c_o_n_f"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_BOND_USER_CONF</span></span></span><a class="headerlink" href="#_CPPv420T_GAP_BOND_USER_CONF" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1gada28f27ecd48284a36b0fb69934c1c94"><span class="std std-ref">GAP_MSG_LE_BOND_USER_CONFIRMATION</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GAP_BOND_USER_CONF7conn_idE">
+<span id="_CPPv3N20T_GAP_BOND_USER_CONF7conn_idE"></span><span id="_CPPv2N20T_GAP_BOND_USER_CONF7conn_idE"></span><span id="T_GAP_BOND_USER_CONF::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___u_s_e_r___c_o_n_f_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N20T_GAP_BOND_USER_CONF7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425T_GAP_BOND_JUST_WORK_CONF">
+<span id="_CPPv325T_GAP_BOND_JUST_WORK_CONF"></span><span id="_CPPv225T_GAP_BOND_JUST_WORK_CONF"></span><span id="T_GAP_BOND_JUST_WORK_CONF"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___j_u_s_t___w_o_r_k___c_o_n_f"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_BOND_JUST_WORK_CONF</span></span></span><a class="headerlink" href="#_CPPv425T_GAP_BOND_JUST_WORK_CONF" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1gac03fcf124046d4d4ee2e8b9a21ed4bab"><span class="std std-ref">GAP_MSG_LE_BOND_JUST_WORK</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GAP_BOND_JUST_WORK_CONF7conn_idE">
+<span id="_CPPv3N25T_GAP_BOND_JUST_WORK_CONF7conn_idE"></span><span id="_CPPv2N25T_GAP_BOND_JUST_WORK_CONF7conn_idE"></span><span id="T_GAP_BOND_JUST_WORK_CONF::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___j_u_s_t___w_o_r_k___c_o_n_f_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N25T_GAP_BOND_JUST_WORK_CONF7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424T_GAP_BOND_PASSKEY_INPUT">
+<span id="_CPPv324T_GAP_BOND_PASSKEY_INPUT"></span><span id="_CPPv224T_GAP_BOND_PASSKEY_INPUT"></span><span id="T_GAP_BOND_PASSKEY_INPUT"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___p_a_s_s_k_e_y___i_n_p_u_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_BOND_PASSKEY_INPUT</span></span></span><a class="headerlink" href="#_CPPv424T_GAP_BOND_PASSKEY_INPUT" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1gad3378cc599f99bec96a48a40ade535fb"><span class="std std-ref">GAP_MSG_LE_BOND_PASSKEY_INPUT</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GAP_BOND_PASSKEY_INPUT7conn_idE">
+<span id="_CPPv3N24T_GAP_BOND_PASSKEY_INPUT7conn_idE"></span><span id="_CPPv2N24T_GAP_BOND_PASSKEY_INPUT7conn_idE"></span><span id="T_GAP_BOND_PASSKEY_INPUT::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___p_a_s_s_k_e_y___i_n_p_u_t_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N24T_GAP_BOND_PASSKEY_INPUT7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GAP_BOND_PASSKEY_INPUT9key_pressE">
+<span id="_CPPv3N24T_GAP_BOND_PASSKEY_INPUT9key_pressE"></span><span id="_CPPv2N24T_GAP_BOND_PASSKEY_INPUT9key_pressE"></span><span id="T_GAP_BOND_PASSKEY_INPUT::key_press__uint8_t"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___p_a_s_s_k_e_y___i_n_p_u_t_1a247e3b2b03c084c83018bbf57fbe794f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">key_press</span></span></span><a class="headerlink" href="#_CPPv4N24T_GAP_BOND_PASSKEY_INPUT9key_pressE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420T_GAP_BOND_OOB_INPUT">
+<span id="_CPPv320T_GAP_BOND_OOB_INPUT"></span><span id="_CPPv220T_GAP_BOND_OOB_INPUT"></span><span id="T_GAP_BOND_OOB_INPUT"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___o_o_b___i_n_p_u_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_BOND_OOB_INPUT</span></span></span><a class="headerlink" href="#_CPPv420T_GAP_BOND_OOB_INPUT" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1gae2a234929d028693a7a2970e35f94c3b"><span class="std std-ref">GAP_MSG_LE_BOND_OOB_INPUT</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GAP_BOND_OOB_INPUT7conn_idE">
+<span id="_CPPv3N20T_GAP_BOND_OOB_INPUT7conn_idE"></span><span id="_CPPv2N20T_GAP_BOND_OOB_INPUT7conn_idE"></span><span id="T_GAP_BOND_OOB_INPUT::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___b_o_n_d___o_o_b___i_n_p_u_t_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N20T_GAP_BOND_OOB_INPUT7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419T_GAP_CONN_MTU_INFO">
+<span id="_CPPv319T_GAP_CONN_MTU_INFO"></span><span id="_CPPv219T_GAP_CONN_MTU_INFO"></span><span id="T_GAP_CONN_MTU_INFO"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___m_t_u___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_CONN_MTU_INFO</span></span></span><a class="headerlink" href="#_CPPv419T_GAP_CONN_MTU_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1gad09d9df87275d5f64d9b1885af179800"><span class="std std-ref">GAP_MSG_LE_CONN_MTU_INFO</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GAP_CONN_MTU_INFO7conn_idE">
+<span id="_CPPv3N19T_GAP_CONN_MTU_INFO7conn_idE"></span><span id="_CPPv2N19T_GAP_CONN_MTU_INFO7conn_idE"></span><span id="T_GAP_CONN_MTU_INFO::conn_id__uint8_t"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___m_t_u___i_n_f_o_1a6f2749c213f11ad9a16583079a554b39"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_id</span></span></span><a class="headerlink" href="#_CPPv4N19T_GAP_CONN_MTU_INFO7conn_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GAP_CONN_MTU_INFO8mtu_sizeE">
+<span id="_CPPv3N19T_GAP_CONN_MTU_INFO8mtu_sizeE"></span><span id="_CPPv2N19T_GAP_CONN_MTU_INFO8mtu_sizeE"></span><span id="T_GAP_CONN_MTU_INFO::mtu_size__uint16_t"></span><span class="target" id="struct_t___g_a_p___c_o_n_n___m_t_u___i_n_f_o_1a7494d27aae03bdf1d9092563e1cc1026"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mtu_size</span></span></span><a class="headerlink" href="#_CPPv4N19T_GAP_CONN_MTU_INFO8mtu_sizeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426T_GAP_EXT_ADV_STATE_CHANGE">
+<span id="_CPPv326T_GAP_EXT_ADV_STATE_CHANGE"></span><span id="_CPPv226T_GAP_EXT_ADV_STATE_CHANGE"></span><span id="T_GAP_EXT_ADV_STATE_CHANGE"></span><span class="target" id="struct_t___g_a_p___e_x_t___a_d_v___s_t_a_t_e___c_h_a_n_g_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GAP_EXT_ADV_STATE_CHANGE</span></span></span><a class="headerlink" href="#_CPPv426T_GAP_EXT_ADV_STATE_CHANGE" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="group___g_a_p___m_s_g___t_y_p_e.html#group___g_a_p___m_s_g___t_y_p_e_1ga8a61e3422055b5738fd0d5f24ac2d235"><span class="std std-ref">GAP_MSG_LE_EXT_ADV_STATE_CHANGE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE10adv_handleE">
+<span id="_CPPv3N26T_GAP_EXT_ADV_STATE_CHANGE10adv_handleE"></span><span id="_CPPv2N26T_GAP_EXT_ADV_STATE_CHANGE10adv_handleE"></span><span id="T_GAP_EXT_ADV_STATE_CHANGE::adv_handle__uint8_t"></span><span class="target" id="struct_t___g_a_p___e_x_t___a_d_v___s_t_a_t_e___c_h_a_n_g_e_1a96dc09ff81c490ab93ccf8145b2f9429"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">adv_handle</span></span></span><a class="headerlink" href="#_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE10adv_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE9new_stateE">
+<span id="_CPPv3N26T_GAP_EXT_ADV_STATE_CHANGE9new_stateE"></span><span id="_CPPv2N26T_GAP_EXT_ADV_STATE_CHANGE9new_stateE"></span><span id="T_GAP_EXT_ADV_STATE_CHANGE::new_state__uint8_t"></span><span class="target" id="struct_t___g_a_p___e_x_t___a_d_v___s_t_a_t_e___c_h_a_n_g_e_1a58f2bd48909950e16039c2319519f79f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">new_state</span></span></span><a class="headerlink" href="#_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE9new_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE5causeE">
+<span id="_CPPv3N26T_GAP_EXT_ADV_STATE_CHANGE5causeE"></span><span id="_CPPv2N26T_GAP_EXT_ADV_STATE_CHANGE5causeE"></span><span id="T_GAP_EXT_ADV_STATE_CHANGE::cause__uint16_t"></span><span class="target" id="struct_t___g_a_p___e_x_t___a_d_v___s_t_a_t_e___c_h_a_n_g_e_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N26T_GAP_EXT_ADV_STATE_CHANGE5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv417T_LE_GAP_MSG_DATA">
+<span id="_CPPv317T_LE_GAP_MSG_DATA"></span><span id="_CPPv217T_LE_GAP_MSG_DATA"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_LE_GAP_MSG_DATA</span></span></span><a class="headerlink" href="#_CPPv417T_LE_GAP_MSG_DATA" title="Link to this definition"></a><br /></dt>
+<dd><p>The msg_data of <a class="reference internal" href="#struct_t___l_e___g_a_p___m_s_g"><span class="std std-ref">T_LE_GAP_MSG</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA20gap_dev_state_changeE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA20gap_dev_state_changeE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA20gap_dev_state_changeE"></span><span id="T_LE_GAP_MSG_DATA::gap_dev_state_change__T_GAP_DEV_STATE_CHANGE"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1a954c83c52f825a89defd2a605856ddc6"></span><a class="reference internal" href="#_CPPv422T_GAP_DEV_STATE_CHANGE" title="T_GAP_DEV_STATE_CHANGE"><span class="n"><span class="pre">T_GAP_DEV_STATE_CHANGE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_dev_state_change</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA20gap_dev_state_changeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA21gap_conn_state_changeE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA21gap_conn_state_changeE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA21gap_conn_state_changeE"></span><span id="T_LE_GAP_MSG_DATA::gap_conn_state_change__T_GAP_CONN_STATE_CHANGE"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1a6a83ad4e1b8be5c1034798aff59b2133"></span><a class="reference internal" href="#_CPPv423T_GAP_CONN_STATE_CHANGE" title="T_GAP_CONN_STATE_CHANGE"><span class="n"><span class="pre">T_GAP_CONN_STATE_CHANGE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_conn_state_change</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA21gap_conn_state_changeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA21gap_conn_param_updateE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA21gap_conn_param_updateE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA21gap_conn_param_updateE"></span><span id="T_LE_GAP_MSG_DATA::gap_conn_param_update__T_GAP_CONN_PARAM_UPDATE"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1a52f6f7f3fc7e335ed20406b51e41be6c"></span><a class="reference internal" href="#_CPPv423T_GAP_CONN_PARAM_UPDATE" title="T_GAP_CONN_PARAM_UPDATE"><span class="n"><span class="pre">T_GAP_CONN_PARAM_UPDATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_conn_param_update</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA21gap_conn_param_updateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA17gap_conn_mtu_infoE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA17gap_conn_mtu_infoE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA17gap_conn_mtu_infoE"></span><span id="T_LE_GAP_MSG_DATA::gap_conn_mtu_info__T_GAP_CONN_MTU_INFO"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1ae2be840c7e5da11e7bcdbfdfa5d8aea9"></span><a class="reference internal" href="#_CPPv419T_GAP_CONN_MTU_INFO" title="T_GAP_CONN_MTU_INFO"><span class="n"><span class="pre">T_GAP_CONN_MTU_INFO</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_conn_mtu_info</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA17gap_conn_mtu_infoE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA16gap_authen_stateE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA16gap_authen_stateE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA16gap_authen_stateE"></span><span id="T_LE_GAP_MSG_DATA::gap_authen_state__T_GAP_AUTHEN_STATE"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1a1a684b1d96e900c8e75ea0fc737fd511"></span><a class="reference internal" href="#_CPPv418T_GAP_AUTHEN_STATE" title="T_GAP_AUTHEN_STATE"><span class="n"><span class="pre">T_GAP_AUTHEN_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_authen_state</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA16gap_authen_stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA24gap_bond_passkey_displayE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA24gap_bond_passkey_displayE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA24gap_bond_passkey_displayE"></span><span id="T_LE_GAP_MSG_DATA::gap_bond_passkey_display__T_GAP_BOND_PASSKEY_DISPLAY"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1a14cdf60b156e5767b3d7c1913204bc0b"></span><a class="reference internal" href="#_CPPv426T_GAP_BOND_PASSKEY_DISPLAY" title="T_GAP_BOND_PASSKEY_DISPLAY"><span class="n"><span class="pre">T_GAP_BOND_PASSKEY_DISPLAY</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_bond_passkey_display</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA24gap_bond_passkey_displayE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA22gap_bond_passkey_inputE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA22gap_bond_passkey_inputE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA22gap_bond_passkey_inputE"></span><span id="T_LE_GAP_MSG_DATA::gap_bond_passkey_input__T_GAP_BOND_PASSKEY_INPUT"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1ac6262590cdef5a2dd624fa2cef04ccf1"></span><a class="reference internal" href="#_CPPv424T_GAP_BOND_PASSKEY_INPUT" title="T_GAP_BOND_PASSKEY_INPUT"><span class="n"><span class="pre">T_GAP_BOND_PASSKEY_INPUT</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_bond_passkey_input</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA22gap_bond_passkey_inputE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA18gap_bond_oob_inputE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA18gap_bond_oob_inputE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA18gap_bond_oob_inputE"></span><span id="T_LE_GAP_MSG_DATA::gap_bond_oob_input__T_GAP_BOND_OOB_INPUT"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1afc0d340d369ed1e8bf9b1cd699b70a93"></span><a class="reference internal" href="#_CPPv420T_GAP_BOND_OOB_INPUT" title="T_GAP_BOND_OOB_INPUT"><span class="n"><span class="pre">T_GAP_BOND_OOB_INPUT</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_bond_oob_input</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA18gap_bond_oob_inputE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA18gap_bond_user_confE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA18gap_bond_user_confE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA18gap_bond_user_confE"></span><span id="T_LE_GAP_MSG_DATA::gap_bond_user_conf__T_GAP_BOND_USER_CONF"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1afde50b1f06980787643f56943b4ef36c"></span><a class="reference internal" href="#_CPPv420T_GAP_BOND_USER_CONF" title="T_GAP_BOND_USER_CONF"><span class="n"><span class="pre">T_GAP_BOND_USER_CONF</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_bond_user_conf</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA18gap_bond_user_confE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA23gap_bond_just_work_confE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA23gap_bond_just_work_confE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA23gap_bond_just_work_confE"></span><span id="T_LE_GAP_MSG_DATA::gap_bond_just_work_conf__T_GAP_BOND_JUST_WORK_CONF"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1afd6dc52537ee4e70bc3443a4fb329c49"></span><a class="reference internal" href="#_CPPv425T_GAP_BOND_JUST_WORK_CONF" title="T_GAP_BOND_JUST_WORK_CONF"><span class="n"><span class="pre">T_GAP_BOND_JUST_WORK_CONF</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_bond_just_work_conf</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA23gap_bond_just_work_confE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17T_LE_GAP_MSG_DATA24gap_ext_adv_state_changeE">
+<span id="_CPPv3N17T_LE_GAP_MSG_DATA24gap_ext_adv_state_changeE"></span><span id="_CPPv2N17T_LE_GAP_MSG_DATA24gap_ext_adv_state_changeE"></span><span id="T_LE_GAP_MSG_DATA::gap_ext_adv_state_change__T_GAP_EXT_ADV_STATE_CHANGE"></span><span class="target" id="union_t___l_e___g_a_p___m_s_g___d_a_t_a_1aed5cd7933ce0238d62c196106b9f2041"></span><a class="reference internal" href="#_CPPv426T_GAP_EXT_ADV_STATE_CHANGE" title="T_GAP_EXT_ADV_STATE_CHANGE"><span class="n"><span class="pre">T_GAP_EXT_ADV_STATE_CHANGE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gap_ext_adv_state_change</span></span></span><a class="headerlink" href="#_CPPv4N17T_LE_GAP_MSG_DATA24gap_ext_adv_state_changeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412T_LE_GAP_MSG">
+<span id="_CPPv312T_LE_GAP_MSG"></span><span id="_CPPv212T_LE_GAP_MSG"></span><span id="T_LE_GAP_MSG"></span><span class="target" id="struct_t___l_e___g_a_p___m_s_g"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_LE_GAP_MSG</span></span></span><a class="headerlink" href="#_CPPv412T_LE_GAP_MSG" title="Link to this definition"></a><br /></dt>
+<dd><p>As the param of <a class="reference internal" href="group___a_p_p___m_s_g___exported___types.html#struct_t___i_o___m_s_g"><span class="std std-ref">T_IO_MSG</span></a>. Type is IO_MSG_TYPE_BT_STATUS. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12T_LE_GAP_MSG8msg_dataE">
+<span id="_CPPv3N12T_LE_GAP_MSG8msg_dataE"></span><span id="_CPPv2N12T_LE_GAP_MSG8msg_dataE"></span><span id="T_LE_GAP_MSG::msg_data__T_LE_GAP_MSG_DATA"></span><span class="target" id="struct_t___l_e___g_a_p___m_s_g_1aacaf516d5422b24dd9d731c5cea7b220"></span><a class="reference internal" href="#_CPPv417T_LE_GAP_MSG_DATA" title="T_LE_GAP_MSG_DATA"><span class="n"><span class="pre">T_LE_GAP_MSG_DATA</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">msg_data</span></span></span><a class="headerlink" href="#_CPPv4N12T_LE_GAP_MSG8msg_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___g_a_p___s_c_a_n___s_t_a_t_e.html" class="btn btn-neutral float-left" title="GAP Scan State" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___observer___role.html" class="btn btn-neutral float-right" title="GAP Observer Role" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

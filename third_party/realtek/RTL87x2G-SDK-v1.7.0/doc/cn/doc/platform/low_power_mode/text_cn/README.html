@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>低功耗模式 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="安全机制" href="../../security/text_cn/README.html" />
+    <link rel="prev" title="PSRAM" href="../../psram/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_cn/README.html">平台指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../platform_overview/text_cn/README.html">平台概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/text_cn/README.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_cn/README.html">Image Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flash/text_cn/README.html">Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_cn/README.html">PSRAM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">低功耗模式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">功耗模式简介</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">平台模块低功耗模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mac">蓝牙 MAC 模块低功耗模式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">电源管理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">进入低功耗模式</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id9">低功耗模式进入流程</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id11">低功耗模式进入条件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dlps">系统进入 DLPS 模式的条件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#power-down">系统进入 Power Down 模式的条件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">退出低功耗模式</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id13">低功耗模式退出流程</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id15">低功耗模式退出条件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">应用添加低功耗模式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">低功耗模式选择</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#callback">注册 Callback 函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">唤醒事件配置</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#pad">PAD 唤醒事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#pad-aon">PAD (AON) 配置</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pin">唤醒 Pin 配置</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#lpc">LPC 唤醒事件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#rtc">RTC 唤醒事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#hw">HW 唤醒</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sw">SW 唤醒</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#os-event">OS Event 唤醒事件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bt-event">BT Event 唤醒事件</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">应用示例</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#debounce-pad">关闭 Debounce 下的 PAD 唤醒</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id20">打开 Debounce 下的 PAD 唤醒</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">异常分析</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id22">无法进入 DLPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">无法退出 DLPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">异常退出 DLPS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dlps-mode-apis">DLPS Mode APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/text_cn/README.html">安全机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debug_system/text_cn/README.html">调试系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clock/text_cn/README.html">时钟管理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_cn/README.html">平台指南</a></li>
+    <li class="breadcrumb-item active">低功耗模式</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="id1">
+<h1>低功耗模式<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>低功耗模式下，系统会将不使用的设备置于低功耗状态。在此状态下，设备消耗的电量较少，并且可以在需要时快速唤醒并恢复全部功能。大多数组件（如 Clock、CPU、Peripherals 和 RAM）都可以关闭电源以降低系统功耗。</p>
+<p>本文包含如下章节：<a class="reference internal" href="#id2">功耗模式简介</a>、<a class="reference internal" href="#id7">电源管理</a>、<a class="reference internal" href="#id16">应用添加低功耗模式</a>、<a class="reference internal" href="#id21">异常分析</a> 以及 <a class="reference internal" href="#dlps-mode-apis">DLPS Mode APIs</a>。</p>
+<section id="id2">
+<h2>功耗模式简介<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>本章将分 <a class="reference internal" href="#id3"><span class="std std-ref">平台模块低功耗模式</span></a> 和 <a class="reference internal" href="#mac"><span class="std std-ref">蓝牙 MAC 模块低功耗模式</span></a> 两部分进行介绍。平台模块会根据所处的功耗模式，将 CPU，外设和 RAM 等组件分别进入到不同的耗电状态。蓝牙 MAC 模块控制蓝牙模块的工作模式，且依赖平台模块进行正常运行。</p>
+<section id="id3">
+<span id="id4"></span><h3>平台模块低功耗模式<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>平台模块支持以下三种功耗模式。</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><strong>Active</strong> —— 系统 Active 模式</div>
+<div class="line">在 Power active 的模式下，如果程序没有进入到 idle task，CPU 处于 Active 状态，CPU Clock 会处于高速状态，默认是 40M Clock。如果程序进入 idle task，CPU 进入 sleep 状态，此时 CPU clock 会自动降速。CPU sleep 时 clock 降低至 625KHz。</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>DLPS</strong> —— 系统休眠模式</div>
+<div class="line">较低的功耗，以及较快的进出时间，同时 RAM 内容保持。</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>Power Down</strong> —— 极致低功耗模式</div>
+<div class="line">此模式下 RAM 内容不保持，从 Power Down 模式退出执行重启流程，较 DLPS 模式耗时更长。只有 LPC 和 PAD（关闭 debounce）可以唤醒 Power Down。</div>
+</div>
+</li>
+</ul>
+<p><a class="reference internal" href="#id5"><span class="std std-ref">不同功耗模式下各个模块使用情况</span></a> 如下，此文档将详细介绍 <a class="reference internal" href="../../../glossary.html#term-DLPS"><span class="xref std std-term">DLPS</span></a> 模式。</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">不同功耗模式下各个模块使用情况</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 11.9%" />
+<col style="width: 11.9%" />
+<col style="width: 11.9%" />
+<col style="width: 11.9%" />
+<col style="width: 11.9%" />
+<col style="width: 11.9%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Mode</p></th>
+<th class="head"><p>PAD</p></th>
+<th class="head"><p>RAM</p></th>
+<th class="head"><p>32K clock</p></th>
+<th class="head"><p>RTC</p></th>
+<th class="head"><p>Peripheral</p></th>
+<th class="head"><p>CPU</p></th>
+<th class="head"><p>CPU Clock</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Active</p></th>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>DLPS</p></th>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p>--</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Power Down</p></th>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p>--</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition- admonition">
+<p class="admonition-title">特性与限制</p>
+<ol class="arabic simple">
+<li><p>系统可以快速进出 DLPS 模式。</p>
+<ul class="simple">
+<li><p>进入 DLPS 的时间小于 1ms。</p></li>
+<li><p>蓝牙唤醒事件：退出 DLPS 的时间大约 4ms。</p></li>
+<li><p>平台唤醒事件：退出 DLPS 的时间大约 3ms。</p></li>
+</ul>
+</li>
+<li><p>CPU 断电会导致 SWD 断开连接，因此在使用 JLink 进行在线 debug 时，需要禁用 DLPS 模式。</p></li>
+<li><p>只有蓝牙 MAC 处于 <a class="reference internal" href="../../../glossary.html#term-DSM"><span class="xref std std-term">DSM</span></a> 下，平台才可以进入 DLPS 或者 Power Down 模式。</p></li>
+</ol>
+</div>
+</section>
+<section id="mac">
+<span id="id6"></span><h3>蓝牙 MAC 模块低功耗模式<a class="headerlink" href="#mac" title="Link to this heading"></a></h3>
+<p>蓝牙 MAC 模块支持以下两种功耗模式。</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><strong>Active Mode</strong> —— 蓝牙 MAC Active</div>
+<div class="line">在蓝牙 MAC Active 的模式下，蓝牙 MAC 可以正常工作，相关寄存器可以正常访问。</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>DSM</strong> —— 蓝牙 MAC Sleep</div>
+<div class="line">在蓝牙 MAC Sleep 的模式下，蓝牙 MAC 处于低功耗模式下，相关寄存器不可以访问。</div>
+</div>
+</li>
+</ul>
+<div class="admonition- admonition">
+<p class="admonition-title">特性与限制</p>
+<p>仅在平台模块处于 Active mode 下，支持蓝牙 MAC 模块进入和退出 DSM。</p>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2>电源管理<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>大多数情况下，系统处于空闲状态，只需保留必要的数据以进行系统恢复。时钟、CPU、外设和 RAM 等组件可以关闭电源，以降低系统功耗。当有任何事件需要处理时，系统将退出低功耗模式。时钟、CPU、蓝牙、外设和 RAM 将重新上电并恢复到进入 DLPS 之前的状态，然后响应唤醒事件。不同的系统级别存在不同的电源管理器单元，各自实现检查/存储/进入/退出/恢复功能。本节详细介绍了电源管理。</p>
+<section id="id8">
+<h3>进入低功耗模式<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>本节内容介绍进入低功耗模式的流程以及条件。</p>
+<section id="id9">
+<h4>低功耗模式进入流程<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="#id10"><span class="std std-ref">低功耗模式进入流程</span></a> 及具体说明如下。</p>
+<figure class="align-center" id="id10">
+<img alt="../../../../_images/dlps_enter_flow.png" src="../../../../_images/dlps_enter_flow.png" />
+<figcaption>
+<p><span class="caption-text">低功耗模式进入流程</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>系统进入到 idle task，关闭中断。</p></li>
+<li><p>如果蓝牙模块已经处于 DSM，则直接跳转到 4。否则询问蓝牙模块是否允许进入 DSM。</p></li>
+<li><p>如果蓝牙模块允许进入 DSM，保存蓝牙模块状态后进入 DSM 模式。否则打开中断，回到 idle task。</p></li>
+<li><p>询问平台模块是否允许进入低功耗模式。</p></li>
+<li><p>如果平台模块允许进入低功耗模式，保存平台模块状态后进入低功耗模式。否则打开中断，回到 idle task。</p></li>
+</ol>
+</section>
+<section id="id11">
+<h4>低功耗模式进入条件<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<p>电源管理会检查不同模块的状态，以选择进入相应的功耗模式，确保系统可以正常运行。</p>
+<section id="dlps">
+<h5>系统进入 DLPS 模式的条件<a class="headerlink" href="#dlps" title="Link to this heading"></a></h5>
+<p>只有当同时满足以下条件时，系统才会进入 DLPS 模式。</p>
+<ol class="arabic">
+<li><p>系统执行在 idle task，其余 task 均处在 block 状态或 suspend 状态，且没有中断发生。</p></li>
+<li><p>蓝牙 MAC 模块允许进入 DSM。</p>
+<ul>
+<li><p><strong>Non-Link mode</strong> （当没有连接时，BT 存在以下三种状态）</p>
+<table class="docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>状态</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Standby State</p></th>
+<td><p>系统不会收发数据，蓝牙会进入 DSM，且不会从 DSM 唤醒。</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Advertising State</p>
+<p>(connectable/un-connectable)</p>
+</th>
+<td><ul class="simple">
+<li><p>若 Adv_Interval * 0.625ms &gt;= 15ms，允许进入 DSM，否则不允许进入。</p></li>
+<li><p>若 Advertising Type 为 Direct Advertising (High duty cycle)，不允许进入 DSM。</p></li>
+<li><p>对于多广播，依然要满足条件 Adv_Interval * 0.625ms &gt;= 15ms 后才能进入 DSM。</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Scanning State</p></th>
+<td><p>若 (Scan Interval-Scan Window) * 0.625ms &gt;= 15ms，允许进入 DSM，否则不允许进入。</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p><strong>Link mode</strong> （有以下两种角色）</p>
+<table class="docutils align-left">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>角色</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Master Role</p></th>
+<td><p>若 Connection Interval * 1.25ms &gt;= 15ms，允许进入 DSM。</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Slave Role</p></th>
+<td><p>若 Connection Interval * ( 1 + Slave Latency ) * 1.25ms &gt;= 15ms，允许进入 DSM。</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>设备同时广播和连接的条件下，只有当前时间到下次广播或者连接事件的间隔大于或者等于 15ms，才允许进入 DSM。</p>
+</div>
+</div></blockquote>
+</li>
+<li><p><strong>平台模块</strong></p>
+<ol class="arabic simple">
+<li><p>Peripheral，APP 注册的 check callback 执行后均返回 PASS。</p></li>
+<li><p>OS 中的 SW timer 周期或者 task delay 时间大于或者等于 20ms。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>如果蓝牙模块允许进入 DSM，但平台模块不允许进入 DLPS，则蓝牙模块进入 DSM，而平台模块保持 active 状态。</p></li>
+<li><p>如果蓝牙模块不允许进入 DSM，则整个系统将仍然处于 active 状态。</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</section>
+<section id="power-down">
+<h5>系统进入 Power Down 模式的条件<a class="headerlink" href="#power-down" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p>以上进入 DLPS 的条件均已满足。</p></li>
+<li><p>不存在任何 active 状态下的 SW Timer 和 task delay。</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="id12">
+<h3>退出低功耗模式<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>本节内容介绍退出低功耗模式的流程以及条件。</p>
+<section id="id13">
+<h4>低功耗模式退出流程<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<p><a class="reference internal" href="#id14"><span class="std std-ref">低功耗模式退出流程</span></a> 及具体说明如下。</p>
+<figure class="align-center" id="id14">
+<img alt="../../../../_images/dlps_exit_flow.png" src="../../../../_images/dlps_exit_flow.png" />
+<figcaption>
+<p><span class="caption-text">低功耗模式退出流程</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><div class="line-block">
+<div class="line"><strong>Reset Handler</strong></div>
+<div class="line">系统退出低功耗模式后，会触发 Reset 异常进入 Reset Handler。在 Reset Handler 中会检查重启的原因。如果是上电启动或者 Power Down 唤醒，系统会走重启流程。如果从 DLPS 模式唤醒，系统会走 DLPS 恢复流程。</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>平台完全退出 DLPS</strong></div>
+<div class="line">系统从 DLPS 模式醒来后，CPU 会恢复 power 和高速 clock，Flash 和 RAM 开始上电。Platform 恢复的最后阶段是在 timer task 中完成的，此时 Platform 完全退出 DLPS，会完成 CPU NVIC，peripherals 的恢复及用户自定义退出 callback 函数的执行。</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>检查蓝牙模块</strong></div>
+<div class="line">判断是否蓝牙事件唤醒。如果是，蓝牙模块退出 DSM 并恢复状态；否则蓝牙模块继续保持低功耗状态。</div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id15">
+<h4>低功耗模式退出条件<a class="headerlink" href="#id15" title="Link to this heading"></a></h4>
+<p>下列唤醒事件发生后，系统会从低功耗模式中退出。需要保证相关事件在低功耗模式进入前，有成功配置。</p>
+<table class="docutils align-center" id="id25">
+<caption><span class="caption-text">唤醒事件</span><a class="headerlink" href="#id25" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p><a class="reference internal" href="#pad">PAD 唤醒事件</a></p></th>
+<th class="head"><p><a class="reference internal" href="#lpc">LPC 唤醒事件</a></p></th>
+<th class="head"><p><a class="reference internal" href="#rtc">RTC 唤醒事件</a></p></th>
+<th class="head"><p><a class="reference internal" href="#os-event">OS Event 唤醒事件</a></p></th>
+<th class="head"><p><a class="reference internal" href="#bt-event">BT Event 唤醒事件</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DLPS</p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Power Down</p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>√</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+<td><p><strong>×</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="id16">
+<h2>应用添加低功耗模式<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<p>电源管理是一种模块化且可扩展的架构。用户可以将 callback 函数注册到检查、存储、进入、退出和恢复等阶段，以便在应用程序启动时进行统一管理。用户只需根据自己想要使用的应用场景来选择所需的低功耗模式以及进行相应配置。</p>
+<section id="id17">
+<h3>低功耗模式选择<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<p>用户可以通过以下函数来设置和获取低功耗模式，具体如下：</p>
+<ul class="simple">
+<li><p>平台模块的低功耗模式：<a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv414power_mode_set19T_SYSTEM_POWER_MODE" title="power_mode_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_mode_set()</span></code></a> 和 <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv414power_mode_getv" title="power_mode_get"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_mode_get()</span></code></a></p></li>
+<li><p>蓝牙模块的低功耗模式：<a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv417bt_power_mode_set15T_BT_POWER_MODE" title="bt_power_mode_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">bt_power_mode_set()</span></code></a> 和 <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv417bt_power_mode_getv" title="bt_power_mode_get"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">bt_power_mode_get()</span></code></a></p></li>
+</ul>
+<p>示例：将蓝牙模块配置为 DSM，将平台模块配置为 DLPS 。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">pwr_mgr_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">bt_power_mode_set</span><span class="p">(</span><span class="n">BTPOWER_DEEP_SLEEP</span><span class="p">);</span>
+<span class="w">    </span><span class="n">power_mode_set</span><span class="p">(</span><span class="n">POWER_DLPS_MODE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="callback">
+<h3>注册 Callback 函数<a class="headerlink" href="#callback" title="Link to this heading"></a></h3>
+<p>对于蓝牙 MAC DSM，callback 函数的注册以及处理出现在 ROM 里面。用户只能注册 callback 函数到平台模块。每个 APP project 会有一个独立的 <code class="docutils literal notranslate"><span class="pre">board.h</span></code> 文件，用户可以定制平台保存和恢复的具体模块，具体如下：</p>
+<ol class="arabic">
+<li><p>用户可以使用 <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv423power_check_cb_register14POWERCheckFunc" title="power_check_cb_register"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_check_cb_register()</span></code></a> 将 callback 函数注册到电源管理的检查阶段，决定是否允许平台模块进入低功耗模式。</p></li>
+<li><p>用户可以使用 <a class="reference internal" href="../../../api_reference/group___i_o___d_l_p_s___exported___functions.html#_CPPv425DLPS_IORegUserDlpsEnterCb19DLPS_IO_EnterDlpsCB" title="DLPS_IORegUserDlpsEnterCb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DLPS_IORegUserDlpsEnterCb()</span></code></a> 和 <a class="reference internal" href="../../../api_reference/group___i_o___d_l_p_s___exported___functions.html#_CPPv424DLPS_IORegUserDlpsExitCb18DLPS_IO_ExitDlpsCB" title="DLPS_IORegUserDlpsExitCb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DLPS_IORegUserDlpsExitCb()</span></code></a> 将函数注册到进入和退出阶段的用户 callback 函数里面。</p>
+<p>需要在 <code class="docutils literal notranslate"><span class="pre">board.h</span></code> 中将 <code class="docutils literal notranslate"><span class="pre">USE_USER_DEFINE_DLPS_EXIT_CB</span></code> 与 <code class="docutils literal notranslate"><span class="pre">USE_USER_DEFINE_DLPS_ENTER_CB</span></code> 配置为 1。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* if use user define DLPS enter/DLPS exit callback function */</span>
+<span class="cp">#define USE_USER_DEFINE_DLPS_EXIT_CB         1</span>
+<span class="cp">#define USE_USER_DEFINE_DLPS_ENTER_CB        1</span>
+</pre></div>
+</div>
+</li>
+<li><p>IO Store 和 Restore 函数：</p>
+<p>如果 APP 中使用了某个外设，且需要在进出 DLPS 时，系统能自动保存、恢复其状态，则需要在 <code class="docutils literal notranslate"><span class="pre">board.h</span></code> 中，将该外设对应的    <code class="docutils literal notranslate"><span class="pre">USE_XXX_DLPS</span></code> 宏设定为 ‘1’。对于部分外设比如 GDMA，需要在 DLPS exit callback function 里重新调用 init 函数。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* if use any peripherals below, #define it  1 */</span>
+<span class="cp">#define USE_ADC_DLPS                         0</span>
+<span class="cp">#define USE_GPIOA_DLPS                       0</span>
+<span class="cp">#define USE_I2C0_DLPS                        0</span>
+<span class="cp">#define USE_I2C1_DLPS                        0</span>
+<span class="cp">#define USE_IR_DLPS                          0</span>
+<span class="cp">#define USE_KEYSCAN_DLPS                     0</span>
+<span class="cp">#define USE_SPI0_DLPS                        0</span>
+<span class="cp">#define USE_SPI1_DLPS                        0</span>
+<span class="cp">#define USE_UART0_DLPS                       0</span>
+<span class="cp">#define USE_UART1_DLPS                       0</span>
+<span class="cp">#define USE_ENHTIM_DLPS                      0</span>
+</pre></div>
+</div>
+</li>
+<li><p>系统会使用 <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv423power_stage_cb_register14POWERStageFunc10POWERStage" title="power_stage_cb_register"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_stage_cb_register()</span></code></a> 统一将 IO Store 函数和 user-enter callback 函数注册到电源管理的进入阶段，也会统一将 IO Restore 函数和 user-exit callback 函数注册到电源管理的退出阶段。</p>
+<p>该步骤由系统在 <a class="reference internal" href="../../../api_reference/group___i_o___d_l_p_s___exported___functions.html#_CPPv415DLPS_IORegisterv" title="DLPS_IORegister"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DLPS_IORegister()</span></code></a> 中自动执行，无需手动注册。</p>
+<ul class="simple">
+<li><p>DLPS 进入阶段：依次执行 NVIC，PINMUX，user-enter，peripherals 保存。</p></li>
+<li><p>DLPS 退出阶段：依次执行 PINMUX，peripherals，user-exit，NVIC 恢复。</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">DLPS_IO_EnterDlpsCb</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// NVIC Store</span>
+<span class="w">    </span><span class="n">CPU_DLPS_Enter</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// PINMUX Store</span>
+<span class="w">    </span><span class="n">Pinmux_DLPS_Enter</span><span class="p">();</span>
+
+<span class="cp">#if USE_USER_DEFINE_DLPS_ENTER_CB</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">User_IO_EnterDlpsCB</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">User_IO_EnterDlpsCB</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#if USE_ADC_DLPS</span>
+<span class="w">    </span><span class="n">ADC_DLPSEnter</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">ADC_StoreReg</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="w">    </span><span class="c1">// Other IO module</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">DLPS_IO_ExitDlpsCb</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// PINMUX Restore</span>
+<span class="w">    </span><span class="n">Pinmux_DLPS_Exit</span><span class="p">();</span>
+
+<span class="cp">#if USE_ADC_DLPS</span>
+<span class="w">    </span><span class="n">ADC_DLPSExit</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">ADC_StoreReg</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="w">    </span><span class="c1">// Other IO module</span>
+
+<span class="cp">#if USE_USER_DEFINE_DLPS_EXIT_CB</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">User_IO_ExitDlpsCB</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">User_IO_ExitDlpsCB</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="w">    </span><span class="c1">// NVIC Restore</span>
+<span class="w">    </span><span class="n">CPU_DLPS_Exit</span><span class="p">();</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">DLPS_IORegister</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">power_stage_cb_register</span><span class="p">(</span><span class="n">DLPS_IO_EnterDlpsCb</span><span class="p">,</span><span class="w"> </span><span class="n">POWER_STAGE_STORE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">power_stage_cb_register</span><span class="p">(</span><span class="n">DLPS_IO_ExitDlpsCb</span><span class="p">,</span><span class="w"> </span><span class="n">POWER_STAGE_RESTORE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>示例：将蓝牙模块配置为 DSM，将平台模块配置为 DLPS。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">POWER_CheckResult</span><span class="w"> </span><span class="nf">DLPS_Check</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">POWER_CHECK_PASS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">EnterDlpsSet</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">ExitDlpsInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">pwr_mgr_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">power_check_cb_register</span><span class="p">(</span><span class="n">DLPS_Check</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegUserDlpsEnterCb</span><span class="p">(</span><span class="n">EnterDlpsSet</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegUserDlpsExitCb</span><span class="p">(</span><span class="n">ExitDlpsInit</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegister</span><span class="p">();</span>
+<span class="w">    </span><span class="n">bt_power_mode_set</span><span class="p">(</span><span class="n">BTPOWER_DEEP_SLEEP</span><span class="p">);</span>
+<span class="w">    </span><span class="n">power_mode_set</span><span class="p">(</span><span class="n">POWER_DLPS_MODE</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id18">
+<h3>唤醒事件配置<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<section id="pad">
+<h4>PAD 唤醒事件<a class="headerlink" href="#pad" title="Link to this heading"></a></h4>
+<p>PINMUX 在 DLPS 下会断电，因此需要在进入 DLPS 前，将 PAD 从 PINMUX 模式切换到 AON 模式。进入DLPS前，首先需要配置 PAD 以避免漏电，其次需要配置 DLPS 的唤醒 Pin，以确保可以唤醒系统。</p>
+<section id="pad-aon">
+<h5>PAD (AON) 配置<a class="headerlink" href="#pad-aon" title="Link to this heading"></a></h5>
+<p>PAD 在 DLPS 模式下不会掉电，因此不需要保存其状态。但是为了防止漏电，在进入 DLPS 时需要对 PAD 做如下设置。</p>
+<ol class="arabic">
+<li><p>系统没有使用到的 PAD，包括 package 没有出引脚的 PAD 必须设为：<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SW</kbd> <kbd class="kbd docutils literal notranslate">mode，Power</kbd> <kbd class="kbd docutils literal notranslate">on</kbd> <kbd class="kbd docutils literal notranslate">mode，Pull</kbd> <kbd class="kbd docutils literal notranslate">Down，Input</kbd> <kbd class="kbd docutils literal notranslate">mode</kbd></kbd></p>
+<p>这些是 PAD 的默认设置，因此用户无须更改。</p>
+</li>
+<li><p>系统使用到的 PAD 设定取决于外围电路的电压。</p>
+<ul class="simple">
+<li><p>电压是 VDD，需要把 PAD 设为：<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SW</kbd> <kbd class="kbd docutils literal notranslate">mode，Power</kbd> <kbd class="kbd docutils literal notranslate">on</kbd> <kbd class="kbd docutils literal notranslate">mode，Pull</kbd> <kbd class="kbd docutils literal notranslate">Up，Input</kbd> <kbd class="kbd docutils literal notranslate">mode</kbd></kbd></p></li>
+<li><p>电压是 GND，需要把 PAD 设为：<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SW</kbd> <kbd class="kbd docutils literal notranslate">mode，Power</kbd> <kbd class="kbd docutils literal notranslate">on</kbd> <kbd class="kbd docutils literal notranslate">mode，Pull</kbd> <kbd class="kbd docutils literal notranslate">Down，Input</kbd> <kbd class="kbd docutils literal notranslate">mode</kbd></kbd></p></li>
+<li><p>电压介于 VDD 和 GND 之间，需要把 PAD 设为： <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SW</kbd> <kbd class="kbd docutils literal notranslate">mode，Shut</kbd> <kbd class="kbd docutils literal notranslate">down</kbd> <kbd class="kbd docutils literal notranslate">mode，Pull</kbd> <kbd class="kbd docutils literal notranslate">None，Input</kbd> <kbd class="kbd docutils literal notranslate">mode</kbd></kbd></p></li>
+</ul>
+</li>
+<li><p>设置了唤醒功能的 PAD 需要设定为： <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SW</kbd> <kbd class="kbd docutils literal notranslate">mode，Power</kbd> <kbd class="kbd docutils literal notranslate">on</kbd> <kbd class="kbd docutils literal notranslate">mode，Pull</kbd> <kbd class="kbd docutils literal notranslate">Up/Pull</kbd> <kbd class="kbd docutils literal notranslate">Down，Input</kbd> <kbd class="kbd docutils literal notranslate">mode</kbd></kbd></p>
+<p>不可以配置成 Shut down mode 和 Output mode，Pull Up/Pull Down 需要根据外围电路配置。</p>
+</li>
+<li><p>退出 DLPS 时要把 PAD 设置恢复成原来的状态，确保 PAD 实现应用所需的功能，以避免产生问题。</p></li>
+</ol>
+</section>
+<section id="pin">
+<h5>唤醒 Pin 配置<a class="headerlink" href="#pin" title="Link to this heading"></a></h5>
+<ol class="arabic">
+<li><p>PAD 具有 DLPS 唤醒功能，可以调用 <a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv422System_WakeUpPinEnable7uint8_t7uint8_t7uint8_t" title="System_WakeUpPinEnable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">System_WakeUpPinEnable()</span></code></a> 使能某个 Pin 的唤醒功能。当该 Pin 的电平与唤醒电平相同时，会将系统从 DLPS 状态唤醒。</p>
+<ol class="arabic simple">
+<li><p>希望 P3_2 为高电平时唤醒系统，且不打开 debounce，可做如下配置：</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">System_WakeUpPinEnable</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_POL_HIGH</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_DEB_DISABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>希望 P3_2 为高电平时唤醒系统，打开 8ms 的 debounce，可做如下配置：</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">System_WakeUpDebounceTime</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="n">System_WakeUpPinEnable</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_POL_HIGH</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_DEB_ENABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>System irq 是一个系统中断，其触发条件是 <a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv422System_WakeUpPinEnable7uint8_t7uint8_t7uint8_t" title="System_WakeUpPinEnable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">System_WakeUpPinEnable()</span></code></a> 使能 PAD 唤醒，且当前 pin 脚的电平状态与唤醒电平一致。系统默认在进入 DLPS 后关闭 system 中断，退出 DLPS 后恢复 system 中断。因此如果是 PAD 唤醒 DLPS，系统会在 system 中断恢复后，进入 system 中断的 handler。</p>
+<ol class="arabic simple">
+<li><p>当 debounce 唤醒被关闭时，系统从 DLPS 醒来后，会触发 system 中断，用户可以在 system 中断 handler 里面调用 <a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv427System_WakeUpInterruptValue7uint8_t" title="System_WakeUpInterruptValue"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">System_WakeUpInterruptValue()</span></code></a> 来查询是哪个 Pin 唤醒了系统。之后需要调用 <a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv428Pad_ClearWakeupINTPendingBit7uint8_t" title="Pad_ClearWakeupINTPendingBit"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">Pad_ClearWakeupINTPendingBit()</span></code></a> 来清除该 Pin 的唤醒状态。</p></li>
+<li><p>当 debounce 唤醒被打开时，系统从 DLPS 醒来后，会触发 system 中断。但是用户无法确定是哪个 Pin 唤醒的 DLPS，只能在 System 中断 handler 里面调用 <a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv427System_WakeupDebounceStatus7uint8_t" title="System_WakeupDebounceStatus"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">System_WakeupDebounceStatus()</span></code></a> 获取 debounce 唤醒状态，之后调用 <a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv426System_WakeupDebounceClear7uint8_t" title="System_WakeupDebounceClear"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">System_WakeupDebounceClear()</span></code></a> 清除掉 debounce 唤醒状态。Debounce 唤醒开启后，只有 pin 维持在唤醒电平状态的时间超过 debounce time，才会唤醒 DLPS，可以防止意外唤醒。但是缺点是开启 debounce 唤醒后，无法检测具体是哪个 pin 在唤醒 DLPS。</p></li>
+</ol>
+</li>
+</ol>
+</section>
+</section>
+<section id="lpc">
+<h4>LPC 唤醒事件<a class="headerlink" href="#lpc" title="Link to this heading"></a></h4>
+<ul>
+<li><p>Demo 工程：<code class="file docutils literal notranslate"><span class="pre">sdk\samples\lowpower\dlps\proj\rtl87x2g\mdk</span></code></p></li>
+<li><p>工程配置：设置 <code class="docutils literal notranslate"><span class="pre">CONFIG_LPC_DLPS_EN</span></code> 为 1。</p></li>
+<li><p>LPC 唤醒需要调用以下接口。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LPC_WKCmd</span><span class="p">(</span><span class="n">ENABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="rtc">
+<h4>RTC 唤醒事件<a class="headerlink" href="#rtc" title="Link to this heading"></a></h4>
+<section id="hw">
+<h5>HW 唤醒<a class="headerlink" href="#hw" title="Link to this heading"></a></h5>
+<ul>
+<li><p>Demo 工程：<code class="file docutils literal notranslate"><span class="pre">sdk\samples\lowpower\dlps\proj\rtl87x2g\mdk</span></code></p></li>
+<li><p>工程配置：设置 <code class="docutils literal notranslate"><span class="pre">CONFIG_RTC_DLPS_EN</span></code> 为 1。</p></li>
+<li><p>HW 唤醒需要额外调用以下接口：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">RTC_WKConfig</span><span class="p">(</span><span class="n">RTC_COMP_WK_INDEX</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">)</span><span class="w"> </span><span class="c1">// enable Comparator wake up</span>
+<span class="n">RTC_SystemWakeupConfig</span><span class="p">(</span><span class="n">ENABLE</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="sw">
+<h5>SW 唤醒<a class="headerlink" href="#sw" title="Link to this heading"></a></h5>
+<p>RTC HW 唤醒 DLPS，需要 RTC 到期后，系统从 DLPS 退出，执行上电后 restore 动作，最后再触发 RTC 中断。这样导致 RTC 中断产生的时间被延迟了，延迟的时间即 DLPS 退出的时间。</p>
+<p>如果需要更高精度的 RTC 中断，可以采用 SW 唤醒 DLPS，退出 DLPS 后，RTC 到期执行中断。因为 SW 唤醒 DLPS，会考虑到 DLPS 退出的延迟而提前唤醒 DLPS，因此 RTC 中断会更为准确。</p>
+<p>具体做法如下。</p>
+<ol class="arabic">
+<li><p>取消调用 RTC 唤醒使能的接口，来关闭 RTC 中断 HW 唤醒。</p></li>
+<li><p>在 callback 中增加 <code class="docutils literal notranslate"><span class="pre">next_wake_up_time</span></code> 指针参数，计算出下次唤醒的时间（单位32.15us），将计算得到的值更新到 <code class="docutils literal notranslate"><span class="pre">next_wake_up_time</span></code> 中，由 platform 触发下次唤醒。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">RTC_tick</span><span class="p">;</span><span class="w"> </span><span class="c1">// unit: 32.15us</span>
+<span class="n">POWER_CheckResult</span><span class="w"> </span><span class="nf">RTC_Check_GT</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">next_wake_up_time</span><span class="p">)</span><span class="w">  </span><span class="c1">//unit 31.25us</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">wake_up_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RTC_GetCompValue</span><span class="p">(</span><span class="n">RTC_COMP_INDEX</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">RTC_GetCounter</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">wake_up_count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="o">*</span><span class="n">next_wake_up_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wake_up_count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">RTC_tick</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">POWER_CHECK_PASS</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">POWER_CHECK_FAIL</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>注册 DLPS check callback。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">RTC_tick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RTC_PRESCALER_VALUE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">power_check_cb_register</span><span class="p">(</span><span class="n">RTC_Check_GT</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="os-event">
+<h4>OS Event 唤醒事件<a class="headerlink" href="#os-event" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>SW Timer 唤醒，到下次到期的间隔需要不小于20ms。</p></li>
+<li><p>Task delay 唤醒，到下次任务执行间隔需要不小于20ms</p></li>
+</ul>
+</section>
+<section id="bt-event">
+<h4>BT Event 唤醒事件<a class="headerlink" href="#bt-event" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>BT 处于 advertising 状态，且 advertising anchor 到来。</p></li>
+<li><p>BT 处于 connection 状态，且 connection anchor 到来。</p></li>
+<li><p>BT 处于 scanning 状态，且 scaning anchor 到来。</p></li>
+</ul>
+</section>
+</section>
+<section id="id19">
+<h3>应用示例<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<section id="debounce-pad">
+<h4>关闭 Debounce 下的 PAD 唤醒<a class="headerlink" href="#debounce-pad" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p>注册 DLPS check，enter 和 exit 阶段的用户 callback 函数，拉低 P3_2 以唤醒 DLPS。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">POWER_CheckResult</span><span class="w"> </span><span class="nf">DLPS_Check</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">POWER_CHECK_PASS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">EnterDlpsSet</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">  </span><span class="c1">//DLPS Enter</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="w">    </span><span class="n">System_WakeUpPinEnable</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_POL_LOW</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_DEB_DISABLE</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">ExitDlpsInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">  </span><span class="c1">//DLPS Exit</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">pwr_mgr_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if DLPS_EN</span>
+<span class="w">    </span><span class="n">power_check_cb_register</span><span class="w"> </span><span class="p">(</span><span class="n">DLPS_Check</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegUserDlpsEnterCb</span><span class="p">(</span><span class="n">EnterDlpsSet</span><span class="p">);</span><span class="w">  </span><span class="c1">//DLPS Enter CB</span>
+<span class="w">    </span><span class="n">DLPS_IORegUserDlpsExitCb</span><span class="p">(</span><span class="n">ExitDlpsInit</span><span class="p">);</span><span class="w">  </span><span class="c1">//DLPS Exit CB</span>
+<span class="w">    </span><span class="n">DLPS_IORegister</span><span class="p">();</span>
+<span class="w">    </span><span class="n">bt_power_mode_set</span><span class="p">(</span><span class="n">BTPOWER_DEEP_SLEEP</span><span class="p">);</span>
+<span class="w">    </span><span class="n">power_mode_set</span><span class="p">(</span><span class="n">POWER_DLPS_MODE</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>定义 System 中断 handler 检测哪一个 PIN 唤醒 DLPS。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">System_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;System_Handler&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">NVIC_DisableIRQ</span><span class="p">(</span><span class="n">System_IRQn</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">System_WakeUpInterruptValue</span><span class="p">(</span><span class="n">P3_2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;P3_2 Wake up&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Pad_ClearWakeupINTPendingBit</span><span class="p">(</span><span class="n">P3_2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System_WakeUpPinDisable</span><span class="p">(</span><span class="n">P3_2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">NVIC_ClearPendingIRQ</span><span class="p">(</span><span class="n">System_IRQn</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id20">
+<h4>打开 Debounce 下的 PAD 唤醒<a class="headerlink" href="#id20" title="Link to this heading"></a></h4>
+<ol class="arabic">
+<li><p>注册 DLPS check，enter 和 exit 阶段的用户 callback 函数，拉低 P3_2 以唤醒 DLPS，设置 8ms debounce。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">POWER_CheckResult</span><span class="w"> </span><span class="nf">DLPS_Check</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">POWER_CHECK_PASS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">EnterDlpsSet</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_SW_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="w">    </span><span class="n">System_WakeUpPinDisable</span><span class="p">(</span><span class="n">P3_2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">System_WakeUpDebounceTime</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">    </span><span class="n">System_WakeUpPinEnable</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_POL_LOW</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_WAKEUP_DEB_ENABLE</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">ExitDlpsInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Pad_Config</span><span class="p">(</span><span class="n">P3_2</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PINMUX_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_IS_PWRON</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_PULL_UP</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_DISABLE</span><span class="p">,</span><span class="w"> </span><span class="n">PAD_OUT_LOW</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">pwr_mgr_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if DLPS_EN</span>
+<span class="w">    </span><span class="n">power_check_cb_register</span><span class="p">(</span><span class="n">DLPS_Check</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegUserDlpsEnterCb</span><span class="p">(</span><span class="n">EnterDlpsSet</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegUserDlpsExitCb</span><span class="p">(</span><span class="n">ExitDlpsInit</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegister</span><span class="p">();</span>
+<span class="w">    </span><span class="n">bt_power_mode_set</span><span class="p">(</span><span class="n">BTPOWER_DEEP_SLEEP</span><span class="p">);</span>
+<span class="w">    </span><span class="n">power_mode_set</span><span class="p">(</span><span class="n">POWER_DLPS_MODE</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>当 debounce 唤醒 DLPS 使能后，System 中断 handler 不能判断具体是哪个 pin 唤醒的 DLPS，只能判断是否存在 debounce 唤醒 DLPS。因此只需要获取并清除 debounce status。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">System_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;System_Handler&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">NVIC_DisableIRQ</span><span class="p">(</span><span class="n">System_IRQn</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">System_WakeupDebounceStatus</span><span class="p">(</span><span class="n">P3_2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">System_WakeupDebounceClear</span><span class="p">(</span><span class="n">P3_2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;debounce Wake up&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">NVIC_ClearPendingIRQ</span><span class="p">(</span><span class="n">System_IRQn</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="id21">
+<h2>异常分析<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<p>电源管理会记录低功耗模式进出的中间状态信息，以便于后续分析。下面针对实际应用中可能出现的问题，提供相应的异常分析手段。</p>
+<section id="id22">
+<h3>无法进入 DLPS<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>可以通过 <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv420power_get_error_codev" title="power_get_error_code"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_get_error_code()</span></code></a> 读取平台模块的错误码，来判断无法进入的原因 <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___types.html#_CPPv418PowerModeErrorCode" title="PowerModeErrorCode"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PowerModeErrorCode</span></code></a>。</p></li>
+<li><p>可以通过 <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv423power_get_refuse_reasonv" title="power_get_refuse_reason"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_get_refuse_reason()</span></code></a> 读取 refuse reason，即阻止系统进入 DLPS 的 callback 地址。</p></li>
+</ul>
+<p>示例：创建一个 SW Timer（需要从唤醒的 Timer list 里面 exclude，确保不会唤醒 DLPS），timeout callback 函数里面读取平台模块的错误码以及 refuse reason。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">xTestTimerHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test_timer_cb</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">xTimer</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;Platform fail to enter dlps, error 0x%x, reason 0x%x&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">power_get_error_code</span><span class="p">(),</span><span class="w"> </span><span class="n">power_get_refuse_reason</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="n">os_timer_start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xTestTimerHandle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">sw_timer_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;sw_timer_init&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os_timer_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xTestTimerHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Test Timer&quot;</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">test_timer_cb</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">retval</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;create xTimerPeriodWakeupDlps retval=%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">retval</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">os_timer_start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xTestTimerHandle</span><span class="p">);</span>
+<span class="w">        </span><span class="n">APP_PRINT_INFO0</span><span class="p">(</span><span class="s">&quot;Start auto reload Test Timer: Period 1s&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">power_register_excluded_handle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xTestTimerHandle</span><span class="p">,</span><span class="w"> </span><span class="n">PM_EXCLUDED_TIMER</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h3>无法退出 DLPS<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<p>查看是否在 DLPS Enter callback 里面进行了太长的延时操作或者 OS 操作。进入DLPS Enter callback，系统已经关闭了中断和调度，此时的操作可能影响 DLPS 的唤醒时序。</p>
+</section>
+<section id="id24">
+<h3>异常退出 DLPS<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<p>可以通过 <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv423power_get_wakeup_reasonv" title="power_get_wakeup_reason"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_get_wakeup_reason()</span></code></a> 读取平台模块的唤醒原因， <a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___types.html#_CPPv421PowerModeWakeupReason" title="PowerModeWakeupReason"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">PowerModeWakeupReason</span></code></a>。</p>
+<p>示例：在 DLPS Exit callback 里面读取唤醒原因。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">POWER_CheckResult</span><span class="w"> </span><span class="nf">DLPS_Check</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">POWER_CHECK_PASS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">EnterDlpsSet</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">ExitDlpsInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;Platform wake reason 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">power_get_wakeup_reason</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">pwr_mgr_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if DLPS_EN</span>
+<span class="w">    </span><span class="n">power_check_cb_register</span><span class="p">(</span><span class="n">DLPS_Check</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegUserDlpsEnterCb</span><span class="p">(</span><span class="n">EnterDlpsSet</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegUserDlpsExitCb</span><span class="p">(</span><span class="n">ExitDlpsInit</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DLPS_IORegister</span><span class="p">();</span>
+<span class="w">    </span><span class="n">bt_power_mode_set</span><span class="p">(</span><span class="n">BTPOWER_DEEP_SLEEP</span><span class="p">);</span>
+<span class="w">    </span><span class="n">power_mode_set</span><span class="p">(</span><span class="n">POWER_DLPS_MODE</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dlps-mode-apis">
+<h2>DLPS Mode APIs<a class="headerlink" href="#dlps-mode-apis" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv414power_mode_set19T_SYSTEM_POWER_MODE" title="power_mode_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_mode_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv414power_mode_getv" title="power_mode_get"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_mode_get()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv417bt_power_mode_set15T_BT_POWER_MODE" title="bt_power_mode_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">bt_power_mode_set()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv417bt_power_mode_getv" title="bt_power_mode_get"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">bt_power_mode_get()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv416power_mode_pausev" title="power_mode_pause"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_mode_pause()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv417power_mode_resumev" title="power_mode_resume"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_mode_resume()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv423power_get_refuse_reasonv" title="power_get_refuse_reason"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_get_refuse_reason()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv423power_get_wakeup_reasonv" title="power_get_wakeup_reason"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_get_wakeup_reason()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv420power_get_error_codev" title="power_get_error_code"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_get_error_code()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv420power_get_statisticsP8uint32_tP8uint32_tP8uint32_t" title="power_get_statistics"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_get_statistics()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv430power_register_excluded_handlePPv27PowerModeExcludedHandleType" title="power_register_excluded_handle"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_register_excluded_handle()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv432power_unregister_excluded_handlePPv27PowerModeExcludedHandleType" title="power_unregister_excluded_handle"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_unregister_excluded_handle()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_o_w_e_r___m_a_n_a_g_e_r___exported___functions.html#_CPPv423power_check_cb_register14POWERCheckFunc" title="power_check_cb_register"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">power_check_cb_register()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___i_o___d_l_p_s___exported___functions.html#_CPPv425DLPS_IORegUserDlpsEnterCb19DLPS_IO_EnterDlpsCB" title="DLPS_IORegUserDlpsEnterCb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DLPS_IORegUserDlpsEnterCb()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___i_o___d_l_p_s___exported___functions.html#_CPPv424DLPS_IORegUserDlpsExitCb18DLPS_IO_ExitDlpsCB" title="DLPS_IORegUserDlpsExitCb"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">DLPS_IORegUserDlpsExitCb()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv422System_WakeUpPinEnable7uint8_t7uint8_t7uint8_t" title="System_WakeUpPinEnable"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">System_WakeUpPinEnable()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv425System_WakeUpDebounceTime7uint8_t7uint8_t" title="System_WakeUpDebounceTime"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">System_WakeUpDebounceTime()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___p_i_n_m_u_x___exported___functions.html#_CPPv427System_WakeUpInterruptValue7uint8_t" title="System_WakeUpInterruptValue"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">System_WakeUpInterruptValue()</span></code></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../psram/text_cn/README.html" class="btn btn-neutral float-left" title="PSRAM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../security/text_cn/README.html" class="btn btn-neutral float-right" title="安全机制" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

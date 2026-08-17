@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTA &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="CFU" href="../../../cfu/doc/text_cn/CFU.html" />
+    <link rel="prev" title="DFU" href="README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../doc/subsystems/text_cn/README.html">子系统</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="README.html">DFU</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OTA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">方案介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">流程说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">传输协议</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#ota-service">OTA Service</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#dfu-service">DFU Service</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">OTA 协议流程</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id8">传输流程</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id10">激活流程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">工具指南</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#bank">支持 Bank 切换</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id14">不支持 Bank 切换</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#app-data">APP Data 升级</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#user-data">User Data 升级</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cfu/doc/text_cn/CFU.html">CFU</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../doc/subsystems/gui/text_cn/README.html">GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../staging/data_uart_cmd/doc/text_cn/README.html">用户命令接口</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+        <li class="breadcrumb-item"><a href="README.html">DFU</a></li>
+    <li class="breadcrumb-item active">OTA</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="ota">
+<h1>OTA<a class="headerlink" href="#ota" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../../../../doc/glossary.html#term-OTA"><span class="xref std std-term">OTA</span></a>（空中升级）技术是指通过蓝牙传输，对 RTL87x2G 系列设备中的 Flash 存储的 image 和 data 进行空中升级的一种技术。OTA 技术提供了一种高效且便捷的方式，使设备可以远程接收和安装更新，而无需物理连接或手动干预。SDK 通过无线方式支持 OTA 功能，使其能够兼容运行 Android 和 <span class="xref std std-term">iOS</span> 系统的设备。具体来说，SDK 利用 <a class="reference internal" href="../../../../doc/glossary.html#term-GATT"><span class="xref std std-term">GATT</span></a>（通用属性规范）协议进行蓝牙数据传输，以确保更新过程的稳定性和可靠性。此外，OTA 更新不仅可以提高设备的性能和功能，还能修复已知的漏洞和安全问题，从而提升用户体验和设备的安全性。</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../_images/OTA_overview.png"><img alt="../../../../_images/OTA_overview.png" src="../../../../_images/OTA_overview.png" style="width: 524.7px; height: 117.9px;" /></a>
+<figcaption>
+<p><span class="caption-text">OTA 示意图</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id2">
+<h2>方案介绍<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>OTA 方案根据 <a class="reference internal" href="../../../../doc/platform/image_layout/text_cn/README.html#flash-layout-cn"><span class="std std-ref">Flash布局</span></a> 排布的不同，可以分为以下两种：</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><strong>支持 Bank 切换</strong></div>
+<div class="line">OTA Bank0 和 OTA Bank1 将作为彼此的备份固件存储区。在固件更新期间，这两个存储区可以相互切换使用，从而确保在固件更新失败时能够回滚到之前的备份固件，保证系统的稳定性和安全性。</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>不支持 Bank 切换</strong></div>
+<div class="line">OTA Bank1 不需要分配空间，OTA TMP 区需要分配，且大小必须不小于 OTA Bank0 最大的 image 大小，相对节约 Flash 空间。 OTA 传输完成，Boot Loader 会将 OTA TMP 区数据搬到 OTA Bank0 指定 image 区域，再重启生效，所以相对增加了 OTA 升级完成的重启时间。</div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>支持 Bank 切换方案需要维护两个 Bank 对应地址的 image，Realtek 默认发布的 image 只支持运行在 Bank0，如果需要运行在 Bank1，需要联系 Realtek 获取。</p></li>
+<li><p>无论是否支持 Bank 切换，Boot Patch image 都是独立的双 Bank，作用相同，互为备份区。例如当前 Boot Patch 运行在 Bank0，OTA 升级只能升级 Bank1，升级完成后重启会选择版本号高的 Bank 运行（版本号相同则运行在 Bank0）。</p></li>
+</ul>
+</div>
+</section>
+<section id="id3">
+<h2>流程说明<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>OTA 升级流程如下，从图中可以更清晰地理解 OTA 更新的整体流程和各个模块的交互关系。其中手机是 Controller，SoC 是 Target。在 OTA 开始之前，Controller 与 Target 建立连接。随后，Controller 获取 Target 信息判断是否允许升级。</p>
+<figure class="align-center" id="id4">
+<img alt="../../../../_images/OTA_flow.png" src="../../../../_images/OTA_flow.png" />
+<figcaption>
+<p><span class="caption-text">OTA 升级流程</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id5">
+<span id="id6"></span><h2>传输协议<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>OTA 升级根据传输协议不同分为静默升级和普通升级。</p>
+<ul>
+<li><p><strong>静默升级</strong></p>
+<p>升级 image 的过程中，设备原来的功能可以正常使用，升级完成后，只需很短的重启时间，程序自动切换到新的功能。</p>
+</li>
+<li><p><strong>普通升级</strong></p>
+<p>OTA 功能稳定，但升级过程需要将设备切换到 DFU mode，设备原有的功能无法使用，需要等待升级完成。</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>上述两种升级方式都会使用到 OTA Service 和 DFU Service。</p>
+<ul class="simple">
+<li><p>OTA Service：用于获取设备信息或进入 DFU mode。</p></li>
+<li><p>DFU Service：用于执行升级过程。</p></li>
+</ul>
+</div>
+<section id="ota-service">
+<h3>OTA Service<a class="headerlink" href="#ota-service" title="Link to this heading"></a></h3>
+<p>OTA Service 的 UUID 及 Characteristics 如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mh">0x12</span><span class="p">,</span><span class="w"> </span><span class="mh">0xA2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x4D</span><span class="p">,</span><span class="w"> </span><span class="mh">0x2E</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFE</span><span class="p">,</span><span class="w"> </span><span class="mh">0x14</span><span class="p">,</span><span class="w"> </span><span class="mh">0x48</span><span class="p">,</span><span class="w"> </span><span class="mh">0x8e</span><span class="p">,</span><span class="w"> </span><span class="mh">0x93</span><span class="p">,</span><span class="w"> </span><span class="mh">0xD2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x17</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3C</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">,</span><span class="w"> </span><span class="mh">0xD0</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default" id="ota-service-characteristics">
+<caption><span class="caption-text">OTA Service Characteristics</span><a class="headerlink" href="#ota-service-characteristics" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>特征名称</p></th>
+<th class="head"><p>要求</p></th>
+<th class="head"><p>UUID</p></th>
+<th class="head"><p>属性</p></th>
+<th class="head"><p>格式</p></th>
+<th class="head"><p>值</p></th>
+<th class="head"><p>介绍</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OTA CMD</p></td>
+<td><p>Mandatory</p></td>
+<td><p>0xFFD1</p></td>
+<td><p>Write Without Response</p></td>
+<td><p>Uint8</p></td>
+<td><p>1</p></td>
+<td><p>允许设备进入 DFU mode 的控制端点</p></td>
+</tr>
+<tr class="row-odd"><td><p>Device Mac</p></td>
+<td><p>Mandatory</p></td>
+<td><p>0xFFD2</p></td>
+<td><p>Read</p></td>
+<td><p>Uint8*6</p></td>
+<td><p>XX:XX:XX:XX:XX:XX</p></td>
+<td><p>读取设备的蓝牙地址用于和 DFU mode 中的蓝牙地址进行比较</p></td>
+</tr>
+<tr class="row-even"><td><p>Device Info</p></td>
+<td><p>Mandatory</p></td>
+<td><p>0xFFF1</p></td>
+<td><p>Read</p></td>
+<td><p><a class="reference internal" href="#device-info-ota-version-1"><span class="std std-ref">Device Info 格式</span></a></p></td>
+<td><p><a class="reference internal" href="#device-info-ota-version-1"><span class="std std-ref">Device Info 格式</span></a></p></td>
+<td><p>读取设备的固件基本信息</p></td>
+</tr>
+<tr class="row-odd"><td><p>Protocol Type</p></td>
+<td><p>Mandatory</p></td>
+<td><p>0xFFF3</p></td>
+<td><p>Read</p></td>
+<td><p>Uint16</p></td>
+<td><p>0xNNNN</p></td>
+<td><p>读取请求以获取 OTA 协议信息</p></td>
+</tr>
+<tr class="row-even"><td><p>Image Version</p></td>
+<td><p>Mandatory</p></td>
+<td><p>0xFFE0 ~ FFE1</p></td>
+<td><p>Read</p></td>
+<td><p>(Uint32+Uint16)*21+2</p></td>
+<td><p>Byte0: bank num</p>
+<ul class="simple">
+<li><p>0: active bank</p></li>
+<li><p>1: inactive bank</p></li>
+</ul>
+<p>Byte1: image num</p>
+<p>Byte2 ~ Byte3: image ID 1</p>
+<p>Byte4 ~ Byte7: image version 1</p>
+<p>Byte8 ~ Byte9: image ID 2</p>
+<p>Byte10 ~ Byte13: image version 2</p>
+<p>...</p>
+</td>
+<td><p>读取设备的 image 版本</p></td>
+</tr>
+<tr class="row-odd"><td><p>Image Section Size</p></td>
+<td><p>Mandatory</p></td>
+<td><p>0xFFE4 ~ FFE5</p></td>
+<td><p>Read</p></td>
+<td><p>(Uint32+Uint16)*21+1</p></td>
+<td><p>Byte0: image num</p>
+<p>Byte1 ~ Byte2: image ID 1</p>
+<p>Byte3 ~ Byte6: image max size 1</p>
+<p>Byte7 ~ Byte8: image ID 2</p>
+<p>Byte9 ~ Byte12: image max size 2</p>
+<p>...</p>
+</td>
+<td><p>读取请求以获得固件的最大大小</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-center" id="device-info-ota-version-1">
+<caption><span class="caption-text">Device Info 格式 (OTA Version = 1)</span><a class="headerlink" href="#device-info-ota-version-1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>字节</p></th>
+<th class="head" colspan="2"><p>值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Byte0</p></td>
+<td colspan="2"><p>ic_type</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte1</p></td>
+<td colspan="2"><p>spec version</p></td>
+</tr>
+<tr class="row-even"><td rowspan="8"><p>Byte2</p></td>
+<td rowspan="2"><p>Bit0: buffer check</p></td>
+<td><p>0: 不支持 buffer check</p></td>
+</tr>
+<tr class="row-odd"><td><p>1: 支持 buffer check</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Bit1: AES</p></td>
+<td><p>0: 关闭 AES</p></td>
+</tr>
+<tr class="row-odd"><td><p>1: 开启 AES</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Bit2: encryption mode</p></td>
+<td><p>0: 加密前 16 字节</p></td>
+</tr>
+<tr class="row-odd"><td><p>1: 加密 16*N 字节</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Bit3: multi image</p></td>
+<td><p>0: 一次更新单个 image</p></td>
+</tr>
+<tr class="row-odd"><td><p>1: 一次更新多个 image</p></td>
+</tr>
+<tr class="row-even"><td><p>Byte3</p></td>
+<td colspan="2"><p>Reserved</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte4~5</p></td>
+<td colspan="2"><p>OTA Temp Buffer Size (uint 4KB)</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>Byte6</p></td>
+<td rowspan="3"><p>active OTA bank num</p></td>
+<td><p>0: 不支持 bank 切换</p></td>
+</tr>
+<tr class="row-odd"><td><p>1: 支持 bank 切换, bank0 是 active bank</p></td>
+</tr>
+<tr class="row-even"><td><p>2: 支持 bank 切换, bank1 是 active bank</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Byte7</p></td>
+<td rowspan="3"><p>active Boot Patch bank num</p></td>
+<td><p>0: 不支持 bank 切换</p></td>
+</tr>
+<tr class="row-even"><td><p>1: 支持 bank 切换, bank0 是 active bank</p></td>
+</tr>
+<tr class="row-odd"><td><p>2: 支持 bank 切换, bank1 是 active bank</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>Byte8</p></td>
+<td rowspan="3"><p>active Secure APP bank num</p></td>
+<td><p>0: 不支持 bank 切换</p></td>
+</tr>
+<tr class="row-odd"><td><p>1: 支持 bank 切换, bank0 是 active bank</p></td>
+</tr>
+<tr class="row-even"><td><p>2: 支持 bank 切换, bank1 是 active bank</p></td>
+</tr>
+<tr class="row-odd"><td><p>Byte9~10</p></td>
+<td><p>ctrl header offset</p></td>
+<td><p>ctrl header 在 image header 中的偏移</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dfu-service">
+<h3>DFU Service<a class="headerlink" href="#dfu-service" title="Link to this heading"></a></h3>
+<p>DFU Service 的 UUID 和 Characteristics 如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mh">0x12</span><span class="p">,</span><span class="w"> </span><span class="mh">0xA2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x4D</span><span class="p">,</span><span class="w"> </span><span class="mh">0x2E</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFE</span><span class="p">,</span><span class="w"> </span><span class="mh">0x14</span><span class="p">,</span><span class="w"> </span><span class="mh">0x48</span><span class="p">,</span><span class="w"> </span><span class="mh">0x8e</span><span class="p">,</span><span class="w"> </span><span class="mh">0x93</span><span class="p">,</span><span class="w"> </span><span class="mh">0xD2</span><span class="p">,</span><span class="w"> </span><span class="mh">0x17</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3C</span><span class="p">,</span><span class="w"> </span><span class="mh">0x87</span><span class="p">,</span><span class="w"> </span><span class="mh">0x62</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Data Characteristic：接受 image 的数据通道，属性 write no response。</p></li>
+<li><p>Control Point Characteristic：接受控制指令的通道，属性 write/notification。</p></li>
+</ul>
+<p>DFU Service 支持的所有 control point 如下表：</p>
+<table class="docutils align-default" id="dfu-opcode">
+<caption><span class="caption-text">DFU Opcode</span><a class="headerlink" href="#dfu-opcode" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Opcode 值</p></th>
+<th class="head"><p>程序</p></th>
+<th class="head"><p>要求</p></th>
+<th class="head"><p>属性</p></th>
+<th class="head"><p>参数说明</p></th>
+<th class="head"><p>响应参数</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x01</p></td>
+<td><p>Start DFU</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>crc16(UINT16)</p>
+<p>ic_type(UINT8)</p>
+<p>secure_version(UINT8)</p>
+<p>ctrl_flag.value(UINT16)</p>
+<p>image_id(UINT16)</p>
+<p>payload_len(UINT32)</p>
+</td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x02</p></td>
+<td><p>Receive FW Image Information</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>image_id(UINT16)</p>
+<p>nImageLength(UINT32)</p>
+</td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>0x03</p></td>
+<td><p>Validate FW</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>image_id(UINT16)</p>
+<p>is_the_last_image(UINT8)</p>
+</td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x04</p></td>
+<td><p>Activate Image and Reset</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>is enter DFU mode directly</p>
+<p>after reset(UINT8)</p>
+</td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p>0x05</p></td>
+<td><p>Reset System</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x06</p></td>
+<td><p>Report Received Image Information</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>image_id(UINT16)</p></td>
+<td><p>origin_image_version(UINT32)</p>
+<p>cur_offset(UINT32)</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>0x07</p></td>
+<td><p>Connection Parameter Update</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>connIntervalMin(UINT16)</p>
+<p>connIntervalMax(UINT16)</p>
+<p>connLatency(UINT16)</p>
+<p>supervisionTimeout(UINT16)</p>
+</td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x09</p></td>
+<td><p>Buffer Check Enable</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>image_id(UINT16)</p></td>
+<td><p>Max buffer size(UINT16)</p>
+<p>Mtu size(UINT16)</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>0x0A</p></td>
+<td><p>Buffer Check Size &amp; CRC</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>mBufferSize(UINT16)</p>
+<p>mCRC(UINT16)</p>
+</td>
+<td><p>Next send offset(UINT32)</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x0B</p></td>
+<td><p>IC Type</p></td>
+<td><p>Optional</p></td>
+<td><p>Write</p></td>
+<td><p>None</p></td>
+<td><p>ic_type(UINT8)</p></td>
+</tr>
+<tr class="row-even"><td><p>0x0D</p></td>
+<td><p>Get Image Version</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>bank_num(UINT8)</p></td>
+<td><p>bank_num(UINT8)</p>
+<p>image_num(UINT8)</p>
+<p>image_id1(UINT16)</p>
+<p>image_version1(UINT16)</p>
+<p>...</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>0x0F</p></td>
+<td><p>Check Sha256 Value</p></td>
+<td><p>Optional</p></td>
+<td><p>Write</p></td>
+<td><p>image_num(UINT16)</p>
+<p>image_id(UINT16)</p>
+<p>sha256 value(UINT16)</p>
+</td>
+<td><p>image_id(UINT16)</p>
+<p>check ret(UINT8)</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>0x12</p></td>
+<td><p>Report Image Number</p></td>
+<td><p>Mandatory</p></td>
+<td><p>Write</p></td>
+<td><p>image_id(UINT16)</p>
+<p>current image number(UINT8)</p>
+<p>total image number(UINT8)</p>
+</td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>在收到 image control header 后，会将 image control header 中的 not_ready 临时写成 1 再写入 flash 中。当 image 传输完成，并且 image 完整性校验成功后，修改备份区 image 中的 not_ready 为 0，标识备份区 image 有效。这样设计是当 OTA 传输中断时，BootLoader 很容易识别这个 image 是否是 ready 状态。</p></li>
+<li><p>在数据传输过程中，如果采用 AES 加密，每 16 字节的数据都会进行加密，最后小于 16 字节的部分将不进行加密，直接发送。接收端在收到数据后，需要首先对加密部分进行解密。</p></li>
+<li><p>如果启用 buffer check，当收满 buffer check size 后，再写入 flash。</p></li>
+</ul>
+</div>
+</section>
+<section id="id7">
+<h3>OTA 协议流程<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>OTA 升级时会通过 <a class="reference internal" href="#ota-service">OTA Service</a> 和 <a class="reference internal" href="#dfu-service">DFU Service</a> 将待升级的 image 传输到升级区域，传输完成后会进行重启由 Bootloader 完成激活流程。</p>
+<section id="id8">
+<h4>传输流程<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<figure class="align-center" id="id9">
+<img alt="../../../../_images/OTA_Bluetooth_transmission_process.png" src="../../../../_images/OTA_Bluetooth_transmission_process.png" />
+<figcaption>
+<p><span class="caption-text">OTA 蓝牙传输流程</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id10">
+<h4>激活流程<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">不支持 Bank 切换</label><div class="tab-content docutils">
+<ul>
+<li><p><strong>组合升级</strong></p>
+<p>在将 image 数据写入 OTA TMP 区时，会去计算 OTA TMP 区剩余空间能否放得下下一个需要写入的 image 文件，如果可以放下则继续将下一个 image 文件写入 OTA TMP 区，当放不下时则再将 OTA TMP 区数据搬到 OTA Bank0 区域，重启拷贝激活生效之后，再升级其他文件。</p>
+</li>
+<li><p><strong>非组合升级</strong></p>
+<p>当打包待升级文件中包含 Patch、APP 或者 APP DATA，需要一个文件升级验证成功，重启拷贝激活生效之后，再升级下一个文件。</p>
+</li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">支持 Bank 切换</label><div class="tab-content docutils">
+<p>当打包待升级文件中包含 OTA Header file、Patch、APP 或者 APP DATA，需要一个文件传输验证成功，再传输验证下一个文件。等所有文件都传输验证成功后，才能进行重启，否则本次升级无效。原因是切换 Bank 方案，需要 Bank 区所有文件都一起生效，才能正常运行。</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="id11">
+<h2>工具指南<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<p>以下是 OTA 升级过程中所需工具。</p>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-text">OTA 升级工具</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>工具</p></th>
+<th class="head"><p>说明</p></th>
+<th class="head"><p>路径</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../../../../doc/tool_set/text_cn/README.html#flash-map-generate-tool-cn"><span class="std std-ref">Flash Map Generate Tool</span></a></p></th>
+<td><p>生成 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code>、<code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">file</span></code></p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\tools\BeeMPTool_vx.x.x.xBeeMPTool\tools\FlashMapGenerateTool.exe</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../../../../doc/tool_set/text_cn/README.html#mp-pack-tool-cn"><span class="std std-ref">MP Pack Tool</span></a></p></th>
+<td><p>打包 OTA 文件</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\tools\BeeMPTool_vx.x.x.xBeeMPTool\tools\MPPackTool.exe</span></code></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>APP Data Tool</p></th>
+<td><p>生成可被打包的 APP Data 文件</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\tools\AppData</span></code></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>User Data Tool</p></th>
+<td><p>生成可被打包的 User Data 文件</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\tools\UserData</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Flash Map Generate Tool 以及 MP Pack Tool 的使用将按照是否支持 Bank 切换分两种方案进行介绍。</p>
+</div>
+<section id="bank">
+<h3>支持 Bank 切换<a class="headerlink" href="#bank" title="Link to this heading"></a></h3>
+<p>支持 Bank 切换方案 Flash 布局示例如下：</p>
+<table class="docutils align-default" id="bank-flash">
+<caption><span class="caption-text">支持 Bank 切换方案 Flash 布局示例</span><a class="headerlink" href="#bank-flash" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Flash 总大小为 2MB 的示例布局</p></th>
+<th class="head"><p>大小（字节）</p></th>
+<th class="head"><p>起始地址</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>4K</p></td>
+<td><p>0x04000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OEM Header</p></td>
+<td><p>4K</p></td>
+<td><p>0x04001000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x04002000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x0400A000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Bank0</p></td>
+<td><p>596K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>OTA Header</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>System Patch code</p></li>
+</ul>
+</td>
+<td><p>32K</p></td>
+<td><p>0x04013000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>BT Stack Patch code</p></li>
+</ul>
+</td>
+<td><p>60K</p></td>
+<td><p>0x0401B000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>BT Host code</p></li>
+</ul>
+</td>
+<td><p>212K</p></td>
+<td><p>0x0402A000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP code</p></li>
+</ul>
+</td>
+<td><p>284K</p></td>
+<td><p>0x0405F000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP Config File</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x040A6000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data1</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040A7000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data2</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040A7000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data3</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040A7000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data4</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040A7000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data5</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040A7000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data6</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040A7000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OTA Bank1</p></td>
+<td><p>596K</p></td>
+<td><p>0x040A7000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>OTA Header</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x040A7000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>System Patch code</p></li>
+</ul>
+</td>
+<td><p>32K</p></td>
+<td><p>0x040A8000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>BT Stack Patch code</p></li>
+</ul>
+</td>
+<td><p>60K</p></td>
+<td><p>0x040B0000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>BT Host code</p></li>
+</ul>
+</td>
+<td><p>212K</p></td>
+<td><p>0x040BF000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP code</p></li>
+</ul>
+</td>
+<td><p>284K</p></td>
+<td><p>0x040F4000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP Config File</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x0413B000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data1</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data2</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data3</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data4</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data5</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data6</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank1 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Temp</p></td>
+<td><p>32K</p></td>
+<td><p>0x0413C000</p></td>
+</tr>
+<tr class="row-odd"><td><p>FTL</p></td>
+<td><p>16K</p></td>
+<td><p>0x04148000</p></td>
+</tr>
+<tr class="row-even"><td><p>APP Defined Section</p></td>
+<td><p>736K</p></td>
+<td><p>0x040FF000</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Flash 布局需要根据用户实际 image 和 data 的大小进行合理划分。</p>
+</div>
+<p><strong>操作步骤：</strong></p>
+<ol class="arabic">
+<li><p>使用 Flash Map Generate Tool 生成 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code>、<code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code>、 <code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">file</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">Bank1</span> <span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">file</span></code>。</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">Flash Size</span> 选择合适的大小。</p></li>
+<li><p><span class="guilabel">Support OTA Switch</span> 选择 <strong>Enable</strong>。</p></li>
+<li><p>设置两级 flash layout。</p></li>
+<li><p>点击 <span class="guilabel">Confirm</span> 完成 flash layout 设置。</p></li>
+<li><p><span class="guilabel">Version</span> 处修改 OTA Header file 版本。</p></li>
+<li><p>点击 <span class="guilabel">Confirm</span> 生成 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code>，<code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code>，<code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">file</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">Bank1</span> <span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">file</span></code>。</p></li>
+</ol>
+<figure class="align-center" id="flash-ota-header-bank">
+<a class="reference internal image-reference" href="../../../../_images/dual_bank_Flash_layout_config.png"><img alt="../../../../_images/dual_bank_Flash_layout_config.png" src="../../../../_images/dual_bank_Flash_layout_config.png" style="width: 923.4px; height: 651.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">设置 Flash 布局并生成 OTA Header —— 支持 Bank 切换</span><a class="headerlink" href="#flash-ota-header-bank" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>打包用的 OTA Header 版本号要比原来运行的高，这样 OTA 升级完新 Bank 才能正常生效。</p>
+</div>
+</li>
+<li><p>将 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> 文件拷贝到工程文件上级目录下，编译链接生成 <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk#####+version+MD5.bin</span></code> 的文件供打包使用。</p>
+<figure class="align-center" id="app">
+<a class="reference internal image-reference" href="../../../../_images/Build_APP_image.png"><img alt="../../../../_images/Build_APP_image.png" src="../../../../_images/Build_APP_image.png" style="width: 696.6px; height: 359.1px;" /></a>
+<figcaption>
+<p><span class="caption-text">编译 APP 文件</span><a class="headerlink" href="#app" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>支持 Bank 切换的方案需要编译 OTA Bank0 和 OTA Bank1 的 APP image。</p></li>
+<li><p>Realtek 发布的 SDK 中，demo APP 工程默认编译的是 OTA Bank0 的 APP image。编译 OTA Bank1 的 APP image 需要将工程文件上级目录下 <code class="file docutils literal notranslate"><span class="pre">mem_config.h</span></code> 中的 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">#define</kbd> <kbd class="kbd docutils literal notranslate">APP_BANK</kbd></kbd> 修改为 1，具体代码如下：</p></li>
+</ul>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/** @brief set app bank to support OTA: 1 is ota bank1, 0 is ota bank0 */</span>
+<span class="cp">#define APP_BANK                                1</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic" start="3">
+<li><p>获取 OTA Bank1 的 System Patch，BT Stack Patch 和 BT Host image。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>SDK 中发布的 System Patch，BT Stack Patch 和 BT Host image 默认运行在 OTA Bank0，如果选用支持 Bank 切换方案，请咨询 Realtek 对应发布运行在 OTA Bank1 的 System Patch，BT Stack Patch 和 BT Host image。</p>
+</div>
+</li>
+<li><p>生成打包文件，默认在软件同目录下生成 <code class="file docutils literal notranslate"><span class="pre">ImgPacketFile-xxxxxx.bin</span></code>，此文件为升级用的打包文件。</p>
+<ol class="arabic simple">
+<li><p>选择 <span class="guilabel">ForOTA</span> 选项。</p></li>
+<li><p>加载生成的 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code>。</p></li>
+<li><p>点击 <span class="guilabel">Browse</span> 加载所有 OTA Bank0 和 Bank1 image。</p></li>
+<li><p>点击 <span class="guilabel">Confirm</span> 生成打包文件。</p></li>
+</ol>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../../../../_images/MPPackTool_dual_bank.png"><img alt="../../../../_images/MPPackTool_dual_bank.png" src="../../../../_images/MPPackTool_dual_bank.png" style="width: 898.1999999999999px; height: 813.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">打包文件 —— 支持 Bank 切换</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>Bank 内 Flash 布局中定义的内容都需要进行打包，缺一不可。</p></li>
+<li><p>建议 Bank0 和 Bank1 一起打包。</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</section>
+<section id="id14">
+<h3>不支持 Bank 切换<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>不支持 Bank 切换方案 Flash 布局示例如下：</p>
+<table class="docutils align-default" id="id15">
+<caption><span class="caption-text">不支持 Bank 切换方案 Flash 布局示例</span><a class="headerlink" href="#id15" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Flash 总大小为 1MB 的示例布局</p></th>
+<th class="head"><p>大小（字节）</p></th>
+<th class="head"><p>起始地址</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>4K</p></td>
+<td><p>0x04000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OEM Header</p></td>
+<td><p>4K</p></td>
+<td><p>0x04001000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x04002000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x0400A000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Bank0</p></td>
+<td><p>612K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>OTA Header</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>System Patch code</p></li>
+</ul>
+</td>
+<td><p>32K</p></td>
+<td><p>0x04013000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>BT Stack Patch code</p></li>
+</ul>
+</td>
+<td><p>60K</p></td>
+<td><p>0x0401B000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>BT Host code</p></li>
+</ul>
+</td>
+<td><p>212K</p></td>
+<td><p>0x0402A000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP code</p></li>
+</ul>
+</td>
+<td><p>304K</p></td>
+<td><p>0x0405F000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP Config File</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x040AC000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data1</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data2</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data3</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data4</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data5</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data6</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OTA Bank1(等于0)</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank1 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Temp</p></td>
+<td><p>312K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><p>FTL</p></td>
+<td><p>16K</p></td>
+<td><p>0x040FB000</p></td>
+</tr>
+<tr class="row-even"><td><p>APP Defined Section</p></td>
+<td><p>4K</p></td>
+<td><p>0x040FF000</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>此处没有分配 APP data，Flash 布局需要根据用户实际 image 和 data 的大小进行合理划分。</p>
+</div>
+<p><strong>操作步骤：</strong></p>
+<ol class="arabic">
+<li><p>使用 Flash Map Generate Tool 生成 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code>、<code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">file</span></code>。</p>
+<ol class="arabic simple">
+<li><p><span class="guilabel">Flash Size</span> 选择合适的大小。</p></li>
+<li><p><span class="guilabel">Support OTA Switch</span> 选择 <strong>Disable</strong>。</p></li>
+<li><p>设置两级 flash layout。</p></li>
+<li><p>点击 <span class="guilabel">Confirm</span> 完成 flash layout 设置。</p></li>
+<li><p><span class="guilabel">Version</span> 处修改 OTA Header file 版本。</p></li>
+<li><p>点击 <span class="guilabel">Confirm</span> 生成 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code>、<code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">file</span></code>。</p></li>
+</ol>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../../../../_images/single_bank_Flash_layout_config.png"><img alt="../../../../_images/single_bank_Flash_layout_config.png" src="../../../../_images/single_bank_Flash_layout_config.png" style="width: 923.4px; height: 651.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">设置 Flash 布局并生成 OTA Header —— 不支持 Bank 切换</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>此处生成的 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> 需要和 SoC 内部使用的 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> 保持一致。</p>
+</div>
+</li>
+<li><p>将 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> 复制到工程文件上级目录下，编译链接生成 <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk#####+version+MD5.bin</span></code> 的文件供打包使用。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>不支持 Bank 切换的方案 <strong>只需要编译 OTA Bank0 的 image</strong> ，配置见工程文件上级目录下的 <code class="file docutils literal notranslate"><span class="pre">mem_config.h</span></code> 中的 <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">#define</kbd> <kbd class="kbd docutils literal notranslate">APP_BANK</kbd></kbd>，具体代码如下：</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* @brief set app bank to support OTA: 1 is ota bank1, 0 is ota bank0 */</span>
+<span class="cp">#define APP_BANK                                0</span>
+</pre></div>
+</div>
+</li>
+<li><p>生成打包文件，默认在软件同目录下生成 <code class="file docutils literal notranslate"><span class="pre">ImgPacketFile-xxxxxx.bin</span></code>，此文件为升级用的打包文件。</p>
+<ol class="arabic simple">
+<li><p>选择 <span class="guilabel">ForOTA</span> 选项。</p></li>
+<li><p>加载生成的 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code>。</p></li>
+<li><p>点击 <span class="guilabel">Browse</span> 加载 OTA Bank0 image。</p></li>
+<li><p>点击 <span class="guilabel">Confirm</span> 生成打包文件。</p></li>
+</ol>
+<blockquote>
+<div><figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../../../../_images/MPPackTool_single_bank.png"><img alt="../../../../_images/MPPackTool_single_bank.png" src="../../../../_images/MPPackTool_single_bank.png" style="width: 885.6px; height: 813.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">打包文件 —— 不支持 Bank 切换</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>Bank0 OTA Header file 在不支持 Bank 切换方案时不允许打包。</p></li>
+<li><p>如果只需要更新 Patch Image 或者 APP Image，可只打包其中一个。</p></li>
+</ul>
+</div>
+</li>
+</ol>
+</section>
+<section id="app-data">
+<h3>APP Data 升级<a class="headerlink" href="#app-data" title="Link to this heading"></a></h3>
+<p>APP Data Tool 是将原始 APP Data 的 bin 文件转换成可通过 MP Tool 烧录到 Flash 中的 APP Data 类型的 image 。</p>
+<p>APP Data Tool 处理后，会在原始的 APP data 前面添加一个 512 bytes MP header 和 1280 bytes image header ，分别用于 MP Tool 烧录和 Bootloader 校验。假设原始的 APP Data 的 bin 文件的大小是 120KB ，最后烧录到 flash 中将是 1280 bytes image header 加上 120KB 的 APP data payload。</p>
+<p>接下来以 APP Data1 为例进行说明， 具体路径如下：</p>
+<figure class="align-center" id="appdata1">
+<img alt="../../../../_images/app_data_tool.png" src="../../../../_images/app_data_tool.png" />
+<figcaption>
+<p><span class="caption-text">APP Data1</span><a class="headerlink" href="#appdata1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>文件说明：</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleAppData1.bin</span></code> 是原始的 APP Data 的 bin 文件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleImageAppData1_MP_0.0.0.1-0e3f724a441696591000cac6f98aa8a4.bin</span></code> 是由 Tool 生成的用于烧录的 APP Data1 的 bin 文件。</p></li>
+</ol>
+</li>
+<li><p>打开 <code class="docutils literal notranslate"><span class="pre">run.bat</span></code>，将以下所有 SampleAppData1 部分替换成需要处理的 APP Data 的 bin 文件名。</p>
+<figure class="align-center" id="run-bat">
+<a class="reference internal image-reference" href="../../../../_images/run.bat.png"><img alt="../../../../_images/run.bat.png" src="../../../../_images/run.bat.png" style="width: 840.0px; height: 102.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">run.bat</span><a class="headerlink" href="#run-bat" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>注意最后一行中的必须是 <code class="docutils literal notranslate"><span class="pre">xxx_MP.bin</span></code>，<span class="red-text">后缀“_MP”不可更改</span>。</p>
+</div>
+</li>
+<li><p>运行 <code class="docutils literal notranslate"><span class="pre">run.bat</span></code>，将会额外生成 3 个文件：</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleImageAppData1.bin</span></code>：在原始的 APP Data 的 bin 文件上添加了 1280 bytes image header 的 bin 文件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleImageAppData1_MP.bin</span></code>：在 <code class="docutils literal notranslate"><span class="pre">SampleImageAppData1.bin</span></code> 文件上再添加了 512 bytes MP Header 的 bin 文件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SampleImageAppData1_MP_0.0.0.1-0e3f724a441696591000cac6f98aa8a4.bin</span></code>：在 <code class="docutils literal notranslate"><span class="pre">xxx_MP.bin</span></code> 的基础上计算了 MD5 的校验值。</p></li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>注意只有同时带有 _MP 和 MD5 校验的 bin 文件才可以最后用于烧录和 OTA。</p>
+</div>
+</div></blockquote>
+</section>
+<section id="user-data">
+<h3>User Data 升级<a class="headerlink" href="#user-data" title="Link to this heading"></a></h3>
+<p>User Data 主要用来存放不会影响到系统功能的数据。User Data 的升级策略与其他 image 不同。对于其他 image，会先将其传输到 OTA TMP 区域，而 User Data 则直接传输到其对应的 Flash 地址上。</p>
+<p>下面以 1M byte 的 Flash 为例，介绍 User Data 升级。Flash 布局示例如下：</p>
+<table class="docutils align-default" id="user-data-flash">
+<caption><span class="caption-text">User Data 升级 Flash 布局示例</span><a class="headerlink" href="#user-data-flash" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Flash 总大小为 1MB 的示例布局</p></th>
+<th class="head"><p>大小（字节）</p></th>
+<th class="head"><p>起始地址</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>4K</p></td>
+<td><p>0x04000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OEM Header</p></td>
+<td><p>4K</p></td>
+<td><p>0x04001000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x04002000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x0400A000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Bank0</p></td>
+<td><p>612K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>OTA Header</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>System Patch code</p></li>
+</ul>
+</td>
+<td><p>32K</p></td>
+<td><p>0x04013000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>BT Stack Patch code</p></li>
+</ul>
+</td>
+<td><p>60K</p></td>
+<td><p>0x0401B000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>BT Host code</p></li>
+</ul>
+</td>
+<td><p>212K</p></td>
+<td><p>0x0402A000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP code</p></li>
+</ul>
+</td>
+<td><p>192K</p></td>
+<td><p>0x0405F000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP Config File</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x0408F000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data1</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data2</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data3</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data4</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data5</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data6</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OTA Bank1(等于 0)</p></td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank1 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Temp</p></td>
+<td><p>212K</p></td>
+<td><p>0x04090000</p></td>
+</tr>
+<tr class="row-odd"><td><p>FTL</p></td>
+<td><p>16K</p></td>
+<td><p>0x040C5000</p></td>
+</tr>
+<tr class="row-even"><td><p>user data1</p></td>
+<td><p>16K</p></td>
+<td><p>0x040C9000</p></td>
+</tr>
+<tr class="row-odd"><td><p>user data2</p></td>
+<td><p>16K</p></td>
+<td><p>0x040CD000</p></td>
+</tr>
+<tr class="row-even"><td><p>user data3</p></td>
+<td><p>16K</p></td>
+<td><p>0x040D1000</p></td>
+</tr>
+<tr class="row-odd"><td><p>user data4</p></td>
+<td><p>16K</p></td>
+<td><p>0x040D5000</p></td>
+</tr>
+<tr class="row-even"><td><p>user data5</p></td>
+<td><p>16K</p></td>
+<td><p>0x040D9000</p></td>
+</tr>
+<tr class="row-odd"><td><p>user data6</p></td>
+<td><p>16K</p></td>
+<td><p>0x040DD000</p></td>
+</tr>
+<tr class="row-even"><td><p>user data7</p></td>
+<td><p>16K</p></td>
+<td><p>0x040E1000</p></td>
+</tr>
+<tr class="row-odd"><td><p>user data8</p></td>
+<td><p>16K</p></td>
+<td><p>0x040E5000</p></td>
+</tr>
+<tr class="row-even"><td><p>APP Defined Section</p></td>
+<td><p>4K</p></td>
+<td><p>0x040E9000</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>操作步骤：</strong></p>
+<ol class="arabic">
+<li><p>使用 Flash Map Generate Tool 生成 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code>、<code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> 和 <code class="file docutils literal notranslate"><span class="pre">Bank0</span> <span class="pre">OTA</span> <span class="pre">Header</span> <span class="pre">file</span></code>。</p>
+<figure class="align-center" id="flash-ota-header-user-data">
+<a class="reference internal image-reference" href="../../../../_images/user_data_Flash_layout_config.png"><img alt="../../../../_images/user_data_Flash_layout_config.png" src="../../../../_images/user_data_Flash_layout_config.png" style="width: 775.1999999999999px; height: 550.8px;" /></a>
+<figcaption>
+<p><span class="caption-text">设置 Flash 布局并生成 OTA Header —— User Data 升级</span><a class="headerlink" href="#flash-ota-header-user-data" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>此处生成的 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> 需要和 SoC 内部使用的 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code> 保持一致。</p>
+</div>
+</li>
+<li><p>使用 <code class="file docutils literal notranslate"><span class="pre">RTL87x2G-SDK-Vx.x.x\tools\UserData</span></code> 中的脚本生成可支持打包的 User Data 文件。</p></li>
+<li><p>生成打包文件，默认在软件同目录下生成 <code class="file docutils literal notranslate"><span class="pre">ImgPacketFile-xxxxxx.bin</span></code>，此文件为升级用的打包文件。</p>
+<ol class="arabic simple">
+<li><p>选择 <span class="guilabel">ForOTA</span> 选项。</p></li>
+<li><p>加载生成的 <code class="file docutils literal notranslate"><span class="pre">flash</span> <span class="pre">map.ini</span></code>。</p></li>
+<li><p>点击 <span class="guilabel">Browse</span> 加载 User Data image。</p></li>
+<li><p>点击 <span class="guilabel">Confirm</span> 生成打包文件。</p></li>
+</ol>
+</li>
+</ol>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../../../../_images/MPPackTool_user_data.png"><img alt="../../../../_images/MPPackTool_user_data.png" src="../../../../_images/MPPackTool_user_data.png" style="width: 879.0px; height: 816.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">打包文件 —— User Data 升级</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<ul class="simple">
+<li><p>如果只需要更新某一个 User Data，可只打包其中一个。</p></li>
+<li><p>允许将 User Data 和其他 image 一起打包升级。</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="README.html" class="btn btn-neutral float-left" title="DFU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../cfu/doc/text_cn/CFU.html" class="btn btn-neutral float-right" title="CFU" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

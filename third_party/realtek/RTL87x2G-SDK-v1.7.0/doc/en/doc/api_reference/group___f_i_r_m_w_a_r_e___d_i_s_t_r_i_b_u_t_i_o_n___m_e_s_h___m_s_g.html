@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh Msg &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Model ID" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_o_d_e_l___i_d.html" />
+    <link rel="prev" title="Client Data" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___c_l_i_e_n_t___d_a_t_a.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___application.html">Application</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p.html">GAP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t.html">GATT</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___mesh___model.html">Mesh Model</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___mesh___model___s_i_g.html">SIG</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r.html">BLOB Transfer</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___common.html">Common</a></li>
+<li class="toctree-l7 current"><a class="reference internal" href="group___mesh___model___s_i_g___d_f_u.html">DFU</a><ul class="current">
+<li class="toctree-l8 current"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n.html">Firmware Distribution</a><ul class="current">
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___a_c_c_e_s_s___o_p_c_o_d_e.html">Access Opcode</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___c_l_i_e_n_t___a_p_i.html">Client API</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___c_l_i_e_n_t___d_a_t_a.html">Client Data</a></li>
+<li class="toctree-l9 current"><a class="current reference internal" href="#">Mesh Msg</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv415fw_dist_phase_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_phase_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417fw_upload_phase_t"><code class="docutils literal notranslate"><span class="pre">fw_upload_phase_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv421fw_dist_status_code_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_status_code_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418fw_update_policy_t"><code class="docutils literal notranslate"><span class="pre">fw_update_policy_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv416_fw_dist_phase_t"><code class="docutils literal notranslate"><span class="pre">_fw_dist_phase_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418_fw_upload_phase_t"><code class="docutils literal notranslate"><span class="pre">_fw_upload_phase_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv422_fw_dist_status_code_t"><code class="docutils literal notranslate"><span class="pre">_fw_dist_status_code_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419_fw_update_policy_t"><code class="docutils literal notranslate"><span class="pre">_fw_update_policy_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv410fw_image_t"><code class="docutils literal notranslate"><span class="pre">fw_image_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418fw_dist_receiver_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_receiver_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419fw_dist_recvs_add_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_recvs_add_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv426fw_dist_recvs_delete_all_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_recvs_delete_all_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv422fw_dist_recvs_status_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_recvs_status_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419fw_dist_recvs_get_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_recvs_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv416fw_update_node_t"><code class="docutils literal notranslate"><span class="pre">fw_update_node_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420fw_dist_recvs_list_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_recvs_list_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv418fw_dist_caps_get_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_caps_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv414fw_dist_caps_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_caps_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv421fw_dist_caps_status_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_caps_status_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv413fw_dist_get_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420fw_dist_start_data_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_start_data_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv415fw_dist_start_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_start_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv417fw_dist_suspend_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_suspend_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv416fw_dist_cancel_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_cancel_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv415fw_dist_apply_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_apply_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv416fw_dist_status_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_status_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420fw_dist_upload_get_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_upload_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv422fw_dist_upload_start_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_upload_start_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv426fw_dist_upload_oob_start_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_upload_oob_start_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv423fw_dist_upload_cancel_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_upload_cancel_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv423fw_dist_upload_status_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_upload_status_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv416fw_dist_fw_get_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_fw_get_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv425fw_dist_fw_get_by_index_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_fw_get_by_index_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419fw_dist_fw_delete_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_fw_delete_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv423fw_dist_fw_delete_all_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_fw_delete_all_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv419fw_dist_fw_status_t"><code class="docutils literal notranslate"><span class="pre">fw_dist_fw_status_t</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_o_d_e_l___i_d.html">Model ID</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___s_e_r_v_e_r___a_p_i.html">Server API</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___s_e_r_v_e_r___d_a_t_a.html">Server Data</a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e.html">Firmware Update</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___foundation.html">Foundation</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___generics.html">Generics</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___lighting.html">Lighting</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g.html">Remote Provisioning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___sensors.html">Sensors</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___time___scenes.html">Time and Scenes</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___mesh___model___vendor.html">Vendor</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___mesh___protocol.html">Mesh Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model.html">Mesh Model</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g.html">SIG</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g___d_f_u.html">DFU</a></li>
+        <li class="breadcrumb-item"><a href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n.html">Firmware Distribution</a></li>
+    <li class="breadcrumb-item active">Mesh Msg</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesh-msg">
+<h1>Mesh Msg<a class="headerlink" href="#mesh-msg" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">FIRMWARE_DISTRIBUTION_MESH_MSG</span></span></dt>
+<dd><p>Mesh message types used by models. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FW_IMAGE_INDEX_INVALID">
+<span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga8d6f01ff34786b8f79dfc61089a66f82"></span><span class="sig-name descname"><span class="n"><span class="pre">FW_IMAGE_INDEX_INVALID</span></span></span> <span class="pre">0xFFFF</span><a class="headerlink" href="#c.FW_IMAGE_INDEX_INVALID" title="Link to this definition"></a><br /></dt>
+<dd><p>Invalid image index. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv415fw_dist_phase_t">
+<span id="_CPPv315fw_dist_phase_t"></span><span id="_CPPv215fw_dist_phase_t"></span><span id="fw_dist_phase_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga23dad0fd3a5110971b82873209e7654c"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_phase_t</span></span></span><a class="headerlink" href="#_CPPv415fw_dist_phase_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga5ad081729b29a4ce480cee066d80b1d0"><span class="std std-ref">_fw_dist_phase_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv417fw_upload_phase_t">
+<span id="_CPPv317fw_upload_phase_t"></span><span id="_CPPv217fw_upload_phase_t"></span><span id="fw_upload_phase_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga85f0ee5468d5efb5e47aad4e4cc13e6f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_upload_phase_t</span></span></span><a class="headerlink" href="#_CPPv417fw_upload_phase_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gac39c6f0119bba7e51cba773e47617dfc"><span class="std std-ref">_fw_upload_phase_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421fw_dist_status_code_t">
+<span id="_CPPv321fw_dist_status_code_t"></span><span id="_CPPv221fw_dist_status_code_t"></span><span id="fw_dist_status_code_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gabd03d4e19c39945cb914783c68efbbed"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_status_code_t</span></span></span><a class="headerlink" href="#_CPPv421fw_dist_status_code_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gab7b980e4d550fb8b03c5e2ac9134d1c1"><span class="std std-ref">_fw_dist_status_code_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv418fw_update_policy_t">
+<span id="_CPPv318fw_update_policy_t"></span><span id="_CPPv218fw_update_policy_t"></span><span id="fw_update_policy_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga3bbfd0c4987565314c1cc77ae9704c4d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_policy_t</span></span></span><a class="headerlink" href="#_CPPv418fw_update_policy_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Type alias matching <a class="reference internal" href="#group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga4832a42d68f2172a625e6cb5cdb6824c"><span class="std std-ref">_fw_update_policy_t</span></a> to ensure the correct frame format. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416_fw_dist_phase_t">
+<span id="_CPPv316_fw_dist_phase_t"></span><span id="_CPPv216_fw_dist_phase_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga5ad081729b29a4ce480cee066d80b1d0"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_fw_dist_phase_t</span></span></span><a class="headerlink" href="#_CPPv416_fw_dist_phase_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware distribution phases. Use <a class="reference internal" href="#group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga23dad0fd3a5110971b82873209e7654c"><span class="std std-ref">fw_dist_phase_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16_fw_dist_phase_t18FW_DIST_PHASE_IDLEE">
+<span id="_CPPv3N16_fw_dist_phase_t18FW_DIST_PHASE_IDLEE"></span><span id="_CPPv2N16_fw_dist_phase_t18FW_DIST_PHASE_IDLEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga5ad081729b29a4ce480cee066d80b1d0a83bdcc08dc7a1b39d614b8f1943c4de0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_PHASE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N16_fw_dist_phase_t18FW_DIST_PHASE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>No firmware distribution is in progress. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16_fw_dist_phase_t29FW_DIST_PHASE_TRANSFER_ACTIVEE">
+<span id="_CPPv3N16_fw_dist_phase_t29FW_DIST_PHASE_TRANSFER_ACTIVEE"></span><span id="_CPPv2N16_fw_dist_phase_t29FW_DIST_PHASE_TRANSFER_ACTIVEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga5ad081729b29a4ce480cee066d80b1d0a5bc7de01c41a74d7e09f92c0d057a799"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_PHASE_TRANSFER_ACTIVE</span></span></span><a class="headerlink" href="#_CPPv4N16_fw_dist_phase_t29FW_DIST_PHASE_TRANSFER_ACTIVEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware distribution is in progress. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16_fw_dist_phase_t30FW_DIST_PHASE_TRANSFER_SUCCESSE">
+<span id="_CPPv3N16_fw_dist_phase_t30FW_DIST_PHASE_TRANSFER_SUCCESSE"></span><span id="_CPPv2N16_fw_dist_phase_t30FW_DIST_PHASE_TRANSFER_SUCCESSE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga5ad081729b29a4ce480cee066d80b1d0a734030cf9359d45af2caed8650bf3f37"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_PHASE_TRANSFER_SUCCESS</span></span></span><a class="headerlink" href="#_CPPv4N16_fw_dist_phase_t30FW_DIST_PHASE_TRANSFER_SUCCESSE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Transfer BLOB procedure has completed successfully. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16_fw_dist_phase_t29FW_DIST_PHASE_APPLYING_UPDATEE">
+<span id="_CPPv3N16_fw_dist_phase_t29FW_DIST_PHASE_APPLYING_UPDATEE"></span><span id="_CPPv2N16_fw_dist_phase_t29FW_DIST_PHASE_APPLYING_UPDATEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga5ad081729b29a4ce480cee066d80b1d0a89523ee58d5d27969897e0f34603de47"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_PHASE_APPLYING_UPDATE</span></span></span><a class="headerlink" href="#_CPPv4N16_fw_dist_phase_t29FW_DIST_PHASE_APPLYING_UPDATEE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Apply Firmware On Target Nodes procedure is being executed. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16_fw_dist_phase_t23FW_DIST_PHASE_COMPLETEDE">
+<span id="_CPPv3N16_fw_dist_phase_t23FW_DIST_PHASE_COMPLETEDE"></span><span id="_CPPv2N16_fw_dist_phase_t23FW_DIST_PHASE_COMPLETEDE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga5ad081729b29a4ce480cee066d80b1d0aac8119ffacbffe2d2c582af5551d3154"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_PHASE_COMPLETED</span></span></span><a class="headerlink" href="#_CPPv4N16_fw_dist_phase_t23FW_DIST_PHASE_COMPLETEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Distribute Firmware procedure has completed successfully. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16_fw_dist_phase_t20FW_DIST_PHASE_FAILEDE">
+<span id="_CPPv3N16_fw_dist_phase_t20FW_DIST_PHASE_FAILEDE"></span><span id="_CPPv2N16_fw_dist_phase_t20FW_DIST_PHASE_FAILEDE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga5ad081729b29a4ce480cee066d80b1d0aff21de833f6e15ac85bac49a5ebb0eee"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_PHASE_FAILED</span></span></span><a class="headerlink" href="#_CPPv4N16_fw_dist_phase_t20FW_DIST_PHASE_FAILEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Distribute Firmware procedure has failed. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16_fw_dist_phase_t30FW_DIST_PHASE_CANCELING_UPDATEE">
+<span id="_CPPv3N16_fw_dist_phase_t30FW_DIST_PHASE_CANCELING_UPDATEE"></span><span id="_CPPv2N16_fw_dist_phase_t30FW_DIST_PHASE_CANCELING_UPDATEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga5ad081729b29a4ce480cee066d80b1d0af535052cf6a6cb2ea62f0a318418411d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_PHASE_CANCELING_UPDATE</span></span></span><a class="headerlink" href="#_CPPv4N16_fw_dist_phase_t30FW_DIST_PHASE_CANCELING_UPDATEE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Cancel Firmware Update procedure is being executed. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16_fw_dist_phase_t32FW_DIST_PHASE_TRANSFER_SUSPENDEDE">
+<span id="_CPPv3N16_fw_dist_phase_t32FW_DIST_PHASE_TRANSFER_SUSPENDEDE"></span><span id="_CPPv2N16_fw_dist_phase_t32FW_DIST_PHASE_TRANSFER_SUSPENDEDE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga5ad081729b29a4ce480cee066d80b1d0adc0af16b7fbf7ff40bdc5254f2941ccc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_PHASE_TRANSFER_SUSPENDED</span></span></span><a class="headerlink" href="#_CPPv4N16_fw_dist_phase_t32FW_DIST_PHASE_TRANSFER_SUSPENDEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Transfer BLOB procedure is suspended. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv418_fw_upload_phase_t">
+<span id="_CPPv318_fw_upload_phase_t"></span><span id="_CPPv218_fw_upload_phase_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gac39c6f0119bba7e51cba773e47617dfc"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_fw_upload_phase_t</span></span></span><a class="headerlink" href="#_CPPv418_fw_upload_phase_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware upload phases. Use <a class="reference internal" href="#group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga85f0ee5468d5efb5e47aad4e4cc13e6f"><span class="std std-ref">fw_upload_phase_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_fw_upload_phase_t20FW_UPLOAD_PHASE_IDLEE">
+<span id="_CPPv3N18_fw_upload_phase_t20FW_UPLOAD_PHASE_IDLEE"></span><span id="_CPPv2N18_fw_upload_phase_t20FW_UPLOAD_PHASE_IDLEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggac39c6f0119bba7e51cba773e47617dfca15db9d501ad55f71423a8edc80d18ae0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPLOAD_PHASE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N18_fw_upload_phase_t20FW_UPLOAD_PHASE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>No firmware upload is in progress. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_fw_upload_phase_t31FW_UPLOAD_PHASE_TRANSFER_ACTIVEE">
+<span id="_CPPv3N18_fw_upload_phase_t31FW_UPLOAD_PHASE_TRANSFER_ACTIVEE"></span><span id="_CPPv2N18_fw_upload_phase_t31FW_UPLOAD_PHASE_TRANSFER_ACTIVEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggac39c6f0119bba7e51cba773e47617dfcaa2f5e51050c6d7b2a12e116ae6facc87"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPLOAD_PHASE_TRANSFER_ACTIVE</span></span></span><a class="headerlink" href="#_CPPv4N18_fw_upload_phase_t31FW_UPLOAD_PHASE_TRANSFER_ACTIVEE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Store Firmware or Store Firmware OOB procedure is being executed. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_fw_upload_phase_t28FW_UPLOAD_PHASE_TRANSFER_ERRE">
+<span id="_CPPv3N18_fw_upload_phase_t28FW_UPLOAD_PHASE_TRANSFER_ERRE"></span><span id="_CPPv2N18_fw_upload_phase_t28FW_UPLOAD_PHASE_TRANSFER_ERRE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggac39c6f0119bba7e51cba773e47617dfca2794803f2ba3d476fbb523b13d6fc7a0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPLOAD_PHASE_TRANSFER_ERR</span></span></span><a class="headerlink" href="#_CPPv4N18_fw_upload_phase_t28FW_UPLOAD_PHASE_TRANSFER_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Store Firmware procedure or Store Firmware OOB procedure failed. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N18_fw_upload_phase_t32FW_UPLOAD_PHASE_TRANSFER_SUCCESSE">
+<span id="_CPPv3N18_fw_upload_phase_t32FW_UPLOAD_PHASE_TRANSFER_SUCCESSE"></span><span id="_CPPv2N18_fw_upload_phase_t32FW_UPLOAD_PHASE_TRANSFER_SUCCESSE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggac39c6f0119bba7e51cba773e47617dfca0d4077b4e00d91e90266603c66c41659"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPLOAD_PHASE_TRANSFER_SUCCESS</span></span></span><a class="headerlink" href="#_CPPv4N18_fw_upload_phase_t32FW_UPLOAD_PHASE_TRANSFER_SUCCESSE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Store Firmware procedure or the Store Firmware OOB procedure completed successfully. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422_fw_dist_status_code_t">
+<span id="_CPPv322_fw_dist_status_code_t"></span><span id="_CPPv222_fw_dist_status_code_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gab7b980e4d550fb8b03c5e2ac9134d1c1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_fw_dist_status_code_t</span></span></span><a class="headerlink" href="#_CPPv422_fw_dist_status_code_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware distribution status codes. Use <a class="reference internal" href="#group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gabd03d4e19c39945cb914783c68efbbed"><span class="std std-ref">fw_dist_status_code_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t22FW_DIST_STATUS_SUCCESSE">
+<span id="_CPPv3N22_fw_dist_status_code_t22FW_DIST_STATUS_SUCCESSE"></span><span id="_CPPv2N22_fw_dist_status_code_t22FW_DIST_STATUS_SUCCESSE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1af12e98d9b76f309127a61ff0fb0d2137"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_SUCCESS</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t22FW_DIST_STATUS_SUCCESSE" title="Link to this definition"></a><br /></dt>
+<dd><p>The message was processed successfully. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t37FW_DIST_STATUS_INSUFFICIENT_RESOURCESE">
+<span id="_CPPv3N22_fw_dist_status_code_t37FW_DIST_STATUS_INSUFFICIENT_RESOURCESE"></span><span id="_CPPv2N22_fw_dist_status_code_t37FW_DIST_STATUS_INSUFFICIENT_RESOURCESE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a849932e8c9b535ff4ccf2727c4e01960"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_INSUFFICIENT_RESOURCES</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t37FW_DIST_STATUS_INSUFFICIENT_RESOURCESE" title="Link to this definition"></a><br /></dt>
+<dd><p>Insufficient resources on the node. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t26FW_DIST_STATUS_WRONG_PHASEE">
+<span id="_CPPv3N22_fw_dist_status_code_t26FW_DIST_STATUS_WRONG_PHASEE"></span><span id="_CPPv2N22_fw_dist_status_code_t26FW_DIST_STATUS_WRONG_PHASEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a5892228d5f6199260b2a3d329aa1c07b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_WRONG_PHASE</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t26FW_DIST_STATUS_WRONG_PHASEE" title="Link to this definition"></a><br /></dt>
+<dd><p>The operation cannot be performed while the server is in the current phase. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t27FW_DIST_STATUS_INTERNAL_ERRE">
+<span id="_CPPv3N22_fw_dist_status_code_t27FW_DIST_STATUS_INTERNAL_ERRE"></span><span id="_CPPv2N22_fw_dist_status_code_t27FW_DIST_STATUS_INTERNAL_ERRE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1aa2bb290fe5cf33601992474ff0776584"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_INTERNAL_ERR</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t27FW_DIST_STATUS_INTERNAL_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>An internal error occurred on the node. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t27FW_DIST_STATUS_FW_NOT_FOUNDE">
+<span id="_CPPv3N22_fw_dist_status_code_t27FW_DIST_STATUS_FW_NOT_FOUNDE"></span><span id="_CPPv2N22_fw_dist_status_code_t27FW_DIST_STATUS_FW_NOT_FOUNDE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a60db685bf089e2296c8afe1f9b5a3e69"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_FW_NOT_FOUND</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t27FW_DIST_STATUS_FW_NOT_FOUNDE" title="Link to this definition"></a><br /></dt>
+<dd><p>The requested firmware image is not stored on the Distributor. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t36FW_DIST_STATUS_INVALID_APP_KEY_INDEXE">
+<span id="_CPPv3N22_fw_dist_status_code_t36FW_DIST_STATUS_INVALID_APP_KEY_INDEXE"></span><span id="_CPPv2N22_fw_dist_status_code_t36FW_DIST_STATUS_INVALID_APP_KEY_INDEXE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1ad3ee4858d1126a05816126d92ae0dce0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_INVALID_APP_KEY_INDEX</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t36FW_DIST_STATUS_INVALID_APP_KEY_INDEXE" title="Link to this definition"></a><br /></dt>
+<dd><p>The AppKey identified by the AppKey Index is not known to the node. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t35FW_DIST_STATUS_RECEIVERS_LIST_EMPTYE">
+<span id="_CPPv3N22_fw_dist_status_code_t35FW_DIST_STATUS_RECEIVERS_LIST_EMPTYE"></span><span id="_CPPv2N22_fw_dist_status_code_t35FW_DIST_STATUS_RECEIVERS_LIST_EMPTYE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1aab9e51a79ca03fa2303778062602838c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_RECEIVERS_LIST_EMPTY</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t35FW_DIST_STATUS_RECEIVERS_LIST_EMPTYE" title="Link to this definition"></a><br /></dt>
+<dd><p>There are no Target nodes in the Distribution Receivers List state. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t29FW_DIST_STATUS_BUSY_WITH_DISTE">
+<span id="_CPPv3N22_fw_dist_status_code_t29FW_DIST_STATUS_BUSY_WITH_DISTE"></span><span id="_CPPv2N22_fw_dist_status_code_t29FW_DIST_STATUS_BUSY_WITH_DISTE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a3fd93e83f9246aeec72946d1ae71a535"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_BUSY_WITH_DIST</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t29FW_DIST_STATUS_BUSY_WITH_DISTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Another firmware image distribution is in progress. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t31FW_DIST_STATUS_BUSY_WITH_UPLOADE">
+<span id="_CPPv3N22_fw_dist_status_code_t31FW_DIST_STATUS_BUSY_WITH_UPLOADE"></span><span id="_CPPv2N22_fw_dist_status_code_t31FW_DIST_STATUS_BUSY_WITH_UPLOADE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a5e925fb83abead05a0082734489b2d17"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_BUSY_WITH_UPLOAD</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t31FW_DIST_STATUS_BUSY_WITH_UPLOADE" title="Link to this definition"></a><br /></dt>
+<dd><p>Another upload is in progress. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t32FW_DIST_STATUS_URI_NOT_SUPPORTEDE">
+<span id="_CPPv3N22_fw_dist_status_code_t32FW_DIST_STATUS_URI_NOT_SUPPORTEDE"></span><span id="_CPPv2N22_fw_dist_status_code_t32FW_DIST_STATUS_URI_NOT_SUPPORTEDE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a947e37e449cf845ce0a111a8a8b8f50f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_URI_NOT_SUPPORTED</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t32FW_DIST_STATUS_URI_NOT_SUPPORTEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>The URI scheme name indicated by the Update URI is not supported. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t28FW_DIST_STATUS_URI_MALFORMEDE">
+<span id="_CPPv3N22_fw_dist_status_code_t28FW_DIST_STATUS_URI_MALFORMEDE"></span><span id="_CPPv2N22_fw_dist_status_code_t28FW_DIST_STATUS_URI_MALFORMEDE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a145051d8d2bb742c750352b7f009fbc7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_URI_MALFORMED</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t28FW_DIST_STATUS_URI_MALFORMEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>The format of the Update URI is invalid. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t30FW_DIST_STATUS_URI_UNREACHABLEE">
+<span id="_CPPv3N22_fw_dist_status_code_t30FW_DIST_STATUS_URI_UNREACHABLEE"></span><span id="_CPPv2N22_fw_dist_status_code_t30FW_DIST_STATUS_URI_UNREACHABLEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1ad7fc7888b56c24bd84ab3fd2d9b03a8a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_URI_UNREACHABLE</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t30FW_DIST_STATUS_URI_UNREACHABLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>The URI is unreachable. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t35FW_DIST_STATUS_NEW_FW_NOT_AVAILABLEE">
+<span id="_CPPv3N22_fw_dist_status_code_t35FW_DIST_STATUS_NEW_FW_NOT_AVAILABLEE"></span><span id="_CPPv2N22_fw_dist_status_code_t35FW_DIST_STATUS_NEW_FW_NOT_AVAILABLEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a2c8d6ce9ae972b4a82fa29c81bf08c59"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_NEW_FW_NOT_AVAILABLE</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t35FW_DIST_STATUS_NEW_FW_NOT_AVAILABLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>The Check Firmware OOB procedure did not find any new firmware. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22_fw_dist_status_code_t29FW_DIST_STATUS_SUSPEND_FAILEDE">
+<span id="_CPPv3N22_fw_dist_status_code_t29FW_DIST_STATUS_SUSPEND_FAILEDE"></span><span id="_CPPv2N22_fw_dist_status_code_t29FW_DIST_STATUS_SUSPEND_FAILEDE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ggab7b980e4d550fb8b03c5e2ac9134d1c1a3b314ef3b57e9c449b168a793b800196"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_DIST_STATUS_SUSPEND_FAILED</span></span></span><a class="headerlink" href="#_CPPv4N22_fw_dist_status_code_t29FW_DIST_STATUS_SUSPEND_FAILEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>The suspension of the Distribute Firmware procedure failed. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv419_fw_update_policy_t">
+<span id="_CPPv319_fw_update_policy_t"></span><span id="_CPPv219_fw_update_policy_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga4832a42d68f2172a625e6cb5cdb6824c"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_fw_update_policy_t</span></span></span><a class="headerlink" href="#_CPPv419_fw_update_policy_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware update policies. Use <a class="reference internal" href="#group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1ga3bbfd0c4987565314c1cc77ae9704c4d"><span class="std std-ref">fw_update_policy_t</span></a> to ensure the correct frame format. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19_fw_update_policy_t28FW_UPDATE_POLICY_VERIFY_ONLYE">
+<span id="_CPPv3N19_fw_update_policy_t28FW_UPDATE_POLICY_VERIFY_ONLYE"></span><span id="_CPPv2N19_fw_update_policy_t28FW_UPDATE_POLICY_VERIFY_ONLYE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga4832a42d68f2172a625e6cb5cdb6824ca05dbfc1bd78dc2687059f32f60c9070e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_POLICY_VERIFY_ONLY</span></span></span><a class="headerlink" href="#_CPPv4N19_fw_update_policy_t28FW_UPDATE_POLICY_VERIFY_ONLYE" title="Link to this definition"></a><br /></dt>
+<dd><p>Initiates firmware image application only upon verification. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19_fw_update_policy_t34FW_UPDATE_POLICY_VERIFY_AND_UPDATEE">
+<span id="_CPPv3N19_fw_update_policy_t34FW_UPDATE_POLICY_VERIFY_AND_UPDATEE"></span><span id="_CPPv2N19_fw_update_policy_t34FW_UPDATE_POLICY_VERIFY_AND_UPDATEE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_e_s_h___m_s_g_1gga4832a42d68f2172a625e6cb5cdb6824ca333bc6ffeae1fa74b34b87b34bdfeb6d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_POLICY_VERIFY_AND_UPDATE</span></span></span><a class="headerlink" href="#_CPPv4N19_fw_update_policy_t34FW_UPDATE_POLICY_VERIFY_AND_UPDATEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Verifies and then applies the firmware update automatically. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv410fw_image_t">
+<span id="_CPPv310fw_image_t"></span><span id="_CPPv210fw_image_t"></span><span id="fw_image_t"></span><span class="target" id="structfw__image__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_image_t</span></span></span><a class="headerlink" href="#_CPPv410fw_image_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10fw_image_t9fw_id_lenE">
+<span id="_CPPv3N10fw_image_t9fw_id_lenE"></span><span id="_CPPv2N10fw_image_t9fw_id_lenE"></span><span id="fw_image_t::fw_id_len__uint8_t"></span><span class="target" id="structfw__image__t_1a745d4432e611379bd49b546f2896e047"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_id_len</span></span></span><a class="headerlink" href="#_CPPv4N10fw_image_t9fw_id_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of the firmware identifier. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10fw_image_t5fw_idE">
+<span id="_CPPv3N10fw_image_t5fw_idE"></span><span id="_CPPv2N10fw_image_t5fw_idE"></span><span id="fw_image_t::fw_id__fw_id_t"></span><span class="target" id="structfw__image__t_1a3ccb4b9dfd65f9ebb78c35ec77604e95"></span><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___m_e_s_h___m_s_g.html#_CPPv47fw_id_t" title="fw_id_t"><span class="n"><span class="pre">fw_id_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_id</span></span></span><a class="headerlink" href="#_CPPv4N10fw_image_t5fw_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware identifier. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10fw_image_t12metadata_lenE">
+<span id="_CPPv3N10fw_image_t12metadata_lenE"></span><span id="_CPPv2N10fw_image_t12metadata_lenE"></span><span id="fw_image_t::metadata_len__uint8_t"></span><span class="target" id="structfw__image__t_1aeccc35dbfc78057c8c08688d7d9eb9e8"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">metadata_len</span></span></span><a class="headerlink" href="#_CPPv4N10fw_image_t12metadata_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of the firmware metadata. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10fw_image_t8metadataE">
+<span id="_CPPv3N10fw_image_t8metadataE"></span><span id="_CPPv2N10fw_image_t8metadataE"></span><span id="fw_image_t::metadata__uint8_tA"></span><span class="target" id="structfw__image__t_1a4b3c952fc937910fa924a4769739d8ba"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">metadata</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">255</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N10fw_image_t8metadataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware metadata. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418fw_dist_receiver_t">
+<span id="_CPPv318fw_dist_receiver_t"></span><span id="_CPPv218fw_dist_receiver_t"></span><span id="fw_dist_receiver_t"></span><span class="target" id="structfw__dist__receiver__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_receiver_t</span></span></span><a class="headerlink" href="#_CPPv418fw_dist_receiver_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware distribution receiver structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18fw_dist_receiver_t4addrE">
+<span id="_CPPv3N18fw_dist_receiver_t4addrE"></span><span id="_CPPv2N18fw_dist_receiver_t4addrE"></span><span id="fw_dist_receiver_t::addr__uint16_t"></span><span class="target" id="structfw__dist__receiver__t_1a41a6aad09727eb120338c35535a652a6"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><a class="headerlink" href="#_CPPv4N18fw_dist_receiver_t4addrE" title="Link to this definition"></a><br /></dt>
+<dd><p>Receiver address. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18fw_dist_receiver_t19update_fw_image_idxE">
+<span id="_CPPv3N18fw_dist_receiver_t19update_fw_image_idxE"></span><span id="_CPPv2N18fw_dist_receiver_t19update_fw_image_idxE"></span><span id="fw_dist_receiver_t::update_fw_image_idx__uint8_t"></span><span class="target" id="structfw__dist__receiver__t_1a3c1e34dc0a9a44891ed4ae0ed9fdc856"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N18fw_dist_receiver_t19update_fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Update firmware image index. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419fw_dist_recvs_add_t">
+<span id="_CPPv319fw_dist_recvs_add_t"></span><span id="_CPPv219fw_dist_recvs_add_t"></span><span id="fw_dist_recvs_add_t"></span><span class="target" id="structfw__dist__recvs__add__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_recvs_add_t</span></span></span><a class="headerlink" href="#_CPPv419fw_dist_recvs_add_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for adding firmware distribution receivers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_recvs_add_t6opcodeE">
+<span id="_CPPv3N19fw_dist_recvs_add_t6opcodeE"></span><span id="_CPPv2N19fw_dist_recvs_add_t6opcodeE"></span><span id="fw_dist_recvs_add_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__recvs__add__t_1a20be991a565e129f7ebe5a9ca06dd8b9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8311</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19fw_dist_recvs_add_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_recvs_add_t7entriesE">
+<span id="_CPPv3N19fw_dist_recvs_add_t7entriesE"></span><span id="_CPPv2N19fw_dist_recvs_add_t7entriesE"></span><span id="fw_dist_recvs_add_t::entries__fw_dist_receiver_tA"></span><span class="target" id="structfw__dist__recvs__add__t_1a451dd2d183ffbe6ab08544b271be8b1f"></span><a class="reference internal" href="#_CPPv418fw_dist_receiver_t" title="fw_dist_receiver_t"><span class="n"><span class="pre">fw_dist_receiver_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">entries</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19fw_dist_recvs_add_t7entriesE" title="Link to this definition"></a><br /></dt>
+<dd><p>Receiver entries. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426fw_dist_recvs_delete_all_t">
+<span id="_CPPv326fw_dist_recvs_delete_all_t"></span><span id="_CPPv226fw_dist_recvs_delete_all_t"></span><span id="fw_dist_recvs_delete_all_t"></span><span class="target" id="structfw__dist__recvs__delete__all__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_recvs_delete_all_t</span></span></span><a class="headerlink" href="#_CPPv426fw_dist_recvs_delete_all_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for deleting all firmware distribution receivers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26fw_dist_recvs_delete_all_t6opcodeE">
+<span id="_CPPv3N26fw_dist_recvs_delete_all_t6opcodeE"></span><span id="_CPPv2N26fw_dist_recvs_delete_all_t6opcodeE"></span><span id="fw_dist_recvs_delete_all_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__recvs__delete__all__t_1a0963bf570f1df3ddf7cdeab89780677c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8312</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N26fw_dist_recvs_delete_all_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422fw_dist_recvs_status_t">
+<span id="_CPPv322fw_dist_recvs_status_t"></span><span id="_CPPv222fw_dist_recvs_status_t"></span><span id="fw_dist_recvs_status_t"></span><span class="target" id="structfw__dist__recvs__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_recvs_status_t</span></span></span><a class="headerlink" href="#_CPPv422fw_dist_recvs_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for status of firmware distribution receivers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_recvs_status_t6opcodeE">
+<span id="_CPPv3N22fw_dist_recvs_status_t6opcodeE"></span><span id="_CPPv2N22fw_dist_recvs_status_t6opcodeE"></span><span id="fw_dist_recvs_status_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__recvs__status__t_1a004b3ac7b819e3561b12595101e42e05"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8313</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22fw_dist_recvs_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_recvs_status_t6statusE">
+<span id="_CPPv3N22fw_dist_recvs_status_t6statusE"></span><span id="_CPPv2N22fw_dist_recvs_status_t6statusE"></span><span id="fw_dist_recvs_status_t::status__fw_dist_status_code_t"></span><span class="target" id="structfw__dist__recvs__status__t_1ad56a6ad1997aeca41b63fa99e500fc00"></span><a class="reference internal" href="#_CPPv421fw_dist_status_code_t" title="fw_dist_status_code_t"><span class="n"><span class="pre">fw_dist_status_code_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N22fw_dist_recvs_status_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Status code of receivers. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_recvs_status_t14recvs_list_cntE">
+<span id="_CPPv3N22fw_dist_recvs_status_t14recvs_list_cntE"></span><span id="_CPPv2N22fw_dist_recvs_status_t14recvs_list_cntE"></span><span id="fw_dist_recvs_status_t::recvs_list_cnt__uint16_t"></span><span class="target" id="structfw__dist__recvs__status__t_1a1b5efa465d1b40c0e9245a014a82be13"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">recvs_list_cnt</span></span></span><a class="headerlink" href="#_CPPv4N22fw_dist_recvs_status_t14recvs_list_cntE" title="Link to this definition"></a><br /></dt>
+<dd><p>Count of receivers in distribution. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419fw_dist_recvs_get_t">
+<span id="_CPPv319fw_dist_recvs_get_t"></span><span id="_CPPv219fw_dist_recvs_get_t"></span><span id="fw_dist_recvs_get_t"></span><span class="target" id="structfw__dist__recvs__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_recvs_get_t</span></span></span><a class="headerlink" href="#_CPPv419fw_dist_recvs_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for getting firmware distribution receivers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_recvs_get_t6opcodeE">
+<span id="_CPPv3N19fw_dist_recvs_get_t6opcodeE"></span><span id="_CPPv2N19fw_dist_recvs_get_t6opcodeE"></span><span id="fw_dist_recvs_get_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__recvs__get__t_1adeca651176a7a31b21246a7a39e53229"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8314</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19fw_dist_recvs_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_recvs_get_t11first_indexE">
+<span id="_CPPv3N19fw_dist_recvs_get_t11first_indexE"></span><span id="_CPPv2N19fw_dist_recvs_get_t11first_indexE"></span><span id="fw_dist_recvs_get_t::first_index__uint16_t"></span><span class="target" id="structfw__dist__recvs__get__t_1aedecc3c6c15f65dd254d389e45d5fa68"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">first_index</span></span></span><a class="headerlink" href="#_CPPv4N19fw_dist_recvs_get_t11first_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>First index to retrieve. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_recvs_get_t13entries_limitE">
+<span id="_CPPv3N19fw_dist_recvs_get_t13entries_limitE"></span><span id="_CPPv2N19fw_dist_recvs_get_t13entries_limitE"></span><span id="fw_dist_recvs_get_t::entries_limit__uint16_t"></span><span class="target" id="structfw__dist__recvs__get__t_1a384824200efa9afa17a2166beb4b6af8"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">entries_limit</span></span></span><a class="headerlink" href="#_CPPv4N19fw_dist_recvs_get_t13entries_limitE" title="Link to this definition"></a><br /></dt>
+<dd><p>Limit of entries to retrieve. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv416fw_update_node_t">
+<span id="_CPPv316fw_update_node_t"></span><span id="_CPPv216fw_update_node_t"></span><span id="fw_update_node_t"></span><span class="target" id="structfw__update__node__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_node_t</span></span></span><a class="headerlink" href="#_CPPv416fw_update_node_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for firmware update node status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_update_node_t4addrE">
+<span id="_CPPv3N16fw_update_node_t4addrE"></span><span id="_CPPv2N16fw_update_node_t4addrE"></span><span id="fw_update_node_t::addr__uint32_t"></span><span class="target" id="structfw__update__node__t_1ab439e3a90339e2e8ca8f82d4557a34e5"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><a class="headerlink" href="#_CPPv4N16fw_update_node_t4addrE" title="Link to this definition"></a><br /></dt>
+<dd><p>Node address. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_update_node_t22retrieved_update_phaseE">
+<span id="_CPPv3N16fw_update_node_t22retrieved_update_phaseE"></span><span id="_CPPv2N16fw_update_node_t22retrieved_update_phaseE"></span><span id="fw_update_node_t::retrieved_update_phase__uint32_t"></span><span class="target" id="structfw__update__node__t_1afd80ac03e929f33b107acaddb9e38d7c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">retrieved_update_phase</span></span></span><a class="headerlink" href="#_CPPv4N16fw_update_node_t22retrieved_update_phaseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Retrieved update phase. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_update_node_t13update_statusE">
+<span id="_CPPv3N16fw_update_node_t13update_statusE"></span><span id="_CPPv2N16fw_update_node_t13update_statusE"></span><span id="fw_update_node_t::update_status__uint32_t"></span><span class="target" id="structfw__update__node__t_1a48707b093038bd53dd8d04c0feb7dae5"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_status</span></span></span><a class="headerlink" href="#_CPPv4N16fw_update_node_t13update_statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Update status of the node. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_update_node_t15transfer_statusE">
+<span id="_CPPv3N16fw_update_node_t15transfer_statusE"></span><span id="_CPPv2N16fw_update_node_t15transfer_statusE"></span><span id="fw_update_node_t::transfer_status__uint32_t"></span><span class="target" id="structfw__update__node__t_1a969cbf0ef043b8588f56dc84f54ea88c"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transfer_status</span></span></span><a class="headerlink" href="#_CPPv4N16fw_update_node_t15transfer_statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer status of the update. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_update_node_t17transfer_progressE">
+<span id="_CPPv3N16fw_update_node_t17transfer_progressE"></span><span id="_CPPv2N16fw_update_node_t17transfer_progressE"></span><span id="fw_update_node_t::transfer_progress__uint32_t"></span><span class="target" id="structfw__update__node__t_1a5cfa5f88a2c7b12c73a941e0c05a171a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transfer_progress</span></span></span><a class="headerlink" href="#_CPPv4N16fw_update_node_t17transfer_progressE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer progress percentage. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_update_node_t19update_fw_image_idxE">
+<span id="_CPPv3N16fw_update_node_t19update_fw_image_idxE"></span><span id="_CPPv2N16fw_update_node_t19update_fw_image_idxE"></span><span id="fw_update_node_t::update_fw_image_idx__uint8_t"></span><span class="target" id="structfw__update__node__t_1a3c1e34dc0a9a44891ed4ae0ed9fdc856"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N16fw_update_node_t19update_fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Update firmware image index. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420fw_dist_recvs_list_t">
+<span id="_CPPv320fw_dist_recvs_list_t"></span><span id="_CPPv220fw_dist_recvs_list_t"></span><span id="fw_dist_recvs_list_t"></span><span class="target" id="structfw__dist__recvs__list__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_recvs_list_t</span></span></span><a class="headerlink" href="#_CPPv420fw_dist_recvs_list_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for listing firmware distribution receivers. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_recvs_list_t6opcodeE">
+<span id="_CPPv3N20fw_dist_recvs_list_t6opcodeE"></span><span id="_CPPv2N20fw_dist_recvs_list_t6opcodeE"></span><span id="fw_dist_recvs_list_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__recvs__list__t_1ae18da9051c4dfaa873056adc6addf72b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8315</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20fw_dist_recvs_list_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_recvs_list_t14recvs_list_cntE">
+<span id="_CPPv3N20fw_dist_recvs_list_t14recvs_list_cntE"></span><span id="_CPPv2N20fw_dist_recvs_list_t14recvs_list_cntE"></span><span id="fw_dist_recvs_list_t::recvs_list_cnt__uint16_t"></span><span class="target" id="structfw__dist__recvs__list__t_1a1b5efa465d1b40c0e9245a014a82be13"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">recvs_list_cnt</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_recvs_list_t14recvs_list_cntE" title="Link to this definition"></a><br /></dt>
+<dd><p>Count of receivers in list. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_recvs_list_t11first_indexE">
+<span id="_CPPv3N20fw_dist_recvs_list_t11first_indexE"></span><span id="_CPPv2N20fw_dist_recvs_list_t11first_indexE"></span><span id="fw_dist_recvs_list_t::first_index__uint16_t"></span><span class="target" id="structfw__dist__recvs__list__t_1aedecc3c6c15f65dd254d389e45d5fa68"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">first_index</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_recvs_list_t11first_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>First index of receiver list. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_recvs_list_t7entriesE">
+<span id="_CPPv3N20fw_dist_recvs_list_t7entriesE"></span><span id="_CPPv2N20fw_dist_recvs_list_t7entriesE"></span><span id="fw_dist_recvs_list_t::entries__fw_update_node_tA"></span><span class="target" id="structfw__dist__recvs__list__t_1adc3a8aa01640847bb57f60b9e357f608"></span><a class="reference internal" href="#_CPPv416fw_update_node_t" title="fw_update_node_t"><span class="n"><span class="pre">fw_update_node_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">entries</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20fw_dist_recvs_list_t7entriesE" title="Link to this definition"></a><br /></dt>
+<dd><p>Entries of update nodes. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418fw_dist_caps_get_t">
+<span id="_CPPv318fw_dist_caps_get_t"></span><span id="_CPPv218fw_dist_caps_get_t"></span><span id="fw_dist_caps_get_t"></span><span class="target" id="structfw__dist__caps__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_caps_get_t</span></span></span><a class="headerlink" href="#_CPPv418fw_dist_caps_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for getting firmware distribution capabilities. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18fw_dist_caps_get_t6opcodeE">
+<span id="_CPPv3N18fw_dist_caps_get_t6opcodeE"></span><span id="_CPPv2N18fw_dist_caps_get_t6opcodeE"></span><span id="fw_dist_caps_get_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__caps__get__t_1a160cc08c9347a095a61de0a30205bb2d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8316</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N18fw_dist_caps_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv414fw_dist_caps_t">
+<span id="_CPPv314fw_dist_caps_t"></span><span id="_CPPv214fw_dist_caps_t"></span><span id="fw_dist_caps_t"></span><span class="target" id="structfw__dist__caps__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_caps_t</span></span></span><a class="headerlink" href="#_CPPv414fw_dist_caps_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware distribution capabilities. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14fw_dist_caps_t24max_dist_recvs_list_sizeE">
+<span id="_CPPv3N14fw_dist_caps_t24max_dist_recvs_list_sizeE"></span><span id="_CPPv2N14fw_dist_caps_t24max_dist_recvs_list_sizeE"></span><span id="fw_dist_caps_t::max_dist_recvs_list_size__uint16_t"></span><span class="target" id="structfw__dist__caps__t_1aa07102fdcf8c8ccc5b67d68d00414056"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_dist_recvs_list_size</span></span></span><a class="headerlink" href="#_CPPv4N14fw_dist_caps_t24max_dist_recvs_list_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum size of receivers list. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14fw_dist_caps_t23max_fw_images_list_sizeE">
+<span id="_CPPv3N14fw_dist_caps_t23max_fw_images_list_sizeE"></span><span id="_CPPv2N14fw_dist_caps_t23max_fw_images_list_sizeE"></span><span id="fw_dist_caps_t::max_fw_images_list_size__uint16_t"></span><span class="target" id="structfw__dist__caps__t_1a6d3f8f0791dca14855203b82ed2a1e80"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_fw_images_list_size</span></span></span><a class="headerlink" href="#_CPPv4N14fw_dist_caps_t23max_fw_images_list_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum size of firmware images list. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14fw_dist_caps_t17max_fw_image_sizeE">
+<span id="_CPPv3N14fw_dist_caps_t17max_fw_image_sizeE"></span><span id="_CPPv2N14fw_dist_caps_t17max_fw_image_sizeE"></span><span id="fw_dist_caps_t::max_fw_image_size__uint32_t"></span><span class="target" id="structfw__dist__caps__t_1a2c9a76abe255032b5231d908652bc2f8"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_fw_image_size</span></span></span><a class="headerlink" href="#_CPPv4N14fw_dist_caps_t17max_fw_image_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum firmware image size in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14fw_dist_caps_t16max_upload_spaceE">
+<span id="_CPPv3N14fw_dist_caps_t16max_upload_spaceE"></span><span id="_CPPv2N14fw_dist_caps_t16max_upload_spaceE"></span><span id="fw_dist_caps_t::max_upload_space__uint32_t"></span><span class="target" id="structfw__dist__caps__t_1aa229bdf78b81f92776769c05d08b0d16"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_upload_space</span></span></span><a class="headerlink" href="#_CPPv4N14fw_dist_caps_t16max_upload_spaceE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum upload space in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14fw_dist_caps_t22remaining_upload_spaceE">
+<span id="_CPPv3N14fw_dist_caps_t22remaining_upload_spaceE"></span><span id="_CPPv2N14fw_dist_caps_t22remaining_upload_spaceE"></span><span id="fw_dist_caps_t::remaining_upload_space__uint32_t"></span><span class="target" id="structfw__dist__caps__t_1a35c249a069390a69845505f33b8c65f9"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remaining_upload_space</span></span></span><a class="headerlink" href="#_CPPv4N14fw_dist_caps_t22remaining_upload_spaceE" title="Link to this definition"></a><br /></dt>
+<dd><p>Remaining upload space in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14fw_dist_caps_t23oob_retrieval_supportedE">
+<span id="_CPPv3N14fw_dist_caps_t23oob_retrieval_supportedE"></span><span id="_CPPv2N14fw_dist_caps_t23oob_retrieval_supportedE"></span><span id="fw_dist_caps_t::oob_retrieval_supported__uint8_t"></span><span class="target" id="structfw__dist__caps__t_1a8bfc0425d2cb5d0b91895b4b54208494"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oob_retrieval_supported</span></span></span><a class="headerlink" href="#_CPPv4N14fw_dist_caps_t23oob_retrieval_supportedE" title="Link to this definition"></a><br /></dt>
+<dd><p>Out-of-band retrieval support flag. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14fw_dist_caps_t27psupported_uri_scheme_namesE">
+<span id="_CPPv3N14fw_dist_caps_t27psupported_uri_scheme_namesE"></span><span id="_CPPv2N14fw_dist_caps_t27psupported_uri_scheme_namesE"></span><span id="fw_dist_caps_t::psupported_uri_scheme_names__uint8_tP"></span><span class="target" id="structfw__dist__caps__t_1a764c16377b00eb887c4cef8cefaca3a7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">psupported_uri_scheme_names</span></span></span><a class="headerlink" href="#_CPPv4N14fw_dist_caps_t27psupported_uri_scheme_namesE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to supported URI scheme names array. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14fw_dist_caps_t30supported_uri_scheme_names_lenE">
+<span id="_CPPv3N14fw_dist_caps_t30supported_uri_scheme_names_lenE"></span><span id="_CPPv2N14fw_dist_caps_t30supported_uri_scheme_names_lenE"></span><span id="fw_dist_caps_t::supported_uri_scheme_names_len__uint16_t"></span><span class="target" id="structfw__dist__caps__t_1ac9e4091bda2f5d9e88ae19631606689e"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">supported_uri_scheme_names_len</span></span></span><a class="headerlink" href="#_CPPv4N14fw_dist_caps_t30supported_uri_scheme_names_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of supported URI scheme names. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv421fw_dist_caps_status_t">
+<span id="_CPPv321fw_dist_caps_status_t"></span><span id="_CPPv221fw_dist_caps_status_t"></span><span id="fw_dist_caps_status_t"></span><span class="target" id="structfw__dist__caps__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_caps_status_t</span></span></span><a class="headerlink" href="#_CPPv421fw_dist_caps_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for firmware distribution capabilities status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fw_dist_caps_status_t6opcodeE">
+<span id="_CPPv3N21fw_dist_caps_status_t6opcodeE"></span><span id="_CPPv2N21fw_dist_caps_status_t6opcodeE"></span><span id="fw_dist_caps_status_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__caps__status__t_1a205bf2d73f18cfbf2e729d48ed9b4e1c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8317</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21fw_dist_caps_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fw_dist_caps_status_t24max_dist_recvs_list_sizeE">
+<span id="_CPPv3N21fw_dist_caps_status_t24max_dist_recvs_list_sizeE"></span><span id="_CPPv2N21fw_dist_caps_status_t24max_dist_recvs_list_sizeE"></span><span id="fw_dist_caps_status_t::max_dist_recvs_list_size__uint16_t"></span><span class="target" id="structfw__dist__caps__status__t_1aa07102fdcf8c8ccc5b67d68d00414056"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_dist_recvs_list_size</span></span></span><a class="headerlink" href="#_CPPv4N21fw_dist_caps_status_t24max_dist_recvs_list_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum size of receivers list. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fw_dist_caps_status_t23max_fw_images_list_sizeE">
+<span id="_CPPv3N21fw_dist_caps_status_t23max_fw_images_list_sizeE"></span><span id="_CPPv2N21fw_dist_caps_status_t23max_fw_images_list_sizeE"></span><span id="fw_dist_caps_status_t::max_fw_images_list_size__uint16_t"></span><span class="target" id="structfw__dist__caps__status__t_1a6d3f8f0791dca14855203b82ed2a1e80"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_fw_images_list_size</span></span></span><a class="headerlink" href="#_CPPv4N21fw_dist_caps_status_t23max_fw_images_list_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum size of firmware images list. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fw_dist_caps_status_t17max_fw_image_sizeE">
+<span id="_CPPv3N21fw_dist_caps_status_t17max_fw_image_sizeE"></span><span id="_CPPv2N21fw_dist_caps_status_t17max_fw_image_sizeE"></span><span id="fw_dist_caps_status_t::max_fw_image_size__uint32_t"></span><span class="target" id="structfw__dist__caps__status__t_1a2c9a76abe255032b5231d908652bc2f8"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_fw_image_size</span></span></span><a class="headerlink" href="#_CPPv4N21fw_dist_caps_status_t17max_fw_image_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum firmware image size in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fw_dist_caps_status_t16max_upload_spaceE">
+<span id="_CPPv3N21fw_dist_caps_status_t16max_upload_spaceE"></span><span id="_CPPv2N21fw_dist_caps_status_t16max_upload_spaceE"></span><span id="fw_dist_caps_status_t::max_upload_space__uint32_t"></span><span class="target" id="structfw__dist__caps__status__t_1aa229bdf78b81f92776769c05d08b0d16"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_upload_space</span></span></span><a class="headerlink" href="#_CPPv4N21fw_dist_caps_status_t16max_upload_spaceE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum upload space in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fw_dist_caps_status_t22remaining_upload_spaceE">
+<span id="_CPPv3N21fw_dist_caps_status_t22remaining_upload_spaceE"></span><span id="_CPPv2N21fw_dist_caps_status_t22remaining_upload_spaceE"></span><span id="fw_dist_caps_status_t::remaining_upload_space__uint32_t"></span><span class="target" id="structfw__dist__caps__status__t_1a35c249a069390a69845505f33b8c65f9"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remaining_upload_space</span></span></span><a class="headerlink" href="#_CPPv4N21fw_dist_caps_status_t22remaining_upload_spaceE" title="Link to this definition"></a><br /></dt>
+<dd><p>Remaining upload space in bytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fw_dist_caps_status_t23oob_retrieval_supportedE">
+<span id="_CPPv3N21fw_dist_caps_status_t23oob_retrieval_supportedE"></span><span id="_CPPv2N21fw_dist_caps_status_t23oob_retrieval_supportedE"></span><span id="fw_dist_caps_status_t::oob_retrieval_supported__uint8_t"></span><span class="target" id="structfw__dist__caps__status__t_1a8bfc0425d2cb5d0b91895b4b54208494"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">oob_retrieval_supported</span></span></span><a class="headerlink" href="#_CPPv4N21fw_dist_caps_status_t23oob_retrieval_supportedE" title="Link to this definition"></a><br /></dt>
+<dd><p>Out-of-band retrieval support flag. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21fw_dist_caps_status_t26supported_uri_scheme_namesE">
+<span id="_CPPv3N21fw_dist_caps_status_t26supported_uri_scheme_namesE"></span><span id="_CPPv2N21fw_dist_caps_status_t26supported_uri_scheme_namesE"></span><span id="fw_dist_caps_status_t::supported_uri_scheme_names__uint8_tA"></span><span class="target" id="structfw__dist__caps__status__t_1a2e7fbfd1a3da0cb270086a58e9102a47"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">supported_uri_scheme_names</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N21fw_dist_caps_status_t26supported_uri_scheme_namesE" title="Link to this definition"></a><br /></dt>
+<dd><p>Supported URI scheme names. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv413fw_dist_get_t">
+<span id="_CPPv313fw_dist_get_t"></span><span id="_CPPv213fw_dist_get_t"></span><span id="fw_dist_get_t"></span><span class="target" id="structfw__dist__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_get_t</span></span></span><a class="headerlink" href="#_CPPv413fw_dist_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for getting firmware distribution status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13fw_dist_get_t6opcodeE">
+<span id="_CPPv3N13fw_dist_get_t6opcodeE"></span><span id="_CPPv2N13fw_dist_get_t6opcodeE"></span><span id="fw_dist_get_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__get__t_1a19b6ed7bd1515ac068635c5d4835dfb1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8318</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N13fw_dist_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420fw_dist_start_data_t">
+<span id="_CPPv320fw_dist_start_data_t"></span><span id="_CPPv220fw_dist_start_data_t"></span><span id="fw_dist_start_data_t"></span><span class="target" id="structfw__dist__start__data__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_start_data_t</span></span></span><a class="headerlink" href="#_CPPv420fw_dist_start_data_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for firmware distribution start data. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_start_data_t18dist_app_key_indexE">
+<span id="_CPPv3N20fw_dist_start_data_t18dist_app_key_indexE"></span><span id="_CPPv2N20fw_dist_start_data_t18dist_app_key_indexE"></span><span id="fw_dist_start_data_t::dist_app_key_index__uint16_t"></span><span class="target" id="structfw__dist__start__data__t_1a33a34aa0592f23be7524357c585a6e69"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_app_key_index</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_start_data_t18dist_app_key_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>App key index for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_start_data_t8dist_ttlE">
+<span id="_CPPv3N20fw_dist_start_data_t8dist_ttlE"></span><span id="_CPPv2N20fw_dist_start_data_t8dist_ttlE"></span><span id="fw_dist_start_data_t::dist_ttl__uint8_t"></span><span class="target" id="structfw__dist__start__data__t_1a644205a53a8bb3063e68c68359e48dd4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_ttl</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_start_data_t8dist_ttlE" title="Link to this definition"></a><br /></dt>
+<dd><p>Time-to-live for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_start_data_t17dist_timeout_baseE">
+<span id="_CPPv3N20fw_dist_start_data_t17dist_timeout_baseE"></span><span id="_CPPv2N20fw_dist_start_data_t17dist_timeout_baseE"></span><span id="fw_dist_start_data_t::dist_timeout_base__uint16_t"></span><span class="target" id="structfw__dist__start__data__t_1aff78761ce0128206ec5f6653d2e7cd43"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_timeout_base</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_start_data_t17dist_timeout_baseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Timeout base for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_start_data_t18dist_transfer_modeE">
+<span id="_CPPv3N20fw_dist_start_data_t18dist_transfer_modeE"></span><span id="_CPPv2N20fw_dist_start_data_t18dist_transfer_modeE"></span><span id="fw_dist_start_data_t::dist_transfer_mode__uint8_t"></span><span class="target" id="structfw__dist__start__data__t_1ae2bfd8f5098d83716c9a8e92bb7cab75"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_transfer_mode</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_start_data_t18dist_transfer_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer mode for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_start_data_t13update_policyE">
+<span id="_CPPv3N20fw_dist_start_data_t13update_policyE"></span><span id="_CPPv2N20fw_dist_start_data_t13update_policyE"></span><span id="fw_dist_start_data_t::update_policy__uint8_t"></span><span class="target" id="structfw__dist__start__data__t_1ac97044f5ad294a69530b41628e67a005"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_policy</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_start_data_t13update_policyE" title="Link to this definition"></a><br /></dt>
+<dd><p>Update policy for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_start_data_t3rfuE">
+<span id="_CPPv3N20fw_dist_start_data_t3rfuE"></span><span id="_CPPv2N20fw_dist_start_data_t3rfuE"></span><span id="fw_dist_start_data_t::rfu__uint8_t"></span><span class="target" id="structfw__dist__start__data__t_1ab37578440c8242021e4d62fbd5886cbc"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rfu</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_start_data_t3rfuE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved for future use. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_start_data_t17dist_fw_image_idxE">
+<span id="_CPPv3N20fw_dist_start_data_t17dist_fw_image_idxE"></span><span id="_CPPv2N20fw_dist_start_data_t17dist_fw_image_idxE"></span><span id="fw_dist_start_data_t::dist_fw_image_idx__uint16_t"></span><span class="target" id="structfw__dist__start__data__t_1a9f4530988f32f00e5c86c9cdf323ff02"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N20fw_dist_start_data_t17dist_fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_start_data_t19dist_multicast_addrE">
+<span id="_CPPv3N20fw_dist_start_data_t19dist_multicast_addrE"></span><span id="_CPPv2N20fw_dist_start_data_t19dist_multicast_addrE"></span><span id="fw_dist_start_data_t::dist_multicast_addr__uint8_tA"></span><span class="target" id="structfw__dist__start__data__t_1ab022a08777ed1f066c79bacc555242fe"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_multicast_addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20fw_dist_start_data_t19dist_multicast_addrE" title="Link to this definition"></a><br /></dt>
+<dd><p>Multicast address for distribution. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415fw_dist_start_t">
+<span id="_CPPv315fw_dist_start_t"></span><span id="_CPPv215fw_dist_start_t"></span><span id="fw_dist_start_t"></span><span class="target" id="structfw__dist__start__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_start_t</span></span></span><a class="headerlink" href="#_CPPv415fw_dist_start_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for starting firmware distribution. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t6opcodeE">
+<span id="_CPPv3N15fw_dist_start_t6opcodeE"></span><span id="_CPPv2N15fw_dist_start_t6opcodeE"></span><span id="fw_dist_start_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__start__t_1af71d6fa40a56aaa30967a9a59ee1e305"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8319</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t18dist_app_key_indexE">
+<span id="_CPPv3N15fw_dist_start_t18dist_app_key_indexE"></span><span id="_CPPv2N15fw_dist_start_t18dist_app_key_indexE"></span><span id="fw_dist_start_t::dist_app_key_index__uint16_t"></span><span class="target" id="structfw__dist__start__t_1a33a34aa0592f23be7524357c585a6e69"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_app_key_index</span></span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t18dist_app_key_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>App key index for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t8dist_ttlE">
+<span id="_CPPv3N15fw_dist_start_t8dist_ttlE"></span><span id="_CPPv2N15fw_dist_start_t8dist_ttlE"></span><span id="fw_dist_start_t::dist_ttl__uint8_t"></span><span class="target" id="structfw__dist__start__t_1a644205a53a8bb3063e68c68359e48dd4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_ttl</span></span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t8dist_ttlE" title="Link to this definition"></a><br /></dt>
+<dd><p>Time-to-live for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t17dist_timeout_baseE">
+<span id="_CPPv3N15fw_dist_start_t17dist_timeout_baseE"></span><span id="_CPPv2N15fw_dist_start_t17dist_timeout_baseE"></span><span id="fw_dist_start_t::dist_timeout_base__uint16_t"></span><span class="target" id="structfw__dist__start__t_1aff78761ce0128206ec5f6653d2e7cd43"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_timeout_base</span></span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t17dist_timeout_baseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Timeout base for distribution. Default value conversion from seconds. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t18dist_transfer_modeE">
+<span id="_CPPv3N15fw_dist_start_t18dist_transfer_modeE"></span><span id="_CPPv2N15fw_dist_start_t18dist_transfer_modeE"></span><span id="fw_dist_start_t::dist_transfer_mode__uint8_t"></span><span class="target" id="structfw__dist__start__t_1ae2bfd8f5098d83716c9a8e92bb7cab75"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_transfer_mode</span></span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t18dist_transfer_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer mode for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t13update_policyE">
+<span id="_CPPv3N15fw_dist_start_t13update_policyE"></span><span id="_CPPv2N15fw_dist_start_t13update_policyE"></span><span id="fw_dist_start_t::update_policy__uint8_t"></span><span class="target" id="structfw__dist__start__t_1ac97044f5ad294a69530b41628e67a005"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_policy</span></span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t13update_policyE" title="Link to this definition"></a><br /></dt>
+<dd><p>Update policy for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t3rfuE">
+<span id="_CPPv3N15fw_dist_start_t3rfuE"></span><span id="_CPPv2N15fw_dist_start_t3rfuE"></span><span id="fw_dist_start_t::rfu__uint8_t"></span><span class="target" id="structfw__dist__start__t_1ab37578440c8242021e4d62fbd5886cbc"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rfu</span></span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t3rfuE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved for future use. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t17dist_fw_image_idxE">
+<span id="_CPPv3N15fw_dist_start_t17dist_fw_image_idxE"></span><span id="_CPPv2N15fw_dist_start_t17dist_fw_image_idxE"></span><span id="fw_dist_start_t::dist_fw_image_idx__uint16_t"></span><span class="target" id="structfw__dist__start__t_1a9f4530988f32f00e5c86c9cdf323ff02"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t17dist_fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_start_t19dist_multicast_addrE">
+<span id="_CPPv3N15fw_dist_start_t19dist_multicast_addrE"></span><span id="_CPPv2N15fw_dist_start_t19dist_multicast_addrE"></span><span id="fw_dist_start_t::dist_multicast_addr__uint8_tA"></span><span class="target" id="structfw__dist__start__t_1ab022a08777ed1f066c79bacc555242fe"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_multicast_addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N15fw_dist_start_t19dist_multicast_addrE" title="Link to this definition"></a><br /></dt>
+<dd><p>Multicast address for distribution. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv417fw_dist_suspend_t">
+<span id="_CPPv317fw_dist_suspend_t"></span><span id="_CPPv217fw_dist_suspend_t"></span><span id="fw_dist_suspend_t"></span><span class="target" id="structfw__dist__suspend__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_suspend_t</span></span></span><a class="headerlink" href="#_CPPv417fw_dist_suspend_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for suspending firmware distribution. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17fw_dist_suspend_t6opcodeE">
+<span id="_CPPv3N17fw_dist_suspend_t6opcodeE"></span><span id="_CPPv2N17fw_dist_suspend_t6opcodeE"></span><span id="fw_dist_suspend_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__suspend__t_1ab85ba1cb124f36d98484e71c752bf302"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x831A</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N17fw_dist_suspend_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv416fw_dist_cancel_t">
+<span id="_CPPv316fw_dist_cancel_t"></span><span id="_CPPv216fw_dist_cancel_t"></span><span id="fw_dist_cancel_t"></span><span class="target" id="structfw__dist__cancel__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_cancel_t</span></span></span><a class="headerlink" href="#_CPPv416fw_dist_cancel_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for cancelling firmware distribution. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_cancel_t6opcodeE">
+<span id="_CPPv3N16fw_dist_cancel_t6opcodeE"></span><span id="_CPPv2N16fw_dist_cancel_t6opcodeE"></span><span id="fw_dist_cancel_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__cancel__t_1a74b5672022e7dd1c1ad2f8151c9ed819"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x831B</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N16fw_dist_cancel_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415fw_dist_apply_t">
+<span id="_CPPv315fw_dist_apply_t"></span><span id="_CPPv215fw_dist_apply_t"></span><span id="fw_dist_apply_t"></span><span class="target" id="structfw__dist__apply__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_apply_t</span></span></span><a class="headerlink" href="#_CPPv415fw_dist_apply_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for applying firmware distribution. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15fw_dist_apply_t6opcodeE">
+<span id="_CPPv3N15fw_dist_apply_t6opcodeE"></span><span id="_CPPv2N15fw_dist_apply_t6opcodeE"></span><span id="fw_dist_apply_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__apply__t_1a5f63f923d15dea934cc46599d5565208"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x831C</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N15fw_dist_apply_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv416fw_dist_status_t">
+<span id="_CPPv316fw_dist_status_t"></span><span id="_CPPv216fw_dist_status_t"></span><span id="fw_dist_status_t"></span><span class="target" id="structfw__dist__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_status_t</span></span></span><a class="headerlink" href="#_CPPv416fw_dist_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for firmware distribution status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t6opcodeE">
+<span id="_CPPv3N16fw_dist_status_t6opcodeE"></span><span id="_CPPv2N16fw_dist_status_t6opcodeE"></span><span id="fw_dist_status_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__status__t_1a3fe6045cf4972051191fc9cecc9e087c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x831D</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t6statusE">
+<span id="_CPPv3N16fw_dist_status_t6statusE"></span><span id="_CPPv2N16fw_dist_status_t6statusE"></span><span id="fw_dist_status_t::status__fw_dist_status_code_t"></span><span class="target" id="structfw__dist__status__t_1ad56a6ad1997aeca41b63fa99e500fc00"></span><a class="reference internal" href="#_CPPv421fw_dist_status_code_t" title="fw_dist_status_code_t"><span class="n"><span class="pre">fw_dist_status_code_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Distribution status code. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t5phaseE">
+<span id="_CPPv3N16fw_dist_status_t5phaseE"></span><span id="_CPPv2N16fw_dist_status_t5phaseE"></span><span id="fw_dist_status_t::phase__fw_dist_phase_t"></span><span class="target" id="structfw__dist__status__t_1a8cd139058d6a60759c20bcdd8911ada1"></span><a class="reference internal" href="#_CPPv415fw_dist_phase_t" title="fw_dist_phase_t"><span class="n"><span class="pre">fw_dist_phase_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">phase</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t5phaseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Current phase of distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t19dist_multicast_addrE">
+<span id="_CPPv3N16fw_dist_status_t19dist_multicast_addrE"></span><span id="_CPPv2N16fw_dist_status_t19dist_multicast_addrE"></span><span id="fw_dist_status_t::dist_multicast_addr__uint16_t"></span><span class="target" id="structfw__dist__status__t_1a6e4a4b4b42f81e29d0a1fe2c680d7609"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_multicast_addr</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t19dist_multicast_addrE" title="Link to this definition"></a><br /></dt>
+<dd><p>Multicast address for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t17dist_appkey_indexE">
+<span id="_CPPv3N16fw_dist_status_t17dist_appkey_indexE"></span><span id="_CPPv2N16fw_dist_status_t17dist_appkey_indexE"></span><span id="fw_dist_status_t::dist_appkey_index__uint16_t"></span><span class="target" id="structfw__dist__status__t_1ae5dd8dc1e1cbf1b5782564e6d48113f4"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_appkey_index</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t17dist_appkey_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>App key index for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t8dist_ttlE">
+<span id="_CPPv3N16fw_dist_status_t8dist_ttlE"></span><span id="_CPPv2N16fw_dist_status_t8dist_ttlE"></span><span id="fw_dist_status_t::dist_ttl__uint8_t"></span><span class="target" id="structfw__dist__status__t_1a644205a53a8bb3063e68c68359e48dd4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_ttl</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t8dist_ttlE" title="Link to this definition"></a><br /></dt>
+<dd><p>Time-to-live for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t17dist_timeout_baseE">
+<span id="_CPPv3N16fw_dist_status_t17dist_timeout_baseE"></span><span id="_CPPv2N16fw_dist_status_t17dist_timeout_baseE"></span><span id="fw_dist_status_t::dist_timeout_base__uint16_t"></span><span class="target" id="structfw__dist__status__t_1aff78761ce0128206ec5f6653d2e7cd43"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_timeout_base</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t17dist_timeout_baseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Timeout base for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t18dist_transfer_modeE">
+<span id="_CPPv3N16fw_dist_status_t18dist_transfer_modeE"></span><span id="_CPPv2N16fw_dist_status_t18dist_transfer_modeE"></span><span id="fw_dist_status_t::dist_transfer_mode__uint8_t"></span><span class="target" id="structfw__dist__status__t_1ae2bfd8f5098d83716c9a8e92bb7cab75"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_transfer_mode</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t18dist_transfer_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer mode for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t13update_policyE">
+<span id="_CPPv3N16fw_dist_status_t13update_policyE"></span><span id="_CPPv2N16fw_dist_status_t13update_policyE"></span><span id="fw_dist_status_t::update_policy__uint8_t"></span><span class="target" id="structfw__dist__status__t_1ac97044f5ad294a69530b41628e67a005"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_policy</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t13update_policyE" title="Link to this definition"></a><br /></dt>
+<dd><p>Update policy for distribution. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t3rfuE">
+<span id="_CPPv3N16fw_dist_status_t3rfuE"></span><span id="_CPPv2N16fw_dist_status_t3rfuE"></span><span id="fw_dist_status_t::rfu__uint8_t"></span><span class="target" id="structfw__dist__status__t_1ab37578440c8242021e4d62fbd5886cbc"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rfu</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t3rfuE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved for future use. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_status_t17dist_fw_image_idxE">
+<span id="_CPPv3N16fw_dist_status_t17dist_fw_image_idxE"></span><span id="_CPPv2N16fw_dist_status_t17dist_fw_image_idxE"></span><span id="fw_dist_status_t::dist_fw_image_idx__uint16_t"></span><span class="target" id="structfw__dist__status__t_1a9f4530988f32f00e5c86c9cdf323ff02"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N16fw_dist_status_t17dist_fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for distribution. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420fw_dist_upload_get_t">
+<span id="_CPPv320fw_dist_upload_get_t"></span><span id="_CPPv220fw_dist_upload_get_t"></span><span id="fw_dist_upload_get_t"></span><span class="target" id="structfw__dist__upload__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_upload_get_t</span></span></span><a class="headerlink" href="#_CPPv420fw_dist_upload_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for getting upload status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20fw_dist_upload_get_t6opcodeE">
+<span id="_CPPv3N20fw_dist_upload_get_t6opcodeE"></span><span id="_CPPv2N20fw_dist_upload_get_t6opcodeE"></span><span id="fw_dist_upload_get_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__upload__get__t_1acfc490470d588fbdc3756de7fb02a9bb"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x831E</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N20fw_dist_upload_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422fw_dist_upload_start_t">
+<span id="_CPPv322fw_dist_upload_start_t"></span><span id="_CPPv222fw_dist_upload_start_t"></span><span id="fw_dist_upload_start_t"></span><span class="target" id="structfw__dist__upload__start__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_upload_start_t</span></span></span><a class="headerlink" href="#_CPPv422fw_dist_upload_start_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for starting upload process. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_upload_start_t6opcodeE">
+<span id="_CPPv3N22fw_dist_upload_start_t6opcodeE"></span><span id="_CPPv2N22fw_dist_upload_start_t6opcodeE"></span><span id="fw_dist_upload_start_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__upload__start__t_1a2ed7d24d409d510f291350122c494b36"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x831F</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22fw_dist_upload_start_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_upload_start_t10upload_ttlE">
+<span id="_CPPv3N22fw_dist_upload_start_t10upload_ttlE"></span><span id="_CPPv2N22fw_dist_upload_start_t10upload_ttlE"></span><span id="fw_dist_upload_start_t::upload_ttl__uint8_t"></span><span class="target" id="structfw__dist__upload__start__t_1afe6ab67ce0cca49560e8847bd172a366"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_ttl</span></span></span><a class="headerlink" href="#_CPPv4N22fw_dist_upload_start_t10upload_ttlE" title="Link to this definition"></a><br /></dt>
+<dd><p>Time-to-live for upload. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_upload_start_t19upload_timeout_baseE">
+<span id="_CPPv3N22fw_dist_upload_start_t19upload_timeout_baseE"></span><span id="_CPPv2N22fw_dist_upload_start_t19upload_timeout_baseE"></span><span id="fw_dist_upload_start_t::upload_timeout_base__uint16_t"></span><span class="target" id="structfw__dist__upload__start__t_1a8a7586cde7f25f20278b17f5e90b1c48"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_timeout_base</span></span></span><a class="headerlink" href="#_CPPv4N22fw_dist_upload_start_t19upload_timeout_baseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Timeout base for upload. Default value conversion from seconds. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_upload_start_t7blob_idE">
+<span id="_CPPv3N22fw_dist_upload_start_t7blob_idE"></span><span id="_CPPv2N22fw_dist_upload_start_t7blob_idE"></span><span id="fw_dist_upload_start_t::blob_id__uint8_tA"></span><span class="target" id="structfw__dist__upload__start__t_1ab7e2697584f45faae982a237fedac55e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blob_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">8</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22fw_dist_upload_start_t7blob_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>BLOB identifier for upload. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_upload_start_t14upload_fw_sizeE">
+<span id="_CPPv3N22fw_dist_upload_start_t14upload_fw_sizeE"></span><span id="_CPPv2N22fw_dist_upload_start_t14upload_fw_sizeE"></span><span id="fw_dist_upload_start_t::upload_fw_size__uint32_t"></span><span class="target" id="structfw__dist__upload__start__t_1a24f5b14a937d90695e9883031b86bd86"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_fw_size</span></span></span><a class="headerlink" href="#_CPPv4N22fw_dist_upload_start_t14upload_fw_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Size of firmware to be uploaded. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_upload_start_t22upload_fw_metadata_lenE">
+<span id="_CPPv3N22fw_dist_upload_start_t22upload_fw_metadata_lenE"></span><span id="_CPPv2N22fw_dist_upload_start_t22upload_fw_metadata_lenE"></span><span id="fw_dist_upload_start_t::upload_fw_metadata_len__uint8_t"></span><span class="target" id="structfw__dist__upload__start__t_1a063191e50670994a1b0f9a5db768d072"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_fw_metadata_len</span></span></span><a class="headerlink" href="#_CPPv4N22fw_dist_upload_start_t22upload_fw_metadata_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of firmware metadata for upload. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_dist_upload_start_t14upload_fw_infoE">
+<span id="_CPPv3N22fw_dist_upload_start_t14upload_fw_infoE"></span><span id="_CPPv2N22fw_dist_upload_start_t14upload_fw_infoE"></span><span id="fw_dist_upload_start_t::upload_fw_info__uint8_tA"></span><span class="target" id="structfw__dist__upload__start__t_1ad6a8e8365e2a9eff3a31d8f6947e038a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_fw_info</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22fw_dist_upload_start_t14upload_fw_infoE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware upload information. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426fw_dist_upload_oob_start_t">
+<span id="_CPPv326fw_dist_upload_oob_start_t"></span><span id="_CPPv226fw_dist_upload_oob_start_t"></span><span id="fw_dist_upload_oob_start_t"></span><span class="target" id="structfw__dist__upload__oob__start__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_upload_oob_start_t</span></span></span><a class="headerlink" href="#_CPPv426fw_dist_upload_oob_start_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for starting out-of-band upload. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26fw_dist_upload_oob_start_t6opcodeE">
+<span id="_CPPv3N26fw_dist_upload_oob_start_t6opcodeE"></span><span id="_CPPv2N26fw_dist_upload_oob_start_t6opcodeE"></span><span id="fw_dist_upload_oob_start_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__upload__oob__start__t_1a6c12d13b733344a632b9af2b2c0aa9f6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8320</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N26fw_dist_upload_oob_start_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26fw_dist_upload_oob_start_t14upload_uri_lenE">
+<span id="_CPPv3N26fw_dist_upload_oob_start_t14upload_uri_lenE"></span><span id="_CPPv2N26fw_dist_upload_oob_start_t14upload_uri_lenE"></span><span id="fw_dist_upload_oob_start_t::upload_uri_len__uint8_t"></span><span class="target" id="structfw__dist__upload__oob__start__t_1ab52709b0c9f60814d4c1f1144c71cdc0"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_uri_len</span></span></span><a class="headerlink" href="#_CPPv4N26fw_dist_upload_oob_start_t14upload_uri_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of URI for upload. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26fw_dist_upload_oob_start_t14upload_fw_infoE">
+<span id="_CPPv3N26fw_dist_upload_oob_start_t14upload_fw_infoE"></span><span id="_CPPv2N26fw_dist_upload_oob_start_t14upload_fw_infoE"></span><span id="fw_dist_upload_oob_start_t::upload_fw_info__uint8_tA"></span><span class="target" id="structfw__dist__upload__oob__start__t_1ad6a8e8365e2a9eff3a31d8f6947e038a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_fw_info</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N26fw_dist_upload_oob_start_t14upload_fw_infoE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware upload information. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423fw_dist_upload_cancel_t">
+<span id="_CPPv323fw_dist_upload_cancel_t"></span><span id="_CPPv223fw_dist_upload_cancel_t"></span><span id="fw_dist_upload_cancel_t"></span><span class="target" id="structfw__dist__upload__cancel__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_upload_cancel_t</span></span></span><a class="headerlink" href="#_CPPv423fw_dist_upload_cancel_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for cancelling upload process. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_dist_upload_cancel_t6opcodeE">
+<span id="_CPPv3N23fw_dist_upload_cancel_t6opcodeE"></span><span id="_CPPv2N23fw_dist_upload_cancel_t6opcodeE"></span><span id="fw_dist_upload_cancel_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__upload__cancel__t_1af63861b94864231924cb423403e89009"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8321</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23fw_dist_upload_cancel_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423fw_dist_upload_status_t">
+<span id="_CPPv323fw_dist_upload_status_t"></span><span id="_CPPv223fw_dist_upload_status_t"></span><span id="fw_dist_upload_status_t"></span><span class="target" id="structfw__dist__upload__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_upload_status_t</span></span></span><a class="headerlink" href="#_CPPv423fw_dist_upload_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for upload status. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_dist_upload_status_t6opcodeE">
+<span id="_CPPv3N23fw_dist_upload_status_t6opcodeE"></span><span id="_CPPv2N23fw_dist_upload_status_t6opcodeE"></span><span id="fw_dist_upload_status_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__upload__status__t_1ab44c8123200794a99b03bfa8dd55743b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8322</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23fw_dist_upload_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_dist_upload_status_t6statusE">
+<span id="_CPPv3N23fw_dist_upload_status_t6statusE"></span><span id="_CPPv2N23fw_dist_upload_status_t6statusE"></span><span id="fw_dist_upload_status_t::status__uint8_t"></span><span class="target" id="structfw__dist__upload__status__t_1ade818037fd6c985038ff29656089758d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N23fw_dist_upload_status_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Status of the upload process. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_dist_upload_status_t5phaseE">
+<span id="_CPPv3N23fw_dist_upload_status_t5phaseE"></span><span id="_CPPv2N23fw_dist_upload_status_t5phaseE"></span><span id="fw_dist_upload_status_t::phase__fw_upload_phase_t"></span><span class="target" id="structfw__dist__upload__status__t_1ab109dc814da3860428c2f51141f899da"></span><a class="reference internal" href="#_CPPv417fw_upload_phase_t" title="fw_upload_phase_t"><span class="n"><span class="pre">fw_upload_phase_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">phase</span></span></span><a class="headerlink" href="#_CPPv4N23fw_dist_upload_status_t5phaseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Current phase of upload process. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_dist_upload_status_t15upload_progressE">
+<span id="_CPPv3N23fw_dist_upload_status_t15upload_progressE"></span><span id="_CPPv2N23fw_dist_upload_status_t15upload_progressE"></span><span id="fw_dist_upload_status_t::upload_progress__uint8_t"></span><span class="target" id="structfw__dist__upload__status__t_1a451e1c01c24d02811a9a4c7e888970a9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_progress</span></span></span><a class="headerlink" href="#_CPPv4N23fw_dist_upload_status_t15upload_progressE" title="Link to this definition"></a><br /></dt>
+<dd><p>Progress percentage of the upload. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_dist_upload_status_t11upload_typeE">
+<span id="_CPPv3N23fw_dist_upload_status_t11upload_typeE"></span><span id="_CPPv2N23fw_dist_upload_status_t11upload_typeE"></span><span id="fw_dist_upload_status_t::upload_type__uint8_t"></span><span class="target" id="structfw__dist__upload__status__t_1ad757e60e4e41189eade1eee4b679b236"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_type</span></span></span><a class="headerlink" href="#_CPPv4N23fw_dist_upload_status_t11upload_typeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Type of upload process. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_dist_upload_status_t12upload_fw_idE">
+<span id="_CPPv3N23fw_dist_upload_status_t12upload_fw_idE"></span><span id="_CPPv2N23fw_dist_upload_status_t12upload_fw_idE"></span><span id="fw_dist_upload_status_t::upload_fw_id__uint8_tA"></span><span class="target" id="structfw__dist__upload__status__t_1a0680750e4f609bca2fd5db8462b59351"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">upload_fw_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23fw_dist_upload_status_t12upload_fw_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware ID for upload. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv416fw_dist_fw_get_t">
+<span id="_CPPv316fw_dist_fw_get_t"></span><span id="_CPPv216fw_dist_fw_get_t"></span><span id="fw_dist_fw_get_t"></span><span class="target" id="structfw__dist__fw__get__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_fw_get_t</span></span></span><a class="headerlink" href="#_CPPv416fw_dist_fw_get_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for getting firmware information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_fw_get_t6opcodeE">
+<span id="_CPPv3N16fw_dist_fw_get_t6opcodeE"></span><span id="_CPPv2N16fw_dist_fw_get_t6opcodeE"></span><span id="fw_dist_fw_get_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__fw__get__t_1a763d825702054b95f86d74b0d84c19f1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8323</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N16fw_dist_fw_get_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16fw_dist_fw_get_t5fw_idE">
+<span id="_CPPv3N16fw_dist_fw_get_t5fw_idE"></span><span id="_CPPv2N16fw_dist_fw_get_t5fw_idE"></span><span id="fw_dist_fw_get_t::fw_id__uint8_tA"></span><span class="target" id="structfw__dist__fw__get__t_1a1c3942a006410c3b2f8e5289ba240730"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N16fw_dist_fw_get_t5fw_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware ID for get operation. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425fw_dist_fw_get_by_index_t">
+<span id="_CPPv325fw_dist_fw_get_by_index_t"></span><span id="_CPPv225fw_dist_fw_get_by_index_t"></span><span id="fw_dist_fw_get_by_index_t"></span><span class="target" id="structfw__dist__fw__get__by__index__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_fw_get_by_index_t</span></span></span><a class="headerlink" href="#_CPPv425fw_dist_fw_get_by_index_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for getting firmware by index. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25fw_dist_fw_get_by_index_t6opcodeE">
+<span id="_CPPv3N25fw_dist_fw_get_by_index_t6opcodeE"></span><span id="_CPPv2N25fw_dist_fw_get_by_index_t6opcodeE"></span><span id="fw_dist_fw_get_by_index_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__fw__get__by__index__t_1a8e9ee9ed7088287c33d555c34abcc113"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8324</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N25fw_dist_fw_get_by_index_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25fw_dist_fw_get_by_index_t17dist_fw_image_idxE">
+<span id="_CPPv3N25fw_dist_fw_get_by_index_t17dist_fw_image_idxE"></span><span id="_CPPv2N25fw_dist_fw_get_by_index_t17dist_fw_image_idxE"></span><span id="fw_dist_fw_get_by_index_t::dist_fw_image_idx__uint16_t"></span><span class="target" id="structfw__dist__fw__get__by__index__t_1a9f4530988f32f00e5c86c9cdf323ff02"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N25fw_dist_fw_get_by_index_t17dist_fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Image index for firmware get. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419fw_dist_fw_delete_t">
+<span id="_CPPv319fw_dist_fw_delete_t"></span><span id="_CPPv219fw_dist_fw_delete_t"></span><span id="fw_dist_fw_delete_t"></span><span class="target" id="structfw__dist__fw__delete__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_fw_delete_t</span></span></span><a class="headerlink" href="#_CPPv419fw_dist_fw_delete_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for deleting firmware. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_fw_delete_t6opcodeE">
+<span id="_CPPv3N19fw_dist_fw_delete_t6opcodeE"></span><span id="_CPPv2N19fw_dist_fw_delete_t6opcodeE"></span><span id="fw_dist_fw_delete_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__fw__delete__t_1a238a8b005ab5e675100cf318f744f781"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8325</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19fw_dist_fw_delete_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_fw_delete_t5fw_idE">
+<span id="_CPPv3N19fw_dist_fw_delete_t5fw_idE"></span><span id="_CPPv2N19fw_dist_fw_delete_t5fw_idE"></span><span id="fw_dist_fw_delete_t::fw_id__uint8_tA"></span><span class="target" id="structfw__dist__fw__delete__t_1a1c3942a006410c3b2f8e5289ba240730"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19fw_dist_fw_delete_t5fw_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware ID for delete operation. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423fw_dist_fw_delete_all_t">
+<span id="_CPPv323fw_dist_fw_delete_all_t"></span><span id="_CPPv223fw_dist_fw_delete_all_t"></span><span id="fw_dist_fw_delete_all_t"></span><span class="target" id="structfw__dist__fw__delete__all__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_fw_delete_all_t</span></span></span><a class="headerlink" href="#_CPPv423fw_dist_fw_delete_all_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for deleting all firmware. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_dist_fw_delete_all_t6opcodeE">
+<span id="_CPPv3N23fw_dist_fw_delete_all_t6opcodeE"></span><span id="_CPPv2N23fw_dist_fw_delete_all_t6opcodeE"></span><span id="fw_dist_fw_delete_all_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__fw__delete__all__t_1a9cbc27ee0c3e79afd521e6e6a25fedbe"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8326</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N23fw_dist_fw_delete_all_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419fw_dist_fw_status_t">
+<span id="_CPPv319fw_dist_fw_status_t"></span><span id="_CPPv219fw_dist_fw_status_t"></span><span id="fw_dist_fw_status_t"></span><span class="target" id="structfw__dist__fw__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_dist_fw_status_t</span></span></span><a class="headerlink" href="#_CPPv419fw_dist_fw_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for status of firmware. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_fw_status_t6opcodeE">
+<span id="_CPPv3N19fw_dist_fw_status_t6opcodeE"></span><span id="_CPPv2N19fw_dist_fw_status_t6opcodeE"></span><span id="fw_dist_fw_status_t::opcode__uint8_tA"></span><span class="target" id="structfw__dist__fw__status__t_1a60670828c7947530f5cb1b70f5c8752f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">ACCESS_OPCODE_SIZE</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0x8327</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19fw_dist_fw_status_t6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Access opcode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_fw_status_t6statusE">
+<span id="_CPPv3N19fw_dist_fw_status_t6statusE"></span><span id="_CPPv2N19fw_dist_fw_status_t6statusE"></span><span id="fw_dist_fw_status_t::status__uint8_t"></span><span class="target" id="structfw__dist__fw__status__t_1ade818037fd6c985038ff29656089758d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N19fw_dist_fw_status_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Status code of firmware operation. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_fw_status_t9entry_cntE">
+<span id="_CPPv3N19fw_dist_fw_status_t9entry_cntE"></span><span id="_CPPv2N19fw_dist_fw_status_t9entry_cntE"></span><span id="fw_dist_fw_status_t::entry_cnt__uint16_t"></span><span class="target" id="structfw__dist__fw__status__t_1aba1bfa06a993897725d5629ba20296f2"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">entry_cnt</span></span></span><a class="headerlink" href="#_CPPv4N19fw_dist_fw_status_t9entry_cntE" title="Link to this definition"></a><br /></dt>
+<dd><p>Count of entries in firmware status. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_fw_status_t17dist_fw_image_idxE">
+<span id="_CPPv3N19fw_dist_fw_status_t17dist_fw_image_idxE"></span><span id="_CPPv2N19fw_dist_fw_status_t17dist_fw_image_idxE"></span><span id="fw_dist_fw_status_t::dist_fw_image_idx__uint16_t"></span><span class="target" id="structfw__dist__fw__status__t_1a9f4530988f32f00e5c86c9cdf323ff02"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N19fw_dist_fw_status_t17dist_fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Image index in firmware status. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19fw_dist_fw_status_t5fw_idE">
+<span id="_CPPv3N19fw_dist_fw_status_t5fw_idE"></span><span id="_CPPv2N19fw_dist_fw_status_t5fw_idE"></span><span id="fw_dist_fw_status_t::fw_id__uint8_tA"></span><span class="target" id="structfw__dist__fw__status__t_1a1c3942a006410c3b2f8e5289ba240730"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19fw_dist_fw_status_t5fw_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware ID in firmware status. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___c_l_i_e_n_t___d_a_t_a.html" class="btn btn-neutral float-left" title="Client Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n___m_o_d_e_l___i_d.html" class="btn btn-neutral float-right" title="Model ID" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

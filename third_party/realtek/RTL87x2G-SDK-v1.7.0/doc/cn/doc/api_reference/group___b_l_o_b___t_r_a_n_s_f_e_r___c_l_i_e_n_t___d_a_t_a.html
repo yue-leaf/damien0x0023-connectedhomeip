@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Data &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Mesh Msg" href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_e_s_h___m_s_g.html" />
+    <link rel="prev" title="Client API" href="group___b_l_o_b___t_r_a_n_s_f_e_r___c_l_i_e_n_t___a_p_i.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API 指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___application.html">Application</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p.html">GAP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t.html">GATT</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___mesh___model.html">Mesh Model</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___mesh___model___s_i_g.html">SIG</a><ul class="current">
+<li class="toctree-l7 current"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r.html">BLOB Transfer</a><ul class="current">
+<li class="toctree-l8"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___a_c_c_e_s_s___o_p_c_o_d_e.html">Access Opcode</a></li>
+<li class="toctree-l8"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___c_l_i_e_n_t___a_p_i.html">Client API</a></li>
+<li class="toctree-l8 current"><a class="current reference internal" href="#">Client Data</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv438blob_transfer_client_transfer_status_t"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t3srcE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::src</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t13app_key_indexE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::app_key_index</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t6statusE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::status</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t13transfer_modeE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::transfer_mode</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t14transfer_phaseE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::transfer_phase</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t7blob_idE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::blob_id</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t9blob_sizeE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::blob_size</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t14block_size_logE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::block_size_log</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t17transfer_mtu_sizeE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::transfer_mtu_size</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t15pmissing_blocksE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::pmissing_blocks</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N38blob_transfer_client_transfer_status_t18missing_blocks_lenE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_transfer_status_t::missing_blocks_len</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv435blob_transfer_client_block_status_t"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N35blob_transfer_client_block_status_t3srcE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t::src</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N35blob_transfer_client_block_status_t13app_key_indexE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t::app_key_index</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N35blob_transfer_client_block_status_t6statusE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t::status</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N35blob_transfer_client_block_status_t9block_numE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t::block_num</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N35blob_transfer_client_block_status_t10chunk_sizeE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t::chunk_size</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N35blob_transfer_client_block_status_t14missing_formatE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t::missing_format</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N35blob_transfer_client_block_status_t15pmissing_chunksE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t::pmissing_chunks</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N35blob_transfer_client_block_status_t18missing_chunks_lenE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_block_status_t::missing_chunks_len</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv443blob_transfer_client_partial_block_report_t"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_partial_block_report_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N43blob_transfer_client_partial_block_report_t3srcE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_partial_block_report_t::src</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N43blob_transfer_client_partial_block_report_t13app_key_indexE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_partial_block_report_t::app_key_index</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N43blob_transfer_client_partial_block_report_t15pmissing_chunksE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_partial_block_report_t::pmissing_chunks</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N43blob_transfer_client_partial_block_report_t18missing_chunks_lenE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_partial_block_report_t::missing_chunks_len</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv434blob_transfer_client_info_status_t"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t</span></code></a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t3srcE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::src</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t13app_key_indexE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::app_key_index</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t18min_block_size_logE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::min_block_size_log</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t18max_block_size_logE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::max_block_size_log</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t16max_total_chunksE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::max_total_chunks</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t14max_chunk_sizeE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::max_chunk_size</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t13max_blob_sizeE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::max_blob_size</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t15server_mtu_sizeE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::server_mtu_size</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv4N34blob_transfer_client_info_status_t23supported_transfer_modeE"><code class="docutils literal notranslate"><span class="pre">blob_transfer_client_info_status_t::supported_transfer_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_e_s_h___m_s_g.html">Mesh Msg</a></li>
+<li class="toctree-l8"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_o_d_e_l___i_d.html">Model ID</a></li>
+<li class="toctree-l8"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___s_e_r_v_e_r___a_p_i.html">Server API</a></li>
+<li class="toctree-l8"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___s_e_r_v_e_r___d_a_t_a.html">Server Data</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___common.html">Common</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___d_f_u.html">DFU</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___foundation.html">Foundation</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___generics.html">Generics</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___lighting.html">Lighting</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g.html">Remote Provisioning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___sensors.html">Sensors</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___time___scenes.html">Time and Scenes</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___mesh___model___vendor.html">Vendor</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___mesh___protocol.html">Mesh Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model.html">Mesh Model</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g.html">SIG</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_o_b___t_r_a_n_s_f_e_r.html">BLOB Transfer</a></li>
+    <li class="breadcrumb-item active">Client Data</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="client-data">
+<h1>Client Data<a class="headerlink" href="#client-data" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___b_l_o_b___t_r_a_n_s_f_e_r___c_l_i_e_n_t___d_a_t_a"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">BLOB_TRANSFER_CLIENT_DATA</span></span></dt>
+<dd><p>Data types and structure used by client data process callback. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BLOB_TRANSFER_CLIENT_TRANSFER_STATUS">
+<span class="target" id="group___b_l_o_b___t_r_a_n_s_f_e_r___c_l_i_e_n_t___d_a_t_a_1ga4ff1a8bba9cce3aa0494c39f4f7db7cd"></span><span class="sig-name descname"><span class="n"><span class="pre">BLOB_TRANSFER_CLIENT_TRANSFER_STATUS</span></span></span> <span class="pre">0</span><a class="headerlink" href="#c.BLOB_TRANSFER_CLIENT_TRANSFER_STATUS" title="Link to this definition"></a><br /></dt>
+<dd><p>Trasfer status. Uses <a class="reference internal" href="#structblob__transfer__client__transfer__status__t"><span class="std std-ref">blob_transfer_client_transfer_status_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BLOB_TRANSFER_CLIENT_BLOCK_STATUS">
+<span class="target" id="group___b_l_o_b___t_r_a_n_s_f_e_r___c_l_i_e_n_t___d_a_t_a_1ga459048f6a40dda34ac1892654797b54a"></span><span class="sig-name descname"><span class="n"><span class="pre">BLOB_TRANSFER_CLIENT_BLOCK_STATUS</span></span></span> <span class="pre">1</span><a class="headerlink" href="#c.BLOB_TRANSFER_CLIENT_BLOCK_STATUS" title="Link to this definition"></a><br /></dt>
+<dd><p>Block status. Uses <a class="reference internal" href="#structblob__transfer__client__block__status__t"><span class="std std-ref">blob_transfer_client_block_status_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BLOB_TRANSFER_CLIENT_PARTIAL_BLOCK_REPORT">
+<span class="target" id="group___b_l_o_b___t_r_a_n_s_f_e_r___c_l_i_e_n_t___d_a_t_a_1ga92cd24a69890271a4ceecc3be3bbc97d"></span><span class="sig-name descname"><span class="n"><span class="pre">BLOB_TRANSFER_CLIENT_PARTIAL_BLOCK_REPORT</span></span></span> <span class="pre">2</span><a class="headerlink" href="#c.BLOB_TRANSFER_CLIENT_PARTIAL_BLOCK_REPORT" title="Link to this definition"></a><br /></dt>
+<dd><p>Partial block status. Uses <a class="reference internal" href="#structblob__transfer__client__partial__block__report__t"><span class="std std-ref">blob_transfer_client_partial_block_report_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BLOB_TRANSFER_CLIENT_INFO_STATUS">
+<span class="target" id="group___b_l_o_b___t_r_a_n_s_f_e_r___c_l_i_e_n_t___d_a_t_a_1ga3ef64e8a6c650633b56ba968788e90fa"></span><span class="sig-name descname"><span class="n"><span class="pre">BLOB_TRANSFER_CLIENT_INFO_STATUS</span></span></span> <span class="pre">3</span><a class="headerlink" href="#c.BLOB_TRANSFER_CLIENT_INFO_STATUS" title="Link to this definition"></a><br /></dt>
+<dd><p>Information status. Uses <a class="reference internal" href="#structblob__transfer__client__info__status__t"><span class="std std-ref">blob_transfer_client_info_status_t</span></a>. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv438blob_transfer_client_transfer_status_t">
+<span id="_CPPv338blob_transfer_client_transfer_status_t"></span><span id="_CPPv238blob_transfer_client_transfer_status_t"></span><span id="blob_transfer_client_transfer_status_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blob_transfer_client_transfer_status_t</span></span></span><a class="headerlink" href="#_CPPv438blob_transfer_client_transfer_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for blob transfer client transfer status message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t3srcE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t3srcE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t3srcE"></span><span id="blob_transfer_client_transfer_status_t::src__uint16_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1ac87170cf133e48fc4c61ea4b90bfb515"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">src</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t3srcE" title="Link to this definition"></a><br /></dt>
+<dd><p>Source address. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t13app_key_indexE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t13app_key_indexE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t13app_key_indexE"></span><span id="blob_transfer_client_transfer_status_t::app_key_index__uint16_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1ae21043cbaf0ce72b114762a411cef83d"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">app_key_index</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t13app_key_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>App key index used. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t6statusE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t6statusE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t6statusE"></span><span id="blob_transfer_client_transfer_status_t::status__blob_transfer_status_code_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1ab5a456e38b7f378d683d03d0123b031a"></span><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_e_s_h___m_s_g.html#_CPPv427blob_transfer_status_code_t" title="blob_transfer_status_code_t"><span class="n"><span class="pre">blob_transfer_status_code_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer status code. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t13transfer_modeE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t13transfer_modeE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t13transfer_modeE"></span><span id="blob_transfer_client_transfer_status_t::transfer_mode__blob_transfer_mode_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1aef59d2fede3f65f4ca9e8566b74b13b3"></span><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_e_s_h___m_s_g.html#_CPPv420blob_transfer_mode_t" title="blob_transfer_mode_t"><span class="n"><span class="pre">blob_transfer_mode_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transfer_mode</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t13transfer_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer mode. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t14transfer_phaseE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t14transfer_phaseE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t14transfer_phaseE"></span><span id="blob_transfer_client_transfer_status_t::transfer_phase__blob_transfer_phase_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1af3f2420b9defaee2d610fb89ae032988"></span><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_e_s_h___m_s_g.html#_CPPv421blob_transfer_phase_t" title="blob_transfer_phase_t"><span class="n"><span class="pre">blob_transfer_phase_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transfer_phase</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t14transfer_phaseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer phase. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t7blob_idE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t7blob_idE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t7blob_idE"></span><span id="blob_transfer_client_transfer_status_t::blob_id__uint8_tA"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1ab7e2697584f45faae982a237fedac55e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blob_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">8</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t7blob_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>BLOB identifier. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t9blob_sizeE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t9blob_sizeE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t9blob_sizeE"></span><span id="blob_transfer_client_transfer_status_t::blob_size__uint32_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1a32143551b70893faef60f6e35f88ed50"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blob_size</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t9blob_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Size of the BLOB. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t14block_size_logE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t14block_size_logE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t14block_size_logE"></span><span id="blob_transfer_client_transfer_status_t::block_size_log__uint8_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1a1e98bd014eae8f9f9e7f482636b9d4f9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">block_size_log</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t14block_size_logE" title="Link to this definition"></a><br /></dt>
+<dd><p>Logarithm of block size. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t17transfer_mtu_sizeE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t17transfer_mtu_sizeE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t17transfer_mtu_sizeE"></span><span id="blob_transfer_client_transfer_status_t::transfer_mtu_size__uint16_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1acf9464114ccf7aedaff87aeb1589ae09"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transfer_mtu_size</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t17transfer_mtu_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Transfer MTU size. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t15pmissing_blocksE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t15pmissing_blocksE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t15pmissing_blocksE"></span><span id="blob_transfer_client_transfer_status_t::pmissing_blocks__uint16_tP"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1a313f70bdea47a22aa4361e85e9d6c712"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pmissing_blocks</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t15pmissing_blocksE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to missing blocks data. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N38blob_transfer_client_transfer_status_t18missing_blocks_lenE">
+<span id="_CPPv3N38blob_transfer_client_transfer_status_t18missing_blocks_lenE"></span><span id="_CPPv2N38blob_transfer_client_transfer_status_t18missing_blocks_lenE"></span><span id="blob_transfer_client_transfer_status_t::missing_blocks_len__uint16_t"></span><span class="target" id="structblob__transfer__client__transfer__status__t_1a1e13bbc1ff62d1ff6e041e39855098fe"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">missing_blocks_len</span></span></span><a class="headerlink" href="#_CPPv4N38blob_transfer_client_transfer_status_t18missing_blocks_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of missing blocks. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv435blob_transfer_client_block_status_t">
+<span id="_CPPv335blob_transfer_client_block_status_t"></span><span id="_CPPv235blob_transfer_client_block_status_t"></span><span id="blob_transfer_client_block_status_t"></span><span class="target" id="structblob__transfer__client__block__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blob_transfer_client_block_status_t</span></span></span><a class="headerlink" href="#_CPPv435blob_transfer_client_block_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for blob transfer client block status message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35blob_transfer_client_block_status_t3srcE">
+<span id="_CPPv3N35blob_transfer_client_block_status_t3srcE"></span><span id="_CPPv2N35blob_transfer_client_block_status_t3srcE"></span><span id="blob_transfer_client_block_status_t::src__uint16_t"></span><span class="target" id="structblob__transfer__client__block__status__t_1ac87170cf133e48fc4c61ea4b90bfb515"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">src</span></span></span><a class="headerlink" href="#_CPPv4N35blob_transfer_client_block_status_t3srcE" title="Link to this definition"></a><br /></dt>
+<dd><p>Source address. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35blob_transfer_client_block_status_t13app_key_indexE">
+<span id="_CPPv3N35blob_transfer_client_block_status_t13app_key_indexE"></span><span id="_CPPv2N35blob_transfer_client_block_status_t13app_key_indexE"></span><span id="blob_transfer_client_block_status_t::app_key_index__uint16_t"></span><span class="target" id="structblob__transfer__client__block__status__t_1ae21043cbaf0ce72b114762a411cef83d"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">app_key_index</span></span></span><a class="headerlink" href="#_CPPv4N35blob_transfer_client_block_status_t13app_key_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>App key index used. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35blob_transfer_client_block_status_t6statusE">
+<span id="_CPPv3N35blob_transfer_client_block_status_t6statusE"></span><span id="_CPPv2N35blob_transfer_client_block_status_t6statusE"></span><span id="blob_transfer_client_block_status_t::status__blob_transfer_status_code_t"></span><span class="target" id="structblob__transfer__client__block__status__t_1ab5a456e38b7f378d683d03d0123b031a"></span><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_e_s_h___m_s_g.html#_CPPv427blob_transfer_status_code_t" title="blob_transfer_status_code_t"><span class="n"><span class="pre">blob_transfer_status_code_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status</span></span></span><a class="headerlink" href="#_CPPv4N35blob_transfer_client_block_status_t6statusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Status code. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35blob_transfer_client_block_status_t9block_numE">
+<span id="_CPPv3N35blob_transfer_client_block_status_t9block_numE"></span><span id="_CPPv2N35blob_transfer_client_block_status_t9block_numE"></span><span id="blob_transfer_client_block_status_t::block_num__uint16_t"></span><span class="target" id="structblob__transfer__client__block__status__t_1ad60dfaa3d81d54b7cad3be804977da44"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">block_num</span></span></span><a class="headerlink" href="#_CPPv4N35blob_transfer_client_block_status_t9block_numE" title="Link to this definition"></a><br /></dt>
+<dd><p>Block number. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35blob_transfer_client_block_status_t10chunk_sizeE">
+<span id="_CPPv3N35blob_transfer_client_block_status_t10chunk_sizeE"></span><span id="_CPPv2N35blob_transfer_client_block_status_t10chunk_sizeE"></span><span id="blob_transfer_client_block_status_t::chunk_size__uint16_t"></span><span class="target" id="structblob__transfer__client__block__status__t_1afffb3ef338d46b96263f6bf7eadfe710"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">chunk_size</span></span></span><a class="headerlink" href="#_CPPv4N35blob_transfer_client_block_status_t10chunk_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Size of the chunk. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35blob_transfer_client_block_status_t14missing_formatE">
+<span id="_CPPv3N35blob_transfer_client_block_status_t14missing_formatE"></span><span id="_CPPv2N35blob_transfer_client_block_status_t14missing_formatE"></span><span id="blob_transfer_client_block_status_t::missing_format__blob_chunk_missing_format_t"></span><span class="target" id="structblob__transfer__client__block__status__t_1ad3d2cbec427fe877e5c28386ab94aae8"></span><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_e_s_h___m_s_g.html#_CPPv427blob_chunk_missing_format_t" title="blob_chunk_missing_format_t"><span class="n"><span class="pre">blob_chunk_missing_format_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">missing_format</span></span></span><a class="headerlink" href="#_CPPv4N35blob_transfer_client_block_status_t14missing_formatE" title="Link to this definition"></a><br /></dt>
+<dd><p>Format of missing chunks. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35blob_transfer_client_block_status_t15pmissing_chunksE">
+<span id="_CPPv3N35blob_transfer_client_block_status_t15pmissing_chunksE"></span><span id="_CPPv2N35blob_transfer_client_block_status_t15pmissing_chunksE"></span><span id="blob_transfer_client_block_status_t::pmissing_chunks__uint16_tP"></span><span class="target" id="structblob__transfer__client__block__status__t_1ad4432b0a0a96865b1eb88fd42f88ef62"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pmissing_chunks</span></span></span><a class="headerlink" href="#_CPPv4N35blob_transfer_client_block_status_t15pmissing_chunksE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to missing chunks data. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35blob_transfer_client_block_status_t18missing_chunks_lenE">
+<span id="_CPPv3N35blob_transfer_client_block_status_t18missing_chunks_lenE"></span><span id="_CPPv2N35blob_transfer_client_block_status_t18missing_chunks_lenE"></span><span id="blob_transfer_client_block_status_t::missing_chunks_len__uint16_t"></span><span class="target" id="structblob__transfer__client__block__status__t_1acf37a1dd8571e5ec05482ae90e48fa79"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">missing_chunks_len</span></span></span><a class="headerlink" href="#_CPPv4N35blob_transfer_client_block_status_t18missing_chunks_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of missing chunks. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv443blob_transfer_client_partial_block_report_t">
+<span id="_CPPv343blob_transfer_client_partial_block_report_t"></span><span id="_CPPv243blob_transfer_client_partial_block_report_t"></span><span id="blob_transfer_client_partial_block_report_t"></span><span class="target" id="structblob__transfer__client__partial__block__report__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blob_transfer_client_partial_block_report_t</span></span></span><a class="headerlink" href="#_CPPv443blob_transfer_client_partial_block_report_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for blob transfer client partial block report message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N43blob_transfer_client_partial_block_report_t3srcE">
+<span id="_CPPv3N43blob_transfer_client_partial_block_report_t3srcE"></span><span id="_CPPv2N43blob_transfer_client_partial_block_report_t3srcE"></span><span id="blob_transfer_client_partial_block_report_t::src__uint16_t"></span><span class="target" id="structblob__transfer__client__partial__block__report__t_1ac87170cf133e48fc4c61ea4b90bfb515"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">src</span></span></span><a class="headerlink" href="#_CPPv4N43blob_transfer_client_partial_block_report_t3srcE" title="Link to this definition"></a><br /></dt>
+<dd><p>Source address. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N43blob_transfer_client_partial_block_report_t13app_key_indexE">
+<span id="_CPPv3N43blob_transfer_client_partial_block_report_t13app_key_indexE"></span><span id="_CPPv2N43blob_transfer_client_partial_block_report_t13app_key_indexE"></span><span id="blob_transfer_client_partial_block_report_t::app_key_index__uint16_t"></span><span class="target" id="structblob__transfer__client__partial__block__report__t_1ae21043cbaf0ce72b114762a411cef83d"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">app_key_index</span></span></span><a class="headerlink" href="#_CPPv4N43blob_transfer_client_partial_block_report_t13app_key_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>App key index used. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N43blob_transfer_client_partial_block_report_t15pmissing_chunksE">
+<span id="_CPPv3N43blob_transfer_client_partial_block_report_t15pmissing_chunksE"></span><span id="_CPPv2N43blob_transfer_client_partial_block_report_t15pmissing_chunksE"></span><span id="blob_transfer_client_partial_block_report_t::pmissing_chunks__uint16_tP"></span><span class="target" id="structblob__transfer__client__partial__block__report__t_1ad4432b0a0a96865b1eb88fd42f88ef62"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pmissing_chunks</span></span></span><a class="headerlink" href="#_CPPv4N43blob_transfer_client_partial_block_report_t15pmissing_chunksE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to missing chunks data. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N43blob_transfer_client_partial_block_report_t18missing_chunks_lenE">
+<span id="_CPPv3N43blob_transfer_client_partial_block_report_t18missing_chunks_lenE"></span><span id="_CPPv2N43blob_transfer_client_partial_block_report_t18missing_chunks_lenE"></span><span id="blob_transfer_client_partial_block_report_t::missing_chunks_len__uint16_t"></span><span class="target" id="structblob__transfer__client__partial__block__report__t_1acf37a1dd8571e5ec05482ae90e48fa79"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">missing_chunks_len</span></span></span><a class="headerlink" href="#_CPPv4N43blob_transfer_client_partial_block_report_t18missing_chunks_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of missing chunks. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv434blob_transfer_client_info_status_t">
+<span id="_CPPv334blob_transfer_client_info_status_t"></span><span id="_CPPv234blob_transfer_client_info_status_t"></span><span id="blob_transfer_client_info_status_t"></span><span class="target" id="structblob__transfer__client__info__status__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blob_transfer_client_info_status_t</span></span></span><a class="headerlink" href="#_CPPv434blob_transfer_client_info_status_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Structure for blob transfer client info status message. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t3srcE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t3srcE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t3srcE"></span><span id="blob_transfer_client_info_status_t::src__uint16_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1ac87170cf133e48fc4c61ea4b90bfb515"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">src</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t3srcE" title="Link to this definition"></a><br /></dt>
+<dd><p>Source address. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t13app_key_indexE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t13app_key_indexE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t13app_key_indexE"></span><span id="blob_transfer_client_info_status_t::app_key_index__uint16_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1ae21043cbaf0ce72b114762a411cef83d"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">app_key_index</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t13app_key_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>App key index used. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t18min_block_size_logE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t18min_block_size_logE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t18min_block_size_logE"></span><span id="blob_transfer_client_info_status_t::min_block_size_log__uint8_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1a1b0735b16ddf479fe79fc4202dbe4d83"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">min_block_size_log</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t18min_block_size_logE" title="Link to this definition"></a><br /></dt>
+<dd><p>Minimum block size log. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t18max_block_size_logE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t18max_block_size_logE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t18max_block_size_logE"></span><span id="blob_transfer_client_info_status_t::max_block_size_log__uint8_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1a35bd57a41c45d5a7fe81be5c0cb8946a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_block_size_log</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t18max_block_size_logE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum block size log. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t16max_total_chunksE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t16max_total_chunksE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t16max_total_chunksE"></span><span id="blob_transfer_client_info_status_t::max_total_chunks__uint16_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1ac5d2b4866c87d334f4bb650512dc984c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_total_chunks</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t16max_total_chunksE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum total number of chunks. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t14max_chunk_sizeE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t14max_chunk_sizeE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t14max_chunk_sizeE"></span><span id="blob_transfer_client_info_status_t::max_chunk_size__uint16_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1a25c5c4673f3f51c7817fd883c5efaf16"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_chunk_size</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t14max_chunk_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum chunk size. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t13max_blob_sizeE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t13max_blob_sizeE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t13max_blob_sizeE"></span><span id="blob_transfer_client_info_status_t::max_blob_size__uint32_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1aa03e994a8e1034e27f4d4817960dd337"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_blob_size</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t13max_blob_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Maximum BLOB size. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t15server_mtu_sizeE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t15server_mtu_sizeE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t15server_mtu_sizeE"></span><span id="blob_transfer_client_info_status_t::server_mtu_size__uint16_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1a0afb5a0ae62c815244c1923043f1c79c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">server_mtu_size</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t15server_mtu_sizeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Server MTU size. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N34blob_transfer_client_info_status_t23supported_transfer_modeE">
+<span id="_CPPv3N34blob_transfer_client_info_status_t23supported_transfer_modeE"></span><span id="_CPPv2N34blob_transfer_client_info_status_t23supported_transfer_modeE"></span><span id="blob_transfer_client_info_status_t::supported_transfer_mode__uint8_t"></span><span class="target" id="structblob__transfer__client__info__status__t_1a4ffd0498957c4d3bfee19253e2e75eee"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">supported_transfer_mode</span></span></span><a class="headerlink" href="#_CPPv4N34blob_transfer_client_info_status_t23supported_transfer_modeE" title="Link to this definition"></a><br /></dt>
+<dd><p>Supported transfer modes. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="group___b_l_o_b___t_r_a_n_s_f_e_r___c_l_i_e_n_t___a_p_i.html" class="btn btn-neutral float-left" title="Client API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="group___b_l_o_b___t_r_a_n_s_f_e_r___m_e_s_h___m_s_g.html" class="btn btn-neutral float-right" title="Mesh Msg" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

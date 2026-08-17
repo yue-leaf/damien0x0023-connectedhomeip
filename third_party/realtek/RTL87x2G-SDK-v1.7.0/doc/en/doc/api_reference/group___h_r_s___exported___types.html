@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HRS Exported Types &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Human Interface Device Service" href="group___h_i_d_s.html" />
+    <link rel="prev" title="HRS Sensor Location" href="group___h_r_s___sensor___location.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___bluetooth___clients.html">Bluetooth Clients</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___bluetooth___services.html">Bluetooth Services</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="group___b_a_s.html">Battery Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___b_l_s.html">Blood Pressure Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___c_s_c_s.html">Cycling Speed and Cadence Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___d_i_s.html">Device Information Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___g_l_s.html">Glucose Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___h_t_s.html">Health Thermometer Service</a></li>
+<li class="toctree-l6 current"><a class="reference internal" href="group___h_r_s.html">Heart Rate Service</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___h_r_s___exported___functions.html">HRS Exported Functions</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___h_r_s___exported___macros.html">HRS Exported Macros</a></li>
+<li class="toctree-l7 current"><a class="current reference internal" href="#">HRS Exported Types</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv416T_HRS_PARAM_TYPE"><code class="docutils literal notranslate"><span class="pre">T_HRS_PARAM_TYPE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_HRS_PARAM_TYPE37HRS_HEART_RATE_MEASUREMENT_PARAM_FLAGE"><code class="docutils literal notranslate"><span class="pre">T_HRS_PARAM_TYPE::HRS_HEART_RATE_MEASUREMENT_PARAM_FLAG</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_HRS_PARAM_TYPE50HRS_HEART_RATE_MEASUREMENT_PARAM_MEASUREMENT_VALUEE"><code class="docutils literal notranslate"><span class="pre">T_HRS_PARAM_TYPE::HRS_HEART_RATE_MEASUREMENT_PARAM_MEASUREMENT_VALUE</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_HRS_PARAM_TYPE48HRS_HEART_RATE_MEASUREMENT_PARAM_ENERGY_EXPENDEDE"><code class="docutils literal notranslate"><span class="pre">T_HRS_PARAM_TYPE::HRS_HEART_RATE_MEASUREMENT_PARAM_ENERGY_EXPENDED</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_HRS_PARAM_TYPE44HRS_HEART_RATE_MEASUREMENT_PARAM_RR_INTERVALE"><code class="docutils literal notranslate"><span class="pre">T_HRS_PARAM_TYPE::HRS_HEART_RATE_MEASUREMENT_PARAM_RR_INTERVAL</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N16T_HRS_PARAM_TYPE36HRS_BODY_SENSOR_LOCATION_PARAM_VALUEE"><code class="docutils literal notranslate"><span class="pre">T_HRS_PARAM_TYPE::HRS_BODY_SENSOR_LOCATION_PARAM_VALUE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv426T_HRS_HEART_RATE_CP_OPCODE"><code class="docutils literal notranslate"><span class="pre">T_HRS_HEART_RATE_CP_OPCODE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N26T_HRS_HEART_RATE_CP_OPCODE33HRS_HEART_RATE_CP_OPCODE_RESERVEDE"><code class="docutils literal notranslate"><span class="pre">T_HRS_HEART_RATE_CP_OPCODE::HRS_HEART_RATE_CP_OPCODE_RESERVED</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N26T_HRS_HEART_RATE_CP_OPCODE46HRS_HEART_RATE_CP_OPCODE_RESET_ENERGY_EXPENDEDE"><code class="docutils literal notranslate"><span class="pre">T_HRS_HEART_RATE_CP_OPCODE::HRS_HEART_RATE_CP_OPCODE_RESET_ENERGY_EXPENDED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv424HRS_NOTIFY_INDICATE_FLAG"><code class="docutils literal notranslate"><span class="pre">HRS_NOTIFY_INDICATE_FLAG</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N24HRS_NOTIFY_INDICATE_FLAG36heart_rate_measurement_notify_enableE"><code class="docutils literal notranslate"><span class="pre">HRS_NOTIFY_INDICATE_FLAG::heart_rate_measurement_notify_enable</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N24HRS_NOTIFY_INDICATE_FLAG3rfuE"><code class="docutils literal notranslate"><span class="pre">HRS_NOTIFY_INDICATE_FLAG::rfu</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv435T_HEART_RATE_MEASUREMENT_VALUE_FLAG"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE_FLAG</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG27heart_rate_value_format_bitE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE_FLAG::heart_rate_value_format_bit</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26sensor_contact_status_bitsE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE_FLAG::sensor_contact_status_bits</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26energy_expended_status_bitE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE_FLAG::energy_expended_status_bit</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG15rr_interval_bitE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE_FLAG::rr_interval_bit</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG3rfuE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE_FLAG::rfu</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv430T_HEART_RATE_MEASUREMENT_VALUE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE4flagE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE::flag</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE28heart_rate_measurement_valueE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE::heart_rate_measurement_value</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE15energy_expendedE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE::energy_expended</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE11rr_intervalE"><code class="docutils literal notranslate"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE::rr_interval</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv419T_HRS_CONTROL_POINT"><code class="docutils literal notranslate"><span class="pre">T_HRS_CONTROL_POINT</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N19T_HRS_CONTROL_POINT10cur_lengthE"><code class="docutils literal notranslate"><span class="pre">T_HRS_CONTROL_POINT::cur_length</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N19T_HRS_CONTROL_POINT5valueE"><code class="docutils literal notranslate"><span class="pre">T_HRS_CONTROL_POINT::value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv415T_HRS_WRITE_MSG"><code class="docutils literal notranslate"><span class="pre">T_HRS_WRITE_MSG</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N15T_HRS_WRITE_MSG6opcodeE"><code class="docutils literal notranslate"><span class="pre">T_HRS_WRITE_MSG::opcode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv423T_HRS_UPSTREAM_MSG_DATA"><code class="docutils literal notranslate"><span class="pre">T_HRS_UPSTREAM_MSG_DATA</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_HRS_UPSTREAM_MSG_DATA31notification_indification_indexE"><code class="docutils literal notranslate"><span class="pre">T_HRS_UPSTREAM_MSG_DATA::notification_indification_index</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_HRS_UPSTREAM_MSG_DATA16read_value_indexE"><code class="docutils literal notranslate"><span class="pre">T_HRS_UPSTREAM_MSG_DATA::read_value_index</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N23T_HRS_UPSTREAM_MSG_DATA5writeE"><code class="docutils literal notranslate"><span class="pre">T_HRS_UPSTREAM_MSG_DATA::write</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="#_CPPv419T_HRS_CALLBACK_DATA"><code class="docutils literal notranslate"><span class="pre">T_HRS_CALLBACK_DATA</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N19T_HRS_CALLBACK_DATA8msg_typeE"><code class="docutils literal notranslate"><span class="pre">T_HRS_CALLBACK_DATA::msg_type</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="#_CPPv4N19T_HRS_CALLBACK_DATA8msg_dataE"><code class="docutils literal notranslate"><span class="pre">T_HRS_CALLBACK_DATA::msg_data</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___h_i_d_s.html">Human Interface Device Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___i_a_s.html">Immediate Alert Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___i_p_s_s.html">Internet Protocol Support Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___l_l_s.html">Link Loss Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___l_n_s.html">Location and Navigation Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___r_s_c_s.html">Running Speed and Cadence Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___s_p_s.html">Scan Parameters Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___s_i_m_p___service.html">Simple Bluetooth LE Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___t_p_s.html">Tx Power Service</a></li>
+<li class="toctree-l6"><a class="reference internal" href="group___w_s_s.html">Weight Scale Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___l_e___profiles.html">LE Profiles</a></li>
+        <li class="breadcrumb-item"><a href="group___bluetooth___services.html">Bluetooth Services</a></li>
+        <li class="breadcrumb-item"><a href="group___h_r_s.html">Heart Rate Service</a></li>
+    <li class="breadcrumb-item active">HRS Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hrs-exported-types">
+<h1>HRS Exported Types<a class="headerlink" href="#hrs-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___h_r_s___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">HRS_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416T_HRS_PARAM_TYPE">
+<span id="_CPPv316T_HRS_PARAM_TYPE"></span><span id="_CPPv216T_HRS_PARAM_TYPE"></span><span class="target" id="group___h_r_s___exported___types_1gafe12a8d98ec5ddac47d7d3c8661480a4"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_HRS_PARAM_TYPE</span></span></span><a class="headerlink" href="#_CPPv416T_HRS_PARAM_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_HRS_PARAM_TYPE37HRS_HEART_RATE_MEASUREMENT_PARAM_FLAGE">
+<span id="_CPPv3N16T_HRS_PARAM_TYPE37HRS_HEART_RATE_MEASUREMENT_PARAM_FLAGE"></span><span id="_CPPv2N16T_HRS_PARAM_TYPE37HRS_HEART_RATE_MEASUREMENT_PARAM_FLAGE"></span><span class="target" id="group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4a6df2c5d25363992108126bb6a6504a9a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HRS_HEART_RATE_MEASUREMENT_PARAM_FLAG</span></span></span><a class="headerlink" href="#_CPPv4N16T_HRS_PARAM_TYPE37HRS_HEART_RATE_MEASUREMENT_PARAM_FLAGE" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameter type for <a class="reference internal" href="group___h_r_s___exported___functions.html#group___h_r_s___exported___functions_1gae5df308c5a114a28caa4398f27b0341f"><span class="std std-ref">hrs_set_parameter</span></a> to set Heart Rate Measurement characteristic Flags field value. Size is 1 octet. Value is <a class="reference internal" href="#struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e___f_l_a_g"><span class="std std-ref">T_HEART_RATE_MEASUREMENT_VALUE_FLAG</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_HRS_PARAM_TYPE50HRS_HEART_RATE_MEASUREMENT_PARAM_MEASUREMENT_VALUEE">
+<span id="_CPPv3N16T_HRS_PARAM_TYPE50HRS_HEART_RATE_MEASUREMENT_PARAM_MEASUREMENT_VALUEE"></span><span id="_CPPv2N16T_HRS_PARAM_TYPE50HRS_HEART_RATE_MEASUREMENT_PARAM_MEASUREMENT_VALUEE"></span><span class="target" id="group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4a3d20faa46f0ec0b3fa3c9c1f05201a05"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HRS_HEART_RATE_MEASUREMENT_PARAM_MEASUREMENT_VALUE</span></span></span><a class="headerlink" href="#_CPPv4N16T_HRS_PARAM_TYPE50HRS_HEART_RATE_MEASUREMENT_PARAM_MEASUREMENT_VALUEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameter type for <a class="reference internal" href="group___h_r_s___exported___functions.html#group___h_r_s___exported___functions_1gae5df308c5a114a28caa4398f27b0341f"><span class="std std-ref">hrs_set_parameter</span></a> to set Heart Rate Measurement characteristic Heart Rate Measurement Value field value. Size is 2 octets. Unit: org.bluetooth.unit.period.beats_per_minute.<ul class="simple">
+<li><p>When heart_rate_value_format_bit of <a class="reference internal" href="#group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4a6df2c5d25363992108126bb6a6504a9a"><span class="std std-ref">HRS_HEART_RATE_MEASUREMENT_PARAM_FLAG</span></a> is set to 0, value is 8 bit resolution.</p></li>
+<li><p>When heart_rate_value_format_bit of <a class="reference internal" href="#group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4a6df2c5d25363992108126bb6a6504a9a"><span class="std std-ref">HRS_HEART_RATE_MEASUREMENT_PARAM_FLAG</span></a> is set to 1, value is 16 bit resolution. </p></li>
+</ul>
+</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_HRS_PARAM_TYPE48HRS_HEART_RATE_MEASUREMENT_PARAM_ENERGY_EXPENDEDE">
+<span id="_CPPv3N16T_HRS_PARAM_TYPE48HRS_HEART_RATE_MEASUREMENT_PARAM_ENERGY_EXPENDEDE"></span><span id="_CPPv2N16T_HRS_PARAM_TYPE48HRS_HEART_RATE_MEASUREMENT_PARAM_ENERGY_EXPENDEDE"></span><span class="target" id="group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4ad516d492ba5714ee8498f18dbb37e299"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HRS_HEART_RATE_MEASUREMENT_PARAM_ENERGY_EXPENDED</span></span></span><a class="headerlink" href="#_CPPv4N16T_HRS_PARAM_TYPE48HRS_HEART_RATE_MEASUREMENT_PARAM_ENERGY_EXPENDEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameter type for <a class="reference internal" href="group___h_r_s___exported___functions.html#group___h_r_s___exported___functions_1gae5df308c5a114a28caa4398f27b0341f"><span class="std std-ref">hrs_set_parameter</span></a> to set Heart Rate Measurement characteristic Energy Expended field value. Size is 2 octets. Unit: org.bluetooth.unit.energy.joule. Present if energy_expended_status_bit of <a class="reference internal" href="#group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4a6df2c5d25363992108126bb6a6504a9a"><span class="std std-ref">HRS_HEART_RATE_MEASUREMENT_PARAM_FLAG</span></a> is set to 1. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_HRS_PARAM_TYPE44HRS_HEART_RATE_MEASUREMENT_PARAM_RR_INTERVALE">
+<span id="_CPPv3N16T_HRS_PARAM_TYPE44HRS_HEART_RATE_MEASUREMENT_PARAM_RR_INTERVALE"></span><span id="_CPPv2N16T_HRS_PARAM_TYPE44HRS_HEART_RATE_MEASUREMENT_PARAM_RR_INTERVALE"></span><span class="target" id="group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4a008cc79870478f84c393dab2fa0a12dd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HRS_HEART_RATE_MEASUREMENT_PARAM_RR_INTERVAL</span></span></span><a class="headerlink" href="#_CPPv4N16T_HRS_PARAM_TYPE44HRS_HEART_RATE_MEASUREMENT_PARAM_RR_INTERVALE" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameter type for <a class="reference internal" href="group___h_r_s___exported___functions.html#group___h_r_s___exported___functions_1gae5df308c5a114a28caa4398f27b0341f"><span class="std std-ref">hrs_set_parameter</span></a> to set Heart Rate Measurement characteristic RR-interval field value. Size is N * 2 octets. N: Number of RR-Interval sub-fields. Present if rr_interval_bit of <a class="reference internal" href="#group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4a6df2c5d25363992108126bb6a6504a9a"><span class="std std-ref">HRS_HEART_RATE_MEASUREMENT_PARAM_FLAG</span></a> is set to 1. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_HRS_PARAM_TYPE36HRS_BODY_SENSOR_LOCATION_PARAM_VALUEE">
+<span id="_CPPv3N16T_HRS_PARAM_TYPE36HRS_BODY_SENSOR_LOCATION_PARAM_VALUEE"></span><span id="_CPPv2N16T_HRS_PARAM_TYPE36HRS_BODY_SENSOR_LOCATION_PARAM_VALUEE"></span><span class="target" id="group___h_r_s___exported___types_1ggafe12a8d98ec5ddac47d7d3c8661480a4a8527f421d85999042372d7e1e4f240a1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HRS_BODY_SENSOR_LOCATION_PARAM_VALUE</span></span></span><a class="headerlink" href="#_CPPv4N16T_HRS_PARAM_TYPE36HRS_BODY_SENSOR_LOCATION_PARAM_VALUEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Parameter type for <a class="reference internal" href="group___h_r_s___exported___functions.html#group___h_r_s___exported___functions_1gae5df308c5a114a28caa4398f27b0341f"><span class="std std-ref">hrs_set_parameter</span></a> to set Body Sensor Location characteristic value. Size is 1 octet. Value is <a class="reference internal" href="group___h_r_s___sensor___location.html#group___h_r_s___sensor___location"><span class="std std-ref">HRS Sensor Location</span></a>. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv426T_HRS_HEART_RATE_CP_OPCODE">
+<span id="_CPPv326T_HRS_HEART_RATE_CP_OPCODE"></span><span id="_CPPv226T_HRS_HEART_RATE_CP_OPCODE"></span><span class="target" id="group___h_r_s___exported___types_1ga6170125b82d64be541748ebb49b0e58d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_HRS_HEART_RATE_CP_OPCODE</span></span></span><a class="headerlink" href="#_CPPv426T_HRS_HEART_RATE_CP_OPCODE" title="Link to this definition"></a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_HRS_HEART_RATE_CP_OPCODE33HRS_HEART_RATE_CP_OPCODE_RESERVEDE">
+<span id="_CPPv3N26T_HRS_HEART_RATE_CP_OPCODE33HRS_HEART_RATE_CP_OPCODE_RESERVEDE"></span><span id="_CPPv2N26T_HRS_HEART_RATE_CP_OPCODE33HRS_HEART_RATE_CP_OPCODE_RESERVEDE"></span><span class="target" id="group___h_r_s___exported___types_1gga6170125b82d64be541748ebb49b0e58dab18c8b3b795f5f3a6a3f739223fbaf92"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HRS_HEART_RATE_CP_OPCODE_RESERVED</span></span></span><a class="headerlink" href="#_CPPv4N26T_HRS_HEART_RATE_CP_OPCODE33HRS_HEART_RATE_CP_OPCODE_RESERVEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reserved for Future Use. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_HRS_HEART_RATE_CP_OPCODE46HRS_HEART_RATE_CP_OPCODE_RESET_ENERGY_EXPENDEDE">
+<span id="_CPPv3N26T_HRS_HEART_RATE_CP_OPCODE46HRS_HEART_RATE_CP_OPCODE_RESET_ENERGY_EXPENDEDE"></span><span id="_CPPv2N26T_HRS_HEART_RATE_CP_OPCODE46HRS_HEART_RATE_CP_OPCODE_RESET_ENERGY_EXPENDEDE"></span><span class="target" id="group___h_r_s___exported___types_1gga6170125b82d64be541748ebb49b0e58da642eb4c9df0b146f1e020d7d6b2fe8c0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HRS_HEART_RATE_CP_OPCODE_RESET_ENERGY_EXPENDED</span></span></span><a class="headerlink" href="#_CPPv4N26T_HRS_HEART_RATE_CP_OPCODE46HRS_HEART_RATE_CP_OPCODE_RESET_ENERGY_EXPENDEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reset Energy Expended. Resets the value of the Energy Expended field in the Heart Rate Measurement characteristic to 0. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424HRS_NOTIFY_INDICATE_FLAG">
+<span id="_CPPv324HRS_NOTIFY_INDICATE_FLAG"></span><span id="_CPPv224HRS_NOTIFY_INDICATE_FLAG"></span><span id="HRS_NOTIFY_INDICATE_FLAG"></span><span class="target" id="struct_h_r_s___n_o_t_i_f_y___i_n_d_i_c_a_t_e___f_l_a_g"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HRS_NOTIFY_INDICATE_FLAG</span></span></span><a class="headerlink" href="#_CPPv424HRS_NOTIFY_INDICATE_FLAG" title="Link to this definition"></a><br /></dt>
+<dd><p>Notification indication flag. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24HRS_NOTIFY_INDICATE_FLAG36heart_rate_measurement_notify_enableE">
+<span id="_CPPv3N24HRS_NOTIFY_INDICATE_FLAG36heart_rate_measurement_notify_enableE"></span><span id="_CPPv2N24HRS_NOTIFY_INDICATE_FLAG36heart_rate_measurement_notify_enableE"></span><span id="HRS_NOTIFY_INDICATE_FLAG::heart_rate_measurement_notify_enable__uint8_t"></span><span class="target" id="struct_h_r_s___n_o_t_i_f_y___i_n_d_i_c_a_t_e___f_l_a_g_1a6df34c1e2553d561a0de9d781d306fd7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">heart_rate_measurement_notify_enable</span></span></span><a class="headerlink" href="#_CPPv4N24HRS_NOTIFY_INDICATE_FLAG36heart_rate_measurement_notify_enableE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24HRS_NOTIFY_INDICATE_FLAG3rfuE">
+<span id="_CPPv3N24HRS_NOTIFY_INDICATE_FLAG3rfuE"></span><span id="_CPPv2N24HRS_NOTIFY_INDICATE_FLAG3rfuE"></span><span id="HRS_NOTIFY_INDICATE_FLAG::rfu__uint8_t"></span><span class="target" id="struct_h_r_s___n_o_t_i_f_y___i_n_d_i_c_a_t_e___f_l_a_g_1ab37578440c8242021e4d62fbd5886cbc"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rfu</span></span></span><a class="headerlink" href="#_CPPv4N24HRS_NOTIFY_INDICATE_FLAG3rfuE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv435T_HEART_RATE_MEASUREMENT_VALUE_FLAG">
+<span id="_CPPv335T_HEART_RATE_MEASUREMENT_VALUE_FLAG"></span><span id="_CPPv235T_HEART_RATE_MEASUREMENT_VALUE_FLAG"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE_FLAG"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e___f_l_a_g"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE_FLAG</span></span></span><a class="headerlink" href="#_CPPv435T_HEART_RATE_MEASUREMENT_VALUE_FLAG" title="Link to this definition"></a><br /></dt>
+<dd><p>Heart Rate Measurement Value Flag. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG27heart_rate_value_format_bitE">
+<span id="_CPPv3N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG27heart_rate_value_format_bitE"></span><span id="_CPPv2N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG27heart_rate_value_format_bitE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE_FLAG::heart_rate_value_format_bit__uint8_t"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e___f_l_a_g_1af537ed26eadc39d698583d5bd0dd8f58"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">heart_rate_value_format_bit</span></span></span><a class="headerlink" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG27heart_rate_value_format_bitE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26sensor_contact_status_bitsE">
+<span id="_CPPv3N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26sensor_contact_status_bitsE"></span><span id="_CPPv2N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26sensor_contact_status_bitsE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE_FLAG::sensor_contact_status_bits__uint8_t"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e___f_l_a_g_1a807b40b7862dc4e2a4571e22fa236b9a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sensor_contact_status_bits</span></span></span><a class="headerlink" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26sensor_contact_status_bitsE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26energy_expended_status_bitE">
+<span id="_CPPv3N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26energy_expended_status_bitE"></span><span id="_CPPv2N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26energy_expended_status_bitE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE_FLAG::energy_expended_status_bit__uint8_t"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e___f_l_a_g_1ace44e40c7160418d3745f9204d146dcb"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">energy_expended_status_bit</span></span></span><a class="headerlink" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG26energy_expended_status_bitE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG15rr_interval_bitE">
+<span id="_CPPv3N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG15rr_interval_bitE"></span><span id="_CPPv2N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG15rr_interval_bitE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE_FLAG::rr_interval_bit__uint8_t"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e___f_l_a_g_1a7f6c81ee731813ffab5e55fe6dc0ddb3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rr_interval_bit</span></span></span><a class="headerlink" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG15rr_interval_bitE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG3rfuE">
+<span id="_CPPv3N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG3rfuE"></span><span id="_CPPv2N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG3rfuE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE_FLAG::rfu__uint8_t"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e___f_l_a_g_1ab37578440c8242021e4d62fbd5886cbc"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rfu</span></span></span><a class="headerlink" href="#_CPPv4N35T_HEART_RATE_MEASUREMENT_VALUE_FLAG3rfuE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430T_HEART_RATE_MEASUREMENT_VALUE">
+<span id="_CPPv330T_HEART_RATE_MEASUREMENT_VALUE"></span><span id="_CPPv230T_HEART_RATE_MEASUREMENT_VALUE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE</span></span></span><a class="headerlink" href="#_CPPv430T_HEART_RATE_MEASUREMENT_VALUE" title="Link to this definition"></a><br /></dt>
+<dd><p>Heart Rate Measurement Value. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE4flagE">
+<span id="_CPPv3N30T_HEART_RATE_MEASUREMENT_VALUE4flagE"></span><span id="_CPPv2N30T_HEART_RATE_MEASUREMENT_VALUE4flagE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE::flag__T_HEART_RATE_MEASUREMENT_VALUE_FLAG"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e_1a0bd8a69ff59c0f335156019ae6902f9d"></span><a class="reference internal" href="#_CPPv435T_HEART_RATE_MEASUREMENT_VALUE_FLAG" title="T_HEART_RATE_MEASUREMENT_VALUE_FLAG"><span class="n"><span class="pre">T_HEART_RATE_MEASUREMENT_VALUE_FLAG</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">flag</span></span></span><a class="headerlink" href="#_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE4flagE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE28heart_rate_measurement_valueE">
+<span id="_CPPv3N30T_HEART_RATE_MEASUREMENT_VALUE28heart_rate_measurement_valueE"></span><span id="_CPPv2N30T_HEART_RATE_MEASUREMENT_VALUE28heart_rate_measurement_valueE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE::heart_rate_measurement_value__uint16_t"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e_1abe411e74cb3b71dafc1b2fdbb90cfd50"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">heart_rate_measurement_value</span></span></span><a class="headerlink" href="#_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE28heart_rate_measurement_valueE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE15energy_expendedE">
+<span id="_CPPv3N30T_HEART_RATE_MEASUREMENT_VALUE15energy_expendedE"></span><span id="_CPPv2N30T_HEART_RATE_MEASUREMENT_VALUE15energy_expendedE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE::energy_expended__uint16_t"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e_1aefc5a2d5795531c1603017b2b31acc40"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">energy_expended</span></span></span><a class="headerlink" href="#_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE15energy_expendedE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE11rr_intervalE">
+<span id="_CPPv3N30T_HEART_RATE_MEASUREMENT_VALUE11rr_intervalE"></span><span id="_CPPv2N30T_HEART_RATE_MEASUREMENT_VALUE11rr_intervalE"></span><span id="T_HEART_RATE_MEASUREMENT_VALUE::rr_interval__uint16_t"></span><span class="target" id="struct_t___h_e_a_r_t___r_a_t_e___m_e_a_s_u_r_e_m_e_n_t___v_a_l_u_e_1a1a8f7014b9821cc003119a5bd9a85a15"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rr_interval</span></span></span><a class="headerlink" href="#_CPPv4N30T_HEART_RATE_MEASUREMENT_VALUE11rr_intervalE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419T_HRS_CONTROL_POINT">
+<span id="_CPPv319T_HRS_CONTROL_POINT"></span><span id="_CPPv219T_HRS_CONTROL_POINT"></span><span id="T_HRS_CONTROL_POINT"></span><span class="target" id="struct_t___h_r_s___c_o_n_t_r_o_l___p_o_i_n_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_HRS_CONTROL_POINT</span></span></span><a class="headerlink" href="#_CPPv419T_HRS_CONTROL_POINT" title="Link to this definition"></a><br /></dt>
+<dd><p>HRS Control Point data, variable length during connection, maximum can reach 17 octets. </p>
+<p>HRS Control Point data used to store the Control Point Command received from the client. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_HRS_CONTROL_POINT10cur_lengthE">
+<span id="_CPPv3N19T_HRS_CONTROL_POINT10cur_lengthE"></span><span id="_CPPv2N19T_HRS_CONTROL_POINT10cur_lengthE"></span><span id="T_HRS_CONTROL_POINT::cur_length__uint8_t"></span><span class="target" id="struct_t___h_r_s___c_o_n_t_r_o_l___p_o_i_n_t_1a7b7abce63a9e52f5b34f774c6d6b83c8"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cur_length</span></span></span><a class="headerlink" href="#_CPPv4N19T_HRS_CONTROL_POINT10cur_lengthE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of current CSC Control Point data. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_HRS_CONTROL_POINT5valueE">
+<span id="_CPPv3N19T_HRS_CONTROL_POINT5valueE"></span><span id="_CPPv2N19T_HRS_CONTROL_POINT5valueE"></span><span id="T_HRS_CONTROL_POINT::value__uint8_tA"></span><span class="target" id="struct_t___h_r_s___c_o_n_t_r_o_l___p_o_i_n_t_1a1ed5b151a90f7e99af8cca2e6875ddf4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19T_HRS_CONTROL_POINT5valueE" title="Link to this definition"></a><br /></dt>
+<dd><p>Value of current CSC Control Point data. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415T_HRS_WRITE_MSG">
+<span id="_CPPv315T_HRS_WRITE_MSG"></span><span id="_CPPv215T_HRS_WRITE_MSG"></span><span id="T_HRS_WRITE_MSG"></span><span class="target" id="struct_t___h_r_s___w_r_i_t_e___m_s_g"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_HRS_WRITE_MSG</span></span></span><a class="headerlink" href="#_CPPv415T_HRS_WRITE_MSG" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15T_HRS_WRITE_MSG6opcodeE">
+<span id="_CPPv3N15T_HRS_WRITE_MSG6opcodeE"></span><span id="_CPPv2N15T_HRS_WRITE_MSG6opcodeE"></span><span id="T_HRS_WRITE_MSG::opcode__T_HRS_HEART_RATE_CP_OPCODE"></span><span class="target" id="struct_t___h_r_s___w_r_i_t_e___m_s_g_1a2c8ce324d14602072eadc52bd8d6d8ac"></span><a class="reference internal" href="#_CPPv426T_HRS_HEART_RATE_CP_OPCODE" title="T_HRS_HEART_RATE_CP_OPCODE"><span class="n"><span class="pre">T_HRS_HEART_RATE_CP_OPCODE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opcode</span></span></span><a class="headerlink" href="#_CPPv4N15T_HRS_WRITE_MSG6opcodeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv423T_HRS_UPSTREAM_MSG_DATA">
+<span id="_CPPv323T_HRS_UPSTREAM_MSG_DATA"></span><span id="_CPPv223T_HRS_UPSTREAM_MSG_DATA"></span><span class="target" id="union_t___h_r_s___u_p_s_t_r_e_a_m___m_s_g___d_a_t_a"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_HRS_UPSTREAM_MSG_DATA</span></span></span><a class="headerlink" href="#_CPPv423T_HRS_UPSTREAM_MSG_DATA" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_HRS_UPSTREAM_MSG_DATA31notification_indification_indexE">
+<span id="_CPPv3N23T_HRS_UPSTREAM_MSG_DATA31notification_indification_indexE"></span><span id="_CPPv2N23T_HRS_UPSTREAM_MSG_DATA31notification_indification_indexE"></span><span id="T_HRS_UPSTREAM_MSG_DATA::notification_indification_index__uint8_t"></span><span class="target" id="union_t___h_r_s___u_p_s_t_r_e_a_m___m_s_g___d_a_t_a_1a3f378b9155ed3f389385389f97cf360c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notification_indification_index</span></span></span><a class="headerlink" href="#_CPPv4N23T_HRS_UPSTREAM_MSG_DATA31notification_indification_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_HRS_UPSTREAM_MSG_DATA16read_value_indexE">
+<span id="_CPPv3N23T_HRS_UPSTREAM_MSG_DATA16read_value_indexE"></span><span id="_CPPv2N23T_HRS_UPSTREAM_MSG_DATA16read_value_indexE"></span><span id="T_HRS_UPSTREAM_MSG_DATA::read_value_index__uint8_t"></span><span class="target" id="union_t___h_r_s___u_p_s_t_r_e_a_m___m_s_g___d_a_t_a_1a33e4249eb6be718fef909fd0f9f60dba"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_value_index</span></span></span><a class="headerlink" href="#_CPPv4N23T_HRS_UPSTREAM_MSG_DATA16read_value_indexE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23T_HRS_UPSTREAM_MSG_DATA5writeE">
+<span id="_CPPv3N23T_HRS_UPSTREAM_MSG_DATA5writeE"></span><span id="_CPPv2N23T_HRS_UPSTREAM_MSG_DATA5writeE"></span><span id="T_HRS_UPSTREAM_MSG_DATA::write__T_HRS_WRITE_MSG"></span><span class="target" id="union_t___h_r_s___u_p_s_t_r_e_a_m___m_s_g___d_a_t_a_1a45943034cfadda6ea315748934d74a11"></span><a class="reference internal" href="#_CPPv415T_HRS_WRITE_MSG" title="T_HRS_WRITE_MSG"><span class="n"><span class="pre">T_HRS_WRITE_MSG</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write</span></span></span><a class="headerlink" href="#_CPPv4N23T_HRS_UPSTREAM_MSG_DATA5writeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419T_HRS_CALLBACK_DATA">
+<span id="_CPPv319T_HRS_CALLBACK_DATA"></span><span id="_CPPv219T_HRS_CALLBACK_DATA"></span><span id="T_HRS_CALLBACK_DATA"></span><span class="target" id="struct_t___h_r_s___c_a_l_l_b_a_c_k___d_a_t_a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_HRS_CALLBACK_DATA</span></span></span><a class="headerlink" href="#_CPPv419T_HRS_CALLBACK_DATA" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_HRS_CALLBACK_DATA8msg_typeE">
+<span id="_CPPv3N19T_HRS_CALLBACK_DATA8msg_typeE"></span><span id="_CPPv2N19T_HRS_CALLBACK_DATA8msg_typeE"></span><span id="T_HRS_CALLBACK_DATA::msg_type__T_SERVICE_CALLBACK_TYPE"></span><span class="target" id="struct_t___h_r_s___c_a_l_l_b_a_c_k___d_a_t_a_1ab7ead957ed5cb2f53052af5e39e98a79"></span><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___types.html#_CPPv423T_SERVICE_CALLBACK_TYPE" title="T_SERVICE_CALLBACK_TYPE"><span class="n"><span class="pre">T_SERVICE_CALLBACK_TYPE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">msg_type</span></span></span><a class="headerlink" href="#_CPPv4N19T_HRS_CALLBACK_DATA8msg_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_HRS_CALLBACK_DATA8msg_dataE">
+<span id="_CPPv3N19T_HRS_CALLBACK_DATA8msg_dataE"></span><span id="_CPPv2N19T_HRS_CALLBACK_DATA8msg_dataE"></span><span id="T_HRS_CALLBACK_DATA::msg_data__T_HRS_UPSTREAM_MSG_DATA"></span><span class="target" id="struct_t___h_r_s___c_a_l_l_b_a_c_k___d_a_t_a_1ae9d16611ce0a9251fb9b0bf6f5e7f9db"></span><a class="reference internal" href="#_CPPv423T_HRS_UPSTREAM_MSG_DATA" title="T_HRS_UPSTREAM_MSG_DATA"><span class="n"><span class="pre">T_HRS_UPSTREAM_MSG_DATA</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">msg_data</span></span></span><a class="headerlink" href="#_CPPv4N19T_HRS_CALLBACK_DATA8msg_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___h_r_s___sensor___location.html" class="btn btn-neutral float-left" title="HRS Sensor Location" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___h_i_d_s.html" class="btn btn-neutral float-right" title="Human Interface Device Service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

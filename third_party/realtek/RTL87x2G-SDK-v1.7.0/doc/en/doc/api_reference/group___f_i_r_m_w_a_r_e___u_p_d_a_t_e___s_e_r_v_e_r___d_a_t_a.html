@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server Data &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Foundation" href="group___mesh___model___s_i_g___foundation.html" />
+    <link rel="prev" title="Server API" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___a_p_i.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="group___r_t_k___periph___driver.html">Peripheral Driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="group___p_l_a_t_f_o_r_m.html">Platform</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="group___s_u_b_s_y_s.html">Subsys</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="group___p_p_t.html">2.4G</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="group___b_t___host.html">Bluetooth Host</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="group___application.html">Application</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_p.html">GAP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="group___g_a_t_t.html">GATT</a></li>
+<li class="toctree-l5 current"><a class="reference internal" href="group___mesh___model.html">Mesh Model</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="group___mesh___model___s_i_g.html">SIG</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="group___b_l_o_b___t_r_a_n_s_f_e_r.html">BLOB Transfer</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___common.html">Common</a></li>
+<li class="toctree-l7 current"><a class="reference internal" href="group___mesh___model___s_i_g___d_f_u.html">DFU</a><ul class="current">
+<li class="toctree-l8"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___d_i_s_t_r_i_b_u_t_i_o_n.html">Firmware Distribution</a></li>
+<li class="toctree-l8 current"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e.html">Firmware Update</a><ul class="current">
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___a_c_c_e_s_s___o_p_c_o_d_e.html">Access Opcode</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___c_l_i_e_n_t___d_a_t_a.html">Client Data</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___m_e_s_h___m_s_g.html">Mesh Msg</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___m_o_d_e_l___i_d.html">Model ID</a></li>
+<li class="toctree-l9"><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___a_p_i.html">Server API</a></li>
+<li class="toctree-l9 current"><a class="current reference internal" href="#">Server Data</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv423fw_update_fail_reason_t"><code class="docutils literal notranslate"><span class="pre">fw_update_fail_reason_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv420fw_update_server_ctx"><code class="docutils literal notranslate"><span class="pre">fw_update_server_ctx</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv422fw_update_server_ctx_t"><code class="docutils literal notranslate"><span class="pre">fw_update_server_ctx_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv433fw_update_server_metadata_check_t"><code class="docutils literal notranslate"><span class="pre">fw_update_server_metadata_check_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv424fw_update_server_start_t"><code class="docutils literal notranslate"><span class="pre">fw_update_server_start_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv425fw_update_server_verify_t"><code class="docutils literal notranslate"><span class="pre">fw_update_server_verify_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv432fw_update_server_verify_cancel_t"><code class="docutils literal notranslate"><span class="pre">fw_update_server_verify_cancel_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv424fw_update_server_apply_t"><code class="docutils literal notranslate"><span class="pre">fw_update_server_apply_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv429fw_update_server_block_data_t"><code class="docutils literal notranslate"><span class="pre">fw_update_server_block_data_t</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="#_CPPv423fw_update_server_fail_t"><code class="docutils literal notranslate"><span class="pre">fw_update_server_fail_t</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___foundation.html">Foundation</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___generics.html">Generics</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___lighting.html">Lighting</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___r_e_m_o_t_e___p_r_o_v_i_s_i_o_n_i_n_g.html">Remote Provisioning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___sensors.html">Sensors</a></li>
+<li class="toctree-l7"><a class="reference internal" href="group___mesh___model___s_i_g___time___scenes.html">Time and Scenes</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="group___mesh___model___vendor.html">Vendor</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="group___mesh___protocol.html">Mesh Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="group___l_e___profiles.html">LE Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="group___d_f_u.html">DFU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___o_s.html">OSIF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___s_d.html">SD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="group___u_s_b___group.html">USB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="README.html">API Reference</a></li>
+        <li class="breadcrumb-item"><a href="group___s_u_b_s_y_s.html">Subsys</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h.html">Bluetooth</a></li>
+        <li class="breadcrumb-item"><a href="group___b_l_u_e_t_o_o_t_h___m_e_s_h.html">Bluetooth Mesh</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model.html">Mesh Model</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g.html">SIG</a></li>
+        <li class="breadcrumb-item"><a href="group___mesh___model___s_i_g___d_f_u.html">DFU</a></li>
+        <li class="breadcrumb-item"><a href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e.html">Firmware Update</a></li>
+    <li class="breadcrumb-item active">Server Data</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="server-data">
+<h1>Server Data<a class="headerlink" href="#server-data" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">FIRMWARE_UPDATE_SERVER_DATA</span></span></dt>
+<dd><p>Structures and data types for server-side operations. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FW_UPDATE_SERVER_METADATA_CHECK">
+<span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ga21c0e858596d043b578f3f70e80eab1b"></span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_SERVER_METADATA_CHECK</span></span></span> <span class="pre">0</span><a class="headerlink" href="#c.FW_UPDATE_SERVER_METADATA_CHECK" title="Link to this definition"></a><br /></dt>
+<dd><p>Metadata check. Uses <a class="reference internal" href="#structfw__update__server__metadata__check__t"><span class="std std-ref">fw_update_server_metadata_check_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FW_UPDATE_SERVER_START">
+<span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ga111ba4a4bc6832bfe4ec0ecdcecb0421"></span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_SERVER_START</span></span></span> <span class="pre">1</span><a class="headerlink" href="#c.FW_UPDATE_SERVER_START" title="Link to this definition"></a><br /></dt>
+<dd><p>Update start. Uses <a class="reference internal" href="#structfw__update__server__start__t"><span class="std std-ref">fw_update_server_start_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FW_UPDATE_SERVER_VERIFY">
+<span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1gad0da3729b3a03c6b487f620583ea812d"></span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_SERVER_VERIFY</span></span></span> <span class="pre">2</span><a class="headerlink" href="#c.FW_UPDATE_SERVER_VERIFY" title="Link to this definition"></a><br /></dt>
+<dd><p>Update verification. Uses <a class="reference internal" href="#structfw__update__server__verify__t"><span class="std std-ref">fw_update_server_verify_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FW_UPDATE_SERVER_VERIFY_CANCEL">
+<span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ga22756648a3a0e4a48170af969ce205f6"></span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_SERVER_VERIFY_CANCEL</span></span></span> <span class="pre">3</span><a class="headerlink" href="#c.FW_UPDATE_SERVER_VERIFY_CANCEL" title="Link to this definition"></a><br /></dt>
+<dd><p>Verification cancel. Uses <a class="reference internal" href="#structfw__update__server__verify__cancel__t"><span class="std std-ref">fw_update_server_verify_cancel_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FW_UPDATE_SERVER_APPLY">
+<span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ga888ad253a4a5bd2a44a78cd9b36fdfe8"></span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_SERVER_APPLY</span></span></span> <span class="pre">4</span><a class="headerlink" href="#c.FW_UPDATE_SERVER_APPLY" title="Link to this definition"></a><br /></dt>
+<dd><p>Update apply. Uses <a class="reference internal" href="#structfw__update__server__apply__t"><span class="std std-ref">fw_update_server_apply_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FW_UPDATE_SERVER_BLOCK_DATA">
+<span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ga10e8e81cf7b34b869db78c731a73160c"></span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_SERVER_BLOCK_DATA</span></span></span> <span class="pre">5</span><a class="headerlink" href="#c.FW_UPDATE_SERVER_BLOCK_DATA" title="Link to this definition"></a><br /></dt>
+<dd><p>Block data. Uses <a class="reference internal" href="#structfw__update__server__block__data__t"><span class="std std-ref">fw_update_server_block_data_t</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.FW_UPDATE_SERVER_FAIL">
+<span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1gac6775f3ceb2c09da859503c72e9da5fe"></span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_SERVER_FAIL</span></span></span> <span class="pre">6</span><a class="headerlink" href="#c.FW_UPDATE_SERVER_FAIL" title="Link to this definition"></a><br /></dt>
+<dd><p>Failure. Uses <a class="reference internal" href="#structfw__update__server__fail__t"><span class="std std-ref">fw_update_server_fail_t</span></a>. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423fw_update_fail_reason_t">
+<span id="_CPPv323fw_update_fail_reason_t"></span><span id="_CPPv223fw_update_fail_reason_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1gae8028c8b2917a8a74bf8133f420ddf34"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_fail_reason_t</span></span></span><a class="headerlink" href="#_CPPv423fw_update_fail_reason_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware update failure reasons. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_update_fail_reason_t33FW_UPDATE_FAIL_REASON_USER_CANCELE">
+<span id="_CPPv3N23fw_update_fail_reason_t33FW_UPDATE_FAIL_REASON_USER_CANCELE"></span><span id="_CPPv2N23fw_update_fail_reason_t33FW_UPDATE_FAIL_REASON_USER_CANCELE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ggae8028c8b2917a8a74bf8133f420ddf34a37157f79f29bfc7df4fc4466c8d1d02e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_FAIL_REASON_USER_CANCEL</span></span></span><a class="headerlink" href="#_CPPv4N23fw_update_fail_reason_t33FW_UPDATE_FAIL_REASON_USER_CANCELE" title="Link to this definition"></a><br /></dt>
+<dd><p>Failure due to user cancel. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_update_fail_reason_t38FW_UPDATE_FAIL_REASON_TRANSFER_TIMEOUTE">
+<span id="_CPPv3N23fw_update_fail_reason_t38FW_UPDATE_FAIL_REASON_TRANSFER_TIMEOUTE"></span><span id="_CPPv2N23fw_update_fail_reason_t38FW_UPDATE_FAIL_REASON_TRANSFER_TIMEOUTE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ggae8028c8b2917a8a74bf8133f420ddf34ac2466257948d256cf0af9dbbb9ee17c5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_FAIL_REASON_TRANSFER_TIMEOUT</span></span></span><a class="headerlink" href="#_CPPv4N23fw_update_fail_reason_t38FW_UPDATE_FAIL_REASON_TRANSFER_TIMEOUTE" title="Link to this definition"></a><br /></dt>
+<dd><p>Failure due to transfer timeout. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_update_fail_reason_t34FW_UPDATE_FAIL_REASON_TRANSFER_ERRE">
+<span id="_CPPv3N23fw_update_fail_reason_t34FW_UPDATE_FAIL_REASON_TRANSFER_ERRE"></span><span id="_CPPv2N23fw_update_fail_reason_t34FW_UPDATE_FAIL_REASON_TRANSFER_ERRE"></span><span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ggae8028c8b2917a8a74bf8133f420ddf34ac397c40bdcb63ecd11d2dbfc2454b4e6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FW_UPDATE_FAIL_REASON_TRANSFER_ERR</span></span></span><a class="headerlink" href="#_CPPv4N23fw_update_fail_reason_t34FW_UPDATE_FAIL_REASON_TRANSFER_ERRE" title="Link to this definition"></a><br /></dt>
+<dd><p>Failure due to transfer error. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv420fw_update_server_ctx">
+<span id="_CPPv320fw_update_server_ctx"></span><span id="_CPPv220fw_update_server_ctx"></span><span id="fw_update_server_ctx__fw_update_server_ctx_t"></span><span class="target" id="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___d_a_t_a_1ga40a4e5f7246a02a4ca66741dc1b32179"></span><a class="reference internal" href="#_CPPv422fw_update_server_ctx_t" title="fw_update_server_ctx_t"><span class="n"><span class="pre">fw_update_server_ctx_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_ctx</span></span></span><a class="headerlink" href="#_CPPv420fw_update_server_ctx" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware update server context. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422fw_update_server_ctx_t">
+<span id="_CPPv322fw_update_server_ctx_t"></span><span id="_CPPv222fw_update_server_ctx_t"></span><span id="fw_update_server_ctx_t"></span><span class="target" id="structfw__update__server__ctx__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_ctx_t</span></span></span><a class="headerlink" href="#_CPPv422fw_update_server_ctx_t" title="Link to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_update_server_ctx_t12fw_info_listE">
+<span id="_CPPv3N22fw_update_server_ctx_t12fw_info_listE"></span><span id="_CPPv2N22fw_update_server_ctx_t12fw_info_listE"></span><span id="fw_update_server_ctx_t::fw_info_list__plt_list_t"></span><span class="target" id="structfw__update__server__ctx__t_1aa85abae3114152d9e9305c00a0c9076d"></span><span class="n"><span class="pre">plt_list_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_info_list</span></span></span><a class="headerlink" href="#_CPPv4N22fw_update_server_ctx_t12fw_info_listE" title="Link to this definition"></a><br /></dt>
+<dd><p>List of firmware info. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_update_server_ctx_t12update_phaseE">
+<span id="_CPPv3N22fw_update_server_ctx_t12update_phaseE"></span><span id="_CPPv2N22fw_update_server_ctx_t12update_phaseE"></span><span id="fw_update_server_ctx_t::update_phase__fw_update_phase_t"></span><span class="target" id="structfw__update__server__ctx__t_1a7be4b05faae112d030038e55cdbecfa4"></span><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___m_e_s_h___m_s_g.html#_CPPv417fw_update_phase_t" title="fw_update_phase_t"><span class="n"><span class="pre">fw_update_phase_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_phase</span></span></span><a class="headerlink" href="#_CPPv4N22fw_update_server_ctx_t12update_phaseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Current phase of update process. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_update_server_ctx_t10update_ttlE">
+<span id="_CPPv3N22fw_update_server_ctx_t10update_ttlE"></span><span id="_CPPv2N22fw_update_server_ctx_t10update_ttlE"></span><span id="fw_update_server_ctx_t::update_ttl__uint8_t"></span><span class="target" id="structfw__update__server__ctx__t_1acf3d3b54a9b419d18eb82b392671cda6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_ttl</span></span></span><a class="headerlink" href="#_CPPv4N22fw_update_server_ctx_t10update_ttlE" title="Link to this definition"></a><br /></dt>
+<dd><p>Time-to-live for update messages. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_update_server_ctx_t9addi_infoE">
+<span id="_CPPv3N22fw_update_server_ctx_t9addi_infoE"></span><span id="_CPPv2N22fw_update_server_ctx_t9addi_infoE"></span><span id="fw_update_server_ctx_t::addi_info__fw_update_addi_info_t"></span><span class="target" id="structfw__update__server__ctx__t_1a920ef58b852c4235194bfd52066a276e"></span><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___m_e_s_h___m_s_g.html#_CPPv421fw_update_addi_info_t" title="fw_update_addi_info_t"><span class="n"><span class="pre">fw_update_addi_info_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addi_info</span></span></span><a class="headerlink" href="#_CPPv4N22fw_update_server_ctx_t9addi_infoE" title="Link to this definition"></a><br /></dt>
+<dd><p>Additional information for update. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_update_server_ctx_t19update_timeout_baseE">
+<span id="_CPPv3N22fw_update_server_ctx_t19update_timeout_baseE"></span><span id="_CPPv2N22fw_update_server_ctx_t19update_timeout_baseE"></span><span id="fw_update_server_ctx_t::update_timeout_base__uint16_t"></span><span class="target" id="structfw__update__server__ctx__t_1a7e584b6a92da81584eb13fd32e6d7352"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_timeout_base</span></span></span><a class="headerlink" href="#_CPPv4N22fw_update_server_ctx_t19update_timeout_baseE" title="Link to this definition"></a><br /></dt>
+<dd><p>Base timeout for update process. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_update_server_ctx_t7blob_idE">
+<span id="_CPPv3N22fw_update_server_ctx_t7blob_idE"></span><span id="_CPPv2N22fw_update_server_ctx_t7blob_idE"></span><span id="fw_update_server_ctx_t::blob_id__uint8_tA"></span><span class="target" id="structfw__update__server__ctx__t_1ab7e2697584f45faae982a237fedac55e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blob_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">8</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22fw_update_server_ctx_t7blob_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>BLOB identifier for update process. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_update_server_ctx_t19update_fw_image_idxE">
+<span id="_CPPv3N22fw_update_server_ctx_t19update_fw_image_idxE"></span><span id="_CPPv2N22fw_update_server_ctx_t19update_fw_image_idxE"></span><span id="fw_update_server_ctx_t::update_fw_image_idx__uint8_t"></span><span class="target" id="structfw__update__server__ctx__t_1a3c1e34dc0a9a44891ed4ae0ed9fdc856"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">update_fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N22fw_update_server_ctx_t19update_fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for update process. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22fw_update_server_ctx_t11fw_metadataE">
+<span id="_CPPv3N22fw_update_server_ctx_t11fw_metadataE"></span><span id="_CPPv2N22fw_update_server_ctx_t11fw_metadataE"></span><span id="fw_update_server_ctx_t::fw_metadata__uint8_tA"></span><span class="target" id="structfw__update__server__ctx__t_1a36d717efebd2176db739726ee9bcefbe"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_metadata</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">255</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N22fw_update_server_ctx_t11fw_metadataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Metadata for firmware update. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv433fw_update_server_metadata_check_t">
+<span id="_CPPv333fw_update_server_metadata_check_t"></span><span id="_CPPv233fw_update_server_metadata_check_t"></span><span id="fw_update_server_metadata_check_t"></span><span class="target" id="structfw__update__server__metadata__check__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_metadata_check_t</span></span></span><a class="headerlink" href="#_CPPv433fw_update_server_metadata_check_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Metadata check structure for server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33fw_update_server_metadata_check_t12fw_image_idxE">
+<span id="_CPPv3N33fw_update_server_metadata_check_t12fw_image_idxE"></span><span id="_CPPv2N33fw_update_server_metadata_check_t12fw_image_idxE"></span><span id="fw_update_server_metadata_check_t::fw_image_idx__uint8_t"></span><span class="target" id="structfw__update__server__metadata__check__t_1a6485cdd5664fe638798d260ba2ddf7ea"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N33fw_update_server_metadata_check_t12fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for metadata check. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33fw_update_server_metadata_check_t9pmetadataE">
+<span id="_CPPv3N33fw_update_server_metadata_check_t9pmetadataE"></span><span id="_CPPv2N33fw_update_server_metadata_check_t9pmetadataE"></span><span id="fw_update_server_metadata_check_t::pmetadata__uint8_tP"></span><span class="target" id="structfw__update__server__metadata__check__t_1a487e4205f67eab6d3ce9a4be4d65ac99"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pmetadata</span></span></span><a class="headerlink" href="#_CPPv4N33fw_update_server_metadata_check_t9pmetadataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to metadata buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33fw_update_server_metadata_check_t12metadata_lenE">
+<span id="_CPPv3N33fw_update_server_metadata_check_t12metadata_lenE"></span><span id="_CPPv2N33fw_update_server_metadata_check_t12metadata_lenE"></span><span id="fw_update_server_metadata_check_t::metadata_len__uint8_t"></span><span class="target" id="structfw__update__server__metadata__check__t_1aeccc35dbfc78057c8c08688d7d9eb9e8"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">metadata_len</span></span></span><a class="headerlink" href="#_CPPv4N33fw_update_server_metadata_check_t12metadata_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of metadata. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33fw_update_server_metadata_check_t7pstatusE">
+<span id="_CPPv3N33fw_update_server_metadata_check_t7pstatusE"></span><span id="_CPPv2N33fw_update_server_metadata_check_t7pstatusE"></span><span id="fw_update_server_metadata_check_t::pstatus__fw_update_status_code_tP"></span><span class="target" id="structfw__update__server__metadata__check__t_1a6e50ef668f9c0fd18fffe84e2d0d2220"></span><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___m_e_s_h___m_s_g.html#_CPPv423fw_update_status_code_t" title="fw_update_status_code_t"><span class="n"><span class="pre">fw_update_status_code_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pstatus</span></span></span><a class="headerlink" href="#_CPPv4N33fw_update_server_metadata_check_t7pstatusE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to status code buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N33fw_update_server_metadata_check_t10paddi_infoE">
+<span id="_CPPv3N33fw_update_server_metadata_check_t10paddi_infoE"></span><span id="_CPPv2N33fw_update_server_metadata_check_t10paddi_infoE"></span><span id="fw_update_server_metadata_check_t::paddi_info__fw_update_addi_info_tP"></span><span class="target" id="structfw__update__server__metadata__check__t_1a3abc674099602182787077487206bddc"></span><a class="reference internal" href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___m_e_s_h___m_s_g.html#_CPPv421fw_update_addi_info_t" title="fw_update_addi_info_t"><span class="n"><span class="pre">fw_update_addi_info_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">paddi_info</span></span></span><a class="headerlink" href="#_CPPv4N33fw_update_server_metadata_check_t10paddi_infoE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to additional information buffer. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424fw_update_server_start_t">
+<span id="_CPPv324fw_update_server_start_t"></span><span id="_CPPv224fw_update_server_start_t"></span><span id="fw_update_server_start_t"></span><span class="target" id="structfw__update__server__start__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_start_t</span></span></span><a class="headerlink" href="#_CPPv424fw_update_server_start_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Start event structure for server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24fw_update_server_start_t12fw_image_idxE">
+<span id="_CPPv3N24fw_update_server_start_t12fw_image_idxE"></span><span id="_CPPv2N24fw_update_server_start_t12fw_image_idxE"></span><span id="fw_update_server_start_t::fw_image_idx__uint8_t"></span><span class="target" id="structfw__update__server__start__t_1a6485cdd5664fe638798d260ba2ddf7ea"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N24fw_update_server_start_t12fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for update start. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24fw_update_server_start_t11pcan_updateE">
+<span id="_CPPv3N24fw_update_server_start_t11pcan_updateE"></span><span id="_CPPv2N24fw_update_server_start_t11pcan_updateE"></span><span id="fw_update_server_start_t::pcan_update__bP"></span><span class="target" id="structfw__update__server__start__t_1a73aba618d026fd35cbb547acf3eb7df3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pcan_update</span></span></span><a class="headerlink" href="#_CPPv4N24fw_update_server_start_t11pcan_updateE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to update capability flag. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425fw_update_server_verify_t">
+<span id="_CPPv325fw_update_server_verify_t"></span><span id="_CPPv225fw_update_server_verify_t"></span><span id="fw_update_server_verify_t"></span><span class="target" id="structfw__update__server__verify__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_verify_t</span></span></span><a class="headerlink" href="#_CPPv425fw_update_server_verify_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Verify event structure for server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25fw_update_server_verify_t12fw_image_idxE">
+<span id="_CPPv3N25fw_update_server_verify_t12fw_image_idxE"></span><span id="_CPPv2N25fw_update_server_verify_t12fw_image_idxE"></span><span id="fw_update_server_verify_t::fw_image_idx__uint8_t"></span><span class="target" id="structfw__update__server__verify__t_1a6485cdd5664fe638798d260ba2ddf7ea"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N25fw_update_server_verify_t12fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for verification. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv432fw_update_server_verify_cancel_t">
+<span id="_CPPv332fw_update_server_verify_cancel_t"></span><span id="_CPPv232fw_update_server_verify_cancel_t"></span><span id="fw_update_server_verify_cancel_t"></span><span class="target" id="structfw__update__server__verify__cancel__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_verify_cancel_t</span></span></span><a class="headerlink" href="#_CPPv432fw_update_server_verify_cancel_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Cancel verification structure for server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N32fw_update_server_verify_cancel_t12fw_image_idxE">
+<span id="_CPPv3N32fw_update_server_verify_cancel_t12fw_image_idxE"></span><span id="_CPPv2N32fw_update_server_verify_cancel_t12fw_image_idxE"></span><span id="fw_update_server_verify_cancel_t::fw_image_idx__uint8_t"></span><span class="target" id="structfw__update__server__verify__cancel__t_1a6485cdd5664fe638798d260ba2ddf7ea"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N32fw_update_server_verify_cancel_t12fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for verification cancel. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424fw_update_server_apply_t">
+<span id="_CPPv324fw_update_server_apply_t"></span><span id="_CPPv224fw_update_server_apply_t"></span><span id="fw_update_server_apply_t"></span><span class="target" id="structfw__update__server__apply__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_apply_t</span></span></span><a class="headerlink" href="#_CPPv424fw_update_server_apply_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Apply update structure for server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24fw_update_server_apply_t12fw_image_idxE">
+<span id="_CPPv3N24fw_update_server_apply_t12fw_image_idxE"></span><span id="_CPPv2N24fw_update_server_apply_t12fw_image_idxE"></span><span id="fw_update_server_apply_t::fw_image_idx__uint8_t"></span><span class="target" id="structfw__update__server__apply__t_1a6485cdd5664fe638798d260ba2ddf7ea"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_image_idx</span></span></span><a class="headerlink" href="#_CPPv4N24fw_update_server_apply_t12fw_image_idxE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for application. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24fw_update_server_apply_t10pcan_applyE">
+<span id="_CPPv3N24fw_update_server_apply_t10pcan_applyE"></span><span id="_CPPv2N24fw_update_server_apply_t10pcan_applyE"></span><span id="fw_update_server_apply_t::pcan_apply__bP"></span><span class="target" id="structfw__update__server__apply__t_1ac538dee680125a23cded94de57a22a09"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pcan_apply</span></span></span><a class="headerlink" href="#_CPPv4N24fw_update_server_apply_t10pcan_applyE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to apply capability flag. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv429fw_update_server_block_data_t">
+<span id="_CPPv329fw_update_server_block_data_t"></span><span id="_CPPv229fw_update_server_block_data_t"></span><span id="fw_update_server_block_data_t"></span><span class="target" id="structfw__update__server__block__data__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_block_data_t</span></span></span><a class="headerlink" href="#_CPPv429fw_update_server_block_data_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Block data structure for server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N29fw_update_server_block_data_t9block_numE">
+<span id="_CPPv3N29fw_update_server_block_data_t9block_numE"></span><span id="_CPPv2N29fw_update_server_block_data_t9block_numE"></span><span id="fw_update_server_block_data_t::block_num__uint16_t"></span><span class="target" id="structfw__update__server__block__data__t_1ad60dfaa3d81d54b7cad3be804977da44"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">block_num</span></span></span><a class="headerlink" href="#_CPPv4N29fw_update_server_block_data_t9block_numE" title="Link to this definition"></a><br /></dt>
+<dd><p>Block number in data processing. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N29fw_update_server_block_data_t5pdataE">
+<span id="_CPPv3N29fw_update_server_block_data_t5pdataE"></span><span id="_CPPv2N29fw_update_server_block_data_t5pdataE"></span><span id="fw_update_server_block_data_t::pdata__uint8_tP"></span><span class="target" id="structfw__update__server__block__data__t_1a33e829a22d093bf89f5a8bd036bc5be7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">pdata</span></span></span><a class="headerlink" href="#_CPPv4N29fw_update_server_block_data_t5pdataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Pointer to data buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N29fw_update_server_block_data_t8data_lenE">
+<span id="_CPPv3N29fw_update_server_block_data_t8data_lenE"></span><span id="_CPPv2N29fw_update_server_block_data_t8data_lenE"></span><span id="fw_update_server_block_data_t::data_len__uint16_t"></span><span class="target" id="structfw__update__server__block__data__t_1ad1a572736a10ff6b282c5f43c4ea1ccf"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_len</span></span></span><a class="headerlink" href="#_CPPv4N29fw_update_server_block_data_t8data_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Length of data buffer. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv423fw_update_server_fail_t">
+<span id="_CPPv323fw_update_server_fail_t"></span><span id="_CPPv223fw_update_server_fail_t"></span><span id="fw_update_server_fail_t"></span><span class="target" id="structfw__update__server__fail__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_update_server_fail_t</span></span></span><a class="headerlink" href="#_CPPv423fw_update_server_fail_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Failure event structure for server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_update_server_fail_t14fw_image_indexE">
+<span id="_CPPv3N23fw_update_server_fail_t14fw_image_indexE"></span><span id="_CPPv2N23fw_update_server_fail_t14fw_image_indexE"></span><span id="fw_update_server_fail_t::fw_image_index__uint8_t"></span><span class="target" id="structfw__update__server__fail__t_1a56006b421ae3a794965a5358be85c813"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fw_image_index</span></span></span><a class="headerlink" href="#_CPPv4N23fw_update_server_fail_t14fw_image_indexE" title="Link to this definition"></a><br /></dt>
+<dd><p>Firmware image index for update failure. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N23fw_update_server_fail_t6reasonE">
+<span id="_CPPv3N23fw_update_server_fail_t6reasonE"></span><span id="_CPPv2N23fw_update_server_fail_t6reasonE"></span><span id="fw_update_server_fail_t::reason__fw_update_fail_reason_t"></span><span class="target" id="structfw__update__server__fail__t_1ae49ea3076e0ff4b3c08e2b6a5bea7471"></span><a class="reference internal" href="#_CPPv423fw_update_fail_reason_t" title="fw_update_fail_reason_t"><span class="n"><span class="pre">fw_update_fail_reason_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reason</span></span></span><a class="headerlink" href="#_CPPv4N23fw_update_server_fail_t6reasonE" title="Link to this definition"></a><br /></dt>
+<dd><p>Reason for update failure. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="group___f_i_r_m_w_a_r_e___u_p_d_a_t_e___s_e_r_v_e_r___a_p_i.html" class="btn btn-neutral float-left" title="Server API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="group___mesh___model___s_i_g___foundation.html" class="btn btn-neutral float-right" title="Foundation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

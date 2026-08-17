@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>索引 &mdash; BLE SoC Tool v1.3.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=00424ab5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=6845a736"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/tabs.js?v=3ee01567"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+        <script src="_static/js/auth.js?v=f5151c66"></script>
+        <script src="_static/js/purify.min.js?v=7ce85736"></script>
+        <script src="_static/js/marked.min.js?v=3a8efef5"></script>
+        <script src="_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="_static/js/custom.js?v=9cf10cc1"></script>
+        <script src="_static/js/versions.js?v=a2b2aea2"></script>
+        <script src="_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="_static/js/chatwidget.js?v=b20ddea3"></script>
+        <script src="_static/js/hljs.min.js?v=229bdcb2"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="#" />
+    <link rel="search" title="搜索" href="search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "True";
+    window.leftNavWidth = "docs.blesoctool.siderbar.width";
+    window.chatAIBase = "RS_ble_soc_tool";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="index.html">
+        
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="target-container">
+            <select name="target-selector" id="target-selector" onchange="change_target()">
+            </select>
+        </div>
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="change_version()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="packtool/text_cn/README.html">MP Pack Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">专业术语</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BLE SoC Tool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">索引</li>
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+    
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+<h1 id="index">索引</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-A2C"><strong>A2C</strong></a>
+</li>
+      <li><a href="glossary.html#term-A2DP"><strong>A2DP</strong></a>
+</li>
+      <li><a href="glossary.html#term-ACK"><strong>ACK</strong></a>
+</li>
+      <li><a href="glossary.html#term-ACL"><strong>ACL</strong></a>
+</li>
+      <li><a href="glossary.html#term-ADC"><strong>ADC</strong></a>
+</li>
+      <li><a href="glossary.html#term-ADV"><strong>ADV</strong></a>
+</li>
+      <li><a href="glossary.html#term-AEC"><strong>AEC</strong></a>
+</li>
+      <li><a href="glossary.html#term-AES"><strong>AES</strong></a>
+</li>
+      <li><a href="glossary.html#term-AMIC"><strong>AMIC</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-ANCS"><strong>ANCS</strong></a>
+</li>
+      <li><a href="glossary.html#term-AoA"><strong>AoA</strong></a>
+</li>
+      <li><a href="glossary.html#term-AoD"><strong>AoD</strong></a>
+</li>
+      <li><a href="glossary.html#term-AON"><strong>AON</strong></a>
+</li>
+      <li><a href="glossary.html#term-APB"><strong>APB</strong></a>
+</li>
+      <li><a href="glossary.html#term-API"><strong>API</strong></a>
+</li>
+      <li><a href="glossary.html#term-APP"><strong>APP</strong></a>
+</li>
+      <li><a href="glossary.html#term-ARM"><strong>ARM</strong></a>
+</li>
+      <li><a href="glossary.html#term-ATT"><strong>ATT</strong></a>
+</li>
+      <li><a href="glossary.html#term-AVRCP"><strong>AVRCP</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-BAS"><strong>BAS</strong></a>
+</li>
+      <li><a href="glossary.html#term-BD"><strong>BD</strong></a>
+</li>
+      <li><a href="glossary.html#term-BIG"><strong>BIG</strong></a>
+</li>
+      <li><a href="glossary.html#term-BIS"><strong>BIS</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-BLE"><strong>BLE</strong></a>
+</li>
+      <li><a href="glossary.html#term-BLOB"><strong>BLOB</strong></a>
+</li>
+      <li><a href="glossary.html#term-BQB"><strong>BQB</strong></a>
+</li>
+      <li><a href="glossary.html#term-BR-EDR"><strong>BR/EDR</strong></a>
+</li>
+      <li><a href="glossary.html#term-BT"><strong>BT</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-CAN"><strong>CAN</strong></a>
+</li>
+      <li><a href="glossary.html#term-CBC"><strong>CBC</strong></a>
+</li>
+      <li><a href="glossary.html#term-CCCD"><strong>CCCD</strong></a>
+</li>
+      <li><a href="glossary.html#term-CCM"><strong>CCM</strong></a>
+</li>
+      <li><a href="glossary.html#term-CE"><strong>CE</strong></a>
+</li>
+      <li><a href="glossary.html#term-CFB"><strong>CFB</strong></a>
+</li>
+      <li><a href="glossary.html#term-CFU"><strong>CFU</strong></a>
+</li>
+      <li><a href="glossary.html#term-CHIP"><strong>CHIP</strong></a>
+</li>
+      <li><a href="glossary.html#term-CIG"><strong>CIG</strong></a>
+</li>
+      <li><a href="glossary.html#term-CIS"><strong>CIS</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-CLI"><strong>CLI</strong></a>
+</li>
+      <li><a href="glossary.html#term-CMAC"><strong>CMAC</strong></a>
+</li>
+      <li><a href="glossary.html#term-CMSIS"><strong>CMSIS</strong></a>
+</li>
+      <li><a href="glossary.html#term-CPU"><strong>CPU</strong></a>
+</li>
+      <li><a href="glossary.html#term-CRC"><strong>CRC</strong></a>
+</li>
+      <li><a href="glossary.html#term-CSA"><strong>CSA</strong></a>
+</li>
+      <li><a href="glossary.html#term-CSCP"><strong>CSCP</strong></a>
+</li>
+      <li><a href="glossary.html#term-CSCS"><strong>CSCS</strong></a>
+</li>
+      <li><a href="glossary.html#term-CSRK"><strong>CSRK</strong></a>
+</li>
+      <li><a href="glossary.html#term-CTE"><strong>CTE</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-DAC"><strong>DAC</strong></a>
+</li>
+      <li><a href="glossary.html#term-DAC1"><strong>DAC¹</strong></a>
+</li>
+      <li><a href="glossary.html#term-DFU"><strong>DFU</strong></a>
+</li>
+      <li><a href="glossary.html#term-DHCP"><strong>DHCP</strong></a>
+</li>
+      <li><a href="glossary.html#term-DIS"><strong>DIS</strong></a>
+</li>
+      <li><a href="glossary.html#term-DLPS"><strong>DLPS</strong></a>
+</li>
+      <li><a href="glossary.html#term-DMA"><strong>DMA</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-DMIC"><strong>DMIC</strong></a>
+</li>
+      <li><a href="glossary.html#term-DSP"><strong>DSP</strong></a>
+</li>
+      <li><a href="glossary.html#term-DSS"><strong>DSS</strong></a>
+</li>
+      <li><a href="glossary.html#term-DTCM"><strong>DTCM</strong></a>
+</li>
+      <li><a href="glossary.html#term-DTM"><strong>DTM</strong></a>
+</li>
+      <li><a href="glossary.html#term-DUT"><strong>DUT</strong></a>
+</li>
+      <li><a href="glossary.html#term-DVFS"><strong>DVFS</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-ECB"><strong>ECB</strong></a>
+</li>
+      <li><a href="glossary.html#term-ECC"><strong>ECC</strong></a>
+</li>
+      <li><a href="glossary.html#term-ECDH"><strong>ECDH</strong></a>
+</li>
+      <li><a href="glossary.html#term-ECDSA"><strong>ECDSA</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-EEK"><strong>EEK</strong></a>
+</li>
+      <li><a href="glossary.html#term-eFuse"><strong>eFuse</strong></a>
+</li>
+      <li><a href="glossary.html#term-EUT"><strong>EUT</strong></a>
+</li>
+      <li><a href="glossary.html#term-EVB"><strong>EVB</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-FCC"><strong>FCC</strong></a>
+</li>
+      <li><a href="glossary.html#term-FEC"><strong>FEC</strong></a>
+</li>
+      <li><a href="glossary.html#term-FER"><strong>FER</strong></a>
+</li>
+      <li><a href="glossary.html#term-FIFO"><strong>FIFO</strong></a>
+</li>
+      <li><a href="glossary.html#term-FMC"><strong>FMC</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-FMNA"><strong>FMNA</strong></a>
+</li>
+      <li><a href="glossary.html#term-FMP"><strong>FMP</strong></a>
+</li>
+      <li><a href="glossary.html#term-FreeRTOS"><strong>FreeRTOS</strong></a>
+</li>
+      <li><a href="glossary.html#term-FS"><strong>FS</strong></a>
+</li>
+      <li><a href="glossary.html#term-FTL"><strong>FTL</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-GAP"><strong>GAP</strong></a>
+</li>
+      <li><a href="glossary.html#term-GAS"><strong>GAS</strong></a>
+</li>
+      <li><a href="glossary.html#term-GATT"><strong>GATT</strong></a>
+</li>
+      <li><a href="glossary.html#term-GATTS"><strong>GATTS</strong></a>
+</li>
+      <li><a href="glossary.html#term-GDMA"><strong>GDMA</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-GFPS"><strong>GFPS</strong></a>
+</li>
+      <li><a href="glossary.html#term-GFSK"><strong>GFSK</strong></a>
+</li>
+      <li><a href="glossary.html#term-GLP"><strong>GLP</strong></a>
+</li>
+      <li><a href="glossary.html#term-GLS"><strong>GLS</strong></a>
+</li>
+      <li><a href="glossary.html#term-GPIO"><strong>GPIO</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-HCI"><strong>HCI</strong></a>
+</li>
+      <li><a href="glossary.html#term-HDK"><strong>HDK</strong></a>
+</li>
+      <li><a href="glossary.html#term-HFP"><strong>HFP</strong></a>
+</li>
+      <li><a href="glossary.html#term-HID"><strong>HID</strong></a>
+</li>
+      <li><a href="glossary.html#term-HOGP"><strong>HOGP</strong></a>
+</li>
+      <li><a href="glossary.html#term-HRADC"><strong>HRADC</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-HRP"><strong>HRP</strong></a>
+</li>
+      <li><a href="glossary.html#term-HRS"><strong>HRS</strong></a>
+</li>
+      <li><a href="glossary.html#term-HS"><strong>HS</strong></a>
+</li>
+      <li><a href="glossary.html#term-HTP"><strong>HTP</strong></a>
+</li>
+      <li><a href="glossary.html#term-HTS"><strong>HTS</strong></a>
+</li>
+      <li><a href="glossary.html#term-HTTP"><strong>HTTP</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-I2C"><strong>I2C</strong></a>
+</li>
+      <li><a href="glossary.html#term-I2S"><strong>I2S</strong></a>
+</li>
+      <li><a href="glossary.html#term-IAP"><strong>IAP</strong></a>
+</li>
+      <li><a href="glossary.html#term-IAS"><strong>IAS</strong></a>
+</li>
+      <li><a href="glossary.html#term-ID"><strong>ID</strong></a>
+</li>
+      <li><a href="glossary.html#term-IDE"><strong>IDE</strong></a>
+</li>
+      <li><a href="glossary.html#term-IEEE"><strong>IEEE</strong></a>
+</li>
+      <li><a href="glossary.html#term-IFS"><strong>IFS</strong></a>
+</li>
+      <li><a href="glossary.html#term-INT"><strong>INT</strong></a>
+</li>
+      <li><a href="glossary.html#term-IO"><strong>IO</strong></a>
+</li>
+      <li><a href="glossary.html#term-iOS"><strong>iOS</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-IoT"><strong>IoT</strong></a>
+</li>
+      <li><a href="glossary.html#term-IOT1"><strong>IOT¹</strong></a>
+</li>
+      <li><a href="glossary.html#term-IPSP"><strong>IPSP</strong></a>
+</li>
+      <li><a href="glossary.html#term-IQ"><strong>IQ</strong></a>
+</li>
+      <li><a href="glossary.html#term-IR"><strong>IR</strong></a>
+</li>
+      <li><a href="glossary.html#term-IRK"><strong>IRK</strong></a>
+</li>
+      <li><a href="glossary.html#term-IRQ"><strong>IRQ</strong></a>
+</li>
+      <li><a href="glossary.html#term-ISM"><strong>ISM</strong></a>
+</li>
+      <li><a href="glossary.html#term-ISR"><strong>ISR</strong></a>
+</li>
+      <li><a href="glossary.html#term-ITCM"><strong>ITCM</strong></a>
+</li>
+      <li><a href="glossary.html#term-IV"><strong>IV</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-KC"><strong>KC</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-L2CAP"><strong>L2CAP</strong></a>
+</li>
+      <li><a href="glossary.html#term-LBT"><strong>LBT</strong></a>
+</li>
+      <li><a href="glossary.html#term-LCDC"><strong>LCDC</strong></a>
+</li>
+      <li><a href="glossary.html#term-0"><strong>LDO</strong></a>, <a href="glossary.html#term-LDO"><strong>[1]</strong></a>
+</li>
+      <li><a href="glossary.html#term-LE"><strong>LE</strong></a>
+</li>
+      <li><a href="glossary.html#term-LED"><strong>LED</strong></a>
+</li>
+      <li><a href="glossary.html#term-LIB"><strong>LIB</strong></a>
+</li>
+      <li><a href="glossary.html#term-LLS"><strong>LLS</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-LNP"><strong>LNP</strong></a>
+</li>
+      <li><a href="glossary.html#term-LNS"><strong>LNS</strong></a>
+</li>
+      <li><a href="glossary.html#term-LPC"><strong>LPC</strong></a>
+</li>
+      <li><a href="glossary.html#term-LPF"><strong>LPF</strong></a>
+</li>
+      <li><a href="glossary.html#term-LPQDEC"><strong>LPQDEC</strong></a>
+</li>
+      <li><a href="glossary.html#term-LSB"><strong>LSB</strong></a>
+</li>
+      <li><a href="glossary.html#term-LTK"><strong>LTK</strong></a>
+</li>
+      <li><a href="glossary.html#term-LWIP"><strong>LWIP</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-MAC"><strong>MAC</strong></a>
+</li>
+      <li><a href="glossary.html#term-MCU"><strong>MCU</strong></a>
+</li>
+      <li><a href="glossary.html#term-MD5"><strong>MD5</strong></a>
+</li>
+      <li><a href="glossary.html#term-MDK"><strong>MDK</strong></a>
+</li>
+      <li><a href="glossary.html#term-MFB"><strong>MFB</strong></a>
+</li>
+      <li><a href="glossary.html#term-MIC"><strong>MIC</strong></a>
+</li>
+      <li><a href="glossary.html#term-MIC1"><strong>MIC¹</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-MISC"><strong>MISC</strong></a>
+</li>
+      <li><a href="glossary.html#term-MK"><strong>MK</strong></a>
+</li>
+      <li><a href="glossary.html#term-MMC"><strong>MMC</strong></a>
+</li>
+      <li><a href="glossary.html#term-MMI"><strong>MMI</strong></a>
+</li>
+      <li><a href="glossary.html#term-MP"><strong>MP</strong></a>
+</li>
+      <li><a href="glossary.html#term-MPU"><strong>MPU</strong></a>
+</li>
+      <li><a href="glossary.html#term-MSFT"><strong>MSFT</strong></a>
+</li>
+      <li><a href="glossary.html#term-MTU"><strong>MTU</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-NFC"><strong>NFC</strong></a>
+</li>
+      <li><a href="glossary.html#term-NIC"><strong>NIC</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-NTP"><strong>NTP</strong></a>
+</li>
+      <li><a href="glossary.html#term-NVIC"><strong>NVIC</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-ODM"><strong>ODM</strong></a>
+</li>
+      <li><a href="glossary.html#term-OEM"><strong>OEM</strong></a>
+</li>
+      <li><a href="glossary.html#term-OOB"><strong>OOB</strong></a>
+</li>
+      <li><a href="glossary.html#term-OS"><strong>OS</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-OSC"><strong>OSC</strong></a>
+</li>
+      <li><a href="glossary.html#term-OSIF"><strong>OSIF</strong></a>
+</li>
+      <li><a href="glossary.html#term-OTA"><strong>OTA</strong></a>
+</li>
+      <li><a href="glossary.html#term-OTP"><strong>OTP</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-PA"><strong>PA</strong></a>
+</li>
+      <li><a href="glossary.html#term-PAA"><strong>PAA</strong></a>
+</li>
+      <li><a href="glossary.html#term-PAI"><strong>PAI</strong></a>
+</li>
+      <li><a href="glossary.html#term-PASE"><strong>PASE</strong></a>
+</li>
+      <li><a href="glossary.html#term-PB-ADV"><strong>PB-ADV</strong></a>
+</li>
+      <li><a href="glossary.html#term-PB-GATT"><strong>PB-GATT</strong></a>
+</li>
+      <li><a href="glossary.html#term-PBAP"><strong>PBAP</strong></a>
+</li>
+      <li><a href="glossary.html#term-PBKDF"><strong>PBKDF</strong></a>
+</li>
+      <li><a href="glossary.html#term-PC"><strong>PC</strong></a>
+</li>
+      <li><a href="glossary.html#term-PCM"><strong>PCM</strong></a>
+</li>
+      <li><a href="glossary.html#term-PDU"><strong>PDU</strong></a>
+</li>
+      <li><a href="glossary.html#term-PER"><strong>PER</strong></a>
+</li>
+      <li><a href="glossary.html#term-PFM"><strong>PFM</strong></a>
+</li>
+      <li><a href="glossary.html#term-PHY"><strong>PHY</strong></a>
+</li>
+      <li><a href="glossary.html#term-PID"><strong>PID</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-PIN"><strong>PIN</strong></a>
+</li>
+      <li><a href="glossary.html#term-PINMUX"><strong>PINMUX</strong></a>
+</li>
+      <li><a href="glossary.html#term-PKE"><strong>PKE</strong></a>
+</li>
+      <li><a href="glossary.html#term-PLL"><strong>PLL</strong></a>
+</li>
+      <li><a href="glossary.html#term-PON"><strong>PON</strong></a>
+</li>
+      <li><a href="glossary.html#term-POR"><strong>POR</strong></a>
+</li>
+      <li><a href="glossary.html#term-PPE"><strong>PPE</strong></a>
+</li>
+      <li><a href="glossary.html#term-PPT"><strong>PPT</strong></a>
+</li>
+      <li><a href="glossary.html#term-PRBS"><strong>PRBS</strong></a>
+</li>
+      <li><a href="glossary.html#term-PRF"><strong>PRF</strong></a>
+</li>
+      <li><a href="glossary.html#term-PRX"><strong>PRX</strong></a>
+</li>
+      <li><a href="glossary.html#term-PSD"><strong>PSD</strong></a>
+</li>
+      <li><a href="glossary.html#term-PTX"><strong>PTX</strong></a>
+</li>
+      <li><a href="glossary.html#term-PWM"><strong>PWM</strong></a>
+</li>
+      <li><a href="glossary.html#term-PXP"><strong>PXP</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-QDEC"><strong>QDEC</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-QoS"><strong>QoS</strong></a>
+</li>
+      <li><a href="glossary.html#term-QSPI"><strong>QSPI</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-RAM"><strong>RAM</strong></a>
+</li>
+      <li><a href="glossary.html#term-RCU"><strong>RCU</strong></a>
+</li>
+      <li><a href="glossary.html#term-RF"><strong>RF</strong></a>
+</li>
+      <li><a href="glossary.html#term-RMC"><strong>RMC</strong></a>
+</li>
+      <li><a href="glossary.html#term-RMII"><strong>RMII</strong></a>
+</li>
+      <li><a href="glossary.html#term-ROM"><strong>ROM</strong></a>
+</li>
+      <li><a href="glossary.html#term-RPA"><strong>RPA</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-RPL"><strong>RPL</strong></a>
+</li>
+      <li><a href="glossary.html#term-RPR"><strong>RPR</strong></a>
+</li>
+      <li><a href="glossary.html#term-RSA"><strong>RSA</strong></a>
+</li>
+      <li><a href="glossary.html#term-RSCP"><strong>RSCP</strong></a>
+</li>
+      <li><a href="glossary.html#term-RSCS"><strong>RSCS</strong></a>
+</li>
+      <li><a href="glossary.html#term-RSSI"><strong>RSSI</strong></a>
+</li>
+      <li><a href="glossary.html#term-RTC"><strong>RTC</strong></a>
+</li>
+      <li><a href="glossary.html#term-RX"><strong>RX</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-ScPP"><strong>ScPP</strong></a>
+</li>
+      <li><a href="glossary.html#term-ScPS"><strong>ScPS</strong></a>
+</li>
+      <li><a href="glossary.html#term-SD"><strong>SD</strong></a>
+</li>
+      <li><a href="glossary.html#term-SDHC"><strong>SDHC</strong></a>
+</li>
+      <li><a href="glossary.html#term-SDIO"><strong>SDIO</strong></a>
+</li>
+      <li><a href="glossary.html#term-SDK"><strong>SDK</strong></a>
+</li>
+      <li><a href="glossary.html#term-SDP"><strong>SDP</strong></a>
+</li>
+      <li><a href="glossary.html#term-SE"><strong>SE</strong></a>
+</li>
+      <li><a href="glossary.html#term-SEG"><strong>SEG</strong></a>
+</li>
+      <li><a href="glossary.html#term-SEQ"><strong>SEQ</strong></a>
+</li>
+      <li><a href="glossary.html#term-SHA"><strong>SHA</strong></a>
+</li>
+      <li><a href="glossary.html#term-SIG"><strong>SIG</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-SMI"><strong>SMI</strong></a>
+</li>
+      <li><a href="glossary.html#term-SMP"><strong>SMP</strong></a>
+</li>
+      <li><a href="glossary.html#term-SNR"><strong>SNR</strong></a>
+</li>
+      <li><a href="glossary.html#term-SNTP"><strong>SNTP</strong></a>
+</li>
+      <li><a href="glossary.html#term-SoC"><strong>SoC</strong></a>
+</li>
+      <li><a href="glossary.html#term-SPAKE2"><strong>SPAKE2+</strong></a>
+</li>
+      <li><a href="glossary.html#term-SPI"><strong>SPI</strong></a>
+</li>
+      <li><a href="glossary.html#term-SPI3W"><strong>SPI3W</strong></a>
+</li>
+      <li><a href="glossary.html#term-SPP"><strong>SPP</strong></a>
+</li>
+      <li><a href="glossary.html#term-SRAM"><strong>SRAM</strong></a>
+</li>
+      <li><a href="glossary.html#term-SRRC"><strong>SRRC</strong></a>
+</li>
+      <li><a href="glossary.html#term-SWD"><strong>SWD</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-TBD"><strong>TBD</strong></a>
+</li>
+      <li><a href="glossary.html#term-TCM"><strong>TCM</strong></a>
+</li>
+      <li><a href="glossary.html#term-TCP"><strong>TCP</strong></a>
+</li>
+      <li><a href="glossary.html#term-THD"><strong>THD</strong></a>
+</li>
+      <li><a href="glossary.html#term-TIFS"><strong>TIFS</strong></a>
+</li>
+      <li><a href="glossary.html#term-TIM"><strong>TIM</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-TPS"><strong>TPS</strong></a>
+</li>
+      <li><a href="glossary.html#term-TRNG"><strong>TRNG</strong></a>
+</li>
+      <li><a href="glossary.html#term-TTL"><strong>TTL</strong></a>
+</li>
+      <li><a href="glossary.html#term-TTS"><strong>TTS</strong></a>
+</li>
+      <li><a href="glossary.html#term-TX"><strong>TX</strong></a>
+</li>
+      <li><a href="glossary.html#term-TxPower"><strong>TxPower</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-UARP"><strong>UARP</strong></a>
+</li>
+      <li><a href="glossary.html#term-UART"><strong>UART</strong></a>
+</li>
+      <li><a href="glossary.html#term-UDP"><strong>UDP</strong></a>
+</li>
+      <li><a href="glossary.html#term-UI"><strong>UI</strong></a>
+</li>
+      <li><a href="glossary.html#term-USB"><strong>USB</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-USB-2.0-HS"><strong>USB 2.0 HS</strong></a>
+</li>
+      <li><a href="glossary.html#term-UT"><strong>UT</strong></a>
+</li>
+      <li><a href="glossary.html#term-UTC"><strong>UTC</strong></a>
+</li>
+      <li><a href="glossary.html#term-UUID"><strong>UUID</strong></a>
+</li>
+      <li><a href="glossary.html#term-UX"><strong>UX</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-VBAT"><strong>VBAT</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-VID"><strong>VID</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-WDT"><strong>WDT</strong></a>
+</li>
+      <li><a href="glossary.html#term-WFE"><strong>WFE</strong></a>
+</li>
+      <li><a href="glossary.html#term-WFI"><strong>WFI</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-Wi-Fi"><strong>Wi-Fi</strong></a>
+</li>
+      <li><a href="glossary.html#term-WSP"><strong>WSP</strong></a>
+</li>
+      <li><a href="glossary.html#term-WSS"><strong>WSS</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-XTAL"><strong>XTAL</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-ZAP"><strong>ZAP</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="glossary.html#term-ZCL"><strong>ZCL</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子有限公司 2026. All rights reserved. <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

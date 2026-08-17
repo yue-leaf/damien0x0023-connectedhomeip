@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TinyML Edge Debugging &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="prev" title="TinyML Keyword Spotting" href="../../../tinyml_kws/doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../doc/text_en/README.html">TinyML</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../doc/text_en/application_samples.html">TinyML Application Samples</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">TinyML Edge Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wiring">Wiring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-and-downloading">Building and Downloading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-verification">Test Verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocol-description">Protocol Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-overview">Code Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#source-code-directory">Source Code Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functional-implementation">Functional Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">TinyML</a></li>
+    <li class="breadcrumb-item active">TinyML Edge Debugging</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="tinyml-edge-debugging">
+<h1>TinyML Edge Debugging<a class="headerlink" href="#tinyml-edge-debugging" title="Link to this heading"></a></h1>
+<p>This sample demonstrates how to use the TinyML library to implement serial communication between the RTL87x2G and a host (PC). It supports the host sending model files and input data to the device through a custom UART protocol, and the device completes the TFLite inference and reports the result back to the host.</p>
+<p>In this sample, the device receives data packets sent by the host through the UART interface. After protocol parsing, it sequentially performs model loading, parameter configuration, and inference, and then sends the inference result, memory usage, inference time, and other information back to the host through response packets.</p>
+<p>The system architecture is shown in the figure below. The overall architecture is divided into two parts: the PC host and the Edge Device, which communicate bidirectionally through the UART interface.</p>
+<p>The PC host consists of the following three modules:</p>
+<ul class="simple">
+<li><p><strong>EdgeAI and UART Model</strong>: Manages models and communicates with the Edge Device via the UART protocol for command interaction and data transfer.</p></li>
+<li><p><strong>Model Export</strong>: Exports the trained TFLite model as a C array for direct integration into the embedded project.</p></li>
+<li><p><strong>Emulated Inference</strong>: Performs local model inference on the PC for quick validation without requiring a physical device.</p></li>
+</ul>
+<p>The Edge Device consists of the following components:</p>
+<ul class="simple">
+<li><p><strong>UART Protocol Driver</strong>: Implements the custom UART communication protocol, handling packet transmission, reception, parsing, and assembly.</p></li>
+<li><p><strong>TFLite Model Buffer/Model Data Buffer</strong>: Receives, manages, and stores the model file and inference input data sent from the PC host.</p></li>
+<li><p><strong>Inference Runtime</strong>: The TFLite-based inference engine that loads the model data sent from the PC and executes the actual inference on the device.</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<img alt="../../../../../_images/system_architecture.png" src="../../../../../_images/system_architecture.png" />
+<figcaption>
+<p><span class="caption-text">System Architecture Diagram</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The host interface is shown below:</p>
+<figure class="align-center" id="id2">
+<img alt="../../../../../_images/host_app_screenshot.png" src="../../../../../_images/host_app_screenshot.png" />
+<figcaption>
+<p><span class="caption-text">Host Interface</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The meaning of each field and button on the host interface is described below:</p>
+<table class="docutils align-center" id="id3">
+<caption><span class="caption-text">Host Interface Description</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field/Button</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Model</p></td>
+<td><p>Selects the TFLite model file (<code class="docutils literal notranslate"><span class="pre">.tflite</span></code>) to deploy to the device.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data</p></td>
+<td><p>Selects the input data file (<code class="docutils literal notranslate"><span class="pre">.bin</span></code>) used for inference.</p></td>
+</tr>
+<tr class="row-even"><td><p>Local Model Analysis</p></td>
+<td><p>Local emulated inference: replicates the inference flow on the PC without a device, for quickly validating model correctness.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Parameter Export</p></td>
+<td><p>Model export: exports the TFLite model as a C array (generates <code class="docutils literal notranslate"><span class="pre">model_tflite.cpp</span></code>) for direct integration into the embedded project.</p></td>
+</tr>
+<tr class="row-even"><td><p>Model Inference</p></td>
+<td><p>On-device inference: sends the selected model and data to the device to run TFLite inference, then reports and displays the result, latency, and memory usage.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Open Port/Close Port</p></td>
+<td><p>Opens or closes the serial connection.</p></td>
+</tr>
+<tr class="row-even"><td><p>COM Port</p></td>
+<td><p>Selects the serial port connected to the device (e.g. COM4).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baud Rate</p></td>
+<td><p>Sets the serial communication baud rate; must match the device (default 115200).</p></td>
+</tr>
+<tr class="row-even"><td><p>Log Area</p></td>
+<td><p>Shows the command interaction between the host and the device, the inference results, and error messages.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>This sample supports the following development kits:</p>
+<table class="docutils align-center" id="id4">
+<caption><span class="caption-text">Development Kits</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G HDK</p></td>
+<td><p>RTL87x2G EVB</p></td>
+</tr>
+</tbody>
+</table>
+<p>For more information, please refer to <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<p>The device communicates with the host through UART. The interface pins are shown in the table below:</p>
+<table class="docutils align-center" id="id5">
+<caption><span class="caption-text">UART Interface Pins</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 22.2%" />
+<col style="width: 44.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Pin Name</p></th>
+<th class="head"><p>PIN</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>UART_TX</p></th>
+<td><p>P3_0</p></td>
+<td><p>Transmit data</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>UART_RX</p></th>
+<td><p>P3_1</p></td>
+<td><p>Receive data</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>GND</p></th>
+<td><p>GND</p></td>
+<td><p>Reference ground</p></td>
+</tr>
+</tbody>
+</table>
+<p>Communication parameters: baud rate 115200, 8 data bits, 1 stop bit, no parity.</p>
+</section>
+<section id="building-and-downloading">
+<h2>Building and Downloading<a class="headerlink" href="#building-and-downloading" title="Link to this heading"></a></h2>
+<p id="tinyml-edge-sample-proj-file-en">The project path of this sample is as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\tinyml\tinyml_edge\proj\rtl87x2g\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\tinyml\tinyml_edge\proj\rtl87x2g\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>Follow the steps below to build and run this sample:</p>
+<ol class="arabic simple">
+<li><p>Open the project file.</p></li>
+<li><p>To build the target, follow the steps listed on the <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#generate-app-image"><span class="std std-ref">Generating App Image</span></a> in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p></li>
+<li><p>After a successful build, the app bin <code class="file docutils literal notranslate"><span class="pre">app_MP_xxx.bin</span></code> is generated under <code class="file docutils literal notranslate"><span class="pre">mdk\bin</span></code> or <code class="file docutils literal notranslate"><span class="pre">gcc\bin</span></code>.</p></li>
+<li><p>To download the app bin into the EVB, follow the steps listed on the <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#mp-tool-download"><span class="std std-ref">MP Tool Download</span></a> in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p></li>
+<li><p>Connect P3_0 (TX) and P3_1 (RX) of the EVB to the host serial port through a USB-UART adapter.</p></li>
+<li><p>Press the reset button to start running.</p></li>
+</ol>
+</section>
+<section id="test-verification">
+<h2>Test Verification<a class="headerlink" href="#test-verification" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Open the host software TinyML_Host, select the model file (.tflite) and input data file (.bin) to test, and click the <strong>Model Inference</strong> button. The host automatically completes the following full inference process.</p></li>
+<li><p>An example of the host inference log is shown below. The complete process is: get device name → query memory → load model → load data → configure parameters → download file → trigger inference → receive result.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>[Time]: 2026-06-11 16:00:56.471
+[INFO] Command flow started
+--&gt; Send Command(0X40): Get Device Name
+&lt;-- Device Name Received: RTL87x2G-Device (status: Success)
+--&gt; Send Command(0X41): Get Memory Size
+&lt;-- Device Memory Size Received: 153600 bytes (status: Success)
+--&gt; Send Command(0X42): Load Model
+&lt;-- ACK Received: Load Model data: Success
+--&gt; Send Command(0X43): Load Data
+&lt;-- ACK Received: Load Data data: Success
+--&gt; Send Command(0X44): Config Params (File Download)
+&lt;-- ACK Received: Config Params (File Download) data: Success
+[INFO] File download task submitted: E:/model_int8.tflite (Size: 13384 bytes)
+[INFO] Downloading file....................................................
+[INFO] File download complete: Success 53/Total 53.
+[INFO] File download task submitted: E:/input_data.bin (Size: 5200 bytes)
+[INFO] Downloading file......................
+[INFO] File download complete: Success 21/Total 21.
+[INFO] Model Inference command started
+--&gt; Send Command(0X45): Model Inference.
+&lt;-- ACK Received: Model Inference data: Success
+[INFO] Command flow completed
+&lt;-- [Event 0X55] Inference Result: [0.97, 0.00, 0.03, 0.00, 0.00]
+&lt;-- [Event 0X51] InferTime: xxxx cycles
+&lt;-- [Event 0X52] UniqueOps: [RESHAPE,CONV_2D,MAX_POOL_2D,FULLY_CONNECTED,SOFTMAX]
+&lt;-- [Event 0X50] Arena Size: 15220 Bytes
+</pre></div>
+</div>
+</li>
+<li><p>If data packet parsing fails, the retransmission mechanism is triggered, and the following output can be observed in the Debug Analyzer.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>IO_MSG_UART_RX_DONE
+IO_MSG_UART_DATA_PARSER_FAILED,retry
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="protocol-description">
+<h2>Protocol Description<a class="headerlink" href="#protocol-description" title="Link to this heading"></a></h2>
+<p>The UART data packet format is as follows:</p>
+<table class="docutils align-center" id="id6">
+<caption><span class="caption-text">Data Packet Frame Format</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 18.2%" />
+<col style="width: 54.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Length</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Header</p></td>
+<td><p>2 bytes</p></td>
+<td><p>Fixed to 0xAA 0xBB</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data Length</p></td>
+<td><p>2 bytes</p></td>
+<td><p>Length of the valid data area</p></td>
+</tr>
+<tr class="row-even"><td><p>Sequence Number</p></td>
+<td><p>2 bytes</p></td>
+<td><p>Packet sequence number, used for ACK matching and retransmission</p></td>
+</tr>
+<tr class="row-odd"><td><p>Command</p></td>
+<td><p>1 byte</p></td>
+<td><p>Command type, see the table below</p></td>
+</tr>
+<tr class="row-even"><td><p>Data Area</p></td>
+<td><p>N bytes</p></td>
+<td><p>Payload attached to the command</p></td>
+</tr>
+<tr class="row-odd"><td><p>CRC</p></td>
+<td><p>2 bytes</p></td>
+<td><p>Data checksum</p></td>
+</tr>
+<tr class="row-even"><td><p>Footer</p></td>
+<td><p>1 byte</p></td>
+<td><p>Fixed to 0xCC</p></td>
+</tr>
+</tbody>
+</table>
+<p>The supported commands are as follows:</p>
+<table class="docutils align-center" id="id7">
+<caption><span class="caption-text">Command Definitions</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 18.2%" />
+<col style="width: 54.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command Name</p></th>
+<th class="head"><p>Command</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GET_DEVICE_NAME</p></td>
+<td><p>0x40</p></td>
+<td><p>Get device name</p></td>
+</tr>
+<tr class="row-odd"><td><p>GET_MEM_SIZE</p></td>
+<td><p>0x41</p></td>
+<td><p>Get available memory size</p></td>
+</tr>
+<tr class="row-even"><td><p>LOAD_MODEL</p></td>
+<td><p>0x42</p></td>
+<td><p>Load TFLite model file</p></td>
+</tr>
+<tr class="row-odd"><td><p>LOAD_DATA</p></td>
+<td><p>0x43</p></td>
+<td><p>Load inference input data</p></td>
+</tr>
+<tr class="row-even"><td><p>CONFIG_PARAM</p></td>
+<td><p>0x44</p></td>
+<td><p>Configure inference parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>MODEL_INFER</p></td>
+<td><p>0x45</p></td>
+<td><p>Perform inference</p></td>
+</tr>
+<tr class="row-even"><td><p>DOWNLOAD_MODEL_FILE</p></td>
+<td><p>0x46</p></td>
+<td><p>Download model file to device</p></td>
+</tr>
+<tr class="row-odd"><td><p>DOWNLOAD_DATA_FILE</p></td>
+<td><p>0x47</p></td>
+<td><p>Download data file to device</p></td>
+</tr>
+</tbody>
+</table>
+<p>The event codes actively reported by the device are as follows:</p>
+<table class="docutils align-center" id="id8">
+<caption><span class="caption-text">Event Report Code Definitions</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 18.2%" />
+<col style="width: 54.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Event Name</p></th>
+<th class="head"><p>Event Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>REPORT_ARENA_SIZE</p></td>
+<td><p>0x50</p></td>
+<td><p>Report Tensor Arena memory usage</p></td>
+</tr>
+<tr class="row-odd"><td><p>REPORT_INFER_CYCLES</p></td>
+<td><p>0x51</p></td>
+<td><p>Report inference time (CPU cycles)</p></td>
+</tr>
+<tr class="row-even"><td><p>REPORT_OPS_LIST</p></td>
+<td><p>0x52</p></td>
+<td><p>Report model operator list</p></td>
+</tr>
+<tr class="row-odd"><td><p>REPORT_QUANT_PARAMS</p></td>
+<td><p>0x53</p></td>
+<td><p>Report quantization parameters</p></td>
+</tr>
+<tr class="row-even"><td><p>REPORT_INFER_RESULT</p></td>
+<td><p>0x55</p></td>
+<td><p>Report inference result</p></td>
+</tr>
+<tr class="row-odd"><td><p>REPORT_PROFILER</p></td>
+<td><p>0x56</p></td>
+<td><p>Report per-operator Profiler performance data</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="code-overview">
+<h2>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading"></a></h2>
+<p>This chapter is divided into the following parts:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#tinyml-edge-source-path-en"><span class="std std-ref">Source Code Directory</span></a>.</p></li>
+<li><p><a class="reference internal" href="#tinyml-edge-initialization-en"><span class="std std-ref">Initialization</span></a>.</p></li>
+<li><p><a class="reference internal" href="#tinyml-edge-function-en"><span class="std std-ref">Functional Implementation</span></a>.</p></li>
+</ol>
+<section id="source-code-directory">
+<span id="tinyml-edge-source-path-en"></span><h3>Source Code Directory<a class="headerlink" href="#source-code-directory" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Project Directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\tinyml\tinyml_edge\proj</span></code></p></li>
+<li><p>Source Code Directory: <code class="file docutils literal notranslate"><span class="pre">sdk\samples\tinyml\tinyml_edge\src</span></code></p></li>
+</ul>
+<p>The project file code structure of this sample is as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Keil</label><div class="tab-content docutils">
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: tinyml_edge
+    └── secure_only_app
+        ├── Device                   includes startup code
+            ├── startup_rtl.c
+            ├── system_rtl.c
+            └── stdlib_wrapper.c
+        ├── CMSE Library             Non-secure callable lib
+            └── ROM_CMSE_Lib.o
+        ├── lib                      includes all binary symbol files that user application is built on
+            ├── ROM_NS.lib
+            ├── lowerstack.lib
+            ├── rtl87x2g_sdk.lib
+            └── gap_utils.lib
+        ├── driver                   includes all peripheral drivers used by the application
+            ├── rtl_pinmux.c
+            ├── io_dlps.c
+            ├── rtl_nvic.c
+            ├── rtl_rcc.c
+            └── rtl_uart.c
+        ├── app                      includes the tinyml user application entry
+            └── main.c
+        ├── usart_module             includes the UART transport and packet parsing
+            ├── io_uart.c
+            ├── uart_packet_parser.c
+            └── ts_queue.c
+        ├── mem_module               includes the PSRAM heap and memory hooks
+            ├── psRam_heap.c
+            ├── ts_mem.c
+            └── malloc_override.c
+        └── tinyml_main              includes the tinyml inference implementation and dependent libraries
+            ├── tinyml_main.c
+            ├── model_process.cpp
+            └── libts_realtek_cm55.lib
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">GCC</label><div class="tab-content docutils">
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: tinyml_edge
+    └── secure_only_app
+        ├── Device                   includes startup code
+            ├── startup_rtl.c
+            └── system_rtl.c
+        ├── CMSE Library             Non-secure callable lib
+            └── ROM_CMSE_Lib.o
+        ├── lib                      includes all binary symbol files that user application is built on
+            ├── libROM_NS.a
+            ├── liblowerstack.a
+            ├── librtl87x2g_sdk.a
+            └── libgap_utils.a
+        ├── driver                   includes all peripheral drivers used by the application
+            ├── rtl_pinmux.c
+            ├── io_dlps.c
+            ├── rtl_nvic.c
+            ├── rtl_rcc.c
+            └── rtl_uart.c
+        ├── app                      includes the tinyml user application entry
+            └── main.c
+        ├── usart_module             includes the UART transport and packet parsing
+            ├── io_uart.c
+            ├── uart_packet_parser.c
+            └── ts_queue.c
+        ├── mem_module               includes the PSRAM heap and memory hooks
+            ├── psRam_heap.c
+            ├── ts_mem.c
+            └── malloc_override.c
+        └── tinyml_main              includes the tinyml inference implementation and dependent libraries
+            ├── tinyml_main.c
+            ├── model_process.cpp
+            └── libts_realtek_gcc_cm55.a
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="initialization">
+<span id="tinyml-edge-initialization-en"></span><h3>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Set the CPU operating frequency to 125 MHz and initialize the DWT cycle counter.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">uart_init</span></code> to initialize UART (P3_0 TX/P3_1 RX, baud rate 115200).</p></li>
+<li><p>Create the IO message queue (capacity 0x30 messages) to receive event messages issued by the UART interrupt callback.</p></li>
+<li><p>Create a timeout timer (8000 ms) to handle ACK response timeout.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">uart_init</span><span class="p">();</span>
+<span class="n">os_msg_queue_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tinyml_queue_handle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TSQ&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">MAX_NUMBER_OF_IO_MESSAGE</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_IO_MSG</span><span class="p">));</span>
+<span class="n">os_timer_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xUartTimeoutTimerHandle</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;timeout Timer&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">ts_timer_cb</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="functional-implementation">
+<span id="tinyml-edge-function-en"></span><h3>Functional Implementation<a class="headerlink" href="#functional-implementation" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>The main task loop blocks waiting on the IO message queue. When UART reception completes (<code class="docutils literal notranslate"><span class="pre">IO_MSG_UART_RX_DONE</span></code>), it takes the received raw bytes from the global data linked list and calls <code class="docutils literal notranslate"><span class="pre">uart_rx_data_parse</span></code> for protocol parsing.</p></li>
+<li><p>After protocol parsing succeeds (<code class="docutils literal notranslate"><span class="pre">IO_MSG_UART_DATA_PARSER_SUCCESS</span></code>), it executes the corresponding command (load model, load data, perform inference, etc.) and sends the response packet back to the host through <code class="docutils literal notranslate"><span class="pre">uart_send_with_ack</span></code>, with support for timeout retransmission.</p></li>
+<li><p>When protocol parsing fails (<code class="docutils literal notranslate"><span class="pre">IO_MSG_UART_DATA_PARSER_FAILED</span></code>), a retransmission request is triggered.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">subtype</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">IO_MSG_UART_RX_DONE</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* uart rx data parse */</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">subtype</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">IO_MSG_UART_DATA_PARSER_SUCCESS</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* execute command and reply */</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">subtype</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">IO_MSG_UART_DATA_PARSER_FAILED</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* trigger retransmission */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>The host writes the model file and input data into the device buffer (<code class="docutils literal notranslate"><span class="pre">model_buf</span></code>/<code class="docutils literal notranslate"><span class="pre">data_buf</span></code>) through <code class="docutils literal notranslate"><span class="pre">UART_CMD_CONFIG_PARAM</span></code> (0x44) and the file download commands. After receiving <code class="docutils literal notranslate"><span class="pre">UART_CMD_MODEL_INFER</span></code> (0x45), it calls <code class="docutils literal notranslate"><span class="pre">MinimalInferenceWithTime</span></code> to complete the inference: registers the model and the memory allocation hooks, tries different Arena sizes (192 KB→128 KB→96 KB) to initialize the inference engine, calls <code class="docutils literal notranslate"><span class="pre">ts_realtek_invoke</span></code> to perform inference, and finally sends the inference result, memory usage, operator information, and other data back to the host through event packets.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../tinyml_kws/doc/text_en/README.html" class="btn btn-neutral float-left" title="TinyML Keyword Spotting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

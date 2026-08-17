@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Image Layout" href="../../image_layout/text_en/README.html" />
+    <link rel="prev" title="Platform Overview" href="../../platform_overview/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_en/README.html">Platform</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../platform_overview/text_en/README.html">Platform Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Memory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#memory-map">Memory Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rom">ROM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ram">RAM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#memory-space-layout">Memory Space Layout</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#trustzone-disable-memory-space-layout">TrustZone Disable Memory Space Layout</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#trustzone-enable-memory-space-layout">TrustZone Enable Memory Space Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#apis">APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-usage-calculation">Memory Usage Calculation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#statistics-of-static-zone-size-on-app-ram">Statistics of Static Zone Size on APP RAM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#statistics-of-remaining-heap-size">Statistics of Remaining Heap Size</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#adjust-the-ram-available-to-app">Adjust the RAM Available to APP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flash">Flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#psram">PSRAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#efuse">eFuse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_en/README.html">Image Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flash/text_en/README.html">Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_en/README.html">PSRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../low_power_mode/text_en/README.html">Low Power Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/text_en/README.html">Security Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debug_system/text_en/README.html">Debug System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clock/text_en/README.html">Clock Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_en/README.html">Platform</a></li>
+    <li class="breadcrumb-item active">Memory</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="memory">
+<span id="memory-en"></span><h1>Memory<a class="headerlink" href="#memory" title="Link to this heading"></a></h1>
+<p>This chapter primarily introduces the memory system of the RTL87x2G.</p>
+<section id="memory-map">
+<h2>Memory Map<a class="headerlink" href="#memory-map" title="Link to this heading"></a></h2>
+<p>The memory system of the RTL87x2G is designed based on the memory mapping architecture of the Arm Cortex-M55 and primarily consists of <a class="reference internal" href="../../../glossary.html#term-ROM"><span class="xref std std-term">ROM</span></a>, <a class="reference internal" href="../../../glossary.html#term-RAM"><span class="xref std std-term">RAM</span></a>, Cache, Flash, and eFuse. Its design involves mapping the ARM address map to the memory regions defined by Realtek, as illustrated in <a class="reference internal" href="#figure-memory-mapping-of-rtl87x2g"><span class="std std-ref">Memory Mapping of RTL87x2G</span></a>.</p>
+<figure class="align-center" id="figure-memory-mapping-of-rtl87x2g">
+<img alt="../../../../_images/Memory_Mapping.png" src="../../../../_images/Memory_Mapping.png" />
+<figcaption>
+<p><span class="caption-text">Memory Mapping of RTL87x2G</span><a class="headerlink" href="#figure-memory-mapping-of-rtl87x2g" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The distribution of Realtek defined regions is shown in <a class="reference internal" href="#table-memory-regions-defined-by-realtek"><span class="std std-ref">Memory Regions Defined by Realtek</span></a>.</p>
+<table class="docutils align-center" id="table-memory-regions-defined-by-realtek">
+<caption><span class="caption-text">Memory Regions Defined by Realtek</span><a class="headerlink" href="#table-memory-regions-defined-by-realtek" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Memory Type</p></th>
+<th class="head"><p>Region</p></th>
+<th class="head"><p>Start Addr</p></th>
+<th class="head"><p>End Addr</p></th>
+<th class="head"><p>Size(bytes)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ROM</p></td>
+<td></td>
+<td><p>0x00000000</p></td>
+<td><p>0x0007FFFF</p></td>
+<td><p>512K</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="5"><p>RAM</p></td>
+<td><p>ITCM1</p></td>
+<td><p>0x00100000</p></td>
+<td><p>0x0012FFFF</p></td>
+<td><p>192K</p></td>
+</tr>
+<tr class="row-even"><td><p>DTCM0</p></td>
+<td><p>0x00130000</p></td>
+<td><p>0x0013FFFF</p></td>
+<td><p>64K</p></td>
+</tr>
+<tr class="row-odd"><td><p>DTCM1</p></td>
+<td><p>0x00140000</p></td>
+<td><p>0x0014FFFF</p></td>
+<td><p>64K</p></td>
+</tr>
+<tr class="row-even"><td><p>Data SRAM</p></td>
+<td><p>0x00200000</p></td>
+<td><p>0x00203FFF</p></td>
+<td><p>16K</p></td>
+</tr>
+<tr class="row-odd"><td><p>Buffer SRAM</p></td>
+<td><p>0x00280000</p></td>
+<td><p>0x0028BFFF</p></td>
+<td><p>48K</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Cache</p></td>
+<td><p>I-Cache</p></td>
+<td></td>
+<td></td>
+<td><p>32K</p></td>
+</tr>
+<tr class="row-odd"><td><p>D-Cache</p></td>
+<td></td>
+<td></td>
+<td><p>16K</p></td>
+</tr>
+<tr class="row-even"><td><p>Flash</p></td>
+<td><p>SPI Flash</p></td>
+<td><p>0x04000000</p></td>
+<td><p>0x07FFFFFF</p></td>
+<td><p>64M*</p></td>
+</tr>
+<tr class="row-odd"><td><p>eFuse</p></td>
+<td><p>eFuse</p></td>
+<td></td>
+<td></td>
+<td><p>1K</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span class="red-text">*</span> means the maximum mapping space is 64 MB, but the actual size depends on the used Flash memory size.</p>
+</div>
+</section>
+<section id="rom">
+<h2>ROM<a class="headerlink" href="#rom" title="Link to this heading"></a></h2>
+<p>The ROM code is located at [0x0, 0x7FFFF), with a total size of 512KB, in which Bootloader, Flash Driver, Power Manager, Bluetooth Controller, and other platform modules are built in. RTL87x2G ROM opens some modules such as Flash Driver for applications to use. RTL87x2G SDK contains the header files of these ROM modules, which enable users to access built-in ROM functions. This reduces the application code size and RAM size.</p>
+</section>
+<section id="ram">
+<h2>RAM<a class="headerlink" href="#ram" title="Link to this heading"></a></h2>
+<section id="memory-space-layout">
+<h3>Memory Space Layout<a class="headerlink" href="#memory-space-layout" title="Link to this heading"></a></h3>
+<p>RAM is divided into three blocks, namely <a class="reference internal" href="../../../glossary.html#term-TCM"><span class="xref std std-term">TCM</span></a>, Data RAM, and Buffer RAM. Namely TCM with an address space of 0x00100000~0x0012FFFF with a total size of 192KB, DTCM0 with an address space of 0x00130000~0x0013FFFF with a total size of 64KB, and DTCM1 with an address space of 0x00140000~0x0014FFFF with a total size of 64KB. The three space addresses are consecutive.</p>
+<ul class="simple">
+<li><p>TCM: A specially designed type of memory that focuses on providing low latency, high bandwidth, and deterministic access characteristics, containing ITCM and DTCM:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../glossary.html#term-ITCM"><span class="xref std std-term">ITCM</span></a>: A type of TCM specifically used for storing program instructions, allowing the <a class="reference internal" href="../../../glossary.html#term-CPU"><span class="xref std std-term">CPU</span></a> to quickly access and execute the code.</p></li>
+<li><p><a class="reference internal" href="../../../glossary.html#term-DTCM"><span class="xref std std-term">DTCM</span></a>: A type of TCM specifically designed for storing data, enhancing the access speed to this data.</p></li>
+</ul>
+</li>
+</ul>
+<p>The <a class="reference internal" href="#table-ram-space"><span class="std std-ref">RAM Space</span></a> of RTL87x2G is divided into 5 parts. Five parts of RAM space can be used to store data and execute code.</p>
+<table class="docutils align-default" id="table-ram-space">
+<caption><span class="caption-text">RAM Space</span><a class="headerlink" href="#table-ram-space" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Region</p></th>
+<th class="head"><p>Starting Address</p></th>
+<th class="head"><p>Address Range</p></th>
+<th class="head"><p>Total Size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ITCM1</p></td>
+<td><p>0x00100000</p></td>
+<td><p>0x00100000~0x0012FFFF</p></td>
+<td><p>192KB</p></td>
+</tr>
+<tr class="row-odd"><td><p>DTCM0</p></td>
+<td><p>0x00130000</p></td>
+<td><p>0x00130000~0x0013FFFF</p></td>
+<td><p>64KB</p></td>
+</tr>
+<tr class="row-even"><td><p>DTCM1</p></td>
+<td><p>0x00140000</p></td>
+<td><p>0x00140000~0x0014FFFF</p></td>
+<td><p>64KB</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data SRAM</p></td>
+<td><p>0x00200000</p></td>
+<td><p>0x00200000~0x00203FFF</p></td>
+<td><p>16KB</p></td>
+</tr>
+<tr class="row-even"><td><p>Buffer SRAM</p></td>
+<td><p>0x00280000</p></td>
+<td><p>0x00280000~0x0028BFFF</p></td>
+<td><p>48KB</p></td>
+</tr>
+</tbody>
+</table>
+<p>The memory space layout will be different for TrustZone enable and TrustZone disable, as follows:</p>
+<section id="trustzone-disable-memory-space-layout">
+<h4>TrustZone Disable Memory Space Layout<a class="headerlink" href="#trustzone-disable-memory-space-layout" title="Link to this heading"></a></h4>
+<figure class="align-center" id="id1">
+<img alt="../../../../_images/TrustZone_disable_RAM_layout.png" src="../../../../_images/TrustZone_disable_RAM_layout.png" />
+<figcaption>
+<p><span class="caption-text">TrustZone Disable RAM Layout</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When TrustZone is disabled, there is no distinction between secure and non-secure.</p>
+</div>
+<p>Each part has a fixed arrangement sequence and a specific purpose, as shown in <a class="reference internal" href="#table-trustzone-disable-ram-usage"><span class="std std-ref">TrustZone disable RAM Usage</span></a>.</p>
+<table class="docutils align-default" id="table-trustzone-disable-ram-usage">
+<caption><span class="caption-text">TrustZone disable RAM Usage</span><a class="headerlink" href="#table-trustzone-disable-ram-usage" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 23.1%" />
+<col style="width: 57.7%" />
+<col style="width: 19.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Memory Type</p></th>
+<th class="head"><p>Memory Usage</p></th>
+<th class="head"><p>Memory Variable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>S ROM data</p></td>
+<td><p>Store global variables and static variables in Secure ROM Code</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Main Stack</p></td>
+<td><p>Used in startup and interrupt service routines</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Boot Patch RAM</p></td>
+<td><p>Store Boot Patch global variables and static variables and code executed on RAM</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>System Patch RAM</p></td>
+<td><p>Store System Patch global variables, static variables, and code executed on RAM</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Stack Patch RAM</p></td>
+<td><p>Store Stack Patch global variables, static variables, and code executed on RAM</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>NS ROM data</p></td>
+<td><p>Store global variables and static variables in Non-Secure ROM Code</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>DTCM + ITCM Heap</p></td>
+<td><p>For the dynamic application space of Non-Secure ROM code, System Patch code, Non-Secure Upperstack code, and APP code</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>APP RAM</p></td>
+<td><p>Store global variables, static variables, and code executed on RAM in APP</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Bluetooth Host RAM</p></td>
+<td><p>Store global variables, static variables, and code executed on RAM in Bluetooth Host</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="trustzone-enable-memory-space-layout">
+<h4>TrustZone Enable Memory Space Layout<a class="headerlink" href="#trustzone-enable-memory-space-layout" title="Link to this heading"></a></h4>
+<figure class="align-center" id="id2">
+<img alt="../../../../_images/TrustZone_enable_RAM_layout.png" src="../../../../_images/TrustZone_enable_RAM_layout.png" />
+<figcaption>
+<p><span class="caption-text">TrustZone Enable RAM Layout</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-default" id="table-trustzone-enable-ram-usage">
+<caption><span class="caption-text">TrustZone enable RAM Usage</span><a class="headerlink" href="#table-trustzone-enable-ram-usage" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 23.1%" />
+<col style="width: 57.7%" />
+<col style="width: 19.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Memory Type</p></th>
+<th class="head"><p>Memory Usage</p></th>
+<th class="head"><p>Memory Variable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>S ROM data</p></td>
+<td><p>Store global variables and static variables in Secure ROM Code</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Secure Main Stack</p></td>
+<td><p>The stack is used in secure startup and interrupt service routines</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Boot Patch RAM</p></td>
+<td><p>Store Boot Patch global variables and static variables and code executed on RAM</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>System Patch RAM</p></td>
+<td><p>Store System Patch global variables and static variables and code executed on RAM</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Stack Patch RAM</p></td>
+<td><p>Store Stack Patch global variables and static variables and code executed on RAM</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>NS ROM data</p></td>
+<td><p>Store global variables and static variables in Non-Secure ROM Code</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>NS Main Stack</p></td>
+<td><p>The stack is used in non-secure startup and interrupt service routines</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Secure Heap</p></td>
+<td><p>For the dynamic application space of Secure ROM code and SecureAPP code</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>Secure APP RAM</p></td>
+<td><p>Store Secure APP global variables and static variables and code executed on RAM</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>NS DTCM + ITCM Heap</p></td>
+<td><p>For the dynamic application space of Non-Secure ROM code, System Patch code, Bluetooth Host code, and APP code</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>NS APP RAM</p></td>
+<td><p>Store global variables and static variables in NS APP and code executed on RAM</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bluetooth Host RAM</p></td>
+<td><p>Store global variables and static variables in Bluetooth Host and code executed on RAM</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <a class="reference internal" href="#table-adjustable-ram-space"><span class="std std-ref">Adjustable RAM space</span></a> is uniformly modified through different macro definitions in <code class="docutils literal notranslate"><span class="pre">mem_config.h</span></code>. <code class="docutils literal notranslate"><span class="pre">NS_RAM_UPPERSTACK_SIZE</span></code> must be set accordingly according to the version of the Bluetooth Host image used. Different Bluetooth Host images occupy different sizes of DTCM. Please pay attention to the Bluetooth Host release document and its description. Adjust the size of <code class="docutils literal notranslate"><span class="pre">NS_RAM_UPPERSTACK_SIZE</span></code> according to application needs.</p>
+<table class="docutils align-default" id="table-adjustable-ram-space">
+<caption><span class="caption-text">Adjustable RAM space</span><a class="headerlink" href="#table-adjustable-ram-space" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Memory Type</p></th>
+<th class="head"><p>Macro</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bluetooth Host RAM</p></td>
+<td><p>NS_RAM_UPPERSTACK_SIZE</p></td>
+</tr>
+<tr class="row-odd"><td><p>APP RAM</p></td>
+<td><p>NS_RAM_APP_SIZE</p></td>
+</tr>
+<tr class="row-even"><td><p>DTCM + ITCM Heap</p></td>
+<td><p>NS_RAM_APP_RESERVED_SIZE - NS_RAM_APP_SIZE - NS_RAM_UPPERSTACK_SIZE</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="apis">
+<h3>APIs<a class="headerlink" href="#apis" title="Link to this heading"></a></h3>
+<p>By calling the API: <a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#c.os_mem_alloc" title="os_mem_alloc"><code class="xref c c-macro docutils literal notranslate"><span class="pre">os_mem_alloc</span></code></a>, memory can be dynamically applied for from DTCM Heap, Data SRAM Heap or Buffer SRAM Heap. The type of application is specified by the parameter ram_type, which corresponds to <code class="docutils literal notranslate"><span class="pre">RAM_TYPE_DATA_ON</span></code>, <code class="docutils literal notranslate"><span class="pre">RAM_TYPE_EXT_DATA_SRAM</span></code> and <code class="docutils literal notranslate"><span class="pre">RAM_TYPE_BUFFER_ON</span></code>. The specific code is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">RAM_TYPE_DATA_ON</span><span class="p">,</span><span class="w">        </span><span class="c1">//DTCM Heap</span>
+<span class="w">    </span><span class="n">RAM_TYPE_DATA_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RAM_TYPE_DATA_ON</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RAM_TYPE_BUFFER_ON</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RAM_TYPE_BUFFER_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RAM_TYPE_BUFFER_ON</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RAM_TYPE_EXT_DATA_SRAM</span><span class="p">,</span><span class="w">  </span><span class="c1">//Ext DATA SRAM heap</span>
+<span class="w">    </span><span class="n">RAM_TYPE_NUM</span>
+<span class="p">}</span><span class="w"> </span><span class="n">RAM_TYPE</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm">* @brief  Allocate memory dynamically from Data RAM Heap or Buffer RAM heap</span>
+<span class="cm">* @param  ram_type: specify which heap to allocate memory from</span>
+<span class="cm">* @param  size: memory size in bytes to be allocated</span>
+<span class="cm">* @retval pointer to the allocated memory</span>
+<span class="cm">*/</span>
+<span class="cp">#define os_mem_alloc(ram_type, size)</span>
+<span class="w">        </span><span class="n">os_mem_alloc_intern</span><span class="p">(</span><span class="n">ram_type</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">__func__</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Other APIs for dynamically applying for memory are as follows: (For details, refer to <code class="file docutils literal notranslate"><span class="pre">os_mem.h</span></code>)</p>
+<table class="docutils align-default" id="table-dynamic-memory-allocation-apis">
+<caption><span class="caption-text">Dynamic Memory Allocation APIs</span><a class="headerlink" href="#table-dynamic-memory-allocation-apis" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>API</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#c.os_mem_zalloc" title="os_mem_zalloc"><code class="xref c c-macro docutils literal notranslate"><span class="pre">os_mem_zalloc</span></code></a></p></td>
+<td><p>Allocated memory will be initialized to 0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#c.os_mem_aligned_alloc" title="os_mem_aligned_alloc"><code class="xref c c-macro docutils literal notranslate"><span class="pre">os_mem_aligned_alloc</span></code></a></p></td>
+<td><p>Allocated memory will be aligned to the specified alignment</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#_CPPv411os_mem_free" title="os_mem_free"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_mem_free</span></code></a></p></td>
+<td><p>Free a memory block that has been allocated</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#_CPPv419os_mem_aligned_free" title="os_mem_aligned_free"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_mem_aligned_free</span></code></a></p></td>
+<td><p>Free an aligned memory block that has been allocated</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#_CPPv411os_mem_peek" title="os_mem_peek"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_mem_peek</span></code></a></p></td>
+<td><p>Get the unused memory size of the specified RAM type</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="memory-usage-calculation">
+<h3>Memory Usage Calculation<a class="headerlink" href="#memory-usage-calculation" title="Link to this heading"></a></h3>
+<p>According to the way the APP uses RAM, it is divided into static area and dynamic area.</p>
+<section id="statistics-of-static-zone-size-on-app-ram">
+<h4>Statistics of Static Zone Size on APP RAM<a class="headerlink" href="#statistics-of-static-zone-size-on-app-ram" title="Link to this heading"></a></h4>
+<p>Find the <code class="docutils literal notranslate"><span class="pre">app.map</span></code> file generated by Build to find the first address allocated in APP RAM, the end address, and the used size. By searching the map of the loading area <a class="reference internal" href="#figure-er-iram-ns-map"><span class="std std-ref">ER_IRAM_NS Map</span></a>, it is possible to determine the static usage of APP RAM.</p>
+<figure class="align-center" id="figure-er-iram-ns-map">
+<a class="reference internal image-reference" href="../../../../_images/ER_IRAM_NS_Map.png"><img alt="../../../../_images/ER_IRAM_NS_Map.png" src="../../../../_images/ER_IRAM_NS_Map.png" style="width: 846.6px; height: 485.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">ER_IRAM_NS Map</span><a class="headerlink" href="#figure-er-iram-ns-map" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="statistics-of-remaining-heap-size">
+<h4>Statistics of Remaining Heap Size<a class="headerlink" href="#statistics-of-remaining-heap-size" title="Link to this heading"></a></h4>
+<p>The remaining heap size of the specified RAM type can be obtained through the <a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#_CPPv411os_mem_peek" title="os_mem_peek"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_mem_peek</span></code></a> function.</p>
+</section>
+</section>
+<section id="adjust-the-ram-available-to-app">
+<h3>Adjust the RAM Available to APP<a class="headerlink" href="#adjust-the-ram-available-to-app" title="Link to this heading"></a></h3>
+<p>To further increase the total size of RAM available for the app, use the following two methods:</p>
+<ul class="simple">
+<li><p>Modify some of the stack settings in the Stack interface of the MP Tool Config Setting, such as the number of Bluetooth links, AE, and PSD functions.</p></li>
+</ul>
+<figure class="align-center" id="figure-mptool-stack-config-setting">
+<a class="reference internal image-reference" href="../../../../_images/MPTool_Stack_Config_Setting.png"><img alt="../../../../_images/MPTool_Stack_Config_Setting.png" src="../../../../_images/MPTool_Stack_Config_Setting.png" style="width: 699.0px; height: 596.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">Stack Interface in MP Tool Config Setting</span><a class="headerlink" href="#figure-mptool-stack-config-setting" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Disable log: Modify the Log interface in the MP Tool Config Setting to change the log to <span class="guilabel">disable</span>.</p></li>
+</ul>
+<figure class="align-center" id="figure-mptool-log-config-setting">
+<a class="reference internal image-reference" href="../../../../_images/MPTool_Log_Config_Setting.png"><img alt="../../../../_images/MPTool_Log_Config_Setting.png" src="../../../../_images/MPTool_Log_Config_Setting.png" style="width: 697.1999999999999px; height: 597.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Log Interface in MP Tool Config Setting</span><a class="headerlink" href="#figure-mptool-log-config-setting" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="cache">
+<h2>Cache<a class="headerlink" href="#cache" title="Link to this heading"></a></h2>
+<p>RTL87x2G supports 32KB I-Cache and 16KB D-Cache.</p>
+<p>Cache default policy:</p>
+<ul class="simple">
+<li><p>Flash is cacheable by default.</p></li>
+<li><p>Data SRAM and buffer SRAM are non-cacheable by default.</p></li>
+</ul>
+</section>
+<section id="flash">
+<h2>Flash<a class="headerlink" href="#flash" title="Link to this heading"></a></h2>
+<p>Refer to <a class="reference internal" href="../../flash/text_en/README.html"><span class="doc">Flash</span></a>.</p>
+</section>
+<section id="psram">
+<h2>PSRAM<a class="headerlink" href="#psram" title="Link to this heading"></a></h2>
+<p>Refer to <a class="reference internal" href="../../psram/text_en/README.html"><span class="doc">PSRAM</span></a>.</p>
+</section>
+<section id="efuse">
+<h2>eFuse<a class="headerlink" href="#efuse" title="Link to this heading"></a></h2>
+<p>eFuse is a block of one-time programming memory that is used to store important and fixed information, such as UUID, security key, and other one-time programming configurations.
+A single bit of eFuse cannot be changed from 0 to 1, and there is no erase operation for eFuse, so be careful when updating eFuse.
+Realtek offers MP Tool to update certain eFuse sections.</p>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___o_s___m_e_m___exported___functions.html#group___o_s___m_e_m___exported___functions"><span class="std std-ref">OS Memory</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../platform_overview/text_en/README.html" class="btn btn-neutral float-left" title="Platform Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../image_layout/text_en/README.html" class="btn btn-neutral float-right" title="Image Layout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPT Transport &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" />
+    <link rel="next" title="LVGL" href="../../../lvgl/doc/text_cn/README.html" />
+    <link rel="prev" title="Tri-Mode Mouse" href="../../../trimode_mouse/doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../doc/applications/text_cn/README.html">应用程序</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../86box/doc/text_cn/README.html">86Box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../trimode_mouse/doc/text_cn/README.html">Tri-Mode Mouse</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PPT Transport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">环境需求</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">编译和下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">测试验证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">软件设计介绍</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">源代码目录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flash">Flash 布局</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transport-layer">Transport Layer模块架构</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id9">Transport Layer子模块</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id12">Transport Layer事件</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Transport Layer模块交互</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id16">Transport Layer数据包格式架构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#header">Header</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#packet-type">Packet Type</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#sequence-number">Sequence Number</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#button-wheel">Button/Wheel</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#motion-data">Motion Data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#long-packet-data">Long Packet Data</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id19">Transport Layer封包长封包结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id20">Transport Layer频道控制结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id21">频道扫描机制</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id22">频道控制模块可调节参数</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id23">连接时的频道扫描</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id24">极端环境保护</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id25">频道扫描提前终止</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id26">频道扫描安全机制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id27">紧急频道机制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#api">频道控制模块API</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#id29">频道遍历机制</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id31">Transport Layer位置控制方案</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id32">位置控制模块概述</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id35">位置控制模块 API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">传输层模块示例</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id37">Transport Layer封包传输</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id42">Transport Layer封包接收</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#transport-layer-nack">Transport Layer封包 NACK</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id48">Transport Layer封包发送失败</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ack">传输层封包 ACK</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lvgl/doc/text_cn/README.html">LVGL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+    <li class="breadcrumb-item active">PPT Transport</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="ppt-transport">
+<h1>PPT Transport<a class="headerlink" href="#ppt-transport" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>PPT(Proprietary) Transport layer是为PPT应用设计的，提供空中数据包传输服务，具有以下特点：</p>
+<ol class="arabic simple">
+<li><p>根据mouse数据动态组合数据包格式。</p></li>
+<li><p>mouse和dongle之间的可靠传输。</p></li>
+<li><p>定制数据的双向长数据包传输。</p></li>
+<li><p>根据空中流量动态切换报告速率。</p></li>
+</ol>
+<p>参考以下内容，了解mouse/dongle应用间消息交互的自上而下概述。
+应用消息首先在Transport layer被打包成数据包。然后将数据包发送到Sync layer，该层充当MAC以维持设备之间的数据流和连接，
+包括信道选择和地址处理。</p>
+<p>如果设备连接，Sync layer会执行射频操作，将比特流传输到对方，然后比特流被接收并自下而上重新组织成应用消息，然后发送到应用层。</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../_images/ppt_trans_application_overview.png"><img alt="../../../../_images/ppt_trans_application_overview.png" src="../../../../_images/ppt_trans_application_overview.png" style="width: 660.0px; height: 367.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">消息传输概述</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>本应用说明将为用户提供基于Transport layer的综合指导，帮助用户启动和进行二次开发。</p>
+</section>
+<section id="id3">
+<h2>环境需求<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>此示例支持以下开发工具包：</p>
+<table class="docutils align-center" id="id4">
+<caption><span class="caption-text">开发工具包</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>硬件平台</p></th>
+<th class="head"><p>板卡名称</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G HDK</p></td>
+<td><p>RTL87x2G EVB</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>开发人员需要两组开发套件来演示Transport layer。
+一个作为主设备角色，另一个作为从设备角色。</p>
+<p>这里我们使用三模mouse项目和PPT dongle作为Transport layer的主/从设备进行演示。</p>
+</div>
+</section>
+<section id="id5">
+<h2>编译和下载<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>主/从设备的示例代码可以在SDK资料夹中找到:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>主设备Project file: <code class="file docutils literal notranslate"><span class="pre">applications\trimode_mouse\proj\rtl87x2g\mdk</span></code></p>
+<p>从设备Project file: <code class="file docutils literal notranslate"><span class="pre">applications\ppt_dongle\proj\rtl87x2g\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>主设备Project file: <code class="file docutils literal notranslate"><span class="pre">applications\trimode_mouse\proj\rtl87x2g\gcc</span></code></p>
+<p>从设备Project file: <code class="file docutils literal notranslate"><span class="pre">applications\ppt_dongle\proj\rtl87x2g\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>要构建和运行范例，请按照以下步骤进行：</p>
+<ol class="arabic simple">
+<li><p>打开示例文件。</p></li>
+<li><p>选择目标 <cite>trimode_mouse_hopping</cite> 和 <cite>ppt_dongle_hopping</cite>。</p></li>
+<li><p>修改宏 <cite>MOUSE_HW_SEL</cite> 为 <cite>MOUSE_EVB_MODE</cite>。</p></li>
+<li><p>要构建目标，请按照 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中的 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#app-image"><span class="std std-ref">编译 APP Image</span></a> 章节步骤进行。</p></li>
+<li><p>成功编译后，命名为 <code class="file docutils literal notranslate"><span class="pre">app_MP_xxx.bin</span></code> 的 application image 将生成在
+目录 <code class="file docutils literal notranslate"><span class="pre">application/&lt;trimode_mouse/ppt_dongle&gt;/proj/&lt;mdk/gcc&gt;/bin</span></code> 里。</p></li>
+<li><p>要下载 app bin 到 EVB 板上，请按照 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中的 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#mptool"><span class="std std-ref">MP Tool</span></a>
+章节步骤进行。</p></li>
+<li><p>按下 EVB 板上的 <kbd class="kbd docutils literal notranslate">reset</kbd> 按钮，开始运行。</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Application image 的具体位置取决于使用 Master/Slave project，以及 compiler 使用 MDK 或者是 GCC 编译。</p>
+</div>
+</section>
+<section id="id6">
+<h2>测试验证<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>在烧录主从设备的芯片后，并将 作為dongle 的 EVB上CON1接口 和 PC 用 USB 电缆连接，重新启动两个设备后，mouse 光标将自动开始画圈。
+用户可以从下面的Log来确认系统是否有正确执行</p>
+<ol class="arabic simple">
+<li><p>Mouse端與Dongle端的Log应该显示 <strong>[ppt_8k_trans_handle_init] PPT Transport layer ver</strong>, 表示 transport layer 模块成功启动</p></li>
+</ol>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>0000151  09-20#15:16:45.061  188  0001688.781  [APP]  !**[ppt_8k_trans_handle_init] PPT Transport layer ver v1.2.0, role: 1
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Mouse端Log显示 <strong>&quot;SYNC_EVENT_CONNECTED&quot;</strong> 代表已经成功连接，如下所示。</p></li>
+</ol>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>0000233  07-25#11:12:35.018  251  0009287.531  [APP] !**[ppt_app_sync_event_cb] SYNC_EVENT_PAIRED
+0000234  07-25#11:12:35.018  252  0009287.531  [APP] !**[ppt_app_sync_event_cb] SYNC_EVENT_CONNECTED
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>软件设计介绍<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>本章从三个不同的方面说明了 Transport layer。</p>
+<ol class="arabic simple">
+<li><p>Transport layer 的软件架构。</p></li>
+<li><p>Transport layer 与应用层或 Sync layer 之间的交互。</p></li>
+<li><p>Transport layer 的事件处理流程。</p></li>
+</ol>
+<div class="admonition-mouse-8k admonition">
+<p class="admonition-title">为了在无线 mouse 应用中实现每秒 8K 报告速率，采用了以下两种改进。</p>
+<ol class="arabic simple">
+<li><p>Sync layer 使用非对称的 7TX/1RX 交互取代传统的 1TX/1RX 模式。即，每第 8 个 CE 时，mouse（主设备）将进行连续 7 个 CEs 的发送操作（TX），并进行 1 次接收操作（RX）以从 dongle 接收信息。参考下图进行说明。</p></li>
+<li><p>每个数据包包含一个以上的mouse数据，使 dongle 应用在RF进行发送操作（TX）时仍可以报告 HID 数据。</p></li>
+</ol>
+</div>
+<figure class="align-center" id="air-transaction-schema-under-8k-report-rate">
+<a class="reference internal image-reference" href="../../../../_images/ppt_trans_8k_schema.png"><img alt="../../../../_images/ppt_trans_8k_schema.png" src="../../../../_images/ppt_trans_8k_schema.png" style="width: 1040.8px; height: 145.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">8K上报率下的交互机制</span><a class="headerlink" href="#air-transaction-schema-under-8k-report-rate" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id8">
+<h3>源代码目录<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>源代码目录: <code class="file docutils literal notranslate"><span class="pre">sdk\applications\ppt_transport\src</span></code></p></li>
+</ul>
+<p>Proprietary Transport layer的源文件分布如下：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── folder: ppt_transport
+    ├── inc                                     includes the header files of the Proprietary Transport layer
+    └── src                                     includes the source files of the Proprietary Transport layer
+        ├── ppt_trans_handle.c                  Transport layer interface to application
+        └── ppt_trans_pkt_algo.c                mouse packet algorithm implementation
+        └── ppt_trans_pkt_ctrl.c                mouse packet data control module
+        └── ppt_trans_sync_ctrl.c               2.4g stack related callback functions
+        └── ppt_trans_long_pkt_ctrl.c           long packet data control module
+        └── ppt_trans_test_handle.c             test module scenario handler
+        └── ppt_trans_test_stub_sync.c          test module for sync lib testing
+        └── ppt_trans_chann_ctrl.c              RF channel control module
+        └── ppt_trans_pos_ctrl.c                mouse position control module
+        └── ppt_trans_feat_ctrl.c               Transport layer feature control module
+</pre></div>
+</div>
+</section>
+<section id="flash">
+<h3>Flash 布局<a class="headerlink" href="#flash" title="Link to this heading"></a></h3>
+<p>应用程序默认的flash布局头文件： <code class="file docutils literal notranslate"><span class="pre">sdk\applications\trimode_mouse\proj\flash_map.h</span></code>。</p>
+<table class="docutils align-default" id="id52">
+<caption><span class="caption-text">Flash布局</span><a class="headerlink" href="#id52" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example layout with a total flash size of 1MB</p></th>
+<th class="head"><p>Size(byte)</p></th>
+<th class="head"><p>Start Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>4K</p></td>
+<td><p>0x04000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OEM Header</p></td>
+<td><p>4K</p></td>
+<td><p>0x04001000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x04002000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Boot Patch</p></td>
+<td><p>32K</p></td>
+<td><p>0x0400A000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Bank0</p></td>
+<td><p>620K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>OTA Header</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x04012000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>System Patch code</p></li>
+</ul>
+</td>
+<td><p>32K</p></td>
+<td><p>0x04013000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>BT Lowerstack Patch code</p></li>
+</ul>
+</td>
+<td><p>60K</p></td>
+<td><p>0x0401B000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>BT Host code</p></li>
+</ul>
+</td>
+<td><p>212K</p></td>
+<td><p>0x0402A000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP code</p></li>
+</ul>
+</td>
+<td><p>308K</p></td>
+<td><p>0x0405F000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP Config File</p></li>
+</ul>
+</td>
+<td><p>4K</p></td>
+<td><p>0x040AC000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data1</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data2</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data3</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data4</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>APP data5</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>APP data6</p></li>
+</ul>
+</td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><p>OTA Bank1</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank0 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank0 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><p>Bank1 Secure APP code</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bank1 Secure APP Data</p></td>
+<td><p>0K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-even"><td><p>OTA Temp</p></td>
+<td><p>312K</p></td>
+<td><p>0x040AD000</p></td>
+</tr>
+<tr class="row-odd"><td><p>FTL</p></td>
+<td><p>16K</p></td>
+<td><p>0x040FB000</p></td>
+</tr>
+<tr class="row-even"><td><p>APP Defined Section1</p></td>
+<td><p>4K</p></td>
+<td><p>0x040FF000</p></td>
+</tr>
+<tr class="row-odd"><td><p>APP Defined Section2</p></td>
+<td><p>0K</p></td>
+<td><p>0x04100000</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<ul class="simple">
+<li><p>如需调整Flash布局，请参考 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html"><span class="doc">快速入门</span></a> 中 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#flash-map"><span class="std std-ref">生成 Flash Map</span></a> 的步骤。</p></li>
+<li><p>调整Flash布局后，必须依照 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#ota-header"><span class="std std-ref">生成 OTA Header</span></a> 和 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#system-config-file"><span class="std std-ref">生成 System Config File</span></a> 上的步骤，基于新的Flash布局产生档案。</p></li>
+<li><p>调整Flash布局后，必须使用新的 <code class="file docutils literal notranslate"><span class="pre">flash_map.h</span></code> 替换 <code class="file docutils literal notranslate"><span class="pre">sdk\applications\trimode_mouse\proj\flash_map.h</span></code> 重新进行 <a class="reference internal" href="../../../../doc/quick_start/text_cn/README.html#app-image"><span class="std std-ref">编译 APP Image</span></a> 步骤。</p></li>
+</ul>
+</div>
+</section>
+<section id="transport-layer">
+<h3>Transport Layer模块架构<a class="headerlink" href="#transport-layer" title="Link to this heading"></a></h3>
+<p>本节将从两个不同角度讨论Transport layer的模块架构，以便开发人员更深入了解。</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><strong>功能</strong></div>
+<div class="line">该模块可分为子模块，每个子模块具有不同的子程序，以帮助完成来自应用层的数据包传输请求。</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line"><strong>输入/输出事件</strong></div>
+<div class="line">通过定义Transport layer的输入和输出事件及其发布方式，开发人员可以追踪服务处理过程及各个子模块之间的数据流。</div>
+</div>
+</li>
+</ul>
+<section id="id9">
+<h4>Transport Layer子模块<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p>下图说明了 <a class="reference internal" href="#id10"><span class="std std-ref">Transport layer模块架构</span></a>，里面主要有五个子模块。</p>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="../../../../_images/ppt_trans_module_architecture.png"><img alt="../../../../_images/ppt_trans_module_architecture.png" src="../../../../_images/ppt_trans_module_architecture.png" style="width: 843.8399999999999px; height: 451.08px;" /></a>
+<figcaption>
+<p><span class="caption-text">Transport layer模块架构</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-center" id="id11">
+<caption><span class="caption-text">子模块说明</span><a class="headerlink" href="#id11" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>子模块</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PPT_TRANS_HANDLE</strong></p></td>
+<td><p>作为应用层的统一接口，并在收到来自应用层的输入事件时触发相应的子程序</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PPT_TRANS_SYNC_CTRL</strong></p></td>
+<td><p>负责封包传输的子程序，以及处理Sync layer事件或向Sync layer发出请求的统一接口</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PPT_TRANS_PKT_CTRL</strong></p></td>
+<td><p>负责封包补偿和mouse数据管理的子程序</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PPT_TRANS_LONG_PKT_CTRL</strong></p></td>
+<td><p>负责长封包重传和长封包数据管理的子程序</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PPT_TRANS_PKT_ALGO</strong></p></td>
+<td><p>负责封包组合和解析的子程序</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h4>Transport Layer事件<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>我们从两方面定义事件，以便开发者能够清楚地了解每个事件如何触发以及应实现什么。</p>
+<ul class="simple">
+<li><p><strong>Type</strong></p>
+<ul>
+<li><p>应用APP事件：事件来自应用层，或应该发布到应用层。</p></li>
+<li><p>Sync layer堆事件：事件来自Sync layer，或应该发布到Sync layer。</p></li>
+</ul>
+</li>
+<li><p><strong>Data Flow</strong></p>
+<ul>
+<li><p>输入事件：输入数据或信号到Transport layer。</p></li>
+<li><p>输出事件：从Transport layer输出数据或信号。</p></li>
+</ul>
+</li>
+</ul>
+<p>下图为每个输入事件及其对应的Transport layer处理说明。</p>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../../../../_images/ppt_trans_events.png"><img alt="../../../../_images/ppt_trans_events.png" src="../../../../_images/ppt_trans_events.png" style="width: 908.4px; height: 525.9px;" /></a>
+<figcaption>
+<p><span class="caption-text">Transport layer事件概述</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>下表列出了输入/输出事件，包括类型和数据流。</p>
+<table class="docutils align-center" id="id14">
+<caption><span class="caption-text">Transport layer事件表</span><a class="headerlink" href="#id14" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 21.1%" />
+<col style="width: 10.5%" />
+<col style="width: 10.5%" />
+<col style="width: 57.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>事件</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>数据流</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>应用请求数据发送</p></td>
+<td><p>应用</p></td>
+<td><p>输入</p></td>
+<td><p>应用请求发送HID相关数据，包括光学数据、按钮按下或释放、滚轮滚动</p></td>
+</tr>
+<tr class="row-odd"><td><p>应用通知数据已接收</p></td>
+<td><p>应用</p></td>
+<td><p>输出</p></td>
+<td><p>鼠标数据解析完成后，此事件连同解析结果一起提交给应用层进一步处理</p></td>
+</tr>
+<tr class="row-even"><td><p>应用请求发送长包数据</p></td>
+<td><p>应用</p></td>
+<td><p>输入</p></td>
+<td><p>应用请求发送定制数据，包括OTA图像、LED配置等</p></td>
+</tr>
+<tr class="row-odd"><td><p>应用通知长包数据已接收</p></td>
+<td><p>应用</p></td>
+<td><p>输出</p></td>
+<td><p>长包接收完成后，此事件连同长包数据一起提交给应用层进一步处理</p></td>
+</tr>
+<tr class="row-even"><td><p>应用通知长包数据发送完成</p></td>
+<td><p>应用</p></td>
+<td><p>输出</p></td>
+<td><p>长包传输已被确认后，此事件提出给应用层，表示长包处理已完成</p></td>
+</tr>
+<tr class="row-odd"><td><p>堆请求数据包发送</p></td>
+<td><p>同步层</p></td>
+<td><p>输出</p></td>
+<td><p>鼠标数据或长包数据组成包后，传输层生成此事件给同步层作为数据包发送</p></td>
+</tr>
+<tr class="row-even"><td><p>堆通知数据包已确认</p></td>
+<td><p>同步层</p></td>
+<td><p>输入</p></td>
+<td><p>先前发送的数据包已从对等端确认</p></td>
+</tr>
+<tr class="row-odd"><td><p>堆通知数据包未确认</p></td>
+<td><p>同步层</p></td>
+<td><p>输入</p></td>
+<td><p>先前发送的数据包未被确认，触发传输层的补偿机制以确保正确的光标偏移</p></td>
+</tr>
+<tr class="row-even"><td><p>堆通知数据包发送失败</p></td>
+<td><p>同步层</p></td>
+<td><p>输入</p></td>
+<td><p>数据包未通过空中传输。在这种情况下，此数据包被视为已丢失，触发传输层的补偿机制，以避免进一步的延迟增加</p></td>
+</tr>
+<tr class="row-odd"><td><p>堆通知数据包已接收</p></td>
+<td><p>同步层</p></td>
+<td><p>输入</p></td>
+<td><p>设备从同步层收到数据包，传输层会解析数据包为鼠标数据或长包数据，然后发出事件将数据转发至应用层</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id15">
+<h3>Transport Layer模块交互<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p>本节将简要介绍对等设备之间的空中数据包接口。</p>
+<section id="id16">
+<h4>Transport Layer数据包格式架构<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<p>在mouse应用中，吞吐量使用率对于较高的报告率变得至关重要。所使用的外围设备通常具有硬件去抖时间以避免抖动。
+这意味着通常需要几毫秒产生有意义的信号，然而数据包传输每几百微秒完成一次，造成额外的电流消耗和系统效率的降低，因为如果数据包格式是固定的，每次数据包传输中都包含大量的重复数据。</p>
+<p>Transport layer支持动态数据包格式来避免浪费。此外，我们引入了数据包交互中的传统mouse数据概念，通过利用动态数据包长度节省的有效负载，使其在这种时间受限的场景中更具有韧性。 <a class="reference internal" href="#id17"><span class="std std-ref">Transport layer数据包格式</span></a> 说明了动态数据包的组成。数据包中仅有前两个字段，标头和序列号是必需的。
+配置序列号后，Transport layer将决定是否插入相应字段到数据包中，如按钮/滚轮/移动/长数据包数据。下面，我们将简要解释每个字段。</p>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../../../../_images/ppt_trans_packet_format.png"><img alt="../../../../_images/ppt_trans_packet_format.png" src="../../../../_images/ppt_trans_packet_format.png" style="width: 825.0px; height: 511.79999999999995px;" /></a>
+<figcaption>
+<p><span class="caption-text">Transport layer数据包格式</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>8K报告速率下，最大的数据包长度配置为7字节数据，crc设置为3字节，这是考虑到目前Realtek RTL8762G系列仅支持2M PHY比特率的平衡点。</p>
+<section id="header">
+<h5>Header<a class="headerlink" href="#header" title="Link to this heading"></a></h5>
+<p>Header由不同标志组成，这些标志用来通过开启或关闭来与从属设备通信是否有对应的数据字段需要解析。</p>
+</section>
+<section id="packet-type">
+<h5>Packet Type<a class="headerlink" href="#packet-type" title="Link to this heading"></a></h5>
+<p>在封包类型栏位中指定了两种封包类型，分别是「偏移」和「补偿」。mouse将累积光学传感器采样的光标移动，并定期通过补偿类型封包与dongle同步该总和，以对齐光标的轨迹，防止在不良空气环境下漂移。另一方面，偏移类型则意味着通常的mouse封包，其在此封包中携带常规的传感器数据。</p>
+</section>
+<section id="sequence-number">
+<h5>Sequence Number<a class="headerlink" href="#sequence-number" title="Link to this heading"></a></h5>
+<p>Sequence Number由主设备控制，分别对主设备与从设备有不同功用。</p>
+<dl class="simple">
+<dt>主设备</dt><dd><p>当收到Sync layer的ACK或NACK事件时，主设备会解析序列号以决定是否需要重新传输该数据包。
+每次数据包发送请求事件，序列号将增加一。</p>
+</dd>
+<dt>从设备</dt><dd><p>每个数据包携带两组备份的动作数据，作为前次发送数据包的备份。
+如果从设备发现两个连续数据包之间的序列号不连续，便知道这两个数据包之间有数据包掉落，并应使用备份数据来恢复游标漂移。</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果在数据包发送请求事件后发生数据包发送失败事件，序号将返回到数据包发送请求事件之前的原始值。</p>
+</div>
+</section>
+<section id="button-wheel">
+<h5>Button/Wheel<a class="headerlink" href="#button-wheel" title="Link to this heading"></a></h5>
+<p>滚轮栏位定义了 Q-Decoder 外设当前的滚动方向，而按钮栏位则作为每个按钮的位元遮罩，每个位元代表特定按钮的当前状态。</p>
+<p>目前，封包格式架构最多支持七个按钮。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Transport layer并未定义应该如何代表 <em>按下</em> 事件和 <em>释放</em> 事件，它只会传递位遮罩，让应用程序自行解析结果。</p>
+</div>
+</section>
+<section id="motion-data">
+<h5>Motion Data<a class="headerlink" href="#motion-data" title="Link to this heading"></a></h5>
+<p>移动数据字段定义了由光学传感器生成的采样偏移数据。
+每当一对移动偏移数据准备好传输时，Transport layer会找到一个最接近它的传统移动数据作为包数据。如果没有足够的传统数据，则使用零移动数据来组成包。
+下图说明了一个例子，其中每125微秒生成一次新的移动数据并被采用到包中。</p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../../../../_images/ppt_trans_legacy_pkt.png"><img alt="../../../../_images/ppt_trans_legacy_pkt.png" src="../../../../_images/ppt_trans_legacy_pkt.png" style="width: 948.9px; height: 283.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">传统移动数据</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="long-packet-data">
+<h5>Long Packet Data<a class="headerlink" href="#long-packet-data" title="Link to this heading"></a></h5>
+<p>长封包的设计目的是允许定制数据传输，如DPI配置或光效同步，除了普通的mouse数据之外。
+用户数据将自动分割成几塊并载入每个封包中，这些段在对等设备中重新组织。
+重新组织数据时将应用CRC16校验算法进行验证。</p>
+</section>
+</section>
+<section id="id19">
+<h4>Transport Layer封包长封包结构<a class="headerlink" href="#id19" title="Link to this heading"></a></h4>
+<p>当封包重新组织完成后，Transport layer会将预先注册的长封包数据附加到封包到其最大值。
+每个长封包必须带有一个两位的操作码和六位的长封包序号作为元数据。这意味着在附加长封包数据之前，封包长度不得超过七字节。
+Transport layer构建一个表格来存儲长封包序号和该封包中携带的数据偏移量之间的映射信息，以便在接收到否认事件时进行长封包重传。当新数据段附加到封包后，长封包序号加一。</p>
+</section>
+<section id="id20">
+<h4>Transport Layer频道控制结构<a class="headerlink" href="#id20" title="Link to this heading"></a></h4>
+<p>为了提高2.4G数据包传输的质量并减少来自接入点（AP）或其他发射器的干扰，我们提供了两种频道控制选项：</p>
+<p>频道扫描机制：这种方法利用每秒触发一次的频道监控器来评估2.4G数据包传输的性能。基于其评估结果，系统可以决定是否启动频道扫描以优化传输。</p>
+<p>频道遍历机制：这种方法在检测到当前频道上的传输發生中断时自动切换传输频道，以确保无缝通信。</p>
+<p>通过这些机制，我们能够增强传输的可靠性并有效管理频道干扰。</p>
+<p>需要注意的是，频道遍历机制不能与频道扫描机制共存。因此，如果用户同时启用两个宏，将会发生编译错误。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#if PPT_TRANS_FEATURE_SUPPORT_CHANNEL_CTRL &amp;&amp; PPT_TRANS_FEATURE_SUPPORT_CHANNEL_TRAVERSE</span>
+<span class="cp">#error &quot;Cannot enable both feature simutaniously&quot;</span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<section id="id21">
+<h5>频道扫描机制<a class="headerlink" href="#id21" title="Link to this heading"></a></h5>
+<p>首先，我们介绍频道扫描机制。用户可以通过配置以下宏来选择信道扫描方法。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PPT_TRANS_FEATURE_SUPPORT_CHANNEL_CTRL      0       </span><span class="cm">/** Enable channel statistic control method */</span>
+</pre></div>
+</div>
+<p>需要提到的是，频道扫描机制的需依赖于使用长封包传输机制来进行主从端的统计数据。整体频道扫描机制流程如下：</p>
+<ol class="arabic simple">
+<li><p>频道监控器每秒会触发一次。</p></li>
+<li><p>监控器会评估2.4G数据包传输的品质，考虑因素包括数据包丢失、延迟和干扰。</p></li>
+<li><p>根据评估结果，监控器会决定是否需要进行频道扫描。</p></li>
+<li><p>如果当前传输品质达不到设定的要求，监控器会启动频道扫描。</p></li>
+<li><p>在频道扫描期间，监控器会扫描可用的2.4G频道，并去统计每个频道的数据包传输情况，并以此选择干扰最少的频道。</p></li>
+<li><p>一旦统计数据中出现理想的频道，主从设备将切换连接到该频道。</p></li>
+<li><p>主从设备会每秒重复此过程以连续监视和优化2.4G数据包传输。</p></li>
+</ol>
+<figure class="align-center" id="channel-sweeping-flow-chart">
+<img alt="../../../../_images/ppt_trans_sweep_flow.png" src="../../../../_images/ppt_trans_sweep_flow.png" />
+<figcaption>
+<p><span class="caption-text">频道扫描流程图</span><a class="headerlink" href="#channel-sweeping-flow-chart" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>参考下图来了解2.4G主从设备中的Transport layer事件及其相应处理。</p>
+<figure class="align-center" id="channel-control-module-overview">
+<img alt="../../../../_images/ppt_trans_channel_control_over_view.png" src="../../../../_images/ppt_trans_channel_control_over_view.png" />
+<figcaption>
+<p><span class="caption-text">频道控制模块概述</span><a class="headerlink" href="#channel-control-module-overview" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>以下是对应上图中的每个输入事件的详细说明。</p>
+<p>应用程序APP事件</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>应用程序长数据包发送完成事件。</p>
+<ol class="arabic simple">
+<li><p>当长数据包发送完成时，将通知应用程序。</p></li>
+<li><p>当频道控制相关命令发送完成时，频道控制模块将接收到相应的事件，以下是处理 API。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_trans_chann_ctrl_sweep_channel_cb()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_tans_chann_ctrl_change_channel_cb()</span></code></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>应用程序长数据包接收完成事件。</p>
+<ol class="arabic simple">
+<li><p>当长数据包接收完成时，将通知应用程序。</p></li>
+<li><p>频道控制模块将接收到频道控制相关命令，以下是处理 API。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_tans_chann_ctrl_long_pkt_rcv_cb()</span></code></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+<p>Sync layer堆栈事件</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>堆栈通知频道统计完成事件。</p>
+<ol class="arabic simple">
+<li><p>接收到频道统计结果，频道控制模块可根据接收到的结果进行进一步操作。以下是处理 API。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_trans_chann_ctrl_get_result()</span></code></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>堆栈通知数据包传输事件。</p>
+<ol class="arabic simple">
+<li><p>之前发送的数据包被对端确认。以下是处理 API。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_trans_chann_ctrl_ack_cnt_inc()</span></code></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>堆栈通知数据包未确认事件。</p>
+<ol class="arabic simple">
+<li><p>之前发送的数据包未被对端确认。以下是处理 API。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_trans_chann_ctrl_nack_cnt_inc()</span></code></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>堆栈通知数据包发送失败事件。</p>
+<ol class="arabic simple">
+<li><p>之前发送的数据包发送失败。以下是处理 API。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_trans_chann_ctrl_send_fail_cnt_inc()</span></code></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+<section id="id22">
+<h6>频道控制模块可调节参数<a class="headerlink" href="#id22" title="Link to this heading"></a></h6>
+<p>为了调整频道扫描性能，我们提供了几个参数，使用者可以根据自己的具体要求调整这些参数来优化频道扫描机制。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*This parameter determines the interval at which the channel monitor is triggered.</span>
+<span class="cm">It defines the duration, measured in milliseconds, between each activation of the channel monitor.*/</span>
+<span class="cp">#define PPT_TRANS_CHANN_MONITOR_ITVL              1000</span>
+
+<span class="cm">/*This parameter defines the minimum duration for channel usage in the channel control module.</span>
+<span class="cm">It determines the amount of time the channel should be utilized after executing channel hopping.</span>
+<span class="cm">The unit of measurement for this parameter is milliseconds.*/</span>
+<span class="cp">#define PPT_TRANS_MIN_CHANN_USAGE_TIME            (2 * 1000)</span>
+
+<span class="cm">/*This define the trigger threshold for the channel monitor. The parameter determines</span>
+<span class="cm">the minimum acceptable ACK receive rate for the 2.4G packet transmission. This threshold</span>
+<span class="cm">is defined as a percentage value. For example, if the trigger threshold is set to 98%, it</span>
+<span class="cm">means that the 2.4G packet transmission system expects to receive at least 98% of the</span>
+<span class="cm">ACKs from the 2.4G slave device. To put it in perspective, if 7000 packets are sent, the</span>
+<span class="cm">system would expect to receive a minimum of 6860 ACKs.</span>
+
+<span class="cm">By setting a higher trigger threshold, the system becomes more sensitive to the</span>
+<span class="cm">environment and demands a higher success rate in terms of ACK reception. This can help</span>
+<span class="cm">ensure a more reliable and efficient 2.4G packet transmission by minimizing the chances</span>
+<span class="cm">of packet loss or interference. */</span>
+<span class="cp">#define CHANN_MONITOR_CHANN_SWEEP_THRESH   95</span>
+
+<span class="cm">/*This define the channel disqualify trigger counts threshold for the channel monitor. The</span>
+<span class="cm">parameter determines the number of consecutive failures to meet the ACK receive rate</span>
+<span class="cm">trigger threshold before a channel is viewed as disqualified. This threshold is specified by</span>
+<span class="cm">a count value.</span>
+
+<span class="cm">For example, if the disqualify trigger counts threshold is set to 3, it means that if a</span>
+<span class="cm">channel fails to meet the ACK receive rate trigger threshold for 3 consecutive times, the</span>
+<span class="cm">channel monitor will consider the channel disqualified and will execute channel sweeping to</span>
+<span class="cm">select a new channel.</span>
+
+<span class="cm">By setting a lower disqualify trigger counts threshold, the system will become more</span>
+<span class="cm">sensitive to the environment and reacts quickly to unfavorable channel conditions.*/</span>
+<span class="cp">#define SWEEP_TRIGGER_THRESH_COUNT         3</span>
+
+<span class="cm">/*The parameter determines the duration for which the monitor scans and evaluates each</span>
+<span class="cm">available channel during the sweeping operation. Users can adjust this duration based on</span>
+<span class="cm">the size of the network and the time required for accurate channel analysis. The</span>
+<span class="cm">parameter is defined in milliseconds.</span>
+
+<span class="cm">For example, if the parameter is set to 200 milliseconds, it means that the channel</span>
+<span class="cm">monitor will sample and evaluate each channel candidate for a period of 200 milliseconds.</span>
+<span class="cm">During this time, the monitor collects statistical data and performance metrics for analysis</span>
+<span class="cm">and decision-making.</span>
+
+<span class="cm">By setting a larger value for the total accumulated time, the channel sweeping process will</span>
+<span class="cm">take more time as each channel is evaluated for a longer duration. This can result in a</span>
+<span class="cm">higher level of accuracy and reliability in determining the performance of each channel.*/</span>
+<span class="cp">#define PER_CHANNEL_SWEEPING_TIME          200</span>
+
+<span class="cm">/*The definition of this parameter is same as previous. The difference is that this</span>
+<span class="cm">parameter is only used when the master and slave are performing reconnection*/</span>
+<span class="cp">#define PER_RECONN_CHANNEL_SWEEPING_TIME   100</span>
+
+<span class="cm">/*The definition of this parameter is same as previous. The difference is that this</span>
+<span class="cm">parameter is only used when the master and slave first connected.*/</span>
+<span class="cp">#define PER_CONN_CHANNEL_SWEEPING_TIME     500</span>
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h6>连接时的频道扫描<a class="headerlink" href="#id23" title="Link to this heading"></a></h6>
+<p>在2.4GHz主设备和从设备连接的情况下，可以根据自上次断开连接以来的时间差异进行额外的频道扫描。如果时间差低于特定阈值，则表明自上次连接以来环境变化不大。</p>
+<p>在这种情况下，模块可以确定先前从频道扫描中获得的频道候选依然有效并且可以重复使用。在环境条件被认为稳定的情况下，重复使用先前的频道扫描结果，使模块优化频道选择过程。</p>
+<p>这种方法通过避免在环境预期保持相对稳定时进行不必要的频道扫描来节省时间和资源。使用先前的频道扫描候选假设通信的最佳频道并未显著改变，导致2.4GHz主设备和从设备之间更高效、无缝的重新连接。</p>
+<p>总的来说，这种策略通过在被视为稳定的环境中重复使用先前的频道扫描结果来提高频道选择过程的效率，并使主设备与从设备之间更快、更可靠地重新连接。</p>
+<figure class="align-center" id="connected-channel-sweeping-flow-chart">
+<img alt="../../../../_images/ppt_trans_connect_sweep.png" src="../../../../_images/ppt_trans_connect_sweep.png" />
+<figcaption>
+<p><span class="caption-text">连接时的频道扫描流程图</span><a class="headerlink" href="#connected-channel-sweeping-flow-chart" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>针对这种情况，有几个参数，其详细内容如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*This define the lenth of the paratial set of the channel candidate. For example, by</span>
+<span class="cm">setting the parameter to 4, the channel sweeping module will maintain a partial set</span>
+<span class="cm">consisting of the best 4 channels. These channels will be considered as the channel</span>
+<span class="cm">candidates when the 2.4GHz connection is lost and needs to be reestablished. The length</span>
+<span class="cm">value shall smaller than the length of the full set channel candidates.</span>
+<span class="cm">*/</span>
+<span class="cp">#define LOST_RECONN_SWEEP_CHANN_LEN        4</span>
+
+<span class="cm">/*This define the time threshold for channel monitor whether to use the partial set of the</span>
+<span class="cm">channal candidates of not, the unit is define in milliseconds. For example, by setting the</span>
+<span class="cm">parameters to 1500. When connected if the time delta since last disconnect is below 1500</span>
+<span class="cm">ms, it may indicate that the environment has not changed significantly since the previous</span>
+<span class="cm">connection, and the previous channel sweep result can be reused.*/</span>
+<span class="cp">#define CONSIDER_LOST_DURATION             1500</span>
+</pre></div>
+</div>
+</section>
+<section id="id24">
+<h6>极端环境保护<a class="headerlink" href="#id24" title="Link to this heading"></a></h6>
+<p>在当前环境混乱且缺乏适合2.4GHz传输的频道的某些情况下，频道扫描过程本身可能会给2.4GHz通信带来额外干扰。</p>
+<p>为了解决这个问题，频道监控器整合了一个机制，当频道扫描触发阈值迅速连续触发时，能够动态调整频道扫描触发阈值。</p>
+<p>当频道扫描在短时间内频繁触发时，这表明可用频道因严重干扰或其他问题而不稳定或不适合传输。在此情况下，继续进行频道扫描可能会加剧干扰并导致性能下降。</p>
+<p>为了减轻这一情况，当检测到快速触发时，频道监视器会降低频道扫描触发阈值。通过降低阈值，模块可以减少频道扫描的频率以及由此过程引起的干扰。</p>
+<p>这种自适应方法使频道监视器能够对环境动态作出响应，并防止频道扫描过程本身带来的额外干扰。通过调整触发阈值，模块可以在评估可用频道和最小化干扰之间取得平衡，从而最终提高2.4GHz传输的整体性能和稳定性。流程图如下所示。</p>
+<figure class="align-center" id="bad-environment-protection-flow-chart">
+<img alt="../../../../_images/ppt_trans_bad_env_protect.png" src="../../../../_images/ppt_trans_bad_env_protect.png" />
+<figcaption>
+<p><span class="caption-text">极端环境的频道扫描流程图</span><a class="headerlink" href="#bad-environment-protection-flow-chart" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>针对这种情况，有几个参数，详细信息如下所示。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* These two parameters, BAD_ENVIRONMENT_MONITOR_TIME and</span>
+<span class="cm">CONSIDER_BAD_ENVIRONMENT, work together to define the condition for rapid triggering.</span>
+<span class="cm">BAD_ENVIRONMENT_MONITOR_TIME is defined in seconds and represents the time interval</span>
+<span class="cm">within which the channel sweep triggers are monitored. It determines the duration over</span>
+<span class="cm">which the channel sweep trigger count is evaluated.</span>
+<span class="cm">CONSIDER_BAD_ENVIRONMENT is defined in count and represents the threshold for the</span>
+<span class="cm">number of channel sweep triggers within the specified time interval. If the channel sweep</span>
+<span class="cm">is triggered equal to or more than the specified count within the defined time interval, the</span>
+<span class="cm">condition of rapid triggering is considered to be met.</span>
+<span class="cm">For example, if the parameters are set to 20 seconds and 3 times, it means that the</span>
+<span class="cm">channel sweep triggers are monitored within a 20-second interval. If the channel sweep is</span>
+<span class="cm">triggered 3 times or more within this 20-second interval, it is considered to be a rapid</span>
+<span class="cm">triggering condition and the module will lower the channel sweeping trigger threshold for</span>
+<span class="cm">chaotic environment protection.</span>
+<span class="cm">*/</span>
+<span class="cp">#define BAD_ENVIRONMENT_MONITOR_TIME       20 </span><span class="c1">//seconds</span>
+<span class="cp">#define CONSIDER_BAD_ENVIRONMENT           3</span>
+
+<span class="cm">/*The parameter determines the duration for which the channel monitor will lower the</span>
+<span class="cm">channel sweeping trigger threshold when rapid triggering is detected. It is defined in</span>
+<span class="cm">milliseconds.</span>
+<span class="cm">For example, if you set the parameter to 60000 milliseconds (60 seconds), it means that</span>
+<span class="cm">when the channel sweep is triggered rapidly and the condition for rapid triggering is met,</span>
+<span class="cm">the channel monitor will lower the channel sweeping trigger threshold for a duration of 60</span>
+<span class="cm">seconds.</span>
+<span class="cm">*/</span>
+<span class="cp">#define BAD_ENVIRONMENT_PROTECT_TIME       60000</span>
+
+<span class="cm">/*The definition of this parameter is same as SWEEP_TRIGGER_THRESH_COUNT and is the</span>
+<span class="cm">trigger criteria for chaotic environment.</span>
+<span class="cm">*/</span>
+<span class="cp">#define BAD_EVN_SWEEP_TRIGGER_THRESH       5</span>
+
+<span class="cm">/*The definition of this parameter is same as CHANN_MONITOR_CHANN_SWEEP_THRESH</span>
+<span class="cm">and is the trigger criteria for chaotic environment.</span>
+<span class="cm">*/</span>
+<span class="cp">#define BAD_EVN_CHANN_SWEEP_THRESH         90</span>
+</pre></div>
+</div>
+</section>
+<section id="id25">
+<h6>频道扫描提前终止<a class="headerlink" href="#id25" title="Link to this heading"></a></h6>
+<p>此外，还有频道扫描的提前终止条件。考虑以下情况：当2.4G频道没有任何干扰时，预期所有频道都会提供良好的传输条件。因此，从扫描传输统计结果中选择最佳频道变得具有挑战性。为了解决这个挑战，设置了一个最大的扫描次数作为频道扫描过程的提前终止条件。</p>
+<p>最大扫描次数参数决定了在终止频道扫描过程之前将执行的频道扫描的最大次数。如果在执行最大扫描次数之后，系统仍无法选择最佳频道，则2.4G主设备将终止频道扫描并选择当前的最佳频道作为传输频道。</p>
+<p>针对这种情况，有一个参数，详细信息如下所示。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* 此参数确定在终止频道扫描过程之前，将执行的最大频道扫描次数</span>
+<span class="cm">*/</span>
+<span class="cp">#define MAX_SWEEP_COUNT                    7</span>
+</pre></div>
+</div>
+</section>
+<section id="id26">
+<h6>频道扫描安全机制<a class="headerlink" href="#id26" title="Link to this heading"></a></h6>
+<p>为了确保频道扫描命令成功传输到对等设备，设置了一个保护机制。如果2.4G从设备在预定时间内未能接收到频道扫描命令或2.4G主设备未能发送频道扫描命令，对应的设备将启动断开命令，然后尝试重新连接到2.4G主设备。</p>
+<p>此保护机制旨在防止频道通信中断或从设备错过重要命令。通过触发断开和随后的重新连接，从设备可以重新获得与主设备建立可靠连接的机会，并接收到所需的命令，包括频道扫描命令。</p>
+<p>此机制有助于维持频道扫描过程的完整性，并确保通信系统中的所有设备都能同步并有效地执行其任务。</p>
+<p>针对此种情况，设置了一个参数，详细如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* This parameter is set for 2.4G slave device, This parameter determines the</span>
+<span class="cm">acceptable time difference between consecutive channel sweeping commands, and it is</span>
+<span class="cm">measured in milliseconds.</span>
+<span class="cm">For example, if there are 15 channels and each channel takes 200 milliseconds to sample</span>
+<span class="cm">and evaluate, with a parameter set to 90 milliseconds for the expected tolerance of the</span>
+<span class="cm">time delta, the 2.4G slave device would expect to receive the next channel sweeping</span>
+<span class="cm">command within 3090 milliseconds (15 channels * 200 ms + 90 ms = 3090 ms).</span>
+
+<span class="cm">If the 2.4G slave device does not receive the next channel sweeping command within this</span>
+<span class="cm">expected timeframe, it will initiate a disconnect command and then attempt to reconnect</span>
+<span class="cm">to the 2.4G master device. This protection mechanism ensures that the slave device can</span>
+<span class="cm">maintain synchronization with the master device and receive the necessary commands for</span>
+<span class="cm">the channel sweeping process.</span>
+<span class="cm">*/</span>
+<span class="cp">#define CONN_PROTECT_OFFSET                    90</span>
+</pre></div>
+</div>
+</section>
+<section id="id27">
+<h6>紧急频道机制<a class="headerlink" href="#id27" title="Link to this heading"></a></h6>
+<p>此外，当进行频道扫描时，将选择最佳频道作为主频道，另一个频道作为紧急频道。紧急频道的意思是，当主频道受到严重干扰导致2.4G主设备或从设备无法接收到来自对等设备的任何数据包时，设备将尝试从主频道切换到紧急频道。</p>
+<p>在频道扫描过程中，我们将选择最佳频道作为主频道，并指定另一个频道作为紧急频道。紧急频道的目的是作为备份选项，以防主频道遭遇严重干扰。在2.4G主设备或从设备无法接收到来自对等设备的任何数据包时，由于主频道受到严重干扰，设备将尝试从主频道切换到紧急频道。</p>
+<p>通过配置紧急频道，设备即使在主要频道无法使用的情况下也能保持通信和连接。这允许连续运作并减少干扰对整个系统性能的影响。</p>
+<p>目前选择紧急频道的标准是基于与主要频道的频率差异。具体而言，如果第二最佳频道与主要频道的频率差异大于设定的阈值，将选择该频道。</p>
+<p>此场景的参数定义如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* This parameter determines the minimn channel bandwidth delta with the emergency</span>
+<span class="cm">channel and the main channel. For example if the main channel is 2442 (MHz) than the</span>
+<span class="cm">emergency channel should greater than 2467 (Mhz) or lesser than 2417 (MHz)</span>
+<span class="cm">*/</span>
+<span class="cp">#define EMERGENCY_CAHNNEL_MIN_DELTA        25</span>
+</pre></div>
+</div>
+<p>此方法考虑到干扰和干扰不仅会影响主要频道，还会影响其附近的其他频道。通过选择与主要频道有较大频宽差异的频道，紧急频道更有可能受到较少的干扰并提供更可靠的通信环境。</p>
+<p>考虑附近频道的影响有助于考量干扰的潜在扩散，确保紧急频道足够隔离主要频道所受的干扰。</p>
+<p>然而，在没有符合紧急频道选择标准的频道的情况下，替代方法是选择第二最佳频道作为紧急频道。这意味着如果没有频道的频宽差异大于设定的阈值，仍然会选择第二最佳频道作为紧急频道。</p>
+<p>流程图如下所示：</p>
+<figure class="align-center" id="id28">
+<img alt="../../../../_images/ppt_trans_emergency.png" src="../../../../_images/ppt_trans_emergency.png" />
+<figcaption>
+<p><span class="caption-text">紧急频道选择流程图</span><a class="headerlink" href="#id28" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="api">
+<h6>频道控制模块API<a class="headerlink" href="#api" title="Link to this heading"></a></h6>
+<p>最后，频道控制模块提供了管理和控制通信频道的功能。它允许用户执行与频道控制相关的各种操作，如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief  channel control module init, shall only called by 2.4G master.</span>
+<span class="cm"> * @return none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_master_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  channel control module init, shall only called by 2.4G slave</span>
+<span class="cm"> * @return none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_slave_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   command 2.4G master to perfoem channel sweep.</span>
+<span class="cm"> * @param   len        - length of the channel index array</span>
+<span class="cm"> * @param   chan_idx   - pointer of the channel index array</span>
+<span class="cm"> * @param   sweep_time - period of time for each channel</span>
+<span class="cm"> * @return  command success or fail</span>
+<span class="cm"> * @retval  true    command success</span>
+<span class="cm"> * @retval  false   command fail</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_command_sweep_channel</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">chan_idx</span><span class="p">,</span>
+<span class="w">                                                </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">sweep_time</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   this api will process the statistic result of each channel when channel sweeping</span>
+<span class="cm"> *          complete.</span>
+<span class="cm"> * @param   param - the statistic result for each channel candidate</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_get_result</span><span class="p">(</span><span class="n">sync_chann_param_t</span><span class="w"> </span><span class="n">param</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   handle channel control module when 2.4G master and slave disconnected.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_handle_disconnect</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   handle channel control module when 2.4G master and slave connected.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_handle_connect</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   To get whether 2.4G device is performing channel sweeping.</span>
+<span class="cm"> * @return  channel sweeping status</span>
+<span class="cm"> * @retval  true   no channel sweeping ongoing</span>
+<span class="cm"> * @retval  false  channel sweeping ongoing</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_is_idle</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   ACK count statistic for channel monitor.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_ack_cnt_inc</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   NACK count statistic for channel monitor.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_nack_cnt_inc</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   Send fail count statistic for channel monitor.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_send_fail_cnt_inc</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm">* @brief   Declared for long packet module, will be referenced</span>
+<span class="cm">*          when channel control long packet reception completes.</span>
+<span class="cm">* @param   result   - long packet receive status.</span>
+<span class="cm">* @param   pkt_data - pointer of received long packet data.</span>
+<span class="cm">* @param   len      - length of received long packet data</span>
+<span class="cm">* @param   info     - 2.4G related info.</span>
+<span class="cm">* @return  none</span>
+<span class="cm">*/</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_tans_chann_ctrl_long_pkt_rcv_cb</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">pkt_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">,</span>
+<span class="w">                                         </span><span class="n">sync_receive_info_t</span><span class="w"> </span><span class="n">info</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   handle channel control module when 2.4G slave disconnect with master,</span>
+<span class="cm"> *          shall only be called by 2.4G slave.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_chann_ctrl_slave_handle_disconnect</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id29">
+<h5>频道遍历机制<a class="headerlink" href="#id29" title="Link to this heading"></a></h5>
+<p>在本节中，我们介绍频道遍历机制。用户可以通过配置以下宏来选择频道遍历机制：</p>
+<p>代码在sync lib库中实现。频道遍历机制将在当前频道受到干扰时自动切换传输频道，以确保通信的流畅。频道遍历机制的流程如下：</p>
+<ol class="arabic simple">
+<li><p>初始连接：当2.4GHz主设备与从设备连接时，系统将在一个频道上开始传输。</p></li>
+<li><p>检测干扰：当传输受到干扰（即主设备或从设备都未收到来自对端的封包）时，将启动频道遍历。</p></li>
+<li><p>基于时间计数器切换频道：设备将根据当下的连接时间计数器切换传输频道。</p></li>
+<li><p>重试通信：如果系统仍无法在选定的频道上重新建立通信，设备将再次切换到另一个传输频道（步骤3）。</p></li>
+<li><p>成功重新建立通信：如果系统在选定的频道上重新建立通信（即收到来自对端的封包），设备将停留在选定的频道上。</p></li>
+</ol>
+<figure class="align-center" id="id30">
+<img alt="../../../../_images/ppt_trans_traverse_flow.png" src="../../../../_images/ppt_trans_traverse_flow.png" />
+<figcaption>
+<p><span class="caption-text">频道遍历流程图</span><a class="headerlink" href="#id30" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id31">
+<h4>Transport Layer位置控制方案<a class="headerlink" href="#id31" title="Link to this heading"></a></h4>
+<section id="id32">
+<h5>位置控制模块概述<a class="headerlink" href="#id32" title="Link to this heading"></a></h5>
+<p>在目前的2.4G数据包传输机制中，数据包以x轴和y轴位移量的形式传递关键信息。这些位移量在定位鼠标游标的位置上，有着至关重要的作用。然而，外部干扰可能会损坏2.4G传输的可靠性。这些干扰可能会中断数据包的平稳传输，从而导致数据包丢失。</p>
+<p>这种数据包丢失的后果可能是有问题的。当数据包丢失时，会导致位移量的顺序混乱。因此，对于应对的2.4G主设备和从设备可能会对游标位置产生不同的认知。而位置认知不一致会进而导致在终端电脑上游标的位置出现错误。</p>
+<p>为了说明位移错误的影响，能参考以下例子，考虑位移量（3,4）、（5,-2）和（1,3）。如果这些位移量按正确顺序接收，则得到的指针位置将是（3,4）-&gt;（8,2）-&gt;（9,5）。然而，如果发生错位，位移量收到的顺序为（3,4）、（1,3）、（5,-2），则指针位置将计算为（3,4）-&gt;（4,7）-&gt;（9,5）。这里可以明显看出，由于错位，第二个点的位置是不准确的。</p>
+<p>为了确保精确的游标的定位，我们使用了一个位置同步控制机制。考虑到位移量顺序混乱可能导致的潜在不准确性，2.4G从设备被设计为忽略顺序不准确的数据包。这样可以防止由于顺序错误的数据包而出现的位置错误。</p>
+<p>此外，为了维护2.4G主设备和从设备之间的同步，我们定期更新位移量的总和。这意味着在规定时间间隔内，主设备会向从设备传输出当前的位移量总和。当从设备接收到这一总和后，会相应地更新自己的位置。这个同步过程确保了两个设备对mouse位置有一致且最新的信息。</p>
+<p>通过引入这个位置同步控制机制，我们最大限度地提高了游标位置的精确度，减少了由于位移量错位引发的任何偏差。主设备和从设备之间稳定且定期的位移总数据信同步，允许平稳可靠地同步游标的位置，从而改善终端指针的位置精度。</p>
+<p>此流程图如下所示。</p>
+<figure class="align-center" id="id33">
+<img alt="../../../../_images/ppt_trans_position_control.png" src="../../../../_images/ppt_trans_position_control.png" />
+<figcaption>
+<p><span class="caption-text">位置控制数据包处理流程图</span><a class="headerlink" href="#id33" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>请参阅下图了解2.4G主从设备中Transport layer事件及相应处理的概述。</p>
+<figure class="align-center" id="id34">
+<a class="reference internal image-reference" href="../../../../_images/ppt_trans_position_control_overview.png"><img alt="../../../../_images/ppt_trans_position_control_overview.png" src="../../../../_images/ppt_trans_position_control_overview.png" style="width: 902.6px; height: 988.8000000000001px;" /></a>
+<figcaption>
+<p><span class="caption-text">位置控制模块概述</span><a class="headerlink" href="#id34" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>以下是上图所提到的各输入事件的详细解释。</p>
+<p>应用层APP事件</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>应用请求数据发送事件。</p>
+<ol class="arabic simple">
+<li><p>应用请求发送HID相关数据，包括光学数据、位移向量数据、按钮按下或释放以及滚轮滚动。</p></li>
+<li><p>位置控制模块将根据接收到的位移向量数据更新并记录光标位置。</p></li>
+<li><p>在传输数据包之前，位置控制模块会先判断该数据包是否有效，如果无效，则放弃该数据包。</p></li>
+</ol>
+</li>
+<li><p>应用接收数据包事件。</p>
+<ol class="arabic simple">
+<li><p>应用接收来自对等方的HID相关数据，包括位移向量数据、按键按下或释放以及滚轮滚动。</p></li>
+<li><p>位置控制模块将解构数据包并根据接收到的位移向量数据计算新位置，然后将位置数据转发到USB层。</p></li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+<p>Sync layer棧事件</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>棧通知数据包被Ack事件。</p>
+<ol class="arabic simple">
+<li><p>之前发送的数据包已被对方确认。</p></li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="id35">
+<h5>位置控制模块 API<a class="headerlink" href="#id35" title="Link to this heading"></a></h5>
+<p>此控制方案的参数定义如下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* This parameter determines the synchronized interval of position</span>
+<span class="cm">displacement vector sums between 2.4G master and slave. For instance, if</span>
+<span class="cm">this parameter is set to 5, it signifies that the 2.4G master will attempt to</span>
+<span class="cm">transmit its vector sum every 5 packets. This synchronization interval allows</span>
+<span class="cm">the master and slave devices to exchange information and ensure that their</span>
+<span class="cm">displacement vectors are kept in harmony. By periodically transmitting the</span>
+<span class="cm">vector sum, the master device keeps the slave device updated with the</span>
+<span class="cm">latest displacement information. This allows for accurate tracking and</span>
+<span class="cm">positioning of the cursor on the receiving end.</span>
+<span class="cm">*/</span>
+<span class="cp">#define PPT_TRANS_POS_CTRL_SYNC_INTERVAL             5</span>
+</pre></div>
+</div>
+<p>此外，为此模块定义了一个新的数据结构。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">union</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">pos_x</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">pos_y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">d8</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="p">}</span><span class="w"> </span><span class="n">T_PPT_TRANS_POS_VECTOR_SUM</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>最后，以下是位置控制模块提供的API。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief  get the previous record position which store in the hist_pos array.</span>
+<span class="cm"> * @param  idx - the recording index of the hist_pos array</span>
+<span class="cm"> * @return the position record of the previous moment.</span>
+<span class="cm"> */</span>
+<span class="n">T_PPT_TRANS_POS_VECTOR_SUM</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_get_hist_pos</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">idx</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  update the record position directly.</span>
+<span class="cm"> * @param  new_pos - the new position.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_update_pos</span><span class="p">(</span><span class="n">T_PPT_TRANS_POS_VECTOR_SUM</span><span class="w"> </span><span class="n">new_pos</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  update record packet receiving anchor directly.</span>
+<span class="cm"> * @param  seq - the sequence number of the received packet</span>
+<span class="cm"> * @param  ce - the time anchor when receiving packet</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_update_recv_ankor</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">ce</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   update the record positon based on the received displacement vector.</span>
+<span class="cm"> * @param   x - the position displacement on x-axis</span>
+<span class="cm"> * @param   y - the position displacement on y-axis</span>
+<span class="cm"> * @return  the updated position.</span>
+<span class="cm"> */</span>
+<span class="n">T_PPT_TRANS_POS_VECTOR_SUM</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_recv_position_vector</span><span class="p">(</span><span class="kt">int16_t</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  judge whether the received packet is consecutively to prevent misalignment.</span>
+<span class="cm"> * @param  seq - the sequence number of the received packet</span>
+<span class="cm"> * @param  ce_cnt - the time anchor when receiving packet</span>
+<span class="cm"> * @param  range - the tolerance for sequence skip</span>
+<span class="cm"> * @return the validation result of the packet, 0 is invalid otherwise valid packet</span>
+<span class="cm"> */</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_judge_pkt_valid</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ce_cnt</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">range</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  position control module init, reset the parameter.</span>
+<span class="cm"> * @return none</span>
+<span class="cm"> * @retval void</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  store - the currently position to the hist_pos array for future usage.</span>
+<span class="cm"> * @param  idx - the recording index of the hist_pos array</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_record_pos</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">idx</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  reset record position history data which store in the hist_pos array.</span>
+<span class="cm"> * @return none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_clear_hist</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   get the sequence number of previous valid received packet</span>
+<span class="cm"> * @return  sequence number of packet</span>
+<span class="cm"> */</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_get_prev_seq</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  reset the current position.</span>
+<span class="cm"> * @return none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_clear_pos</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   handle positon control module when 2.4G master and slave disconnected.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_handle_disconnect</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   handle positon control module when 2.4G master and slave connected.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_handle_connect</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  ppt_trans_pos_ctrl_handle_recv_msg</span>
+<span class="cm"> * @param  p_data - pointer to receive data.</span>
+<span class="cm"> * @param  len - data length.</span>
+<span class="cm"> * @param  rssi - ble rssi of data</span>
+<span class="cm"> * @return none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_handle_recv_msg</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">sync_receive_info_t</span><span class="w"> </span><span class="o">*</span><span class="n">info</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief register app callback for receiving data for position control module</span>
+<span class="cm"> * @param  cb - callback function when packet received</span>
+<span class="cm"> * @return none</span>
+<span class="cm">*/</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_reg_receive_pos_cb</span><span class="p">(</span><span class="n">ppt_trans_handle_receive_pos_pkt_cb</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  handle positon control module when 2.4G master recv slave ack.</span>
+<span class="cm"> * @param  seq - the sequence number of the packet</span>
+<span class="cm"> * @param  is_pos_packet - indicate that whether the packet is a position packet or not</span>
+<span class="cm"> * @return none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_handle_ack</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_pos_packet</span><span class="p">);</span>
+
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   handle positon control module when 2.4G master recv slave nack.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> * @retval  void</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_handle_nack</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_pos_packet</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   record u32 sequence and u8 seqence for position control usage.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> * @retval  void</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_handle_rec_seq</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">u32_seq</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  judge whether the packet should be change to position packet or not.</span>
+<span class="cm"> * @param  seq - the sequence number of the packet</span>
+<span class="cm"> * @param  u32_seq - the uint32_t sequence number of the packet</span>
+<span class="cm"> * @return whether the packet should be change to position packet or not.</span>
+<span class="cm"> * @retval true  packet need to be position packet.</span>
+<span class="cm"> * @retval false packet no nned to be changed.</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_judge_force_pos_packet</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">u32_seq</span><span class="p">);</span>
+
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief   handle positon control module when 2.4G report rate is changed.</span>
+<span class="cm"> * @return  none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_handle_report_rate_change</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief  set position control force position parameter.</span>
+<span class="cm"> * @param  msg_quota - the msg quota of sync lib</span>
+<span class="cm"> * @retval none</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">ppt_trans_pos_ctrl_set_pos_pos_seq_gap</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">msg_quota</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id36">
+<h3>传输层模块示例<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<p>在本节中，我们将简要介绍Transport layer中每个输入事件处理常式，供开发人员参考。</p>
+<section id="id37">
+<h4>Transport Layer封包传输<a class="headerlink" href="#id37" title="Link to this heading"></a></h4>
+<p>当Transport layer接收到应用层的发送事件时，会保存输入数据并触发如下流程。
+Transport layer会寻找之前未成功发送的NACK包，其中包含mouse数据。在推送到TX缓冲区之前，输入数据会与包数据累加，以弥补光标偏移。</p>
+<figure class="align-center" id="id38">
+<a class="reference internal image-reference" href="../../../../_images/ppt_trans_packet_tx_routine.png"><img alt="../../../../_images/ppt_trans_packet_tx_routine.png" src="../../../../_images/ppt_trans_packet_tx_routine.png" style="width: 726.2px; height: 517.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">数据包传输流程</span><a class="headerlink" href="#id38" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#id39"><span class="std std-ref">补偿遗失数据流</span></a> 负责mouse数据的校正。例如，假设连续发生NACK事件，导致备份数据无法弥补封包遗失。在这种情况下，NACK封包数据会应用于游标偏移校正。之后，<a class="reference internal" href="#id40"><span class="std std-ref">组合封包流程</span></a> 会将mouse数据转换为具有动态封包长度的封包。</p>
+<figure class="align-center" id="id39">
+<img alt="../../../../_images/ppt_trans_compensate_miss_data.png" src="../../../../_images/ppt_trans_compensate_miss_data.png" />
+<figcaption>
+<p><span class="caption-text">补偿遗失数据流</span><a class="headerlink" href="#id39" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id40">
+<img alt="../../../../_images/ppt_trans_compose_packet.png" src="../../../../_images/ppt_trans_compose_packet.png" />
+<figcaption>
+<p><span class="caption-text">组合封包流程</span><a class="headerlink" href="#id40" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>在配置好给定的mouse数据封包后， <a class="reference internal" href="#id41"><span class="std std-ref">长封包组合流程</span></a> 负责附加应用程序指定的数据以创建最终的封包。</p>
+<figure class="align-center" id="id41">
+<img alt="../../../../_images/ppt_trans_compose_long_packet.png" src="../../../../_images/ppt_trans_compose_long_packet.png" />
+<figcaption>
+<p><span class="caption-text">长封包组合流程</span><a class="headerlink" href="#id41" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id42">
+<h4>Transport Layer封包接收<a class="headerlink" href="#id42" title="Link to this heading"></a></h4>
+<p>当封包从Sync layer接收并报告时， <a class="reference internal" href="#id43"><span class="std std-ref">封包接收流程</span></a> 会执行以解析封包并将结果转发到应用层。</p>
+<figure class="align-center" id="id43">
+<img alt="../../../../_images/ppt_trans_packet_rx_routine.png" src="../../../../_images/ppt_trans_packet_rx_routine.png" />
+<figcaption>
+<p><span class="caption-text">封包接收流程</span><a class="headerlink" href="#id43" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#id44"><span class="std std-ref">封包解析流程</span></a> 子程序负责解析封包并将其转换为应用层参考的mouse数据。</p>
+<figure class="align-center" id="id44">
+<img alt="../../../../_images/ppt_trans_packet_parse.png" src="../../../../_images/ppt_trans_packet_parse.png" />
+<figcaption>
+<p><span class="caption-text">封包解析流程</span><a class="headerlink" href="#id44" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>并且 <a class="reference internal" href="#id45"><span class="std std-ref">解析长数据包流程</span></a> 子程序用于收集每个封包中的长封包片段。
+在接收到最后一个片段后，Transport layer将重新组织片段为原始数据并发送到应用层。</p>
+<figure class="align-center" id="id45">
+<img alt="../../../../_images/ppt_trans_packet_parse_long.png" src="../../../../_images/ppt_trans_packet_parse_long.png" />
+<figcaption>
+<p><span class="caption-text">解析长数据包流程</span><a class="headerlink" href="#id45" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="transport-layer-nack">
+<h4>Transport Layer封包 NACK<a class="headerlink" href="#transport-layer-nack" title="Link to this heading"></a></h4>
+<p>当从Sync layer接收到NACK事件时，两个对应的流程被应用于mouse光标补偿和长封包重发。Transport layer执行以下流程进行光标数据重发和mouse数据校正。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>仅将封包中的最新mouse数据保存到NACK缓冲区，伴随的旧mouse数据不处理，因为它们只是备份。</p>
+</div>
+<figure class="align-center" id="id46">
+<img alt="../../../../_images/ppt_trans_packet_nack.png" src="../../../../_images/ppt_trans_packet_nack.png" />
+<figcaption>
+<p><span class="caption-text">数据包被拒流</span><a class="headerlink" href="#id46" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>至于自定义的长封包数据，则应用下图流程来重新传输NACK的长封包片段。</p>
+<figure class="align-center" id="id47">
+<img alt="../../../../_images/ppt_trans_long_pkt_retrans.png" src="../../../../_images/ppt_trans_long_pkt_retrans.png" />
+<figcaption>
+<p><span class="caption-text">长数据包重传流程</span><a class="headerlink" href="#id47" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id48">
+<h4>Transport Layer封包发送失败<a class="headerlink" href="#id48" title="Link to this heading"></a></h4>
+<p>当从Sync layer收到Packet Send Fail事件时，Transport layer执行以下流程以避免延迟增加和游标偏移校正。</p>
+<figure class="align-center" id="id49">
+<img alt="../../../../_images/ppt_trans_packet_send_fail.png" src="../../../../_images/ppt_trans_packet_send_fail.png" />
+<figcaption>
+<p><span class="caption-text">数据包发送失败流程</span><a class="headerlink" href="#id49" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ack">
+<h4>传输层封包 ACK<a class="headerlink" href="#ack" title="Link to this heading"></a></h4>
+<p>当从Sync layer收到Packet ACKed事件时，Transport layer执行以下流程以清除NACK缓冲区和长封包参数，用于重传机制。</p>
+<figure class="align-center" id="id50">
+<img alt="../../../../_images/ppt_trans_packet_ack.png" src="../../../../_images/ppt_trans_packet_ack.png" />
+<figcaption>
+<p><span class="caption-text">数据包确认流程</span><a class="headerlink" href="#id50" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id51">
+<img alt="../../../../_images/ppt_trans_packet_ack_long.png" src="../../../../_images/ppt_trans_packet_ack_long.png" />
+<figcaption>
+<p><span class="caption-text">长封包段确认流程</span><a class="headerlink" href="#id51" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../trimode_mouse/doc/text_cn/README.html" class="btn btn-neutral float-left" title="Tri-Mode Mouse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../lvgl/doc/text_cn/README.html" class="btn btn-neutral float-right" title="LVGL" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

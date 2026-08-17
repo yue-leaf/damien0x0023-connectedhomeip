@@ -1,0 +1,1 @@
+window.GA_CONFIG = { id: 'G-1MWCGDD4YY' };

@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platform Overview &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Memory" href="../../memory/text_en/README.html" />
+    <link rel="prev" title="Platform" href="../../text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../index.html">
+        
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../text_en/README.html">Platform</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Platform Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-architecture">Hardware Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-architecture">Software Architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#system-architecture">System Architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operating-system">Operating System</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#os-interfaces">OS Interfaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#task-and-priority">Task and Priority</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#trustzone">TrustZone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boot-flow">Boot Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#application">Application</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sdk-directory">SDK Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-projects">Sample Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-process-flow">Application Process Flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msg-and-event-handling-flow">MSG and Event Handling Flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#io-msg">IO MSG</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#message-format">Message Format</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#message-type-definition">Message Type Definition</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#message-subtype-definition">Message Subtype Definition</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#user-message-definition">User Message Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#pin-settings">Pin Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dlps-settings">DLPS Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#memory">Memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#memory-map">Memory Map</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#flash-apis">Flash APIs</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ftl">FTL</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#efuse">eFuse</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interrupt">Interrupt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nested-vectored-interrupt-controller-nvic">Nested Vectored Interrupt Controller (NVIC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interrupt-vector-table">Interrupt Vector Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interrupt-priority">Interrupt Priority</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#power-management">Power Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debug-system">Debug System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/text_en/README.html">Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../image_layout/text_en/README.html">Image Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../flash/text_en/README.html">Flash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../psram/text_en/README.html">PSRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../low_power_mode/text_en/README.html">Low Power Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/text_en/README.html">Security Mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debug_system/text_en/README.html">Debug System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clock/text_en/README.html">Clock Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../text_en/README.html">Platform</a></li>
+    <li class="breadcrumb-item active">Platform Overview</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="platform-overview">
+<h1>Platform Overview<a class="headerlink" href="#platform-overview" title="Link to this heading"></a></h1>
+<p>The <a class="reference internal" href="../../../glossary.html#term-SDK"><span class="xref std std-term">SDK</span></a> provides a set of example applications for developers to test and verify their setup on their development kit. After completing these tests, developers can use these examples as a foundation for developing their own applications.</p>
+<p>To get started with the SDK, please refer to <a class="reference internal" href="../../../quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>. Developers should first familiarize themselves with this guide.</p>
+<section id="hardware-architecture">
+<h2>Hardware Architecture<a class="headerlink" href="#hardware-architecture" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="../../../glossary.html#term-CPU"><span class="xref std std-term">CPU</span></a> of RTL87x2G is Real_M300V, which is equivalent to ARM Cortex-M55. The <a class="reference internal" href="#figure-rtl87x2g-hardware-block"><span class="std std-ref">RTL87x2G Hardware Block</span></a> consists of the following parts:</p>
+<ul class="simple">
+<li><p>Rich peripherals</p></li>
+<li><p>Power Management Unit</p></li>
+<li><p>Clock Management Unit</p></li>
+<li><p><a class="reference internal" href="../../../glossary.html#term-RF"><span class="xref std std-term">RF</span></a> module</p></li>
+</ul>
+<figure class="align-center" id="figure-rtl87x2g-hardware-block">
+<img alt="../../../../_images/RTL87x2G_Hardware_Block.png" src="../../../../_images/RTL87x2G_Hardware_Block.png" />
+<figcaption>
+<p><span class="caption-text">RTL87x2G Hardware Block</span><a class="headerlink" href="#figure-rtl87x2g-hardware-block" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="software-architecture">
+<h2>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading"></a></h2>
+<section id="system-architecture">
+<h3>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading"></a></h3>
+<p>As shown in <a class="reference internal" href="#figure-rtl87x2g-software-architecture"><span class="std std-ref">RTL87x2G Software Architecture</span></a>, software architecture consists of several major components:</p>
+<ul class="simple">
+<li><p><strong>Platform:</strong> Includes <a class="reference internal" href="../../../glossary.html#term-OTA"><span class="xref std std-term">OTA</span></a>, Flash, etc.</p></li>
+<li><p><strong>Peripheral driver:</strong> Provides application layer access to the interface of RTL87x2G peripherals.</p></li>
+<li><p><strong>OSIF:</strong> Abstraction layer for real-time operating systems.</p></li>
+<li><p><strong>GAP:</strong> Abstraction layer through which user applications communicate with the BLE stack.</p></li>
+</ul>
+<figure class="align-center" id="figure-rtl87x2g-software-architecture">
+<img alt="../../../../_images/RTL87x2G_Software_Architecture.png" src="../../../../_images/RTL87x2G_Software_Architecture.png" />
+<figcaption>
+<p><span class="caption-text">RTL87x2G Software Architecture</span><a class="headerlink" href="#figure-rtl87x2g-software-architecture" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="operating-system">
+<h3>Operating System<a class="headerlink" href="#operating-system" title="Link to this heading"></a></h3>
+<p>RTL87x2G supports multiple Real-Time Operating Systems, with the default being: <a class="reference internal" href="../../../glossary.html#term-FreeRTOS"><span class="xref std std-term">FreeRTOS</span></a>. The version used is FreeRTOS V10.4.4, and it operates from ROM, comprising the following modules:</p>
+<ul class="simple">
+<li><p>Task Management</p></li>
+<li><p>Queue Management</p></li>
+<li><p>Interrupt Management</p></li>
+<li><p>Resource Management</p></li>
+<li><p>Memory Management</p></li>
+<li><p>Time Management</p></li>
+</ul>
+<section id="os-interfaces">
+<h4>OS Interfaces<a class="headerlink" href="#os-interfaces" title="Link to this heading"></a></h4>
+<p>As illustrated in <a class="reference internal" href="#figure-osif-overview"><span class="std std-ref">OSIF Overview</span></a>, the OSIF layer provides a unified interface by encapsulating specific RTOS interfaces. This allows developers to implement custom RTOS solutions based on the OSIF layer without needing to modify the upper-level software. Therefore, if an APP needs to run on different RTOS, it is recommended to use the OSIF interface rather than directly accessing specific RTOS interfaces.</p>
+<figure class="align-center" id="figure-osif-overview">
+<img alt="../../../../_images/OSIF_Overview.png" src="../../../../_images/OSIF_Overview.png" />
+<figcaption>
+<p><span class="caption-text">OSIF Overview</span><a class="headerlink" href="#figure-osif-overview" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="task-and-priority">
+<h4>Task and Priority<a class="headerlink" href="#task-and-priority" title="Link to this heading"></a></h4>
+<p>The system has created several tasks including timer task, idle task, and flash task. Additionally, the Bluetooth protocol stack will create a Bluetooth Controller task and a Bluetooth Host task. According to the application requirements, one or more tasks can be created. Setting the priority of the application tasks between 1 to 4 is recommended.</p>
+<table class="docutils align-center" id="table-rtl87x2g-tasks">
+<caption><span class="caption-text">RTL87x2G Tasks</span><a class="headerlink" href="#table-rtl87x2g-tasks" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Task</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Priority</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Timer</p></th>
+<td><p>Implement software timer required by FreeRTOS</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Bluetooth Controller</p></th>
+<td><p>Implement BT stack protocols below HCI</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Bluetooth Host</p></th>
+<td><p>Implement BT stack protocols above HCI</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>App</p></th>
+<td><p>Handles user application requirements</p></td>
+<td><p>1~4</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Flash</p></th>
+<td><p>Flash suspend operation and <a class="reference internal" href="../../../glossary.html#term-FTL"><span class="xref std std-term">FTL</span></a> garbage collect</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Idle</p></th>
+<td><p>Runs background task including DLPS</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>Multiple APP tasks can be created, and memory resources will be then allocated.</p></li>
+<li><p>Idle task and timer task are provided by FreeRTOS.</p></li>
+<li><p>Tasks have been configured as preemptive based on their priority.</p></li>
+<li><p>Additionally, hardware interrupt service routines (<a class="reference internal" href="../../../glossary.html#term-ISR"><span class="xref std std-term">ISR</span></a>) are implemented by the vendor as well.</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="trustzone">
+<h3>TrustZone<a class="headerlink" href="#trustzone" title="Link to this heading"></a></h3>
+<p>TrustZone is the cornerstone of the ARMv8-M processor. It provides hardware access control for code, memory, and peripherals while meeting the needs of embedded applications: real-time responsiveness, minimal switching overhead, limited on-chip resources, and ease of software development.</p>
+<p>ARMv8-M adds an additional processor operating state: secure and non-secure execution states. These security states are orthogonal to the existing thread and process modes, allowing the processor to switch between secure and non-secure modes.</p>
+<figure class="align-center" id="figure-trustzone">
+<img alt="../../../../_images/TrustZone.png" src="../../../../_images/TrustZone.png" />
+<figcaption>
+<p><span class="caption-text">TrustZone</span><a class="headerlink" href="#figure-trustzone" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>TrustZone has the following features:</p>
+<ul class="simple">
+<li><p>Allows users to partition memory into secure and non-secure regions.</p></li>
+<li><p>Supports blocking the debugging of secure code/data when unauthenticated.</p></li>
+<li><p>NVIC, MPU, SYSTICK, core control registers, etc. are also divided into two regions, allowing secure and non-secure code to independently access their respective resources.</p></li>
+<li><p>Both the secure and non-secure regions have their own MSP and PSP stack pointers.</p></li>
+<li><p>Introduces the concept of Secure Gateway, through which non-secure code can access specific secure code. This is the only way for non-secure code to access secure code.</p></li>
+<li><p>Provides a Stack Limit Checking function to detect stack overflow cases. In the ARMv8.1-M architecture, each stack pointer has a corresponding stack limit register.</p></li>
+</ul>
+<p>The roles of the SAU (Security Attribution Unit) and IDAU (Implementation Defined Attribution Unit) are to partition the memory space into secure and non-secure regions. Instructions issued by the CPU are evaluated by the SAU to determine whether they adhere to security rules, while instructions from other bus masters, such as DMA, GPU, USB, etc., are evaluated by the IDAU for compliance with security rules. If a security rule is violated, such as non-secure code accessing a secure region, it will trigger a secure fault or a hard fault.</p>
+<p>The following is SAU's default secure and non-secure divisions.
+Taking Single Bank (one of the OTA upgrade methods) as an example, a total of 7 Non-Secure or Non-Secure Callable areas are set:</p>
+<table class="docutils align-center" id="table-non-secure-non-secure-callable-areas-description">
+<caption><span class="caption-text">Non-Secure/Non-Secure Callable Areas Description</span><a class="headerlink" href="#table-non-secure-non-secure-callable-areas-description" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Areas</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Region0</p></th>
+<td><p>Non-Secure Callable area in ROM, which stores APIs called by Non-Secure programs</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Region1, 2</p></th>
+<td><p>Part of ROM, ITCM1, DTCM0</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Region3</p></th>
+<td><p>Data SRAM, Buffer SRAM, and SOCV config and OEM config at the beginning of Flash</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Region4, 5</p></th>
+<td><p>Flash area</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Region6</p></th>
+<td><p>PSRAM, Peripheral and other areas</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TrustZone is not enabled by default in the SDK, and all code is executed in the secure area. If needing to maintain an additional secure app to enable TrustZone, refer to trustzone_demo: <code class="file docutils literal notranslate"><span class="pre">rtl87x2g_sdk_xxxx\samples\trustzone_demo</span></code> in the SDK.</p>
+</div>
+</section>
+<section id="boot-flow">
+<h3>Boot Flow<a class="headerlink" href="#boot-flow" title="Link to this heading"></a></h3>
+<p>When the system powers on or resets, the boot flow will be executed.
+The boot flow includes:</p>
+<ol class="arabic simple">
+<li><p>eFuse validation</p></li>
+<li><p>Security control according to eFuse value</p></li>
+<li><p>Flash image check and execute</p></li>
+</ol>
+<p>The eFuse verification determines whether to enable secure boot.
+If secure boot is enabled, image authentication will involve signature, <a class="reference internal" href="../../../glossary.html#term-CMAC"><span class="xref std std-term">CMAC</span></a>, and secure version verification.</p>
+<figure class="align-center" id="figure-boot-flow">
+<img alt="../../../../_images/Boot_Flow.png" src="../../../../_images/Boot_Flow.png" />
+<figcaption>
+<p><span class="caption-text">Boot Flow</span><a class="headerlink" href="#figure-boot-flow" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In <a class="reference internal" href="#figure-boot-flow"><span class="std std-ref">Boot Flow</span></a>, 'Flash Image Check and Execute' means checking all kinds of flash images and executing them.
+The process includes:</p>
+<ol class="arabic simple">
+<li><p>Check OEM Data (Flash layout is included in this file)</p></li>
+<li><p>Check if a valid upgraded image exists in Flash</p></li>
+<li><p>Check OTA Bank Header Files</p></li>
+<li><p>Check every flash image in OTA Bank</p></li>
+<li><p>Execute image</p></li>
+</ol>
+<p><a class="reference internal" href="#figure-flash-image-check-and-execution"><span class="std std-ref">Flash Image Check and Execution</span></a> demonstrates the process above.
+The image check method is SHA256 integrity check (disable secure boot) or signature verification (enable secure boot).
+The order of the flash image execution is: Boot Patch, BT Stack Patch, Secure APP, System Patch, BT Host, APP.</p>
+<figure class="align-center" id="figure-flash-image-check-and-execution">
+<img alt="../../../../_images/Flash_Image_Check_and_Execution.png" src="../../../../_images/Flash_Image_Check_and_Execution.png" />
+<figcaption>
+<p><span class="caption-text">Flash Image Check and Execution</span><a class="headerlink" href="#figure-flash-image-check-and-execution" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the <a class="reference internal" href="#figure-dual-bank-boot-flow"><span class="std std-ref">Dual Bank Boot Flow</span></a>, the 'Dual Bank Process' pertains to the image upgrade procedure that supports the Bank switching scheme. When upgrading from an older version to a newer version, both Bank0 and Bank1 will contain images. During the startup process, the OTA Header with the higher version number is validated first. If the version numbers are the same, Bank0 is validated first. If the validation and decryption are successful, the images in that Bank are executed. If the validation fails, the OTA Header with the lower version number is checked next.</p>
+<figure class="align-center" id="figure-dual-bank-boot-flow">
+<img alt="../../../../_images/Dual_Bank_Boot_Flow.png" src="../../../../_images/Dual_Bank_Boot_Flow.png" />
+<figcaption>
+<p><span class="caption-text">Dual Bank Boot Flow</span><a class="headerlink" href="#figure-dual-bank-boot-flow" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="application">
+<h2>Application<a class="headerlink" href="#application" title="Link to this heading"></a></h2>
+<section id="sdk-directory">
+<h3>SDK Directory<a class="headerlink" href="#sdk-directory" title="Link to this heading"></a></h3>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── SDK
+    ├── bin                   Binary files for user application to link
+    ├── bsp                   Board level and hardware related files
+    ├── doc                   SDK documents
+    ├── include               Header files which provide API definitions export from ROM
+    ├── samples               Sample projects that can be used directly
+    ├── subsys                Upper layer and hardware-independent software protocol
+    └── tools                 Toolchain
+</pre></div>
+</div>
+</section>
+<section id="sample-projects">
+<h3>Sample Projects<a class="headerlink" href="#sample-projects" title="Link to this heading"></a></h3>
+<p>To assist in creating applications, the SDK includes numerous example projects, such as <em>ble_peripheral</em> and other BLE-related examples. By studying these example projects, developers can easily familiarize themselves with the SDK. All example projects are pre-configured and the memory layout has been specifically divided according to the RTL87x2G SOC. For detailed memory layout information, please refer to <a class="reference internal" href="../../memory/text_en/README.html"><span class="doc">Memory</span></a>.</p>
+<p>Taking the <em>ble_peripheral</em> application as an example below, it shows how to start developing the customized user application using the sample project.</p>
+<figure class="align-center" id="ble-peripheral-sample-project">
+<img alt="../../../../_images/ble_peripheral_Sample_Project.png" src="../../../../_images/ble_peripheral_Sample_Project.png" />
+<figcaption>
+<p><span class="caption-text">The ble_peripheral Sample Project</span><a class="headerlink" href="#ble-peripheral-sample-project" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Source files in the <em>ble_peripheral</em> project are currently categorized into several groups as below:</p>
+<ul class="simple">
+<li><p><strong>Device directory:</strong> Includes startup code</p></li>
+<li><p><strong>CMSIS directory:</strong> Includes CMSIS header files</p></li>
+<li><p><strong>CMSE Library:</strong> Non-secure callable library</p></li>
+<li><p><strong>Lib directory:</strong> Includes all binary symbol files that the user application is built on</p></li>
+<li><p><strong>Peripheral directory:</strong> Includes all peripheral drivers and module code used by the application</p></li>
+<li><p><strong>Profile directory:</strong> Includes BLE profiles or services used by the sample application</p></li>
+<li><p><strong>APP directory:</strong> Includes the <em>ble_peripheral</em> user application implementation</p></li>
+</ul>
+<p>The RTL87x2G MCU is based on the ARMv8.1 architecture, supports the MVE instruction set, and can efficiently handle single-precision integer and floating-point operations.
+The lib and sample application projects released in the default SDK all use the following devices.</p>
+<figure class="align-center" id="app-project-device-select">
+<a class="reference internal image-reference" href="../../../../_images/app_project_device_select.png"><img alt="../../../../_images/app_project_device_select.png" src="../../../../_images/app_project_device_select.png" style="width: 689.4px; height: 516.6px;" /></a>
+<figcaption>
+<p><span class="caption-text">APP Project Device Select</span><a class="headerlink" href="#app-project-device-select" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="mcu-app-supports-single-precision-integer-and-floating-point-mve-instructions">
+<a class="reference internal image-reference" href="../../../../_images/MCU_APP_supports_single-precision_integer_and_floating-point_MVE_instructions.png"><img alt="../../../../_images/MCU_APP_supports_single-precision_integer_and_floating-point_MVE_instructions.png" src="../../../../_images/MCU_APP_supports_single-precision_integer_and_floating-point_MVE_instructions.png" style="width: 696.6px; height: 518.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">MCU APP Supports Single Precision Integer and Floating Point MVE Instructions</span><a class="headerlink" href="#mcu-app-supports-single-precision-integer-and-floating-point-mve-instructions" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The common files in sample applications are explained as follows:</p>
+<table class="docutils align-center" id="table-common-files-in-sdk">
+<caption><span class="caption-text">Common Files in SDK</span><a class="headerlink" href="#table-common-files-in-sdk" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>File name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>rom_uuid.h</p></th>
+<td><p>UUID header files provided by SDK to identify the ROM and no change needed</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>ROM_NS.lib</p></th>
+<td><p>ROM symbol library file used by user application to link any ROM symbols</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>gap_utils.lib</p></th>
+<td><p>GAP library file to implement BLE functions</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>startup_rtl.c</p></th>
+<td><p>C file for RTL87x2G application startup</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>system_rtl.c</p></th>
+<td><p>C file of RTL87x2G application system</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>board.h</p></th>
+<td><p>Header file to configure pin and DLPS settings</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>flash_map.h</p></th>
+<td><p>Flash layout file which is generated by Flashmap Generate Tool</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>mem_config.h</p></th>
+<td><p>Memory Configuration file</p></td>
+</tr>
+</tbody>
+</table>
+<p>Sample projects may be updated alongside the SDK. To make better use of the latest sample code, it is recommended to organize any new user code in a modular fashion. For detailed information about each sample project, please refer to the corresponding user manual.</p>
+</section>
+<section id="application-process-flow">
+<h3>Application Process Flow<a class="headerlink" href="#application-process-flow" title="Link to this heading"></a></h3>
+<figure class="align-center" id="app-flow">
+<img alt="../../../../_images/APP_Flow.png" src="../../../../_images/APP_Flow.png" />
+<figcaption>
+<p><span class="caption-text">APP Flow</span><a class="headerlink" href="#app-flow" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-center" id="table-app-initialization">
+<caption><span class="caption-text">APP Initialization</span><a class="headerlink" href="#table-app-initialization" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Board Init</p></td>
+<td><p>Contains initialization of pinmux settings and pad settings</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gap Init</p></td>
+<td><p>Contains initialization of GAP related parameters</p></td>
+</tr>
+<tr class="row-even"><td><p>Profile Init</p></td>
+<td><p>Contains initialization of BLE profiles</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power Manager Init</p></td>
+<td><p>Contains initialization of power management related</p></td>
+</tr>
+<tr class="row-even"><td><p>SW Timer Init</p></td>
+<td><p>Contains initialization of software timers</p></td>
+</tr>
+<tr class="row-odd"><td><p>APP Queue Init</p></td>
+<td><p>Contains initialization of app queue</p></td>
+</tr>
+<tr class="row-even"><td><p>Driver Init</p></td>
+<td><p>Contains initialization of peripherals</p></td>
+</tr>
+</tbody>
+</table>
+<p>The system is initialized in the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function, including the initialization of the Board, Peripherals, BT Stack, Profile, Power, Task, and other modules.</p>
+<p>The BT Stack, profiles, and peripheral drivers are initialized within application layer tasks, and an IO messaging mechanism is implemented. All functionalities are encapsulated into IO events, which are processed by the relevant message handlers.</p>
+<p>BT Stack messages are similarly encapsulated into BT IO events and are processed in the same manner as peripheral events.</p>
+<figure class="align-center" id="io-message-handling-flowchart">
+<img alt="../../../../_images/IO_Message_Handling_Flowchart.png" src="../../../../_images/IO_Message_Handling_Flowchart.png" />
+<figcaption>
+<p><span class="caption-text">IO Message Handling Flowchart</span><a class="headerlink" href="#io-message-handling-flowchart" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="msg-and-event-handling-flow">
+<h3>MSG and Event Handling Flow<a class="headerlink" href="#msg-and-event-handling-flow" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>An original MSG is sent from universal Peripherals' ISR or BT Stack.
+The processing flow is as follows.</p>
+<ol class="arabic simple">
+<li><p>MSG from Peripherals is forwarded by MSG Distributor to IO MSG Handler for handling.</p></li>
+<li><p>MSG from BT Stack is forwarded by MSG Distributor to BT State Machine.
+BT State Machine handles MSG and sends a BT IO MSG.
+MSG Distributor receives the BT IO MSG and then forwards it to IO MSG Handler for handling.</p></li>
+<li><p>After a message is received, IO MSG Handler shall make a judgment and call the related Event Handler.</p></li>
+</ol>
+</li>
+<li><p>Developer programs shall:</p>
+<ol class="arabic simple">
+<li><p>Implement Peripheral ISR, complete preliminary processing in ISR, and package MSG to send to APP if further processing is required.</p></li>
+<li><p>Maintain IO MSG Handler to receive and handle MSGs defined by the developer.</p></li>
+<li><p>Implement Event Handler for the application.</p></li>
+</ol>
+</li>
+<li><p>GAP layer notifies the APP layer with MSG and Event mechanism, while the APP layer calls GAP layer functions by APIs.</p></li>
+</ol>
+</section>
+<section id="io-msg">
+<h3>IO MSG<a class="headerlink" href="#io-msg" title="Link to this heading"></a></h3>
+<section id="message-format">
+<h4>Message Format<a class="headerlink" href="#message-format" title="Link to this heading"></a></h4>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">subtype</span><span class="p">;</span>
+<span class="w">    </span><span class="k">union</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w">  </span><span class="n">param</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">void</span><span class="w">     </span><span class="o">*</span><span class="n">buf</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="n">u</span><span class="p">;</span>
+<span class="p">}</span><span class="n">T_IO_MSG</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="message-type-definition">
+<h4>Message Type Definition<a class="headerlink" href="#message-type-definition" title="Link to this heading"></a></h4>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">IO_MSG_TYPE_BT_STATUS</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_TYPE_KEYSCAN</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_TYPE_QDECODE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_TYPE_UART</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_TYPE_KEYPAD</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_TYPE_IR</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_TYPE_GDMA</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_TYPE_ADC</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span><span class="n">T_IO_MSG_TYPE</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="message-subtype-definition">
+<h4>Message Subtype Definition<a class="headerlink" href="#message-subtype-definition" title="Link to this heading"></a></h4>
+<p>Taking T_IO_MSG_UART for example, developers can define subtypes of UART.</p>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">IO_MSG_UART_RX</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_UART_RX_TIMEOUT</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_UART_RX_OVERFLOW</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_UART_RX_TIMEOUT_OVERFLOW</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="n">IO_MSG_UART_RX_EMPTY</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="p">}</span><span class="n">T_IO_MSG_UART</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="user-message-definition">
+<h4>User Message Definition<a class="headerlink" href="#user-message-definition" title="Link to this heading"></a></h4>
+<p>Developers can expand message types and customize message subtypes if needed.</p>
+</section>
+</section>
+<section id="pin-settings">
+<h3>Pin Settings<a class="headerlink" href="#pin-settings" title="Link to this heading"></a></h3>
+<p>Pin configuration can be set in board.h.</p>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define KEY_0   P4_0</span>
+<span class="cp">#define BEEP    P4_1</span>
+<span class="cp">#define LED_0   P2_1</span>
+<span class="cp">#define LED_1   P2_4</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="dlps-settings">
+<h3>DLPS Settings<a class="headerlink" href="#dlps-settings" title="Link to this heading"></a></h3>
+<p>Please refer to <a class="reference internal" href="../../low_power_mode/text_en/README.html"><span class="doc">Low Power Mode</span></a> for details.</p>
+</section>
+</section>
+<section id="memory">
+<h2>Memory<a class="headerlink" href="#memory" title="Link to this heading"></a></h2>
+<section id="memory-map">
+<h3>Memory Map<a class="headerlink" href="#memory-map" title="Link to this heading"></a></h3>
+<p>RTL87x2G MCU memory includes ROM, RAM, Cache, Flash, and eFuse. Refer to <a class="reference internal" href="../../memory/text_en/README.html"><span class="doc">Memory</span></a> for details.</p>
+<section id="flash-apis">
+<h4>Flash APIs<a class="headerlink" href="#flash-apis" title="Link to this heading"></a></h4>
+<p>Flash operation APIs are listed as follows, refer to <a class="reference internal" href="../../flash/text_en/README.html"><span class="doc">Flash</span></a> for more details.</p>
+<blockquote>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">FLASH_NOR_RET_TYPE</span><span class="w"> </span><span class="nf">flash_nor_read_locked</span><span class="p">(</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="n">FLASH_NOR_RET_TYPE</span><span class="w"> </span><span class="nf">flash_nor_write_locked</span><span class="p">(</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="n">FLASH_NOR_RET_TYPE</span><span class="w"> </span><span class="nf">flash_nor_erase_locked</span><span class="p">(</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="n">FLASH_NOR_ERASE_MODE</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+<span class="n">FLASH_NOR_RET_TYPE</span><span class="w"> </span><span class="nf">flash_nor_try_high_speed_mode</span><span class="p">(</span><span class="n">FLASH_NOR_IDX_TYPE</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">FLASH_NOR_BIT_MODE</span><span class="w"> </span><span class="n">bit_mode</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="ftl">
+<h4>FTL<a class="headerlink" href="#ftl" title="Link to this heading"></a></h4>
+<p>FTL (Flash Transport Layer) is used as an abstraction layer for BT stack and user application to read/write data in flash. Refer to <a class="reference internal" href="../../flash/text_en/README.html"><span class="doc">Flash</span></a> for details.</p>
+</section>
+</section>
+<section id="efuse">
+<h3>eFuse<a class="headerlink" href="#efuse" title="Link to this heading"></a></h3>
+<p>eFuse is a block of one-time programming memory which is used to store important and fixed information, such as UUID, security key, and other one-time programming configurations. A single bit of eFuse cannot be changed from 0 to 1, and there is no erase operation in eFuse, so be careful when updating eFuse. Realtek offers MPTool to update certain eFuse sections.</p>
+</section>
+</section>
+<section id="interrupt">
+<h2>Interrupt<a class="headerlink" href="#interrupt" title="Link to this heading"></a></h2>
+<section id="nested-vectored-interrupt-controller-nvic">
+<h3>Nested Vectored Interrupt Controller (NVIC)<a class="headerlink" href="#nested-vectored-interrupt-controller-nvic" title="Link to this heading"></a></h3>
+<p><strong>NVIC features</strong></p>
+<ul class="simple">
+<li><p>16 Real-M300V exceptions, 96 maskable interrupt channels.</p></li>
+<li><p>8 programmable interrupt priority levels.</p></li>
+<li><p>Support remapping of Secure and Non-secure vector tables.</p></li>
+<li><p>Low-latency exception and interrupt handling.</p></li>
+<li><p>Implementation of System Control Registers.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The NVIC and the processor core interface are closely coupled, which enables low latency interrupt processing and efficient processing of late-arriving interrupts. All interrupts, including the core exceptions, are managed by the NVIC. The interrupt vector table is used to manage and handle different types of interrupts. It is a data structure stored in memory that contains the entry addresses of interrupt handler routines. The interrupt vector table mechanism offers the advantage of flexible handling of different interrupt types. By storing the entry addresses of the interrupt handler routines in the interrupt vector table, the system can quickly locate and call the relevant routine based on the interrupt type, improving system responsiveness and efficiency.</p>
+</div>
+<p><strong>RTL87x2G supports two ways to update the interrupt vector table:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___v_e_c_t_o_r___t_a_b_l_e___exported___functions.html#_CPPv424RamVectorTableUpdate_ext12VECTORn_Type7IRQ_Fun" title="RamVectorTableUpdate_ext"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">RamVectorTableUpdate_ext()</span></code></a> API allows XIP code to be run in the interrupt service routine, but this will bring additional CPU overhead of 4 us entry and 3.6 us exit.</p></li>
+<li><p><a class="reference internal" href="../../../api_reference/group___v_e_c_t_o_r___t_a_b_l_e___exported___functions.html#_CPPv420RamVectorTableUpdate12VECTORn_Type7IRQ_Fun" title="RamVectorTableUpdate"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">RamVectorTableUpdate()</span></code></a> API should ensure that the interrupt service routine runs RAM code without additional CPU overhead.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The RTL87x2G introduces flash suspend and resume mechanisms, which must ensure that Flash is not accessed in interrupt service routines. To achieve this, a wrapper needs to be added in the interrupt. By default, it is recommended to use the <a class="reference internal" href="../../../api_reference/group___v_e_c_t_o_r___t_a_b_l_e___exported___functions.html#_CPPv424RamVectorTableUpdate_ext12VECTORn_Type7IRQ_Fun" title="RamVectorTableUpdate_ext"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">RamVectorTableUpdate_ext()</span></code></a> API to ensure system stability and compatibility. For scenarios with strict requirements on interrupt response time, the <a class="reference internal" href="../../../api_reference/group___v_e_c_t_o_r___t_a_b_l_e___exported___functions.html#_CPPv420RamVectorTableUpdate12VECTORn_Type7IRQ_Fun" title="RamVectorTableUpdate"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">RamVectorTableUpdate()</span></code></a> API is recommended to achieve faster interrupt response times.</p>
+</div>
+</section>
+<section id="interrupt-vector-table">
+<h3>Interrupt Vector Table<a class="headerlink" href="#interrupt-vector-table" title="Link to this heading"></a></h3>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Interrupt Vector Table</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Exception Number</p></th>
+<th class="head"><p>NVIC Number</p></th>
+<th class="head"><p>Exception Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>1</p></th>
+<td></td>
+<td><p>Reset</p></td>
+<td><p>Reset</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>2</p></th>
+<td></td>
+<td><p>NMI</p></td>
+<td><p>Nonmaskable interrupt</p>
+<p>The WDG is linked to the NMI vector</p>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>3</p></th>
+<td></td>
+<td><p>Hard Fault</p></td>
+<td><p>All fault conditions if the corresponding fault handler is not enabled</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>4</p></th>
+<td></td>
+<td><p>MemManage Fault</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>5</p></th>
+<td></td>
+<td><p>Bus Fault</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>6</p></th>
+<td></td>
+<td><p>Usage Fault</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>7~10</p></th>
+<td></td>
+<td><p>RSVD</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>11</p></th>
+<td></td>
+<td><p>SVC</p></td>
+<td><p>Supervisor Call</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>12</p></th>
+<td></td>
+<td><p>Debug Monitor</p></td>
+<td><p>Debug monitor (breakpoints, watchpoints, or external debug requests)</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>13</p></th>
+<td></td>
+<td><p>RSVD</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>14</p></th>
+<td></td>
+<td><p>PendSV</p></td>
+<td><p>Pendable Service Call</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>15</p></th>
+<td></td>
+<td><p>SYSTICK</p></td>
+<td><p>System Tick Timer</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>16</p></th>
+<td><p>[0]</p></td>
+<td><p>System_ISR</p></td>
+<td><p>Interrupt CPU when system wakes up by GPIO</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>17</p></th>
+<td><p>[1]</p></td>
+<td><p>WDT</p></td>
+<td><p>Watchdog Timer interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>18</p></th>
+<td><p>[2]</p></td>
+<td><p>Internal use</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>19</p></th>
+<td><p>[3]</p></td>
+<td><p>Internal use</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>20</p></th>
+<td><p>[4]</p></td>
+<td><p>Zigbee_ISR</p></td>
+<td><p>Zigbee interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>21</p></th>
+<td><p>[5]</p></td>
+<td><p>BTMAC_ISR</p></td>
+<td><p>BTMAC interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>22*</p></th>
+<td><p>[6]</p></td>
+<td><p>Peripheral_ISR</p></td>
+<td><p>See Below Table: Peripheral ISR</p>
+<p>(an extension of interrupt)</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>23</p></th>
+<td><p>[7]</p></td>
+<td><p>RSVD</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>24</p></th>
+<td><p>[8]</p></td>
+<td><p>RTC</p></td>
+<td><p>Real-Time Counter interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>25</p></th>
+<td><p>[9]</p></td>
+<td><p>GPIO_A0</p></td>
+<td><p>GPIO_A0 interrupt</p>
+<p>(GPIO_A corresponds to GPIO0 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>26</p></th>
+<td><p>[10]</p></td>
+<td><p>GPIO_A1</p></td>
+<td><p>GPIO_A1 interrupt</p>
+<p>(GPIO_A corresponds to GPIO0 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>27</p></th>
+<td><p>[11]</p></td>
+<td><p>GPIO_A[2:7]</p></td>
+<td><p>GPIO_A[2:7] interrupt</p>
+<p>(GPIO_A corresponds to GPIO0 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>28</p></th>
+<td><p>[12]</p></td>
+<td><p>GPIO_A[8:15]</p></td>
+<td><p>GPIO_A[8:15] interrupt</p>
+<p>(GPIO_A corresponds to GPIO0 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>29</p></th>
+<td><p>[13]</p></td>
+<td><p>GPIO_A[16:23]</p></td>
+<td><p>GPIO_A[16:23] interrupt</p>
+<p>(GPIO_A corresponds to GPIO0 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>30</p></th>
+<td><p>[14]</p></td>
+<td><p>GPIO_A[24:31]</p></td>
+<td><p>GPIO_A[24:31] interrupt</p>
+<p>(GPIO_A corresponds to GPIO0 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>31</p></th>
+<td><p>[15]</p></td>
+<td><p>GPIO_B[0:7]</p></td>
+<td><p>GPIO_B[0:7] interrupt</p>
+<p>(GPIO_B corresponds to GPIO1 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>32</p></th>
+<td><p>[16]</p></td>
+<td><p>GPIO_B[8:15]</p></td>
+<td><p>GPIO_B[8:15] interrupt</p>
+<p>(GPIO_B corresponds to GPIO1 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>33</p></th>
+<td><p>[17]</p></td>
+<td><p>GPIO_B[16:23]</p></td>
+<td><p>GPIO_B[16:23] interrupt</p>
+<p>(GPIO_B corresponds to GPIO1 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>34</p></th>
+<td><p>[18]</p></td>
+<td><p>GPIO_B[24:31]</p></td>
+<td><p>GPIO_B[24:31] interrupt</p>
+<p>(GPIO_B corresponds to GPIO1 in Address Map sheet)</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>35</p></th>
+<td><p>[19]</p></td>
+<td><p>DMA_Channel0</p></td>
+<td><p>RTK-DMA channel 0 global interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>36</p></th>
+<td><p>[20]</p></td>
+<td><p>DMA_Channel1</p></td>
+<td><p>RTK-DMA channel 1 global interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>37</p></th>
+<td><p>[21]</p></td>
+<td><p>DMA_Channel2</p></td>
+<td><p>RTK-DMA channel 2 global interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>38</p></th>
+<td><p>[22]</p></td>
+<td><p>DMA_Channel3</p></td>
+<td><p>RTK-DMA channel 3 global interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>39</p></th>
+<td><p>[23]</p></td>
+<td><p>DMA_Channel4</p></td>
+<td><p>RTK-DMA channel 4 global interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>40</p></th>
+<td><p>[24]</p></td>
+<td><p>DMA_Channel5</p></td>
+<td><p>RTK-DMA channel 5 global interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>41</p></th>
+<td><p>[25]</p></td>
+<td><p>DMA_Channel6</p></td>
+<td><p>RTK-DMA channel 6 global interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>42</p></th>
+<td><p>[26]</p></td>
+<td><p>DMA_Channel7</p></td>
+<td><p>RTK-DMA channel 7 global interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>43</p></th>
+<td><p>[27]</p></td>
+<td><p>DMA_Channel8</p></td>
+<td><p>RTK-DMA channel 8 global interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>44</p></th>
+<td><p>[28]</p></td>
+<td><p>DMA_Channel9</p></td>
+<td><p>RTK-DMA channel 9 global interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>45</p></th>
+<td><p>[29]</p></td>
+<td><p>PPE</p></td>
+<td><p>Pixel Process Engine interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>46</p></th>
+<td><p>[30]</p></td>
+<td><p>I2C0</p></td>
+<td><p>I2C0 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>47</p></th>
+<td><p>[31]</p></td>
+<td><p>I2C1</p></td>
+<td><p>I2C1 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>48</p></th>
+<td><p>[32]</p></td>
+<td><p>I2C2</p></td>
+<td><p>I2C2 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>49</p></th>
+<td><p>[33]</p></td>
+<td><p>I2C3</p></td>
+<td><p>I2C3 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>50</p></th>
+<td><p>[34]</p></td>
+<td><p>RTK UART0</p></td>
+<td><p>normal interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>51</p></th>
+<td><p>[35]</p></td>
+<td><p>RTK UART1</p></td>
+<td><p>normal UART interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>52</p></th>
+<td><p>[36]</p></td>
+<td><p>RTK UART2</p></td>
+<td><p>normal UART interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>53</p></th>
+<td><p>[37]</p></td>
+<td><p>RTK UART3</p></td>
+<td><p>normal UART interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>54</p></th>
+<td><p>[38]</p></td>
+<td><p>RTK UART4</p></td>
+<td><p>normal UART interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>55</p></th>
+<td><p>[39]</p></td>
+<td><p>RTK UART5</p></td>
+<td><p>normal UART interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>56</p></th>
+<td><p>[40]</p></td>
+<td><p>SPI 3Wire</p></td>
+<td><p>SPI 3Wire interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>57</p></th>
+<td><p>[41]</p></td>
+<td><p>SPI0</p></td>
+<td><p>SPI0 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>58</p></th>
+<td><p>[42]</p></td>
+<td><p>SPI1</p></td>
+<td><p>SPI1 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>59</p></th>
+<td><p>[43]</p></td>
+<td><p>SPI Slave</p></td>
+<td><p>SPI Slave interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>60</p></th>
+<td><p>[44]</p></td>
+<td><p>Timer_0</p></td>
+<td><p>Timer interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>61</p></th>
+<td><p>[45]</p></td>
+<td><p>Timer_1</p></td>
+<td><p>Timer interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>62</p></th>
+<td><p>[46]</p></td>
+<td><p>Timer_2</p></td>
+<td><p>Timer interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>63</p></th>
+<td><p>[47]</p></td>
+<td><p>Timer_3</p></td>
+<td><p>Timer interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>64</p></th>
+<td><p>[48]</p></td>
+<td><p>Timer_4</p></td>
+<td><p>Timer interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>65</p></th>
+<td><p>[49]</p></td>
+<td><p>Timer_5</p></td>
+<td><p>Timer interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>66</p></th>
+<td><p>[50]</p></td>
+<td><p>Timer_6</p></td>
+<td><p>Timer interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>67</p></th>
+<td><p>[51]</p></td>
+<td><p>Timer_7</p></td>
+<td><p>Timer interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>68</p></th>
+<td><p>[52]</p></td>
+<td><p>Enhanced_Timer_0</p></td>
+<td><p>Enhanced timer interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>69</p></th>
+<td><p>[53]</p></td>
+<td><p>Enhanced_Timer_1</p></td>
+<td><p>Enhanced timer interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>70</p></th>
+<td><p>[54]</p></td>
+<td><p>Enhanced_Timer_2</p></td>
+<td><p>Enhanced timer interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>71</p></th>
+<td><p>[55]</p></td>
+<td><p>Enhanced_Timer_3</p></td>
+<td><p>Enhanced timer interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>72</p></th>
+<td><p>[56]</p></td>
+<td><p>HR-ADC</p></td>
+<td><p>HR-ADC interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>73</p></th>
+<td><p>[57]</p></td>
+<td><p>ADC</p></td>
+<td><p>ADC interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>74</p></th>
+<td><p>[58]</p></td>
+<td><p>KEYSCAN</p></td>
+<td><p>keyscan interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>75</p></th>
+<td><p>[59]</p></td>
+<td><p>AON Q-decode</p></td>
+<td><p>Qdec in AON domain interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>76</p></th>
+<td><p>[60]</p></td>
+<td><p>IR</p></td>
+<td><p>IR module global interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>77</p></th>
+<td><p>[61]</p></td>
+<td><p>SDHC</p></td>
+<td><p>Secure Digital IO interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>78</p></th>
+<td><p>[62]</p></td>
+<td><p>ISO7816</p></td>
+<td><p>ISO7816 (Smart Card Standards) interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>79</p></th>
+<td><p>[63]</p></td>
+<td><p>Display</p></td>
+<td><p>Display interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>80</p></th>
+<td><p>[64]</p></td>
+<td><p>I2S0 RX</p></td>
+<td><p>I2S0 RX interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>81</p></th>
+<td><p>[65]</p></td>
+<td><p>I2S0 TX</p></td>
+<td><p>I2S0 TX interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>82</p></th>
+<td><p>[66]</p></td>
+<td><p>I2S1 RX</p></td>
+<td><p>I2S1 RX interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>83</p></th>
+<td><p>[67]</p></td>
+<td><p>I2S1 TX</p></td>
+<td><p>I2S1 TX interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>84</p></th>
+<td><p>[68]</p></td>
+<td><p>SHA256</p></td>
+<td><p>SHA256 family interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>85</p></th>
+<td><p>[69]</p></td>
+<td><p>Public key engine</p></td>
+<td><p>Public key engine interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>86</p></th>
+<td><p>[70]</p></td>
+<td><p>Internal use</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>87</p></th>
+<td><p>[71]</p></td>
+<td><p>SegCom_CTL</p></td>
+<td><p>SegCom_CTL interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>88</p></th>
+<td><p>[72]</p></td>
+<td><p>CAN</p></td>
+<td><p>CAN interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>89</p></th>
+<td><p>[73]</p></td>
+<td><p>ETHERNET</p></td>
+<td><p>Ethernet interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>90</p></th>
+<td><p>[74]</p></td>
+<td><p>IMDC</p></td>
+<td><p>IMDC interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>91</p></th>
+<td><p>[75]</p></td>
+<td><p>Internal use</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>92</p></th>
+<td><p>[76]</p></td>
+<td><p>Internal use</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>93</p></th>
+<td><p>[77]</p></td>
+<td><p>USB</p></td>
+<td><p>USB IP interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>94</p></th>
+<td><p>[78]</p></td>
+<td><p>USB_SUSPEND_N</p></td>
+<td><p>USB Suspend/Resume interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>95</p></th>
+<td><p>[79]</p></td>
+<td><p>USB_Endp_Muti_Proc</p></td>
+<td><p>USB_Endp_Muti_Proc interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>96</p></th>
+<td><p>[80]</p></td>
+<td><p>USB_IN_EP_0</p></td>
+<td><p>USB IN End Point 0 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>97</p></th>
+<td><p>[81]</p></td>
+<td><p>USB_IN_EP_1</p></td>
+<td><p>USB IN Endpoint 1 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>98</p></th>
+<td><p>[82]</p></td>
+<td><p>USB_IN_EP_2</p></td>
+<td><p>USB IN Endpoint 2 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>99</p></th>
+<td><p>[83]</p></td>
+<td><p>USB_IN_EP_3</p></td>
+<td><p>USB IN Endpoint 3 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>100</p></th>
+<td><p>[84]</p></td>
+<td><p>USB_IN_EP_4</p></td>
+<td><p>USB IN Endpoint 4 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>101</p></th>
+<td><p>[85]</p></td>
+<td><p>USB_IN_EP_5</p></td>
+<td><p>USB IN Endpoint 5 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>102</p></th>
+<td><p>[86]</p></td>
+<td><p>USB_OUT_EP_0</p></td>
+<td><p>USB OUT Endpoint 0 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>103</p></th>
+<td><p>[87]</p></td>
+<td><p>USB_OUT_EP_1</p></td>
+<td><p>USB OUT Endpoint 1 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>104</p></th>
+<td><p>[88]</p></td>
+<td><p>USB_OUT_EP_2</p></td>
+<td><p>USB OUT Endpoint 2 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>105</p></th>
+<td><p>[89]</p></td>
+<td><p>USB_OUT_EP_3</p></td>
+<td><p>USB OUT Endpoint 3 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>106</p></th>
+<td><p>[90]</p></td>
+<td><p>USB_OUT_EP_4</p></td>
+<td><p>USB OUT Endpoint 4 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>107</p></th>
+<td><p>[91]</p></td>
+<td><p>USB_OUT_EP_5</p></td>
+<td><p>USB OUT End Point 5 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>108</p></th>
+<td><p>[92]</p></td>
+<td><p>USB_Sof</p></td>
+<td><p>USB Start Of Frame interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>109</p></th>
+<td><p>[93]</p></td>
+<td><p>Internal use</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>110</p></th>
+<td><p>[94]</p></td>
+<td><p>Internal use</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>111</p></th>
+<td><p>[95]</p></td>
+<td><p>Internal use</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Peripheral ISR</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Exception Number</p></th>
+<th class="head"><p>NVIC Number</p></th>
+<th class="head"><p>Exception Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>0</p></th>
+<td><p>[6]</p></td>
+<td><p>SPIC0</p></td>
+<td><p>SPI device (flash) Controller 0 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>1</p></th>
+<td><p>[6]</p></td>
+<td><p>SPIC1</p></td>
+<td><p>SPI device (flash) Controller 1 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>2</p></th>
+<td><p>[6]</p></td>
+<td><p>SPIC2</p></td>
+<td><p>SPI device (flash) Controller 2 interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>3</p></th>
+<td><p>[6]</p></td>
+<td><p>TRNG</p></td>
+<td><p>True Random Number Generator interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>4</p></th>
+<td><p>[6]</p></td>
+<td><p>LPC</p></td>
+<td><p>Low Power Comparator interrupt</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>5</p></th>
+<td><p>[6]</p></td>
+<td><p>SPI_PHY1</p></td>
+<td><p>SPI_PHY1 interrupt</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>6</p></th>
+<td><p>[6]</p></td>
+<td><p>RSVD</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interrupt-priority">
+<h3>Interrupt Priority<a class="headerlink" href="#interrupt-priority" title="Link to this heading"></a></h3>
+<p>RTL87x2G supports three fixed highest-priority levels and 8 levels of programmable priority.
+The priority with numbers is below:</p>
+<p><strong>0 &gt; 1 &gt; 2 &gt; 3 &gt; 4 &gt; 5 &gt; 6 &gt; 7</strong></p>
+<table class="docutils align-default" id="table-interrupt-priority">
+<caption><span class="caption-text">Interrupt Priority</span><a class="headerlink" href="#table-interrupt-priority" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Priority</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>-3</p></th>
+<td><p>Reset Handler</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>-2</p></th>
+<td><p>NMI</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>-1</p></th>
+<td><p>Hard Fault</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0~1</p></th>
+<td><p>Used for interrupts with very high real-time requirements.</p>
+<p>(Note: Interrupts of this priority will not be masked by the critical section of FreeRTOS, but the interrupt handler cannot call any FreeRTOS API)</p>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>2~6</p></th>
+<td><p>Normal ISR</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>7</p></th>
+<td><p>SysTick and PendSV</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="power-management">
+<h2>Power Management<a class="headerlink" href="#power-management" title="Link to this heading"></a></h2>
+<p>RTL87x2G supports four power modes.</p>
+<ul class="simple">
+<li><p><strong>CPU Active</strong></p></li>
+</ul>
+<blockquote>
+<div><p>This mode enables all features for ultimate performance. In Power active mode, if the program does not enter the idle task, the CPU remains in an active state, and the CPU clock will be in high-speed mode, with a default clock speed of 40MHz.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>CPU Sleep</strong></p></li>
+</ul>
+<blockquote>
+<div><p>In Power active mode, when the system enters the idle task, the CPU goes into sleep mode, and the CPU clock will automatically slow down. If the CPU is operating at a 40MHz clock, the clock speed will reduce to 625KHz when the CPU is in sleep mode. If a PLL clock is being used, the selection of slow clock depends on the configuration of the PLL clock source.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>DLPS (Deep Low Power State)</strong></p></li>
+</ul>
+<blockquote>
+<div><p>This mode offers proper low power consumption and quick exit and restore time.
+In DLPS mode, the content of RAM is retained.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Power Down</strong></p></li>
+</ul>
+<blockquote>
+<div><p>This mode has extremely low power consumption.
+However, in power down mode, the content of RAM is not retained.
+Exiting from Power Down mode requires a reboot process, which takes more time.
+Only LPC and PAD (without debounce) can wake up the Power Down mode.</p>
+</div></blockquote>
+<p>RTL87x2G will enter low power mode when certain conditions are met, and it can be woken up by PAD, BT interrupt, RTC interrupt, or the expiration of the OS software timer.
+Refer to <a class="reference internal" href="../../low_power_mode/text_en/README.html"><span class="doc">Low Power Mode</span></a> for more details.</p>
+</section>
+<section id="debug-system">
+<h2>Debug System<a class="headerlink" href="#debug-system" title="Link to this heading"></a></h2>
+<p>Two debugging methods have been provided to debug applications. Please refer to <a class="reference internal" href="../../debug_system/text_en/README.html"><span class="doc">Debug System</span></a> for more details.</p>
+<ol class="arabic simple">
+<li><p>Use log mechanism to trace code procedures and data.</p></li>
+<li><p>Use Keil MDK and J-Link to control running, add/delete breakpoints, access/trace memory, and so on.</p></li>
+</ol>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api_reference/group___v_e_c_t_o_r___t_a_b_l_e___exported___functions.html#group___v_e_c_t_o_r___t_a_b_l_e___exported___functions"><span class="std std-ref">Vector Table</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../text_en/README.html" class="btn btn-neutral float-left" title="Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../memory/text_en/README.html" class="btn btn-neutral float-right" title="Memory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

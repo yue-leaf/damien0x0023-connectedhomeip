@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matter Protocol &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Samples" href="../../../../samples/text_en/README.html" />
+    <link rel="prev" title="Supported Features" href="../../supported_features/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../text_en/README.html">Protocols</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../../subsys/bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../subsys/ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../subsys/openthread/doc/text_en/README.html">Thread</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../text_en/README.html">Matter</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../supported_features/text_en/README.html">Supported Features</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Matter Protocol</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#terminology-and-concepts">Terminology and Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#layer-description">Layer Description</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#data-model">Data Model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dimmable-light">Dimmable Light</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#clients-and-servers">Clients and Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#interaction-model">Interaction Model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#read-interaction">Read Interaction</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#write-interaction">Write Interaction</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#invoke-interaction">Invoke Interaction</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#subscribe-interaction">Subscribe Interaction</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#subscribe-transaction">Subscribe Transaction</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#report-transaction">Report Transaction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#network-security">Network Security</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#session-establishment">Session Establishment</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#passcode-authenticated-session-establishment-pase">Passcode-Authenticated Session Establishment (PASE)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#certificate-authenticated-session-establishment-case">Certificate-Authenticated Session Establishment (CASE)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-projects">Sample Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../text_en/README.html">Protocols</a></li>
+        <li class="breadcrumb-item"><a href="../../text_en/README.html">Matter</a></li>
+    <li class="breadcrumb-item active">Matter Protocol</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="matter-protocol">
+<h1>Matter Protocol<a class="headerlink" href="#matter-protocol" title="Link to this heading"></a></h1>
+<p>Matter is a unified, open-source application-layer connectivity standard built to enable developers and device manufacturers to connect and build reliable, and secure ecosystems and increase compatibility among connected home devices.</p>
+<section id="terminology-and-concepts">
+<h2>Terminology and Concepts<a class="headerlink" href="#terminology-and-concepts" title="Link to this heading"></a></h2>
+<p>Matter protocol defines the application layer that will be deployed on devices and the different link layers to help maintain interoperability. The following diagram illustrates the normal operational mode of the stack.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/Matter_Arch.png"><img alt="../../../../../_images/Matter_Arch.png" src="../../../../../_images/Matter_Arch.png" style="width: 658.0px; height: 288.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Matter Architecture Overview</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Matter protocol stack is divided into the application layer, transport layer, network layer, and link/media layer. The application layer is compatible with various smart home ecosystems, allowing devices from different manufacturers to work together seamlessly.
+The transport and network layers handle communication between devices. The physical and link layers include current mainstream wireless standards such as Thread, Wi-Fi, and Ethernet.</p>
+<p>Thread is a secure wireless mesh networking protocol based on the IEEE 802.15.4 standard. Wi-Fi is a wireless network protocol based on the IEEE 802.11 standard, commonly used to establish local area networks between devices and provide internet access.
+Ethernet is a wired network technology based on the IEEE 802.3 standard.</p>
+</section>
+<section id="layer-description">
+<h2>Layer Description<a class="headerlink" href="#layer-description" title="Link to this heading"></a></h2>
+<p>The architecture is divided into layers to help separate the different responsibilities and introduce a good level of encapsulation among the various pieces
+of the protocol stack. The vast majority of interactions flow through the stack captured in the following figure.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../../_images/Matter_Layered_Arch.png"><img alt="../../../../../_images/Matter_Layered_Arch.png" src="../../../../../_images/Matter_Layered_Arch.png" style="width: 393.0px; height: 414.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Matter Layered Architecture</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The explanation of each level is as follows:</p>
+<table class="docutils align-default" id="table-matter-layered-architecture-description">
+<caption><span class="caption-text">Matter Layered Architecture Description</span><a class="headerlink" href="#table-matter-layered-architecture-description" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Application Layer</p></td>
+<td><p>High-order business logic of a device. For example, an application that is focused on lighting might contain logic to handle turning on/off the bulb as well as its color characteristics.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data Model</p></td>
+<td><p>The data layer corresponds to the data and verb elements that help support the functionality of the application. The Application operates on these data structures when there is an intent to interact with the device.</p></td>
+</tr>
+<tr class="row-even"><td><p>Interaction Model</p></td>
+<td><p>The Interaction Model layer defines a set of interactions that can be performed between a client and server device. For example, reading or writing attributes on a server device would correspond to application behavior on the device. These interactions operate on the elements defined at the data model layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Action Framing</p></td>
+<td><p>Once an action is constructed using the Interaction Model, it is serialized into a prescribed packed binary format to encode for network transmission.</p></td>
+</tr>
+<tr class="row-even"><td><p>Security</p></td>
+<td><p>An encoded action frame is then sent down to the Security Layer to encrypt and sign the payload to ensure that data is secured and authenticated by both sender and receiver of a packet.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Message Framing &amp; Routing</p></td>
+<td><p>With an interaction encrypted and signed, the Message Layer constructs the payload format with required and optional header fields; which specify the message's properties and some routing information.</p></td>
+</tr>
+<tr class="row-even"><td><p>IP Framing &amp; Transport Management</p></td>
+<td><p>After the final payload has been constructed, it is sent to the underlying transport protocol for IP management of the data.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below is a detailed introduction of the content and functions of the three layers: data model, interaction model, and security.</p>
+<section id="data-model">
+<h3>Data Model<a class="headerlink" href="#data-model" title="Link to this heading"></a></h3>
+<p>The Matter Data Model describes a hierarchical encapsulation of data elements in the Matter network, including node, endpoint, and cluster, among others.</p>
+<figure class="align-center" id="id3">
+<img alt="../../../../../_images/Data_Model.png" src="../../../../../_images/Data_Model.png" />
+<figcaption>
+<p><span class="caption-text">Data Model</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><strong>Node</strong></p>
+<p>A node encapsulates an addressable, unique resource on the network that has a set of functions and capabilities that a user recognizes distinctly as a functional whole.</p>
+<p>This distinction is usually physical, such as the physical device itself, or a logical instance of a physical device.</p>
+<p>A node is the highest or outermost first order element in the data model and it is also the outermost unique addressable element of the data model.</p>
+</li>
+<li><p><strong>Endpoint</strong></p>
+<p>A node is composed of one or more endpoints. An endpoint is an instance of something that could be a service or virtual device as indicated by a device type.</p>
+</li>
+<li><p><strong>Cluster</strong></p>
+<p>Clusters are object classes that are instantiated on an endpoint. Each cluster is defined by a cluster specification that defines elements of a cluster including:</p>
+<ul class="simple">
+<li><p>Attribute</p></li>
+<li><p>Event</p></li>
+<li><p>Command</p></li>
+</ul>
+</li>
+</ul>
+<p>These are typical elements in Matter data model. To better understand, we will illustrate with two examples. The dimmable light example demonstrates the complete data model structure of a dimmable light device, while the client and server example focuses on showing how the client and server clusters interact within the data model.</p>
+<section id="dimmable-light">
+<h4>Dimmable Light<a class="headerlink" href="#dimmable-light" title="Link to this heading"></a></h4>
+<p>The following figure illustrates the data model structure of a dimmable light device.</p>
+<figure class="align-center" id="id4">
+<img alt="../../../../../_images/Dimmable_Light_Data_Model.png" src="../../../../../_images/Dimmable_Light_Data_Model.png" />
+<figcaption>
+<p><span class="caption-text">Dimmabe Light Data Model</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The diagram provides a clear illustration of the endpoints, supported clusters, and the attributes and commands contained within each cluster of the dimmable light device.
+Below is a detailed description.</p>
+<ul>
+<li><p><strong>Node</strong></p>
+<p>In this example, the dimmable light is a node, which is often the physical device that users can recognize as the whole device.</p>
+</li>
+<li><p><strong>Endpoint</strong></p>
+<p>In Matter devices, endpoint 0 shall be the root node endpoint and shall support the root node device type.</p>
+<p>The main function of the root node device type is to describe the node and what endpoints the node supports, and it belongs to the utility device type.
+The PartsList of the Descriptor cluster on the root node endpoint SHALL list all endpoints on the node, except the root node endpoint.</p>
+<p>As shown in the above diagram, the device type of endpoint 0 is the root node, and its PartsList attribute includes endpoint 1.
+The device type of endpoint 1 is dimmable light, which belongs to the application device type.</p>
+</li>
+<li><p><strong>Cluster</strong></p>
+<p>In our diagram, endpoint 1 is shown with two clusters, the OnOff cluster and the Level Control cluster.</p>
+<ul class="simple">
+<li><p>OnOff cluster: provides a set of attributes and commands to turn the device on or off.</p></li>
+<li><p>Level Control cluster: provides an interface for controlling a characteristic of a device that can be set to a level, for example the brightness of a light, the degree of closure of a door, or the power output of a heater.</p></li>
+</ul>
+</li>
+</ul>
+<table class="docutils align-default" id="table-cluster-element-description">
+<caption><span class="caption-text">Cluster Element Description</span><a class="headerlink" href="#table-cluster-element-description" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Element</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Attribute</p></th>
+<td><p>Attributes reflect queryable/settable state, configuration and capabilities of a device. They can be read or written.</p></td>
+<td><p>The example respectively shows one attribute of the OnOff cluster and the Level Control cluster.</p>
+<ul class="simple">
+<li><p>OnOff cluster: provides a set of attributes and commands to turn the device on or off.</p></li>
+<li><p>Level Control cluster: provides an interface for controlling a characteristic of a device that can be set to a level, for example the brightness of a light, the degree of closure of a door, or the power output of a heater.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Command</p></th>
+<td><p>Commands are actions that a cluster can perform, and they are divided into two types: request commands and response commands.</p></td>
+<td><ul class="simple">
+<li><p>Request commands: in the example, the Toggle command of the OnOff cluster and the Move command of the Level Control cluster are both request commands.</p>
+<ul>
+<li><p>Toggle command: used to toggle the current value of the OnOff attribute.</p></li>
+<li><p>Move command: used to move the level of a device.</p></li>
+</ul>
+</li>
+<li><p>Response commands: such as sending a success status, or an error/unsupported status.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Event</p></th>
+<td><p>An event defines a record of something that occurred in the past. In this regard, an event record can be thought of as a log entry, with an event record stream providing a chronological view of the events on the node.</p></td>
+<td><p>The two clusters shown in the example do not have event elements.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="clients-and-servers">
+<h4>Clients and Servers<a class="headerlink" href="#clients-and-servers" title="Link to this heading"></a></h4>
+<p>Now that we understand the common elements of the Matter data model, let's explore another important concept within the data model: client and server clusters.</p>
+<p>A cluster specification defines both a server and client side that correspond with each other through interactions.</p>
+<ul class="simple">
+<li><p>Server cluster: supports attribute data, events and cluster commands.</p></li>
+<li><p>Client cluster: initiates interactions, including invocation of cluster commands.</p></li>
+</ul>
+<p>The cluster IDs of server clusters and client clusters on an endpoint can be obtained through the following attributes of the Descriptor cluster.</p>
+<ul class="simple">
+<li><p>ServerList attribute: This attribute SHALL list each cluster ID for the server clusters present on the endpoint instance.</p></li>
+<li><p>ClientList attribute: This attribute SHALL list each cluster ID for the client clusters present on the endpoint instance.</p></li>
+</ul>
+<p>The following example of a dimmable light and a dimmer switch illustrates the interaction between server and client.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../../../../_images/Client_&amp;_Server.png"><img alt="../../../../../_images/Client_%26_Server.png" src="../../../../../_images/Client_%26_Server.png" style="width: 504.0px; height: 265.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Clients and Servers Cluster</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In this example, the dimmable light implements the OnOff and Level Control cluster servers, while the dimmer switch implements the OnOff and Level Control cluster clients.</p>
+<p>The client clusters on the switch will send commands to the server clusters on the light to control its on/off state and brightness.</p>
+</section>
+</section>
+<section id="interaction-model">
+<h3>Interaction Model<a class="headerlink" href="#interaction-model" title="Link to this heading"></a></h3>
+<p>The Matter interaction model defines the methods of communication between nodes.
+The first transaction (of an interaction) starts with the first action from the node called the initiator.
+The first action destination is called the target, which is either a node or group. For the remainder
+of the interaction, the initiator remains the same.</p>
+<p>An interaction may be a single transaction (e.g. Read). An interaction may be an unbounded number of transactions (e.g. Subscribe).
+A transaction is either the whole, or part of an interaction. A transaction is a sequence of one or more actions.</p>
+<p>As shown in the figure below. Each interaction is made of transactions 1..n, which in turn are made of actions 1..n. Each action can be conveyed by one or more messages.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../../../../../_images/Interaction_Structure.png"><img alt="../../../../../_images/Interaction_Structure.png" src="../../../../../_images/Interaction_Structure.png" style="width: 420.0px; height: 223.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Interaction Structure</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The interaction model supports four types of interactions.</p>
+<p>All interaction types except Subscribe consist of one transaction. The Interaction Model supports five types of transactions:</p>
+<table class="docutils align-center" id="table-transaction-types-in-interaction-model">
+<caption><span class="caption-text">Transaction Types in Interaction Model</span><a class="headerlink" href="#table-transaction-types-in-interaction-model" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Interaction</p></th>
+<th class="head"><p>Transactions</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#read-interaction">Read Interaction</a></p></td>
+<td><p>Read</p></td>
+<td><p>Request for cluster attributes and/or event data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#write-interaction">Write Interaction</a></p></td>
+<td><p>Write</p></td>
+<td><p>Modify attribute values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#invoke-interaction">Invoke Interaction</a></p></td>
+<td><p>Invoke</p></td>
+<td><p>Invoke cluster commands.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="#subscribe-interaction">Subscribe Interaction</a></p></td>
+<td><p>Subscribe</p></td>
+<td><p>Create subscription for periodic updates from servers. Subscriptions can be related to attributes and events.</p></td>
+</tr>
+<tr class="row-even"><td><p>Report</p></td>
+<td><p>Maintain the subscription for periodic updates.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="read-interaction">
+<h4>Read Interaction<a class="headerlink" href="#read-interaction" title="Link to this heading"></a></h4>
+<p>This interaction is generated when an initiator wishes to determine the value of one or more attributes or events located on a node.</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="../../../../../_images/Read_Interaction.png"><img alt="../../../../../_images/Read_Interaction.png" src="../../../../../_images/Read_Interaction.png" style="width: 400.0px; height: 264.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Read Interaction</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-default" id="table-reading-interaction-operation-sequence">
+<caption><span class="caption-text">Reading Interaction Operation Sequence</span><a class="headerlink" href="#table-reading-interaction-operation-sequence" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Operation Sequence</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Read Request</p></th>
+<td><p>Read Request action is the first action of a Read transaction (and interaction).</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Report Data</p></th>
+<td><p>Upon receipt of a Read Request, target sends back the requested list of attributes and/or events, a suppress response, and a subscription ID.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Status Response(OPTIONAL)</p></th>
+<td><p>If SuppressResponse in Report Data is TRUE, a response SHALL NOT be generated; otherwise, a Status Response Action SHALL be generated with a status code.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-read-transaction-restrictions admonition">
+<p class="admonition-title">Read Transaction Restrictions</p>
+<ul class="simple">
+<li><p>Read Transaction is limited to unicast communication only. This means that Read Request and Report Data actions can only target a single node and cannot target a group of nodes. Additionally, Status Response actions cannot be generated as a response to a groupcast.</p></li>
+<li><p>This restriction ensures that communication occurs only between two nodes, avoiding potential issues that may arise from handling multiple recipients simultaneously.</p></li>
+</ul>
+</div>
+</section>
+<section id="write-interaction">
+<h4>Write Interaction<a class="headerlink" href="#write-interaction" title="Link to this heading"></a></h4>
+<p>This interaction is started when an initiator wishes to modify the values of one or more attributes located on one or more nodes.</p>
+<figure class="align-center" id="id8">
+<a class="reference internal image-reference" href="../../../../../_images/Write_Interaction.png"><img alt="../../../../../_images/Write_Interaction.png" src="../../../../../_images/Write_Interaction.png" style="width: 396.0px; height: 314.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Write Interaction</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Write interaction includes Timed or Untimed write transaction.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Timed Write Transaction</label><div class="tab-content docutils">
+<table class="docutils align-default" id="table-timed-write-transaction-operation-sequence">
+<caption><span class="caption-text">Timed Write Transaction Operation Sequence</span><a class="headerlink" href="#table-timed-write-transaction-operation-sequence" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Operation Sequence</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Timed Request</p></th>
+<td><p>Sets the time interval for sending a Write Request Action.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Status Response</p></th>
+<td><p>Confirms the transaction and the specified time interval.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Write Request</p></th>
+<td><p>Includes the following elements:</p>
+<ul class="simple">
+<li><p><strong>List of Tuples</strong>: Each tuple (known as a write request) contains the path and data to be modified.</p></li>
+<li><p><strong>Timed Request Flag</strong>: Indicates if the transaction is timed.</p></li>
+<li><p><strong>Suppress Response Flag</strong>: Indicates if the Write Response Action should be suppressed.</p></li>
+</ul>
+<p>If the transaction is timed and the timed request flag is set, the initiator must also specify a timeout: the number of milliseconds the transaction remains open, during which subsequent actions are considered valid.</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Write Response (OPTIONAL)</p></th>
+<td><p>A list of paths or error codes for each write request. Similar to a Read Transaction Status Response, a Write Response is not sent if the suppress response flag is set.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">Untimed Write Transaction</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>Untimed Write Transaction consists solely of the Write Request Action and the Write Response Action.</p></li>
+<li><p>Unlike a Timed Write Transaction, there is no need to set or confirm a time interval.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="admonition-timed-write-transaction-and-untimed-write-transaction-restrictions admonition">
+<p class="admonition-title">Timed Write Transaction and Untimed Write Transaction Restrictions</p>
+<ul class="simple">
+<li><p><strong>Timed Write Transaction</strong>: All actions are unicast-only.</p></li>
+<li><p><strong>Untimed Write Transaction</strong>: Write Request Actions may be multicast, but the Suppress Response flag must be set to prevent the network from flooding with status responses.</p></li>
+</ul>
+</div>
+</section>
+<section id="invoke-interaction">
+<h4>Invoke Interaction<a class="headerlink" href="#invoke-interaction" title="Link to this heading"></a></h4>
+<p>An initiator invokes command(s) on a target's cluster(s) through Invoke Interactions. This interaction can be either Timed or Untimed Invoke Transaction, similar to Write Interaction.</p>
+<figure class="align-center" id="id9">
+<a class="reference internal image-reference" href="../../../../../_images/Invoke_Interaction.png"><img alt="../../../../../_images/Invoke_Interaction.png" src="../../../../../_images/Invoke_Interaction.png" style="width: 396.0px; height: 314.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Invoke Interaction</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Timed Invoke Transaction</label><div class="tab-content docutils">
+<table class="docutils align-default" id="table-timed-invoke-transaction-operation-sequence">
+<caption><span class="caption-text">Timed Invoke Transaction Operation Sequence</span><a class="headerlink" href="#table-timed-invoke-transaction-operation-sequence" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Operation Sequence</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Timed Request</p></th>
+<td><p>Sets the time interval for the entire transaction.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Status Response</p></th>
+<td><p>Confirms the transaction and the specified time interval.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Invoke Request</p></th>
+<td><p>Requests the following items:</p>
+<ul class="simple">
+<li><p><strong>List of Paths</strong>: Paths to cluster commands. Each item is an invoke command that may optionally contain argument(s) for the command.</p></li>
+<li><p><strong>Timed Request Flag</strong>: Indicates if the transaction is timed.</p></li>
+<li><p><strong>Suppress Response Flag</strong>: Indicates if the Invoke Response should be suppressed.</p></li>
+<li><p><strong>Interaction ID</strong>: An integer to match the Invoke Request to its corresponding Invoke Response.</p></li>
+</ul>
+<p>Additionally, if initiating a timed Invoke Transaction, a timeout must be specified just like in a Timed Write Transaction.</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Invoke Response(OPTIONAL)</p></th>
+<td><p>The target responds with the interaction ID and a list of invoke responses, which include command responses and statuses for each invoke request. Like the Write Response, an Invoke Response is not sent if the suppress response flag is set.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Untimed Invoke Transaction</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>Untimed Invoke Transaction does not require setting or confirming a time interval.</p></li>
+<li><p>It consists of only the Invoke Request Action and the (optional) Invoke Response, similar to Untimed Write Transactions.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="admonition-timed-invoke-transaction-and-untimed-invoke-transaction-restrictions admonition">
+<p class="admonition-title">Timed Invoke Transaction and Untimed Invoke Transaction Restrictions</p>
+<ul class="simple">
+<li><p><strong>Timed Invoke Transaction</strong>: All actions are unicast-only.</p></li>
+<li><p><strong>Untimed Invoke Transaction</strong>: Invoke Request Actions may be multicast, but the Suppress Response flag must be set to prevent the network from being flooded with responses.</p></li>
+</ul>
+</div>
+</section>
+<section id="subscribe-interaction">
+<h4>Subscribe Interaction<a class="headerlink" href="#subscribe-interaction" title="Link to this heading"></a></h4>
+<p>An initiator uses a Subscribe Interaction to automatically receive periodic Report Data Transactions from the target, establishing a relationship between the initiator (subscriber) and the target (publisher) after the subscription is made.</p>
+<p>Subscribe Interaction include two transaction types:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#subscribe-transaction">Subscribe Transaction</a></p></li>
+<li><p><a class="reference internal" href="#report-transaction">Report Transaction</a></p></li>
+</ul>
+<figure class="align-center" id="id10">
+<a class="reference internal image-reference" href="../../../../../_images/Subscribe_Interaction.png"><img alt="../../../../../_images/Subscribe_Interaction.png" src="../../../../../_images/Subscribe_Interaction.png" style="width: 396.0px; height: 533.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Subscribe Interaction</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="subscribe-transaction">
+<h5>Subscribe Transaction<a class="headerlink" href="#subscribe-transaction" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="table-subscribe-interaction-operation-sequence">
+<caption><span class="caption-text">Subscribe Interaction Operation Sequence</span><a class="headerlink" href="#table-subscribe-interaction-operation-sequence" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Operation Sequence</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Subscribe Request</p></th>
+<td><p>Requests the following items:</p>
+<ul class="simple">
+<li><p><strong>Min Interval Floor</strong>: Minimum interval between Data Reports.</p></li>
+<li><p><strong>Max Interval Ceiling</strong>: Maximum interval between Data Reports.</p></li>
+<li><p><strong>Attributes and/or Events</strong>: The attributes and/or events to be reported.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Report Data</p></th>
+<td><p>Contains the first batch of data, known as the Primed Published Data.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Status Response</p></th>
+<td><p>Acknowledges the Report Data Action.</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Subscribe Response</p></th>
+<td><p>Finalizes the subscription ID (an integer that acts as an identifier for the subscription) and confirms the min interval floor and max interval ceiling. This action indicates a successful subscription between the subscriber and publisher.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="report-transaction">
+<h5>Report Transaction<a class="headerlink" href="#report-transaction" title="Link to this heading"></a></h5>
+<p>After a successful Subscribe Transaction, Report Transactions are periodically sent to the subscriber. There are two types of Report Transactions: non-empty and empty.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">Non-empty Report Transaction</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p><strong>Report Data Action</strong>: Contains data and/or events with the SuppressResponse flag set to FALSE.</p></li>
+<li><p><strong>Status Response</strong>: Indicates a successful report or an error. An error response ends the interaction.</p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">Empty Report Transaction</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p><strong>Report Data Action</strong>: Contains no data or events with the SuppressResponse flag set to TRUE, which means no Status Response is generated.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition-subscribe-interaction-restrictions admonition">
+<p class="admonition-title">Subscribe Interaction Restrictions</p>
+<ul class="simple">
+<li><p><strong>Unicast-only Subscribe Actions</strong>: The Subscribe Request and Subscribe Response actions must be unicast, meaning an initiator cannot subscribe to more than one target simultaneously.</p></li>
+<li><p><strong>Consistent Subscription ID</strong>: Report Data Actions within the same Subscription Interaction must have the same subscription ID.</p></li>
+<li><p><strong>Subscription Termination</strong>: A subscription may be ended if the subscriber responds to a Report Data Action with an 'INACTIVE_SUBSCRIPTION' status, or if the subscriber does not receive a Report Data Action within the max interval ceiling. The latter implies that the publisher may end a subscription by not sending Report Data Actions.</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+<section id="network-security">
+<h3>Network Security<a class="headerlink" href="#network-security" title="Link to this heading"></a></h3>
+<p>The Matter network security aims at authenticating only trustworthy devices to the Matter fabric and protecting the confidentiality of messages exchanged between the fabric nodes.</p>
+<section id="session-establishment">
+<h4>Session Establishment<a class="headerlink" href="#session-establishment" title="Link to this heading"></a></h4>
+<p>Session establishment is a process that serves two purposes. It is used to exchange encryption keys required for establishing a secure communication between nodes. It also involves mutual node authentication, which assures both nodes that they initiate communication with a trusted peer.</p>
+<p>The following session establishment methods are available:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#passcode-authenticated-session-establishment-pase">Passcode-Authenticated Session Establishment (PASE)</a></p></li>
+<li><p><a class="reference internal" href="#certificate-authenticated-session-establishment-case">Certificate-Authenticated Session Establishment (CASE)</a></p></li>
+</ul>
+<section id="passcode-authenticated-session-establishment-pase">
+<h5>Passcode-Authenticated Session Establishment (PASE)<a class="headerlink" href="#passcode-authenticated-session-establishment-pase" title="Link to this heading"></a></h5>
+<p>The Passcode-Authenticated Session Establishment (PASE) protocol aims to establish the first session between a Commissioner and a Commissionee using a known passcode provided out-of-band.
+The pairing is performed using Password-Authenticated Key Exchange (PAKE) and relies on a Password-Based Key Derivation Function (PBKDF) where the passcode is used as password.</p>
+<p>This session establishment protocol provides a means to:</p>
+<ul class="simple">
+<li><p>Communicate PBKDF parameters.</p></li>
+<li><p>Derive PAKE bidirectional secrets.</p></li>
+</ul>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../../../../../_images/Overview_of_PASE.png"><img alt="../../../../../_images/Overview_of_PASE.png" src="../../../../../_images/Overview_of_PASE.png" style="width: 490.0px; height: 410.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Overview of the PASE Protocol</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>When using PASE, both nodes share the same secret in the form of 8-digit passcode. The shared secret is used by the SPAKE2+ algorithm to ensure a safe exchange of keys over non-secure channel. This process takes place when commissioning the device. To reduce the computational cost of the SPAKE2+ algorithm on constrained devices, the passcode can be used to calculate the SPAKE2+ Verifier offline. With the Verifier pre-calculated, the device no longer needs the passcode when executing the algorithm.</p>
+</section>
+<section id="certificate-authenticated-session-establishment-case">
+<h5>Certificate-Authenticated Session Establishment (CASE)<a class="headerlink" href="#certificate-authenticated-session-establishment-case" title="Link to this heading"></a></h5>
+<p>This session establishment mechanism provides an authenticated key exchange between exactly two peers while maintaining privacy of each peer. A resumption mechanism allows bootstrapping a new session from a previous one, dramatically reducing the computation required as well as reducing the number of messages exchanged.</p>
+<p>This session establishment protocol provides a means to:</p>
+<ul class="simple">
+<li><p>Mutually authenticate both peer Nodes.</p></li>
+<li><p>Generate cryptographic keys to secure subsequent communication within a session.</p></li>
+<li><p>Exchange operational parameters for the session, such as Session Identifier and MRP parameters.</p></li>
+</ul>
+<p>The basic protocol can be achieved within 2 round trips as shown below:</p>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../../../../../_images/Basic_Session_Establishment.png"><img alt="../../../../../_images/Basic_Session_Establishment.png" src="../../../../../_images/Basic_Session_Establishment.png" style="width: 391.0px; height: 443.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Basic Session Establishment</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The protocol also provides a means to quickly resume a session using a previously established session. Resumption does not require expensive signature creation and verification which significantly reduces the computation time. Because of this, resumption is favoured for low-powered devices when applicable. Session resumption SHOULD be used by initiators when the necessary state is known to the initiator.</p>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../../../../../_images/Session_Resumption.png"><img alt="../../../../../_images/Session_Resumption.png" src="../../../../../_images/Session_Resumption.png" style="width: 391.0px; height: 326.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Session Resumption</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>When using CASE, both nodes own Node Operational Certificates that chain back to the same root of trust. The NOCs are used by the SIGMA algorithm to ensure a mutual node authentication and a safe exchange of keys over non-secure channel. This process takes place while establishing the secured communication between nodes that are already commissioned. The concept of Root of Trust in Matter revolves around a certification authority (CA) identified by the Root Public Key (Root PK). The CA is responsible for issuing and assigning Node Operational Certificates (NOCs) or Intermediate Certificate Authority Certificates (ICACs). During the Matter network ommissioning, the commissioner installs NOCs along with Trusted Root CA Certificates.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="sample-projects">
+<h2>Sample Projects<a class="headerlink" href="#sample-projects" title="Link to this heading"></a></h2>
+<p>To facilitate future development, the SDK provides a sample app for users to reference.</p>
+<p>Lighting Demo Application: <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/lighting/text_en/README.html">Lighting</a></p>
+<p>Light Switch Demo Application: <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/light_switch/text_en/README.html">Light Switch</a></p>
+<p>OTA Requestor Demo Application: <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/ota_requestor/text_en/README.html">OTA Requestor</a></p>
+<p>Window Covering Demo Application: <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/window_covering/text_en/README.html">Window Covering</a></p>
+<p>Door Lock Demo Application: <a class="reference external" href="https://docs.realmcu.com/matter/en/latest/doc/samples/door_lock/text_en/README.html">Door Lock</a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><em>Matter Core Specification. Version 1.3</em></p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../supported_features/text_en/README.html" class="btn btn-neutral float-left" title="Supported Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../../samples/text_en/README.html" class="btn btn-neutral float-right" title="Samples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

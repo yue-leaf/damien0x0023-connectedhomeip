@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple TRX &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="HID Proprietary Protocol Sync" href="../../../ppt_sync/doc/text_en/README.html" />
+    <link rel="prev" title="2.4G" href="../../../doc/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../../bluetooth/doc/text_en/README.html">Bluetooth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/doc/text_en/README.html">Peripheral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_en/README.html">Simulation Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_en/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_en/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_en/README.html">Low Power</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_en/README.html">2.4G</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Simple TRX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wiring">Wiring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-and-downloading">Building and Downloading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#experimental-verification">Experimental Verification</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#code-overview">Code Overview</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#source-code-directory">Source Code Directory</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ptx-prx-flow">PTX/PRX Flow</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#initialize-and-configure">Initialize and Configure</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#main-loop">Main Loop</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#radio-interrupt-handler">Radio Interrupt Handler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ppt_sync/doc/text_en/README.html">HID Proprietary Protocol Sync</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_en/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_en/README.html">Ethernet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">2.4G</a></li>
+    <li class="breadcrumb-item active">Simple TRX</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="simple-trx">
+<h1>Simple TRX<a class="headerlink" href="#simple-trx" title="Link to this heading"></a></h1>
+<p>This example uses two projects to play the roles of <a class="reference internal" href="../../../../../doc/glossary.html#term-PTX"><span class="xref std std-term">PTX</span></a> and <a class="reference internal" href="../../../../../doc/glossary.html#term-PRX"><span class="xref std std-term">PRX</span></a> respectively. They can send messages to each other to demonstrate the basic usage of radio.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>The sample supports the following development kits:</p>
+<table class="docutils align-center" id="id1">
+<caption><span class="caption-text">Development Kits</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-HDK"><span class="xref std std-term">HDK</span></a></p></td>
+<td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>For more requirements, please refer to <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<p>Please refer to <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#rtl87x2g-evb-interfaces-and-modules"><span class="std std-ref">EVB Interfaces and Modules</span></a>
+in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p>
+</section>
+<section id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Link to this heading"></a></h2>
+<p>All the content that needs to be configured in <a class="reference internal" href="../../../../../doc/glossary.html#term-APP"><span class="xref std std-term">APP</span></a> is in <code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\src\ppt_cfg.h</span></code>.
+The default configuration is what is required for <a class="reference internal" href="../../../../../doc/glossary.html#term-BLE"><span class="xref std std-term">BLE</span></a> advertising, and developers can configure it according to actual needs.</p>
+</section>
+<section id="building-and-downloading">
+<h2>Building and Downloading<a class="headerlink" href="#building-and-downloading" title="Link to this heading"></a></h2>
+<p>This sample can be found in the SDK folder:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file:</p>
+<div class="line-block">
+<div class="line"><code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_ptx\rtl87x2g\mdk</span></code></div>
+<div class="line"><code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_prx\rtl87x2g\mdk</span></code></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file:</p>
+<div class="line-block">
+<div class="line"><code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_ptx\rtl87x2g\gcc</span></code></div>
+<div class="line"><code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_prx\rtl87x2g\gcc</span></code></div>
+</div>
+</div>
+</div>
+</div>
+<p>To build and run the sample, follow the steps listed below:</p>
+<ol class="arabic simple">
+<li><p>Open project file.</p></li>
+<li><p>To build the target, follow the steps listed on the <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#generate-app-image"><span class="std std-ref">Generating App Image</span></a> in
+<a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p></li>
+<li><p>After a successful compilation, the APP bin <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk_xxx.bin</span></code> will be generated in
+the directory <code class="file docutils literal notranslate"><span class="pre">bin</span></code>.</p></li>
+<li><p>To download APP bin into evaluation board, follow the steps listed on the <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html#mp-tool-download"><span class="std std-ref">MP Tool Download</span></a>
+in <a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html"><span class="doc">Quick Start</span></a>.</p></li>
+<li><p>Press reset button on evaluation board and it will start running.</p></li>
+</ol>
+</section>
+<section id="experimental-verification">
+<h2>Experimental Verification<a class="headerlink" href="#experimental-verification" title="Link to this heading"></a></h2>
+<p>After programming the sample to two evaluation boards, use the <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Analyzer</span></code> to obtain logs and view the running results.</p>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>After pressing the reset button, the PTX EVB will start simulating BLE Adv to send broadcasts and listen for responses. The PTX role is to send packets periodically and can enter sleep mode when idle.
+If it is successfully started, the following log will be printed.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">ptx</span><span class="o">:</span><span class="w"> </span><span class="n">statistics</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w"> </span><span class="n">rx</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="n">miss</span><span class="w"> </span><span class="mi">25</span><span class="p">(</span><span class="mf">26.315</span><span class="o">%</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>After pressing the reset button, the PRX EVB will start simulating BLE Scan to listen to broadcasts and send responses.
+If it starts successfully, the following log will be printed.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">APP</span><span class="p">]</span><span class="w"> </span><span class="o">!**</span><span class="n">prx</span><span class="o">:</span><span class="w"> </span><span class="n">rx</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="mi">1774</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="mi">2969</span><span class="p">,</span><span class="w"> </span><span class="n">rx</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="mh">0x0008</span><span class="p">,</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">hp</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="mh">0x00000000</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">02</span><span class="w"> </span><span class="mo">01</span><span class="w"> </span><span class="mo">05</span><span class="w"> </span><span class="mo">05</span><span class="w"> </span><span class="mi">09</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="mi">2</span><span class="n">E</span><span class="w"> </span><span class="mi">34</span><span class="w"> </span><span class="mi">67</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Because the default configuration is BLE Advertising Channel 37, which is 2402MHz, PTX may hear the BLE device reply and PRX may hear the BLE device broadcast.
+You can modify parameters such as <code class="docutils literal notranslate"><span class="pre">FREQUENCY</span></code> to avoid BLE devices.</p>
+</div>
+</section>
+</section>
+<section id="code-overview">
+<h2>Code Overview<a class="headerlink" href="#code-overview" title="Link to this heading"></a></h2>
+<p>The main purpose of this chapter is to help APP developers familiar with the development process.
+This chapter will be introduced according to the following several parts:</p>
+<ul class="simple">
+<li><p>Chapter <a class="reference internal" href="#source-code-directory">Source Code Directory</a> introduces the directory path of the project and the source files.</p></li>
+<li><p>Chapter <a class="reference internal" href="#initialization">Initialization</a> introduces the initialization flow of the chip.</p></li>
+<li><p>Chapter <a class="reference internal" href="#ptx-prx-flow">PTX/PRX Flow</a> introduces radio initialization and running process.</p></li>
+</ul>
+<section id="source-code-directory">
+<h3>Source Code Directory<a class="headerlink" href="#source-code-directory" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Project directory: <code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\proj_xxx</span></code></p></li>
+<li><p>Source code directory: <code class="file docutils literal notranslate"><span class="pre">samples\ppt\ppt_simple_trx\src</span></code></p></li>
+</ul>
+<p>Source files in the application project are currently categorized into several groups as below.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: ptx(prx)
+    └── secure_only_app
+        ├── Device                   includes startup code
+        ├── CMSE Library             Non-secure callable lib
+        ├── Lib                      includes all binary symbol files that user application is built on
+            ├── ROM_NS.lib
+            ├── lowerstack.lib
+            ├── rtl87x2g_sdk.lib
+            └── rtl87x2g_io.lib
+        ├── Peripheral               includes all peripheral drivers and module code used by the application
+        ├── ppt driver               includes radio driver
+            ├── ppt_driver.c         includes hw registers operation
+            └── ppt_simple.c         includes hw management and sw wrapper
+        └── APP                      includes the ble_peripheral user application implementation
+            ├── main_ns.c            includes the io, os and platform initialization
+            ├── app_task.c           includes app task initialization and main loop
+            ├── ppt_cfg.c            includes the radio configurations
+            └── ppt_ptx(prx).c       includes ptx and prx operations and interrupt routine
+</pre></div>
+</div>
+</section>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h3>
+<p>When the EVB board boots up and the chip is reset, the <code class="docutils literal notranslate"><span class="pre">main</span></code> function will be called, which executes the following initialization functions:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;Non-Secure World: main&quot;</span><span class="p">);</span>
+
+<span class="cp">#if DLPS_EN</span>
+<span class="w">    </span><span class="n">pwr_mgr_init</span><span class="p">();</span>
+<span class="cp">#endif</span>
+
+<span class="w">    </span><span class="n">app_task_init</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Start scheduler. */</span>
+<span class="w">    </span><span class="n">os_sched_start</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Should not reach here as the scheduler is already started. */</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="p">;)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pwr_mgr_init</span></code> inits the <a class="reference internal" href="../../../../../doc/glossary.html#term-DLPS"><span class="xref std std-term">DLPS</span></a> power management module.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_task_init</span></code> inits the app task and registers the task main function <code class="docutils literal notranslate"><span class="pre">app_main_task</span></code>.</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___o_s___s_c_h_e_d___exported___functions.html#_CPPv414os_sched_start" title="os_sched_start"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">os_sched_start</span></code></a> starts the os scheduler. When the scheduler is started, <code class="docutils literal notranslate"><span class="pre">app_main_task</span></code> will be called and invoke the radio main function <code class="docutils literal notranslate"><span class="pre">ppt_demo</span></code>, as shown below.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_main_task</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_param</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">event</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* This task calls secure side functions. So allocate a secure context for</span>
+<span class="cm">     * it. */</span>
+<span class="w">    </span><span class="c1">//must locate at the first line</span>
+<span class="w">    </span><span class="n">os_alloc_secure_ctx</span><span class="p">(</span><span class="n">configMINIMAL_SECURE_STACK_SIZE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* avoid ppt initialization conflict with ble psd procedure */</span>
+<span class="w">    </span><span class="n">os_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">ppt_demo</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ppt_demo</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ptx-prx-flow">
+<h3>PTX/PRX Flow<a class="headerlink" href="#ptx-prx-flow" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ppt_demo</span></code> will initialize and configure the radio, then start the loop of PTX or PRX.</p>
+<section id="initialize-and-configure">
+<h4>Initialize and Configure<a class="headerlink" href="#initialize-and-configure" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ppt_cfg</span></code> will initialize and configure the radio, including frequency, PHY type, frame format, CRC parameters, whitening parameters, access address and transmit power.</p></li>
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___driver___exported___functions.html#_CPPv415ppt_reg_handlerPFvvE" title="ppt_reg_handler"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ppt_reg_handler()</span></code></a> registers the radio's interrupt handler.</p></li>
+<li><p>Configure the PTX and PRX mode, set the packet header via <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___driver___exported___functions.html#_CPPv417ppt_set_tx_header7uint8_tP12ppt_header_t" title="ppt_set_tx_header"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ppt_set_tx_header()</span></code></a>, and prepare the data to be sent via <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___simple___exported___functions.html#_CPPv416ppt_push_tx_data8uint16_tP7uint8_t" title="ppt_push_tx_data"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ppt_push_tx_data()</span></code></a>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PRX character also demonstrated the process of doing a <a class="reference internal" href="../../../../../doc/glossary.html#term-PSD"><span class="xref std std-term">PSD</span></a> channel scan on 79 channels from 2402 MHz to 2480 MHz, as shown below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * psd sample code</span>
+<span class="cm"> * get the channel rssi of different frequencies from 2402 to 2480 MHz</span>
+<span class="cm"> */</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">79</span><span class="p">;</span><span class="w"> </span><span class="n">loop</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ppt_psd_mode_ext_t</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="p">.</span><span class="n">chann_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loop</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">chann_stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loop</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">chann_step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PSD_TIMEOUT_DEFAULT</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">ppt_set_psd_mode_ext</span><span class="p">(</span><span class="o">&amp;</span><span class="n">param</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ppt_enable_psd</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">loop</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">79</span><span class="p">;</span><span class="w"> </span><span class="n">loop</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">rssi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ppt_get_psd_result</span><span class="p">(</span><span class="n">loop</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DBG_DIRECT</span><span class="p">(</span><span class="s">&quot;PSD: freq %dMHz rssi = %ddBm&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2402</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loop</span><span class="p">,</span><span class="w"> </span><span class="n">rssi</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="main-loop">
+<h4>Main Loop<a class="headerlink" href="#main-loop" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>PTX will send data in a loop, the process is as follows:</strong></p>
+<ol class="arabic simple">
+<li><p>prepare data.</p></li>
+<li><p>enable PTX and wait for completion.</p></li>
+<li><p>modify data content and length.</p></li>
+<li><p>if it is periodic mode, delay 100ms.</p></li>
+<li><p>return to step 1.</p></li>
+</ol>
+</li>
+<li><p><strong>PRX will monitor in a loop, the process is as follows:</strong></p>
+<ul>
+<li><p>If it is oneshot mode, the process is as follows:</p>
+<ol class="arabic simple">
+<li><p>enable PRX and wait for completion.</p></li>
+<li><p>delay 100ms to allow the platform time to log.</p></li>
+<li><p>return to step 1.</p></li>
+</ol>
+</li>
+<li><p>If it is continuous mode, PRX will be continuously enabled, and the process is as follows:</p>
+<ol class="arabic simple">
+<li><p>enable PRX without waiting for completion.</p></li>
+<li><p>delay 100ms to allow the platform time to log.</p></li>
+<li><p>return to step 2.</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="radio-interrupt-handler">
+<h4>Radio Interrupt Handler<a class="headerlink" href="#radio-interrupt-handler" title="Link to this heading"></a></h4>
+<p>After enabling PTX or PRX, the radio will run and trigger the corresponding interrupt.
+The registered interrupt function by <a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___driver___exported___functions.html#_CPPv415ppt_reg_handlerPFvvE" title="ppt_reg_handler"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">ppt_reg_handler()</span></code></a> will be called. The interrupt type can be found in <a class="reference internal" href="../../../../../subsys/ppt/driver/doc/text_en/README.html#guserguide-function-introduction-interrupt"><span class="std std-ref">Interrupt</span></a>.</p>
+<ul class="simple">
+<li><p>TX will process <code class="docutils literal notranslate"><span class="pre">tx_int</span></code>.</p>
+<ul>
+<li><p>If ACK mode is turned on, <code class="docutils literal notranslate"><span class="pre">rx_int</span></code> will also be processed.</p></li>
+<li><p>If periodic mode is turned on, <code class="docutils literal notranslate"><span class="pre">tx_early_int</span></code> will be processed. When the number of retransmissions in periodic mode reaches the requirement, PTX will be turned off in the TRX interrupt, and then <code class="docutils literal notranslate"><span class="pre">kill_ptx_int</span></code> needs to be processed.</p></li>
+</ul>
+</li>
+<li><p>PRX will process <code class="docutils literal notranslate"><span class="pre">rx_int</span></code>.</p>
+<ul>
+<li><p>If ACK mode is turned on, <code class="docutils literal notranslate"><span class="pre">tx_int</span></code> will also be processed.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>Please refer to the relevant API Reference:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___p_p_t___driver___a_l_l.html#group___p_p_t___driver___a_l_l"><span class="std std-ref">2.4G Driver</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../doc/text_en/README.html" class="btn btn-neutral float-left" title="2.4G" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../ppt_sync/doc/text_en/README.html" class="btn btn-neutral float-right" title="HID Proprietary Protocol Sync" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LE DTM &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="Bluetooth Mesh" href="../../../mesh/doc/text_cn/README.html" />
+    <link rel="prev" title="LE Peripheral Privacy" href="../../../ble_peripheral_privacy/doc/text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_cn/README.html">蓝牙</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_broadcaster/doc/text_cn/README.html">LE Broadcaster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_observer/doc/text_cn/README.html">LE Observer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_peripheral/doc/text_cn/README.html">LE Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_central/doc/text_cn/README.html">LE Central</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_scatternet/doc/text_cn/README.html">LE Scatternet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_bt5_peripheral/doc/text_cn/README.html">LE Peripheral Extended ADV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_bt5_central/doc/text_cn/README.html">LE Central Extended Scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ble_peripheral_privacy/doc/text_cn/README.html">LE Peripheral Privacy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LE DTM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">概述</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id3">发射测试</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">接收测试</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">环境要求</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">硬件连线</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">编译和下载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">测试验证</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id10">准备步骤</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dtm">下载 DTM 应用</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dut-mt8852b">连接 DUT 和 MT8852B</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id11">测试步骤</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id12">配置 DUT 和 MT8852B</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id13">运行 MT8852B</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id16">测试结果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">代码介绍</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id19">源码路径</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bluetooth-host">Bluetooth Host 介绍</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id20">初始化</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id21">主要函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gap">GAP 回调函数处理</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mesh/doc/text_cn/README.html">Bluetooth Mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/doc/text_cn/README.html">外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../simulation_protocol/doc/text_cn/README.html">模拟协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../usb/doc/text_cn/README.html">USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../sd/doc/text_cn/README.html">SD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lowpower/doc/text_cn/README.html">低功耗</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../wifi/doc/text_cn/README.html">Wi-Fi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ethernet/ethernet/doc/text_cn/README.html">以太网</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_cn/README.html">蓝牙</a></li>
+    <li class="breadcrumb-item active">LE DTM</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="le-dtm">
+<span id="le-dtm-cn"></span><h1>LE DTM<a class="headerlink" href="#le-dtm" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../../../../../doc/glossary.html#term-DTM"><span class="xref std std-term">DTM</span></a> 用于控制 <a class="reference internal" href="../../../../../doc/glossary.html#term-DUT"><span class="xref std std-term">DUT</span></a>，并向 Tester 提供测试报告。</p>
+<section id="id1">
+<h2>概述<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>Direct Test Mode 用于测试低功耗蓝牙设备的 <a class="reference internal" href="../../../../../doc/glossary.html#term-RF"><span class="xref std std-term">RF</span></a> <a class="reference internal" href="../../../../../doc/glossary.html#term-PHY"><span class="xref std std-term">PHY</span></a> 层。
+DTM 可以通过两种方式设置：基于 <a class="reference internal" href="../../../../../doc/glossary.html#term-HCI"><span class="xref std std-term">HCI</span></a> 或者通过一个 2-wire <a class="reference internal" href="../../../../../doc/glossary.html#term-UART"><span class="xref std std-term">UART</span></a> 接口。</p>
+<p>在本文档中， DTM 通过第二种方式设置，即通过一个 2-wire UART 接口。其测试框架如图所示：</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_test_framework.png"><img alt="../../../../../_images/dtm_test_framework.png" src="../../../../../_images/dtm_test_framework.png" style="width: 551.0px; height: 292.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">测试框架</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>DUT 运行 DTM 应用，测试设备 MT8852B 向 DUT 发送 DTM 命令。</p></li>
+<li><p>DTM 应用分析收到的命令并调用相应接口以向 MT8852B 发送数据包 (transmitter test) 或从 MT8852B 接收数据包 (receiver test)。</p></li>
+<li><p>DTM 应用收集测试结果，并通过 DTM 事件发送给 MT8852B。</p></li>
+<li><p>MT8852B 根据 DTM 事件判断并显示测试结果。</p></li>
+</ol>
+<section id="id3">
+<h3>发射测试<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<figure class="align-center" id="transmitter-test">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_transmiter_test.png"><img alt="../../../../../_images/dtm_transmiter_test.png" src="../../../../../_images/dtm_transmiter_test.png" style="width: 741.0px; height: 630.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Transmitter Test</span><a class="headerlink" href="#transmitter-test" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Upper tester 向 DUT 发送命令，使 DUT 发送测试数据包给 lower tester。发送流程结束后，DUT 会向 upper tester 回报事件。</p>
+<ul>
+<li><p>输出功率测试</p>
+<p>MT8852B 通过 RS232、<a class="reference internal" href="../../../../../doc/glossary.html#term-USB"><span class="xref std std-term">USB</span></a> 或 2-wire 接口发送测试控制信息，以指导 DUT 发送相应测试数据包。MT8852B 至少在 20%~80% 的 burst 持续时间内测量接收数据包的平均功率。</p>
+</li>
+<li><p>载波 &amp; 漂移测试</p>
+<p>基于接收数据包的长度，载波漂移测试执行频率漂移测量。以与基本速率初始载波测试类似的方式测量载波频率偏移，只针对 low energy 相关数据包的 8 位前同步码。</p>
+</li>
+<li><p>调制指数测试</p>
+<p>针对选择的频率范围 (LOW、MEDIUM 和 HIGH)，该测试测量 DUT 输出的调制特性。</p>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h3>接收测试<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<figure class="align-center" id="receiver-test">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_receiver_test.png"><img alt="../../../../../_images/dtm_receiver_test.png" src="../../../../../_images/dtm_receiver_test.png" style="width: 739.0px; height: 633.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Receiver Test</span><a class="headerlink" href="#receiver-test" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Upper tester 向 DUT 发送命令，使 DUT 准备接收 lower tester 发送的测试数据包。lower tester 发送测试数据包给 DUT，接收流程结束后，DUT 向 upper tester 回报事件。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>灵敏度测试</dt><dd><p>在向 DUT 发送测试控制信息后，MT8852B 向 DUT 发送 <a class="reference internal" href="../../../../../doc/glossary.html#term-LE"><span class="xref std std-term">LE</span></a> 相关数据包。DUT 统计收到数据包的数目，MT8852B 通过 2-wire 接口读取该参数。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>接收完整度测试</dt><dd><p>采用 -30 dBm 发射功率和 <a class="reference internal" href="../../../../../doc/glossary.html#term-PRBS"><span class="xref std std-term">PRBS</span></a> 9 payload，MT8852B 向 DUT 随机发送偶数个 LE 相关数据包。这些数据包的 <a class="reference internal" href="../../../../../doc/glossary.html#term-CRC"><span class="xref std std-term">CRC</span></a> 为有效值或无效值。DUT 记录接收数据包的数目，MT8852B 通过 2-Wire 接口读取该参数以计算 <a class="reference internal" href="../../../../../doc/glossary.html#term-FER"><span class="xref std std-term">FER</span></a>。该测试将在选择的频率上重复三次。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>最大输入功率测试</dt><dd><p>在向 DUT 发送测试控制信息后，MT8852B 以 -10 dBm 发射功率向 DUT 发送 LE 相关数据包。DUT 记录接收数据包的数目，MT8852B 通过 2-Wire 接口读取该参数。</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="id5">
+<h2>环境要求<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>该 sample 工程可以在以下开发板上运行:</p>
+<table class="docutils align-center" id="id6">
+<caption><span class="caption-text">开发套件</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hardware Platforms</p></th>
+<th class="head"><p>Board Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-HDK"><span class="xref std std-term">HDK</span></a></p></td>
+<td><p>RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-EVB"><span class="xref std std-term">EVB</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>为快速搭建起开发环境，可参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 中提供的详细指导。</p>
+</section>
+<section id="id7">
+<h2>硬件连线<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 中的 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id15"><span class="std std-ref">EVB 接口和模块</span></a> 章节。</p>
+</section>
+<section id="id8">
+<h2>编译和下载<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>该示例可以在 SDK 文件夹中找到:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"></div><div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Keil</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\dtm\proj\rtl87x2g\mdk</span></code></p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">GCC</label><div class="tab-content docutils">
+<p>Project file: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\dtm\proj\rtl87x2g\gcc</span></code></p>
+</div>
+</div>
+</div>
+<p>编译和运行该示例请遵循以下步骤:</p>
+<ol class="arabic simple">
+<li><p>打开项目文件。</p></li>
+<li><p>要编译目标文件， 请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 中的 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#app-image"><span class="std std-ref">编译 APP Image</span></a>。</p></li>
+<li><p>编译成功后，目录 <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\dtm\proj\rtl87x2g\mdk\bin</span></code> 下会生成 APP bin 文件 <code class="file docutils literal notranslate"><span class="pre">app_MP_sdk_xxx.bin</span></code>。</p></li>
+<li><p>要下载 APP bin 到 EVB，请参考 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#id1"><span class="std std-ref">快速入门</span></a> 中 <a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html#mptool"><span class="std std-ref">MP Tool</span></a> 章节列出的步骤。</p></li>
+<li><p>在 EVB 上按下 <kbd class="kbd docutils literal notranslate">reset</kbd> 按钮，工程将开始运行。</p></li>
+</ol>
+</section>
+<section id="id9">
+<h2>测试验证<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p>本章节将对测试步骤和测试结果进行详细介绍。</p>
+<section id="id10">
+<h3>准备步骤<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="dtm">
+<h4>下载 DTM 应用<a class="headerlink" href="#dtm" title="Link to this heading"></a></h4>
+<p>编译和下载 <em>dtm</em> 应用到 DUT。</p>
+</section>
+<section id="dut-mt8852b">
+<h4>连接 DUT 和 MT8852B<a class="headerlink" href="#dut-mt8852b" title="Link to this heading"></a></h4>
+<p>第一步是使用 RS232，通过 2-wire UART 连接 DUT 和 MT8852B，DUT 的 TX 引脚和 RX 引脚应与 RS232 的对应引脚相连。</p>
+<p>DTM 应用默认将 <span class="guilabel">P3_1</span> 设为 Data UART 的 TX 引脚，将 <span class="guilabel">P3_0</span> 设为 Data UART 的 RX 引脚。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DATA_UART_TX_PIN    P3_1</span>
+<span class="cp">#define DATA_UART_RX_PIN    P3_0</span>
+</pre></div>
+</div>
+<figure class="align-center" id="mt8852b-uart">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_mt8852b_uart.png"><img alt="../../../../../_images/dtm_mt8852b_uart.png" src="../../../../../_images/dtm_mt8852b_uart.png" style="width: 755.4px; height: 417.59999999999997px;" /></a>
+<figcaption>
+<p><span class="caption-text">MT8852B 的 UART</span><a class="headerlink" href="#mt8852b-uart" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="dut-uart">
+<a class="reference internal image-reference" href="../../../../../_images/dut_uart.png"><img alt="../../../../../_images/dut_uart.png" src="../../../../../_images/dut_uart.png" style="width: 1058.4px; height: 606.4px;" /></a>
+<figcaption>
+<p><span class="caption-text">DUT 的 UART</span><a class="headerlink" href="#dut-uart" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id11">
+<h3>测试步骤<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>测试步骤包括配置设备和运行 MT8852B。</p>
+<section id="id12">
+<h4>配置 DUT 和 MT8852B<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>如图所示，按 <span class="guilabel">On/Standby</span> 按钮以启动 MT8852B，然后按 <span class="guilabel">EUT addr</span> 按钮修改 EUT address。</p>
+<figure class="align-center" id="mt8852b">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_mt8852b_init.png"><img alt="../../../../../_images/dtm_mt8852b_init.png" src="../../../../../_images/dtm_mt8852b_init.png" style="width: 621.5999999999999px; height: 317.79999999999995px;" /></a>
+<figcaption>
+<p><span class="caption-text">启动 MT8852B</span><a class="headerlink" href="#mt8852b" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>先按 <span class="guilabel">Sel</span> 按钮，然后选择 <span class="guilabel">BLE2WIRE</span> 作为 Source。</p>
+<figure class="align-center" id="eut-address-source">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_eut_address.png"><img alt="../../../../../_images/dtm_eut_address.png" src="../../../../../_images/dtm_eut_address.png" style="width: 825.3px; height: 324.79999999999995px;" /></a>
+<figcaption>
+<p><span class="caption-text">选择 EUT Address 中的 Source</span><a class="headerlink" href="#eut-address-source" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>按 <span class="guilabel">Setup</span> 按钮设置 Low energy 脚本。</p>
+<figure class="align-center" id="low-energy">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_low_energy.png"><img alt="../../../../../_images/dtm_low_energy.png" src="../../../../../_images/dtm_low_energy.png" style="width: 603.4px; height: 305.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">设置 Low Energy 脚本</span><a class="headerlink" href="#low-energy" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id13">
+<h4>运行 MT8852B<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<p>根据测试用例运行 MT8852B。</p>
+<ul>
+<li><p>运行所有测试用例</p>
+<p>按 <span class="guilabel">Run</span> 按钮运行所有测试用例。</p>
+</li>
+</ul>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_test_scripts.png"><img alt="../../../../../_images/dtm_test_scripts.png" src="../../../../../_images/dtm_test_scripts.png" style="width: 603.4px; height: 340.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">运行所有测试用例</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>运行单个测试用例</p>
+<p>选择需要测试的用例，然后按 <span class="guilabel">Single</span> 按钮和 <span class="guilabel">Run</span> 按钮运行单个测试用例。</p>
+</li>
+</ul>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_test_single_script.png"><img alt="../../../../../_images/dtm_test_single_script.png" src="../../../../../_images/dtm_test_single_script.png" style="width: 602.6999999999999px; height: 347.2px;" /></a>
+<figcaption>
+<p><span class="caption-text">运行单个测试用例</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id16">
+<h4>测试结果<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<p>Pass 的测试结果如图所示，已经 Pass 的测试用例后面会显示字母 <span class="guilabel">P</span>。</p>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../../../../../_images/dtm_test_result.png"><img alt="../../../../../_images/dtm_test_result.png" src="../../../../../_images/dtm_test_result.png" style="width: 599.1999999999999px; height: 273.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">DTM 测试结果</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="id18">
+<h2>代码介绍<a class="headerlink" href="#id18" title="Link to this heading"></a></h2>
+<p>本章将按照以下几个部分进行介绍：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id19">源码路径</a> 中介绍项目目录和源代码文件。</p></li>
+<li><p><a class="reference internal" href="#bluetooth-host">Bluetooth Host 介绍</a> 中介绍了 Bluetooth Host 相关信息。</p></li>
+<li><p>章节 <a class="reference internal" href="#id20">初始化</a> 中介绍 DTM 参数和 Bluetooth Host 初始化。</p></li>
+<li><p>章节 <a class="reference internal" href="#id21">主要函数</a> 中介绍 DTM 的函数。</p></li>
+<li><p>章节 <a class="reference internal" href="#gap">GAP 回调函数处理</a> 中介绍 DTM 的 GAP 回调函数处理。</p></li>
+</ul>
+<section id="id19">
+<h3>源码路径<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>工程目录: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\dtm\proj</span></code>。</p></li>
+<li><p>源码目录: <code class="file docutils literal notranslate"><span class="pre">samples\bluetooth\dtm\src</span></code>。</p></li>
+</ul>
+<p><em>dtm</em> 工程中的源文件当前被分为几个组，如下所示：</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>└── Project: dtm
+    └── secure_only_app
+        └── Device                   Includes startup code.
+        ├── CMSE Library             Non-secure callable library
+        ├── Lib                      Includes all binary symbol files that user application is built on.
+            ├── ROM_NS.lib
+            └── lowerstack.lib
+            └── rtl87x2g_sdk.lib
+            └── gap_utils.lib
+        ├── peripheral               Includes all peripheral drivers and module code used by the application.
+        ├── profile                  Includes LE profiles or services used by the sample application.
+        └── APP                      Includes the ble_scatternet user application implementation.
+            ├── data_uart.c
+            ├── app_task.c            Create message queue and application task.
+            ├── dtm_app.c             Handle commands from MT8852B and return with events.
+            └── main.c                Entry of application, initialize parameters, and register application message callback.
+</pre></div>
+</div>
+<p>示例工程使用与 <code class="file docutils literal notranslate"><span class="pre">bt_host_0_0</span></code> 匹配的默认 GAP <a class="reference internal" href="../../../../../doc/glossary.html#term-LIB"><span class="xref std std-term">LIB</span></a>，更多信息可参阅文档 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_cn/README.html#bluetooth-host-image-cn"><span class="std std-ref">Host Image</span></a> 中的章节 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_cn/README.html#id4"><span class="std std-ref">GAP LIB 的使用方法</span></a>。</p>
+</section>
+<section id="bluetooth-host">
+<h3>Bluetooth Host 介绍<a class="headerlink" href="#bluetooth-host" title="Link to this heading"></a></h3>
+<p>示例工程默认使用 Bluetooth Host image 版本 <code class="file docutils literal notranslate"><span class="pre">bt_host_0_0</span></code>，更多信息可参阅
+<a class="reference internal" href="../../../../../subsys/bluetooth/doc/rtl87x2g_bt_host_image/text_cn/README.html#bluetooth-host-image-cn"><span class="std std-ref">Host Image</span></a>。</p>
+<p>关于 Bluetooth Host 所支持的蓝牙功能的详细信息，请参阅文件 <code class="file docutils literal notranslate"><span class="pre">bin\rtl87x2g\bt_host_image\bt_host_0_0\bt_host_config.h</span></code>。</p>
+</section>
+<section id="id20">
+<h3>初始化<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<p>当 EVB 启动并且芯片复位时， <code class="docutils literal notranslate"><span class="pre">main()</span></code> 函数将被调用，它执行以下初始化函数：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">le_gap_init</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">   </span><span class="n">gap_lib_init</span><span class="p">();</span>
+<span class="w">   </span><span class="n">app_le_gap_init</span><span class="p">();</span>
+<span class="w">   </span><span class="n">application_task_init</span><span class="p">();</span>
+<span class="w">   </span><span class="n">os_sched_start</span><span class="p">();</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___c_o_m_m_o_n___exported___functions.html#_CPPv411le_gap_init7uint8_t" title="le_gap_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">le_gap_init()</span></code></a> 用于初始化 GAP 并配置链接个数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_le_gap_init()</span></code> 用于初始化 GAP 参数。</p></li>
+</ul>
+<p>更多关于 LE GAP 初始化和启动流程的信息可查阅 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的章节 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#id14"><span class="std std-ref">GAP 参数的初始化</span></a>。</p>
+</section>
+<section id="id21">
+<h3>主要函数<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<p>在 <code class="file docutils literal notranslate"><span class="pre">dtm_app.c</span></code> 文件中，<code class="docutils literal notranslate"><span class="pre">UART0_Handler()</span></code> 接收来自 MT8852B 的命令。示例代码如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">UART0_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">uartdata</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uartdata</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">int_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="n">int_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UART_GetIID</span><span class="p">(</span><span class="n">UART0</span><span class="p">);</span>
+
+<span class="w">   </span><span class="n">UART_INTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_RD_AVA</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">UART_INT_LINE_STS</span><span class="p">,</span><span class="w"> </span><span class="n">DISABLE</span><span class="p">);</span>
+
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">int_status</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">UART_INT_ID_TX_EMPTY</span><span class="p">:</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">UART_INT_ID_RX_LEVEL_REACH</span><span class="p">:</span>
+
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">UART_INT_ID_RX_TMEOUT</span><span class="p">:</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">UART_GetFlagState</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_FLAG_RX_DATA_RDY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">UART_ReceiveData</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">uartdata</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">uartdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">uartdata</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">      </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;FORM 8852B: 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">);</span>
+<span class="w">      </span><span class="n">dtm_test_req</span><span class="p">(</span><span class="n">command</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">UART_INT_ID_LINE_STATUS</span><span class="p">:</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">   </span><span class="k">default</span><span class="o">:</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="w">   </span><span class="n">UART_INTConfig</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_INT_RD_AVA</span><span class="p">,</span><span class="w"> </span><span class="n">ENABLE</span><span class="p">);</span>
+<span class="w">   </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dtm_test_req()</span></code> 处理来自 MT8852B 的测试命令，调用 GAP 层接口测试。示例代码如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">dtm_test_req</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">command</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">contrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">tx_chann</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">rx_chann</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">data_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pkt_pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xc000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">14</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">event</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">   </span><span class="c1">//the upper 2 bits of the data length for any Transmitter or Receiver commands following</span>
+<span class="w">   </span><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">up_2_bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">//physical to use</span>
+<span class="w">   </span><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">phy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">//modulation index to use</span>
+<span class="w">   </span><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mod_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">//local supported features</span>
+<span class="w">   </span><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">lcl_feats</span><span class="p">[</span><span class="n">GAP_LE_SUPPORTED_FEATURES_LEN</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+<span class="w">      </span><span class="n">contrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x3f00</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="w">      </span><span class="n">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xfc</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="w">      </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">contrl</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">param</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="n">up_2_bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">               </span><span class="n">phy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">               </span><span class="n">mod_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="n">event</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">dtm_uart_send_bytes</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">......</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
+<span class="w">            </span><span class="cm">/*</span>
+<span class="cm">            MT8852B do not send these commands</span>
+<span class="cm">               0x00 Read supportedMaxTxOctets</span>
+<span class="cm">               0x01 Read supportedMaxTxTime</span>
+<span class="cm">               0x02 Read supportedMaxRxOctets</span>
+<span class="cm">               0x03 Read supportedMaxRxTime</span>
+<span class="cm">            */</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">APP_PRINT_INFO3</span><span class="p">(</span><span class="s">&quot;dtm_test_req: up_2_bits 0x%x, phy 0x%x, mod_idx 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">up_2_bits</span><span class="p">,</span><span class="w"> </span><span class="n">phy</span><span class="p">,</span><span class="w"> </span><span class="n">mod_idx</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dtm_uart_send_bytes()</span></code> 向 MT8852B 发送事件。示例代码如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">dtm_uart_send_bytes</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">event</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">uartdata</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">   </span><span class="n">uartdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff00</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="w">   </span><span class="n">uartdata</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uartdata</span><span class="p">;</span>
+
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">UART_GetFlagState</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">UART_FLAG_THR_EMPTY</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SET</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">UART_SendData</span><span class="p">(</span><span class="n">UART0</span><span class="p">,</span><span class="w"> </span><span class="n">p_ch</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="gap">
+<h3>GAP 回调函数处理<a class="headerlink" href="#gap" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">app_gap_callback()</span></code> 函数用于处理 GAP 回调函数消息。
+更多关于 GAP 回调函数的信息可以查阅 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#le-host-cn"><span class="std std-ref">LE Host</span></a> 中的章节 <a class="reference internal" href="../../../../../subsys/bluetooth/doc/le_host_stack/text_cn/README.html#id47"><span class="std std-ref">Bluetooth LE GAP 回调函数</span></a>。</p>
+<p>当测试开始时，GAP 层使用 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___m_s_g___types.html#c.GAP_MSG_LE_DTM_ENHANCED_RECEIVER_TEST" title="GAP_MSG_LE_DTM_ENHANCED_RECEIVER_TEST"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GAP_MSG_LE_DTM_ENHANCED_RECEIVER_TEST</span></code></a> 或者 <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e___m_s_g___types.html#c.GAP_MSG_LE_DTM_ENHANCED_TRANSMITTER_TEST" title="GAP_MSG_LE_DTM_ENHANCED_TRANSMITTER_TEST"><code class="xref c c-macro docutils literal notranslate"><span class="pre">GAP_MSG_LE_DTM_ENHANCED_TRANSMITTER_TEST</span></code></a> 消息来通知 APP 执行 <a class="reference internal" href="#id3">发射测试</a> 或者 <a class="reference internal" href="#id4">接收测试</a>。示例代码如下：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_gap_callback</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">cb_type</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_cb_data</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="w">   </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">   </span><span class="n">T_LE_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_LE_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_cb_data</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">status</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;app_gap_callback: cb_type %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cb_type</span><span class="p">);</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cb_type</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="cp">#if F_BT_LE_5_0_DTM_SUPPORT</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_MSG_LE_DTM_ENHANCED_RECEIVER_TEST</span><span class="p">:</span>
+<span class="cp">#endif</span>
+<span class="w">      </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_data</span><span class="o">-&gt;</span><span class="n">le_cause</span><span class="p">.</span><span class="n">cause</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;app_gap_callback: event 0x%x, status 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x8000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">event</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;app_gap_callback: event 0x%x, status 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x8000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">dtm_uart_send_bytes</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">   </span><span class="p">......</span>
+<span class="cp">#if F_BT_LE_5_0_DTM_SUPPORT</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_MSG_LE_DTM_ENHANCED_TRANSMITTER_TEST</span><span class="p">:</span>
+<span class="cp">#endif</span>
+<span class="w">      </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_data</span><span class="o">-&gt;</span><span class="n">le_cause</span><span class="p">.</span><span class="n">cause</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;app_gap_callback: event 0x%x, status 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x8000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">event</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;app_gap_callback: event 0x%x, status 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x8000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">dtm_uart_send_bytes</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GAP_MSG_LE_DTM_TEST_END</span><span class="p">:</span>
+<span class="w">      </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_data</span><span class="o">-&gt;</span><span class="n">p_le_dtm_test_end_rsp</span><span class="o">-&gt;</span><span class="n">cause</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">event</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+<span class="w">            </span><span class="n">event</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">p_data</span><span class="o">-&gt;</span><span class="n">p_le_dtm_test_end_rsp</span><span class="o">-&gt;</span><span class="n">num_pkts</span><span class="p">;</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;app_gap_callback: event 0x%x, packet count 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x8000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x7fff</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">            </span><span class="n">event</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;app_gap_callback: event 0x%x, status 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x8000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x1</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="n">dtm_uart_send_bytes</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<span id="doxygen-group-list-section"></span><h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<p>相关 API Reference 请查看：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___l_e.html#group___g_a_p___l_e"><span class="std std-ref">GAP LE Module</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../../ble_peripheral_privacy/doc/text_cn/README.html" class="btn btn-neutral float-left" title="LE Peripheral Privacy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../../mesh/doc/text_cn/README.html" class="btn btn-neutral float-right" title="Bluetooth Mesh" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bluetooth Mesh &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="2.4G" href="../../../../ppt/doc/text_en/README.html" />
+    <link rel="prev" title="Bluetooth Qualification" href="../../../doc/bluetooth_qualification/text_en/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/protocols/text_en/README.html">Protocols</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../doc/text_en/README.html">Bluetooth</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/supported_features/text_en/README.html">Supported Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/le_host_stack/text_en/README.html">LE Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/le_direction_finding/text_en/README.html">LE Direction Finding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/rtl87x2g_bt_host_image/text_en/README.html">Host Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../doc/bluetooth_qualification/text_en/README.html">Bluetooth Qualification</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Bluetooth Mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#terminology-and-concepts">Terminology and Concepts</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#mesh-concepts">Mesh Concepts</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#device-uuid">Device <span class="xref std std-term">UUID</span></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mesh-address">Mesh Address</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#application-model">Application Model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#security">Security</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#provisioning">Provisioning</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#proxy">Proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#mesh-architecture">Mesh Architecture</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#model-layer-foundation">Model Layer (Foundation)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#access-layer">Access Layer</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#transport-layer-upper-lower">Transport Layer (Upper &amp; Lower)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#network-layer">Network Layer</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#bearer-layer">Bearer Layer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#feature-set">Feature Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#provided-apis">Provided APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#mesh-gap">Mesh <span class="xref std std-term">GAP</span></a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#advertising">Advertising</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#scanning">Scanning</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#initiating">Initiating</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#link">Link</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mesh-stack-gap-behavior">Mesh Stack GAP Behavior</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#device-information-configuration">Device Information Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#device-uuid-configuration">Device UUID Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#network-features-and-parameters-configuration">Network Features and Parameters Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mesh-log-configuration">Mesh Log Configuration</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mesh-provisioning">Provisioning</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#pb-adv">PB-ADV</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pb-gatt">PB-GATT</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#model-architecture">Model Architecture</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#message-callbacks">Message Callbacks</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#message-definition">Message Definition</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#message-send-handling">Message Send Handling</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#publish-parameter-configuration">Publish Parameter Configuration</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#appkey-selection">AppKey Selection</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#ttl-selection">TTL Selection</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#message-receive-handling">Message Receive Handling</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#business-logic-handling">Business Logic Handling</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#get-source-address-of-configuration-client">Get Source Address of Configuration Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#friendship">Friendship</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#friend-node">Friend Node</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#low-power-node">Low Power Node</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#transport-ping">Transport Ping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#remote-provisioning">Remote Provisioning</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#directed-forwarding">Directed Forwarding</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#subnet-bridge">Subnet Bridge</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#binary-large-object-transfer">Binary Large Object Transfer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#device-firmware-update">Device Firmware Update</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#nodes-cannot-receive-messages">Nodes Cannot Receive Messages</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#reuse-the-addresses-of-deleted-nodes">Reuse the Addresses of Deleted Nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-projects">Sample Projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_en/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../openthread/doc/text_en/README.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../doc/protocols/matter/text_en/README.html">Matter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/protocols/text_en/README.html">Protocols</a></li>
+        <li class="breadcrumb-item"><a href="../../../doc/text_en/README.html">Bluetooth</a></li>
+    <li class="breadcrumb-item active">Bluetooth Mesh</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="bluetooth-mesh">
+<h1>Bluetooth Mesh<a class="headerlink" href="#bluetooth-mesh" title="Link to this heading"></a></h1>
+<p>Bluetooth Mesh is a mesh networking solution based on Bluetooth Low Energy technology.
+Mesh networks are mainly divided into two types: flooding-based mesh networks and routing-based mesh networks.
+Both network types have their advantages and disadvantages.
+Bluetooth Mesh refers to these message forwarding methods as Managed Flooding and <a class="reference internal" href="#directed-forwarding">Directed Forwarding</a>, respectively.</p>
+<p><a class="reference internal" href="../../../../../doc/glossary.html#term-LE"><span class="xref std std-term">LE</span></a> communication channels are classified into two types: advertising channels and data channels.
+Mesh primarily operates on the advertising channel through passive scanning and advertising for receiving and sending, respectively.
+The data channel exists to ensure compatibility with existing devices that do not support advertising, enabling communication through the LE link.</p>
+<section id="terminology-and-concepts">
+<h2>Terminology and Concepts<a class="headerlink" href="#terminology-and-concepts" title="Link to this heading"></a></h2>
+<p>The introduction is mainly divided into two parts: <a class="reference internal" href="#mesh-concepts">Mesh Concepts</a> and <a class="reference internal" href="#mesh-architecture">Mesh Architecture</a>.</p>
+<section id="mesh-concepts">
+<h3>Mesh Concepts<a class="headerlink" href="#mesh-concepts" title="Link to this heading"></a></h3>
+<p>This section introduces the main concepts of Mesh.
+For detailed content of the Mesh Protocol, refer to <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Protocol Specification</a>.
+For preliminary understanding, users can review Chapter 2 of the Mesh Protocol Specification <em>Mesh system architecture</em>.</p>
+<section id="device-uuid">
+<h4>Device <a class="reference internal" href="../../../../../doc/glossary.html#term-UUID"><span class="xref std std-term">UUID</span></a><a class="headerlink" href="#device-uuid" title="Link to this heading"></a></h4>
+<p>Each device is assigned a unique 16-byte UUID (Device UUID) at the factory,
+used for uniquely identifying a mesh device without relying on a Bluetooth address.
+The UUID is required to identify devices during the establishment of a <a class="reference internal" href="../../../../../doc/glossary.html#term-PB-ADV"><span class="xref std std-term">PB-ADV</span></a> bearer link.
+However, once a mesh device obtains a mesh address, the mesh address can be used for unique identification.</p>
+</section>
+<section id="mesh-address">
+<h4>Mesh Address<a class="headerlink" href="#mesh-address" title="Link to this heading"></a></h4>
+<p>Apart from establishing an LE link, Mesh communication does not rely on Bluetooth addresses,
+meaning node Bluetooth addresses can be identical or vary randomly.
+Mesh defines a 2-byte long Mesh address, classified into Unassigned Address, Unicast Address, Virtual Address, and Group Address, as shown in the table below.</p>
+<table class="docutils align-center" id="table-mesh-address">
+<caption><span class="caption-text">Mesh Address</span><a class="headerlink" href="#table-mesh-address" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Range</p></th>
+<th class="head"><p>Address</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>0x0000</p></th>
+<td><p>Unassigned Address</p></td>
+<td><p>Default address not used for sending or receiving mesh messages</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0x0001-0x7FFF</p></th>
+<td><p>Unicast Address</p></td>
+<td><p>Unicast address: each element gets a unicast address</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>0x8000-0xBFFF</p></th>
+<td><p>Virtual Address</p></td>
+<td><p>Virtual address generated by label UUID; does not require centralized management</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0xC000-0xFFFF</p></th>
+<td><p>Group Address</p></td>
+<td><p>Group address: freely assigned (0xC000-0xFEFF) and fixed group (0xFF00-0xFFFF)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Fixed group addresses are defined as follows. For more information, please refer to the <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Protocol Specification</a> section <em>Group Address</em>.</p>
+<table class="docutils align-center" id="table-mesh-fixed-group-addresses">
+<caption><span class="caption-text">Mesh Fixed Group Addresses</span><a class="headerlink" href="#table-mesh-fixed-group-addresses" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Values</p></th>
+<th class="head"><p>Fixed Group Address Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>0xFFFB</p></th>
+<td><p>all-directed-forwarding-nodes</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0xFFFC</p></th>
+<td><p>all-proxies</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>0xFFFD</p></th>
+<td><p>all-friends</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>0xFFFE</p></th>
+<td><p>all-relays</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>0xFFFF</p></th>
+<td><p>all-nodes</p></td>
+</tr>
+</tbody>
+</table>
+<p>Mesh addresses are not set at the factory; they are managed and assigned by the user.
+During the provisioning process, users assign unicast addresses to devices, ensuring each device gets a unique unicast address.
+A mesh device may have multiple unicast addresses, with each element assigned a unique, continuous unicast address.
+Multiple addresses are designed to distinguish between repeated functional modules, or models, on a mesh device.</p>
+</section>
+<section id="application-model">
+<h4>Application Model<a class="headerlink" href="#application-model" title="Link to this heading"></a></h4>
+<p>LE communication is one-to-one (master to slave), whereas mesh networks are many-to-many.
+Thus, nodes in a mesh network do not inherently know other nodes' existence.
+The provisioner acts as a third party to link nodes together.
+For example, after manufacturing, a common switch does not initially control any specific lights.
+A provisioner uses the configuration client to configure the switch to publish messages (setting the destination address to unicast or group address).
+For a group address, the corresponding light bulbs must be configured to subscribe to messages (adding the group address to their subscription list).
+The switch can then control a specific light, a group of lights, or all lights.</p>
+<p>Mesh has standardized typical application scenarios, with applications organized into models on each mesh device.
+A model defines a model <a class="reference internal" href="../../../../../doc/glossary.html#term-ID"><span class="xref std std-term">ID</span></a>, a set of opcodes, and a set of states, specifying which messages to send and receive and which states to operate.
+Models are similar to LE <a class="reference internal" href="../../../../../doc/glossary.html#term-GATT"><span class="xref std std-term">GATT</span></a> services, used to define a particular application scenario.</p>
+<p>The concept of elements supports multiple identical models; each element gets a unique address.
+The first element (primary element) gets its element address during provisioning, with other elements sequentially following.
+For instance, a mesh device with two independently controllable lights uses elements to distinguish between the lights.
+Switching devices controlling these lights need to differentiate which light to control.
+Placing each light's model into separate elements ensures each light has a distinct mesh address for independent control.
+Light's models can also subscribe to the same group address for simultaneous control, maintaining both independent and simultaneous control functionality.</p>
+<p>A device's elements and models are expressed through composition data page 0.
+Provisioners can discern a device's supported applications by accessing its composition data page 0.</p>
+</section>
+<section id="security">
+<h4>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h4>
+<p>The mesh network incorporates numerous designs to safeguard security and privacy, protecting against common attacks like passive eavesdropping, man-in-the-middle attacks, replay attacks, trash can attacks, and brute force attacks.</p>
+<p>All mesh messages within the mesh network are encrypted and verified to prevent eavesdropping or tampering.
+The network's key structure is split into two layers: NetKey and AppKey,
+with each layer supporting up to 4096 keys identified by a 12-bit index.
+An AppKey must be bound to a NetKey and can only bind to that specific NetKey.
+Messages sent at the application layer are encrypted and verified using both the AppKey and NetKey layers;
+messages received are decrypted and verified in the reverse order.
+This dual-layer key system prevents relay nodes from eavesdropping or tampering with messages.
+For instance, if node A sends data to node C through node B,
+and all share the same NetKey while only A and C share the same AppKey,
+the application layer communication between A and C remains confidential to B.
+Node B merely helps forward the message at the network layer using the NetKey,
+without access to the AppKey to eavesdrop or tamper with the application layer message.</p>
+<p>NetKey supports multiple keys, enabling the division of network ranges and the isolation between devices.
+The key index of 0 is the primary network key, with the rest being other sub-network keys.
+Only nodes in the primary network can participate in the <a class="reference internal" href="../../../../../doc/glossary.html#term-IV"><span class="xref std std-term">IV</span></a> Update Procedure and propagate IV update information to other sub-nodes within sub-networks.
+In other words, only primary network nodes can update IV index network parameters, while sub-network nodes can only passively receive IV index updates.
+This unequal network key design aims to restrict the frequency of data transmission by sub-network nodes,
+preventing the potential overuse of IV index updates by sub-network nodes,
+which could otherwise deplete the IV index and compromise network security.
+Typically, most nodes reside in the primary network, some nodes exist in both the primary network and a sub-network,
+and a few nodes are only in a sub-network.
+These few nodes can only communicate locally within the sub-network,
+thus limiting their communication range. For example, hotel guests can only control lights in their own rooms.</p>
+<p>AppKeys also support multiple keys, with no differences between them.
+Different applications can use different keys to achieve application-level isolation.
+For instance, lighting control and door control can use different AppKeys. An application can also use multiple AppKeys.
+For example, a lamp may support two AppKeys: AppKey0 for User 0, and AppKey1 for User 1;
+if AppKey0 is deleted, User 0 can no longer control the light, while User 1 remains unaffected.</p>
+<p>The NetKeys and AppKeys on a device are distributed and managed by the provisioner using the provisioning and Configuration Client.
+A provisioner acts as the network administrator, managing all keys and determining which keys each device in the network can use,
+while devices can only communicate if they share the same key, such as a light and its switch using the same key.
+The provisioning process distributes a mesh address and a single NetKey,
+after which further key management, such as adding NetKeys and AppKeys,
+is handled by Configuration Models through the Configuration Client.</p>
+<p>The provisioning process also generates a special AppKey known as DevKey.
+DevKey is known only to the provisioner and the device, not shared with any other device,
+ensuring that the provisioner can communicate confidentially one-on-one with each device.
+Configuration is restricted to using DevKey, meaning only the provisioner can configure the device,
+since only the provisioner knows the DevKey of the device.
+For example, a switch can control the on/off state of a bulb but cannot reconfigure the grouping of the bulb.</p>
+</section>
+<section id="provisioning">
+<h4>Provisioning<a class="headerlink" href="#provisioning" title="Link to this heading"></a></h4>
+<p>By default, devices are shipped without an address or key and require provisioning by the provisioner.
+Once provisioned, the device is referred to as a node, though this text and samples do not strictly differentiate between the terms device and node.
+The provisioning process uses the <a class="reference internal" href="../../../../../doc/glossary.html#term-ECDH"><span class="xref std std-term">ECDH</span></a> algorithm for key negotiation and distribution,
+with authentication data for identity verification, preventing eavesdropping, brute force, and man-in-the-middle attacks.</p>
+<p>Depending on the provisioning configuration, there are different modes.
+Public key exchange is categorized into <a class="reference internal" href="../../../../../doc/glossary.html#term-OOB"><span class="xref std std-term">OOB</span></a> and no OOB,
+and authentication data exchange is divided into input OOB, output OOB, static OOB, and no OOB, allowing for up to eight different modes.
+At the application layer, devices may need to provide the stack with public/private keys and authentication data,
+while the provisioner might need to select the mode and provide the device's public key and authentication data.</p>
+<p>The provisioning process can operate on advertising channels and data channels,
+corresponding to PB-ADV and <a class="reference internal" href="../../../../../doc/glossary.html#term-PB-GATT"><span class="xref std std-term">PB-GATT</span></a> transport layers, respectively.
+PB-ADV uses LE advertising to transmit provisioning <a class="reference internal" href="../../../../../doc/glossary.html#term-PDU"><span class="xref std std-term">PDU</span></a>s for provisioning;
+PB-GATT requires establishing an LE link to transmit provisioning PDUs for provisioning within the Mesh Provisioning Service.
+Devices are required to support PB-ADV,
+and if they also support PB-GATT, the provisioner can choose either during provisioning.</p>
+</section>
+<section id="configuration">
+<h4>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h4>
+<p>Network parameters are managed at the model layer, known as Configuration Models.
+Configurable network parameters include adding, deleting, or modifying NetKeys and AppKeys, key binding of models, message publication, subscription,
+obtaining the node's application structure Composition data page 0, the default <a class="reference internal" href="../../../../../doc/glossary.html#term-TTL"><span class="xref std std-term">TTL</span></a> of nodes, supported features, network retransmission count, etc.</p>
+<p>Network configuration is restricted to using the DevKey, meaning only the provisioner can configure network parameters of the nodes.</p>
+</section>
+<section id="proxy">
+<h4>Proxy<a class="headerlink" href="#proxy" title="Link to this heading"></a></h4>
+<p>Mesh primarily operates on advertising channels. For compatibility with devices that cannot flexibly advertise, mesh defines a proxy feature.
+Based on the LE GATT profile, it defines a proxy service, allowing these devices to connect to proxy-supporting nodes via LE links, thus integrating into the mesh network.</p>
+</section>
+</section>
+<section id="mesh-architecture">
+<h3>Mesh Architecture<a class="headerlink" href="#mesh-architecture" title="Link to this heading"></a></h3>
+<p>As depicted in the figure below, the mesh architecture is divided into the bearer layer, network layer, lower transport layer, upper transport layer, access layer, foundation model layer, and model layer.</p>
+<figure class="align-center" id="figure-mesh-system-architecture">
+<a class="reference internal image-reference" href="../../../../../_images/mesh_system_architecture.png"><img alt="../../../../../_images/mesh_system_architecture.png" src="../../../../../_images/mesh_system_architecture.png" style="width: 631.4px; height: 496.99999999999994px;" /></a>
+<figcaption>
+<p><span class="caption-text">Mesh System Architecture</span><a class="headerlink" href="#figure-mesh-system-architecture" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="model-layer-foundation">
+<h4>Model Layer (Foundation)<a class="headerlink" href="#model-layer-foundation" title="Link to this heading"></a></h4>
+<p>Models define a set of states and operations for specific applications, identified by a Model ID,
+and are categorized into 16-bit <a class="reference internal" href="../../../../../doc/glossary.html#term-SIG"><span class="xref std std-term">SIG</span></a> model ID and 32-bit vendor model ID.
+In practice, SIG Model ID is encoded to 32-bit Model ID.
+For example, the Model ID for configuration server and client is 0x0000 and 0x0001,
+but they are implemented as 0x0000FFFF and 0x0001FFFF, respectively, as illustrated below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MESH_MODEL_CFG_SERVER    0x0000FFFF</span>
+<span class="cp">#define MESH_MODEL_CFG_CLIENT    0x0001FFFF</span>
+</pre></div>
+</div>
+<p>Elements are used to isolate models with the same access layer opcode.
+Duplicate models will send or receive the same opcode, making it hard to distinguish the sender or receiver of the related access message.
+Elements are assigned different addresses, allowing the effective distinction of models by the source or destination address of messages.
+Mesh stack first creates an element, then registers a model under that element.
+If registering a duplicate model, it must be assigned to a different element, and the stack will check for conflicts within elements.</p>
+<p>The Configuration Server Model, which is mandatory in the Mesh Protocol Specification, does not require <a class="reference internal" href="../../../../../doc/glossary.html#term-APP"><span class="xref std std-term">APP</span></a> registration; the stack automatically registers and handles it.</p>
+<p>The Health Server Model is mandatory to register in the primary element, while other elements can create and register it based on needs.</p>
+<p>After creating and registering elements and models, users can generate the composition data page 0 content, needing the APP to provide specific header information, including Company ID, Product ID, Version ID, <a class="reference internal" href="../../../../../doc/glossary.html#term-RPL"><span class="xref std std-term">RPL</span></a> size, and supported features.</p>
+<p>Example code for creating elements, registering models, and generating composition data page 0.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** create elements and register models */</span>
+<span class="w">   </span><span class="n">mesh_element_create</span><span class="p">(</span><span class="n">GATT_NS_DESC_UNKNOWN</span><span class="p">);</span>
+<span class="w">   </span><span class="n">health_server_reg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">health_server_model</span><span class="p">);</span>
+<span class="w">   </span><span class="n">ping_control_reg</span><span class="p">(</span><span class="n">ping_app_ping_cb</span><span class="p">,</span><span class="w"> </span><span class="n">pong_receive</span><span class="p">);</span>
+<span class="w">   </span><span class="n">compo_data_page0_header_t</span><span class="w"> </span><span class="n">compo_data_page0_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">COMPANY_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PRODUCT_ID</span><span class="p">,</span><span class="w"> </span><span class="n">VERSION_BUILD</span><span class="p">};</span>
+<span class="w">   </span><span class="n">compo_data_page0_gen</span><span class="p">(</span><span class="o">&amp;</span><span class="n">compo_data_page0_header</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="access-layer">
+<h4>Access Layer<a class="headerlink" href="#access-layer" title="Link to this heading"></a></h4>
+<p>The Access Layer defines the message format for upper layer applications, including operation codes,
+which are referred to as access opcodes. All application messages must include a unified opcode.
+The Mesh Protocol Specification defines some opcodes and also reserves space for vendor-defined opcodes.
+Vendor-defined opcodes are 3 bytes long, where the first byte's high two bits are set to 1, the lower 6 bits are vendor-defined opcodes,
+and the next two bytes are the Company ID, meaning each company can only define up to 64 opcodes.</p>
+<p>As shown in the code below, 0xC0 indicates the 0th manufacturer-specific opcode, and 0x005D corresponds to Realtek's Company ID, which needs to be filled in by byte order.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MESH_MSG_PING    0xC05D00</span>
+</pre></div>
+</div>
+<p>Access layer messages are first encrypted using the AppKey by the transport layer,
+and the Transport layer <a class="reference internal" href="../../../../../doc/glossary.html#term-MIC1"><span class="xref std std-term">MIC¹</span></a> checksum length supports 4 bytes and 8 bytes.
+If a 4-byte transport layer MIC is used, the maximum length of an access layer message is 380 bytes;
+if an 8-byte transport layer MIC is used, the maximum length is 376 bytes.</p>
+</section>
+<section id="transport-layer-upper-lower">
+<h4>Transport Layer (Upper &amp; Lower)<a class="headerlink" href="#transport-layer-upper-lower" title="Link to this heading"></a></h4>
+<p>The transport layer handles application layer encryption and decryption, friendship maintenance, heartbeat, directed forwarding maintenance, and segmentation &amp; reassembly.</p>
+<p>Access layer messages using a 4-byte transport layer MIC with a message length of 11 bytes or less (including the access opcode),
+and if not explicitly requiring segmented packet transmission, will not be segmented but rather sent as a single advertising packet.
+Conversely, access messages will be segmented and sent out in one or multiple advertising packets depending on message length,
+and the receiving end will be required to acknowledge the transport layer.</p>
+</section>
+<section id="network-layer">
+<h4>Network Layer<a class="headerlink" href="#network-layer" title="Link to this heading"></a></h4>
+<p>The Network Layer handles network layer encryption, decryption, obfuscation, and relay.</p>
+</section>
+<section id="bearer-layer">
+<h4>Bearer Layer<a class="headerlink" href="#bearer-layer" title="Link to this heading"></a></h4>
+<p>The Bearer Layer is divided into loopback bearer, advertising bearer, GATT bearer, and other bearers.</p>
+<p>The loopback bearer refers to the self-sending and receiving channel, used for communication between models.</p>
+<p>The advertising bearer uses LE advertising and LE scan to transmit and receive data, and is used for communication between devices.</p>
+<p>The GATT bearer uses the proxy protocol to transmit and receive proxy PDUs between two devices over a GATT connection.
+It is primarily intended to enable devices that are not capable of supporting the advertising bearer to participate in a mesh network.</p>
+<p>Other bearer refers to other interfaces used to extend the mesh network at the bearer layer. For example, a Gateway can connect the mesh network to an Ethernet network via the other bearer,
+allowing the mesh network to access the Internet. The interface for registering the send message function in the other bearer is <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___bearer___exported___functions.html#_CPPv416bearer_other_reg22pf_bearer_other_send_t" title="bearer_other_reg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">bearer_other_reg()</span></code></a> and the function for receiving messages is <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___bearer___exported___functions.html#_CPPv420bearer_other_receive17bearer_pkt_type_tP7uint8_t8uint16_t" title="bearer_other_receive"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">bearer_other_receive()</span></code></a>.</p>
+</section>
+</section>
+</section>
+<section id="feature-set">
+<h2>Feature Set<a class="headerlink" href="#feature-set" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Relay</dt><dd><p>Receive and retransmit mesh messages over the advertising bearer to enable larger networks.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Proxy</dt><dd><p>Receive and retransmit mesh messages between GATT and advertising bearers.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Low Power</dt><dd><p>Operate within a mesh network at significantly reduced receiver duty cycles only in conjunction with a node supporting the Friend feature.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Friend</dt><dd><p>Help a node supporting the Low Power feature to operate by storing messages destined for those nodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Enhanced Provisioning Authentication</dt><dd><p>Support more algorithms in the provisioning protocol.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Remote Provisioning</dt><dd><p>Allows adding unprovisioned devices to a Bluetooth mesh network when the provisioner is beyond immediate radio range of the unprovisioned device.
+Additionally, the provisioner may change the device key of the mesh node using provisioning packets that are transported over the mesh network.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Private Beacons</dt><dd><p>Privacy for Secure Mesh Beacons.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Directed Forwarding</dt><dd><p>Help improve performance of a multi-hop network by selecting only a subset of nodes to relay a message from a source to a destination.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Subnet Bridge</dt><dd><p>Subnet bridge for mesh network.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Binary Large Object Transfer</dt><dd><p>Enable the transfer of binary large objects between Bluetooth mesh devices.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Device Firmware Update</dt><dd><p>Enable a firmware upgrade of the Bluetooth mesh devices.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="provided-apis">
+<h2>Provided APIs<a class="headerlink" href="#provided-apis" title="Link to this heading"></a></h2>
+<p>The APIs provided by the Mesh Stack are listed in the table below.</p>
+<table class="docutils align-center" id="table-mesh-stack-provided-apis">
+<caption><span class="caption-text">Mesh Stack Provided APIs</span><a class="headerlink" href="#table-mesh-stack-provided-apis" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Header File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>mesh_provision.h</p></td>
+<td><p>mesh provisioning protocol</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_service.h</p></td>
+<td><p>mesh service advertising</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_access.h</p></td>
+<td><p>mesh access layer</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_transport.h</p></td>
+<td><p>mesh transport layer</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_network.h</p></td>
+<td><p>mesh network layer</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_bearer.h</p></td>
+<td><p>mesh bearer layer</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_common.h</p></td>
+<td><p>mesh common part</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_flash.h</p></td>
+<td><p>mesh flash storage</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_node.h</p></td>
+<td><p>mesh node management</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_api.h</p></td>
+<td><p>mesh application interface</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_beacon.h</p></td>
+<td><p>mesh beacon</p></td>
+</tr>
+<tr class="row-odd"><td><p>mesh_config.h</p></td>
+<td><p>mesh configuration</p></td>
+</tr>
+<tr class="row-even"><td><p>model_config.h</p></td>
+<td><p>model configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p>provision_adv.h</p></td>
+<td><p>provisioning ADV bearer</p></td>
+</tr>
+<tr class="row-even"><td><p>provision_device.h</p></td>
+<td><p>provisioning device APIs</p></td>
+</tr>
+<tr class="row-odd"><td><p>provision_generic.h</p></td>
+<td><p>provisioning generic layer</p></td>
+</tr>
+<tr class="row-even"><td><p>provision_provisioner.h</p></td>
+<td><p>provisioning provisioner APIs</p></td>
+</tr>
+<tr class="row-odd"><td><p>proxy_protocol.h</p></td>
+<td><p>proxy protocol</p></td>
+</tr>
+<tr class="row-even"><td><p>subnet_bridge.h</p></td>
+<td><p>subnet bridge</p></td>
+</tr>
+<tr class="row-odd"><td><p>directed_forwarding.h</p></td>
+<td><p>directed forwarding</p></td>
+</tr>
+<tr class="row-even"><td><p>friendship_fn.h</p></td>
+<td><p>friend node</p></td>
+</tr>
+<tr class="row-odd"><td><p>friendship_lpn.h</p></td>
+<td><p>low power node</p></td>
+</tr>
+<tr class="row-even"><td><p>heartbeat.h</p></td>
+<td><p>heartbeat</p></td>
+</tr>
+<tr class="row-odd"><td><p>provision_client.h</p></td>
+<td><p>provisioning service client</p></td>
+</tr>
+<tr class="row-even"><td><p>provision_service.h</p></td>
+<td><p>provisioning service</p></td>
+</tr>
+<tr class="row-odd"><td><p>proxy_client.h</p></td>
+<td><p>proxy service client</p></td>
+</tr>
+<tr class="row-even"><td><p>proxy_service.h</p></td>
+<td><p>proxy service</p></td>
+</tr>
+<tr class="row-odd"><td><p>remote_provisioning.h</p></td>
+<td><p>remote provisioning</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<p>This section mainly introduces how to use and configure different functions or modules of the Mesh Stack.</p>
+<section id="mesh-gap">
+<h3>Mesh <a class="reference internal" href="../../../../../doc/glossary.html#term-GAP"><span class="xref std std-term">GAP</span></a><a class="headerlink" href="#mesh-gap" title="Link to this heading"></a></h3>
+<p>Mesh operates on the advertising channel, sending data via advertising and receiving data via scanning.
+The LE advertising and scanning behaviors are periodic, while mesh usage of the advertising channel is more complex.
+For convenience, the Mesh stack encapsulates the LE GAP interface, known as Mesh GAP, and thus, the APP can no longer directly call the LE GAP interface.</p>
+<section id="advertising">
+<h4>Advertising<a class="headerlink" href="#advertising" title="Link to this heading"></a></h4>
+<p>Mesh encapsulated advertising is a one-time action rather than a periodic one.
+There are no advertising interval parameters, nor are actions needed to enable or disable advertising.</p>
+<p>The following example shows how to perform advertising. First, use <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___scheduler___exported___functions.html#_CPPv418gap_sched_task_getv" title="gap_sched_task_get"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_sched_task_get()</span></code></a> to obtain a <code class="docutils literal notranslate"><span class="pre">buffer</span></code>, then use <code class="docutils literal notranslate"><span class="pre">gap_sched_try()</span></code> to send.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">vendor_data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="cm">/* Flags */</span>
+<span class="w">   </span><span class="mh">0x02</span><span class="p">,</span>
+<span class="w">   </span><span class="n">GAP_ADTYPE_FLAGS</span><span class="p">,</span>
+<span class="w">   </span><span class="n">GAP_ADTYPE_FLAGS_LIMITED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED</span><span class="p">,</span>
+<span class="w">   </span><span class="cm">/* Local name */</span>
+<span class="w">   </span><span class="mh">0x07</span><span class="p">,</span>
+<span class="w">   </span><span class="n">GAP_ADTYPE_LOCAL_NAME_COMPLETE</span><span class="p">,</span>
+<span class="w">   </span><span class="sc">&#39;V&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;N&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;D&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;O&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;R&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">advertising_transmit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">pbuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gap_sched_task_get</span><span class="p">();</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pbuffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="n">gap_sched_task_t</span><span class="w"> </span><span class="o">*</span><span class="n">ptask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONTAINER_OF</span><span class="p">(</span><span class="n">pbuffer</span><span class="p">,</span><span class="w"> </span><span class="n">gap_sched_task_t</span><span class="p">,</span><span class="w"> </span><span class="n">adv_data</span><span class="p">);</span>
+<span class="w">   </span><span class="n">memcpy</span><span class="p">(</span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">adv_data</span><span class="p">,</span><span class="w"> </span><span class="n">vendor_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">vendor_data</span><span class="p">));</span><span class="w">  </span><span class="c1">// set adv data</span>
+<span class="w">   </span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">adv_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">vendor_data</span><span class="p">);</span><span class="w">                       </span><span class="c1">// set adv len</span>
+<span class="w">   </span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">adv_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GAP_SCHED_ADV_TYPE_IND</span><span class="p">;</span><span class="w">                   </span><span class="c1">// set adv type</span>
+<span class="w">   </span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">retrans_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">                                   </span><span class="c1">// set adv retrans count</span>
+<span class="w">   </span><span class="n">ptask</span><span class="o">-&gt;</span><span class="n">retrans_interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">                               </span><span class="c1">// set adv interval, ms</span>
+<span class="w">   </span><span class="n">gap_sched_try</span><span class="p">(</span><span class="n">ptask</span><span class="p">);</span><span class="w">                                       </span><span class="c1">// send adv</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">retrans_count</span></code> and <code class="docutils literal notranslate"><span class="pre">retrans_interval</span></code> refer to the transmission count and interval for the one-time advertising action, and transmission stops afterward.
+If the APP wants to perform periodic advertising, it needs to create a timer to send periodically.
+For example, calling the function every 1 second will result in the device broadcasting 4 times at 10ms intervals each time.</p>
+</div>
+</section>
+<section id="scanning">
+<h4>Scanning<a class="headerlink" href="#scanning" title="Link to this heading"></a></h4>
+<p>For mesh applications, scanning usually needs to be enabled continuously.
+When the mesh stack starts, it decides whether to start scanning immediately based on the <code class="docutils literal notranslate"><span class="pre">bg_scan</span></code> bit set in the <code class="docutils literal notranslate"><span class="pre">features</span></code> configured in <code class="docutils literal notranslate"><span class="pre">mesh_stack_init()</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** configure node parameters */</span>
+<span class="w">   </span><span class="n">mesh_node_features_t</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="p">.</span><span class="n">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_ROLE_DEVICE</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">relay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">lpn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">prov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">udb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">snb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="hll"><span class="w">   </span><span class="p">.</span><span class="n">bg_scan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="c1">// enable background scan</span>
+</span><span class="w">   </span><span class="p">.</span><span class="n">flash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">.</span><span class="n">flash_rpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Scanning is controlled with <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___scheduler___exported___functions.html#_CPPv414gap_sched_scanb" title="gap_sched_scan"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_sched_scan()</span></code></a>;
+The scan parameters can be set using <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___scheduler___exported___functions.html#_CPPv420gap_sched_params_set23gap_sched_params_type_tPv8uint16_t" title="gap_sched_params_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_sched_params_set()</span></code></a> which can be called before or after the mesh stack is started.</p>
+</section>
+<section id="initiating">
+<h4>Initiating<a class="headerlink" href="#initiating" title="Link to this heading"></a></h4>
+<p>Same as LE, without additional encapsulation. It can establish connections as a master.</p>
+</section>
+<section id="link">
+<h4>Link<a class="headerlink" href="#link" title="Link to this heading"></a></h4>
+<p>Same as LE, without additional encapsulation. It can pair and add GATT Server and GATT Client.</p>
+</section>
+<section id="mesh-stack-gap-behavior">
+<h4>Mesh Stack GAP Behavior<a class="headerlink" href="#mesh-stack-gap-behavior" title="Link to this heading"></a></h4>
+<p>The Mesh Stack has default GAP behavior requiring no user implementation.</p>
+<ul>
+<li><dl>
+<dt>Beacon Advertising</dt><dd><div class="line-block">
+<div class="line">When the device is unprovisioned, it needs to send an Unprovisioned Device beacon.</div>
+<div class="line">When the device is provisioned, it needs to send a Secure Network beacon.</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Service Advertising</dt><dd><div class="line-block">
+<div class="line">If the device supports PB-GATT and is unprovisioned, it needs to send provision advertising.</div>
+<div class="line">If the device supports Proxy and is provisioned, it needs to send proxy advertising.</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Receive Scanning</dt><dd><div class="line-block">
+<div class="line">Mesh communication is real-time, and messages may need to be received at any moment. However, scanning consumes a lot of power. Users can reduce power consumption by setting scan parameters to lower the scan duty cycle, but this may sacrifice reliability and potentially miss some messages.</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Relay Scanning</dt><dd><div class="line-block">
+<div class="line">If the device supports relay, it must keep scanning enabled to better assist other devices in forwarding messages. Therefore, background scanning is typically enabled for relay nodes.</div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="device-information-configuration">
+<span id="mesh-device-information-configuration"></span><h3>Device Information Configuration<a class="headerlink" href="#device-information-configuration" title="Link to this heading"></a></h3>
+<p>The APP can call the <a class="reference internal" href="../../../../../doc/api_reference/group___g_a_p___scheduler___exported___functions.html#_CPPv420gap_sched_params_set23gap_sched_params_type_tPv8uint16_t" title="gap_sched_params_set"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">gap_sched_params_set()</span></code></a> interface to configure device name and appearance information. The specific code is as follows.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** set device name and appearance */</span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">dev_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Mesh Device&quot;</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">appearance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GAP_GATT_APPEARANCE_UNKNOWN</span><span class="p">;</span>
+<span class="w">   </span><span class="n">gap_sched_params_set</span><span class="p">(</span><span class="n">GAP_SCHED_PARAMS_DEVICE_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">dev_name</span><span class="p">,</span><span class="w"> </span><span class="n">GAP_DEVICE_NAME_LEN</span><span class="p">);</span>
+<span class="w">   </span><span class="n">gap_sched_params_set</span><span class="p">(</span><span class="n">GAP_SCHED_PARAMS_APPEARANCE</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">appearance</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">appearance</span><span class="p">));</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="device-uuid-configuration">
+<span id="mesh-device-uuid-configuration"></span><h3>Device UUID Configuration<a class="headerlink" href="#device-uuid-configuration" title="Link to this heading"></a></h3>
+<p>Mesh nodes may have the same Bluetooth address or random Bluetooth addresses,
+thus requiring a device UUID to uniquely identify mesh nodes. Setting Device UUID code as follows.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** set device uuid */</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">dev_uuid</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_DEVICE_UUID</span><span class="p">;</span>
+<span class="w">   </span><span class="n">device_uuid_set</span><span class="p">(</span><span class="n">dev_uuid</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="network-features-and-parameters-configuration">
+<span id="mesh-network-features-and-parameters-configuration"></span><h3>Network Features and Parameters Configuration<a class="headerlink" href="#network-features-and-parameters-configuration" title="Link to this heading"></a></h3>
+<p>Features supported, number of keys, virtual addresses, subscription list size, flash storage, advertising intervals,
+and other network parameters need to be configured by the APP based on actual requirements. The specific code is as follows.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** configure node parameters */</span>
+<span class="w">   </span><span class="n">mesh_node_features_t</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">.</span><span class="n">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MESH_ROLE_DEVICE</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">relay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">lpn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">prov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">udb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">snb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">bg_scan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">flash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">flash_rpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="n">mesh_node_cfg_t</span><span class="w"> </span><span class="n">node_cfg</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">.</span><span class="n">dev_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">net_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">master_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="c1">// should be &lt;= net_key_num</span>
+<span class="w">      </span><span class="p">.</span><span class="n">app_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">vir_addr_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">rpl_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">sub_addr_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">proxy_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="n">mesh_node_cfg</span><span class="p">(</span><span class="n">features</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">node_cfg</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>If parameters related to mesh flash layout are modified in the configuration,
+or if the number of registered elements or models changes,
+the node will clear previously stored information during initialization
+and revert to the unprovisioned state.
+Parameters affecting the mesh flash layout include <code class="docutils literal notranslate"><span class="pre">dev_key_num</span></code>, <code class="docutils literal notranslate"><span class="pre">net_key_num</span></code>, <code class="docutils literal notranslate"><span class="pre">master_key_num</span></code>, <code class="docutils literal notranslate"><span class="pre">app_key_num</span></code>, <code class="docutils literal notranslate"><span class="pre">vir_addr_num</span></code>, <code class="docutils literal notranslate"><span class="pre">rpl_num</span></code>, <code class="docutils literal notranslate"><span class="pre">sub_addr_num</span></code>, and <code class="docutils literal notranslate"><span class="pre">flash_rpl</span></code>. With the support of new features, the aforementioned parameters may increase.</p>
+</div>
+</section>
+<section id="mesh-log-configuration">
+<span id="id2"></span><h3>Mesh Log Configuration<a class="headerlink" href="#mesh-log-configuration" title="Link to this heading"></a></h3>
+<p>The Mesh stack has multiple modules,
+and each module's log levels can be independently switched on or off.
+By default, all logs are enabled.
+There are four log levels in total, ranked from high to low: <code class="docutils literal notranslate"><span class="pre">LEVEL_ERROR</span></code> with <code class="docutils literal notranslate"><span class="pre">printe()</span></code>, <code class="docutils literal notranslate"><span class="pre">LEVEL_WARN</span></code> with <code class="docutils literal notranslate"><span class="pre">printw()</span></code>, <code class="docutils literal notranslate"><span class="pre">LEVEL_INFO</span></code> with <code class="docutils literal notranslate"><span class="pre">printi()</span></code>, and <code class="docutils literal notranslate"><span class="pre">LEVEL_TRACE</span></code> with <code class="docutils literal notranslate"><span class="pre">printt()</span></code>.
+The lower the log level, the less important it is.
+Since the log rate is limited, logs may be lost if too many are printed.
+To ensure key logs are printed correctly, users can disable some less important logs.
+The example below disables all <code class="docutils literal notranslate"><span class="pre">LEVEL_TRACE</span></code> logs for all mesh modules.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** set mesh stack log level, default all on, disable the log of level LEVEL_TRACE */</span>
+<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">module_bitmap</span><span class="p">[</span><span class="n">MESH_LOG_LEVEL_SIZE</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">   </span><span class="n">diag_level_set</span><span class="p">(</span><span class="n">LEVEL_TRACE</span><span class="p">,</span><span class="w"> </span><span class="n">module_bitmap</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="mesh-provisioning">
+<span id="id3"></span><h3>Provisioning<a class="headerlink" href="#mesh-provisioning" title="Link to this heading"></a></h3>
+<p>The device is not preloaded with any network information from the factory and needs to obtain address and NetKey network information from the provisioner through the provisioning process.</p>
+<p>The device needs to configure its provisioning capabilities. The specific code is as follows.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** Configure provisioning parameters */</span>
+<span class="w">   </span><span class="n">prov_capabilities_t</span><span class="w"> </span><span class="n">prov_capabilities</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">.</span><span class="n">algorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PROV_CAP_ALGO_FIPS_P256_ELLIPTIC_CURVE</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">public_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">static_oob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">output_oob_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">output_oob_action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">input_oob_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">input_oob_action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="n">prov_params_set</span><span class="p">(</span><span class="n">PROV_PARAMS_CAPABILITIES</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">prov_capabilities</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">prov_capabilities_t</span><span class="p">));</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Both the provisioner and the device need to register the callback handling functions for provisioning as shown below.
+Depending on the specific flow of provisioning, different handling needs to be completed in the provisioning callback.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="n">prov_params_set</span><span class="p">(</span><span class="n">PROV_PARAMS_CALLBACK_FUN</span><span class="p">,</span><span class="w"> </span><span class="n">prov_cb</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">_Bool</span><span class="p">(</span><span class="n">prov_cb_type_t</span><span class="p">,</span><span class="w"> </span><span class="n">prov_cb_data_t</span><span class="p">)));</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Provisioning between the provisioner and the device can be completed through two channels: PB-ADV or PB-GATT.
+The provisioning process can only begin once the channel is successfully established.</p>
+<section id="pb-adv">
+<h4>PB-ADV<a class="headerlink" href="#pb-adv" title="Link to this heading"></a></h4>
+<p>Based on the device UUID, the provisioner calls <a class="reference internal" href="../../../../../doc/api_reference/group___pb___adv___exported___functions.html#_CPPv416pb_adv_link_open7uint8_tAL16E_7uint8_t" title="pb_adv_link_open"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">pb_adv_link_open()</span></code></a> to initiate the PB-ADV link establishment process.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">prov_cb()</span></code> callback function, the establishment status of the PB-ADV link is handled. The specific code is as follows.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">prov_cb</span><span class="p">(</span><span class="n">prov_cb_type_t</span><span class="w"> </span><span class="n">cb_type</span><span class="p">,</span><span class="w"> </span><span class="n">prov_cb_data_t</span><span class="w"> </span><span class="n">cb_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cb_type</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">PROV_CB_TYPE_PB_ADV_LINK_STATE</span><span class="p">:</span>
+<span class="w">      </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">cb_data</span><span class="p">.</span><span class="n">pb_generic_cb_type</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">PB_GENERIC_CB_LINK_OPENED</span><span class="p">:</span>
+<span class="w">         </span><span class="n">data_uart_debug</span><span class="p">(</span><span class="s">&quot;PB-ADV Link Opened!</span><span class="se">\r\n</span><span class="s">&gt;&quot;</span><span class="p">);</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">PB_GENERIC_CB_LINK_OPEN_FAILED</span><span class="p">:</span>
+<span class="w">         </span><span class="n">data_uart_debug</span><span class="p">(</span><span class="s">&quot;PB-ADV Link Open Failed!</span><span class="se">\r\n</span><span class="s">&gt;&quot;</span><span class="p">);</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">PB_GENERIC_CB_LINK_CLOSED</span><span class="p">:</span>
+<span class="w">         </span><span class="n">data_uart_debug</span><span class="p">(</span><span class="s">&quot;PB-ADV Link Closed!</span><span class="se">\r\n</span><span class="s">&gt;&quot;</span><span class="p">);</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span>
+<span class="w">         </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="pb-gatt">
+<h4>PB-GATT<a class="headerlink" href="#pb-gatt" title="Link to this heading"></a></h4>
+<p>Provisioner needs to actively establish an LE link with the device, discover the provisioning service, and enable <a class="reference internal" href="../../../../../doc/glossary.html#term-CCCD"><span class="xref std std-term">CCCD</span></a>.</p>
+</section>
+</section>
+<section id="model-architecture">
+<span id="mesh-model-architecture"></span><h3>Model Architecture<a class="headerlink" href="#model-architecture" title="Link to this heading"></a></h3>
+<p>The Bluetooth SIG organization has defined many standard Models, most of which are already included in Realtek's <a class="reference internal" href="../../../../../doc/glossary.html#term-SDK"><span class="xref std std-term">SDK</span></a>.
+To reduce the difficulty for APP development, the SDK encapsulates message processing between the Model layer and the Access layer,
+providing a series of predefined business messages for APPs, allowing them to focus solely on business logic development.
+For detailed information on Mesh Models, please refer to the <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Model Specification</a>.</p>
+<section id="message-callbacks">
+<h4>Message Callbacks<a class="headerlink" href="#message-callbacks" title="Link to this heading"></a></h4>
+<p>Before using a specific Model, a structure of Model information is defined as shown below,
+where users need to pay attention to the following three callback functions.</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">model_receive()</span></code> function is a callback function for messages from the Access layer to the Model layer.
+Realtek's SDK already implements a default <code class="docutils literal notranslate"><span class="pre">model_receive()</span></code> function, but users can also replace it with a custom function.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">model_data_cb()</span></code> function is a callback function for business logic processing from the Model layer to the APP layer.
+The APP needs to perform the appropriate actions based on the application scenario.
+This callback is encapsulated and passed to the APP only if the default <code class="docutils literal notranslate"><span class="pre">model_receive()</span></code> function is used.
+If the user customizes the <code class="docutils literal notranslate"><span class="pre">model_receive()</span></code> function, this function can be ignored.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">model_send_cb()</span></code> function is a callback function for the result of message sending from the Model layer.
+Users can determine whether they need to implement it based on their requirements.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_mesh_model_info_t</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="cm">/** provided by application */</span>
+<span class="w">   </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">model_id</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; being equal or greater than 0xffff0000 means that the model is a SIG model.</span>
+<span class="w">   </span><span class="cm">/** callback to receive related access msg</span>
+<span class="cm">      If the model doesn&#39;t recognize the access opcode, it should return false! */</span>
+<span class="w">   </span><span class="n">model_receive_pf</span><span class="w"> </span><span class="n">model_receive</span><span class="p">;</span>
+<span class="w">   </span><span class="n">model_send_cb_pf</span><span class="w"> </span><span class="n">model_send_cb</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; indicates the msg transmitted state</span>
+<span class="w">   </span><span class="n">model_pub_cb_pf</span><span class="w"> </span><span class="n">model_pub_cb</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; indicates it is time to publish</span>
+<span class="w">   </span><span class="n">model_data_cb_pf</span><span class="w"> </span><span class="n">model_data_cb</span><span class="p">;</span>
+<span class="cp">#if MESH_MODEL_ENABLE_DEINIT</span>
+<span class="w">   </span><span class="n">model_deinit_cb_pf</span><span class="w"> </span><span class="n">model_deinit</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="w">   </span><span class="cm">/** point to the bound model, sharing the subscription list with the binding model */</span>
+<span class="w">   </span><span class="k">struct</span><span class="w"> </span><span class="nc">_mesh_model_info_t</span><span class="w"> </span><span class="o">*</span><span class="n">pmodel_bound</span><span class="p">;</span>
+<span class="w">   </span><span class="k">struct</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">corresponding_present</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">extended_item_count</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">corresponding_group_id</span><span class="p">;</span>
+<span class="w">      </span><span class="k">struct</span><span class="w"> </span><span class="nc">_mesh_model_info_t</span><span class="w"> </span><span class="o">*</span><span class="n">pmodel_extended_info</span><span class="p">;</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="cm">/** configured by stack */</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">element_index</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">model_index</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pelement</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pmodel</span><span class="p">;</span>
+<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pargs</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">mesh_model_info_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="message-definition">
+<h4>Message Definition<a class="headerlink" href="#message-definition" title="Link to this heading"></a></h4>
+<p>In the header file of each specific Model, there will be predefined business messages as shown below.
+Each message corresponds to a specific message structure, using the Generic_OnOff model as an example.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define GENERIC_ON_OFF_SERVER_GET                                        0 </span><span class="c1">//!&lt; @ref generic_on_off_server_get_t</span>
+<span class="cp">#define GENERIC_ON_OFF_SERVER_GET_DEFAULT_TRANSITION_TIME                1 </span><span class="c1">//!&lt; @ref generic_on_off_server_get_default_transition_time_t</span>
+<span class="cp">#define GENERIC_ON_OFF_SERVER_SET                                        2 </span><span class="c1">//!&lt; @ref generic_on_off_server_set_t</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">generic_on_off_t</span><span class="w"> </span><span class="n">on_off</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">generic_on_off_server_get_t</span><span class="p">;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">generic_transition_time_t</span><span class="w"> </span><span class="n">trans_time</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">generic_on_off_server_get_default_transition_time_t</span><span class="p">;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">generic_on_off_t</span><span class="w"> </span><span class="n">on_off</span><span class="p">;</span>
+<span class="w">   </span><span class="n">generic_transition_time_t</span><span class="w"> </span><span class="n">total_time</span><span class="p">;</span>
+<span class="w">   </span><span class="n">generic_transition_time_t</span><span class="w"> </span><span class="n">remaining_time</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">generic_on_off_server_set_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="message-send-handling">
+<span id="mesh-message-send"></span><h4>Message Send Handling<a class="headerlink" href="#message-send-handling" title="Link to this heading"></a></h4>
+<p>Mesh message sending requires specific parameters such as address, application key, and TTL. Addresses include the source address and destination address, which denote the sender and receiver of the message, respectively.
+The source address can only be the unicast address of the sender, a fixed value allocated by the provisioner and automatically configured by the stack.
+The destination address, on the other hand, can be any address type except for the unassigned address. It can be a unicast address or a multicast address.</p>
+<p>The setting of Mesh message parameters depends on the message type.</p>
+<ul class="simple">
+<li><p>When the message is a response to a request message, the destination address is the source address of the original request message, using the same AppKey.
+The setting of such passive message parameters, including the destination address, is also passive.</p></li>
+<li><p>When the Mesh device proactively sends a message, it is referred to as publishing.
+These parameters are usually configured flexibly by the provisioner using the Publication Set message in the Configuration Model,
+and the stack will handle them automatically without APP intervention.
+For example, the message for turning on a switch light is dynamically configured to which light it is sent.</p></li>
+</ul>
+<p>If the provisioner has not configured the model's publish parameters, the parameters required for the model to send a message also vary.</p>
+<ol class="arabic simple">
+<li><p>The provisioner's publish behavior and parameters should be specified by the user. For example, the provisioner configures different devices.</p></li>
+<li><p>The model's message sending is relatively flexible and not restricted by the publish parameters, allowing the user to specify them freely. For example, the ping control model.</p></li>
+<li><p>The model independently sets the publish parameters, such as preset negotiated destination address. The address can be a unicast address, multicast address, virtual address, or even 0xFFFF.</p></li>
+</ol>
+<section id="publish-parameter-configuration">
+<h5>Publish Parameter Configuration<a class="headerlink" href="#publish-parameter-configuration" title="Link to this heading"></a></h5>
+<p>Users can determine whether the model has been set with the relevant publish parameters by the provisioner through the <code class="docutils literal notranslate"><span class="pre">mesh_model_pub_check()</span></code> function.</p>
+<p>After the node receives the provisioner's publish parameter settings, the stack processes them and saves them to Flash.
+Users can extract the default configuration and publish parameters through <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a> to preset parameters for sending messages.</p>
+<p>If the user does not want to use the preset publish parameters, they can override the relevant parameters after calling <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">mesh_msg_send_cause_t</span><span class="w"> </span><span class="nf">ping_control_send</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ttl</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">pmsg</span><span class="p">,</span>
+<span class="w">                                               </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">msg_len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">app_key_index</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">mesh_msg_t</span><span class="w"> </span><span class="n">mesh_msg</span><span class="p">;</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">pmodel_info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ping_control</span><span class="p">;</span>
+<span class="w">   </span><span class="n">access_cfg</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mesh_msg</span><span class="p">);</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">pbuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pmsg</span><span class="p">;</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">msg_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg_len</span><span class="p">;</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">dst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dst</span><span class="p">;</span><span class="w">  </span><span class="c1">// rewrite dst</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">ttl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ttl</span><span class="p">;</span><span class="w">  </span><span class="c1">// rewrite ttl</span>
+<span class="w">   </span><span class="n">mesh_msg</span><span class="p">.</span><span class="n">app_key_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">app_key_index</span><span class="p">;</span><span class="w">   </span><span class="c1">// rewrite app key index</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">access_send</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mesh_msg</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="appkey-selection">
+<h5>AppKey Selection<a class="headerlink" href="#appkey-selection" title="Link to this heading"></a></h5>
+<p>A device can have multiple AppKeys simultaneously, with the exact number depending on the configuration by the provisioner.</p>
+<p>An AppKey is configured as the publish AppKey when <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a> is called.
+If the publish AppKey is not configured, the APP must select a bound AppKey itself.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Models are not allowed to send messages using an unbound AppKey.</p>
+</div>
+<p>Each AppKey has a unique global index but is mapped to a local index in implementation.
+When the APP sends a message, it uses the local index of the AppKey.</p>
+<ul class="simple">
+<li><p>If the model is bound to multiple AppKeys, any bound AppKey can be used to send a message by calling <code class="docutils literal notranslate"><span class="pre">mesh_model_get_available_key()</span></code> to get a usable local index.</p></li>
+<li><p>If the model needs to use a specific AppKey, such as one specified by its global index, the local index can be obtained using <code class="docutils literal notranslate"><span class="pre">app_key_index_from_global()</span></code>.</p></li>
+</ul>
+</section>
+<section id="ttl-selection">
+<h5>TTL Selection<a class="headerlink" href="#ttl-selection" title="Link to this heading"></a></h5>
+<p>The TTL is configured as the publish TTL when <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a> is called.
+If the publish TTL is not configured, it defaults to the device's default TTL (default 7).
+The APP can modify the TTL parameter after calling <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___access___exported___functions.html#_CPPv410access_cfg10mesh_msg_p" title="access_cfg"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">access_cfg()</span></code></a>.</p>
+</section>
+</section>
+<section id="message-receive-handling">
+<h4>Message Receive Handling<a class="headerlink" href="#message-receive-handling" title="Link to this heading"></a></h4>
+<p>This section primarily introduces how the APP obtains and processes messages after the node receives them.</p>
+<section id="business-logic-handling">
+<h5>Business Logic Handling<a class="headerlink" href="#business-logic-handling" title="Link to this heading"></a></h5>
+<p>Most models have already implemented functional encapsulation, and the APP only needs to register the callback function for business logic processing with the model.
+At the Model layer, message parsing and message response when receiving messages have been processed.
+When the APP layer needs to participate in business logic processing, the Model layer will notify the APP through the registered callback.</p>
+<p>The following sample shows a simple business logic for switching a light on and off.
+First, define the structure of the Model and assign the specific processing function to the <code class="docutils literal notranslate"><span class="pre">model_data_cb()</span></code> function.
+When a message is sent from the remote end to switch the light on or off,
+the SDK will call the <code class="docutils literal notranslate"><span class="pre">generic_on_off_server_data()</span></code> function,
+and fill in the corresponding information according to the message type.
+After obtaining the on/off value from the specific message,
+the APP executes the corresponding action for the light,
+without having to worry about message processing between the Model layer and the access layer.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/** generic on/off server model */</span>
+<span class="k">static</span><span class="w"> </span><span class="n">mesh_model_info_t</span><span class="w"> </span><span class="n">generic_on_off_server</span><span class="p">;</span>
+
+<span class="cm">/** light on/off state */</span>
+<span class="n">generic_on_off_t</span><span class="w"> </span><span class="n">current_on_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GENERIC_OFF</span><span class="p">;</span>
+
+<span class="cm">/** light on/off process callback */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="nf">generic_on_off_server_data</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">mesh_model_info_p</span><span class="w"> </span><span class="n">pmodel_info</span><span class="p">,</span>
+<span class="w">                                          </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pargs</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MODEL_SUCCESS</span><span class="p">;</span>
+<span class="w">   </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GENERIC_ON_OFF_SERVER_GET</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="n">generic_on_off_server_get_t</span><span class="w"> </span><span class="o">*</span><span class="n">pdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pargs</span><span class="p">;</span>
+<span class="w">         </span><span class="n">pdata</span><span class="o">-&gt;</span><span class="n">on_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_on_off</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="no">GENERIC_ON_OFF_SERVER_SET</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="n">generic_on_off_server_set_t</span><span class="w"> </span><span class="o">*</span><span class="n">pdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pargs</span><span class="p">;</span>
+<span class="w">         </span><span class="n">current_on_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pdata</span><span class="o">-&gt;</span><span class="n">on_off</span><span class="p">;</span>
+<span class="w">         </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MODEL_STOP_TRANSITION</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">default</span><span class="o">:</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/** light on/off model initialize */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">light_on_off_server_models_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="cm">/* register light on/off models */</span>
+<span class="w">   </span><span class="n">generic_on_off_server</span><span class="p">.</span><span class="n">model_data_cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generic_on_off_server_data</span><span class="p">;</span>
+<span class="w">   </span><span class="n">generic_on_off_server_reg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">generic_on_off_server</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="get-source-address-of-configuration-client">
+<h5>Get Source Address of Configuration Client<a class="headerlink" href="#get-source-address-of-configuration-client" title="Link to this heading"></a></h5>
+<p>During provisioning procedure, the provisioner typically distributes keys, binds models, sets subscription addresses, etc.
+At this time, the provisioner sends messages to the configuration server model using the configuration client model,
+and these messages' source address is the provisioner's address.</p>
+<p>Since the configuration process involves many network parameter operations, the configuration server is not visible to the user.
+Users who want to know the operations performed by the configuration client when configuring the configuration server and obtain the configuration client address can do so through the following method.</p>
+<p>After creating the first element, register a new callback to the configuration server: <code class="docutils literal notranslate"><span class="pre">cfg_server_receive_peek()</span></code>, reference code is as follows.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">cfg_server_receive_peek</span><span class="p">(</span><span class="n">mesh_msg_p</span><span class="w"> </span><span class="n">pmesh_msg</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="kt">bool</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cfg_server_receive</span><span class="p">(</span><span class="n">pmesh_msg</span><span class="p">);</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="cm">/* The configuration client message can be peeked now! */</span>
+<span class="w">      </span><span class="n">printi</span><span class="p">(</span><span class="s">&quot;cfg_server_receive_peek: cfg client addr = 0x%04x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pmesh_msg</span><span class="o">-&gt;</span><span class="n">src</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">......</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="cm">/** create elements and register models */</span>
+<span class="w">   </span><span class="n">mesh_element_create</span><span class="p">(</span><span class="n">GATT_NS_DESC_UNKNOWN</span><span class="p">);</span>
+<span class="w">   </span><span class="n">cfg_server</span><span class="p">.</span><span class="n">model_receive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cfg_server_receive_peek</span><span class="p">;</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the device needs to record the configuration client address, it can be stored in Flash. If the address has not changed, repeated storage is not necessary.</p>
+</section>
+</section>
+</section>
+<section id="friendship">
+<h3>Friendship<a class="headerlink" href="#friendship" title="Link to this heading"></a></h3>
+<p>To support low power devices, a friendship mechanism is required, where a friend node helps a low power node cache messages.
+The low power node typically reduces power consumption by adjusting the scan duty cycle.</p>
+<p>Friendship consumes additional internal NetKey space. The number of friendships a friend node can set up and establish is smaller than the number of NetKeys.
+A low power node can only establish one friendship per NetKey, so the number of friendships is less than or equal to half the total number of NetKeys.</p>
+<section id="friend-node">
+<h4>Friend Node<a class="headerlink" href="#friend-node" title="Link to this heading"></a></h4>
+<p>To use the friend node feature, users need to call <a class="reference internal" href="../../../../../doc/api_reference/group___f_n___exported___functions.html#_CPPv47fn_init7uint8_tP11fn_params_t10pf_fn_cb_t" title="fn_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">fn_init()</span></code></a> to initialize.</p>
+</section>
+<section id="low-power-node">
+<h4>Low Power Node<a class="headerlink" href="#low-power-node" title="Link to this heading"></a></h4>
+<p>To use the low power node feature, users need to call <a class="reference internal" href="../../../../../doc/api_reference/group___l_p_n___exported___functions.html#_CPPv48lpn_init7uint8_t11pf_lpn_cb_t" title="lpn_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">lpn_init()</span></code></a> to initialize. To initiate the friendship establishment process, call <a class="reference internal" href="../../../../../doc/api_reference/group___l_p_n___exported___functions.html#_CPPv47lpn_req7uint8_t8uint16_tP16lpn_req_params_t" title="lpn_req"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">lpn_req()</span></code></a>.</p>
+</section>
+</section>
+<section id="transport-ping">
+<h3>Transport Ping<a class="headerlink" href="#transport-ping" title="Link to this heading"></a></h3>
+<p>For convenient testing of network layer communication, a custom ping/pong mechanism <a class="reference internal" href="../../../../../doc/api_reference/group___mesh___transport___exported___functions.html#_CPPv410trans_ping8uint16_t7uint8_t8uint16_t8uint16_t" title="trans_ping"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">trans_ping()</span></code></a> is implemented at the transport layer, carrying TTL information to calculate the number of hops.
+This message directly utilizes the network layer's service and is encrypted with NetKey only.
+After being provisioned, the device can use the transport layer's ping function to test whether the network layer is functioning correctly, even though the device has not yet obtained AppKey.</p>
+</section>
+<section id="remote-provisioning">
+<h3>Remote Provisioning<a class="headerlink" href="#remote-provisioning" title="Link to this heading"></a></h3>
+<p>When the distance between the provisioner and the unprovisioned device is too far, exceeding the direct wireless transmission range, the Remote Provisioning feature can be used. This feature utilizes the existing mesh network to transmit Provisioning PDUs and add the unprovisioned device to the network.
+Furthermore, the provisioner can use the Remote Provisioning feature to change the device key, node address, or composition data of a provisioned device.</p>
+</section>
+<section id="directed-forwarding">
+<h3>Directed Forwarding<a class="headerlink" href="#directed-forwarding" title="Link to this heading"></a></h3>
+<p>Directed forwarding helps enhance multi-hop network performance by relaying messages from the source node to the target node through a selected subset of nodes.
+This subset (including the source and target nodes) forms the path defined by directed forwarding.
+The path is identified by the source address and target address, which can be a unicast address, multicast address, or virtual address.</p>
+<p>Directed forwarding consumes additional internal NetKey space, and a master key will derive a directed forwarding key, which can establish multiple directed forwarding paths.</p>
+<p>Directed forwarding paths are classified as either non-fixed paths or fixed paths.</p>
+<ul class="simple">
+<li><p>A non-fixed path is dynamically established by the directed forwarding node, controlled by the directed forwarding client, and is not stored in Flash.</p></li>
+<li><p>A fixed path is added by the directed forwarding client through the directed forwarding model, remains existent until deleted by the directed forwarding client, and is stored in Flash.</p></li>
+</ul>
+<p>Once a directed forwarding path is established, the source address can use the directed forwarding key to encrypt and send messages, which will only be relayed by the nodes on that path.</p>
+<ul class="simple">
+<li><p>Users can call <code class="docutils literal notranslate"><span class="pre">df_cb_reg()</span></code> to register a directed forwarding callback to get actions related to directed forwarding path discovery, establishment, release and so on.</p></li>
+<li><p>Users can call <code class="docutils literal notranslate"><span class="pre">df_path_discovery()</span></code> to initiate the path discovery process, referring to the non-fixed path.
+In many scenarios, the path discovery process does not require user initiation.
+For example, if a model's publish policy is set to directed forwarding,
+the path discovery process will be automatically triggered when sending a message (with a TTL of 2 or higher).</p></li>
+<li><p>Users can call <code class="docutils literal notranslate"><span class="pre">df_path_dependents_update()</span></code> to initiate the path dependents update process.
+In many scenarios, the path dependents update process does not require user initiation.
+For example, when the status of a dependent node changes, the supporting node may automatically trigger the path dependents update process.</p></li>
+<li><p>Users can call <code class="docutils literal notranslate"><span class="pre">df_path_solicitation()</span></code> to initiate the path solicitation process.
+In many scenarios, the path solicitation process does not require user initiation.
+For example, when the low power node's subscription address list changes, the friend node may automatically trigger the path solicitation process.</p></li>
+</ul>
+</section>
+<section id="subnet-bridge">
+<h3>Subnet Bridge<a class="headerlink" href="#subnet-bridge" title="Link to this heading"></a></h3>
+<p>Nodes belonging to multiple subnets can support the subnet bridge feature.
+After configuration, nodes supporting the subnet bridge feature can retransmit messages from one subnet to another.</p>
+</section>
+<section id="binary-large-object-transfer">
+<h3>Binary Large Object Transfer<a class="headerlink" href="#binary-large-object-transfer" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="../../../../../doc/glossary.html#term-BLOB"><span class="xref std std-term">BLOB</span></a> Transfer Model can transmit data objects larger than the maximum Access Layer PDUs size and multicast them to multiple nodes simultaneously.</p>
+<p>The BLOB receiver (BLOB transfer server) needs to call <a class="reference internal" href="../../../../../doc/api_reference/group___b_l_o_b___t_r_a_n_s_f_e_r___s_e_r_v_e_r___a_p_i.html#_CPPv425blob_transfer_server_initAL8E_7uint8_t8uint16_t7uint8_t" title="blob_transfer_server_init"><code class="xref cpp cpp-any docutils literal notranslate"><span class="pre">blob_transfer_server_init()</span></code></a> to initialize before transmission.</p>
+<p>The BLOB sender (BLOB transfer client) can use the model layer interface, or use the API <code class="file docutils literal notranslate"><span class="pre">blob_client_app.h</span></code> that encapsulates the client behavior,
+including the capabilities retrieve process <code class="docutils literal notranslate"><span class="pre">blob_client_caps_retrieve()</span></code>,
+blob transfer process <code class="docutils literal notranslate"><span class="pre">blob_client_blob_transfer()</span></code>,
+and transfer cancel process <code class="docutils literal notranslate"><span class="pre">blob_client_transfer_cancel()</span></code>.</p>
+</section>
+<section id="device-firmware-update">
+<h3>Device Firmware Update<a class="headerlink" href="#device-firmware-update" title="Link to this heading"></a></h3>
+<p>Please refer to <a class="reference download internal" download="" href="../../../../../_downloads/dca92a08de17591f2c165cc890cd156f/Mesh%20OTA%20Application%20Note%20EN.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Mesh</span> <span class="pre">OTA</span> <span class="pre">Application</span> <span class="pre">Note</span></code></a>.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>The following are some common issues and considerations when using Mesh Stack.</p>
+<section id="nodes-cannot-receive-messages">
+<h3>Nodes Cannot Receive Messages<a class="headerlink" href="#nodes-cannot-receive-messages" title="Link to this heading"></a></h3>
+<p>Users can register with <code class="docutils literal notranslate"><span class="pre">rpl_cb_reg()</span></code> to verify whether messages are filtered by the RPL mechanism.
+The number of RPLs is determined during the stack initialization phase,
+and the size should account for the number of nodes in the network that will communicate with it,
+leaving some buffer for future network expansion.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mesh_stack_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="w">   </span><span class="n">mesh_node_cfg_t</span><span class="w"> </span><span class="n">node_cfg</span><span class="w"> </span><span class="o">=</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="p">.</span><span class="n">dev_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">net_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">master_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">app_key_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">vir_addr_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="hll"><span class="w">      </span><span class="p">.</span><span class="n">rpl_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+</span><span class="w">      </span><span class="p">.</span><span class="n">sub_addr_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">proxy_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">   </span><span class="p">};</span>
+<span class="w">   </span><span class="n">mesh_node_cfg</span><span class="p">(</span><span class="n">features</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">node_cfg</span><span class="p">);</span>
+<span class="w">   </span><span class="p">......</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="reuse-the-addresses-of-deleted-nodes">
+<h3>Reuse the Addresses of Deleted Nodes<a class="headerlink" href="#reuse-the-addresses-of-deleted-nodes" title="Link to this heading"></a></h3>
+<p>The mesh network has an RPL mechanism that stores the source address
+and sequence of received messages to prevent replay attacks, updating with each received message.
+If a new node reuses the same address and the RPL list of nodes in the network
+has already stored the sequence information of that address,
+communication between the new and old nodes will encounter issues.
+In fact, addresses that have been deleted cannot be directly reused.
+If users want to reuse an address,
+please refer to Mesh Protocol Specification section 3.11.7 <em>Node Removal Procedure</em>.</p>
+</section>
+</section>
+<section id="sample-projects">
+<h2>Sample Projects<a class="headerlink" href="#sample-projects" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>For Mesh Provisioner role reference example, see <a class="reference internal" href="../../../../../samples/bluetooth/mesh/mesh_provisioner/doc/text_en/README.html"><span class="doc">Mesh Provisioner</span></a>.</p></li>
+<li><p>For Mesh Device role reference example, see <a class="reference internal" href="../../../../../samples/bluetooth/mesh/mesh_device/doc/text_en/README.html"><span class="doc">Mesh Device</span></a>.</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p>[1] <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Protocol Specification</a></p>
+<p>[2] <a class="reference external" href="https://www.bluetooth.com/specifications/mesh-specifications">Mesh Model Specification</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../../doc/bluetooth_qualification/text_en/README.html" class="btn btn-neutral float-left" title="Bluetooth Qualification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../../ppt/doc/text_en/README.html" class="btn btn-neutral float-right" title="2.4G" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bluetooth GATT Client Exported Types &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">Bluetooth GATT Client Exported Types</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bluetooth-gatt-client-exported-types">
+<h1>Bluetooth GATT Client Exported Types<a class="headerlink" href="#bluetooth-gatt-client-exported-types" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">BT_GATT_CLIENT_Exported_Types</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv420P_FUN_GATT_CLIENT_CB">
+<span id="_CPPv320P_FUN_GATT_CLIENT_CB"></span><span id="_CPPv220P_FUN_GATT_CLIENT_CB"></span><span id="P_FUN_GATT_CLIENT_CB"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ga74802b8a77efab90af2aa1243eb2f144"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv412T_APP_RESULT" title="T_APP_RESULT"><span class="n"><span class="pre">T_APP_RESULT</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">P_FUN_GATT_CLIENT_CB</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">conn_handle</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv419T_GATT_CLIENT_EVENT" title="T_GATT_CLIENT_EVENT"><span class="n"><span class="pre">T_GATT_CLIENT_EVENT</span></span></a><span class="w"> </span><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">p_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv420P_FUN_GATT_CLIENT_CB" title="Link to this definition"></a><br /></dt>
+<dd><p>P_FUN_GATT_CLIENT_CB Specific Client Callback Function Point Definition. </p>
+<p>Function pointer used in each specific client module, to send events to specific client module. The events please refer to <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ga0723245b284dc4fbb97e9e7efa72be15"><span class="std std-ref">T_GATT_CLIENT_EVENT</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv421P_FUN_GATT_STORAGE_CB">
+<span id="_CPPv321P_FUN_GATT_STORAGE_CB"></span><span id="_CPPv221P_FUN_GATT_STORAGE_CB"></span><span id="P_FUN_GATT_STORAGE_CB"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ga126bf8fe059d72541a517c96a691b17d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv412T_APP_RESULT" title="T_APP_RESULT"><span class="n"><span class="pre">T_APP_RESULT</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">P_FUN_GATT_STORAGE_CB</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv420T_GATT_STORAGE_EVENT" title="T_GATT_STORAGE_EVENT"><span class="n"><span class="pre">T_GATT_STORAGE_EVENT</span></span></a><span class="w"> </span><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">p_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv421P_FUN_GATT_STORAGE_CB" title="Link to this definition"></a><br /></dt>
+<dd><p>P_FUN_GATT_STORAGE_CB GATT Storage Callback Function Point Definition. </p>
+<p>Function pointer used to handle GATT storage event <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ga302dccef7c912fb6f3fc90024c102373"><span class="std std-ref">T_GATT_STORAGE_EVENT</span></a>. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv419T_GATT_CLIENT_STATE">
+<span id="_CPPv319T_GATT_CLIENT_STATE"></span><span id="_CPPv219T_GATT_CLIENT_STATE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gaef62457c192b0b4c52db7f0adb133548"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_STATE</span></span></span><a class="headerlink" href="#_CPPv419T_GATT_CLIENT_STATE" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT client state of discover services. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_STATE22GATT_CLIENT_STATE_IDLEE">
+<span id="_CPPv3N19T_GATT_CLIENT_STATE22GATT_CLIENT_STATE_IDLEE"></span><span id="_CPPv2N19T_GATT_CLIENT_STATE22GATT_CLIENT_STATE_IDLEE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ggaef62457c192b0b4c52db7f0adb133548afd6368b5850a10f063dd7f2029fe8e32"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_STATE_IDLE</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_STATE22GATT_CLIENT_STATE_IDLEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Idle. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_STATE27GATT_CLIENT_STATE_DISCOVERYE">
+<span id="_CPPv3N19T_GATT_CLIENT_STATE27GATT_CLIENT_STATE_DISCOVERYE"></span><span id="_CPPv2N19T_GATT_CLIENT_STATE27GATT_CLIENT_STATE_DISCOVERYE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ggaef62457c192b0b4c52db7f0adb133548a22ceda42c9580710ac00ce3cc62c3fec"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_STATE_DISCOVERY</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_STATE27GATT_CLIENT_STATE_DISCOVERYE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discover services. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_STATE22GATT_CLIENT_STATE_DONEE">
+<span id="_CPPv3N19T_GATT_CLIENT_STATE22GATT_CLIENT_STATE_DONEE"></span><span id="_CPPv2N19T_GATT_CLIENT_STATE22GATT_CLIENT_STATE_DONEE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ggaef62457c192b0b4c52db7f0adb133548adc147b975baf26a0f4cf5c05282396aa"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_STATE_DONE</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_STATE22GATT_CLIENT_STATE_DONEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discover services done. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_STATE24GATT_CLIENT_STATE_FAILEDE">
+<span id="_CPPv3N19T_GATT_CLIENT_STATE24GATT_CLIENT_STATE_FAILEDE"></span><span id="_CPPv2N19T_GATT_CLIENT_STATE24GATT_CLIENT_STATE_FAILEDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ggaef62457c192b0b4c52db7f0adb133548a3a0acad9446b177930bc23660dcca348"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_STATE_FAILED</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_STATE24GATT_CLIENT_STATE_FAILEDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Discover services failed. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv420T_GATT_STORAGE_EVENT">
+<span id="_CPPv320T_GATT_STORAGE_EVENT"></span><span id="_CPPv220T_GATT_STORAGE_EVENT"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ga302dccef7c912fb6f3fc90024c102373"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_STORAGE_EVENT</span></span></span><a class="headerlink" href="#_CPPv420T_GATT_STORAGE_EVENT" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT client storage state of discover services. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GATT_STORAGE_EVENT34GATT_STORAGE_EVENT_SVC_TBL_GET_INDE">
+<span id="_CPPv3N20T_GATT_STORAGE_EVENT34GATT_STORAGE_EVENT_SVC_TBL_GET_INDE"></span><span id="_CPPv2N20T_GATT_STORAGE_EVENT34GATT_STORAGE_EVENT_SVC_TBL_GET_INDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373aa7ea79dd17f34baa010e9a98e748fc80"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_STORAGE_EVENT_SVC_TBL_GET_IND</span></span></span><a class="headerlink" href="#_CPPv4N20T_GATT_STORAGE_EVENT34GATT_STORAGE_EVENT_SVC_TBL_GET_INDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GATT_STORAGE_EVENT34GATT_STORAGE_EVENT_SVC_TBL_SET_INDE">
+<span id="_CPPv3N20T_GATT_STORAGE_EVENT34GATT_STORAGE_EVENT_SVC_TBL_SET_INDE"></span><span id="_CPPv2N20T_GATT_STORAGE_EVENT34GATT_STORAGE_EVENT_SVC_TBL_SET_INDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a19966451c713b6caebf947d2fda9a402"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_STORAGE_EVENT_SVC_TBL_SET_IND</span></span></span><a class="headerlink" href="#_CPPv4N20T_GATT_STORAGE_EVENT34GATT_STORAGE_EVENT_SVC_TBL_SET_INDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_CCCD_GET_INDE">
+<span id="_CPPv3N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_CCCD_GET_INDE"></span><span id="_CPPv2N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_CCCD_GET_INDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a2176a0c0c9103549343fc146cf5b1749"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_STORAGE_EVENT_SVC_CCCD_GET_IND</span></span></span><a class="headerlink" href="#_CPPv4N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_CCCD_GET_INDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_CCCD_SET_INDE">
+<span id="_CPPv3N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_CCCD_SET_INDE"></span><span id="_CPPv2N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_CCCD_SET_INDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a471e1caf66dd7eefa9d1a997fe6b6328"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_STORAGE_EVENT_SVC_CCCD_SET_IND</span></span></span><a class="headerlink" href="#_CPPv4N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_CCCD_SET_INDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_GATT_GET_INDE">
+<span id="_CPPv3N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_GATT_GET_INDE"></span><span id="_CPPv2N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_GATT_GET_INDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a3cb632ecce003dbfd76152c21fb6b4b2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_STORAGE_EVENT_SVC_GATT_GET_IND</span></span></span><a class="headerlink" href="#_CPPv4N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_GATT_GET_INDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_GATT_SET_INDE">
+<span id="_CPPv3N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_GATT_SET_INDE"></span><span id="_CPPv2N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_GATT_SET_INDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a5f34fcbe773059442205856de6c31cac"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_STORAGE_EVENT_SVC_GATT_SET_IND</span></span></span><a class="headerlink" href="#_CPPv4N20T_GATT_STORAGE_EVENT35GATT_STORAGE_EVENT_SVC_GATT_SET_INDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N20T_GATT_STORAGE_EVENT54GATT_STORAGE_EVENT_SVC_TBL_USING_DATABASE_HASH_GET_INDE">
+<span id="_CPPv3N20T_GATT_STORAGE_EVENT54GATT_STORAGE_EVENT_SVC_TBL_USING_DATABASE_HASH_GET_INDE"></span><span id="_CPPv2N20T_GATT_STORAGE_EVENT54GATT_STORAGE_EVENT_SVC_TBL_USING_DATABASE_HASH_GET_INDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a641fa5a5e2f6635bf889f87a965bbe2b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_STORAGE_EVENT_SVC_TBL_USING_DATABASE_HASH_GET_IND</span></span></span><a class="headerlink" href="#_CPPv4N20T_GATT_STORAGE_EVENT54GATT_STORAGE_EVENT_SVC_TBL_USING_DATABASE_HASH_GET_INDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv419T_GATT_CLIENT_EVENT">
+<span id="_CPPv319T_GATT_CLIENT_EVENT"></span><span id="_CPPv219T_GATT_CLIENT_EVENT"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ga0723245b284dc4fbb97e9e7efa72be15"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_EVENT</span></span></span><a class="headerlink" href="#_CPPv419T_GATT_CLIENT_EVENT" title="Link to this definition"></a><br /></dt>
+<dd><p>Define GATT client event type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_DIS_DONEE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_DIS_DONEE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_DIS_DONEE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15a51e9653ec4496d1163165c08ea5d2f2a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_DIS_DONE</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_DIS_DONEE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT29GATT_CLIENT_EVENT_READ_RESULTE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT29GATT_CLIENT_EVENT_READ_RESULTE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT29GATT_CLIENT_EVENT_READ_RESULTE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15ad749289086bed77bb53a8fbef5bf8402"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_READ_RESULT</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT29GATT_CLIENT_EVENT_READ_RESULTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT30GATT_CLIENT_EVENT_WRITE_RESULTE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT30GATT_CLIENT_EVENT_WRITE_RESULTE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT30GATT_CLIENT_EVENT_WRITE_RESULTE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15af5472bad05280b759d9a74f67517ffdc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_WRITE_RESULT</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT30GATT_CLIENT_EVENT_WRITE_RESULTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT28GATT_CLIENT_EVENT_NOTIFY_INDE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT28GATT_CLIENT_EVENT_NOTIFY_INDE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT28GATT_CLIENT_EVENT_NOTIFY_INDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15a98b8340bd0f573f8685e9f7e115c3426"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_NOTIFY_IND</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT28GATT_CLIENT_EVENT_NOTIFY_INDE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_CCCD_CFGE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_CCCD_CFGE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_CCCD_CFGE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15a2dae0f258cb7358813d503620a275088"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_CCCD_CFG</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_CCCD_CFGE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_CONN_DELE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_CONN_DELE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_CONN_DELE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15ae1158f21097a45ecf773f7774c16859f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_CONN_DEL</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT26GATT_CLIENT_EVENT_CONN_DELE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT34GATT_CLIENT_EVENT_READ_UUID_RESULTE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT34GATT_CLIENT_EVENT_READ_UUID_RESULTE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT34GATT_CLIENT_EVENT_READ_UUID_RESULTE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15afede6559454a4c82f644e51e03286b1e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_READ_UUID_RESULT</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT34GATT_CLIENT_EVENT_READ_UUID_RESULTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT31GATT_CLIENT_EVENT_DIS_ALL_STATEE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT31GATT_CLIENT_EVENT_DIS_ALL_STATEE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT31GATT_CLIENT_EVENT_DIS_ALL_STATEE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15a3278b93ddb88cd8f201f104a41577cd7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_DIS_ALL_STATE</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT31GATT_CLIENT_EVENT_DIS_ALL_STATEE" title="Link to this definition"></a><br /></dt>
+<dd><p>General client callback event: Discovery done event. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT35GATT_CLIENT_EVENT_GATT_SERVICE_INFOE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT35GATT_CLIENT_EVENT_GATT_SERVICE_INFOE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT35GATT_CLIENT_EVENT_GATT_SERVICE_INFOE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15ab1d4d43d0cc469457b2101ced6a357d7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_GATT_SERVICE_INFO</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT35GATT_CLIENT_EVENT_GATT_SERVICE_INFOE" title="Link to this definition"></a><br /></dt>
+<dd><p>General client callback event: GATT service information. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_CLIENT_EVENT44GATT_CLIENT_EVENT_SERVICE_CHANGED_INDICATIONE">
+<span id="_CPPv3N19T_GATT_CLIENT_EVENT44GATT_CLIENT_EVENT_SERVICE_CHANGED_INDICATIONE"></span><span id="_CPPv2N19T_GATT_CLIENT_EVENT44GATT_CLIENT_EVENT_SERVICE_CHANGED_INDICATIONE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15ab59b6ab2d586604d3fc0f4e7a69238cb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CLIENT_EVENT_SERVICE_CHANGED_INDICATION</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_CLIENT_EVENT44GATT_CLIENT_EVENT_SERVICE_CHANGED_INDICATIONE" title="Link to this definition"></a><br /></dt>
+<dd><p>General client callback event: Service changed indication. </p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv416T_GATT_CHAR_TYPE">
+<span id="_CPPv316T_GATT_CHAR_TYPE"></span><span id="_CPPv216T_GATT_CHAR_TYPE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ga17ced0c9ac3c03faadd3a16c39ab236f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CHAR_TYPE</span></span></span><a class="headerlink" href="#_CPPv416T_GATT_CHAR_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Define characteristic type. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GATT_CHAR_TYPE17GATT_CHAR_UNKNOWNE">
+<span id="_CPPv3N16T_GATT_CHAR_TYPE17GATT_CHAR_UNKNOWNE"></span><span id="_CPPv2N16T_GATT_CHAR_TYPE17GATT_CHAR_UNKNOWNE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga17ced0c9ac3c03faadd3a16c39ab236fa870fe6bf40b99a54c68513fff208e0b4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CHAR_UNKNOWN</span></span></span><a class="headerlink" href="#_CPPv4N16T_GATT_CHAR_TYPE17GATT_CHAR_UNKNOWNE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GATT_CHAR_TYPE15GATT_CHAR_VALUEE">
+<span id="_CPPv3N16T_GATT_CHAR_TYPE15GATT_CHAR_VALUEE"></span><span id="_CPPv2N16T_GATT_CHAR_TYPE15GATT_CHAR_VALUEE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga17ced0c9ac3c03faadd3a16c39ab236fa83d6cdd1d805bc713e08b16ceb17747b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CHAR_VALUE</span></span></span><a class="headerlink" href="#_CPPv4N16T_GATT_CHAR_TYPE15GATT_CHAR_VALUEE" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic value. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GATT_CHAR_TYPE14GATT_CHAR_CCCDE">
+<span id="_CPPv3N16T_GATT_CHAR_TYPE14GATT_CHAR_CCCDE"></span><span id="_CPPv2N16T_GATT_CHAR_TYPE14GATT_CHAR_CCCDE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga17ced0c9ac3c03faadd3a16c39ab236fa073fd40965a3bf5ae10857a293b77261"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CHAR_CCCD</span></span></span><a class="headerlink" href="#_CPPv4N16T_GATT_CHAR_TYPE14GATT_CHAR_CCCDE" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic CCCD. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N16T_GATT_CHAR_TYPE20GATT_CHAR_DESCRIPTORE">
+<span id="_CPPv3N16T_GATT_CHAR_TYPE20GATT_CHAR_DESCRIPTORE"></span><span id="_CPPv2N16T_GATT_CHAR_TYPE20GATT_CHAR_DESCRIPTORE"></span><span class="target" id="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga17ced0c9ac3c03faadd3a16c39ab236fada2769185554e7a98a99879b2adb4bc6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GATT_CHAR_DESCRIPTOR</span></span></span><a class="headerlink" href="#_CPPv4N16T_GATT_CHAR_TYPE20GATT_CHAR_DESCRIPTORE" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic descriptor. </p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv419T_GATT_SERVICE_DATA">
+<span id="_CPPv319T_GATT_SERVICE_DATA"></span><span id="_CPPv219T_GATT_SERVICE_DATA"></span><span id="T_GATT_SERVICE_DATA"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___d_a_t_a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_SERVICE_DATA</span></span></span><a class="headerlink" href="#_CPPv419T_GATT_SERVICE_DATA" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT service data information. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_SERVICE_DATA10char_existE">
+<span id="_CPPv3N19T_GATT_SERVICE_DATA10char_existE"></span><span id="_CPPv2N19T_GATT_SERVICE_DATA10char_existE"></span><span id="T_GATT_SERVICE_DATA::char_exist__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___d_a_t_a_1a41d3abb5ea958b8aa05fac2fcd1d2d7f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_exist</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_SERVICE_DATA10char_existE" title="Link to this definition"></a><br /></dt>
+<dd><p>Characteristic exist bit field. <a class="reference internal" href="group___g_a_t_t___s_v_c___c_h_a_r.html#group___g_a_t_t___s_v_c___c_h_a_r"><span class="std std-ref">GATT Service Characteristic Flag</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_SERVICE_DATA10data_existE">
+<span id="_CPPv3N19T_GATT_SERVICE_DATA10data_existE"></span><span id="_CPPv2N19T_GATT_SERVICE_DATA10data_existE"></span><span id="T_GATT_SERVICE_DATA::data_exist__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___d_a_t_a_1a3fc79ffcf926c45279530a498cbd4b93"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_exist</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_SERVICE_DATA10data_existE" title="Link to this definition"></a><br /></dt>
+<dd><p>Data exist bit field. <a class="reference internal" href="group___g_a_t_t___s_v_c___c_h_a_r.html#group___g_a_t_t___s_v_c___c_h_a_r"><span class="std std-ref">GATT Service Characteristic Flag</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_SERVICE_DATA13database_hashE">
+<span id="_CPPv3N19T_GATT_SERVICE_DATA13database_hashE"></span><span id="_CPPv2N19T_GATT_SERVICE_DATA13database_hashE"></span><span id="T_GATT_SERVICE_DATA::database_hash__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___d_a_t_a_1a0858268ef848c19746a2a315a9b9d139"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">database_hash</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19T_GATT_SERVICE_DATA13database_hashE" title="Link to this definition"></a><br /></dt>
+<dd><p>The value can be used when the bit of <a class="reference internal" href="group___g_a_t_t___s_v_c___c_h_a_r.html#group___g_a_t_t___s_v_c___c_h_a_r_1ga02a77de693e14a8324bed7c4929be4c0"><span class="std std-ref">GATT_SVC_DATABASE_HASH_FLAG</span></a> in data_exist is set. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_SERVICE_DATA29client_supported_features_lenE">
+<span id="_CPPv3N19T_GATT_SERVICE_DATA29client_supported_features_lenE"></span><span id="_CPPv2N19T_GATT_SERVICE_DATA29client_supported_features_lenE"></span><span id="T_GATT_SERVICE_DATA::client_supported_features_len__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___d_a_t_a_1acc2052ed16f95a17508cd6561b50cf06"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">client_supported_features_len</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_SERVICE_DATA29client_supported_features_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>The value can be used when the bit of <a class="reference internal" href="group___g_a_t_t___s_v_c___c_h_a_r.html#group___g_a_t_t___s_v_c___c_h_a_r_1gaf64e841945e67896e2b8d6595f656074"><span class="std std-ref">GATT_SVC_CLIENT_SUPPORTED_FEATURES_FLAG</span></a> in data_exist is set. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_SERVICE_DATA25client_supported_featuresE">
+<span id="_CPPv3N19T_GATT_SERVICE_DATA25client_supported_featuresE"></span><span id="_CPPv2N19T_GATT_SERVICE_DATA25client_supported_featuresE"></span><span id="T_GATT_SERVICE_DATA::client_supported_features__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___d_a_t_a_1a2da1b9a21175bf144a41255df1249dfa"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">client_supported_features</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19T_GATT_SERVICE_DATA25client_supported_featuresE" title="Link to this definition"></a><br /></dt>
+<dd><p>The value can be used when the bit of <a class="reference internal" href="group___g_a_t_t___s_v_c___c_h_a_r.html#group___g_a_t_t___s_v_c___c_h_a_r_1gaf64e841945e67896e2b8d6595f656074"><span class="std std-ref">GATT_SVC_CLIENT_SUPPORTED_FEATURES_FLAG</span></a> in data_exist is set. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_SERVICE_DATA29server_supported_features_lenE">
+<span id="_CPPv3N19T_GATT_SERVICE_DATA29server_supported_features_lenE"></span><span id="_CPPv2N19T_GATT_SERVICE_DATA29server_supported_features_lenE"></span><span id="T_GATT_SERVICE_DATA::server_supported_features_len__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___d_a_t_a_1a7f15b816938a305133da80823beab0a1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">server_supported_features_len</span></span></span><a class="headerlink" href="#_CPPv4N19T_GATT_SERVICE_DATA29server_supported_features_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>The value can be used when the bit of <a class="reference internal" href="group___g_a_t_t___s_v_c___c_h_a_r.html#group___g_a_t_t___s_v_c___c_h_a_r_1gaeffd6be8a5db232205ff031b413b8aa5"><span class="std std-ref">GATT_SVC_SERVER_SUPPORTED_FEATURES_FLAG</span></a> in data_exist is set. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19T_GATT_SERVICE_DATA25server_supported_featuresE">
+<span id="_CPPv3N19T_GATT_SERVICE_DATA25server_supported_featuresE"></span><span id="_CPPv2N19T_GATT_SERVICE_DATA25server_supported_featuresE"></span><span id="T_GATT_SERVICE_DATA::server_supported_features__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_e_r_v_i_c_e___d_a_t_a_1a25d21752a58863214874448f6c0a9ce9"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">server_supported_features</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N19T_GATT_SERVICE_DATA25server_supported_featuresE" title="Link to this definition"></a><br /></dt>
+<dd><p>The value can be used when the bit of <a class="reference internal" href="group___g_a_t_t___s_v_c___c_h_a_r.html#group___g_a_t_t___s_v_c___c_h_a_r_1gaeffd6be8a5db232205ff031b413b8aa5"><span class="std std-ref">GATT_SVC_SERVER_SUPPORTED_FEATURES_FLAG</span></a> in data_exist is set. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430T_GATT_STORAGE_SVC_TBL_GET_IND">
+<span id="_CPPv330T_GATT_STORAGE_SVC_TBL_GET_IND"></span><span id="_CPPv230T_GATT_STORAGE_SVC_TBL_GET_IND"></span><span id="T_GATT_STORAGE_SVC_TBL_GET_IND"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___g_e_t___i_n_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_STORAGE_SVC_TBL_GET_IND</span></span></span><a class="headerlink" href="#_CPPv430T_GATT_STORAGE_SVC_TBL_GET_IND" title="Link to this definition"></a><br /></dt>
+<dd><p>Get stored services table indication data. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373aa7ea79dd17f34baa010e9a98e748fc80"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_TBL_GET_IND</span></a>. After application calls <a class="reference internal" href="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___functions.html#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___functions_1ga2435f79d250c219042567c60143320f0"><span class="std std-ref">gatt_client_start_discovery_all</span></a>, Bluetooth GATT client will send <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373aa7ea79dd17f34baa010e9a98e748fc80"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_TBL_GET_IND</span></a> first to check whether application has saved the service table. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_GET_IND4addrE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_GET_IND4addrE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_GET_IND4addrE"></span><span id="T_GATT_STORAGE_SVC_TBL_GET_IND::addr__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___g_e_t___i_n_d_1ae96ca58cce6c57fdcb6dba2562b0cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_GET_IND4addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_GET_IND14remote_bd_typeE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_GET_IND14remote_bd_typeE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_GET_IND14remote_bd_typeE"></span><span id="T_GATT_STORAGE_SVC_TBL_GET_IND::remote_bd_type__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___g_e_t___i_n_d_1a24e34ce512cb0a31dd05830ac14099ab"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remote_bd_type</span></span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_GET_IND14remote_bd_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_GET_IND8data_lenE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_GET_IND8data_lenE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_GET_IND8data_lenE"></span><span id="T_GATT_STORAGE_SVC_TBL_GET_IND::data_len__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___g_e_t___i_n_d_1ad1a572736a10ff6b282c5f43c4ea1ccf"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_len</span></span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_GET_IND8data_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provided by application. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_GET_IND6p_dataE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_GET_IND6p_dataE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_GET_IND6p_dataE"></span><span id="T_GATT_STORAGE_SVC_TBL_GET_IND::p_data__uint8_tP"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___g_e_t___i_n_d_1a8304c4af5da6e830b86d7199dc9a22e6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_data</span></span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_GET_IND6p_dataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provided by application. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv450T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND">
+<span id="_CPPv350T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND"></span><span id="_CPPv250T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND"></span><span id="T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___u_s_i_n_g___d_a_t_a_b_a_s_e___h_a_s_h___g_e_t___i_n_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND</span></span></span><a class="headerlink" href="#_CPPv450T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND" title="Link to this definition"></a><br /></dt>
+<dd><p>Get stored services table using database hash value indication data. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a641fa5a5e2f6635bf889f87a965bbe2b"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_TBL_USING_DATABASE_HASH_GET_IND</span></a>. After application calls <a class="reference internal" href="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___functions.html#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___functions_1ga2435f79d250c219042567c60143320f0"><span class="std std-ref">gatt_client_start_discovery_all</span></a>, Bluetooth GATT client may send <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a641fa5a5e2f6635bf889f87a965bbe2b"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_TBL_USING_DATABASE_HASH_GET_IND</span></a> to check whether application has saved the service table.</p>
+<p>This event is used for Robust Caching, application can call gatt_client_cfg_client_supported_feature(GATT_SVC_CLIENT_SUPPORTED_FEATURES_ROBUST_CACHING_BIT) to open this function. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND4addrE">
+<span id="_CPPv3N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND4addrE"></span><span id="_CPPv2N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND4addrE"></span><span id="T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND::addr__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___u_s_i_n_g___d_a_t_a_b_a_s_e___h_a_s_h___g_e_t___i_n_d_1ae96ca58cce6c57fdcb6dba2562b0cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND4addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND14remote_bd_typeE">
+<span id="_CPPv3N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND14remote_bd_typeE"></span><span id="_CPPv2N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND14remote_bd_typeE"></span><span id="T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND::remote_bd_type__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___u_s_i_n_g___d_a_t_a_b_a_s_e___h_a_s_h___g_e_t___i_n_d_1a24e34ce512cb0a31dd05830ac14099ab"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remote_bd_type</span></span></span><a class="headerlink" href="#_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND14remote_bd_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND13database_hashE">
+<span id="_CPPv3N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND13database_hashE"></span><span id="_CPPv2N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND13database_hashE"></span><span id="T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND::database_hash__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___u_s_i_n_g___d_a_t_a_b_a_s_e___h_a_s_h___g_e_t___i_n_d_1a0858268ef848c19746a2a315a9b9d139"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">database_hash</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND13database_hashE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND8data_lenE">
+<span id="_CPPv3N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND8data_lenE"></span><span id="_CPPv2N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND8data_lenE"></span><span id="T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND::data_len__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___u_s_i_n_g___d_a_t_a_b_a_s_e___h_a_s_h___g_e_t___i_n_d_1ad1a572736a10ff6b282c5f43c4ea1ccf"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_len</span></span></span><a class="headerlink" href="#_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND8data_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provided by application. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND6p_dataE">
+<span id="_CPPv3N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND6p_dataE"></span><span id="_CPPv2N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND6p_dataE"></span><span id="T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND::p_data__uint8_tP"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___u_s_i_n_g___d_a_t_a_b_a_s_e___h_a_s_h___g_e_t___i_n_d_1a8304c4af5da6e830b86d7199dc9a22e6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_data</span></span></span><a class="headerlink" href="#_CPPv4N50T_GATT_STORAGE_SVC_TBL_USING_DATABASE_HASH_GET_IND6p_dataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provided by application. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv430T_GATT_STORAGE_SVC_TBL_SET_IND">
+<span id="_CPPv330T_GATT_STORAGE_SVC_TBL_SET_IND"></span><span id="_CPPv230T_GATT_STORAGE_SVC_TBL_SET_IND"></span><span id="T_GATT_STORAGE_SVC_TBL_SET_IND"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___s_e_t___i_n_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_STORAGE_SVC_TBL_SET_IND</span></span></span><a class="headerlink" href="#_CPPv430T_GATT_STORAGE_SVC_TBL_SET_IND" title="Link to this definition"></a><br /></dt>
+<dd><p>Set stored services table indication data. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a19966451c713b6caebf947d2fda9a402"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_TBL_SET_IND</span></a>. If the services are actually discovered after the <a class="reference internal" href="group___b_t___g_a_t_t___c_l_i_e_n_t___exported___functions.html#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___functions_1ga2435f79d250c219042567c60143320f0"><span class="std std-ref">gatt_client_start_discovery_all</span></a> is called, notify the application to store the service table. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND4addrE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_SET_IND4addrE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_SET_IND4addrE"></span><span id="T_GATT_STORAGE_SVC_TBL_SET_IND::addr__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___s_e_t___i_n_d_1ae96ca58cce6c57fdcb6dba2562b0cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND4addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND14remote_bd_typeE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_SET_IND14remote_bd_typeE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_SET_IND14remote_bd_typeE"></span><span id="T_GATT_STORAGE_SVC_TBL_SET_IND::remote_bd_type__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___s_e_t___i_n_d_1a24e34ce512cb0a31dd05830ac14099ab"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remote_bd_type</span></span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND14remote_bd_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND13cccd_data_lenE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_SET_IND13cccd_data_lenE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_SET_IND13cccd_data_lenE"></span><span id="T_GATT_STORAGE_SVC_TBL_SET_IND::cccd_data_len__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___s_e_t___i_n_d_1a11fde45671be88ee7e5520589fdbe280"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cccd_data_len</span></span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND13cccd_data_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND8data_lenE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_SET_IND8data_lenE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_SET_IND8data_lenE"></span><span id="T_GATT_STORAGE_SVC_TBL_SET_IND::data_len__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___s_e_t___i_n_d_1ad1a572736a10ff6b282c5f43c4ea1ccf"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_len</span></span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND8data_lenE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provided by Bluetooth GATT Client module. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND6p_dataE">
+<span id="_CPPv3N30T_GATT_STORAGE_SVC_TBL_SET_IND6p_dataE"></span><span id="_CPPv2N30T_GATT_STORAGE_SVC_TBL_SET_IND6p_dataE"></span><span id="T_GATT_STORAGE_SVC_TBL_SET_IND::p_data__uint8_tP"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___t_b_l___s_e_t___i_n_d_1a8304c4af5da6e830b86d7199dc9a22e6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_data</span></span></span><a class="headerlink" href="#_CPPv4N30T_GATT_STORAGE_SVC_TBL_SET_IND6p_dataE" title="Link to this definition"></a><br /></dt>
+<dd><p>Provided by Bluetooth GATT Client module. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431T_GATT_STORAGE_SVC_CCCD_GET_IND">
+<span id="_CPPv331T_GATT_STORAGE_SVC_CCCD_GET_IND"></span><span id="_CPPv231T_GATT_STORAGE_SVC_CCCD_GET_IND"></span><span id="T_GATT_STORAGE_SVC_CCCD_GET_IND"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___g_e_t___i_n_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_STORAGE_SVC_CCCD_GET_IND</span></span></span><a class="headerlink" href="#_CPPv431T_GATT_STORAGE_SVC_CCCD_GET_IND" title="Link to this definition"></a><br /></dt>
+<dd><p>Get stored services CCCD data. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a2176a0c0c9103549343fc146cf5b1749"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_CCCD_GET_IND</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_CCCD_GET_IND4addrE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_CCCD_GET_IND4addrE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_CCCD_GET_IND4addrE"></span><span id="T_GATT_STORAGE_SVC_CCCD_GET_IND::addr__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___g_e_t___i_n_d_1ae96ca58cce6c57fdcb6dba2562b0cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_CCCD_GET_IND4addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_CCCD_GET_IND14remote_bd_typeE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_CCCD_GET_IND14remote_bd_typeE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_CCCD_GET_IND14remote_bd_typeE"></span><span id="T_GATT_STORAGE_SVC_CCCD_GET_IND::remote_bd_type__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___g_e_t___i_n_d_1a24e34ce512cb0a31dd05830ac14099ab"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remote_bd_type</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_CCCD_GET_IND14remote_bd_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_CCCD_GET_IND8data_lenE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_CCCD_GET_IND8data_lenE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_CCCD_GET_IND8data_lenE"></span><span id="T_GATT_STORAGE_SVC_CCCD_GET_IND::data_len__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___g_e_t___i_n_d_1ad1a572736a10ff6b282c5f43c4ea1ccf"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_len</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_CCCD_GET_IND8data_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_CCCD_GET_IND6p_dataE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_CCCD_GET_IND6p_dataE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_CCCD_GET_IND6p_dataE"></span><span id="T_GATT_STORAGE_SVC_CCCD_GET_IND::p_data__uint8_tP"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___g_e_t___i_n_d_1a8304c4af5da6e830b86d7199dc9a22e6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_data</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_CCCD_GET_IND6p_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431T_GATT_STORAGE_SVC_CCCD_SET_IND">
+<span id="_CPPv331T_GATT_STORAGE_SVC_CCCD_SET_IND"></span><span id="_CPPv231T_GATT_STORAGE_SVC_CCCD_SET_IND"></span><span id="T_GATT_STORAGE_SVC_CCCD_SET_IND"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___s_e_t___i_n_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_STORAGE_SVC_CCCD_SET_IND</span></span></span><a class="headerlink" href="#_CPPv431T_GATT_STORAGE_SVC_CCCD_SET_IND" title="Link to this definition"></a><br /></dt>
+<dd><p>Set stored services CCCD data. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a471e1caf66dd7eefa9d1a997fe6b6328"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_CCCD_SET_IND</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_CCCD_SET_IND4addrE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_CCCD_SET_IND4addrE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_CCCD_SET_IND4addrE"></span><span id="T_GATT_STORAGE_SVC_CCCD_SET_IND::addr__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___s_e_t___i_n_d_1ae96ca58cce6c57fdcb6dba2562b0cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_CCCD_SET_IND4addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_CCCD_SET_IND14remote_bd_typeE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_CCCD_SET_IND14remote_bd_typeE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_CCCD_SET_IND14remote_bd_typeE"></span><span id="T_GATT_STORAGE_SVC_CCCD_SET_IND::remote_bd_type__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___s_e_t___i_n_d_1a24e34ce512cb0a31dd05830ac14099ab"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remote_bd_type</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_CCCD_SET_IND14remote_bd_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_CCCD_SET_IND8data_lenE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_CCCD_SET_IND8data_lenE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_CCCD_SET_IND8data_lenE"></span><span id="T_GATT_STORAGE_SVC_CCCD_SET_IND::data_len__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___s_e_t___i_n_d_1ad1a572736a10ff6b282c5f43c4ea1ccf"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">data_len</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_CCCD_SET_IND8data_lenE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_CCCD_SET_IND6p_dataE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_CCCD_SET_IND6p_dataE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_CCCD_SET_IND6p_dataE"></span><span id="T_GATT_STORAGE_SVC_CCCD_SET_IND::p_data__uint8_tP"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___c_c_c_d___s_e_t___i_n_d_1a8304c4af5da6e830b86d7199dc9a22e6"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_data</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_CCCD_SET_IND6p_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431T_GATT_STORAGE_SVC_GATT_GET_IND">
+<span id="_CPPv331T_GATT_STORAGE_SVC_GATT_GET_IND"></span><span id="_CPPv231T_GATT_STORAGE_SVC_GATT_GET_IND"></span><span id="T_GATT_STORAGE_SVC_GATT_GET_IND"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___g_a_t_t___g_e_t___i_n_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_STORAGE_SVC_GATT_GET_IND</span></span></span><a class="headerlink" href="#_CPPv431T_GATT_STORAGE_SVC_GATT_GET_IND" title="Link to this definition"></a><br /></dt>
+<dd><p>Get stored GATT service data. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a3cb632ecce003dbfd76152c21fb6b4b2"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_GATT_GET_IND</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_GATT_GET_IND4addrE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_GATT_GET_IND4addrE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_GATT_GET_IND4addrE"></span><span id="T_GATT_STORAGE_SVC_GATT_GET_IND::addr__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___g_a_t_t___g_e_t___i_n_d_1ae96ca58cce6c57fdcb6dba2562b0cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_GATT_GET_IND4addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_GATT_GET_IND14remote_bd_typeE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_GATT_GET_IND14remote_bd_typeE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_GATT_GET_IND14remote_bd_typeE"></span><span id="T_GATT_STORAGE_SVC_GATT_GET_IND::remote_bd_type__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___g_a_t_t___g_e_t___i_n_d_1a24e34ce512cb0a31dd05830ac14099ab"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remote_bd_type</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_GATT_GET_IND14remote_bd_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_GATT_GET_IND11p_gatt_dataE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_GATT_GET_IND11p_gatt_dataE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_GATT_GET_IND11p_gatt_dataE"></span><span id="T_GATT_STORAGE_SVC_GATT_GET_IND::p_gatt_data__T_GATT_SERVICE_DATAP"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___g_a_t_t___g_e_t___i_n_d_1a8908db00308d3bab1297f9e9bd876d91"></span><a class="reference internal" href="#_CPPv419T_GATT_SERVICE_DATA" title="T_GATT_SERVICE_DATA"><span class="n"><span class="pre">T_GATT_SERVICE_DATA</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_gatt_data</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_GATT_GET_IND11p_gatt_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431T_GATT_STORAGE_SVC_GATT_SET_IND">
+<span id="_CPPv331T_GATT_STORAGE_SVC_GATT_SET_IND"></span><span id="_CPPv231T_GATT_STORAGE_SVC_GATT_SET_IND"></span><span id="T_GATT_STORAGE_SVC_GATT_SET_IND"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___g_a_t_t___s_e_t___i_n_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_STORAGE_SVC_GATT_SET_IND</span></span></span><a class="headerlink" href="#_CPPv431T_GATT_STORAGE_SVC_GATT_SET_IND" title="Link to this definition"></a><br /></dt>
+<dd><p>Set stored GATT service data. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga302dccef7c912fb6f3fc90024c102373a5f34fcbe773059442205856de6c31cac"><span class="std std-ref">GATT_STORAGE_EVENT_SVC_GATT_SET_IND</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_GATT_SET_IND4addrE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_GATT_SET_IND4addrE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_GATT_SET_IND4addrE"></span><span id="T_GATT_STORAGE_SVC_GATT_SET_IND::addr__uint8_tA"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___g_a_t_t___s_e_t___i_n_d_1ae96ca58cce6c57fdcb6dba2562b0cf29"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">6</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_GATT_SET_IND4addrE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_GATT_SET_IND14remote_bd_typeE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_GATT_SET_IND14remote_bd_typeE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_GATT_SET_IND14remote_bd_typeE"></span><span id="T_GATT_STORAGE_SVC_GATT_SET_IND::remote_bd_type__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___g_a_t_t___s_e_t___i_n_d_1a24e34ce512cb0a31dd05830ac14099ab"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">remote_bd_type</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_GATT_SET_IND14remote_bd_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_STORAGE_SVC_GATT_SET_IND11p_gatt_dataE">
+<span id="_CPPv3N31T_GATT_STORAGE_SVC_GATT_SET_IND11p_gatt_dataE"></span><span id="_CPPv2N31T_GATT_STORAGE_SVC_GATT_SET_IND11p_gatt_dataE"></span><span id="T_GATT_STORAGE_SVC_GATT_SET_IND::p_gatt_data__T_GATT_SERVICE_DATAP"></span><span class="target" id="struct_t___g_a_t_t___s_t_o_r_a_g_e___s_v_c___g_a_t_t___s_e_t___i_n_d_1a8908db00308d3bab1297f9e9bd876d91"></span><a class="reference internal" href="#_CPPv419T_GATT_SERVICE_DATA" title="T_GATT_SERVICE_DATA"><span class="n"><span class="pre">T_GATT_SERVICE_DATA</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_gatt_data</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_STORAGE_SVC_GATT_SET_IND11p_gatt_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv411T_ATTR_UUID">
+<span id="_CPPv311T_ATTR_UUID"></span><span id="_CPPv211T_ATTR_UUID"></span><span id="T_ATTR_UUID"></span><span class="target" id="struct_t___a_t_t_r___u_u_i_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_ATTR_UUID</span></span></span><a class="headerlink" href="#_CPPv411T_ATTR_UUID" title="Link to this definition"></a><br /></dt>
+<dd><p>Define service UUID structure. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_ATTR_UUID9is_uuid16E">
+<span id="_CPPv3N11T_ATTR_UUID9is_uuid16E"></span><span id="_CPPv2N11T_ATTR_UUID9is_uuid16E"></span><span id="T_ATTR_UUID::is_uuid16__b"></span><span class="target" id="struct_t___a_t_t_r___u_u_i_d_1aa8c5f9962f5bf7d1235227f32a1fb349"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_uuid16</span></span></span><a class="headerlink" href="#_CPPv4N11T_ATTR_UUID9is_uuid16E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_ATTR_UUID11instance_idE">
+<span id="_CPPv3N11T_ATTR_UUID11instance_idE"></span><span id="_CPPv2N11T_ATTR_UUID11instance_idE"></span><span id="T_ATTR_UUID::instance_id__uint8_t"></span><span class="target" id="struct_t___a_t_t_r___u_u_i_d_1ab529e65a59b5c14626acf162f03fbfd4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">instance_id</span></span></span><a class="headerlink" href="#_CPPv4N11T_ATTR_UUID11instance_idE" title="Link to this definition"></a><br /></dt>
+<dd><p>Used when the uuid is the same. Start from zero. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_ATTR_UUID6uuid16E">
+<span id="_CPPv3N11T_ATTR_UUID6uuid16E"></span><span id="_CPPv2N11T_ATTR_UUID6uuid16E"></span><span id="T_ATTR_UUID::uuid16__uint16_t"></span><span class="target" id="struct_t___a_t_t_r___u_u_i_d_1ae4ba2923b4d364d3472acf5ee2a7752c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid16</span></span></span><a class="headerlink" href="#_CPPv4N11T_ATTR_UUID6uuid16E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_ATTR_UUID7uuid128E">
+<span id="_CPPv3N11T_ATTR_UUID7uuid128E"></span><span id="_CPPv2N11T_ATTR_UUID7uuid128E"></span><span id="T_ATTR_UUID::uuid128__uint8_tA"></span><span class="target" id="struct_t___a_t_t_r___u_u_i_d_1a220e23c82b55d84afa9afd85d65fad4e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">uuid128</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N11T_ATTR_UUID7uuid128E" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N11T_ATTR_UUID1pE">
+<span id="_CPPv3N11T_ATTR_UUID1pE"></span><span id="_CPPv2N11T_ATTR_UUID1pE"></span><span id="T_ATTR_UUID::p__T_ATTR_UUID"></span><span class="target" id="struct_t___a_t_t_r___u_u_i_d_1a0b76f383ffddf6ccf0aa1a1584196079"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv411T_ATTR_UUID" title="T_ATTR_UUID"><span class="n"><span class="pre">T_ATTR_UUID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">p</span></span></span><a class="headerlink" href="#_CPPv4N11T_ATTR_UUID1pE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426T_GATT_CLIENT_DIS_ALL_DONE">
+<span id="_CPPv326T_GATT_CLIENT_DIS_ALL_DONE"></span><span id="_CPPv226T_GATT_CLIENT_DIS_ALL_DONE"></span><span id="T_GATT_CLIENT_DIS_ALL_DONE"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___d_i_s___a_l_l___d_o_n_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_DIS_ALL_DONE</span></span></span><a class="headerlink" href="#_CPPv426T_GATT_CLIENT_DIS_ALL_DONE" title="Link to this definition"></a><br /></dt>
+<dd><p>Client discover all services result. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15a3278b93ddb88cd8f201f104a41577cd7"><span class="std std-ref">GATT_CLIENT_EVENT_DIS_ALL_STATE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CLIENT_DIS_ALL_DONE5stateE">
+<span id="_CPPv3N26T_GATT_CLIENT_DIS_ALL_DONE5stateE"></span><span id="_CPPv2N26T_GATT_CLIENT_DIS_ALL_DONE5stateE"></span><span id="T_GATT_CLIENT_DIS_ALL_DONE::state__T_GATT_CLIENT_STATE"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___d_i_s___a_l_l___d_o_n_e_1a93f6960b7b07017e141770a298a0187e"></span><a class="reference internal" href="#_CPPv419T_GATT_CLIENT_STATE" title="T_GATT_CLIENT_STATE"><span class="n"><span class="pre">T_GATT_CLIENT_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CLIENT_DIS_ALL_DONE5stateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CLIENT_DIS_ALL_DONE13load_from_ftlE">
+<span id="_CPPv3N26T_GATT_CLIENT_DIS_ALL_DONE13load_from_ftlE"></span><span id="_CPPv2N26T_GATT_CLIENT_DIS_ALL_DONE13load_from_ftlE"></span><span id="T_GATT_CLIENT_DIS_ALL_DONE::load_from_ftl__b"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___d_i_s___a_l_l___d_o_n_e_1a15bf19c40a3f1a06b378155f1cebd543"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">load_from_ftl</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CLIENT_DIS_ALL_DONE13load_from_ftlE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv431T_GATT_CLIENT_GATT_SERVICE_INFO">
+<span id="_CPPv331T_GATT_CLIENT_GATT_SERVICE_INFO"></span><span id="_CPPv231T_GATT_CLIENT_GATT_SERVICE_INFO"></span><span id="T_GATT_CLIENT_GATT_SERVICE_INFO"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___g_a_t_t___s_e_r_v_i_c_e___i_n_f_o"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_GATT_SERVICE_INFO</span></span></span><a class="headerlink" href="#_CPPv431T_GATT_CLIENT_GATT_SERVICE_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT service information. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15ab1d4d43d0cc469457b2101ced6a357d7"><span class="std std-ref">GATT_CLIENT_EVENT_GATT_SERVICE_INFO</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_CLIENT_GATT_SERVICE_INFO8is_foundE">
+<span id="_CPPv3N31T_GATT_CLIENT_GATT_SERVICE_INFO8is_foundE"></span><span id="_CPPv2N31T_GATT_CLIENT_GATT_SERVICE_INFO8is_foundE"></span><span id="T_GATT_CLIENT_GATT_SERVICE_INFO::is_found__b"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___g_a_t_t___s_e_r_v_i_c_e___i_n_f_o_1aaf193e77dc196e79c86a8bc0384d3b1a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_found</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_CLIENT_GATT_SERVICE_INFO8is_foundE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_CLIENT_GATT_SERVICE_INFO13load_from_ftlE">
+<span id="_CPPv3N31T_GATT_CLIENT_GATT_SERVICE_INFO13load_from_ftlE"></span><span id="_CPPv2N31T_GATT_CLIENT_GATT_SERVICE_INFO13load_from_ftlE"></span><span id="T_GATT_CLIENT_GATT_SERVICE_INFO::load_from_ftl__b"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___g_a_t_t___s_e_r_v_i_c_e___i_n_f_o_1a15bf19c40a3f1a06b378155f1cebd543"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">load_from_ftl</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_CLIENT_GATT_SERVICE_INFO13load_from_ftlE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31T_GATT_CLIENT_GATT_SERVICE_INFO11p_gatt_dataE">
+<span id="_CPPv3N31T_GATT_CLIENT_GATT_SERVICE_INFO11p_gatt_dataE"></span><span id="_CPPv2N31T_GATT_CLIENT_GATT_SERVICE_INFO11p_gatt_dataE"></span><span id="T_GATT_CLIENT_GATT_SERVICE_INFO::p_gatt_data__T_GATT_SERVICE_DATAP"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___g_a_t_t___s_e_r_v_i_c_e___i_n_f_o_1a8908db00308d3bab1297f9e9bd876d91"></span><a class="reference internal" href="#_CPPv419T_GATT_SERVICE_DATA" title="T_GATT_SERVICE_DATA"><span class="n"><span class="pre">T_GATT_SERVICE_DATA</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_gatt_data</span></span></span><a class="headerlink" href="#_CPPv4N31T_GATT_CLIENT_GATT_SERVICE_INFO11p_gatt_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv440T_GATT_CLIENT_SERVICE_CHANGED_INDICATION">
+<span id="_CPPv340T_GATT_CLIENT_SERVICE_CHANGED_INDICATION"></span><span id="_CPPv240T_GATT_CLIENT_SERVICE_CHANGED_INDICATION"></span><span id="T_GATT_CLIENT_SERVICE_CHANGED_INDICATION"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___s_e_r_v_i_c_e___c_h_a_n_g_e_d___i_n_d_i_c_a_t_i_o_n"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_SERVICE_CHANGED_INDICATION</span></span></span><a class="headerlink" href="#_CPPv440T_GATT_CLIENT_SERVICE_CHANGED_INDICATION" title="Link to this definition"></a><br /></dt>
+<dd><p>Service changed indication. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15ab59b6ab2d586604d3fc0f4e7a69238cb"><span class="std std-ref">GATT_CLIENT_EVENT_SERVICE_CHANGED_INDICATION</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N40T_GATT_CLIENT_SERVICE_CHANGED_INDICATION12start_handleE">
+<span id="_CPPv3N40T_GATT_CLIENT_SERVICE_CHANGED_INDICATION12start_handleE"></span><span id="_CPPv2N40T_GATT_CLIENT_SERVICE_CHANGED_INDICATION12start_handleE"></span><span id="T_GATT_CLIENT_SERVICE_CHANGED_INDICATION::start_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___s_e_r_v_i_c_e___c_h_a_n_g_e_d___i_n_d_i_c_a_t_i_o_n_1a2cd982e3af3a66504335e09ea7495bbc"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">start_handle</span></span></span><a class="headerlink" href="#_CPPv4N40T_GATT_CLIENT_SERVICE_CHANGED_INDICATION12start_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N40T_GATT_CLIENT_SERVICE_CHANGED_INDICATION10end_handleE">
+<span id="_CPPv3N40T_GATT_CLIENT_SERVICE_CHANGED_INDICATION10end_handleE"></span><span id="_CPPv2N40T_GATT_CLIENT_SERVICE_CHANGED_INDICATION10end_handleE"></span><span id="T_GATT_CLIENT_SERVICE_CHANGED_INDICATION::end_handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___s_e_r_v_i_c_e___c_h_a_n_g_e_d___i_n_d_i_c_a_t_i_o_n_1a5672f7486025dd7bebb566d675ba553e"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end_handle</span></span></span><a class="headerlink" href="#_CPPv4N40T_GATT_CLIENT_SERVICE_CHANGED_INDICATION10end_handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422T_GATT_CLIENT_DIS_DONE">
+<span id="_CPPv322T_GATT_CLIENT_DIS_DONE"></span><span id="_CPPv222T_GATT_CLIENT_DIS_DONE"></span><span id="T_GATT_CLIENT_DIS_DONE"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___d_i_s___d_o_n_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_DIS_DONE</span></span></span><a class="headerlink" href="#_CPPv422T_GATT_CLIENT_DIS_DONE" title="Link to this definition"></a><br /></dt>
+<dd><p>Client discover service result. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15a51e9653ec4496d1163165c08ea5d2f2a"><span class="std std-ref">GATT_CLIENT_EVENT_DIS_DONE</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_DIS_DONE8is_foundE">
+<span id="_CPPv3N22T_GATT_CLIENT_DIS_DONE8is_foundE"></span><span id="_CPPv2N22T_GATT_CLIENT_DIS_DONE8is_foundE"></span><span id="T_GATT_CLIENT_DIS_DONE::is_found__b"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___d_i_s___d_o_n_e_1aaf193e77dc196e79c86a8bc0384d3b1a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_found</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_DIS_DONE8is_foundE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_DIS_DONE13load_from_ftlE">
+<span id="_CPPv3N22T_GATT_CLIENT_DIS_DONE13load_from_ftlE"></span><span id="_CPPv2N22T_GATT_CLIENT_DIS_DONE13load_from_ftlE"></span><span id="T_GATT_CLIENT_DIS_DONE::load_from_ftl__b"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___d_i_s___d_o_n_e_1a15bf19c40a3f1a06b378155f1cebd543"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">load_from_ftl</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_DIS_DONE13load_from_ftlE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_DIS_DONE16srv_instance_numE">
+<span id="_CPPv3N22T_GATT_CLIENT_DIS_DONE16srv_instance_numE"></span><span id="_CPPv2N22T_GATT_CLIENT_DIS_DONE16srv_instance_numE"></span><span id="T_GATT_CLIENT_DIS_DONE::srv_instance_num__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___d_i_s___d_o_n_e_1ad6cf94b899e333a759153b74351cc77d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_instance_num</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_DIS_DONE16srv_instance_numE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425T_GATT_CLIENT_READ_RESULT">
+<span id="_CPPv325T_GATT_CLIENT_READ_RESULT"></span><span id="_CPPv225T_GATT_CLIENT_READ_RESULT"></span><span id="T_GATT_CLIENT_READ_RESULT"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_READ_RESULT</span></span></span><a class="headerlink" href="#_CPPv425T_GATT_CLIENT_READ_RESULT" title="Link to this definition"></a><br /></dt>
+<dd><p>Client read characteristic result. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15ad749289086bed77bb53a8fbef5bf8402"><span class="std std-ref">GATT_CLIENT_EVENT_READ_RESULT</span></a> or <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15afede6559454a4c82f644e51e03286b1e"><span class="std std-ref">GATT_CLIENT_EVENT_READ_UUID_RESULT</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GATT_CLIENT_READ_RESULT9char_typeE">
+<span id="_CPPv3N25T_GATT_CLIENT_READ_RESULT9char_typeE"></span><span id="_CPPv2N25T_GATT_CLIENT_READ_RESULT9char_typeE"></span><span id="T_GATT_CLIENT_READ_RESULT::char_type__T_GATT_CHAR_TYPE"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1ae9a63b8800d2baf1df0fc9abdcc6ffb7"></span><a class="reference internal" href="#_CPPv416T_GATT_CHAR_TYPE" title="T_GATT_CHAR_TYPE"><span class="n"><span class="pre">T_GATT_CHAR_TYPE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_type</span></span></span><a class="headerlink" href="#_CPPv4N25T_GATT_CLIENT_READ_RESULT9char_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GATT_CLIENT_READ_RESULT15srv_instance_idE">
+<span id="_CPPv3N25T_GATT_CLIENT_READ_RESULT15srv_instance_idE"></span><span id="_CPPv2N25T_GATT_CLIENT_READ_RESULT15srv_instance_idE"></span><span id="T_GATT_CLIENT_READ_RESULT::srv_instance_id__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a3a01750951c4cebe1ce112e004bf1d9c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_instance_id</span></span></span><a class="headerlink" href="#_CPPv4N25T_GATT_CLIENT_READ_RESULT15srv_instance_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GATT_CLIENT_READ_RESULT9char_uuidE">
+<span id="_CPPv3N25T_GATT_CLIENT_READ_RESULT9char_uuidE"></span><span id="_CPPv2N25T_GATT_CLIENT_READ_RESULT9char_uuidE"></span><span id="T_GATT_CLIENT_READ_RESULT::char_uuid__T_ATTR_UUID"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a317e731803e56827d5bc024f4bc7ff28"></span><a class="reference internal" href="#_CPPv411T_ATTR_UUID" title="T_ATTR_UUID"><span class="n"><span class="pre">T_ATTR_UUID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_uuid</span></span></span><a class="headerlink" href="#_CPPv4N25T_GATT_CLIENT_READ_RESULT9char_uuidE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GATT_CLIENT_READ_RESULT5causeE">
+<span id="_CPPv3N25T_GATT_CLIENT_READ_RESULT5causeE"></span><span id="_CPPv2N25T_GATT_CLIENT_READ_RESULT5causeE"></span><span id="T_GATT_CLIENT_READ_RESULT::cause__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N25T_GATT_CLIENT_READ_RESULT5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GATT_CLIENT_READ_RESULT6handleE">
+<span id="_CPPv3N25T_GATT_CLIENT_READ_RESULT6handleE"></span><span id="_CPPv2N25T_GATT_CLIENT_READ_RESULT6handleE"></span><span id="T_GATT_CLIENT_READ_RESULT::handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1af242d6e3b6108ea75e1eb236e94c8240"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">handle</span></span></span><a class="headerlink" href="#_CPPv4N25T_GATT_CLIENT_READ_RESULT6handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GATT_CLIENT_READ_RESULT10value_sizeE">
+<span id="_CPPv3N25T_GATT_CLIENT_READ_RESULT10value_sizeE"></span><span id="_CPPv2N25T_GATT_CLIENT_READ_RESULT10value_sizeE"></span><span id="T_GATT_CLIENT_READ_RESULT::value_size__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a3958d142c677695fa42baeb461843f6f"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value_size</span></span></span><a class="headerlink" href="#_CPPv4N25T_GATT_CLIENT_READ_RESULT10value_sizeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GATT_CLIENT_READ_RESULT7p_valueE">
+<span id="_CPPv3N25T_GATT_CLIENT_READ_RESULT7p_valueE"></span><span id="_CPPv2N25T_GATT_CLIENT_READ_RESULT7p_valueE"></span><span id="T_GATT_CLIENT_READ_RESULT::p_value__uint8_tP"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___r_e_a_d___r_e_s_u_l_t_1a7e38674b09ada3bb654e2c2146044d30"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_value</span></span></span><a class="headerlink" href="#_CPPv4N25T_GATT_CLIENT_READ_RESULT7p_valueE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv426T_GATT_CLIENT_WRITE_RESULT">
+<span id="_CPPv326T_GATT_CLIENT_WRITE_RESULT"></span><span id="_CPPv226T_GATT_CLIENT_WRITE_RESULT"></span><span id="T_GATT_CLIENT_WRITE_RESULT"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___w_r_i_t_e___r_e_s_u_l_t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_WRITE_RESULT</span></span></span><a class="headerlink" href="#_CPPv426T_GATT_CLIENT_WRITE_RESULT" title="Link to this definition"></a><br /></dt>
+<dd><p>Client write characteristic result. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15af5472bad05280b759d9a74f67517ffdc"><span class="std std-ref">GATT_CLIENT_EVENT_WRITE_RESULT</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CLIENT_WRITE_RESULT9char_typeE">
+<span id="_CPPv3N26T_GATT_CLIENT_WRITE_RESULT9char_typeE"></span><span id="_CPPv2N26T_GATT_CLIENT_WRITE_RESULT9char_typeE"></span><span id="T_GATT_CLIENT_WRITE_RESULT::char_type__T_GATT_CHAR_TYPE"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___w_r_i_t_e___r_e_s_u_l_t_1ae9a63b8800d2baf1df0fc9abdcc6ffb7"></span><a class="reference internal" href="#_CPPv416T_GATT_CHAR_TYPE" title="T_GATT_CHAR_TYPE"><span class="n"><span class="pre">T_GATT_CHAR_TYPE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_type</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CLIENT_WRITE_RESULT9char_typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CLIENT_WRITE_RESULT15srv_instance_idE">
+<span id="_CPPv3N26T_GATT_CLIENT_WRITE_RESULT15srv_instance_idE"></span><span id="_CPPv2N26T_GATT_CLIENT_WRITE_RESULT15srv_instance_idE"></span><span id="T_GATT_CLIENT_WRITE_RESULT::srv_instance_id__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___w_r_i_t_e___r_e_s_u_l_t_1a3a01750951c4cebe1ce112e004bf1d9c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_instance_id</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CLIENT_WRITE_RESULT15srv_instance_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CLIENT_WRITE_RESULT9char_uuidE">
+<span id="_CPPv3N26T_GATT_CLIENT_WRITE_RESULT9char_uuidE"></span><span id="_CPPv2N26T_GATT_CLIENT_WRITE_RESULT9char_uuidE"></span><span id="T_GATT_CLIENT_WRITE_RESULT::char_uuid__T_ATTR_UUID"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___w_r_i_t_e___r_e_s_u_l_t_1a317e731803e56827d5bc024f4bc7ff28"></span><a class="reference internal" href="#_CPPv411T_ATTR_UUID" title="T_ATTR_UUID"><span class="n"><span class="pre">T_ATTR_UUID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_uuid</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CLIENT_WRITE_RESULT9char_uuidE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CLIENT_WRITE_RESULT5causeE">
+<span id="_CPPv3N26T_GATT_CLIENT_WRITE_RESULT5causeE"></span><span id="_CPPv2N26T_GATT_CLIENT_WRITE_RESULT5causeE"></span><span id="T_GATT_CLIENT_WRITE_RESULT::cause__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___w_r_i_t_e___r_e_s_u_l_t_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CLIENT_WRITE_RESULT5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CLIENT_WRITE_RESULT4typeE">
+<span id="_CPPv3N26T_GATT_CLIENT_WRITE_RESULT4typeE"></span><span id="_CPPv2N26T_GATT_CLIENT_WRITE_RESULT4typeE"></span><span id="T_GATT_CLIENT_WRITE_RESULT::type__T_GATT_WRITE_TYPE"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___w_r_i_t_e___r_e_s_u_l_t_1a05a9623e27f3a37493199be26da7b571"></span><a class="reference internal" href="group___g_a_t_t___client___common___exported___types.html#_CPPv417T_GATT_WRITE_TYPE" title="T_GATT_WRITE_TYPE"><span class="n"><span class="pre">T_GATT_WRITE_TYPE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CLIENT_WRITE_RESULT4typeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N26T_GATT_CLIENT_WRITE_RESULT6handleE">
+<span id="_CPPv3N26T_GATT_CLIENT_WRITE_RESULT6handleE"></span><span id="_CPPv2N26T_GATT_CLIENT_WRITE_RESULT6handleE"></span><span id="T_GATT_CLIENT_WRITE_RESULT::handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___w_r_i_t_e___r_e_s_u_l_t_1af242d6e3b6108ea75e1eb236e94c8240"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">handle</span></span></span><a class="headerlink" href="#_CPPv4N26T_GATT_CLIENT_WRITE_RESULT6handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv424T_GATT_CLIENT_NOTIFY_IND">
+<span id="_CPPv324T_GATT_CLIENT_NOTIFY_IND"></span><span id="_CPPv224T_GATT_CLIENT_NOTIFY_IND"></span><span id="T_GATT_CLIENT_NOTIFY_IND"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___n_o_t_i_f_y___i_n_d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_NOTIFY_IND</span></span></span><a class="headerlink" href="#_CPPv424T_GATT_CLIENT_NOTIFY_IND" title="Link to this definition"></a><br /></dt>
+<dd><p>Client notification or indication result. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15a98b8340bd0f573f8685e9f7e115c3426"><span class="std std-ref">GATT_CLIENT_EVENT_NOTIFY_IND</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GATT_CLIENT_NOTIFY_IND15srv_instance_idE">
+<span id="_CPPv3N24T_GATT_CLIENT_NOTIFY_IND15srv_instance_idE"></span><span id="_CPPv2N24T_GATT_CLIENT_NOTIFY_IND15srv_instance_idE"></span><span id="T_GATT_CLIENT_NOTIFY_IND::srv_instance_id__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___n_o_t_i_f_y___i_n_d_1a3a01750951c4cebe1ce112e004bf1d9c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_instance_id</span></span></span><a class="headerlink" href="#_CPPv4N24T_GATT_CLIENT_NOTIFY_IND15srv_instance_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GATT_CLIENT_NOTIFY_IND9char_uuidE">
+<span id="_CPPv3N24T_GATT_CLIENT_NOTIFY_IND9char_uuidE"></span><span id="_CPPv2N24T_GATT_CLIENT_NOTIFY_IND9char_uuidE"></span><span id="T_GATT_CLIENT_NOTIFY_IND::char_uuid__T_ATTR_UUID"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___n_o_t_i_f_y___i_n_d_1a317e731803e56827d5bc024f4bc7ff28"></span><a class="reference internal" href="#_CPPv411T_ATTR_UUID" title="T_ATTR_UUID"><span class="n"><span class="pre">T_ATTR_UUID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_uuid</span></span></span><a class="headerlink" href="#_CPPv4N24T_GATT_CLIENT_NOTIFY_IND9char_uuidE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GATT_CLIENT_NOTIFY_IND6notifyE">
+<span id="_CPPv3N24T_GATT_CLIENT_NOTIFY_IND6notifyE"></span><span id="_CPPv2N24T_GATT_CLIENT_NOTIFY_IND6notifyE"></span><span id="T_GATT_CLIENT_NOTIFY_IND::notify__b"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___n_o_t_i_f_y___i_n_d_1a48311926dc475cb834a9021494ed3cc3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notify</span></span></span><a class="headerlink" href="#_CPPv4N24T_GATT_CLIENT_NOTIFY_IND6notifyE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GATT_CLIENT_NOTIFY_IND6handleE">
+<span id="_CPPv3N24T_GATT_CLIENT_NOTIFY_IND6handleE"></span><span id="_CPPv2N24T_GATT_CLIENT_NOTIFY_IND6handleE"></span><span id="T_GATT_CLIENT_NOTIFY_IND::handle__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___n_o_t_i_f_y___i_n_d_1af242d6e3b6108ea75e1eb236e94c8240"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">handle</span></span></span><a class="headerlink" href="#_CPPv4N24T_GATT_CLIENT_NOTIFY_IND6handleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GATT_CLIENT_NOTIFY_IND10value_sizeE">
+<span id="_CPPv3N24T_GATT_CLIENT_NOTIFY_IND10value_sizeE"></span><span id="_CPPv2N24T_GATT_CLIENT_NOTIFY_IND10value_sizeE"></span><span id="T_GATT_CLIENT_NOTIFY_IND::value_size__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___n_o_t_i_f_y___i_n_d_1a3958d142c677695fa42baeb461843f6f"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value_size</span></span></span><a class="headerlink" href="#_CPPv4N24T_GATT_CLIENT_NOTIFY_IND10value_sizeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GATT_CLIENT_NOTIFY_IND7p_valueE">
+<span id="_CPPv3N24T_GATT_CLIENT_NOTIFY_IND7p_valueE"></span><span id="_CPPv2N24T_GATT_CLIENT_NOTIFY_IND7p_valueE"></span><span id="T_GATT_CLIENT_NOTIFY_IND::p_value__uint8_tP"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___n_o_t_i_f_y___i_n_d_1a7e38674b09ada3bb654e2c2146044d30"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_value</span></span></span><a class="headerlink" href="#_CPPv4N24T_GATT_CLIENT_NOTIFY_IND7p_valueE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N24T_GATT_CLIENT_NOTIFY_IND3cidE">
+<span id="_CPPv3N24T_GATT_CLIENT_NOTIFY_IND3cidE"></span><span id="_CPPv2N24T_GATT_CLIENT_NOTIFY_IND3cidE"></span><span id="T_GATT_CLIENT_NOTIFY_IND::cid__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___n_o_t_i_f_y___i_n_d_1aeb65c8711b864df01fca95cfe904d924"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cid</span></span></span><a class="headerlink" href="#_CPPv4N24T_GATT_CLIENT_NOTIFY_IND3cidE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422T_GATT_CLIENT_CCCD_CFG">
+<span id="_CPPv322T_GATT_CLIENT_CCCD_CFG"></span><span id="_CPPv222T_GATT_CLIENT_CCCD_CFG"></span><span id="T_GATT_CLIENT_CCCD_CFG"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_c_c_d___c_f_g"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_CCCD_CFG</span></span></span><a class="headerlink" href="#_CPPv422T_GATT_CLIENT_CCCD_CFG" title="Link to this definition"></a><br /></dt>
+<dd><p>Client configure CCCD result. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15a2dae0f258cb7358813d503620a275088"><span class="std std-ref">GATT_CLIENT_EVENT_CCCD_CFG</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_CCCD_CFG7srv_cfgE">
+<span id="_CPPv3N22T_GATT_CLIENT_CCCD_CFG7srv_cfgE"></span><span id="_CPPv2N22T_GATT_CLIENT_CCCD_CFG7srv_cfgE"></span><span id="T_GATT_CLIENT_CCCD_CFG::srv_cfg__b"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_c_c_d___c_f_g_1a0fa988861d5e44607d33dac29a2281d7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_cfg</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_CCCD_CFG7srv_cfgE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_CCCD_CFG15srv_instance_idE">
+<span id="_CPPv3N22T_GATT_CLIENT_CCCD_CFG15srv_instance_idE"></span><span id="_CPPv2N22T_GATT_CLIENT_CCCD_CFG15srv_instance_idE"></span><span id="T_GATT_CLIENT_CCCD_CFG::srv_instance_id__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_c_c_d___c_f_g_1a3a01750951c4cebe1ce112e004bf1d9c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_instance_id</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_CCCD_CFG15srv_instance_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_CCCD_CFG8cccd_cfgE">
+<span id="_CPPv3N22T_GATT_CLIENT_CCCD_CFG8cccd_cfgE"></span><span id="_CPPv2N22T_GATT_CLIENT_CCCD_CFG8cccd_cfgE"></span><span id="T_GATT_CLIENT_CCCD_CFG::cccd_cfg__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_c_c_d___c_f_g_1a98f1ee5a204db8e3908268a658114c40"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cccd_cfg</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_CCCD_CFG8cccd_cfgE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_CCCD_CFG5causeE">
+<span id="_CPPv3N22T_GATT_CLIENT_CCCD_CFG5causeE"></span><span id="_CPPv2N22T_GATT_CLIENT_CCCD_CFG5causeE"></span><span id="T_GATT_CLIENT_CCCD_CFG::cause__uint16_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_c_c_d___c_f_g_1aa4f2c0f4dd13d2ab4a435cbbc672c1f3"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cause</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_CCCD_CFG5causeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_CCCD_CFG8srv_uuidE">
+<span id="_CPPv3N22T_GATT_CLIENT_CCCD_CFG8srv_uuidE"></span><span id="_CPPv2N22T_GATT_CLIENT_CCCD_CFG8srv_uuidE"></span><span id="T_GATT_CLIENT_CCCD_CFG::srv_uuid__T_ATTR_UUID"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_c_c_d___c_f_g_1ac3f32851f6a0923c7f2cb57e788698b4"></span><a class="reference internal" href="#_CPPv411T_ATTR_UUID" title="T_ATTR_UUID"><span class="n"><span class="pre">T_ATTR_UUID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">srv_uuid</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_CCCD_CFG8srv_uuidE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_CCCD_CFG9char_uuidE">
+<span id="_CPPv3N22T_GATT_CLIENT_CCCD_CFG9char_uuidE"></span><span id="_CPPv2N22T_GATT_CLIENT_CCCD_CFG9char_uuidE"></span><span id="T_GATT_CLIENT_CCCD_CFG::char_uuid__T_ATTR_UUID"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_c_c_d___c_f_g_1a317e731803e56827d5bc024f4bc7ff28"></span><a class="reference internal" href="#_CPPv411T_ATTR_UUID" title="T_ATTR_UUID"><span class="n"><span class="pre">T_ATTR_UUID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">char_uuid</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_CCCD_CFG9char_uuidE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422T_GATT_CLIENT_CONN_DEL">
+<span id="_CPPv322T_GATT_CLIENT_CONN_DEL"></span><span id="_CPPv222T_GATT_CLIENT_CONN_DEL"></span><span id="T_GATT_CLIENT_CONN_DEL"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_o_n_n___d_e_l"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_CONN_DEL</span></span></span><a class="headerlink" href="#_CPPv422T_GATT_CLIENT_CONN_DEL" title="Link to this definition"></a><br /></dt>
+<dd><p>Client handle disconnect result. </p>
+<p>The event data for <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1gga0723245b284dc4fbb97e9e7efa72be15ae1158f21097a45ecf773f7774c16859f"><span class="std std-ref">GATT_CLIENT_EVENT_CONN_DEL</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22T_GATT_CLIENT_CONN_DEL12transport_leE">
+<span id="_CPPv3N22T_GATT_CLIENT_CONN_DEL12transport_leE"></span><span id="_CPPv2N22T_GATT_CLIENT_CONN_DEL12transport_leE"></span><span id="T_GATT_CLIENT_CONN_DEL::transport_le__b"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___c_o_n_n___d_e_l_1ac46e640b37018b4f613957fe36d65857"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">transport_le</span></span></span><a class="headerlink" href="#_CPPv4N22T_GATT_CLIENT_CONN_DEL12transport_leE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv418T_GATT_CLIENT_DATA">
+<span id="_CPPv318T_GATT_CLIENT_DATA"></span><span id="_CPPv218T_GATT_CLIENT_DATA"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___d_a_t_a"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_DATA</span></span></span><a class="headerlink" href="#_CPPv418T_GATT_CLIENT_DATA" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT client data for client event <a class="reference internal" href="#group___b_t___g_a_t_t___c_l_i_e_n_t___exported___types_1ga0723245b284dc4fbb97e9e7efa72be15"><span class="std std-ref">T_GATT_CLIENT_EVENT</span></a>. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GATT_CLIENT_DATA8dis_doneE">
+<span id="_CPPv3N18T_GATT_CLIENT_DATA8dis_doneE"></span><span id="_CPPv2N18T_GATT_CLIENT_DATA8dis_doneE"></span><span id="T_GATT_CLIENT_DATA::dis_done__T_GATT_CLIENT_DIS_DONE"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___d_a_t_a_1a9277ed6b1d4cab639cbbb4a62a4f62f0"></span><a class="reference internal" href="#_CPPv422T_GATT_CLIENT_DIS_DONE" title="T_GATT_CLIENT_DIS_DONE"><span class="n"><span class="pre">T_GATT_CLIENT_DIS_DONE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dis_done</span></span></span><a class="headerlink" href="#_CPPv4N18T_GATT_CLIENT_DATA8dis_doneE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GATT_CLIENT_DATA11read_resultE">
+<span id="_CPPv3N18T_GATT_CLIENT_DATA11read_resultE"></span><span id="_CPPv2N18T_GATT_CLIENT_DATA11read_resultE"></span><span id="T_GATT_CLIENT_DATA::read_result__T_GATT_CLIENT_READ_RESULT"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___d_a_t_a_1aec27dbbad2292c8a643ae89d35fba1ee"></span><a class="reference internal" href="#_CPPv425T_GATT_CLIENT_READ_RESULT" title="T_GATT_CLIENT_READ_RESULT"><span class="n"><span class="pre">T_GATT_CLIENT_READ_RESULT</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_result</span></span></span><a class="headerlink" href="#_CPPv4N18T_GATT_CLIENT_DATA11read_resultE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GATT_CLIENT_DATA12write_resultE">
+<span id="_CPPv3N18T_GATT_CLIENT_DATA12write_resultE"></span><span id="_CPPv2N18T_GATT_CLIENT_DATA12write_resultE"></span><span id="T_GATT_CLIENT_DATA::write_result__T_GATT_CLIENT_WRITE_RESULT"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___d_a_t_a_1a57084eb087b442a6aaef64e9af2ff4db"></span><a class="reference internal" href="#_CPPv426T_GATT_CLIENT_WRITE_RESULT" title="T_GATT_CLIENT_WRITE_RESULT"><span class="n"><span class="pre">T_GATT_CLIENT_WRITE_RESULT</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_result</span></span></span><a class="headerlink" href="#_CPPv4N18T_GATT_CLIENT_DATA12write_resultE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GATT_CLIENT_DATA10notify_indE">
+<span id="_CPPv3N18T_GATT_CLIENT_DATA10notify_indE"></span><span id="_CPPv2N18T_GATT_CLIENT_DATA10notify_indE"></span><span id="T_GATT_CLIENT_DATA::notify_ind__T_GATT_CLIENT_NOTIFY_IND"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___d_a_t_a_1a9d0a88816934fae2166d08007dcbc003"></span><a class="reference internal" href="#_CPPv424T_GATT_CLIENT_NOTIFY_IND" title="T_GATT_CLIENT_NOTIFY_IND"><span class="n"><span class="pre">T_GATT_CLIENT_NOTIFY_IND</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">notify_ind</span></span></span><a class="headerlink" href="#_CPPv4N18T_GATT_CLIENT_DATA10notify_indE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GATT_CLIENT_DATA8cccd_cfgE">
+<span id="_CPPv3N18T_GATT_CLIENT_DATA8cccd_cfgE"></span><span id="_CPPv2N18T_GATT_CLIENT_DATA8cccd_cfgE"></span><span id="T_GATT_CLIENT_DATA::cccd_cfg__T_GATT_CLIENT_CCCD_CFG"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___d_a_t_a_1a1eaf051bce052f1b337f2223585c7581"></span><a class="reference internal" href="#_CPPv422T_GATT_CLIENT_CCCD_CFG" title="T_GATT_CLIENT_CCCD_CFG"><span class="n"><span class="pre">T_GATT_CLIENT_CCCD_CFG</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cccd_cfg</span></span></span><a class="headerlink" href="#_CPPv4N18T_GATT_CLIENT_DATA8cccd_cfgE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18T_GATT_CLIENT_DATA8conn_delE">
+<span id="_CPPv3N18T_GATT_CLIENT_DATA8conn_delE"></span><span id="_CPPv2N18T_GATT_CLIENT_DATA8conn_delE"></span><span id="T_GATT_CLIENT_DATA::conn_del__T_GATT_CLIENT_CONN_DEL"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___d_a_t_a_1aaee6e2371214564b60a70cdeefc047bc"></span><a class="reference internal" href="#_CPPv422T_GATT_CLIENT_CONN_DEL" title="T_GATT_CLIENT_CONN_DEL"><span class="n"><span class="pre">T_GATT_CLIENT_CONN_DEL</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">conn_del</span></span></span><a class="headerlink" href="#_CPPv4N18T_GATT_CLIENT_DATA8conn_delE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv421T_GATT_CLIENT_CB_DATA">
+<span id="_CPPv321T_GATT_CLIENT_CB_DATA"></span><span id="_CPPv221T_GATT_CLIENT_CB_DATA"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___c_b___d_a_t_a"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_CB_DATA</span></span></span><a class="headerlink" href="#_CPPv421T_GATT_CLIENT_CB_DATA" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT client data. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N21T_GATT_CLIENT_CB_DATA11p_gatt_dataE">
+<span id="_CPPv3N21T_GATT_CLIENT_CB_DATA11p_gatt_dataE"></span><span id="_CPPv2N21T_GATT_CLIENT_CB_DATA11p_gatt_dataE"></span><span id="T_GATT_CLIENT_CB_DATA::p_gatt_data__T_GATT_CLIENT_DATAP"></span><span class="target" id="union_t___g_a_t_t___c_l_i_e_n_t___c_b___d_a_t_a_1a8f4dbbae58c8e044a99ec359e5b068fd"></span><a class="reference internal" href="#_CPPv418T_GATT_CLIENT_DATA" title="T_GATT_CLIENT_DATA"><span class="n"><span class="pre">T_GATT_CLIENT_DATA</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">p_gatt_data</span></span></span><a class="headerlink" href="#_CPPv4N21T_GATT_CLIENT_CB_DATA11p_gatt_dataE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv415T_ATTR_INSTANCE">
+<span id="_CPPv315T_ATTR_INSTANCE"></span><span id="_CPPv215T_ATTR_INSTANCE"></span><span id="T_ATTR_INSTANCE"></span><span class="target" id="struct_t___a_t_t_r___i_n_s_t_a_n_c_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_ATTR_INSTANCE</span></span></span><a class="headerlink" href="#_CPPv415T_ATTR_INSTANCE" title="Link to this definition"></a><br /></dt>
+<dd><p>Service attribute instance. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15T_ATTR_INSTANCE12instance_numE">
+<span id="_CPPv3N15T_ATTR_INSTANCE12instance_numE"></span><span id="_CPPv2N15T_ATTR_INSTANCE12instance_numE"></span><span id="T_ATTR_INSTANCE::instance_num__uint8_t"></span><span class="target" id="struct_t___a_t_t_r___i_n_s_t_a_n_c_e_1a5154569d805b7995600b71ed667d483e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">instance_num</span></span></span><a class="headerlink" href="#_CPPv4N15T_ATTR_INSTANCE12instance_numE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15T_ATTR_INSTANCE11instance_idE">
+<span id="_CPPv3N15T_ATTR_INSTANCE11instance_idE"></span><span id="_CPPv2N15T_ATTR_INSTANCE11instance_idE"></span><span id="T_ATTR_INSTANCE::instance_id__uint8_tA"></span><span class="target" id="struct_t___a_t_t_r___i_n_s_t_a_n_c_e_1a7767a98b5f6cb6a52d5ef71deef44cec"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">instance_id</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">20</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N15T_ATTR_INSTANCE11instance_idE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425T_GATT_CLIENT_PENDING_NUM">
+<span id="_CPPv325T_GATT_CLIENT_PENDING_NUM"></span><span id="_CPPv225T_GATT_CLIENT_PENDING_NUM"></span><span id="T_GATT_CLIENT_PENDING_NUM"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___p_e_n_d_i_n_g___n_u_m"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T_GATT_CLIENT_PENDING_NUM</span></span></span><a class="headerlink" href="#_CPPv425T_GATT_CLIENT_PENDING_NUM" title="Link to this definition"></a><br /></dt>
+<dd><p>GATT client pending packet number. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25T_GATT_CLIENT_PENDING_NUM13write_cmd_numE">
+<span id="_CPPv3N25T_GATT_CLIENT_PENDING_NUM13write_cmd_numE"></span><span id="_CPPv2N25T_GATT_CLIENT_PENDING_NUM13write_cmd_numE"></span><span id="T_GATT_CLIENT_PENDING_NUM::write_cmd_num__uint8_t"></span><span class="target" id="struct_t___g_a_t_t___c_l_i_e_n_t___p_e_n_d_i_n_g___n_u_m_1a191126f6c8b6f521430e728f8c02b8fb"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_cmd_num</span></span></span><a class="headerlink" href="#_CPPv4N25T_GATT_CLIENT_PENDING_NUM13write_cmd_numE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

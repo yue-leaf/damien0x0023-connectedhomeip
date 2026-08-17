@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bluetooth GATT Service Exported Functions &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">Bluetooth GATT Service Exported Functions</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bluetooth-gatt-service-exported-functions">
+<h1>Bluetooth GATT Service Exported Functions<a class="headerlink" href="#bluetooth-gatt-service-exported-functions" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">BT_GATT_SERVICE_Exported_Functions</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv412gatt_svc_addP11T_SERVER_IDP7uint8_t8uint16_tPK26T_FUN_GATT_EXT_SERVICE_CBS27P_FUN_GATT_EXT_SEND_DATA_CB">
+<span id="_CPPv312gatt_svc_addP11T_SERVER_IDP7uint8_t8uint16_tPK26T_FUN_GATT_EXT_SERVICE_CBS27P_FUN_GATT_EXT_SEND_DATA_CB"></span><span id="_CPPv212gatt_svc_addP11T_SERVER_IDP7uint8_t8uint16_tPK26T_FUN_GATT_EXT_SERVICE_CBS27P_FUN_GATT_EXT_SEND_DATA_CB"></span><span id="gatt_svc_add__T_SERVER_IDP.uint8_tP.uint16_t.T_FUN_GATT_EXT_SERVICE_CBSCP.P_FUN_GATT_EXT_SEND_DATA_CB"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1gac1b8e29befc4074007ae987d975ead68"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_add</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___types.html#_CPPv411T_SERVER_ID" title="T_SERVER_ID"><span class="n"><span class="pre">T_SERVER_ID</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_out_service_id</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_database</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___e_x_t___exported___macros.html#_CPPv426T_FUN_GATT_EXT_SERVICE_CBS" title="T_FUN_GATT_EXT_SERVICE_CBS"><span class="n"><span class="pre">T_FUN_GATT_EXT_SERVICE_CBS</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_srv_ext_cbs</span></span>, <a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#_CPPv427P_FUN_GATT_EXT_SEND_DATA_CB" title="P_FUN_GATT_EXT_SEND_DATA_CB"><span class="n"><span class="pre">P_FUN_GATT_EXT_SEND_DATA_CB</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p_srv_ext_send_data_cb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv412gatt_svc_addP11T_SERVER_IDP7uint8_t8uint16_tPK26T_FUN_GATT_EXT_SERVICE_CBS27P_FUN_GATT_EXT_SEND_DATA_CB" title="Link to this definition"></a><br /></dt>
+<dd><p>Register specific service. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//case 1</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">bass_add_service</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">brs_num</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">attr_tbl_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">bass_attr_tbl</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">attr_tbl_size</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="p">(</span><span class="n">BASS_BRS_CHAR_MAX_NUM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">brs_num</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_ATTRIB_APPL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">false</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">gatt_svc_add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">service_id</span><span class="p">,</span>
+<span class="w">                                 </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">bass_attr_tbl</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">attr_tbl_size</span><span class="p">,</span>
+<span class="w">                                 </span><span class="o">&amp;</span><span class="n">bass_cbs</span><span class="p">,</span><span class="w"> </span><span class="n">bass_send_data_cb</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PROTOCOL_PRINT_ERROR0</span><span class="p">(</span><span class="s">&quot;bass_add_service: failed&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">p_bass</span><span class="o">-&gt;</span><span class="n">service_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">service_id</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">bass_send_data_cb</span><span class="p">(</span><span class="n">T_EXT_SEND_DATA_RESULT</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">PROTOCOL_PRINT_INFO6</span><span class="p">(</span><span class="s">&quot;bass_send_data_cb: credits %d, conn_handle 0x%x, cid 0x%x, service_id %d, attr_idx %d, cause 0x%x&quot;</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">result</span><span class="p">.</span><span class="n">credits</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">result</span><span class="p">.</span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">attrib_idx</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">cause</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//case 2</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">bass_add_service</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">brs_num</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">attr_tbl_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">bass_attr_tbl</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">attr_tbl_size</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="p">(</span><span class="n">BASS_BRS_CHAR_MAX_NUM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">brs_num</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_ATTRIB_APPL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">false</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">gatt_svc_add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">service_id</span><span class="p">,</span>
+<span class="w">                                 </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">bass_attr_tbl</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">attr_tbl_size</span><span class="p">,</span>
+<span class="w">                                 </span><span class="o">&amp;</span><span class="n">bass_cbs</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PROTOCOL_PRINT_ERROR0</span><span class="p">(</span><span class="s">&quot;bass_add_service: failed&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">p_bass</span><span class="o">-&gt;</span><span class="n">service_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">service_id</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Add specific service information to gatt_svc_table struct, will be registered to GATT later. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_out_service_id</strong> -- <strong>[in]</strong> Service ID of specific service. </p></li>
+<li><p><strong>p_database</strong> -- <strong>[in]</strong> Database pointer of specific service. </p></li>
+<li><p><strong>length</strong> -- <strong>[in]</strong> Length of Database of specific service. <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___e_x_t___exported___macros.html#struct_t___f_u_n___g_a_t_t___e_x_t___s_e_r_v_i_c_e___c_b_s"><span class="std std-ref">T_FUN_GATT_EXT_SERVICE_CBS</span></a>. </p></li>
+<li><p><strong>p_srv_ext_cbs</strong> -- <strong>[in]</strong> Service callback functions of specific service. <a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1gae6ed5007a3c95a997b6f3bd6f3e294bb"><span class="std std-ref">P_FUN_GATT_EXT_SEND_DATA_CB</span></a>. </p></li>
+<li><p><strong>p_srv_ext_send_data_cb</strong> -- <strong>[in]</strong> Callback functions for service to handle the result of send notification or indication.<ul>
+<li><p>NULL Application needs to handle <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a.html#group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a_1gga54eeb1ceeeb4e906d9793097cf0b540ea2154e2a880faa5a33fdeb6c52b910de4"><span class="std std-ref">PROFILE_EVT_SEND_DATA_COMPLETE</span></a> directly.</p></li>
+<li><p>Others Send result through the callback function p_srv_ext_send_data_cb. </p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Add service success. </p></li>
+<li><p><strong>false</strong> -- Add service failed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416gatt_svc_get_numv">
+<span id="_CPPv316gatt_svc_get_numv"></span><span id="_CPPv216gatt_svc_get_numv"></span><span id="gatt_svc_get_num__void"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1gaa51f241709c13a0b058c3e0e146394b3"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_get_num</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416gatt_svc_get_numv" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the service table number registered by gatt_svc_add. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Registered service table number. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421gatt_svc_read_confirm8uint16_t8uint16_t11T_SERVER_ID8uint16_tP7uint8_t8uint16_t8uint16_t12T_APP_RESULT">
+<span id="_CPPv321gatt_svc_read_confirm8uint16_t8uint16_t11T_SERVER_ID8uint16_tP7uint8_t8uint16_t8uint16_t12T_APP_RESULT"></span><span id="_CPPv221gatt_svc_read_confirm8uint16_t8uint16_t11T_SERVER_ID8uint16_tP7uint8_t8uint16_t8uint16_t12T_APP_RESULT"></span><span id="gatt_svc_read_confirm__uint16_t.uint16_t.T_SERVER_ID.uint16_t.uint8_tP.uint16_t.uint16_t.T_APP_RESULT"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1gad207008d06219e04cec1ee92f1a5c26c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_read_confirm</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">conn_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cid</span></span>, <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___types.html#_CPPv411T_SERVER_ID" title="T_SERVER_ID"><span class="n"><span class="pre">T_SERVER_ID</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">service_id</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">attrib_index</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_data</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">data_len</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">total_len</span></span>, <a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv412T_APP_RESULT" title="T_APP_RESULT"><span class="n"><span class="pre">T_APP_RESULT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cause</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421gatt_svc_read_confirm8uint16_t8uint16_t11T_SERVER_ID8uint16_tP7uint8_t8uint16_t8uint16_t12T_APP_RESULT" title="Link to this definition"></a><br /></dt>
+<dd><p>Confirm from the application when receiving a read request from the client. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">bass_attr_read_cb</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span>
+<span class="w">                               </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">attrib_index</span><span class="p">,</span>
+<span class="w">                               </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_length</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">**</span><span class="n">pp_value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">cause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">source_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bass_get_source_id</span><span class="p">(</span><span class="n">attrib_index</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PROTOCOL_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;bass_attr_read_cb: attrib_index %d, offset %x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">attrib_index</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">source_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BASS_INVALID_SOURCE_ID</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">APP_RESULT_ATTR_NOT_FOUND</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bass_brs_gen_char_data</span><span class="p">(</span><span class="n">source_id</span><span class="p">,</span>
+<span class="w">                               </span><span class="o">&amp;</span><span class="n">p_data</span><span class="p">,</span>
+<span class="w">                               </span><span class="o">&amp;</span><span class="n">len</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">offset</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">len</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_INVALID_OFFSET</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gatt_svc_read_confirm</span><span class="p">(</span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">p_bass</span><span class="o">-&gt;</span><span class="n">service_id</span><span class="p">,</span>
+<span class="w">                                         </span><span class="n">attrib_index</span><span class="p">,</span>
+<span class="w">                                         </span><span class="n">p_data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span>
+<span class="w">                                         </span><span class="n">len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">cause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_PENDING</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p_data</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ble_audio_mem_free</span><span class="p">(</span><span class="n">p_data</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">cause</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using this API, the cause shall be set to <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1gga90b0c39404615bbdf0fc222483ed3fb9a9f877e20e6ad5feed31bf5f59346ae2d"><span class="std std-ref">APP_RESULT_PENDING</span></a> in the attr_read_cb. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn_handle</strong> -- <strong>[in]</strong> Connection handle of the ACL link. </p></li>
+<li><p><strong>cid</strong> -- <strong>[in]</strong> Local CID assigned by Bluetooth Host. </p></li>
+<li><p><strong>service_id</strong> -- <strong>[in]</strong> Service ID. </p></li>
+<li><p><strong>attrib_index</strong> -- <strong>[in]</strong> Attribute index of the attribute to read confirm from the application. </p></li>
+<li><p><strong>p_data</strong> -- <strong>[in]</strong> Pointer to the read value. </p></li>
+<li><p><strong>data_len</strong> -- <strong>[in]</strong> The length of the read data. </p></li>
+<li><p><strong>total_len</strong> -- <strong>[in]</strong> The total length of the data to read. </p></li>
+<li><p><strong>cause</strong> -- <strong>[in]</strong> Cause for read confirm. <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1ga90b0c39404615bbdf0fc222483ed3fb9"><span class="std std-ref">T_APP_RESULT</span></a>. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Confirm from APP OK. </p></li>
+<li><p><strong>false</strong> -- Confirm from APP failed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422gatt_svc_write_confirm8uint16_t8uint16_t11T_SERVER_ID8uint16_t12T_APP_RESULT">
+<span id="_CPPv322gatt_svc_write_confirm8uint16_t8uint16_t11T_SERVER_ID8uint16_t12T_APP_RESULT"></span><span id="_CPPv222gatt_svc_write_confirm8uint16_t8uint16_t11T_SERVER_ID8uint16_t12T_APP_RESULT"></span><span id="gatt_svc_write_confirm__uint16_t.uint16_t.T_SERVER_ID.uint16_t.T_APP_RESULT"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1ga12237b46096af42fccb72cc0b4f82d7e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_write_confirm</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">conn_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cid</span></span>, <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___types.html#_CPPv411T_SERVER_ID" title="T_SERVER_ID"><span class="n"><span class="pre">T_SERVER_ID</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">service_id</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">attrib_index</span></span>, <a class="reference internal" href="group___g_a_p___common___exported___types.html#_CPPv412T_APP_RESULT" title="T_APP_RESULT"><span class="n"><span class="pre">T_APP_RESULT</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cause</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422gatt_svc_write_confirm8uint16_t8uint16_t11T_SERVER_ID8uint16_t12T_APP_RESULT" title="Link to this definition"></a><br /></dt>
+<dd><p>Confirm from the application when receiving a write request from the client. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_USER_CMD_PARSE_RESULT</span><span class="w"> </span><span class="nf">cmd_writeconf</span><span class="p">(</span><span class="n">T_USER_CMD_PARSED_VALUE</span><span class="w"> </span><span class="o">*</span><span class="n">p_parse_value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">conn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_parse_value</span><span class="o">-&gt;</span><span class="n">dw_param</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">cid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_parse_value</span><span class="o">-&gt;</span><span class="n">dw_param</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">    </span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_parse_value</span><span class="o">-&gt;</span><span class="n">dw_param</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">attrib_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_parse_value</span><span class="o">-&gt;</span><span class="n">dw_param</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">gatt_svc_write_confirm</span><span class="p">(</span><span class="n">conn_id</span><span class="p">,</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="n">attrib_index</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">RESULT_ERR</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">RESULT_SUCESS</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the process of writing the attribute value does not end immediately, the specific service will call gatt_svc_write_confirm, and the cause shall be set to <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1gga90b0c39404615bbdf0fc222483ed3fb9a9f877e20e6ad5feed31bf5f59346ae2d"><span class="std std-ref">APP_RESULT_PENDING</span></a> in the attr_write_cb. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn_handle</strong> -- <strong>[in]</strong> Connection handle of the ACL link. </p></li>
+<li><p><strong>cid</strong> -- <strong>[in]</strong> Local CID assigned by Bluetooth Host. </p></li>
+<li><p><strong>service_id</strong> -- <strong>[in]</strong> Service ID. </p></li>
+<li><p><strong>attrib_index</strong> -- <strong>[in]</strong> Attribute index of the attribute to write confirm from the application. </p></li>
+<li><p><strong>cause</strong> -- <strong>[in]</strong> Write request APP handle result, <a class="reference internal" href="group___g_a_p___common___exported___types.html#group___g_a_p___common___exported___types_1gga90b0c39404615bbdf0fc222483ed3fb9a909f010ff315d17ec44d25243492a366"><span class="std std-ref">APP_RESULT_SUCCESS</span></a> or others. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Confirm from APP OK. </p></li>
+<li><p><strong>false</strong> -- Confirm from APP failed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Operation result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418gatt_svc_send_data8uint16_t8uint16_t11T_SERVER_ID8uint16_tP7uint8_t8uint16_t15T_GATT_PDU_TYPE">
+<span id="_CPPv318gatt_svc_send_data8uint16_t8uint16_t11T_SERVER_ID8uint16_tP7uint8_t8uint16_t15T_GATT_PDU_TYPE"></span><span id="_CPPv218gatt_svc_send_data8uint16_t8uint16_t11T_SERVER_ID8uint16_tP7uint8_t8uint16_t15T_GATT_PDU_TYPE"></span><span id="gatt_svc_send_data__uint16_t.uint16_t.T_SERVER_ID.uint16_t.uint8_tP.uint16_t.T_GATT_PDU_TYPE"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1ga5205fb9f2fa8f260cd62da5859a0a211"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_send_data</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">conn_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cid</span></span>, <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___types.html#_CPPv411T_SERVER_ID" title="T_SERVER_ID"><span class="n"><span class="pre">T_SERVER_ID</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">service_id</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">attrib_index</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_data</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">data_len</span></span>, <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___types.html#_CPPv415T_GATT_PDU_TYPE" title="T_GATT_PDU_TYPE"><span class="n"><span class="pre">T_GATT_PDU_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418gatt_svc_send_data8uint16_t8uint16_t11T_SERVER_ID8uint16_tP7uint8_t8uint16_t15T_GATT_PDU_TYPE" title="Link to this definition"></a><br /></dt>
+<dd><p>Send notification or indication to peer device. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">bass_send_brs_notify</span><span class="p">(</span><span class="n">T_BLE_AUDIO_LINK</span><span class="w"> </span><span class="o">*</span><span class="n">p_link</span><span class="p">,</span><span class="w"> </span><span class="n">T_BASS_BRS_DB</span><span class="w"> </span><span class="o">*</span><span class="n">p_db</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">attrib_idx</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">attrib_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BASS_CHAR_BRS_INDEX</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">p_db</span><span class="o">-&gt;</span><span class="n">brs_data</span><span class="p">.</span><span class="n">source_id</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bass_brs_gen_char_data</span><span class="p">(</span><span class="n">p_db</span><span class="o">-&gt;</span><span class="n">brs_data</span><span class="p">.</span><span class="n">source_id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p_data</span><span class="p">,</span><span class="w">  </span><span class="o">&amp;</span><span class="n">len</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">p_link</span><span class="o">-&gt;</span><span class="n">mtu_size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_link</span><span class="o">-&gt;</span><span class="n">mtu_size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gatt_svc_send_data</span><span class="p">(</span><span class="n">p_link</span><span class="o">-&gt;</span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="n">L2C_FIXED_CID_ATT</span><span class="p">,</span><span class="w"> </span><span class="n">p_bass</span><span class="o">-&gt;</span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="n">attrib_idx</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span>
+<span class="w">                                  </span><span class="n">GATT_PDU_TYPE_NOTIFICATION</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p_data</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ble_audio_mem_free</span><span class="p">(</span><span class="n">p_data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn_handle</strong> -- <strong>[in]</strong> Connection handle of the ACL link. </p></li>
+<li><p><strong>cid</strong> -- <strong>[in]</strong> Local CID assigned by Bluetooth Host. </p></li>
+<li><p><strong>service_id</strong> -- <strong>[in]</strong> Service ID. </p></li>
+<li><p><strong>attrib_index</strong> -- <strong>[in]</strong> Attribute index of characteristic. </p></li>
+<li><p><strong>p_data</strong> -- <strong>[in]</strong> Pointer to data to be sent. </p></li>
+<li><p><strong>data_len</strong> -- <strong>[in]</strong> Length of value to be sent, range: 0~(mtu_size - 3). uint16_t mtu_size is acquired by le_get_conn_param(GAP_PARAM_CONN_MTU_SIZE, &amp;mtu_size, conn_id). </p></li>
+<li><p><strong>type</strong> -- <strong>[in]</strong> GATT PDU type. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Success. </p></li>
+<li><p><strong>false</strong> -- Failed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Data sent result. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413gatt_svc_init8uint16_t7uint8_t">
+<span id="_CPPv313gatt_svc_init8uint16_t7uint8_t"></span><span id="_CPPv213gatt_svc_init8uint16_t7uint8_t"></span><span id="gatt_svc_init__uint16_t.uint8_t"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1ga9e285e1bb546f3b0a84cbc9175234eb1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">svc_num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413gatt_svc_init8uint16_t7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Initialize the GATT Service mode and service number. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//case 1: The parameter svc_num is 0.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">app_ble_service_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">server_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">server_register_app_cb</span><span class="p">(</span><span class="n">app_ble_service_general_srv_cb</span><span class="p">);</span>
+<span class="w">    </span><span class="n">server_init</span><span class="p">(</span><span class="n">server_num</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gatt_svc_init</span><span class="p">(</span><span class="n">GATT_SVC_USE_NORMAL_SERVER</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//case 2: The parameter svc_num is not 0.</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">app_ble_service_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">server_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gatt_svc_init</span><span class="p">(</span><span class="n">GATT_SVC_USE_NORMAL_SERVER</span><span class="p">,</span><span class="w"> </span><span class="n">server_num</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> -- <strong>[in]</strong> GATT Service mode: <a class="reference internal" href="group___g_a_t_t___s_v_c___m_o_d_e.html#group___g_a_t_t___s_v_c___m_o_d_e"><span class="std std-ref">GATT Service Mode</span></a>. </p></li>
+<li><p><strong>svc_num</strong> -- <strong>[in]</strong> Set the number of services that need to register.<ul>
+<li><p>0 Application shall call <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___exported___functions.html#group___g_a_t_t___s_e_r_v_e_r___exported___functions_1ga2fcbc3f5f19d9fdfb3e48923145e98f4"><span class="std std-ref">server_register_app_cb</span></a> and <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___functions.html#group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___functions_1ga69f3a8c88a1c2d5255f87e69e135311b"><span class="std std-ref">server_init</span></a> to register callback and set service number.</p></li>
+<li><p>Others Application does not need to call <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___exported___functions.html#group___g_a_t_t___s_e_r_v_e_r___exported___functions_1ga2fcbc3f5f19d9fdfb3e48923145e98f4"><span class="std std-ref">server_register_app_cb</span></a> and <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___functions.html#group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___functions_1ga69f3a8c88a1c2d5255f87e69e135311b"><span class="std std-ref">server_init</span></a>. </p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Success. </p></li>
+<li><p><strong>false</strong> -- Failed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of initializing the GATT Service mode. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424gatt_svc_cfg_pending_num22T_GATT_SVC_PENDING_NUM">
+<span id="_CPPv324gatt_svc_cfg_pending_num22T_GATT_SVC_PENDING_NUM"></span><span id="_CPPv224gatt_svc_cfg_pending_num22T_GATT_SVC_PENDING_NUM"></span><span id="gatt_svc_cfg_pending_num__T_GATT_SVC_PENDING_NUM"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1ga9fd8989860c72fa857bb0a36a1be7d06"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_cfg_pending_num</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#_CPPv422T_GATT_SVC_PENDING_NUM" title="T_GATT_SVC_PENDING_NUM"><span class="n"><span class="pre">T_GATT_SVC_PENDING_NUM</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424gatt_svc_cfg_pending_num22T_GATT_SVC_PENDING_NUM" title="Link to this definition"></a><br /></dt>
+<dd><p>Set the Maximum pending packets in the Bluetooth GATT service module. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">gatt_svc_init</span><span class="p">(</span><span class="n">GATT_SVC_USE_NORMAL_SERVER</span><span class="p">,</span><span class="w"> </span><span class="n">server_num</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">T_GATT_SVC_PENDING_NUM</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<span class="w">    </span><span class="n">num</span><span class="p">.</span><span class="n">notify_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="n">num</span><span class="p">.</span><span class="n">ind_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gatt_svc_cfg_pending_num</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num</strong> -- <strong>[in]</strong> Pending packet number <a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#struct_t___g_a_t_t___s_v_c___p_e_n_d_i_n_g___n_u_m"><span class="std std-ref">T_GATT_SVC_PENDING_NUM</span></a>. The default number for notification is 10. The default number for indication is 5.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428gatt_svc_register_general_cb26P_FUNC_GATT_SVC_GENERAL_CB">
+<span id="_CPPv328gatt_svc_register_general_cb26P_FUNC_GATT_SVC_GENERAL_CB"></span><span id="_CPPv228gatt_svc_register_general_cb26P_FUNC_GATT_SVC_GENERAL_CB"></span><span id="gatt_svc_register_general_cb__P_FUNC_GATT_SVC_GENERAL_CB"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1gaf406fc81f79ae43c0d49888e1f201cad"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_register_general_cb</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#_CPPv426P_FUNC_GATT_SVC_GENERAL_CB" title="P_FUNC_GATT_SVC_GENERAL_CB"><span class="n"><span class="pre">P_FUNC_GATT_SVC_GENERAL_CB</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">svc_cb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428gatt_svc_register_general_cb26P_FUNC_GATT_SVC_GENERAL_CB" title="Link to this definition"></a><br /></dt>
+<dd><p>Register GATT service general callback function. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">app_ble_service_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">gatt_svc_init</span><span class="p">(</span><span class="n">GATT_SVC_USE_NORMAL_SERVER</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gatt_svc_register_general_cb</span><span class="p">(</span><span class="n">app_gatt_svc_general_cb</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">app_gatt_svc_general_cb</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GATT_SVC_EVENT_REG_RESULT</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">T_GATT_SVC_REG_RESULT</span><span class="w"> </span><span class="o">*</span><span class="n">p_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_GATT_SVC_REG_RESULT</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">APP_PRINT_INFO1</span><span class="p">(</span><span class="s">&quot;GATT_SVC_EVENT_REG_RESULT: result 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p_result</span><span class="o">-&gt;</span><span class="n">result</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GATT_SVC_EVENT_REG_AFTER_INIT_RESULT</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">T_GATT_SVC_REG_AFTER_INIT_RESULT</span><span class="w"> </span><span class="o">*</span><span class="n">p_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_GATT_SVC_REG_AFTER_INIT_RESULT</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">        </span><span class="n">APP_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;GATT_SVC_EVENT_REG_AFTER_INIT_RESULT: service_id %d, cause 0x%x&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">p_result</span><span class="o">-&gt;</span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="n">p_result</span><span class="o">-&gt;</span><span class="n">cause</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>svc_cb</strong> -- <strong>[in]</strong> GATT Service general callback function: <a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types_1gaefcd5056ef2240cdf206711524e51b2f"><span class="std std-ref">P_FUNC_GATT_SVC_GENERAL_CB</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433gatt_svc_handle_profile_data_cmpl8uint16_t8uint16_t11T_SERVER_ID8uint16_t8uint16_t8uint16_t">
+<span id="_CPPv333gatt_svc_handle_profile_data_cmpl8uint16_t8uint16_t11T_SERVER_ID8uint16_t8uint16_t8uint16_t"></span><span id="_CPPv233gatt_svc_handle_profile_data_cmpl8uint16_t8uint16_t11T_SERVER_ID8uint16_t8uint16_t8uint16_t"></span><span id="gatt_svc_handle_profile_data_cmpl__uint16_t.uint16_t.T_SERVER_ID.uint16_t.uint16_t.uint16_t"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1ga04e4156a78179bc06f5d347b1711a05d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_handle_profile_data_cmpl</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">conn_handle</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cid</span></span>, <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___exported___types.html#_CPPv411T_SERVER_ID" title="T_SERVER_ID"><span class="n"><span class="pre">T_SERVER_ID</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">service_id</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">attrib_idx</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">credits</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cause</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433gatt_svc_handle_profile_data_cmpl8uint16_t8uint16_t11T_SERVER_ID8uint16_t8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Handle profile send data complete event. Used when receiving the message <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a.html#group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a_1gga54eeb1ceeeb4e906d9793097cf0b540ea2154e2a880faa5a33fdeb6c52b910de4"><span class="std std-ref">PROFILE_EVT_SEND_DATA_COMPLETE</span></a>. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">app_bqb_ext_profile_callback</span><span class="p">(</span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">app_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">service_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SERVICE_PROFILE_GENERAL_ID</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">T_SERVER_EXT_APP_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="n">p_param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T_SERVER_EXT_APP_CB_DATA</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p_data</span><span class="p">;</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">eventId</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">PROFILE_EVT_SEND_DATA_COMPLETE</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">gatt_svc_handle_profile_data_cmpl</span><span class="p">(</span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">event_data</span><span class="p">.</span><span class="n">send_data_result</span><span class="p">.</span><span class="n">conn_handle</span><span class="p">,</span>
+<span class="w">                                                      </span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">event_data</span><span class="p">.</span><span class="n">send_data_result</span><span class="p">.</span><span class="n">cid</span><span class="p">,</span>
+<span class="w">                                                      </span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">event_data</span><span class="p">.</span><span class="n">send_data_result</span><span class="p">.</span><span class="n">service_id</span><span class="p">,</span>
+<span class="w">                                                      </span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">event_data</span><span class="p">.</span><span class="n">send_data_result</span><span class="p">.</span><span class="n">attrib_idx</span><span class="p">,</span>
+<span class="w">                                                      </span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">event_data</span><span class="p">.</span><span class="n">send_data_result</span><span class="p">.</span><span class="n">credits</span><span class="p">,</span>
+<span class="w">                                                      </span><span class="n">p_param</span><span class="o">-&gt;</span><span class="n">event_data</span><span class="p">.</span><span class="n">send_data_result</span><span class="p">.</span><span class="n">cause</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">APP_PRINT_ERROR0</span><span class="p">(</span><span class="s">&quot;gatt_svc_handle_profile_data_cmpl failed&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the application uses the Bluetooth GATT Service module and the parameter svc_num of <a class="reference internal" href="#group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1ga9e285e1bb546f3b0a84cbc9175234eb1"><span class="std std-ref">gatt_svc_init</span></a> is 0, this function shall be called after receiving <a class="reference internal" href="group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a.html#group___g_a_t_t___s_e_r_v_e_r___c_o_m_m_o_n___c_b___d_a_t_a_1gga54eeb1ceeeb4e906d9793097cf0b540ea2154e2a880faa5a33fdeb6c52b910de4"><span class="std std-ref">PROFILE_EVT_SEND_DATA_COMPLETE</span></a>. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn_handle</strong> -- <strong>[in]</strong> Connection handle of the ACL link. </p></li>
+<li><p><strong>cid</strong> -- <strong>[in]</strong> Local CID assigned by Bluetooth Host. </p></li>
+<li><p><strong>service_id</strong> -- <strong>[in]</strong> Service ID. </p></li>
+<li><p><strong>attrib_idx</strong> -- <strong>[in]</strong> Attribute index of characteristic. </p></li>
+<li><p><strong>credits</strong> -- <strong>[in]</strong> Credits number. </p></li>
+<li><p><strong>cause</strong> -- <strong>[in]</strong> Cause of service send data. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Success. </p></li>
+<li><p><strong>false</strong> -- Failed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of handling the profile send data complete event. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432gatt_svc_find_char_uuid_by_indexPK13T_ATTRIB_APPL8uint16_t8uint16_t">
+<span id="_CPPv332gatt_svc_find_char_uuid_by_indexPK13T_ATTRIB_APPL8uint16_t8uint16_t"></span><span id="_CPPv232gatt_svc_find_char_uuid_by_indexPK13T_ATTRIB_APPL8uint16_t8uint16_t"></span><span id="gatt_svc_find_char_uuid_by_index__T_ATTRIB_APPLCP.uint16_t.uint16_t"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1ga846b78867db1ac9e8b186278af7574ba"></span><a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#_CPPv411T_CHAR_UUID" title="T_CHAR_UUID"><span class="n"><span class="pre">T_CHAR_UUID</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_find_char_uuid_by_index</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="group___g_a_t_t___a_t_t_r_i_b_u_t_e___a_p_p_l.html#_CPPv413T_ATTRIB_APPL" title="T_ATTRIB_APPL"><span class="n"><span class="pre">T_ATTRIB_APPL</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_srv</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">attr_num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432gatt_svc_find_char_uuid_by_indexPK13T_ATTRIB_APPL8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Find service characteristic uuid by attribute index. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="nf">tmas_attr_read_cb</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">cid</span><span class="p">,</span><span class="w"> </span><span class="n">T_SERVER_ID</span><span class="w"> </span><span class="n">service_id</span><span class="p">,</span>
+<span class="w">                                      </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">attrib_index</span><span class="p">,</span>
+<span class="w">                                      </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_length</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">**</span><span class="n">pp_value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">T_APP_RESULT</span><span class="w"> </span><span class="n">cause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_SUCCESS</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">PROTOCOL_PRINT_INFO2</span><span class="p">(</span><span class="s">&quot;tmas_attr_read_cb: attrib_index %d, offset %x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">attrib_index</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">T_CHAR_UUID</span><span class="w"> </span><span class="n">char_uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gatt_svc_find_char_uuid_by_index</span><span class="p">(</span><span class="n">tmas_attr_tbl</span><span class="p">,</span><span class="w"> </span><span class="n">attrib_index</span><span class="p">,</span>
+<span class="w">                                                             </span><span class="k">sizeof</span><span class="p">(</span><span class="n">tmas_attr_tbl</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T_ATTRIB_APPL</span><span class="p">));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">char_uuid</span><span class="p">.</span><span class="n">uuid_size</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">UUID_16BIT_SIZE</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PROTOCOL_PRINT_ERROR1</span><span class="p">(</span><span class="s">&quot;tmas_attr_read_cb Error: attrib_index 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">attrib_index</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">APP_RESULT_ATTR_NOT_FOUND</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">*</span><span class="n">p_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">char_uuid</span><span class="p">.</span><span class="n">uu</span><span class="p">.</span><span class="n">char_uuid16</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">TMAS_UUID_CHAR_ROLE</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="o">*</span><span class="n">pp_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">p_tmas</span><span class="o">-&gt;</span><span class="n">role</span><span class="p">;</span>
+<span class="w">            </span><span class="o">*</span><span class="n">p_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="n">cause</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">APP_RESULT_ATTR_NOT_FOUND</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">cause</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_srv</strong> -- <strong>[in]</strong> Pointer to service table: <a class="reference internal" href="group___g_a_t_t___a_t_t_r_i_b_u_t_e___a_p_p_l.html#struct_t___a_t_t_r_i_b___a_p_p_l"><span class="std std-ref">T_ATTRIB_APPL</span></a>. </p></li>
+<li><p><strong>index</strong> -- <strong>[in]</strong> Attribute index of characteristic. </p></li>
+<li><p><strong>attr_num</strong> -- <strong>[in]</strong> Total attribute number of service. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The characteristic uuid. <a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#struct_t___c_h_a_r___u_u_i_d"><span class="std std-ref">T_CHAR_UUID</span></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432gatt_svc_find_char_index_by_uuidPK13T_ATTRIB_APPL11T_CHAR_UUID8uint16_tP8uint16_t">
+<span id="_CPPv332gatt_svc_find_char_index_by_uuidPK13T_ATTRIB_APPL11T_CHAR_UUID8uint16_tP8uint16_t"></span><span id="_CPPv232gatt_svc_find_char_index_by_uuidPK13T_ATTRIB_APPL11T_CHAR_UUID8uint16_tP8uint16_t"></span><span id="gatt_svc_find_char_index_by_uuid__T_ATTRIB_APPLCP.T_CHAR_UUID.uint16_t.uint16_tP"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1gac3b4cc72ad4ded1114dbf957098e7a30"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_find_char_index_by_uuid</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="group___g_a_t_t___a_t_t_r_i_b_u_t_e___a_p_p_l.html#_CPPv413T_ATTRIB_APPL" title="T_ATTRIB_APPL"><span class="n"><span class="pre">T_ATTRIB_APPL</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_srv</span></span>, <a class="reference internal" href="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___types.html#_CPPv411T_CHAR_UUID" title="T_CHAR_UUID"><span class="n"><span class="pre">T_CHAR_UUID</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">char_uuid</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">attr_num</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432gatt_svc_find_char_index_by_uuidPK13T_ATTRIB_APPL11T_CHAR_UUID8uint16_tP8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Find service characteristic attribute index by uuid. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">ccp_send_all_notify</span><span class="p">(</span><span class="n">T_TBS_CB</span><span class="w"> </span><span class="o">*</span><span class="n">p_entry</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">update_cfg</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_data</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">data_len</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">attrib_idx</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">T_CHAR_UUID</span><span class="w"> </span><span class="n">char_uuid</span><span class="p">;</span>
+<span class="w">    </span><span class="n">char_uuid</span><span class="p">.</span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">char_uuid</span><span class="p">.</span><span class="n">uuid_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UUID_16BIT_SIZE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">char_uuid</span><span class="p">.</span><span class="n">uu</span><span class="p">.</span><span class="n">char_uuid16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uuid</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">gatt_svc_find_char_index_by_uuid</span><span class="p">(</span><span class="n">p_entry</span><span class="o">-&gt;</span><span class="n">p_attr_tbl</span><span class="p">,</span><span class="w"> </span><span class="n">char_uuid</span><span class="p">,</span>
+<span class="w">                                     </span><span class="n">p_entry</span><span class="o">-&gt;</span><span class="n">attr_num</span><span class="p">,</span>
+<span class="w">                                     </span><span class="o">&amp;</span><span class="n">attrib_idx</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">PROTOCOL_PRINT_ERROR1</span><span class="p">(</span><span class="s">&quot;[CCP]ccp_send_all_notify: find index failed, uuid 0x%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">uuid</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">MAX_BLE_LINK_NUM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">ble_audio_db</span><span class="p">.</span><span class="n">le_link</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">used</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">            </span><span class="p">(</span><span class="n">ble_audio_db</span><span class="p">.</span><span class="n">le_link</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">GAP_CONN_STATE_CONNECTED</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">T_LE_SRV_CFG</span><span class="w"> </span><span class="o">*</span><span class="n">p_srv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ble_srv_find_by_srv_id</span><span class="p">(</span><span class="n">ble_audio_db</span><span class="p">.</span><span class="n">le_link</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">conn_handle</span><span class="p">,</span>
+<span class="w">                                                         </span><span class="n">p_entry</span><span class="o">-&gt;</span><span class="n">service_id</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p_srv</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">p_srv</span><span class="o">-&gt;</span><span class="n">cccd_cfg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">update_cfg</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tbs_send_notify</span><span class="p">(</span><span class="n">p_entry</span><span class="p">,</span><span class="w"> </span><span class="n">ble_audio_db</span><span class="p">.</span><span class="n">le_link</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="n">attrib_idx</span><span class="p">,</span><span class="w"> </span><span class="n">p_data</span><span class="p">,</span>
+<span class="w">                                    </span><span class="n">data_len</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_srv</strong> -- <strong>[in]</strong> Pointer to service table. <a class="reference internal" href="group___g_a_t_t___a_t_t_r_i_b_u_t_e___a_p_p_l.html#struct_t___a_t_t_r_i_b___a_p_p_l"><span class="std std-ref">T_ATTRIB_APPL</span></a>. </p></li>
+<li><p><strong>char_uuid</strong> -- <strong>[in]</strong> Service characteristic uuid. </p></li>
+<li><p><strong>attr_num</strong> -- <strong>[in]</strong> Total attribute number of service. </p></li>
+<li><p><strong>index</strong> -- <strong>[inout]</strong> Attribute index of characteristic. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Success. </p></li>
+<li><p><strong>false</strong> -- Failed.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of finding service characteristic attribute index. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434gatt_svc_find_char_index_by_uuid16PK13T_ATTRIB_APPL8uint16_t8uint16_t">
+<span id="_CPPv334gatt_svc_find_char_index_by_uuid16PK13T_ATTRIB_APPL8uint16_t8uint16_t"></span><span id="_CPPv234gatt_svc_find_char_index_by_uuid16PK13T_ATTRIB_APPL8uint16_t8uint16_t"></span><span id="gatt_svc_find_char_index_by_uuid16__T_ATTRIB_APPLCP.uint16_t.uint16_t"></span><span class="target" id="group___b_t___g_a_t_t___s_e_r_v_i_c_e___exported___functions_1ga854e7b0227bc375a0f585bceba9ca547"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gatt_svc_find_char_index_by_uuid16</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="group___g_a_t_t___a_t_t_r_i_b_u_t_e___a_p_p_l.html#_CPPv413T_ATTRIB_APPL" title="T_ATTRIB_APPL"><span class="n"><span class="pre">T_ATTRIB_APPL</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_srv</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">char_uuid16</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">attr_num</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434gatt_svc_find_char_index_by_uuid16PK13T_ATTRIB_APPL8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Find service characteristic attribute index by uuid16. </p>
+<p><strong>Example usage</strong> <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">mics_send_mute_value_notify</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">p_mute_value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">attrib_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gatt_svc_find_char_index_by_uuid16</span><span class="p">(</span><span class="n">p_mics</span><span class="o">-&gt;</span><span class="n">p_mics_attr_tbl</span><span class="p">,</span>
+<span class="w">                                                             </span><span class="n">MICS_UUID_CHAR_MUTE</span><span class="p">,</span>
+<span class="w">                                                             </span><span class="n">p_mics</span><span class="o">-&gt;</span><span class="n">attr_num</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">gatt_svc_send_data</span><span class="p">(</span><span class="n">conn_handle</span><span class="p">,</span><span class="w"> </span><span class="n">L2C_FIXED_CID_ATT</span><span class="p">,</span><span class="w"> </span><span class="n">p_mics</span><span class="o">-&gt;</span><span class="n">service_id</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">attrib_idx</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">p_mute_value</span><span class="p">,</span>
+<span class="w">                              </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">GATT_PDU_TYPE_NOTIFICATION</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+ </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_srv</strong> -- <strong>[in]</strong> Pointer to service table. <a class="reference internal" href="group___g_a_t_t___a_t_t_r_i_b_u_t_e___a_p_p_l.html#struct_t___a_t_t_r_i_b___a_p_p_l"><span class="std std-ref">T_ATTRIB_APPL</span></a>. </p></li>
+<li><p><strong>char_uuid16</strong> -- <strong>[in]</strong> Characteristic uuid16. </p></li>
+<li><p><strong>attr_num</strong> -- <strong>[in]</strong> Total attribute numer of service. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>0</strong> -- Find service characteristic attribute index failed.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The characteristic attribute index. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

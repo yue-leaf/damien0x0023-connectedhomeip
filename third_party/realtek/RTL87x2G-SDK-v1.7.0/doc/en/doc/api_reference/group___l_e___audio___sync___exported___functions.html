@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LE Audio Sync Exported Functions &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">LE Audio Sync Exported Functions</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="le-audio-sync-exported-functions">
+<h1>LE Audio Sync Exported Functions<a class="headerlink" href="#le-audio-sync-exported-functions" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___l_e___audio___sync___exported___functions"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">LE_Audio_Sync_Exported_Functions</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ble_audio_sync_allocate23P_FUN_BLE_AUDIO_SYNC_CB7uint8_tP7uint8_t7uint8_tAL3E_7uint8_t">
+<span id="_CPPv323ble_audio_sync_allocate23P_FUN_BLE_AUDIO_SYNC_CB7uint8_tP7uint8_t7uint8_tAL3E_7uint8_t"></span><span id="_CPPv223ble_audio_sync_allocate23P_FUN_BLE_AUDIO_SYNC_CB7uint8_tP7uint8_t7uint8_tA3_7uint8_t"></span><span id="ble_audio_sync_allocate__P_FUN_BLE_AUDIO_SYNC_CB.uint8_t.uint8_tP.uint8_t.uint8_tA"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1ga8320656d1f49b88c814a19f199415310"></span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_sync_allocate</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___types.html#_CPPv423P_FUN_BLE_AUDIO_SYNC_CB" title="P_FUN_BLE_AUDIO_SYNC_CB"><span class="n"><span class="pre">P_FUN_BLE_AUDIO_SYNC_CB</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cb_pfn</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">advertiser_address_type</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">advertiser_address</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_sid</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">broadcast_id</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ble_audio_sync_allocate23P_FUN_BLE_AUDIO_SYNC_CB7uint8_tP7uint8_t7uint8_tAL3E_7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Allocate LE Audio sync. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cb_pfn</strong> -- <strong>[in]</strong> Audio sync callback function: <a class="reference internal" href="group___l_e___audio___sync___exported___types.html#group___l_e___audio___sync___exported___types_1ga47273ed21177f4f38bd64a42a99ba196"><span class="std std-ref">P_FUN_BLE_AUDIO_SYNC_CB</span></a>. </p></li>
+<li><p><strong>advertiser_address_type</strong> -- <strong>[in]</strong> Advertiser address type. </p></li>
+<li><p><strong>advertiser_address</strong> -- <strong>[in]</strong> Pointer to advertiser address. </p></li>
+<li><p><strong>adv_sid</strong> -- <strong>[in]</strong> Advertising SID. </p></li>
+<li><p><strong>broadcast_id</strong> -- <strong>[in]</strong> Broadcast ID.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NULL</strong> -- Allocate LE Audio PA synchronization failed. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ble_audio_sync_update_cb23T_BLE_AUDIO_SYNC_HANDLE23P_FUN_BLE_AUDIO_SYNC_CB">
+<span id="_CPPv324ble_audio_sync_update_cb23T_BLE_AUDIO_SYNC_HANDLE23P_FUN_BLE_AUDIO_SYNC_CB"></span><span id="_CPPv224ble_audio_sync_update_cb23T_BLE_AUDIO_SYNC_HANDLE23P_FUN_BLE_AUDIO_SYNC_CB"></span><span id="ble_audio_sync_update_cb__T_BLE_AUDIO_SYNC_HANDLE.P_FUN_BLE_AUDIO_SYNC_CB"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1ga09c24fc4c2dc704837a7279ca01a3782"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_sync_update_cb</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___l_e___audio___sync___exported___types.html#_CPPv423P_FUN_BLE_AUDIO_SYNC_CB" title="P_FUN_BLE_AUDIO_SYNC_CB"><span class="n"><span class="pre">P_FUN_BLE_AUDIO_SYNC_CB</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cb_pfn</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ble_audio_sync_update_cb23T_BLE_AUDIO_SYNC_HANDLE23P_FUN_BLE_AUDIO_SYNC_CB" title="Link to this definition"></a><br /></dt>
+<dd><p>Register LE Audio sync update callback function to handle LE Audio sync message. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p></li>
+<li><p><strong>cb_pfn</strong> -- <strong>[in]</strong> LE Audio sync callback function: <a class="reference internal" href="group___l_e___audio___sync___exported___types.html#group___l_e___audio___sync___exported___types_1ga47273ed21177f4f38bd64a42a99ba196"><span class="std std-ref">P_FUN_BLE_AUDIO_SYNC_CB</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Registering LE Audio sync update callback function is successful. </p></li>
+<li><p><strong>false</strong> -- Registering LE Audio sync update callback function failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of registering LE Audio sync update callback function. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426ble_audio_sync_update_addr23T_BLE_AUDIO_SYNC_HANDLEP7uint8_t">
+<span id="_CPPv326ble_audio_sync_update_addr23T_BLE_AUDIO_SYNC_HANDLEP7uint8_t"></span><span id="_CPPv226ble_audio_sync_update_addr23T_BLE_AUDIO_SYNC_HANDLEP7uint8_t"></span><span id="ble_audio_sync_update_addr__T_BLE_AUDIO_SYNC_HANDLE.uint8_tP"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1gae85ef71ad4011ddaca30cad5a9f0cd25"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_sync_update_addr</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">advertiser_address</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426ble_audio_sync_update_addr23T_BLE_AUDIO_SYNC_HANDLEP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Update LE Audio sync advertiser address. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p></li>
+<li><p><strong>advertiser_address</strong> -- <strong>[in]</strong> Pointer to advertiser address.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Updating LE Audio sync advertiser address is successful. </p></li>
+<li><p><strong>false</strong> -- Updating LE Audio sync advertiser address failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of updating LE Audio sync advertiser address. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419ble_audio_sync_find7uint8_tAL3E_7uint8_t">
+<span id="_CPPv319ble_audio_sync_find7uint8_tAL3E_7uint8_t"></span><span id="_CPPv219ble_audio_sync_find7uint8_tA3_7uint8_t"></span><span id="ble_audio_sync_find__uint8_t.uint8_tA"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1ga50018441d28e791d1812dab67db5c10a"></span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_sync_find</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">adv_sid</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">broadcast_id</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419ble_audio_sync_find7uint8_tAL3E_7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Find LE Audio sync. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adv_sid</strong> -- <strong>[in]</strong> Advertising SID. </p></li>
+<li><p><strong>broadcast_id</strong> -- <strong>[in]</strong> Broadcast ID.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NULL</strong> -- LE Audio sync handle not found. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ble_audio_sync_get_info23T_BLE_AUDIO_SYNC_HANDLEP21T_BLE_AUDIO_SYNC_INFO">
+<span id="_CPPv323ble_audio_sync_get_info23T_BLE_AUDIO_SYNC_HANDLEP21T_BLE_AUDIO_SYNC_INFO"></span><span id="_CPPv223ble_audio_sync_get_info23T_BLE_AUDIO_SYNC_HANDLEP21T_BLE_AUDIO_SYNC_INFO"></span><span id="ble_audio_sync_get_info__T_BLE_AUDIO_SYNC_HANDLE.T_BLE_AUDIO_SYNC_INFOP"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1gac98562d178109bd9d0ca91f88161c8bc"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_sync_get_info</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___l_e___audio___sync___exported___types.html#_CPPv421T_BLE_AUDIO_SYNC_INFO" title="T_BLE_AUDIO_SYNC_INFO"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_INFO</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ble_audio_sync_get_info23T_BLE_AUDIO_SYNC_HANDLEP21T_BLE_AUDIO_SYNC_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>Get LE Audio sync information. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p></li>
+<li><p><strong>p_info</strong> -- <strong>[inout]</strong> Pointer to LE Audio sync information: <a class="reference internal" href="group___l_e___audio___sync___exported___types.html#struct_t___b_l_e___a_u_d_i_o___s_y_n_c___i_n_f_o"><span class="std std-ref">T_BLE_AUDIO_SYNC_INFO</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Getting LE Audio sync information is successful. </p></li>
+<li><p><strong>false</strong> -- Getting LE Audio sync information failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of getting LE Audio sync information. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ble_audio_sync_releaseP23T_BLE_AUDIO_SYNC_HANDLE">
+<span id="_CPPv322ble_audio_sync_releaseP23T_BLE_AUDIO_SYNC_HANDLE"></span><span id="_CPPv222ble_audio_sync_releaseP23T_BLE_AUDIO_SYNC_HANDLE"></span><span id="ble_audio_sync_release__T_BLE_AUDIO_SYNC_HANDLEP"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1gaf5c392bd0ebb777741efb868d9e37eff"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_sync_release</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ble_audio_sync_releaseP23T_BLE_AUDIO_SYNC_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Release LE Audio sync. </p>
+<p>bap_audio_sync.h</p>
+<p>If this API is successfully invoked, the referred sync handle will be cleared.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>p_handle</strong> -- <strong>[in]</strong> Pointer to LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Releasing LE Audio sync is successful. </p></li>
+<li><p><strong>false</strong> -- Releasing LE Audio sync failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of releasing LE Audio sync. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ble_audio_pa_sync_establish23T_BLE_AUDIO_SYNC_HANDLE7uint8_t7uint8_t8uint16_t8uint16_t">
+<span id="_CPPv327ble_audio_pa_sync_establish23T_BLE_AUDIO_SYNC_HANDLE7uint8_t7uint8_t8uint16_t8uint16_t"></span><span id="_CPPv227ble_audio_pa_sync_establish23T_BLE_AUDIO_SYNC_HANDLE7uint8_t7uint8_t8uint16_t8uint16_t"></span><span id="ble_audio_pa_sync_establish__T_BLE_AUDIO_SYNC_HANDLE.uint8_t.uint8_t.uint16_t.uint16_t"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1ga2dd7ac8a15b81f11db2834af0aa6a61c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_pa_sync_establish</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">options</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sync_cte_type</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">skip</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sync_timeout</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ble_audio_pa_sync_establish23T_BLE_AUDIO_SYNC_HANDLE7uint8_t7uint8_t8uint16_t8uint16_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Send establish LE Audio PA sync request. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p></li>
+<li><p><strong>options</strong> -- <strong>[in]</strong> PA create sync options. </p></li>
+<li><p><strong>sync_cte_type</strong> -- <strong>[in]</strong> PA sync CTE type. </p></li>
+<li><p><strong>skip</strong> -- <strong>[in]</strong> The maximum number of periodic advertising events that can be skipped after a is successful receive.<ul>
+<li><p>Range: 0x0000 to 0x01F3. </p></li>
+</ul>
+</p></li>
+<li><p><strong>sync_timeout</strong> -- <strong>[in]</strong> Sync timeout for the PA train.<ul>
+<li><p>Range: 0x000A to 0x4000.</p></li>
+<li><p>Time = N*10 ms.</p></li>
+<li><p>Time Range: 100 ms to 163.84 s.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Sending request is successful. </p></li>
+<li><p><strong>false</strong> -- Sending request failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of establishing LE Audio PA sync. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422ble_audio_pa_terminate23T_BLE_AUDIO_SYNC_HANDLE">
+<span id="_CPPv322ble_audio_pa_terminate23T_BLE_AUDIO_SYNC_HANDLE"></span><span id="_CPPv222ble_audio_pa_terminate23T_BLE_AUDIO_SYNC_HANDLE"></span><span id="ble_audio_pa_terminate__T_BLE_AUDIO_SYNC_HANDLE"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1ga1ee3787a5972ccb59dcf7d80f10f690b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_pa_terminate</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422ble_audio_pa_terminate23T_BLE_AUDIO_SYNC_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Send terminate LE Audio PA sync request. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Sending request is successful. </p></li>
+<li><p><strong>false</strong> -- Sending request failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of terminating LE Audio PA sync. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428ble_audio_big_sync_establish23T_BLE_AUDIO_SYNC_HANDLEP45T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAM">
+<span id="_CPPv328ble_audio_big_sync_establish23T_BLE_AUDIO_SYNC_HANDLEP45T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAM"></span><span id="_CPPv228ble_audio_big_sync_establish23T_BLE_AUDIO_SYNC_HANDLEP45T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAM"></span><span id="ble_audio_big_sync_establish__T_BLE_AUDIO_SYNC_HANDLE.T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAMP"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1gab702f348e991a374692ec9b718c4b39a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_big_sync_establish</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___g_a_p___l_e___b_i_g___m_g_r___exported___types.html#_CPPv445T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAM" title="T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAM"><span class="n"><span class="pre">T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAM</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_param</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428ble_audio_big_sync_establish23T_BLE_AUDIO_SYNC_HANDLEP45T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAM" title="Link to this definition"></a><br /></dt>
+<dd><p>Send establish LE Audio BIG sync request. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p></li>
+<li><p><strong>p_param</strong> -- <strong>[in]</strong> Pointer to BIG create sync parameter: <a class="reference internal" href="group___g_a_p___l_e___b_i_g___m_g_r___exported___types.html#struct_t___b_i_g___m_g_r___s_y_n_c___r_e_c_e_i_v_e_r___b_i_g___c_r_e_a_t_e___s_y_n_c___p_a_r_a_m"><span class="std std-ref">T_BIG_MGR_SYNC_RECEIVER_BIG_CREATE_SYNC_PARAM</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Sending request is successful. </p></li>
+<li><p><strong>false</strong> -- Sending request failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of establishing LE Audio BIG sync. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423ble_audio_big_terminate23T_BLE_AUDIO_SYNC_HANDLE">
+<span id="_CPPv323ble_audio_big_terminate23T_BLE_AUDIO_SYNC_HANDLE"></span><span id="_CPPv223ble_audio_big_terminate23T_BLE_AUDIO_SYNC_HANDLE"></span><span id="ble_audio_big_terminate__T_BLE_AUDIO_SYNC_HANDLE"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1gab397185e7d94cc4b8f8429634477381c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_big_terminate</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423ble_audio_big_terminate23T_BLE_AUDIO_SYNC_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Send terminate LE Audio BIG sync request. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Sending request is successful. </p></li>
+<li><p><strong>false</strong> -- Sending request failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of terminating LE Audio BIG sync. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ble_audio_get_bis_sync_info23T_BLE_AUDIO_SYNC_HANDLEP20T_BLE_AUDIO_BIS_INFO">
+<span id="_CPPv327ble_audio_get_bis_sync_info23T_BLE_AUDIO_SYNC_HANDLEP20T_BLE_AUDIO_BIS_INFO"></span><span id="_CPPv227ble_audio_get_bis_sync_info23T_BLE_AUDIO_SYNC_HANDLEP20T_BLE_AUDIO_BIS_INFO"></span><span id="ble_audio_get_bis_sync_info__T_BLE_AUDIO_SYNC_HANDLE.T_BLE_AUDIO_BIS_INFOP"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1gaf54e6ce3ee86678db6a967ea6a45fc36"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_get_bis_sync_info</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___l_e___audio___sync___exported___types.html#_CPPv420T_BLE_AUDIO_BIS_INFO" title="T_BLE_AUDIO_BIS_INFO"><span class="n"><span class="pre">T_BLE_AUDIO_BIS_INFO</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ble_audio_get_bis_sync_info23T_BLE_AUDIO_SYNC_HANDLEP20T_BLE_AUDIO_BIS_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>Get LE Audio BIS sync information. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p></li>
+<li><p><strong>p_info</strong> -- <strong>[inout]</strong> Pointer to BIS sync information: <a class="reference internal" href="group___l_e___audio___sync___exported___types.html#struct_t___b_l_e___a_u_d_i_o___b_i_s___i_n_f_o"><span class="std std-ref">T_BLE_AUDIO_BIS_INFO</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Successfully got LE Audio BIS sync information. </p></li>
+<li><p><strong>false</strong> -- Failed to get LE Audio BIS sync information. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of getting LE Audio BIS sync information. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429ble_audio_bis_setup_data_path23T_BLE_AUDIO_SYNC_HANDLE7uint8_tAL5E_7uint8_t8uint32_t7uint8_tP7uint8_t">
+<span id="_CPPv329ble_audio_bis_setup_data_path23T_BLE_AUDIO_SYNC_HANDLE7uint8_tAL5E_7uint8_t8uint32_t7uint8_tP7uint8_t"></span><span id="_CPPv229ble_audio_bis_setup_data_path23T_BLE_AUDIO_SYNC_HANDLE7uint8_tA5_7uint8_t8uint32_t7uint8_tP7uint8_t"></span><span id="ble_audio_bis_setup_data_path__T_BLE_AUDIO_SYNC_HANDLE.uint8_t.uint8_tA.uint32_t.uint8_t.uint8_tP"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1gafb6a1fb1ebf6516f99ed45ab640e5e4f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_bis_setup_data_path</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bis_idx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">codec_id</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">]</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">controller_delay</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">codec_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_codec_data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429ble_audio_bis_setup_data_path23T_BLE_AUDIO_SYNC_HANDLE7uint8_tAL5E_7uint8_t8uint32_t7uint8_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Set up LE Audio BIS data path. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p></li>
+<li><p><strong>bis_idx</strong> -- <strong>[in]</strong> BIS index. </p></li>
+<li><p><strong>codec_id</strong> -- <strong>[in]</strong> Codec ID. </p></li>
+<li><p><strong>controller_delay</strong> -- <strong>[in]</strong> Controller delay in microseconds.<ul>
+<li><p>Range: 0x000000 to 0x3D0900.</p></li>
+<li><p>Time range: 0 s to 4 s. </p></li>
+</ul>
+</p></li>
+<li><p><strong>codec_len</strong> -- <strong>[in]</strong> Length of codec configuration. </p></li>
+<li><p><strong>p_codec_data</strong> -- <strong>[in]</strong> Pointer to codec-specific configuration data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Successfully set up LE Audio BIS data path. </p></li>
+<li><p><strong>false</strong> -- Failed to set up LE Audio BIS data path. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of set up LE Audio BIS data path. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430ble_audio_bis_remove_data_path23T_BLE_AUDIO_SYNC_HANDLE7uint8_t">
+<span id="_CPPv330ble_audio_bis_remove_data_path23T_BLE_AUDIO_SYNC_HANDLE7uint8_t"></span><span id="_CPPv230ble_audio_bis_remove_data_path23T_BLE_AUDIO_SYNC_HANDLE7uint8_t"></span><span id="ble_audio_bis_remove_data_path__T_BLE_AUDIO_SYNC_HANDLE.uint8_t"></span><span class="target" id="group___l_e___audio___sync___exported___functions_1gacd6ac5bf31f572d99835a301958b5c27"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ble_audio_bis_remove_data_path</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#_CPPv423T_BLE_AUDIO_SYNC_HANDLE" title="T_BLE_AUDIO_SYNC_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_SYNC_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bis_idx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430ble_audio_bis_remove_data_path23T_BLE_AUDIO_SYNC_HANDLE7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Remove LE Audio BIS data path. </p>
+<p>bap_audio_sync.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> LE Audio sync handle: <a class="reference internal" href="group___l_e___audio___sync___exported___macros.html#group___l_e___audio___sync___exported___macros_1ga37ac358cb4b59b4e4c777fc199cce4ee"><span class="std std-ref">T_BLE_AUDIO_SYNC_HANDLE</span></a>. </p></li>
+<li><p><strong>bis_idx</strong> -- <strong>[in]</strong> BIS index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Successfully removed LE Audio BIS data path. </p></li>
+<li><p><strong>false</strong> -- Failed to remove LE Audio BIS data path. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of removing LE Audio BIS data path. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

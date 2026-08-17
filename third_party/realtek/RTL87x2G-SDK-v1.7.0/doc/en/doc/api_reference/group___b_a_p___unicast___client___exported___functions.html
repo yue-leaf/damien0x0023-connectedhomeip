@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAP Unicast Client Exported Functions &mdash; RTL87x2G SDK v1.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=896c6380"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/js/ga_config.js?v=3457f740"></script>
+        <script src="../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../index.html">
+        
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/text_en/README.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start/text_en/README.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evb_guide/text_en/README.html">Evaluation Board Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool_set/text_en/README.html">Tool Set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/text_en/README.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../subsystems/text_en/README.html">Subsystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocols/text_en/README.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../samples/text_en/README.html">Samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications/text_en/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license/text_en/README.html">Disclaimer and Licenses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/README.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../samples/tinyml/doc/text_en/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+    <li class="breadcrumb-item active">BAP Unicast Client Exported Functions</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bap-unicast-client-exported-functions">
+<h1>BAP Unicast Client Exported Functions<a class="headerlink" href="#bap-unicast-client-exported-functions" title="Link to this heading"></a></h1>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group___b_a_p___unicast___client___exported___functions"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">BAP_Unicast_Client_Exported_Functions</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429audio_stream_session_allocate24T_BLE_AUDIO_GROUP_HANDLE">
+<span id="_CPPv329audio_stream_session_allocate24T_BLE_AUDIO_GROUP_HANDLE"></span><span id="_CPPv229audio_stream_session_allocate24T_BLE_AUDIO_GROUP_HANDLE"></span><span id="audio_stream_session_allocate__T_BLE_AUDIO_GROUP_HANDLE"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga2fc7d467b85fc454f0a12ddf8c1f9d66"></span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">audio_stream_session_allocate</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv424T_BLE_AUDIO_GROUP_HANDLE" title="T_BLE_AUDIO_GROUP_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_GROUP_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">group_handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429audio_stream_session_allocate24T_BLE_AUDIO_GROUP_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Allocate audio streaming session. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group_handle</strong> -- <strong>[in]</strong> LE Audio group handle: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1ga783d1bd4422843cffd2323d61b1f08de"><span class="std std-ref">T_BLE_AUDIO_GROUP_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430audio_stream_session_get_group29T_AUDIO_STREAM_SESSION_HANDLE">
+<span id="_CPPv330audio_stream_session_get_group29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="_CPPv230audio_stream_session_get_group29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="audio_stream_session_get_group__T_AUDIO_STREAM_SESSION_HANDLE"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1gaa1b4d1f321d24c2a3c46cad0619c888a"></span><a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv424T_BLE_AUDIO_GROUP_HANDLE" title="T_BLE_AUDIO_GROUP_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_GROUP_HANDLE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">audio_stream_session_get_group</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430audio_stream_session_get_group29T_AUDIO_STREAM_SESSION_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Get LE Audio group handle by audio streaming session. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The LE Audio group handle: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1ga783d1bd4422843cffd2323d61b1f08de"><span class="std std-ref">T_BLE_AUDIO_GROUP_HANDLE</span></a>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430bap_unicast_get_audio_cfg_mask29T_AUDIO_STREAM_SESSION_HANDLE8uint32_t7uint8_tP22T_BLE_AUDIO_DEV_HANDLE">
+<span id="_CPPv330bap_unicast_get_audio_cfg_mask29T_AUDIO_STREAM_SESSION_HANDLE8uint32_t7uint8_tP22T_BLE_AUDIO_DEV_HANDLE"></span><span id="_CPPv230bap_unicast_get_audio_cfg_mask29T_AUDIO_STREAM_SESSION_HANDLE8uint32_t7uint8_tP22T_BLE_AUDIO_DEV_HANDLE"></span><span id="bap_unicast_get_audio_cfg_mask__T_AUDIO_STREAM_SESSION_HANDLE.uint32_t.uint8_t.T_BLE_AUDIO_DEV_HANDLEP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga6ab28fc4866ad5836bd95ca405a6f8b5"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_get_audio_cfg_mask</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">prefer_cfg</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dev_num</span></span>, <a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv422T_BLE_AUDIO_DEV_HANDLE" title="T_BLE_AUDIO_DEV_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_DEV_HANDLE</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_dev_tbl</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430bap_unicast_get_audio_cfg_mask29T_AUDIO_STREAM_SESSION_HANDLE8uint32_t7uint8_tP22T_BLE_AUDIO_DEV_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio get audio configuration mask. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>prefer_cfg</strong> -- <strong>[in]</strong> Preferred configuration. </p></li>
+<li><p><strong>dev_num</strong> -- <strong>[in]</strong> The device number of p_dev_tbl. </p></li>
+<li><p><strong>p_dev_tbl</strong> -- <strong>[in]</strong> Pointer to device table: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gaa3606c8a25f03aa4a4cc0c21f82850bd"><span class="std std-ref">T_BLE_AUDIO_DEV_HANDLE</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The audio configuration mask. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430bap_unicast_audio_get_cis_info29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLEP23T_AUDIO_STREAM_CIS_INFO">
+<span id="_CPPv330bap_unicast_audio_get_cis_info29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLEP23T_AUDIO_STREAM_CIS_INFO"></span><span id="_CPPv230bap_unicast_audio_get_cis_info29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLEP23T_AUDIO_STREAM_CIS_INFO"></span><span id="bap_unicast_audio_get_cis_info__T_AUDIO_STREAM_SESSION_HANDLE.T_BLE_AUDIO_DEV_HANDLE.T_AUDIO_STREAM_CIS_INFOP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1gae5310747fc97930f5beb4eba73e66f36"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_get_cis_info</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv422T_BLE_AUDIO_DEV_HANDLE" title="T_BLE_AUDIO_DEV_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_DEV_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dev_handle</span></span>, <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv423T_AUDIO_STREAM_CIS_INFO" title="T_AUDIO_STREAM_CIS_INFO"><span class="n"><span class="pre">T_AUDIO_STREAM_CIS_INFO</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430bap_unicast_audio_get_cis_info29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLEP23T_AUDIO_STREAM_CIS_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio get cis information. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>dev_handle</strong> -- <strong>[in]</strong> Audio device handle: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gaa3606c8a25f03aa4a4cc0c21f82850bd"><span class="std std-ref">T_BLE_AUDIO_DEV_HANDLE</span></a>. </p></li>
+<li><p><strong>p_info</strong> -- <strong>[inout]</strong> Pointer to cis information: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#struct_t___a_u_d_i_o___s_t_r_e_a_m___c_i_s___i_n_f_o"><span class="std std-ref">T_AUDIO_STREAM_CIS_INFO</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Getting cis information is successful. </p></li>
+<li><p><strong>false</strong> -- Getting cis information failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio getting cis information. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434bap_unicast_audio_get_session_info29T_AUDIO_STREAM_SESSION_HANDLEP26T_BAP_UNICAST_SESSION_INFO">
+<span id="_CPPv334bap_unicast_audio_get_session_info29T_AUDIO_STREAM_SESSION_HANDLEP26T_BAP_UNICAST_SESSION_INFO"></span><span id="_CPPv234bap_unicast_audio_get_session_info29T_AUDIO_STREAM_SESSION_HANDLEP26T_BAP_UNICAST_SESSION_INFO"></span><span id="bap_unicast_audio_get_session_info__T_AUDIO_STREAM_SESSION_HANDLE.T_BAP_UNICAST_SESSION_INFOP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1gacaf2dc3241424e834d69482ebedf9363"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_get_session_info</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv426T_BAP_UNICAST_SESSION_INFO" title="T_BAP_UNICAST_SESSION_INFO"><span class="n"><span class="pre">T_BAP_UNICAST_SESSION_INFO</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434bap_unicast_audio_get_session_info29T_AUDIO_STREAM_SESSION_HANDLEP26T_BAP_UNICAST_SESSION_INFO" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio get unicast session information. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>p_info</strong> -- <strong>[inout]</strong> Pointer to cis information: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#struct_t___b_a_p___u_n_i_c_a_s_t___s_e_s_s_i_o_n___i_n_f_o"><span class="std std-ref">T_BAP_UNICAST_SESSION_INFO</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Getting unicast session information is successful. </p></li>
+<li><p><strong>false</strong> -- Getting unicast session information failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio getting unicast session information. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bap_unicast_audio_cfg29T_AUDIO_STREAM_SESSION_HANDLE24T_UNICAST_AUDIO_CFG_TYPE7uint8_tP22T_BLE_AUDIO_DEV_HANDLE">
+<span id="_CPPv321bap_unicast_audio_cfg29T_AUDIO_STREAM_SESSION_HANDLE24T_UNICAST_AUDIO_CFG_TYPE7uint8_tP22T_BLE_AUDIO_DEV_HANDLE"></span><span id="_CPPv221bap_unicast_audio_cfg29T_AUDIO_STREAM_SESSION_HANDLE24T_UNICAST_AUDIO_CFG_TYPE7uint8_tP22T_BLE_AUDIO_DEV_HANDLE"></span><span id="bap_unicast_audio_cfg__T_AUDIO_STREAM_SESSION_HANDLE.T_UNICAST_AUDIO_CFG_TYPE.uint8_t.T_BLE_AUDIO_DEV_HANDLEP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1gaabad5400e809445ecef6c4d97b6c062a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_cfg</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv424T_UNICAST_AUDIO_CFG_TYPE" title="T_UNICAST_AUDIO_CFG_TYPE"><span class="n"><span class="pre">T_UNICAST_AUDIO_CFG_TYPE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">cfg_type</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dev_num</span></span>, <a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv422T_BLE_AUDIO_DEV_HANDLE" title="T_BLE_AUDIO_DEV_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_DEV_HANDLE</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_dev_tbl</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421bap_unicast_audio_cfg29T_AUDIO_STREAM_SESSION_HANDLE24T_UNICAST_AUDIO_CFG_TYPE7uint8_tP22T_BLE_AUDIO_DEV_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Set BAP unicast audio configuration. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>cfg_type</strong> -- <strong>[in]</strong> Audio configuration type: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1gab1b4c4c9ab6fc0bc4110891b2435fed2"><span class="std std-ref">T_UNICAST_AUDIO_CFG_TYPE</span></a>. </p></li>
+<li><p><strong>dev_num</strong> -- <strong>[in]</strong> The device number of p_dev_tbl. </p></li>
+<li><p><strong>p_dev_tbl</strong> -- <strong>[in]</strong> Pointer to device table: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gaa3606c8a25f03aa4a4cc0c21f82850bd"><span class="std std-ref">T_BLE_AUDIO_DEV_HANDLE</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Set BAP unicast audio configuration is successful. </p></li>
+<li><p><strong>false</strong> -- Set BAP unicast audio configuration failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of set BAP unicast audio configuration. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431bap_unicast_audio_cfg_ase_codec29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP21T_AUDIO_ASE_CODEC_CFG">
+<span id="_CPPv331bap_unicast_audio_cfg_ase_codec29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP21T_AUDIO_ASE_CODEC_CFG"></span><span id="_CPPv231bap_unicast_audio_cfg_ase_codec29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP21T_AUDIO_ASE_CODEC_CFG"></span><span id="bap_unicast_audio_cfg_ase_codec__T_AUDIO_STREAM_SESSION_HANDLE.T_BLE_AUDIO_DEV_HANDLE.uint8_t.T_AUDIO_ASE_CODEC_CFGP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1gaf9c011fc7519dd29ad5f67c3280d02d7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_cfg_ase_codec</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv422T_BLE_AUDIO_DEV_HANDLE" title="T_BLE_AUDIO_DEV_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_DEV_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dev_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cfg_idx</span></span>, <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv421T_AUDIO_ASE_CODEC_CFG" title="T_AUDIO_ASE_CODEC_CFG"><span class="n"><span class="pre">T_AUDIO_ASE_CODEC_CFG</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_cfg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431bap_unicast_audio_cfg_ase_codec29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP21T_AUDIO_ASE_CODEC_CFG" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio configure ASE codec. </p>
+<p>bap_unicast_client.h</p>
+<p>his API is used before <a class="reference internal" href="#group___b_a_p___unicast___client___exported___functions_1gab23f75948c0fd118d46e01b7f775f11c"><span class="std std-ref">bap_unicast_audio_start</span></a>, and after <a class="reference internal" href="#group___b_a_p___unicast___client___exported___functions_1gaabad5400e809445ecef6c4d97b6c062a"><span class="std std-ref">bap_unicast_audio_cfg</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>dev_handle</strong> -- <strong>[in]</strong> Device handle: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gaa3606c8a25f03aa4a4cc0c21f82850bd"><span class="std std-ref">T_BLE_AUDIO_DEV_HANDLE</span></a>. </p></li>
+<li><p><strong>cfg_idx</strong> -- <strong>[in]</strong> Configuration index. </p></li>
+<li><p><strong>p_cfg</strong> -- <strong>[in]</strong> Pointer to ASE codec configuration: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#struct_t___a_u_d_i_o___a_s_e___c_o_d_e_c___c_f_g"><span class="std std-ref">T_AUDIO_ASE_CODEC_CFG</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Configuring ASE codec is successful. </p></li>
+<li><p><strong>false</strong> -- Configuring ASE codec failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio configuring ASE codec. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433bap_unicast_audio_cfg_session_qos29T_AUDIO_STREAM_SESSION_HANDLEP23T_AUDIO_SESSION_QOS_CFG">
+<span id="_CPPv333bap_unicast_audio_cfg_session_qos29T_AUDIO_STREAM_SESSION_HANDLEP23T_AUDIO_SESSION_QOS_CFG"></span><span id="_CPPv233bap_unicast_audio_cfg_session_qos29T_AUDIO_STREAM_SESSION_HANDLEP23T_AUDIO_SESSION_QOS_CFG"></span><span id="bap_unicast_audio_cfg_session_qos__T_AUDIO_STREAM_SESSION_HANDLE.T_AUDIO_SESSION_QOS_CFGP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga1b3e28dd849c1f472458c9a35b055334"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_cfg_session_qos</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv423T_AUDIO_SESSION_QOS_CFG" title="T_AUDIO_SESSION_QOS_CFG"><span class="n"><span class="pre">T_AUDIO_SESSION_QOS_CFG</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_cfg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433bap_unicast_audio_cfg_session_qos29T_AUDIO_STREAM_SESSION_HANDLEP23T_AUDIO_SESSION_QOS_CFG" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio configure session QoS. </p>
+<p>bap_unicast_client.h</p>
+<p>This API is used when receive <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gga0cfec51dd6bc738c09cd55a8dd64c9cbabe621f6dd38f8d7c73deb3cada1d95e8"><span class="std std-ref">AUDIO_GROUP_MSG_BAP_START_QOS_CFG</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>p_cfg</strong> -- <strong>[in]</strong> Pointer to QoS configuration: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#struct_t___a_u_d_i_o___s_e_s_s_i_o_n___q_o_s___c_f_g"><span class="std std-ref">T_AUDIO_SESSION_QOS_CFG</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Configuring session QoS is successful. </p></li>
+<li><p><strong>false</strong> -- Configuring session QoS failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio configuring session QoS. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429bap_unicast_audio_cfg_ase_qos29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP19T_AUDIO_ASE_QOS_CFG">
+<span id="_CPPv329bap_unicast_audio_cfg_ase_qos29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP19T_AUDIO_ASE_QOS_CFG"></span><span id="_CPPv229bap_unicast_audio_cfg_ase_qos29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP19T_AUDIO_ASE_QOS_CFG"></span><span id="bap_unicast_audio_cfg_ase_qos__T_AUDIO_STREAM_SESSION_HANDLE.T_BLE_AUDIO_DEV_HANDLE.uint8_t.T_AUDIO_ASE_QOS_CFGP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga910ac85d59bd3ce85ae4f2dd5d859be2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_cfg_ase_qos</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv422T_BLE_AUDIO_DEV_HANDLE" title="T_BLE_AUDIO_DEV_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_DEV_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dev_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ase_id</span></span>, <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv419T_AUDIO_ASE_QOS_CFG" title="T_AUDIO_ASE_QOS_CFG"><span class="n"><span class="pre">T_AUDIO_ASE_QOS_CFG</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_cfg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429bap_unicast_audio_cfg_ase_qos29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP19T_AUDIO_ASE_QOS_CFG" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio configure ASE QoS. </p>
+<p>bap_unicast_client.h</p>
+<p>This API is used when receive <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gga0cfec51dd6bc738c09cd55a8dd64c9cbabe621f6dd38f8d7c73deb3cada1d95e8"><span class="std std-ref">AUDIO_GROUP_MSG_BAP_START_QOS_CFG</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>dev_handle</strong> -- <strong>[in]</strong> Device handle: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gaa3606c8a25f03aa4a4cc0c21f82850bd"><span class="std std-ref">T_BLE_AUDIO_DEV_HANDLE</span></a>. </p></li>
+<li><p><strong>ase_id</strong> -- <strong>[in]</strong> ASE id. </p></li>
+<li><p><strong>p_cfg</strong> -- <strong>[in]</strong> Pointer to ASE QoS configuration: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#struct_t___a_u_d_i_o___a_s_e___q_o_s___c_f_g"><span class="std std-ref">T_AUDIO_ASE_QOS_CFG</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- BAP unicast audio configure ASE QoS is successful. </p></li>
+<li><p><strong>false</strong> -- BAP unicast audio configure ASE QoS failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio configure ASE QoS. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433bap_unicast_audio_get_session_qos29T_AUDIO_STREAM_SESSION_HANDLEP23T_AUDIO_SESSION_QOS_CFG">
+<span id="_CPPv333bap_unicast_audio_get_session_qos29T_AUDIO_STREAM_SESSION_HANDLEP23T_AUDIO_SESSION_QOS_CFG"></span><span id="_CPPv233bap_unicast_audio_get_session_qos29T_AUDIO_STREAM_SESSION_HANDLEP23T_AUDIO_SESSION_QOS_CFG"></span><span id="bap_unicast_audio_get_session_qos__T_AUDIO_STREAM_SESSION_HANDLE.T_AUDIO_SESSION_QOS_CFGP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga2c81aa712bcbe5ca32e08fe03e07bcc4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_get_session_qos</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv423T_AUDIO_SESSION_QOS_CFG" title="T_AUDIO_SESSION_QOS_CFG"><span class="n"><span class="pre">T_AUDIO_SESSION_QOS_CFG</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_cfg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433bap_unicast_audio_get_session_qos29T_AUDIO_STREAM_SESSION_HANDLEP23T_AUDIO_SESSION_QOS_CFG" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio get session QoS. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>p_cfg</strong> -- <strong>[inout]</strong> Pointer to session QoS configuration: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#struct_t___a_u_d_i_o___s_e_s_s_i_o_n___q_o_s___c_f_g"><span class="std std-ref">T_AUDIO_SESSION_QOS_CFG</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Getting session QoS is successful. </p></li>
+<li><p><strong>false</strong> -- Getting session QoS failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio getting session QoS. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429bap_unicast_audio_get_ase_qos29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP19T_AUDIO_ASE_QOS_CFG">
+<span id="_CPPv329bap_unicast_audio_get_ase_qos29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP19T_AUDIO_ASE_QOS_CFG"></span><span id="_CPPv229bap_unicast_audio_get_ase_qos29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP19T_AUDIO_ASE_QOS_CFG"></span><span id="bap_unicast_audio_get_ase_qos__T_AUDIO_STREAM_SESSION_HANDLE.T_BLE_AUDIO_DEV_HANDLE.uint8_t.T_AUDIO_ASE_QOS_CFGP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga609cb6b3b5622dff0e841b10c52b5e01"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_get_ase_qos</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv422T_BLE_AUDIO_DEV_HANDLE" title="T_BLE_AUDIO_DEV_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_DEV_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dev_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ase_id</span></span>, <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv419T_AUDIO_ASE_QOS_CFG" title="T_AUDIO_ASE_QOS_CFG"><span class="n"><span class="pre">T_AUDIO_ASE_QOS_CFG</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_cfg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429bap_unicast_audio_get_ase_qos29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_tP19T_AUDIO_ASE_QOS_CFG" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio get ASE QoS. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>dev_handle</strong> -- <strong>[in]</strong> Device handle: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gaa3606c8a25f03aa4a4cc0c21f82850bd"><span class="std std-ref">T_BLE_AUDIO_DEV_HANDLE</span></a>. </p></li>
+<li><p><strong>ase_id</strong> -- <strong>[in]</strong> ASE id. </p></li>
+<li><p><strong>p_cfg</strong> -- <strong>[inout]</strong> Pointer to ASE QoS configuration: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#struct_t___a_u_d_i_o___a_s_e___q_o_s___c_f_g"><span class="std std-ref">T_AUDIO_ASE_QOS_CFG</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Getting ASE QoS is successful. </p></li>
+<li><p><strong>false</strong> -- Getting ASE QoS failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio getting ASE QoS. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434bap_unicast_audio_cfg_ase_metadata29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_t7uint8_tP7uint8_t">
+<span id="_CPPv334bap_unicast_audio_cfg_ase_metadata29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_t7uint8_tP7uint8_t"></span><span id="_CPPv234bap_unicast_audio_cfg_ase_metadata29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_t7uint8_tP7uint8_t"></span><span id="bap_unicast_audio_cfg_ase_metadata__T_AUDIO_STREAM_SESSION_HANDLE.T_BLE_AUDIO_DEV_HANDLE.uint8_t.uint8_t.uint8_tP"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga43f33d17562b9db5d020f5f63af6e68f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_cfg_ase_metadata</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <a class="reference internal" href="group___l_e___audio___group___exported___types.html#_CPPv422T_BLE_AUDIO_DEV_HANDLE" title="T_BLE_AUDIO_DEV_HANDLE"><span class="n"><span class="pre">T_BLE_AUDIO_DEV_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dev_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ase_id</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">metadata_len</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_metadata</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434bap_unicast_audio_cfg_ase_metadata29T_AUDIO_STREAM_SESSION_HANDLE22T_BLE_AUDIO_DEV_HANDLE7uint8_t7uint8_tP7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio configure ASE metadata. </p>
+<p>bap_unicast_client.h</p>
+<p>This API is used when receiving <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gga0cfec51dd6bc738c09cd55a8dd64c9cbae3bd2f3839fdf5520099662558b32449"><span class="std std-ref">AUDIO_GROUP_MSG_BAP_START_METADATA_CFG</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>dev_handle</strong> -- <strong>[in]</strong> Device handle: <a class="reference internal" href="group___l_e___audio___group___exported___types.html#group___l_e___audio___group___exported___types_1gaa3606c8a25f03aa4a4cc0c21f82850bd"><span class="std std-ref">T_BLE_AUDIO_DEV_HANDLE</span></a>. </p></li>
+<li><p><strong>ase_id</strong> -- <strong>[in]</strong> ASE id. </p></li>
+<li><p><strong>metadata_len</strong> -- <strong>[in]</strong> Metadata length. </p></li>
+<li><p><strong>p_metadata</strong> -- <strong>[in]</strong> Pointer to metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Configuring ASE metadata is successful. </p></li>
+<li><p><strong>false</strong> -- Configuring ASE metadata failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio configuring ASE metadata. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428bap_unicast_audio_remove_cfg29T_AUDIO_STREAM_SESSION_HANDLE">
+<span id="_CPPv328bap_unicast_audio_remove_cfg29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="_CPPv228bap_unicast_audio_remove_cfg29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="bap_unicast_audio_remove_cfg__T_AUDIO_STREAM_SESSION_HANDLE"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga8d2304dadbf778c614a3763ad2a5d5ba"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_remove_cfg</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428bap_unicast_audio_remove_cfg29T_AUDIO_STREAM_SESSION_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Remove BAP unicast audio configuration. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Removing BAP unicast audio configuration is successful. </p></li>
+<li><p><strong>false</strong> -- Removing BAP unicast audio configuration failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of removing BAP unicast audio configuration. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432bap_unicast_audio_remove_session29T_AUDIO_STREAM_SESSION_HANDLE">
+<span id="_CPPv332bap_unicast_audio_remove_session29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="_CPPv232bap_unicast_audio_remove_session29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="bap_unicast_audio_remove_session__T_AUDIO_STREAM_SESSION_HANDLE"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1gaf98b669d9d6d3963787c635e61fb3115"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_remove_session</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432bap_unicast_audio_remove_session29T_AUDIO_STREAM_SESSION_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>Remove BAP unicast audio session. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Removing BAP unicast audio session is successful. </p></li>
+<li><p><strong>false</strong> -- Removing BAP unicast audio session failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of removing BAP unicast audio session. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423bap_unicast_audio_start29T_AUDIO_STREAM_SESSION_HANDLE">
+<span id="_CPPv323bap_unicast_audio_start29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="_CPPv223bap_unicast_audio_start29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="bap_unicast_audio_start__T_AUDIO_STREAM_SESSION_HANDLE"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1gab23f75948c0fd118d46e01b7f775f11c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_start</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423bap_unicast_audio_start29T_AUDIO_STREAM_SESSION_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio start streaming. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Starting streaming is successful. </p></li>
+<li><p><strong>false</strong> -- Starting streaming failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio starting streaming. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422bap_unicast_audio_stop29T_AUDIO_STREAM_SESSION_HANDLE8uint32_t">
+<span id="_CPPv322bap_unicast_audio_stop29T_AUDIO_STREAM_SESSION_HANDLE8uint32_t"></span><span id="_CPPv222bap_unicast_audio_stop29T_AUDIO_STREAM_SESSION_HANDLE8uint32_t"></span><span id="bap_unicast_audio_stop__T_AUDIO_STREAM_SESSION_HANDLE.uint32_t"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga4e8a3ab637f5441121a08b51f5d12ed1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_stop</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cis_timeout_ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422bap_unicast_audio_stop29T_AUDIO_STREAM_SESSION_HANDLE8uint32_t" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio stop streaming. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>. </p></li>
+<li><p><strong>cis_timeout_ms</strong> -- <strong>[in]</strong> CIS timeout.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- Stopping streaming is successful. </p></li>
+<li><p><strong>false</strong> -- Stopping streaming failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio stopping streaming. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425bap_unicast_audio_release29T_AUDIO_STREAM_SESSION_HANDLE">
+<span id="_CPPv325bap_unicast_audio_release29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="_CPPv225bap_unicast_audio_release29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="bap_unicast_audio_release__T_AUDIO_STREAM_SESSION_HANDLE"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga6f2a31c5dd85d040907714678dcf3213"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_release</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425bap_unicast_audio_release29T_AUDIO_STREAM_SESSION_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio action release. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- BAP unicast audio action release is successful. </p></li>
+<li><p><strong>false</strong> -- BAP unicast audio action release failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio action release. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424bap_unicast_audio_update29T_AUDIO_STREAM_SESSION_HANDLE">
+<span id="_CPPv324bap_unicast_audio_update29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="_CPPv224bap_unicast_audio_update29T_AUDIO_STREAM_SESSION_HANDLE"></span><span id="bap_unicast_audio_update__T_AUDIO_STREAM_SESSION_HANDLE"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga3d6b6fcacc6678da8b8810d0897d987e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bap_unicast_audio_update</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#_CPPv429T_AUDIO_STREAM_SESSION_HANDLE" title="T_AUDIO_STREAM_SESSION_HANDLE"><span class="n"><span class="pre">T_AUDIO_STREAM_SESSION_HANDLE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424bap_unicast_audio_update29T_AUDIO_STREAM_SESSION_HANDLE" title="Link to this definition"></a><br /></dt>
+<dd><p>BAP unicast audio update metadata. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> -- <strong>[in]</strong> Audio streaming session handle: <a class="reference internal" href="group___b_a_p___unicast___client___exported___types.html#group___b_a_p___unicast___client___exported___types_1ga82c897e361e6ad1a514a16d3c2ca50c2"><span class="std std-ref">T_AUDIO_STREAM_SESSION_HANDLE</span></a>.</p>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- BAP unicast audio updating metadata is successful. </p></li>
+<li><p><strong>false</strong> -- BAP unicast audio updating metadata failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of BAP unicast audio updating metadata. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ascs_client_get_ase_data8uint16_t7uint8_tP15T_ASE_CHAR_DATA7uint8_t">
+<span id="_CPPv324ascs_client_get_ase_data8uint16_t7uint8_tP15T_ASE_CHAR_DATA7uint8_t"></span><span id="_CPPv224ascs_client_get_ase_data8uint16_t7uint8_tP15T_ASE_CHAR_DATA7uint8_t"></span><span id="ascs_client_get_ase_data__uint16_t.uint8_t.T_ASE_CHAR_DATAP.uint8_t"></span><span class="target" id="group___b_a_p___unicast___client___exported___functions_1ga88e2e53ca672fefc6c5db0b3fac2c071"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ascs_client_get_ase_data</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">conn_handle</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">char_instance_id</span></span>, <a class="reference internal" href="group___a_s_c_s___def___exported___types.html#_CPPv415T_ASE_CHAR_DATA" title="T_ASE_CHAR_DATA"><span class="n"><span class="pre">T_ASE_CHAR_DATA</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">p_ase_data</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">direction</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ascs_client_get_ase_data8uint16_t7uint8_tP15T_ASE_CHAR_DATA7uint8_t" title="Link to this definition"></a><br /></dt>
+<dd><p>ASCS client get ASE data. </p>
+<p>bap_unicast_client.h</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn_handle</strong> -- <strong>[in]</strong> Connection handle. </p></li>
+<li><p><strong>char_instance_id</strong> -- <strong>[in]</strong> ASE characteristic instance id. </p></li>
+<li><p><strong>p_ase_data</strong> -- <strong>[inout]</strong> Pointer to ASE data: <a class="reference internal" href="group___a_s_c_s___def___exported___types.html#struct_t___a_s_e___c_h_a_r___d_a_t_a"><span class="std std-ref">T_ASE_CHAR_DATA</span></a>. </p></li>
+<li><p><strong>direction</strong> -- <strong>[in]</strong> Direction: <a class="reference internal" href="group___l_e_a___l_i_b___exported___types.html#group___l_e_a___l_i_b___exported___types_1gaddc9391bc23189606598d54ad592446f"><span class="std std-ref">T_AUDIO_DIRECTION</span></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return values<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>true</strong> -- ASCS client getting ASE data is successful. </p></li>
+<li><p><strong>false</strong> -- ASCS client getting ASE data failed. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The result of ASCS client getting ASE data. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

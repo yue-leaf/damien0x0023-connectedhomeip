@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>功能支持 &mdash; RTL87x2G SDK v1.6.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/fontawesome.min.css?v=94ee33ea" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/auto.number.title.css?v=161e9acd" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=18e797d0" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/hljs-vs.css?v=f1e136c5" />
+
+  
+    <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../../_static/documentation_options.js?v=e79e6b07"></script>
+        <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../../_static/js/ga_config.js?v=97328f39"></script>
+        <script src="../../../../../_static/js/ga-insert.js?v=2e1e36cb"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+        <script src="../../../../../_static/translations.js?v=beaddf03"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../../../_static/js/auth.js?v=f5151c66"></script>
+        <script src="../../../../../_static/js/typed.umd.js?v=4a084d32"></script>
+        <script src="../../../../../_static/js/custom.js?v=7e0600e3"></script>
+        <script src="../../../../../_static/js/versions.js?v=9947f986"></script>
+        <script src="../../../../../_static/js/imgmodal.js?v=4633c617"></script>
+        <script src="../../../../../_static/js/aisummary.js?v=2cb0625a"></script>
+        <script src="../../../../../_static/js/real-kapa.js?v=4cc0375d"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+    <link rel="next" title="LE Host" href="../../le_host_stack/text_cn/README.html" />
+    <link rel="prev" title="Bluetooth" href="../../text_cn/README.html" />
+ 
+
+<!-- <script type="text/javascript">
+    window.sdktype = "sdk";
+</script> -->
+<script type="text/javascript">
+    window.isMultilingual = "True";
+    window.isMultitarget = "False";
+    window.leftNavWidth = "docs.bee4.siderbar.width";
+    window.chatAIBase = "RS_sdk-rtl87x2g-common";
+
+    const topTopHoverImage = new Image();
+    topTopHoverImage.src = "../../../../../_static/image/totop-hover.png";
+    const aiaskHoverImage = new Image();
+    aiaskHoverImage.src = "../../../../../_static/image/aiask-hover.png";
+</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+    <div id="imgModal" class="img-modal">
+        <span class="img-modal-close">&times;</span>
+        <img class="img-in-modal" id="imgInModal">
+    </div>
+
+    <div id="back-to-top" onclick="backToTop()"></div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+    <a href="../../../../../index.html">
+        
+            <img src="../../../../../_static/logo.png" class="logo" alt="Logo"/>
+    </a>
+
+    
+    
+        
+        <div class="version-container">
+            <select name="version-selector" id="version-selector" onchange="onVersionChange()">
+            </select>
+        </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <button class="rtd-search-btn" type="submit" id="EnterSearch">
+        <svg t="1752548658133" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19195" width="20" height="20">
+            <path d="M859.1 894.2c-13.6 0-26.5-5.1-36.4-14.4L683.4 740.5l-10.9 8.6c-30.8 24.2-65.1 42.9-102.2 55.5-36.1 12.3-73.8 18.5-112 18.5-45 0-88.9-8.5-130.4-25.4-43-17.4-81.6-43-114.6-76.1-33.1-33.1-58.7-71.7-76.2-114.7-16.8-41.5-25.4-85.4-25.4-130.5 0-45 8.5-88.9 25.4-130.5 17.4-43 43.1-81.6 76.2-114.7 33.1-33.1 71.7-58.7 114.6-76.1 41.5-16.8 85.4-25.4 130.4-25.4s88.9 8.5 130.5 25.4c43 17.4 81.6 43.1 114.7 76.1 28.3 28.3 51.2 60.7 68.1 96.5 16.4 34.6 26.9 71.4 31.2 109.6 4.3 37.8 2.3 75.9-5.8 113-8.2 37.8-22.6 73.7-42.7 106.6l7.6 11.5L897.4 804l0.4 0.4c19.4 20.5 19.3 52.6 0 73.1-10.2 10.8-23.9 16.7-38.7 16.7zM460.8 209.7c-35.6 0-70.2 6.9-102.9 20.4-33.9 14-64.2 34.5-90 61-49.2 50.5-76.3 117.2-76.3 187.7s27.1 137.2 76.3 187.7l0.1 0.2 0.2 0.1c50.5 49.2 117.2 76.3 187.7 76.3 35.6 0 70.2-6.9 102.9-20.4 33.9-14 64.2-34.5 90-61 49.2-50.5 76.3-117.2 76.3-187.7S698 336.8 648.8 286.3l-0.1-0.2-0.2-0.1c-50.5-49.2-117.2-76.3-187.7-76.3z" p-id="19196" fill="#0068b6"></path>
+        </svg>
+    </button>
+    <button class="rtd-clear-btn" type="reset" id="EnterClear">
+        <svg t="1752548555869" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17820" width="20" height="20">
+            <path d="M761.6 701.44a21.333333 21.333333 0 0 1 0 30.293333l-29.866667 29.866667a21.333333 21.333333 0 0 1-30.293333 0L512 572.16l-189.44 189.44a21.333333 21.333333 0 0 1-30.293333 0l-29.866667-29.866667a21.333333 21.333333 0 0 1 0-30.293333L451.84 512 262.4 322.56a21.333333 21.333333 0 0 1 0-30.293333l29.866667-29.866667a21.333333 21.333333 0 0 1 30.293333 0L512 451.84l189.44-189.44a21.333333 21.333333 0 0 1 30.293333 0l29.866667 29.866667a21.333333 21.333333 0 0 1 0 30.293333L572.16 512z" p-id="17821" fill="#707070"></path>
+        </svg>
+    </button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/overview/text_cn/README.html">概述</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/quick_start/text_cn/README.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/evb_guide/text_cn/README.html">评估板指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/tool_set/text_cn/README.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/platform/text_cn/README.html">平台指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/subsystems/text_cn/README.html">子系统</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../../doc/protocols/text_cn/README.html">协议</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../text_cn/README.html">Bluetooth</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">功能支持</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#le-host">LE Host 支持的功能</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#profiles">支持的 Profiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mesh">支持的蓝牙 Mesh 技术功能</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../le_host_stack/text_cn/README.html">LE Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../le_direction_finding/text_cn/README.html">LE Direction Finding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../rtl87x2g_bt_host_image/text_cn/README.html">Host Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../bluetooth_qualification/text_cn/README.html">蓝牙认证</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mesh/doc/text_cn/Bluetooth_Mesh_Overview.html">蓝牙 Mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ppt/doc/text_cn/README.html">2.4G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../openthread/doc/text_cn/README.html">Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../doc/protocols/matter/text_cn/README.html">Matter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/samples/text_cn/README.html">示例工程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/applications/text_cn/README.html">应用程序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/api_reference/README.html">API 指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/glossary.html">专业术语</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/license/text_cn/README.html">声明及许可证</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../doc/release_notes/README.html">版本说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../samples/tinyml/doc/text_cn/README.html">TinyML</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">RTL87x2G SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+        <li class="breadcrumb-item"><a href="../../../../../doc/protocols/text_cn/README.html">协议</a></li>
+        <li class="breadcrumb-item"><a href="../../text_cn/README.html">Bluetooth</a></li>
+    <li class="breadcrumb-item active">功能支持</li>
+
+    
+        <li class="wy-breadcrumbs-aside">
+            <a href="#" id="toEN">EN</a>/<a href="#" id="toCN">中文</a>
+        </li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+      </li>
+
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div id="AISummaryWidget"></div><section id="id1">
+<span id="id2"></span><h1>功能支持<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>RTL87x2G 支持蓝牙 5.4 核心规范，使客户能够在汽车、工业、家庭和个人应用等各个领域创造多功能且具有竞争力的产品。</p>
+<section id="le-host">
+<span id="features"></span><h2>LE Host 支持的功能<a class="headerlink" href="#le-host" title="Link to this heading"></a></h2>
+<p>关键功能包括适用于新兴的 <a class="reference internal" href="../../../../../doc/glossary.html#term-LE"><span class="xref std std-term">LE</span></a> 音频市场的 <a class="reference internal" href="../../../../../doc/glossary.html#term-BIS"><span class="xref std std-term">BIS</span></a> 和 <a class="reference internal" href="../../../../../doc/glossary.html#term-CIS"><span class="xref std std-term">CIS</span></a>；
+<a class="reference internal" href="../../../../../doc/glossary.html#term-AoA"><span class="xref std std-term">AoA</span></a> 和 <a class="reference internal" href="../../../../../doc/glossary.html#term-AoD"><span class="xref std std-term">AoD</span></a> 技术；
+扩展广播，以及支持 LE 1M <a class="reference internal" href="../../../../../doc/glossary.html#term-PHY"><span class="xref std std-term">PHY</span></a>、LE 2M PHY 和 LE coded PHY；
+支持 Privacy 功能以确保用户安全性。</p>
+<p>主要支持的功能及其概述如下：</p>
+<ol class="arabic">
+<li><p><strong>Privacy</strong></p>
+<p>该功能能通过频繁更改蓝牙设备地址来减少长期跟踪 LE 设备的能力。
+频繁更改的蓝牙设备地址称为 <a class="reference internal" href="../../../../../doc/glossary.html#term-RPA"><span class="xref std std-term">RPA</span></a>，
+生成和解析 RPA 的关键称为 <a class="reference internal" href="../../../../../doc/glossary.html#term-IRK"><span class="xref std std-term">IRK</span></a>，它在绑定过程中交换。
+IRK 确保只有授权设备才能解析设备的 RPA，从而在保护隐私的同时保持通信的安全性和可靠性。</p>
+</li>
+<li><p><strong>LE Data Packet Length Extension</strong></p>
+<p>过去，数据物理信道的 <a class="reference internal" href="../../../../../doc/glossary.html#term-PDU"><span class="xref std std-term">PDU</span></a> 包的最大 payload 是 27 字节。
+该功能允许 controller 在连接状态下传输 payload 高达 251 字节的数据物理信道 PDU，
+这显著提升了吞吐量。Peripheral 角色和 Central 角色都可以发起这个过程。</p>
+</li>
+<li><p><strong>LE 2M PHY</strong></p>
+<p>过去，LE 技术使用 1 Mbps 作为其 PHY。LE 2M PHY 将数据速率提升了一倍。</p>
+</li>
+<li><p><strong>LE Coded PHY</strong></p>
+<p>LE coded PHY，通常称为 LE Long Range，支持误差校正编码，从而扩展了通信距离范围。</p>
+</li>
+<li><p><strong>LE Advertising Extensions</strong></p>
+<p>LE 扩展广播增强了 LE 设备之间的广播和发现机制，
+使广播数据传输更复杂和灵活。它的主要优势如下：</p>
+<ol class="arabic simple">
+<li><p>支持 PHY：该功能允许在 LE 2 Mbps 和 coded PHY 上进行广播、扫描和启动行为。</p></li>
+<li><p>增大的广播数据容量：提供了更大的广播数据和扫描响应数据容量，使设备可以传输更多信息。</p></li>
+<li><p>扩展广播信道：广播数据不仅可以在主广播信道（信道：37/38/39），而且也可以在次广播信道（信道：0~36）中传输。通过这种方式减少了干扰，从而提高了数据传输的整体效率。</p></li>
+<li><p>周期性广播：使设备能够以定期间隔发送广播。这一功能增强了设备的可发现性并促进了同步传输。</p></li>
+<li><p>广播集：支持同时启用多个广播配置。</p></li>
+</ol>
+</li>
+<li><p><strong>LE Channel Selection Algorithm #2</strong></p>
+<p>与信道选择算法#1相比，算法#2在避免干扰能力方面有所提升。</p>
+<p>算法#2不仅支持数据信道，还包含周期性广播的广播信道，
+以及BIS和CIS的同步通道。</p>
+</li>
+<li><p><strong>AoA and AoD</strong></p>
+<p>AoA和AoD功能支持精确的基于位置的服务和增强的通信方向性，
+如室内定位、资产跟踪和其他位置感知场景。</p>
+<p>AoA允许低功耗设备通过使用单个天线传输启用方向查找的包，使其方向可以被对端设备获取。对端设备通过使用天线阵列的不同元素来估算到达角度。</p>
+<p>AoD允许由天线阵列组成的低功耗设备通过在传输过程中切换天线，传输启用方向查找的包，使其出发角度可以被检测到。对端设备通过使用单个天线来估算出发角度。</p>
+</li>
+<li><p><strong>Periodic Advertising Sync Transfer</strong></p>
+<p>此功能有助于将同步的周期性广播时间细节从一个限制较少的设备传输到另一个设备，如限耗设备。
+限制较少的设备执行同步过程，并随后通过低功耗链接将获取的同步细节传输到另一个设备。
+此精简的过程降低了受限设备的功耗和带宽使用，优化了其操作效率。</p>
+</li>
+<li><p><strong>LE Power Control and Path Loss Monitoring</strong></p>
+<p>此功能增强了设备之间的电源管理和连接可靠性。
+LE 功率控制动态调整传输功率以提高能效，
+在设备之间距离变化的场景中非常有用。
+路径损耗监测持续测量信号强度以评估连接质量，
+从而实现自适应通信以提高可靠性。</p>
+</li>
+<li><p><strong>LE Audio (LE Isochronous Channels)</strong></p>
+<p>LE 音频引入了新的同步通道，建立了增强音频流传输能力的框架。</p>
+<p>BIS 和 CIS 都有助于多流场景。
+BIS 实现单向传输，此模式支持一对一和一对多的拓扑结构，提供广播能力；
+另一方面，CIS 促进设备之间的双向通信，该模式支持一对一的通讯拓扑结构。</p>
+</li>
+<li><p><strong>LE Channel Classification</strong></p>
+<p>Peripheral 角色可以将其信道分类结果报告给 Central 角色，
+这些结果包括哪些信道干扰较少，
+为 Central 角色提供有价值的见解，以便进行更明智的信道选择。</p>
+</li>
+</ol>
+<p>下表展示了 RTL87x2G <a class="reference internal" href="../../../../../doc/glossary.html#term-SDK"><span class="xref std std-term">SDK</span></a> 提供的不同 Bluetooth Host image 所支持的蓝牙技术功能。
+有关 Bluetooth Host image 的更多信息，请参阅 <a class="reference internal" href="../../rtl87x2g_bt_host_image/text_cn/README.html#bluetooth-host-image-cn"><span class="std std-ref">Host Image</span></a>。</p>
+<table class="docutils align-center" id="id3">
+<caption><span class="caption-text">支持的蓝牙技术功能</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Spec 版本</p></th>
+<th class="head"><p>蓝牙技术功能</p></th>
+<th class="head"><p>bt_host_0_0</p></th>
+<th class="head"><p>bt_host_3_0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="5"><p>Bluetooth 4.0</p></td>
+<td><p>Advertiser</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Scanner</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>Initiator</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Central</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>Peripheral</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>Bluetooth 4.1</p></td>
+<td><p>Low Duty Cycle Directed Advertising</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>LE L2CAP Connection Oriented Channel</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>LE Scatternet</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>LE Ping</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Bluetooth 4.2</p></td>
+<td><p>LE Data Packet Length Extension</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>LE Secure Connections</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Link Layer Privacy</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td rowspan="6"><p>Bluetooth 5.0</p></td>
+<td><p>LE 2M PHY</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>LE Coded PHY</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>High Duty Cycle Non-Connectable Advertising</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>LE Advertising Extensions</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>LE Periodic Advertising</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>LE Channel Selection Algorithm #2</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Bluetooth 5.1</p></td>
+<td><p>AoA and AoD</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>Periodic Advertising Sync Transfer</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>Bluetooth 5.2</p></td>
+<td><p>LE Isochronous Channels</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enhanced Attribute Protocol</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td><p>LE Power Control</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bluetooth 5.3</p></td>
+<td><p>LE Channel Classification</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="profiles">
+<h2>支持的 Profiles<a class="headerlink" href="#profiles" title="Link to this heading"></a></h2>
+<p>下表显示了 SDK 中支持的 Profiles：</p>
+<table class="docutils align-center" id="id4">
+<caption><span class="caption-text">支持的 Profiles</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Profiles</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>GATT Server Role</p></th>
+<th class="head"><p>GATT Client Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BAS: Battery Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>CSCS: Cycling Speed and Cadence Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td><p>DIS: Device Information Service</p></td>
+<td><p>1.1</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>GLS: Glucose Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td><p>HIDS: Human Interface Device Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>HRS: Heart Rate Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td><p>HTS: Health Thermometer Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>IAS: Immediate Alert Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>IPSP: Internet Protocol Support Profile</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>LLS: Link Loss Service</p></td>
+<td><p>1.0.1</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td><p>LNS: Location and Navigation Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>RSCS: Running Speed and Cadence Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td><p>ScPS: Scan Parameters Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-odd"><td><p>TPS: TX Power Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+<tr class="row-even"><td><p>WSS: Weight Scale Service</p></td>
+<td><p>1.0</p></td>
+<td><p>Y</p></td>
+<td><p>N</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mesh">
+<h2>支持的蓝牙 Mesh 技术功能<a class="headerlink" href="#mesh" title="Link to this heading"></a></h2>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">支持的蓝牙 Mesh 技术功能</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Spec 版本</p></th>
+<th class="head"><p>蓝牙 Mesh 技术功能</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="4"><p>Mesh 1.0</p></td>
+<td><p>Relay</p></td>
+<td><p>接收并通过 advertising bearer 重新传输 mesh message，以便扩展网络</p></td>
+</tr>
+<tr class="row-odd"><td><p>Proxy</p></td>
+<td><p>接收并在 GATT 和 advertising bearer 之间重新传输 mesh message</p></td>
+</tr>
+<tr class="row-even"><td><p>Low Power</p></td>
+<td><p>在 mesh 网络中可以大幅降低接收占空比，降低功耗运行，需要支持 Friend feature 的节点配合</p></td>
+</tr>
+<tr class="row-odd"><td><p>Friend</p></td>
+<td><p>通过存储支持 Low Power feature 节点的消息，帮助其运行</p></td>
+</tr>
+<tr class="row-even"><td rowspan="7"><p>Mesh 1.1</p></td>
+<td><p>Enhanced Provisioning Authentication</p></td>
+<td><p>支持 Provisioning Protocol 中更多的算法</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remote Provisioning</p></td>
+<td><p>当 Provisioner 超出未 unprovisioned devices 的直接无线电范围时，仍可将其添加到 mesh 网络</p></td>
+</tr>
+<tr class="row-even"><td><p>Private Beacons</p></td>
+<td><p>提供 Secure Mesh Beacons 的隐私保护</p></td>
+</tr>
+<tr class="row-odd"><td><p>Directed Forwarding</p></td>
+<td><p>通过选择一部分节点将消息从源点中继到目的地，以帮助提高多跳网络的性能</p></td>
+</tr>
+<tr class="row-even"><td><p>Subnet Bridge</p></td>
+<td><p>支持 mesh 网络的子网桥接</p></td>
+</tr>
+<tr class="row-odd"><td><p>Binary Large Object Transfer</p></td>
+<td><p>使 mesh 设备之间能够传输大量数据</p></td>
+</tr>
+<tr class="row-even"><td><p>Device Firmware Update</p></td>
+<td><p>使 mesh 设备可以通过 mesh 网络完成固件升级</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../../text_cn/README.html" class="btn btn-neutral float-left" title="Bluetooth" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../../le_host_stack/text_cn/README.html" class="btn btn-neutral float-right" title="LE Host" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      Copyrights ©瑞晟微电子(苏州)有限公司 2026. All rights reserved.
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32059002006558" rel="noreferrer" target="_blank">
+        <img src="../../../../../_static/image/gongan.png" style="margin-top:-4px; width:18px" loading="lazy"> 苏公网安备32059002006558号
+      </a>
+      <a href="https://beian.miit.gov.cn/">苏ICP备10062199号-8</a>
+
+      
+    <p></p>
+    </p>
+    <input type="hidden" name="latest_version" id="LatestVersion" value="">
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
