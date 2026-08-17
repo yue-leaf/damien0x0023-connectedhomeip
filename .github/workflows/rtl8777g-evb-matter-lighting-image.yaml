@@ -36,6 +36,8 @@ concurrency:
 env:
     CHIP_LOG_TIMESTAMPS: false
     BUILD_TARGET: realtek-rtl8777g-lighting
+    CMAKE_TARGET: matter-cli-ftd
+    RT_PLATFORM: rtl87x2g
     ARTIFACT_DIR: out/artifacts
 
 jobs:
@@ -64,6 +66,16 @@ jobs:
                       --target ${BUILD_TARGET} \
                       build \
                       --copy-artifacts-to ${ARTIFACT_DIR} \
+                  "
+
+            - name: Generate RTL8777G bank0 MP app image
+              run: |
+                  scripts/run_in_build_env.sh "\
+                      export OUT_FOLDER=\"${PWD}/out/${BUILD_TARGET}\"; \
+                      export OT_SRCDIR=\"${PWD}/third_party/openthread/ot-realtek\"; \
+                      export REALTEK_SDK_PATH=\"${PWD}/third_party/openthread/ot-realtek/third_party/Realtek/rtl87x2g_sdk\"; \
+                      bash scripts/tools/realtek/post_build.sh bank0 ${CMAKE_TARGET} ${RT_PLATFORM}; \
+                      test -f \"${PWD}/out/${BUILD_TARGET}/bin/${CMAKE_TARGET}_bank0_MP.bin\" \
                   "
 
             - name: List generated images
