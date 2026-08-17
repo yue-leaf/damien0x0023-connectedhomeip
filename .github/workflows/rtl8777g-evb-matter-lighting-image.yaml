@@ -70,13 +70,43 @@ jobs:
 
             - name: Generate RTL8777G bank0 MP app image
               run: |
-                  scripts/run_in_build_env.sh "\
-                      export OUT_FOLDER=\"${PWD}/out/${BUILD_TARGET}\"; \
-                      export OT_SRCDIR=\"${PWD}/third_party/openthread/ot-realtek\"; \
-                      export REALTEK_SDK_PATH=\"${PWD}/third_party/openthread/ot-realtek/third_party/Realtek/rtl87x2g_sdk\"; \
-                      bash scripts/tools/realtek/post_build.sh bank0 ${CMAKE_TARGET} ${RT_PLATFORM}; \
-                      test -f \"${PWD}/out/${BUILD_TARGET}/bin/${CMAKE_TARGET}_bank0_MP.bin\" \
-                  "
+                  tee /tmp/generate-rtl8777g-mp-image.sh >/dev/null <<'EOF'
+                  set -euo pipefail
+
+                  export OUT_FOLDER="${PWD}/out/${BUILD_TARGET}"
+                  export OT_SRCDIR="${PWD}/third_party/openthread/ot-realtek"
+                  export REALTEK_SDK_PATH="${PWD}/third_party/openthread/ot-realtek/third_party/Realtek/rtl87x2g_sdk"
+
+                  ELF_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}"
+                  BIN_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}_bank0.bin"
+                  TRACE_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}_bank0.trace"
+                  MP_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}_bank0_MP.bin"
+                  ASM_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}.asm"
+                  PREPEND_HEADER="${REALTEK_SDK_PATH}/tools/prepend_header/prepend_header"
+                  MP_INI="${OT_SRCDIR}/vendor/${RT_PLATFORM}/common/mp.ini"
+                  SIGN_KEY="${REALTEK_SDK_PATH}/tools/keys/rtk_ecdsa.pem"
+                  KEY_CONFIG="${REALTEK_SDK_PATH}/tools/keys/key.json"
+
+                  test -f "${ELF_FILE}"
+                  test -f "${PREPEND_HEADER}"
+                  test -f "${MP_INI}"
+                  test -f "${SIGN_KEY}"
+                  test -f "${KEY_CONFIG}"
+
+                  arm-none-eabi-objdump -S -C -l "${ELF_FILE}" > "${ASM_FILE}"
+                  arm-none-eabi-objcopy -O binary -S "${ELF_FILE}" "${BIN_FILE}" --remove-section=App.trace
+                  arm-none-eabi-objcopy -O binary -S "${ELF_FILE}" "${TRACE_FILE}" --only-section=App.trace
+
+                  chmod +x "${PREPEND_HEADER}"
+                  "${PREPEND_HEADER}" -t app_code -b 15 -p "${BIN_FILE}" -m 1 \
+                      -i "${MP_INI}" \
+                      -r "${SIGN_KEY}" \
+                      -a "${KEY_CONFIG}"
+
+                  test -f "${MP_FILE}"
+                  md5sum "${MP_FILE}"
+                  EOF
+                  scripts/run_in_build_env.sh "bash /tmp/generate-rtl8777g-mp-image.sh"
 
             - name: List generated images
               run: |
