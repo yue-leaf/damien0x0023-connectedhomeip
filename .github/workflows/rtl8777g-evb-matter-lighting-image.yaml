@@ -36,8 +36,6 @@ concurrency:
 env:
     CHIP_LOG_TIMESTAMPS: false
     BUILD_TARGET: realtek-rtl8777g-lighting
-    CMAKE_TARGET: matter-cli-ftd
-    RT_PLATFORM: rtl87x2g
     ARTIFACT_DIR: out/artifacts
 
 jobs:
@@ -53,11 +51,35 @@ jobs:
             - name: Checkout
               uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-            - name: Checkout submodules & Bootstrap
-              uses: ./.github/actions/checkout-submodules-and-bootstrap
-              with:
-                  platform: realtek
-                  extra-submodule-parameters: --recursive
+            - name: Checkout Realtek submodules
+              shell: bash
+              run: |
+                  set -euo pipefail
+
+                  for attempt in 1 2 3; do
+                      if scripts/checkout_submodules.py \
+                          --allow-changing-global-git-config \
+                          --shallow \
+                          --platform realtek \
+                          --recursive; then
+                          exit 0
+                      fi
+
+                      if [ "${attempt}" -eq 3 ]; then
+                          echo "Realtek submodule checkout failed after ${attempt} attempts" >&2
+                          exit 1
+                      fi
+
+                      echo "Realtek submodule checkout failed; retrying in 2 seconds (${attempt}/3)" >&2
+                      sleep 2
+                  done
+
+            - name: Bootstrap Matter build environment
+              shell: bash
+              env:
+                  PW_NO_CIPD_CACHE_DIR: 1
+                  PW_ENVSETUP_NO_BANNER: 1
+              run: source scripts/bootstrap.sh -p all,realtek
 
             - name: Build RTL8777G Matter lighting image
               run: |
@@ -67,55 +89,6 @@ jobs:
                       build \
                       --copy-artifacts-to ${ARTIFACT_DIR} \
                   "
-
-            - name: Generate RTL8777G bank0 MP app image
-              run: |
-                  tee /tmp/generate-rtl8777g-mp-image.sh >/dev/null <<'EOF'
-                  set -euo pipefail
-
-                  export OUT_FOLDER="${PWD}/out/${BUILD_TARGET}"
-                  export OT_SRCDIR="${PWD}/third_party/openthread/ot-realtek"
-                  export REALTEK_SDK_PATH="${PWD}/third_party/openthread/ot-realtek/third_party/Realtek/rtl87x2g_sdk"
-
-                  ELF_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}"
-                  BIN_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}_bank0.bin"
-                  TRACE_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}_bank0.trace"
-                  MP_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}_bank0_MP.bin"
-                  ASM_FILE="${OUT_FOLDER}/bin/${CMAKE_TARGET}.asm"
-                  PREPEND_HEADER="${REALTEK_SDK_PATH}/tools/prepend_header/prepend_header"
-                  MP_INI="${OT_SRCDIR}/vendor/${RT_PLATFORM}/common/mp.ini"
-                  SIGN_KEY="${REALTEK_SDK_PATH}/tools/keys/rtk_ecdsa.pem"
-                  KEY_CONFIG="${REALTEK_SDK_PATH}/tools/keys/key.json"
-
-                  require_file() {
-                      if [ ! -f "$1" ]; then
-                          echo "Missing required file: $1" >&2
-                          echo "Nearby files:" >&2
-                          find "$(dirname "$1")" -maxdepth 2 -type f -print 2>/dev/null | sort >&2 || true
-                          exit 1
-                      fi
-                  }
-
-                  require_file "${ELF_FILE}"
-                  require_file "${PREPEND_HEADER}"
-                  require_file "${MP_INI}"
-                  require_file "${SIGN_KEY}"
-                  require_file "${KEY_CONFIG}"
-
-                  arm-none-eabi-objdump -S -C -l "${ELF_FILE}" > "${ASM_FILE}"
-                  arm-none-eabi-objcopy -O binary -S "${ELF_FILE}" "${BIN_FILE}" --remove-section=App.trace
-                  arm-none-eabi-objcopy -O binary -S "${ELF_FILE}" "${TRACE_FILE}" --only-section=App.trace
-
-                  chmod +x "${PREPEND_HEADER}"
-                  "${PREPEND_HEADER}" -t app_code -b 15 -p "${BIN_FILE}" -m 1 \
-                      -i "${MP_INI}" \
-                      -r "${SIGN_KEY}" \
-                      -a "${KEY_CONFIG}"
-
-                  test -f "${MP_FILE}"
-                  md5sum "${MP_FILE}"
-                  EOF
-                  scripts/run_in_build_env.sh "bash /tmp/generate-rtl8777g-mp-image.sh"
 
             - name: List generated images
               run: |
