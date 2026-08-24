@@ -80,6 +80,21 @@ sudo apt-get install git gcc g++ pkg-config libssl-dev libdbus-1-dev libglib2.0-
     You can find the target built file called **matter-cli-ftd** under the
     `out/realtek-rtl8777g-lighting/bin` directory.
 
+### Production DAC build requirement
+
+Production images that use a DAC key persisted by the TrustZone Secure App
+must configure `matter_require_persistent_dac_key=ON`. The Realtek CMake bridge
+propagates the matching Matter GN argument automatically, so the application
+and platform library cannot select different DAC paths. The build must also set
+`matter_secure_dac_cmse_import_library` to the reviewed RTL8777G Secure App CMSE
+import library; configuration fails if it is missing. This selects Secure App
+ABI operation `0x110`. The build must also enable TrustZone and Factory Data. In
+this profile Factory Data contains the DAC certificate, PAI, certification
+declaration, and commissioning data, but no DAC private key. The raw-key path
+is retained only for development images. Existing `CONFIG_DAC_KEY_ENC` builds
+continue to use the legacy encrypted-key Secure App import path when persistent
+on-chip provisioning is not selected.
+
 ## More information
 
 For more information on our product line and support options, please visit

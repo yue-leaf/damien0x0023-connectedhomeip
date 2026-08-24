@@ -176,6 +176,19 @@ add_library(
     ${chip_main_sources}
 )
 
+if (matter_require_persistent_dac_key)
+    if (NOT DEFINED matter_secure_dac_cmse_import_library OR
+        NOT EXISTS "${matter_secure_dac_cmse_import_library}")
+        message(FATAL_ERROR
+            "Persistent DAC builds require matter_secure_dac_cmse_import_library "
+            "to point to the reviewed RTL8777G Secure App CMSE import library")
+    endif()
+    add_library(rtk_secure_dac_cmse_import UNKNOWN IMPORTED GLOBAL)
+    set_target_properties(rtk_secure_dac_cmse_import PROPERTIES
+        IMPORTED_LOCATION "${matter_secure_dac_cmse_import_library}")
+    target_link_libraries(${chip_main} PUBLIC rtk_secure_dac_cmse_import)
+endif()
+
 chip_configure_data_model(chip_main
 #    INCLUDE_SERVER
     ZAP_FILE ${matter_example_path}/../../lighting-common/lighting-app.zap

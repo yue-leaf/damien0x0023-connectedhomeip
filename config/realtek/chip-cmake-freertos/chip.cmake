@@ -215,6 +215,14 @@ if (matter_enable_cg_secure_dac_vendor)
     string(APPEND CHIP_GN_ARGS "chip_use_cg_secure_dac_vendor = true\n")
 endif(matter_enable_cg_secure_dac_vendor)
 
+if (matter_require_persistent_dac_key)
+    if (matter_enable_cg_secure_dac_vendor)
+        message(FATAL_ERROR
+            "matter_require_persistent_dac_key and matter_enable_cg_secure_dac_vendor are mutually exclusive")
+    endif()
+    string(APPEND CHIP_GN_ARGS "chip_require_persistent_dac_key = true\n")
+endif(matter_require_persistent_dac_key)
+
 file(GENERATE OUTPUT ${CHIP_OUTPUT}/args.gn CONTENT ${CHIP_GN_ARGS})
 
 ExternalProject_Add(

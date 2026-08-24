@@ -22,7 +22,17 @@
 #include <platform/CommissionableDataProvider.h>
 #include <platform/DeviceInstanceInfoProvider.h>
 #include <platform/realtek/freertos/FactoryDataProvider.h>
-#if FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
+#ifndef CONFIG_REQUIRE_PERSISTENT_DAC_KEY
+#define CONFIG_REQUIRE_PERSISTENT_DAC_KEY 0
+#endif
+
+#if CONFIG_REQUIRE_PERSISTENT_DAC_KEY && !(FEATURE_TRUSTZONE_ENABLE && CONFIG_FACTORY_DATA)
+#error "Persistent DAC production builds require TrustZone and Factory Data"
+#endif
+
+#if CONFIG_REQUIRE_PERSISTENT_DAC_KEY
+#include "RTKSecureDACService.h"
+#elif FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
 #include "nsc_veneer_customize.h"
 #endif
 namespace chip {
@@ -42,8 +52,8 @@ public:
 
 private:
     const FactoryData * pFactoryData;
+#if !CONFIG_REQUIRE_PERSISTENT_DAC_KEY && FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
     bool mDACKeyImported = false;
-#if FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
     CHIP_ERROR ImportDACKey();
 #endif
 };

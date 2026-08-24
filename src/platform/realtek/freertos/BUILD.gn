@@ -20,7 +20,11 @@ assert(chip_device_platform == "realtek_bee")
 
 declare_args() {
   chip_use_cg_secure_dac_vendor = false
+  chip_require_persistent_dac_key = false
 }
+
+assert(!(chip_use_cg_secure_dac_vendor && chip_require_persistent_dac_key),
+       "Select either the CG secure DAC provider or the persistent Realtek Secure App DAC provider")
 
 static_library("freertos") {
   sources = [
@@ -90,6 +94,7 @@ static_library("freertos") {
   sources += [
     "RTK/RTKDACVendorProvider.cpp",
     "RTK/RTKDACVendorProvider.h",
+    "RTK/RTKSecureDACService.h",
   ]
 
   if (chip_use_cg_secure_dac_vendor) {
@@ -98,6 +103,10 @@ static_library("freertos") {
       "CG/CGSecureDACVendorProvider.h",
     ]
     defines = [ "CONFIG_USE_CG_SECURE_DAC_VENDOR=1" ]
+  }
+
+  if (chip_require_persistent_dac_key) {
+    defines += [ "CONFIG_REQUIRE_PERSISTENT_DAC_KEY=1" ]
   }
 }
 

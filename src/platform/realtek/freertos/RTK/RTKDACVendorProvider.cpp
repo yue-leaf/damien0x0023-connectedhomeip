@@ -33,6 +33,11 @@ using namespace ::chip::DeviceLayer::Internal;
 namespace chip {
 namespace DeviceLayer {
 
+#if CONFIG_REQUIRE_PERSISTENT_DAC_KEY
+static_assert(RTK_SECURE_DAC_SIGNATURE_SIZE == Crypto::kP256_ECDSA_Signature_Length_Raw,
+              "Secure App and Matter DAC signature sizes differ");
+#endif
+
 CHIP_ERROR RTKDACVendorProvider::GetCertificationDeclaration(MutableByteSpan & outBuffer)
 {
     CHIP_ERROR err = CHIP_DEVICE_ERROR_CONFIG_NOT_FOUND;
@@ -187,7 +192,7 @@ CHIP_ERROR RTKDACVendorProvider::GetProductAttestationIntermediateCert(MutableBy
     return CHIP_NO_ERROR;
 }
 
-#if FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
+#if !CONFIG_REQUIRE_PERSISTENT_DAC_KEY && FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
 CHIP_ERROR RTKDACVendorProvider::ImportDACKey()
 {
     VerifyOrReturnError(pFactoryData->dac.dac_cert.len > 0, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
@@ -196,19 +201,18 @@ CHIP_ERROR RTKDACVendorProvider::ImportDACKey()
     chip::Crypto::P256PublicKey dacPublicKey;
     ReturnErrorOnFailure(chip::Crypto::ExtractPubkeyFromX509Cert(dacCertSpan, dacPublicKey));
 
-    DAC_IMPORT_PARAM key_param       = {};
-    key_param.encrypted_priv_key     = pFactoryData->dac.dac_key.value;
-    key_param.encrypted_priv_key_len = pFactoryData->dac.dac_key.len;
-    key_param.public_key             = dacPublicKey.Bytes();
-    key_param.public_key_len         = dacPublicKey.Length();
+    DAC_IMPORT_PARAM keyParam       = {};
+    keyParam.encrypted_priv_key     = pFactoryData->dac.dac_key.value;
+    keyParam.encrypted_priv_key_len = pFactoryData->dac.dac_key.len;
+    keyParam.public_key             = dacPublicKey.Bytes();
+    keyParam.public_key_len         = dacPublicKey.Length();
 
-    secure_app_function_call(SECURE_APP_FUNCTION_DAC_KEY_IMPORT, &key_param);
-    if (key_param.ret)
+    secure_app_function_call(SECURE_APP_FUNCTION_DAC_KEY_IMPORT, &keyParam);
+    if (keyParam.ret)
     {
-        ChipLogError(DeviceLayer, "secure_app_function_call DAC key import %d", key_param.ret);
+        ChipLogError(DeviceLayer, "secure_app_function_call DAC key import %d", keyParam.ret);
         return CHIP_ERROR_INTERNAL;
     }
-
     return CHIP_NO_ERROR;
 }
 #endif
@@ -216,27 +220,53 @@ CHIP_ERROR RTKDACVendorProvider::ImportDACKey()
 CHIP_ERROR RTKDACVendorProvider::SignWithDeviceAttestationKey(const ByteSpan & messageToSign, MutableByteSpan & outSignBuffer)
 {
     CHIP_ERROR err = CHIP_NO_ERROR;
-    Crypto::P256ECDSASignature signature;
-    Crypto::P256Keypair keypair;
 
     VerifyOrReturnError(!outSignBuffer.empty(), CHIP_ERROR_INVALID_ARGUMENT);
     VerifyOrReturnError(!messageToSign.empty(), CHIP_ERROR_INVALID_ARGUMENT);
-    VerifyOrReturnError(outSignBuffer.size() >= signature.Capacity(), CHIP_ERROR_BUFFER_TOO_SMALL);
+    VerifyOrReturnError(outSignBuffer.size() >= Crypto::kP256_ECDSA_Signature_Length_Raw, CHIP_ERROR_BUFFER_TOO_SMALL);
 
 #if CONFIG_FACTORY_DATA
-#if FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
+#if CONFIG_REQUIRE_PERSISTENT_DAC_KEY
+    // The production DAC key is generated and persisted by the Secure App.
+    // Factory Data contains only the DAC certificate and other non-secret
+    // manufacturing data; no private-key blob is imported at application boot.
+    uint8_t sig_tmp_buf[Crypto::kP256_ECDSA_Signature_Length_Raw] = {};
+    rtk_secure_sign_dac_param_t param                             = {};
+    rtk_secure_sign_dac_param_init(&param);
+    param.message                                                 = reinterpret_cast<uintptr_t>(messageToSign.data());
+    param.message_length                                          = messageToSign.size();
+    param.signature                                               = reinterpret_cast<uintptr_t>(sig_tmp_buf);
+    param.signature_size                                          = sizeof(sig_tmp_buf);
+
+    const int32_t secureStatus = rtk_secure_service_nsc_call(
+        RTK_SECURE_OP_SIGN_DAC_ATTESTATION, &param, sizeof(param));
+    if (secureStatus != RTK_SECURE_DAC_STATUS_SUCCESS || param.header.result != RTK_SECURE_DAC_STATUS_SUCCESS)
+    {
+        ChipLogError(DeviceLayer, "Secure App DAC sign failed: call=%ld result=%ld", static_cast<long>(secureStatus),
+                     static_cast<long>(param.header.result));
+        return CHIP_ERROR_INTERNAL;
+    }
+    if (param.signature_length != sizeof(sig_tmp_buf))
+    {
+        ChipLogError(DeviceLayer, "Secure App returned invalid DAC signature length: %lu",
+                     static_cast<unsigned long>(param.signature_length));
+        return CHIP_ERROR_INTERNAL;
+    }
+
+    return CopySpanToMutableSpan(ByteSpan{ sig_tmp_buf, static_cast<size_t>(param.signature_length) }, outSignBuffer);
+#elif FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
     if (!mDACKeyImported)
     {
         ReturnErrorOnFailure(ImportDACKey());
         mDACKeyImported = true;
     }
 
-    uint8_t sig_tmp_buf[Crypto::kP256_ECDSA_Signature_Length_Raw] = {};
-    DAC_SIGN_PARAM param                                          = {};
-    param.msg                                                     = messageToSign.data();
-    param.msg_len                                                 = messageToSign.size();
-    param.sig                                                     = sig_tmp_buf;
-    param.sig_len                                                 = sizeof(sig_tmp_buf);
+    uint8_t sigTmpBuf[Crypto::kP256_ECDSA_Signature_Length_Raw] = {};
+    DAC_SIGN_PARAM param                                         = {};
+    param.msg                                                    = messageToSign.data();
+    param.msg_len                                                = messageToSign.size();
+    param.sig                                                    = sigTmpBuf;
+    param.sig_len                                                = sizeof(sigTmpBuf);
 
     secure_app_function_call(SECURE_APP_FUNCTION_DAC_KEY_SIGN, &param);
     if (param.ret)
@@ -244,14 +274,16 @@ CHIP_ERROR RTKDACVendorProvider::SignWithDeviceAttestationKey(const ByteSpan & m
         ChipLogError(DeviceLayer, "secure_app_function_call DAC key sign %d", param.ret);
         return CHIP_ERROR_INTERNAL;
     }
-    if (param.sig_len == 0 || param.sig_len > sizeof(sig_tmp_buf))
+    if (param.sig_len == 0 || param.sig_len > sizeof(sigTmpBuf))
     {
         ChipLogError(DeviceLayer, "Signature length out of bounds: %d", param.sig_len);
         return CHIP_ERROR_INTERNAL;
     }
-
-    return CopySpanToMutableSpan(ByteSpan{ sig_tmp_buf, static_cast<size_t>(param.sig_len) }, outSignBuffer);
+    return CopySpanToMutableSpan(ByteSpan{ sigTmpBuf, static_cast<size_t>(param.sig_len) }, outSignBuffer);
 #else
+    Crypto::P256ECDSASignature signature;
+    Crypto::P256Keypair keypair;
+
     VerifyOrReturnError(pFactoryData->dac.dac_cert.len > 0, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     VerifyOrReturnError(pFactoryData->dac.dac_key.len > 0, CHIP_ERROR_PERSISTED_STORAGE_VALUE_NOT_FOUND);
     // Extract public key from DAC cert.
@@ -264,8 +296,11 @@ CHIP_ERROR RTKDACVendorProvider::SignWithDeviceAttestationKey(const ByteSpan & m
                                                      ByteSpan(dacPublicKey.Bytes(), dacPublicKey.Length())));
     ReturnErrorOnFailure(keypair.ECDSA_sign_msg(messageToSign.data(), messageToSign.size(), signature));
     err = CopySpanToMutableSpan(ByteSpan{ signature.ConstBytes(), signature.Length() }, outSignBuffer);
-#endif // FEATURE_TRUSTZONE_ENABLE && CONFIG_DAC_KEY_ENC
+#endif // CONFIG_REQUIRE_PERSISTENT_DAC_KEY
 #else
+    Crypto::P256ECDSASignature signature;
+    Crypto::P256Keypair keypair;
+
     const uint8_t kDacPublicKey[65] = {
         0x04, 0x46, 0x3a, 0xc6, 0x93, 0x42, 0x91, 0x0a, 0x0e, 0x55, 0x88, 0xfc, 0x6f, 0xf5, 0x6b, 0xb6, 0x3e,
         0x62, 0xec, 0xce, 0xcb, 0x14, 0x8f, 0x7d, 0x4e, 0xb0, 0x3e, 0xe5, 0x52, 0x60, 0x14, 0x15, 0x76, 0x7d,
