@@ -44,6 +44,12 @@ class RealtekBoard(Enum):
             return 'rtl87x2g'
         raise Exception(f'Unknown board type: {self!r}')
 
+    @property
+    def PlatformName(self):
+        if self in (RealtekBoard.RTL8777G, RealtekBoard.RTL87X2G):
+            return 'rtl87x2g'
+        raise Exception(f'Unknown board type: {self!r}')
+
 
 class RealtekApp(Enum):
     LIGHT = auto()
@@ -143,6 +149,7 @@ class RealtekBuilder(Builder):
             "-DBUILD_TYPE=sdk",
             f"-DBUILD_TARGET={self.board.BoardName}",
             f"-DBUILD_BOARD_TARGET={self.board.BoardName}",
+            f"-DRT_PLATFORM={self.board.PlatformName}",
             f"-DOT_CMAKE_NINJA_TARGET={self.app.TargetName}",
             f"-DMATTER_EXAMPLE_PATH={self.root}/examples/{self.app.ExampleName}/realtek/common"
         ]
