@@ -75,6 +75,7 @@ static_library("freertos") {
   public_deps = [ "${chip_root}/src/platform:platform_base" ]
 
   public_configs = []
+  defines = []
   include_dirs = []
 
   if (chip_enable_thread) {
@@ -105,7 +106,7 @@ static_library("freertos") {
       "CG/CGSecureDACVendorProvider.cpp",
       "CG/CGSecureDACVendorProvider.h",
     ]
-    defines = [ "CONFIG_USE_CG_SECURE_DAC_VENDOR=1" ]
+    defines += [ "CONFIG_USE_CG_SECURE_DAC_VENDOR=1" ]
   }
 
   if (chip_require_persistent_dac_key) {
