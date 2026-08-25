@@ -395,8 +395,9 @@ CHIP_ERROR ClosureDimensionCluster::SetUnitRange(const DataModel::Nullable<Struc
     // If Unit is Millimeter , Range values SHALL contain unsigned values from 0 to 32767 only
     if (unit == ClosureUnitEnum::kMillimeter)
     {
-        VerifyOrReturnError(unitRange.Value().min >= 0 && unitRange.Value().min <= 32767, CHIP_ERROR_INVALID_ARGUMENT);
-        VerifyOrReturnError(unitRange.Value().max >= 0 && unitRange.Value().max <= 32767, CHIP_ERROR_INVALID_ARGUMENT);
+        // UnitRange fields are int16_t, so 32767 is already enforced by their type.
+        VerifyOrReturnError(unitRange.Value().min >= 0, CHIP_ERROR_INVALID_ARGUMENT);
+        VerifyOrReturnError(unitRange.Value().max >= 0, CHIP_ERROR_INVALID_ARGUMENT);
     }
 
     // If Unit is Degrees the maximum span range is 360 degrees.

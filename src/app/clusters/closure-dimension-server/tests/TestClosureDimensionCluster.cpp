@@ -309,6 +309,15 @@ TEST_F(TestClosureDimensionCluster, TestUnitFromConfigAndUnitRangeSetter)
     EXPECT_EQ(cluster.GetUnitRange().Value().min, 0);
     EXPECT_EQ(cluster.GetUnitRange().Value().max, 1000);
 
+    Structs::UnitRangeStruct::Type fullRange{ .min = 0, .max = 32767 };
+    EXPECT_EQ(cluster.SetUnitRange(DataModel::MakeNullable(fullRange)), CHIP_NO_ERROR);
+
+    Structs::UnitRangeStruct::Type negativeMin{ .min = -1, .max = 1000 };
+    EXPECT_EQ(cluster.SetUnitRange(DataModel::MakeNullable(negativeMin)), CHIP_ERROR_INVALID_ARGUMENT);
+
+    Structs::UnitRangeStruct::Type negativeMax{ .min = -2, .max = -1 };
+    EXPECT_EQ(cluster.SetUnitRange(DataModel::MakeNullable(negativeMax)), CHIP_ERROR_INVALID_ARGUMENT);
+
     cluster.Shutdown(ClusterShutdownType::kClusterShutdown);
 }
 
