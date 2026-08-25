@@ -21,6 +21,8 @@ assert(chip_device_platform == "realtek_bee")
 declare_args() {
   chip_use_cg_secure_dac_vendor = false
   chip_require_persistent_dac_key = false
+  chip_secure_dac_service_header = ""
+  chip_secure_dac_service_include_dir = ""
 }
 
 assert(!(chip_use_cg_secure_dac_vendor && chip_require_persistent_dac_key),
@@ -73,6 +75,7 @@ static_library("freertos") {
   public_deps = [ "${chip_root}/src/platform:platform_base" ]
 
   public_configs = []
+  include_dirs = []
 
   if (chip_enable_thread) {
     sources += [
@@ -106,7 +109,14 @@ static_library("freertos") {
   }
 
   if (chip_require_persistent_dac_key) {
-    defines += [ "CONFIG_REQUIRE_PERSISTENT_DAC_KEY=1" ]
+    assert(chip_secure_dac_service_header != "" &&
+               chip_secure_dac_service_include_dir != "",
+           "Persistent DAC builds require the reviewed Realtek Secure App ABI header")
+    defines += [
+      "CONFIG_REQUIRE_PERSISTENT_DAC_KEY=1",
+      "RTK_SECURE_DAC_SERVICE_HEADER=\"$chip_secure_dac_service_header\"",
+    ]
+    include_dirs += [ chip_secure_dac_service_include_dir ]
   }
 }
 

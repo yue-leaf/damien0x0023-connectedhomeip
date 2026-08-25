@@ -183,6 +183,12 @@ if (matter_require_persistent_dac_key)
             "Persistent DAC builds require matter_secure_dac_cmse_import_library "
             "to point to the reviewed RTL8777G Secure App CMSE import library")
     endif()
+    if (NOT DEFINED matter_secure_dac_service_header OR
+        NOT EXISTS "${matter_secure_dac_service_header}")
+        message(FATAL_ERROR
+            "Persistent DAC builds require matter_secure_dac_service_header "
+            "to point to the reviewed RTL8777G Secure App ABI header")
+    endif()
     add_library(rtk_secure_dac_cmse_import UNKNOWN IMPORTED GLOBAL)
     set_target_properties(rtk_secure_dac_cmse_import PROPERTIES
         IMPORTED_LOCATION "${matter_secure_dac_cmse_import_library}")

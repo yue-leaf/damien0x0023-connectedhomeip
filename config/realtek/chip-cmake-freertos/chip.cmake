@@ -220,7 +220,19 @@ if (matter_require_persistent_dac_key)
         message(FATAL_ERROR
             "matter_require_persistent_dac_key and matter_enable_cg_secure_dac_vendor are mutually exclusive")
     endif()
+    if (NOT DEFINED matter_secure_dac_service_header OR
+        NOT EXISTS "${matter_secure_dac_service_header}")
+        message(FATAL_ERROR
+            "Persistent DAC builds require matter_secure_dac_service_header "
+            "to point to the reviewed RTL8777G Secure App ABI header")
+    endif()
+    get_filename_component(MATTER_SECURE_DAC_SERVICE_INCLUDE_DIR
+        "${matter_secure_dac_service_header}" DIRECTORY)
+    get_filename_component(MATTER_SECURE_DAC_SERVICE_HEADER_NAME
+        "${matter_secure_dac_service_header}" NAME)
     string(APPEND CHIP_GN_ARGS "chip_require_persistent_dac_key = true\n")
+    string(APPEND CHIP_GN_ARGS "chip_secure_dac_service_include_dir = \"${MATTER_SECURE_DAC_SERVICE_INCLUDE_DIR}\"\n")
+    string(APPEND CHIP_GN_ARGS "chip_secure_dac_service_header = \"${MATTER_SECURE_DAC_SERVICE_HEADER_NAME}\"\n")
 endif(matter_require_persistent_dac_key)
 
 file(GENERATE OUTPUT ${CHIP_OUTPUT}/args.gn CONTENT ${CHIP_GN_ARGS})
