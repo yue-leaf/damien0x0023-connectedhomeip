@@ -652,6 +652,10 @@ CHIP_ERROR BLEManagerImpl::ConfigureAdvertisingData()
     else
     {
         ChipLogError(DeviceLayer, "ConfigureAdvertisingData error: %" CHIP_ERROR_FORMAT, err.Format());
+        // The serial number is only added to the optional scan response.  A
+        // missing Factory Data field must not prevent the primary Matter
+        // service advertisement from starting.
+        err = CHIP_NO_ERROR;
     }
 #endif
 
