@@ -154,6 +154,34 @@ jobs:
           ln -sf "$(pwd)/snb" /usr/local/bin/snb
           snb config --serviceAddress "$serviceAddress" --accessKey "$snbAccessKey" --secretKey "$snbSecretKey"
 
+      - name: Diagnose snb KMS config
+        shell: bash
+        run: |
+          for name in snbAccessKey snbSecretKey snbSignDataKey serviceAddress PRODUCT_ID MODULE_NAME ENV; do
+            value="${!name}"
+            if [ -z "$value" ]; then
+              echo "::error::$name is empty"
+              exit 1
+            fi
+            if [[ "$value" == *$'\r'* || "$value" == *$'\n'* ]]; then
+              echo "::error::$name contains a newline"
+              exit 1
+            fi
+            echo "$name length: ${#value}"
+          done
+
+          python3 - <<'PY'
+          import os
+          from urllib.parse import urlparse
+
+          parsed = urlparse(os.environ["serviceAddress"])
+          print(f"serviceAddress scheme: {parsed.scheme or '<missing>'}")
+          print(f"serviceAddress host: {parsed.netloc or parsed.path}")
+          PY
+
+          snb kms exportKey -k "$snbSignDataKey" -o "$RUNNER_TEMP/snb-kms-public-key-check.pem"
+          test -s "$RUNNER_TEMP/snb-kms-public-key-check.pem"
+
       - name: Download BRD2703A internal-storage bootloader
         shell: bash
         run: |
