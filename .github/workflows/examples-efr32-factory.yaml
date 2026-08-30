@@ -229,6 +229,7 @@ jobs:
           BUILD_DIR="out/efr32-factory/$SILABS_BOARD"
           OUTPUT_DIR="out/efr32-factory-artifacts"
           APP_S37="$BUILD_DIR/matter-silabs-lighting-example.s37"
+          UNSIGNED_FACTORY_S37="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-unsigned.s37"
           FACTORY_S37="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-signed.s37"
           EXTSIGN_PREFIX="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}"
           SIGNATURE_FILE="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-signature.der"
@@ -236,6 +237,7 @@ jobs:
           APP_INFO="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-appinfo.txt"
 
           mkdir -p "$OUTPUT_DIR"
+          cp "$APP_S37" "$UNSIGNED_FACTORY_S37"
           commander convert "$APP_S37" --secureboot --extsign --outfile "$EXTSIGN_PREFIX"
           snb kms sign --keyId "$snbSignDataKey" --algorithm ecdsa_sha_256 --inputFile "${EXTSIGN_PREFIX}.extsign" --outputFile "$SIGNATURE_FILE"
           snb kms exportPubKey --keyId "$snbSignDataKey" --outputFile "$PUBLIC_KEY_FILE"
@@ -273,21 +275,41 @@ jobs:
               raise SystemExit(f"Factory application overlaps internal OTA slot: max end 0x{max_end:08X} > slot start 0x{slot_start:08X}")
           PY
 
-          ls -lh "$FACTORY_S37" "$APP_INFO" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME" "$OUTPUT_DIR/signatured_$BOOTLOADER_FILE_NAME"
+          ls -lh "$UNSIGNED_FACTORY_S37" "$FACTORY_S37" "$APP_INFO" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME" "$OUTPUT_DIR/signatured_$BOOTLOADER_FILE_NAME"
 
-      - name: Push signed app and bootloader
+      - name: Push factory app and bootloader
         shell: bash
         run: |
           OUTPUT_DIR="out/efr32-factory-artifacts"
+          UNSIGNED_APP_S37="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-unsigned.s37"
           SIGNED_APP_S37="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-signed.s37"
+          UNSIGNED_BOOTLOADER_S37="$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
           SIGNED_BOOTLOADER_S37="$OUTPUT_DIR/signatured_$BOOTLOADER_FILE_NAME"
 
+          test -f "$UNSIGNED_APP_S37"
           test -f "$SIGNED_APP_S37"
+          test -f "$UNSIGNED_BOOTLOADER_S37"
           test -f "$SIGNED_BOOTLOADER_S37"
+
+          snb obis push \
+            --file "$UNSIGNED_APP_S37" \
+            --fileType "$appFirmwareType" \
+            --productId "$PRODUCT_ID" \
+            --moduleName "$MODULE_NAME" \
+            --env "$ENV" \
+            --version "$VERSION"
 
           snb obis push \
             --file "$SIGNED_APP_S37" \
             --fileType "$appFirmwareType" \
+            --productId "$PRODUCT_ID" \
+            --moduleName "$MODULE_NAME" \
+            --env "$ENV" \
+            --version "$VERSION"
+
+          snb obis push \
+            --file "$UNSIGNED_BOOTLOADER_S37" \
+            --fileType "$bootloaderFirmwareType" \
             --productId "$PRODUCT_ID" \
             --moduleName "$MODULE_NAME" \
             --env "$ENV" \
