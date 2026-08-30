@@ -17,7 +17,7 @@ name: Build example - EFR32 factory image
 on:
   push:
     branches:
-      - silabs-mss-ota
+      - silabs-mss-factory
     tags:
       - 'v*'
   workflow_dispatch:
@@ -36,6 +36,15 @@ env:
   COMMANDER_DOWNLOAD_URL: "https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip"
   BOOTLOADER_DOWNLOAD_URL: "https://github.com/SiliconLabs/matter_extension/releases/download/v2.5.0/bootloader_binaries_matter_extension_v2.5.0-1.4.zip"
   BOOTLOADER_FILE_NAME: "bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37"
+  snbAccessKey: ${{ secrets.IOT_ACCESS_KEY }}
+  snbSecretKey: ${{ secrets.IOT_SECRET_KEY }}
+  snbSignDataKey: ${{ secrets.IOT_SIGN_DATA_KEY_ID }}
+  serviceAddress: ${{ secrets.IOT_SERVICE_ADDRESS }}
+  PRODUCT_ID: ${{ secrets.PRODUCT_SILABS_01 }}
+  MODULE_NAME: ${{ secrets.MODULE_NAME }}
+  ENV: ${{ secrets.ENV }}
+  appFirmwareType: "Application"
+  bootloaderFirmwareType: "Bootloader"
 
 jobs:
   efr32-factory:
@@ -47,6 +56,23 @@ jobs:
       image: ghcr.io/project-chip/chip-build-efr32:94
 
     steps:
+      - name: Get tag or commit hash
+        shell: bash
+        run: |
+          echo "Full ref: ${{ github.ref }}"
+          echo "Ref name: ${{ github.ref_name }}"
+
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            VERSION="${{ github.ref_name }}"
+            echo "Triggered by tag: $VERSION"
+          else
+            VERSION="${GITHUB_SHA}"
+            echo "Triggered by branch, using commit hash: $VERSION"
+          fi
+
+          echo "Final version: $VERSION"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -118,6 +144,16 @@ jobs:
           echo "COMMANDER_PATH=$COMMANDER_INSTALL_DIR/commander" >> "$GITHUB_ENV"
           "$COMMANDER_INSTALL_DIR/commander" --version
 
+      - name: Set up snb-command
+        shell: bash
+        run: |
+          curl --fail --location --show-error --retry 5 --retry-all-errors \
+            https://github.com/yue-leaf/cli-test/releases/download/v0.0.2-alpha/snb \
+            --output snb
+          chmod +x snb
+          ln -sf "$(pwd)/snb" /usr/local/bin/snb
+          snb config --serviceAddress "$serviceAddress" --accessKey "$snbAccessKey" --secretKey "$snbSecretKey"
+
       - name: Download BRD2703A internal-storage bootloader
         shell: bash
         run: |
@@ -136,6 +172,23 @@ jobs:
           mkdir -p "$OUTPUT_DIR"
           cp "$BOOTLOADER_SOURCE" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
           commander util appinfo "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
+
+      - name: Signature bootloader
+        shell: bash
+        run: |
+          OUTPUT_DIR="out/efr32-factory-artifacts"
+          RAW_BOOTLOADER_S37="$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
+          BOOTLOADER_PREFIX="$OUTPUT_DIR/${BOOTLOADER_FILE_NAME%.s37}"
+          SIGNATURE_FILE="$OUTPUT_DIR/${BOOTLOADER_FILE_NAME%.s37}.der"
+          PUBLIC_KEY_FILE="$OUTPUT_DIR/bootloader_public_key.pem"
+          SIGNED_BOOTLOADER_S37="$OUTPUT_DIR/signatured_$BOOTLOADER_FILE_NAME"
+
+          test -f "$RAW_BOOTLOADER_S37"
+          commander convert "$RAW_BOOTLOADER_S37" --secureboot --extsign --outfile "$BOOTLOADER_PREFIX"
+          snb kms sign -k "$snbSignDataKey" -f "${BOOTLOADER_PREFIX}.extsign" -o "$SIGNATURE_FILE"
+          snb kms exportKey -k "$snbSignDataKey" -o "$PUBLIC_KEY_FILE"
+          commander convert "$RAW_BOOTLOADER_S37" --secureboot --signature "$SIGNATURE_FILE" --verify "$PUBLIC_KEY_FILE" --outfile "$SIGNED_BOOTLOADER_S37"
+          commander util appinfo "$SIGNED_BOOTLOADER_S37"
 
       - name: Build internal-storage-safe factory app
         shell: bash
@@ -176,11 +229,17 @@ jobs:
           BUILD_DIR="out/efr32-factory/$SILABS_BOARD"
           OUTPUT_DIR="out/efr32-factory-artifacts"
           APP_S37="$BUILD_DIR/matter-silabs-lighting-example.s37"
-          FACTORY_S37="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}.s37"
+          FACTORY_S37="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-signed.s37"
+          EXTSIGN_PREFIX="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}"
+          SIGNATURE_FILE="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-signature.der"
+          PUBLIC_KEY_FILE="$OUTPUT_DIR/application_public_key.pem"
           APP_INFO="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-appinfo.txt"
 
           mkdir -p "$OUTPUT_DIR"
-          cp "$APP_S37" "$FACTORY_S37"
+          commander convert "$APP_S37" --secureboot --extsign --outfile "$EXTSIGN_PREFIX"
+          snb kms sign -k "$snbSignDataKey" -f "${EXTSIGN_PREFIX}.extsign" -o "$SIGNATURE_FILE"
+          snb kms exportKey -k "$snbSignDataKey" -o "$PUBLIC_KEY_FILE"
+          commander convert "$APP_S37" --secureboot --signature "$SIGNATURE_FILE" --verify "$PUBLIC_KEY_FILE" --outfile "$FACTORY_S37"
 
           commander util appinfo "$FACTORY_S37" | tee "$APP_INFO"
           EXPECTED_APP_VERSION_HEX="$(printf '0x%08x' "$FACTORY_SOFTWARE_VERSION")"
@@ -214,7 +273,33 @@ jobs:
               raise SystemExit(f"Factory application overlaps internal OTA slot: max end 0x{max_end:08X} > slot start 0x{slot_start:08X}")
           PY
 
-          ls -lh "$FACTORY_S37" "$APP_INFO" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME"
+          ls -lh "$FACTORY_S37" "$APP_INFO" "$OUTPUT_DIR/$BOOTLOADER_FILE_NAME" "$OUTPUT_DIR/signatured_$BOOTLOADER_FILE_NAME"
+
+      - name: Push signed app and bootloader
+        shell: bash
+        run: |
+          OUTPUT_DIR="out/efr32-factory-artifacts"
+          SIGNED_APP_S37="$OUTPUT_DIR/${APP_NAME}-factory-v${FACTORY_SOFTWARE_VERSION}-signed.s37"
+          SIGNED_BOOTLOADER_S37="$OUTPUT_DIR/signatured_$BOOTLOADER_FILE_NAME"
+
+          test -f "$SIGNED_APP_S37"
+          test -f "$SIGNED_BOOTLOADER_S37"
+
+          snb obis push \
+            --file "$SIGNED_APP_S37" \
+            --fileType "$appFirmwareType" \
+            --productId "$PRODUCT_ID" \
+            --moduleName "$MODULE_NAME" \
+            --env "$ENV" \
+            --version "$VERSION"
+
+          snb obis push \
+            --file "$SIGNED_BOOTLOADER_S37" \
+            --fileType "$bootloaderFirmwareType" \
+            --productId "$PRODUCT_ID" \
+            --moduleName "$MODULE_NAME" \
+            --env "$ENV" \
+            --version "$VERSION"
 
       - name: Publish EFR32 factory artifacts
         id: upload-factory-artifacts
@@ -226,6 +311,7 @@ jobs:
             out/efr32-factory-artifacts/matter-silabs-lighting-factory-v*.s37
             out/efr32-factory-artifacts/matter-silabs-lighting-factory-v*-appinfo.txt
             out/efr32-factory-artifacts/bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
+            out/efr32-factory-artifacts/signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
 
       - name: Show artifact URL
         shell: bash

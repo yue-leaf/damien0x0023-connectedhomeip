@@ -38,15 +38,6 @@ env:
   INTERNAL_STORAGE_SLOT_START: "0x080EC000"
   INTERNAL_STORAGE_SLOT_SIZE_BYTES: "548864"
   COMMANDER_DOWNLOAD_URL: "https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip"
-  snbAccessKey: ${{ secrets.IOT_ACCESS_KEY }}
-  snbSecretKey: ${{ secrets.IOT_SECRET_KEY }}
-  snbSignDataKey: ${{ secrets.IOT_SIGN_DATA_KEY_ID }}
-  serviceAddress: ${{ secrets.IOT_SERVICE_ADDRESS }}
-  PRODUCT_ID: ${{ secrets.PRODUCT_SILABS_01 }}
-  MODULE_NAME: ${{ secrets.MODULE_NAME }}
-  ENV: ${{ secrets.ENV }}
-  appFirmwareType: "Application"
-  bootloaderFirmwareType: "Bootloader"
 
 jobs:
   efr32-ota:
@@ -58,23 +49,6 @@ jobs:
       image: ghcr.io/project-chip/chip-build-efr32:94
 
     steps:
-      - name: Get tag or commit hash
-        shell: bash
-        run: |
-          echo "Full ref: ${{ github.ref }}"
-          echo "Ref name: ${{ github.ref_name }}"
-
-          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
-            VERSION="${{ github.ref_name }}"
-            echo "Triggered by tag: $VERSION"
-          else
-            VERSION="${GITHUB_SHA}"
-            echo "Triggered by branch, using commit hash: $VERSION"
-          fi
-
-          echo "Final version: $VERSION"
-          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -146,17 +120,7 @@ jobs:
           echo "COMMANDER_PATH=$COMMANDER_INSTALL_DIR/commander" >> "$GITHUB_ENV"
           "$COMMANDER_INSTALL_DIR/commander" --version
 
-      - name: Set up snb-command
-        shell: bash
-        run: |
-          curl --fail --location --show-error --retry 5 --retry-all-errors \
-            https://github.com/yue-leaf/cli-test/releases/download/v0.0.2-alpha/snb \
-            --output snb
-          chmod +x snb
-          ln -sf "$(pwd)/snb" /usr/local/bin/snb
-          snb config --serviceAddress "$serviceAddress" --accessKey "$snbAccessKey" --secretKey "$snbSecretKey"
-
-      - name: Build Lighting App with Matter software version 3
+      - name: Build Lighting App with Matter software version 2
         shell: bash
         run: |
           scripts/examples/gn_silabs_example.sh \
@@ -188,32 +152,6 @@ jobs:
           grep -E "sl_matter_version *= *${OTA_SOFTWARE_VERSION}" "$BUILD_DIR/args.gn"
           grep -E "sl_matter_version_str *= *\"${OTA_SOFTWARE_VERSION_STRING}\"" "$BUILD_DIR/args.gn"
 
-      - name: Signature application firmware
-        shell: bash
-        run: |
-          BUILD_DIR="out/efr32-ota/$SILABS_BOARD"
-          OUTPUT_DIR="out/efr32-ota-artifacts"
-          RAW_APP_S37="$BUILD_DIR/matter-silabs-lighting-example.s37"
-          SIGNED_APP_S37="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}-signed.s37"
-          EXTSIGN_PREFIX="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}"
-          SIGNATURE_FILE="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}-signature.der"
-          PUBLIC_KEY_FILE="$OUTPUT_DIR/public_key.pem"
-
-          mkdir -p "$OUTPUT_DIR"
-          commander convert "$RAW_APP_S37" --secureboot --extsign --outfile "$EXTSIGN_PREFIX"
-          snb kms sign -k "$snbSignDataKey" -f "${EXTSIGN_PREFIX}.extsign" -o "$SIGNATURE_FILE"
-          snb kms exportKey -k "$snbSignDataKey" -o "$PUBLIC_KEY_FILE"
-          commander convert "$RAW_APP_S37" --secureboot --signature "$SIGNATURE_FILE" --verify "$PUBLIC_KEY_FILE" --outfile "$SIGNED_APP_S37"
-          commander util appinfo "$SIGNED_APP_S37"
-
-          snb obis push \
-            --file "$SIGNED_APP_S37" \
-            --fileType "$appFirmwareType" \
-            --productId "$PRODUCT_ID" \
-            --moduleName "$MODULE_NAME" \
-            --env "$ENV" \
-            --version "$VERSION"
-
       - name: Create GBL and Matter OTA package
         shell: bash
         run: |
@@ -226,8 +164,7 @@ jobs:
 
           BUILD_DIR="out/efr32-ota/$SILABS_BOARD"
           OUTPUT_DIR="out/efr32-ota-artifacts"
-          RAW_APP_S37="$BUILD_DIR/matter-silabs-lighting-example.s37"
-          APP_S37="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}-signed.s37"
+          APP_S37="$BUILD_DIR/matter-silabs-lighting-example.s37"
           VERSIONED_S37="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}.s37"
           GBL_FILE="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}.gbl"
           OTA_FILE="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}.ota"
@@ -235,8 +172,6 @@ jobs:
           APP_INFO="$OUTPUT_DIR/${APP_NAME}-v${OTA_SOFTWARE_VERSION}-appinfo.txt"
 
           mkdir -p "$OUTPUT_DIR"
-          test -f "$RAW_APP_S37"
-          test -f "$APP_S37"
           cp "$APP_S37" "$VERSIONED_S37"
 
           commander util appinfo "$VERSIONED_S37" | tee "$APP_INFO"
@@ -299,34 +234,6 @@ jobs:
 
           ls -lh "$VERSIONED_S37" "$GBL_FILE" "$OTA_FILE" "$OTA_INFO" "$APP_INFO"
 
-      - name: Signature bootloader
-        shell: bash
-        run: |
-          BOOTLOADER_ZIP="bootloader_binaries_matter_extension_v2.5.0-1.4.zip"
-          BOOTLOADER_S37="bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37"
-          BOOTLOADER_PREFIX="bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1"
-          SIGNED_BOOTLOADER_S37="signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37"
-
-          curl --fail --location --show-error --retry 5 --retry-all-errors \
-            https://github.com/SiliconLabs/matter_extension/releases/download/v2.5.0/bootloader_binaries_matter_extension_v2.5.0-1.4.zip \
-            --output "$BOOTLOADER_ZIP"
-          unzip -q "$BOOTLOADER_ZIP"
-          cd bootloader_binaries
-
-          commander convert "$BOOTLOADER_S37" --secureboot --extsign --outfile "$BOOTLOADER_PREFIX"
-          snb kms sign -k "$snbSignDataKey" -f "${BOOTLOADER_PREFIX}.extsign" -o "${BOOTLOADER_PREFIX}.der"
-          snb kms exportKey -k "$snbSignDataKey" -o ./public_key.pem
-          commander convert "$BOOTLOADER_S37" --secureboot --signature "${BOOTLOADER_PREFIX}.der" --verify public_key.pem --outfile "$SIGNED_BOOTLOADER_S37"
-          commander util appinfo "$SIGNED_BOOTLOADER_S37"
-
-          snb obis push \
-            --file "$SIGNED_BOOTLOADER_S37" \
-            --fileType "$bootloaderFirmwareType" \
-            --productId "$PRODUCT_ID" \
-            --moduleName "$MODULE_NAME" \
-            --env "$ENV" \
-            --version "$VERSION"
-
       - name: Publish EFR32 OTA v2 artifacts
         id: upload-ota-artifacts
         uses: actions/upload-artifact@v4
@@ -340,17 +247,7 @@ jobs:
             out/efr32-ota-artifacts/matter-silabs-lighting-v*-ota-header.txt
             out/efr32-ota-artifacts/matter-silabs-lighting-v*-appinfo.txt
 
-      - name: Publish bootloader
-        id: upload-bootloader
-        uses: actions/upload-artifact@v4
-        with:
-          name: bootloader
-          if-no-files-found: error
-          path: |
-            bootloader_binaries/signatured_bootloader-storage-internal-single-512k-BRD2703A-gsdk4.1.s37
-
       - name: Show artifact URL
         shell: bash
         run: |
           echo "OTA artifact download URL: ${{ steps.upload-ota-artifacts.outputs.artifact-url }}"
-          echo "Bootloader artifact download URL: ${{ steps.upload-bootloader.outputs.artifact-url }}"
