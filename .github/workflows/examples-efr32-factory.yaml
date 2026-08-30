@@ -185,8 +185,8 @@ jobs:
 
           test -f "$RAW_BOOTLOADER_S37"
           commander convert "$RAW_BOOTLOADER_S37" --secureboot --extsign --outfile "$BOOTLOADER_PREFIX"
-          snb kms sign -k "$snbSignDataKey" -f "${BOOTLOADER_PREFIX}.extsign" -o "$SIGNATURE_FILE"
-          snb kms exportKey -k "$snbSignDataKey" -o "$PUBLIC_KEY_FILE"
+          snb kms sign --keyId "$snbSignDataKey" --algorithm ecdsa_sha_256 --inputFile "${BOOTLOADER_PREFIX}.extsign" --outputFile "$SIGNATURE_FILE"
+          snb kms exportKey --keyId "$snbSignDataKey" --outputFile "$PUBLIC_KEY_FILE"
           commander convert "$RAW_BOOTLOADER_S37" --secureboot --signature "$SIGNATURE_FILE" --verify "$PUBLIC_KEY_FILE" --outfile "$SIGNED_BOOTLOADER_S37"
           commander util appinfo "$SIGNED_BOOTLOADER_S37"
 
@@ -237,8 +237,8 @@ jobs:
 
           mkdir -p "$OUTPUT_DIR"
           commander convert "$APP_S37" --secureboot --extsign --outfile "$EXTSIGN_PREFIX"
-          snb kms sign -k "$snbSignDataKey" -f "${EXTSIGN_PREFIX}.extsign" -o "$SIGNATURE_FILE"
-          snb kms exportKey -k "$snbSignDataKey" -o "$PUBLIC_KEY_FILE"
+          snb kms sign --keyId "$snbSignDataKey" --algorithm ecdsa_sha_256 --inputFile "${EXTSIGN_PREFIX}.extsign" --outputFile "$SIGNATURE_FILE"
+          snb kms exportKey --keyId "$snbSignDataKey" --outputFile "$PUBLIC_KEY_FILE"
           commander convert "$APP_S37" --secureboot --signature "$SIGNATURE_FILE" --verify "$PUBLIC_KEY_FILE" --outfile "$FACTORY_S37"
 
           commander util appinfo "$FACTORY_S37" | tee "$APP_INFO"
