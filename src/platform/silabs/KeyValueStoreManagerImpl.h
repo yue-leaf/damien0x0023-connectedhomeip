@@ -42,7 +42,7 @@ public:
 
     static constexpr size_t kMaxEntries = KVS_MAX_ENTRIES;
 
-    static void ForceKeyMapSave();
+    static CHIP_ERROR ForceKeyMapSave();
     static void KvsMapMigration();
 
 private:

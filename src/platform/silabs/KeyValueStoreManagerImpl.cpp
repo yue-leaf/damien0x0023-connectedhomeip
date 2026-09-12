@@ -46,6 +46,7 @@ uint16_t mKvsKeyMap[KeyValueStoreManagerImpl::kMaxEntries] = { 0 };
 CHIP_ERROR KeyValueStoreManagerImpl::Init(void)
 {
     CHIP_ERROR err;
+    uint16_t recovered = 0;
     err = SilabsConfig::Init();
     SuccessOrExit(err);
 
@@ -59,6 +60,38 @@ CHIP_ERROR KeyValueStoreManagerImpl::Init(void)
     if (err == CHIP_DEVICE_ERROR_CONFIG_NOT_FOUND) // Initial boot
     {
         err = CHIP_NO_ERROR;
+        goto exit;
+    }
+    SuccessOrExit(err);
+    VerifyOrExit(outLen == sizeof(mKvsKeyMap), err = CHIP_ERROR_INCORRECT_STATE);
+
+    // A reset before the delayed map save can leave references to deleted objects.
+    for (uint16_t index = 0; index < kMaxEntries; ++index)
+    {
+        if (mKvsKeyMap[index] == 0)
+        {
+            continue;
+        }
+        uint8_t prefix;
+        size_t readCount = 0;
+        err = SilabsConfig::ReadConfigValueBin(CONVERT_KEYMAP_INDEX_TO_NVM3KEY(index), &prefix, sizeof(prefix), readCount, 0);
+        if (err == CHIP_DEVICE_ERROR_CONFIG_NOT_FOUND)
+        {
+            mKvsKeyMap[index] = 0;
+            ++recovered;
+        }
+        else if (err != CHIP_NO_ERROR && err != CHIP_ERROR_BUFFER_TOO_SMALL)
+        {
+            // Never discard an index merely because the storage read failed.
+            goto exit;
+        }
+    }
+    err = CHIP_NO_ERROR;
+    if (recovered != 0)
+    {
+        err = ForceKeyMapSave();
+        SuccessOrExit(err);
+        ChipLogProgress(DeviceLayer, "KVS recovered %u stale index slots", static_cast<unsigned>(recovered));
     }
 
 exit:
@@ -109,8 +142,18 @@ CHIP_ERROR KeyValueStoreManagerImpl::MapKvsKeyToNvm3(const char * key, uint16_t 
             // Collision prevention
             // Read the data from NVM3 it should be prefixed by the kvsString
             // else we will look for another matching hash in the map
-            SilabsConfig::ReadConfigValueBin(tempNvm3key, reinterpret_cast<uint8_t *>(strPrefix), length, readCount, 0);
-            if (strcmp(key, strPrefix) == 0)
+            memset(strPrefix, 0, length + 1);
+            err = SilabsConfig::ReadConfigValueBin(tempNvm3key, reinterpret_cast<uint8_t *>(strPrefix), length, readCount, 0);
+            if (err == CHIP_DEVICE_ERROR_CONFIG_NOT_FOUND)
+            {
+                continue;
+            }
+            if (err != CHIP_NO_ERROR && err != CHIP_ERROR_BUFFER_TOO_SMALL)
+            {
+                Platform::MemoryFree(strPrefix);
+                return err;
+            }
+            if (readCount == length && strcmp(key, strPrefix) == 0)
             {
                 // String matches we have confirmed the hash pointed us the right key data
                 nvm3Key = tempNvm3key;
@@ -147,15 +190,20 @@ CHIP_ERROR KeyValueStoreManagerImpl::MapKvsKeyToNvm3(const char * key, uint16_t 
     return err;
 }
 
-void KeyValueStoreManagerImpl::ForceKeyMapSave()
+CHIP_ERROR KeyValueStoreManagerImpl::ForceKeyMapSave()
 {
-    OnScheduledKeyMapSave(nullptr, nullptr);
+    CHIP_ERROR err = SilabsConfig::WriteConfigValueBin(SilabsConfig::kConfigKey_KvsStringKeyMap,
+                                                      reinterpret_cast<const uint8_t *>(mKvsKeyMap), sizeof(mKvsKeyMap));
+    if (err != CHIP_NO_ERROR)
+    {
+        ChipLogError(DeviceLayer, "KVS index save failed: %" CHIP_ERROR_FORMAT, err.Format());
+    }
+    return err;
 }
 
 void KeyValueStoreManagerImpl::OnScheduledKeyMapSave(System::Layer * systemLayer, void * appState)
 {
-    SilabsConfig::WriteConfigValueBin(SilabsConfig::kConfigKey_KvsStringKeyMap, reinterpret_cast<const uint8_t *>(mKvsKeyMap),
-                                      sizeof(mKvsKeyMap));
+    ForceKeyMapSave();
 }
 
 void KeyValueStoreManagerImpl::ScheduleKeyMapSave(void)
@@ -238,7 +286,8 @@ CHIP_ERROR KeyValueStoreManagerImpl::_Delete(const char * key)
     {
         uint32_t keyIndex    = CONVERT_NVM3KEY_TO_KEYMAP_INDEX(nvm3Key);
         mKvsKeyMap[keyIndex] = 0;
-        ScheduleKeyMapSave();
+        // Removing the last fabric can immediately reset the MCU. Persist now.
+        err = ForceKeyMapSave();
     }
 
     return err;

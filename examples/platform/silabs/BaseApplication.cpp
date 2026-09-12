@@ -50,6 +50,7 @@
 #include <assert.h>
 #include <lib/support/CodeUtils.h>
 #include <platform/CHIPDeviceLayer.h>
+#include <platform/KeyValueStoreManager.h>
 #include <setup_payload/QRCodeSetupPayloadGenerator.h>
 #include <setup_payload/SetupPayload.h>
 #include <sl_cmsis_os2_common.h>
@@ -828,6 +829,13 @@ void BaseApplication::DoProvisioningReset()
     PlatformMgr().ScheduleWork([](intptr_t) {
 #if CHIP_DEVICE_CONFIG_ENABLE_THREAD
         ConfigurationManagerImpl::GetDefaultInstance().ClearThreadStack();
+        CHIP_ERROR saveErr = PersistedStorage::KeyValueStoreMgrImpl().ForceKeyMapSave();
+        if (saveErr != CHIP_NO_ERROR)
+        {
+            ChipLogError(AppServer, "Provisioning reset aborted: KVS index save failed: %" CHIP_ERROR_FORMAT, saveErr.Format());
+            return;
+        }
+        ChipLogProgress(AppServer, "KVS index saved; resetting Thread provisioning");
         ThreadStackMgrImpl().FactoryResetThreadStack();
         ThreadStackMgr().InitThreadStack();
 #endif // CHIP_DEVICE_CONFIG_ENABLE_THREAD

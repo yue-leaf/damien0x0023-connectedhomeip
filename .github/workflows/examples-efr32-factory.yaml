@@ -17,7 +17,7 @@ name: Build example - EFR32 factory image
 on:
   push:
     branches:
-      - silabs-mss-factory
+      - silabs-mss-factory-log
     tags:
       - 'v*'
   workflow_dispatch:
@@ -190,6 +190,10 @@ jobs:
           commander convert "$RAW_BOOTLOADER_S37" --secureboot --signature "$SIGNATURE_FILE" --verify "$PUBLIC_KEY_FILE" --outfile "$SIGNED_BOOTLOADER_S37"
           commander util appinfo "$SIGNED_BOOTLOADER_S37"
 
+      - name: Test KVS reset persistence
+        shell: bash
+        run: python3 src/platform/silabs/tests/kvs_host/run.py
+
       - name: Build internal-storage-safe factory app
         shell: bash
         run: |
@@ -200,15 +204,16 @@ jobs:
             --docker \
             --slc_generate \
             --additional_data_advertising \
-            chip_detail_logging=false \
+            --uart_log \
+            chip_detail_logging=true \
             chip_automation_logging=false \
-            chip_progress_logging=false \
+            chip_progress_logging=true \
             is_debug=false \
             disable_lcd=true \
             show_qr_code=false \
             chip_build_libshell=false \
-            chip_logging=false \
-            silabs_log_enabled=false \
+            chip_logging=true \
+            silabs_log_enabled=true \
             enable_openthread_cli=false \
             chip_openthread_ftd=true \
             chip_enable_ota_requestor=true \
