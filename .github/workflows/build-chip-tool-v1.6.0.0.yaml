@@ -27,9 +27,19 @@ concurrency:
 
 jobs:
   chip_tool:
-    name: chip_tool
-    runs-on: ubuntu-24.04
+    name: chip_tool (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
     if: github.actor != 'restyled-io[bot]'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-24.04
+            target_cpu: x64
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+            target_cpu: arm64
 
     steps:
       - name: Checkout
@@ -51,35 +61,66 @@ jobs:
 
       - name: Build chip-tool
         run: |
-          mkdir -p /tmp/output_binaries
-          chmod -R 777 /tmp/output_binaries
-          scripts/run_in_build_env.sh "gn gen out/chiptool_x64_release --args='chip_mdns=\"platform\" chip_crypto=\"mbedtls\" symbol_level=0 is_debug=false enable_im_pretty_print=true'"
-          scripts/run_in_build_env.sh "ninja -C out/chiptool_x64_release chip-tool -v"
-          if [ -f out/chiptool_x64_release/chip-tool ]; then
+          BUILD_DIR="out/chiptool_${{ matrix.arch }}_release"
+          OUTPUT_DIR="/tmp/chip-tool-artifact/${{ matrix.arch }}"
+          mkdir -p "$OUTPUT_DIR"
+          scripts/run_in_build_env.sh "gn gen $BUILD_DIR --args='target_cpu=\"${{ matrix.target_cpu }}\" chip_mdns=\"platform\" chip_crypto=\"mbedtls\" symbol_level=0 is_debug=false enable_im_pretty_print=true'"
+          scripts/run_in_build_env.sh "ninja -C $BUILD_DIR chip-tool -v"
+          if [ -f "$BUILD_DIR/chip-tool" ]; then
             echo "chip-tool found, proceeding to strip"
-            ls -l out/chiptool_x64_release/chip-tool
-            strip out/chiptool_x64_release/chip-tool -o /tmp/output_binaries/chip-tool_x64
+            ls -l "$BUILD_DIR/chip-tool"
+            strip "$BUILD_DIR/chip-tool" -o "$OUTPUT_DIR/chip-tool"
           else
-            echo "Error: chip-tool not found in out/chiptool_x64_release/"
-            ls -l out/chiptool_x64_release/
+            echo "Error: chip-tool not found in $BUILD_DIR"
+            ls -l "$BUILD_DIR"
             exit 1
           fi
 
-      - name: Build x64 chip-cert
+      - name: Build chip-cert
         run: |
-          scripts/run_in_build_env.sh "gn gen out/chipcert_x64_release --args='symbol_level=0 is_debug=false chip_crypto=\"boringssl\"'"
-          scripts/run_in_build_env.sh "ninja -C out/chipcert_x64_release chip-cert"
-          test -f out/chipcert_x64_release/chip-cert
-          strip out/chipcert_x64_release/chip-cert -o /tmp/output_binaries/chip-cert_x64
+          BUILD_DIR="out/chipcert_${{ matrix.arch }}_release"
+          OUTPUT_DIR="/tmp/chip-cert-artifact/${{ matrix.arch }}"
+          mkdir -p "$OUTPUT_DIR"
+          scripts/run_in_build_env.sh "gn gen $BUILD_DIR --args='target_cpu=\"${{ matrix.target_cpu }}\" symbol_level=0 is_debug=false chip_crypto=\"boringssl\"'"
+          scripts/run_in_build_env.sh "ninja -C $BUILD_DIR chip-cert"
+          test -f "$BUILD_DIR/chip-cert"
+          strip "$BUILD_DIR/chip-cert" -o "$OUTPUT_DIR/chip-cert"
 
-      - name: Upload build chip-tool
+      - name: Upload chip-tool build
         uses: actions/upload-artifact@v4
         with:
-          name: chip-tool-v1.6.0.0
-          path: /tmp/output_binaries/chip-tool_x64
+          name: chip-tool-${{ matrix.arch }}-build
+          path: /tmp/chip-tool-artifact
+          retention-days: 1
+          compression-level: 0
 
-      - name: Upload build chip-cert
+      - name: Upload chip-cert build
         uses: actions/upload-artifact@v4
         with:
-          name: chip-cert-v1.6.0.0
-          path: /tmp/output_binaries/chip-cert_x64
+          name: chip-cert-${{ matrix.arch }}-build
+          path: /tmp/chip-cert-artifact
+          retention-days: 1
+          compression-level: 0
+
+  package:
+    name: Package build artifacts
+    runs-on: ubuntu-24.04
+    needs: chip_tool
+    if: github.actor != 'restyled-io[bot]'
+
+    steps:
+      - name: Package chip-tool
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: chip-tool
+          pattern: chip-tool-*-build
+          delete-merged: true
+          compression-level: 0
+
+      - name: Package chip-cert
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: chip-cert
+          pattern: chip-cert-*-build
+          delete-merged: true
+          compression-level: 0
