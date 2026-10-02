@@ -245,6 +245,7 @@ CHIP_ERROR BLEManagerImpl::_SetDeviceName(const char * deviceName)
     {
         Platform::CopyString(mDeviceName, deviceName);
 
+        mFlags.Set(Flags::kBLEStackGATTNameSet);
         mFlags.Set(Flags::kBLEStackGATTNameUpdate);
         mFlags.Set(Flags::kAdvertisingRefreshNeeded);
         ret = DriveBLEState();

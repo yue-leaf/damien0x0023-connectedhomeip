@@ -73,6 +73,11 @@
  */
 #define CHIP_DEVICE_CONFIG_ENABLE_CHIPOBLE 1
 
+// Advertise uncommissioned lighting devices as TI-MATTER-<discriminator> and
+// automatically open the commissioning window after boot.
+#define CHIP_DEVICE_CONFIG_BLE_DEVICE_NAME_PREFIX "TI-MATTER-"
+#define CHIP_DEVICE_CONFIG_ENABLE_PAIRING_AUTOSTART 1
+
 /**
  * CHIP_DEVICE_CONFIG_EVENT_LOGGING_DEBUG_BUFFER_SIZE
  *

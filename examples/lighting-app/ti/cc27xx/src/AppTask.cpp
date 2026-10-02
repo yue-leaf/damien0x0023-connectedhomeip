@@ -90,7 +90,11 @@
  #define BUTTON_ENABLE 1
  
  #define OTAREQUESTOR_INIT_TIMER_DELAY_MS 10000
- 
+
+ namespace {
+ constexpr char kCommissionedDeviceName[] = "TI-Light";
+ }
+
  using namespace ::chip;
  using namespace ::chip::app;
  using namespace ::chip::Credentials;
@@ -209,6 +213,18 @@
  
      case DeviceEventType::kCommissioningComplete:
          PLAT_LOG("Commissioning complete");
+
+         if (ConnectivityMgr().SetBLEDeviceName(kCommissionedDeviceName) != CHIP_NO_ERROR)
+         {
+             PLAT_LOG("Failed to set commissioned BLE device name");
+         }
+
+         if (Clusters::BasicInformation::Attributes::NodeLabel::Set(
+                 kRootEndpointId, CharSpan(kCommissionedDeviceName, sizeof(kCommissionedDeviceName) - 1)) !=
+             Protocols::InteractionModel::Status::Success)
+         {
+             PLAT_LOG("Failed to set commissioned Matter node label");
+         }
          break;
      case DeviceEventType::kThreadStateChange:
          PLAT_LOG("Thread State Change");
