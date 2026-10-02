@@ -308,8 +308,6 @@ private:
     uint8_t mAdvEnableRetryCount = 0;
 #if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
     bool mNonConcurrentCloseRequested = false;
-    bool mNonConcurrentThreadStartPending = false;
-    uint16_t mNonConcurrentConnectionHandle = LL_CONNHANDLE_INVALID;
 #endif
     // Memory to pass RPA read event ID to clock handler
     ClockEventData_t argRpaRead = { .event = READ_RPA_EVT };

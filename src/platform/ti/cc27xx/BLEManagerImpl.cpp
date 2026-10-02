@@ -284,9 +284,7 @@ void BLEManagerImpl::_OnPlatformEvent(const ChipDeviceEvent * event)
         // Thread commissioning starts.  A failed commissioning attempt opens
         // the commissioning window again, so restore the logical BleLayer
         // before CommissioningWindowManager enables BLE advertising.
-        mNonConcurrentCloseRequested     = false;
-        mNonConcurrentThreadStartPending = false;
-        mNonConcurrentConnectionHandle   = LL_CONNHANDLE_INVALID;
+        mNonConcurrentCloseRequested = false;
         if (mState == kState_NotInitialized)
         {
             CHIP_ERROR err = BleLayer::Init(this, this, &DeviceLayer::SystemLayer());
@@ -1099,13 +1097,14 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
         uint16_t connHandle = *((uint16_t *) (pMsg->pData));
 
 #if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
-        bool startThreadNow = false;
-        bool connectionIsActive = sInstance.GetBLEConnIndex(connHandle) < MAX_NUM_BLE_CONNS;
+        bool startThreadNow          = false;
+        bool connectionIsActive      = sInstance.GetBLEConnIndex(connHandle) < MAX_NUM_BLE_CONNS;
+        bool isNonConcurrentHandoff  = sInstance.mState == kState_NotInitialized && sInstance.mNonConcurrentCloseRequested;
 
         // Only the CommissioningWindowManager shutdown path transitions the
         // BleLayer to NotInitialized.  Other endpoint closures (for example a
         // failed PASE attempt) must remain in BLE mode and resume advertising.
-        if (sInstance.mState == kState_NotInitialized && sInstance.mNonConcurrentCloseRequested)
+        if (isNonConcurrentHandoff)
         {
             /* Prevent future BLE advertisements, stop prior to terminating connection
               to guarantee BLE stack does not automatically restart */
@@ -1117,15 +1116,7 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
             GapAdv_disable(sInstance.advHandleLegacy);
             sInstance.mFlags.Clear(Flags::kAdvertisingEnabled).Clear(Flags::kAdvertising);
 
-            // GAP termination is asynchronous.  Do not start Thread until the
-            // matching GAP_LINK_TERMINATED_EVENT confirms that BLE released the
-            // connection and radio.
-            if (connectionIsActive)
-            {
-                sInstance.mNonConcurrentThreadStartPending = true;
-                sInstance.mNonConcurrentConnectionHandle   = connHandle;
-            }
-            else
+            if (!connectionIsActive)
             {
                 // The peer may have disconnected between queuing this close
                 // request and processing it.  The radio is already released.
@@ -1136,21 +1127,35 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
         if (connectionIsActive)
         {
             bStatus_t terminateStatus = GAP_TerminateLinkReq(connHandle, HCI_DISCONNECT_REMOTE_USER_TERM);
-            if (terminateStatus != SUCCESS)
+            if (terminateStatus == SUCCESS)
+            {
+                // Match the established non-concurrent handoff used by the
+                // other platforms: start the operational network as soon as
+                // the controller accepts the BLE close request.  Waiting for
+                // GAP_LINK_TERMINATED_EVENT leaves no usable transport after
+                // ConnectNetwork has already returned success.
+                startThreadNow = isNonConcurrentHandoff;
+            }
+            else if (terminateStatus == bleNotConnected)
+            {
+                // The peer won the disconnect race, so BLE no longer owns the
+                // radio and Thread can start immediately.
+                startThreadNow = isNonConcurrentHandoff;
+            }
+            else
             {
                 ChipLogError(DeviceLayer, "GAP_TerminateLinkReq failed for connection 0x%04x: status=%u", connHandle,
                              static_cast<unsigned>(terminateStatus));
-                sInstance.mNonConcurrentCloseRequested     = false;
-                sInstance.mNonConcurrentThreadStartPending = false;
-                sInstance.mNonConcurrentConnectionHandle   = LL_CONNHANDLE_INVALID;
-                startThreadNow = terminateStatus == bleNotConnected && sInstance.mState == kState_NotInitialized;
+                // Keep the handoff request pending.  If the peer disconnects
+                // independently, GAP_LINK_TERMINATED_EVENT will complete the
+                // transition instead of leaving commissioning stuck forever.
             }
         }
 
         if (startThreadNow)
         {
             sInstance.mNonConcurrentCloseRequested = false;
-            ChipLogProgress(DeviceLayer, "BLE link already terminated; starting non-concurrent Thread commissioning");
+            ChipLogProgress(DeviceLayer, "BLE close accepted; starting non-concurrent Thread commissioning");
             DeviceLayer::ConnectivityMgrImpl().StartNonConcurrentThreadManagement();
         }
 #else
@@ -1428,14 +1433,13 @@ void BLEManagerImpl::ProcessGapMessage(gapEventHdr_t * pMsg)
         BLEMGR_LOG("BLEMGR: ProcessGapMessage: GAP_LINK_TERMINATED_EVENT, reason: %d", pPkt->reason);
 
 #if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
-        bool pendingHandleMatches = !sInstance.mNonConcurrentThreadStartPending ||
-            sInstance.mNonConcurrentConnectionHandle == pPkt->connectionHandle;
-        bool startThread = sInstance.mNonConcurrentCloseRequested && pendingHandleMatches;
+        // Normally Thread is started as soon as GAP accepts the terminate
+        // request.  This path only covers a peer-initiated disconnect race or
+        // an earlier terminate-request failure.
+        bool startThread = sInstance.mState == kState_NotInitialized && sInstance.mNonConcurrentCloseRequested;
         if (startThread)
         {
-            sInstance.mNonConcurrentCloseRequested     = false;
-            sInstance.mNonConcurrentThreadStartPending = false;
-            sInstance.mNonConcurrentConnectionHandle   = LL_CONNHANDLE_INVALID;
+            sInstance.mNonConcurrentCloseRequested = false;
         }
 #endif
 
@@ -1454,10 +1458,8 @@ void BLEManagerImpl::ProcessGapMessage(gapEventHdr_t * pMsg)
 #if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
         if (startThread)
         {
-            // Preserve the original event ordering: once BLE is physically
-            // down, let Network Commissioning start Thread before reporting
-            // the transport closure to upper layers.
-            ChipLogProgress(DeviceLayer, "BLE link terminated; starting non-concurrent Thread commissioning");
+            ChipLogProgress(DeviceLayer,
+                            "BLE link terminated before close was accepted; starting non-concurrent Thread commissioning");
             DeviceLayer::ConnectivityMgrImpl().StartNonConcurrentThreadManagement();
         }
 #endif
