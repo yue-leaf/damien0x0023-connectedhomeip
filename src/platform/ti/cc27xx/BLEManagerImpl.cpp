@@ -321,10 +321,24 @@ void BLEManagerImpl::_OnPlatformEvent(const ChipDeviceEvent * event)
 // ===== Members that implement virtual methods on BlePlatformDelegate.
 CHIP_ERROR BLEManagerImpl::CloseConnection(BLE_CONNECTION_OBJECT conId)
 {
-    void * pMsg = (void *) ICall_malloc(sizeof(void *));
-    pMsg        = (void *) conId;
+    if (conId == nullptr)
+    {
+        return CHIP_ERROR_INVALID_ARGUMENT;
+    }
 
-    EnqueueEvtHdrMsg(BLEManagerIMPL_CHIPOBLE_CLOSE_CONN_EVT, (void *) pMsg);
+    uint16_t * connHandle = static_cast<uint16_t *>(ICall_malloc(sizeof(uint16_t)));
+    if (connHandle == nullptr)
+    {
+        return CHIP_ERROR_NO_MEMORY;
+    }
+
+    *connHandle = *static_cast<uint16_t *>(conId);
+
+    if (EnqueueEvtHdrMsg(BLEManagerIMPL_CHIPOBLE_CLOSE_CONN_EVT, connHandle) != SUCCESS)
+    {
+        ICall_free(connHandle);
+        return CHIP_ERROR_INTERNAL;
+    }
 
     return CHIP_NO_ERROR;
 }

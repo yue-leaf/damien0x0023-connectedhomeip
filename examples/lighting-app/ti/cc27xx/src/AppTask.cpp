@@ -92,7 +92,46 @@
  #define OTAREQUESTOR_INIT_TIMER_DELAY_MS 10000
 
  namespace {
- constexpr char kCommissionedDeviceName[] = "TI-Light";
+ constexpr char kCommissionedNodeLabel[]    = "TI-Light";
+ // Give the RemoveFabric response time to leave the device before it reboots.
+ constexpr uint32_t kLastFabricResetDelayMs = 1000;
+ bool sFactoryResetScheduled                = false;
+
+ void FactoryResetTimerHandler(chip::System::Layer *, void *)
+ {
+     chip::Server::GetInstance().ScheduleFactoryReset();
+ }
+
+ void ScheduleAppFactoryResetAfterFabricRemoval()
+ {
+     if (sFactoryResetScheduled)
+     {
+         return;
+     }
+
+     sFactoryResetScheduled = true;
+     if (chip::DeviceLayer::SystemLayer().StartTimer(chip::System::Clock::Milliseconds32(kLastFabricResetDelayMs),
+                                                     FactoryResetTimerHandler, nullptr) != CHIP_NO_ERROR)
+     {
+         PLAT_LOG("Failed to schedule delayed factory reset; resetting immediately");
+         chip::Server::GetInstance().ScheduleFactoryReset();
+     }
+ }
+
+ class AppFabricTableDelegate final : public chip::FabricTable::Delegate
+ {
+ public:
+     void OnFabricRemoved(const chip::FabricTable & fabricTable, chip::FabricIndex fabricIndex) override
+     {
+         if (fabricTable.FabricCount() == 0)
+         {
+             PLAT_LOG("Last fabric removed (index=%u); factory resetting for recommissioning", fabricIndex);
+             ScheduleAppFactoryResetAfterFabricRemoval();
+         }
+     }
+ };
+
+ AppFabricTableDelegate sAppFabricTableDelegate;
  }
 
  using namespace ::chip;
@@ -214,13 +253,8 @@
      case DeviceEventType::kCommissioningComplete:
          PLAT_LOG("Commissioning complete");
 
-         if (ConnectivityMgr().SetBLEDeviceName(kCommissionedDeviceName) != CHIP_NO_ERROR)
-         {
-             PLAT_LOG("Failed to set commissioned BLE device name");
-         }
-
          if (Clusters::BasicInformation::Attributes::NodeLabel::Set(
-                 kRootEndpointId, CharSpan(kCommissionedDeviceName, sizeof(kCommissionedDeviceName) - 1)) !=
+                 kRootEndpointId, CharSpan(kCommissionedNodeLabel, sizeof(kCommissionedNodeLabel) - 1)) !=
              Protocols::InteractionModel::Status::Success)
          {
              PLAT_LOG("Failed to set commissioned Matter node label");
@@ -360,6 +394,14 @@
      SetDeviceInfoProvider(&sExampleDeviceInfoProvider);
  
      Server::GetInstance().Init(initParams);
+
+     ret = Server::GetInstance().GetFabricTable().AddFabricDelegate(&sAppFabricTableDelegate);
+     if (ret != CHIP_NO_ERROR)
+     {
+         PLAT_LOG("Failed to register fabric table delegate");
+         while (1)
+             ;
+     }
  
      ret = PlatformMgr().StartEventLoopTask();
      if (ret != CHIP_NO_ERROR)
