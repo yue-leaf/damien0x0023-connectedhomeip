@@ -278,6 +278,31 @@ void BLEManagerImpl::_OnPlatformEvent(const ChipDeviceEvent * event)
 {
     switch (event->Type)
     {
+#if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
+    case DeviceEventType::kFailSafeTimerExpired: {
+        // The non-concurrent handoff shuts down the Matter BleLayer before
+        // Thread commissioning starts.  A failed commissioning attempt opens
+        // the commissioning window again, so restore the logical BleLayer
+        // before CommissioningWindowManager enables BLE advertising.
+        mNonConcurrentCloseRequested     = false;
+        mNonConcurrentThreadStartPending = false;
+        mNonConcurrentConnectionHandle   = LL_CONNHANDLE_INVALID;
+        if (mState == kState_NotInitialized)
+        {
+            CHIP_ERROR err = BleLayer::Init(this, this, &DeviceLayer::SystemLayer());
+            if (err != CHIP_NO_ERROR)
+            {
+                ChipLogError(DeviceLayer, "Failed to restore Matter BleLayer after commissioning rollback: %s", ErrorStr(err));
+            }
+            else
+            {
+                ChipLogProgress(DeviceLayer, "Matter BleLayer restored after commissioning rollback");
+            }
+        }
+        break;
+    }
+#endif
+
     case DeviceEventType::kCHIPoBLESubscribe: {
         ChipDeviceEvent connEstEvent;
 
@@ -345,10 +370,15 @@ CHIP_ERROR BLEManagerImpl::CloseConnection(BLE_CONNECTION_OBJECT conId)
 
 uint16_t BLEManagerImpl::GetMTU(BLE_CONNECTION_OBJECT conId) const
 {
+    if (conId == nullptr)
+    {
+        return 0;
+    }
+
     uint8_t index;
     uint16_t mtu = 0;
 
-    index = GetBLEConnIndex(*((uint32_t *) conId));
+    index = GetBLEConnIndex(*static_cast<uint16_t *>(conId));
 
     if (index != MAX_NUM_BLE_CONNS)
     {
@@ -374,9 +404,16 @@ void BLEManagerImpl::NotifyChipConnectionClosed(BLE_CONNECTION_OBJECT conId)
 #if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
 void BLEManagerImpl::CheckNonConcurrentBleClosing()
 {
-    if (mState == kState_Disconnecting)
+    if (mState == kState_Disconnecting && !mNonConcurrentCloseRequested)
     {
-        DeviceLayer::DeviceControlServer::DeviceControlSvr().PostCloseAllBLEConnectionsToOperationalNetworkEvent();
+        mNonConcurrentCloseRequested = true;
+        CHIP_ERROR err =
+            DeviceLayer::DeviceControlServer::DeviceControlSvr().PostCloseAllBLEConnectionsToOperationalNetworkEvent();
+        if (err != CHIP_NO_ERROR)
+        {
+            mNonConcurrentCloseRequested = false;
+            ChipLogError(DeviceLayer, "Failed to request non-concurrent BLE shutdown: %s", ErrorStr(err));
+        }
     }
 }
 #endif
@@ -410,7 +447,12 @@ CHIP_ERROR BLEManagerImpl::SendIndication(BLE_CONNECTION_OBJECT conId, const Chi
     pMsg->pData = pBuf;
     pMsg->len   = dataLen;
 
-    EnqueueEvtHdrMsg(BLEManagerIMPL_CHIPOBLE_TX_IND_EVT, (void *) pMsg);
+    if (EnqueueEvtHdrMsg(BLEManagerIMPL_CHIPOBLE_TX_IND_EVT, static_cast<void *>(pMsg)) != SUCCESS)
+    {
+        ICall_free(pBuf);
+        ICall_free(pMsg);
+        return CHIP_ERROR_INTERNAL;
+    }
 
     BLEMGR_LOG("BLEMGR: BLE SendIndication RETURN, Length: %d ", dataLen);
     return CHIP_NO_ERROR;
@@ -1001,18 +1043,29 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
 
                     sInstance.mFlags.Set(Flags::kAdvertising);
                 }
-                else if (sInstance.mAdvEnableRetryCount < ADV_ENABLE_MAX_RETRIES)
-                {
-                    ++sInstance.mAdvEnableRetryCount;
-                    ChipLogError(DeviceLayer, "BLE state update: GapAdv_enable failed: status=%d; retry %u/%u", status,
-                                 static_cast<unsigned>(sInstance.mAdvEnableRetryCount),
-                                 static_cast<unsigned>(ADV_ENABLE_MAX_RETRIES));
-                    Util_rescheduleClock(&sInstance.clkAdvEnableRetry, ADV_ENABLE_RETRY_INTERVAL_MS);
-                    Util_startClock(&sInstance.clkAdvEnableRetry);
-                }
                 else
                 {
-                    ChipLogError(DeviceLayer, "BLE state update: GapAdv_enable failed: status=%d; retries exhausted", status);
+                    uint32_t retryIntervalMs = ADV_ENABLE_RETRY_INTERVAL_MS;
+                    uint8_t backoffShift     = sInstance.mAdvEnableRetryCount;
+                    if (backoffShift > 6)
+                    {
+                        backoffShift = 6;
+                    }
+                    retryIntervalMs <<= backoffShift;
+                    if (retryIntervalMs > ADV_ENABLE_RETRY_MAX_INTERVAL_MS)
+                    {
+                        retryIntervalMs = ADV_ENABLE_RETRY_MAX_INTERVAL_MS;
+                    }
+                    if (sInstance.mAdvEnableRetryCount < UINT8_MAX)
+                    {
+                        ++sInstance.mAdvEnableRetryCount;
+                    }
+                    ChipLogError(DeviceLayer,
+                                 "BLE state update: GapAdv_enable failed: status=%d; retry %u in %u ms", status,
+                                 static_cast<unsigned>(sInstance.mAdvEnableRetryCount),
+                                 static_cast<unsigned>(retryIntervalMs));
+                    Util_rescheduleClock(&sInstance.clkAdvEnableRetry, retryIntervalMs);
+                    Util_startClock(&sInstance.clkAdvEnableRetry);
                 }
             }
             // Advertising should be disabled
@@ -1046,21 +1099,60 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
         uint16_t connHandle = *((uint16_t *) (pMsg->pData));
 
 #if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
-        /* Prevent future BLE advertisements, stop prior to terminating connection
-          to guarantee BLE stack does not automatically restart */
-        if (Util_isActive(&sInstance.clkAdvEnableRetry))
+        bool startThreadNow = false;
+        bool connectionIsActive = sInstance.GetBLEConnIndex(connHandle) < MAX_NUM_BLE_CONNS;
+
+        // Only the CommissioningWindowManager shutdown path transitions the
+        // BleLayer to NotInitialized.  Other endpoint closures (for example a
+        // failed PASE attempt) must remain in BLE mode and resume advertising.
+        if (sInstance.mState == kState_NotInitialized && sInstance.mNonConcurrentCloseRequested)
         {
-            Util_stopClock(&sInstance.clkAdvEnableRetry);
+            /* Prevent future BLE advertisements, stop prior to terminating connection
+              to guarantee BLE stack does not automatically restart */
+            if (Util_isActive(&sInstance.clkAdvEnableRetry))
+            {
+                Util_stopClock(&sInstance.clkAdvEnableRetry);
+            }
+            sInstance.mAdvEnableRetryCount = 0;
+            GapAdv_disable(sInstance.advHandleLegacy);
+            sInstance.mFlags.Clear(Flags::kAdvertisingEnabled).Clear(Flags::kAdvertising);
+
+            // GAP termination is asynchronous.  Do not start Thread until the
+            // matching GAP_LINK_TERMINATED_EVENT confirms that BLE released the
+            // connection and radio.
+            if (connectionIsActive)
+            {
+                sInstance.mNonConcurrentThreadStartPending = true;
+                sInstance.mNonConcurrentConnectionHandle   = connHandle;
+            }
+            else
+            {
+                // The peer may have disconnected between queuing this close
+                // request and processing it.  The radio is already released.
+                startThreadNow = true;
+            }
         }
-        sInstance.mAdvEnableRetryCount = 0;
-        GapAdv_disable(sInstance.advHandleLegacy);
-        sInstance.mFlags.Clear(Flags::kAdvertisingEnabled).Clear(Flags::kAdvertising);
 
-        /* Close active connection */
-        GAP_TerminateLinkReq(connHandle, HCI_DISCONNECT_REMOTE_USER_TERM);
+        if (connectionIsActive)
+        {
+            bStatus_t terminateStatus = GAP_TerminateLinkReq(connHandle, HCI_DISCONNECT_REMOTE_USER_TERM);
+            if (terminateStatus != SUCCESS)
+            {
+                ChipLogError(DeviceLayer, "GAP_TerminateLinkReq failed for connection 0x%04x: status=%u", connHandle,
+                             static_cast<unsigned>(terminateStatus));
+                sInstance.mNonConcurrentCloseRequested     = false;
+                sInstance.mNonConcurrentThreadStartPending = false;
+                sInstance.mNonConcurrentConnectionHandle   = LL_CONNHANDLE_INVALID;
+                startThreadNow = terminateStatus == bleNotConnected && sInstance.mState == kState_NotInitialized;
+            }
+        }
 
-        /* Trigger Thread startup procedure, Note: Thread Radio is already initialized */
-        DeviceLayer::ConnectivityMgrImpl().StartNonConcurrentThreadManagement();
+        if (startThreadNow)
+        {
+            sInstance.mNonConcurrentCloseRequested = false;
+            ChipLogProgress(DeviceLayer, "BLE link already terminated; starting non-concurrent Thread commissioning");
+            DeviceLayer::ConnectivityMgrImpl().StartNonConcurrentThreadManagement();
+        }
 #else
         /* Close active connection */
         GAP_TerminateLinkReq(connHandle, HCI_DISCONNECT_REMOTE_USER_TERM);
@@ -1098,7 +1190,15 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
             if (sInstance.connList[i].connHandle == connHandleId)
             {
                 activeConnObj = &sInstance.connList[i];
+                break;
             }
+        }
+
+        if (activeConnObj == nullptr)
+        {
+            ChipLogError(DeviceLayer, "Ignoring late CHIPoBLE characteristic callback for closed connection 0x%04x",
+                         connHandleId);
+            break;
         }
 
         connHandle = (void *) &activeConnObj->connHandle;
@@ -1327,6 +1427,18 @@ void BLEManagerImpl::ProcessGapMessage(gapEventHdr_t * pMsg)
         gapTerminateLinkEvent_t * pPkt = (gapTerminateLinkEvent_t *) pMsg;
         BLEMGR_LOG("BLEMGR: ProcessGapMessage: GAP_LINK_TERMINATED_EVENT, reason: %d", pPkt->reason);
 
+#if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
+        bool pendingHandleMatches = !sInstance.mNonConcurrentThreadStartPending ||
+            sInstance.mNonConcurrentConnectionHandle == pPkt->connectionHandle;
+        bool startThread = sInstance.mNonConcurrentCloseRequested && pendingHandleMatches;
+        if (startThread)
+        {
+            sInstance.mNonConcurrentCloseRequested     = false;
+            sInstance.mNonConcurrentThreadStartPending = false;
+            sInstance.mNonConcurrentConnectionHandle   = LL_CONNHANDLE_INVALID;
+        }
+#endif
+
         BLE_CONNECTION_OBJECT connectionObject = nullptr;
         uint8_t connIndex                       = sInstance.GetBLEConnIndex(pPkt->connectionHandle);
         if (connIndex < MAX_NUM_BLE_CONNS)
@@ -1338,6 +1450,17 @@ void BLEManagerImpl::ProcessGapMessage(gapEventHdr_t * pMsg)
 
         // Remove the connection from the list and disable RSSI if needed
         RemoveBLEConn(pPkt->connectionHandle);
+
+#if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
+        if (startThread)
+        {
+            // Preserve the original event ordering: once BLE is physically
+            // down, let Network Commissioning start Thread before reporting
+            // the transport closure to upper layers.
+            ChipLogProgress(DeviceLayer, "BLE link terminated; starting non-concurrent Thread commissioning");
+            DeviceLayer::ConnectivityMgrImpl().StartNonConcurrentThreadManagement();
+        }
+#endif
 
         ChipDeviceEvent event;
         event.Type                           = DeviceEventType::kCHIPoBLEConnectionError;
@@ -1433,24 +1556,32 @@ uint8_t BLEManagerImpl::ProcessGATTMsg(gattMsgEvent_t * pMsg)
     {
         index = GetBLEConnIndex(pMsg->connHandle);
 
-        sInstance.connList[index].mtu = pMsg->msg.mtuEvt.MTU;
-        BLEMGR_LOG("BLEMGR: ProcessGATTMsg, ATT_MTU_UPDATED_EVENT: %d", pMsg->msg.mtuEvt.MTU);
+        if (index < MAX_NUM_BLE_CONNS)
+        {
+            sInstance.connList[index].mtu = pMsg->msg.mtuEvt.MTU;
+            BLEMGR_LOG("BLEMGR: ProcessGATTMsg, ATT_MTU_UPDATED_EVENT: %d", pMsg->msg.mtuEvt.MTU);
+        }
+        else
+        {
+            ChipLogError(DeviceLayer, "Ignoring MTU update for closed BLE connection 0x%04x", pMsg->connHandle);
+        }
     }
     else if (pMsg->method == ATT_HANDLE_VALUE_CFM)
     {
-        void * connHandle;
-        ChipDeviceEvent event;
+        index = GetBLEConnIndex(pMsg->connHandle);
+        if (index < MAX_NUM_BLE_CONNS)
+        {
+            ChipDeviceEvent event;
+            event.Type = DeviceEventType::kCHIPoBLEIndicateConfirm;
+            event.CHIPoBLEIndicateConfirm.ConId = static_cast<void *>(&sInstance.connList[index].connHandle);
+            PlatformMgr().PostEventOrDie(&event);
 
-        ConnRec_t * activeConnObj = NULL;
-
-        activeConnObj = &sInstance.connList[0];
-        connHandle    = (void *) &activeConnObj->connHandle;
-
-        event.Type                          = DeviceEventType::kCHIPoBLEIndicateConfirm;
-        event.CHIPoBLEIndicateConfirm.ConId = connHandle;
-        PlatformMgr().PostEventOrDie(&event);
-
-        BLEMGR_LOG("BLEMGR: ProcessGATTMsg, ATT_HANDLE_VALUE_CFM:");
+            BLEMGR_LOG("BLEMGR: ProcessGATTMsg, ATT_HANDLE_VALUE_CFM:");
+        }
+        else
+        {
+            ChipLogError(DeviceLayer, "Ignoring indication confirmation for closed BLE connection 0x%04x", pMsg->connHandle);
+        }
     }
     // Free message payload. Needed only for ATT Protocol messages
     GATT_bm_free(&pMsg->msg, pMsg->method);
@@ -1606,14 +1737,19 @@ status_t BLEManagerImpl::EnqueueEvtHdrMsg(uint8_t event, void * pData)
 #else
             success = Util_enqueueMsg(sEventHandlerMsgQueueID, (EventP_Handle) BLEManagerImpl::sSyncEvent, (uint8_t *) pMsg);
 #endif
-            return (success) ? SUCCESS : FAILURE;
+            if (!success)
+            {
+                ICall_free(pMsg);
+                return FAILURE;
+            }
+            return SUCCESS;
         }
 
         return bleMemAllocError;
     }
     else
     {
-        return true;
+        return FAILURE;
     }
 }
 

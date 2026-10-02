@@ -39,6 +39,7 @@
  
  #include <lib/support/CHIPMem.h>
  #include <lib/support/CHIPPlatformMemory.h>
+ #include <lib/core/ErrorStr.h>
  
  #ifdef ENABLE_CHIP_SHELL
  #include <lib/shell/Engine.h>
@@ -50,6 +51,7 @@
  #include <app/clusters/identify-server/identify-server.h>
  #include <app/clusters/on-off-server/on-off-server.h>
  #include <app/server/OnboardingCodesUtil.h>
+ #include <app/server/Dnssd.h>
  #include <app/server/Server.h>
  #include <app/util/attribute-storage.h>
  
@@ -92,7 +94,7 @@
  #define OTAREQUESTOR_INIT_TIMER_DELAY_MS 10000
 
  namespace {
- constexpr char kCommissionedNodeLabel[]    = "TI-Light";
+ constexpr char kMatterNodeLabel[]          = "TI-Light";
  // Give the RemoveFabric response time to leave the device before it reboots.
  constexpr uint32_t kLastFabricResetDelayMs = 1000;
  bool sFactoryResetScheduled                = false;
@@ -100,6 +102,28 @@
  void FactoryResetTimerHandler(chip::System::Layer *, void *)
  {
      chip::Server::GetInstance().ScheduleFactoryReset();
+ }
+
+ void PrepareFactoryResetAfterFabricRemoval(intptr_t)
+ {
+     // Withdraw operational discovery before rebooting so the border router
+     // does not retain an old _matterc/_matter service alongside the next
+     // commissioning instance.
+     chip::Dnssd::ServiceAdvertiser::Instance().RemoveServices();
+#if CHIP_DEVICE_CONFIG_ENABLE_THREAD_SRP_CLIENT
+     CHIP_ERROR srpErr = chip::DeviceLayer::ThreadStackMgr().ClearAllSrpHostAndServices();
+     if (srpErr != CHIP_NO_ERROR)
+     {
+         PLAT_LOG("Failed to withdraw Thread SRP services before factory reset: %s", chip::ErrorStr(srpErr));
+     }
+#endif
+
+     if (chip::DeviceLayer::SystemLayer().StartTimer(chip::System::Clock::Milliseconds32(kLastFabricResetDelayMs),
+                                                     FactoryResetTimerHandler, nullptr) != CHIP_NO_ERROR)
+     {
+         PLAT_LOG("Failed to schedule delayed factory reset; resetting immediately");
+         chip::Server::GetInstance().ScheduleFactoryReset();
+     }
  }
 
  void ScheduleAppFactoryResetAfterFabricRemoval()
@@ -110,10 +134,9 @@
      }
 
      sFactoryResetScheduled = true;
-     if (chip::DeviceLayer::SystemLayer().StartTimer(chip::System::Clock::Milliseconds32(kLastFabricResetDelayMs),
-                                                     FactoryResetTimerHandler, nullptr) != CHIP_NO_ERROR)
+     if (chip::DeviceLayer::PlatformMgr().ScheduleWork(PrepareFactoryResetAfterFabricRemoval) != CHIP_NO_ERROR)
      {
-         PLAT_LOG("Failed to schedule delayed factory reset; resetting immediately");
+         PLAT_LOG("Failed to schedule fabric-removal cleanup; resetting immediately");
          chip::Server::GetInstance().ScheduleFactoryReset();
      }
  }
@@ -125,6 +148,16 @@
      {
          if (fabricTable.FabricCount() == 0)
          {
+             // RevertPendingFabricData deletes an uncommitted AddNOC while the
+             // pending marker is still present.  This is a commissioning
+             // rollback, not an operator-requested removal: the fail-safe
+             // handler restores BLE and reopens the existing window.
+             if (fabricTable.GetPendingNewFabricIndex() == fabricIndex)
+             {
+                 PLAT_LOG("Pending fabric rolled back (index=%u); resuming BLE commissioning", fabricIndex);
+                 return;
+             }
+
              PLAT_LOG("Last fabric removed (index=%u); factory resetting for recommissioning", fabricIndex);
              ScheduleAppFactoryResetAfterFabricRemoval();
          }
@@ -252,13 +285,6 @@
  
      case DeviceEventType::kCommissioningComplete:
          PLAT_LOG("Commissioning complete");
-
-         if (Clusters::BasicInformation::Attributes::NodeLabel::Set(
-                 kRootEndpointId, CharSpan(kCommissionedNodeLabel, sizeof(kCommissionedNodeLabel) - 1)) !=
-             Protocols::InteractionModel::Status::Success)
-         {
-             PLAT_LOG("Failed to set commissioned Matter node label");
-         }
          break;
      case DeviceEventType::kThreadStateChange:
          PLAT_LOG("Thread State Change");
@@ -394,6 +420,17 @@
      SetDeviceInfoProvider(&sExampleDeviceInfoProvider);
  
      Server::GetInstance().Init(initParams);
+
+     // Keep the Matter identity stable throughout commissioning by setting the
+     // default label before a new session starts, while preserving a
+     // commissioned or user-assigned label on subsequent boots.
+     if (Server::GetInstance().GetFabricTable().FabricCount() == 0 &&
+         Clusters::BasicInformation::Attributes::NodeLabel::Set(
+             kRootEndpointId, CharSpan(kMatterNodeLabel, sizeof(kMatterNodeLabel) - 1)) !=
+             Protocols::InteractionModel::Status::Success)
+     {
+         PLAT_LOG("Failed to set default Matter node label");
+     }
 
      ret = Server::GetInstance().GetFabricTable().AddFabricDelegate(&sAppFabricTableDelegate);
      if (ret != CHIP_NO_ERROR)

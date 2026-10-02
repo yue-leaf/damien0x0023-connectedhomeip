@@ -84,9 +84,10 @@ using namespace chip::Ble;
 // 15 Minute Advertisement CHIP Timeout period
 #define ADV_TIMEOUT (900000)
 
-// Delay between retries when the controller temporarily rejects an advertising enable request.
+// Back off, but keep retrying, when the controller temporarily rejects an
+// advertising enable request after a connection closes.
 #define ADV_ENABLE_RETRY_INTERVAL_MS (100)
-#define ADV_ENABLE_MAX_RETRIES (3)
+#define ADV_ENABLE_RETRY_MAX_INTERVAL_MS (5000)
 
 #define STATE_CHANGE_EVT 0
 #define CHAR_CHANGE_EVT 1
@@ -305,6 +306,11 @@ private:
     ClockP_Struct clkAdvTimeout;
     ClockP_Struct clkAdvEnableRetry;
     uint8_t mAdvEnableRetryCount = 0;
+#if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
+    bool mNonConcurrentCloseRequested = false;
+    bool mNonConcurrentThreadStartPending = false;
+    uint16_t mNonConcurrentConnectionHandle = LL_CONNHANDLE_INVALID;
+#endif
     // Memory to pass RPA read event ID to clock handler
     ClockEventData_t argRpaRead = { .event = READ_RPA_EVT };
 
