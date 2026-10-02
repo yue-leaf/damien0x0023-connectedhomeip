@@ -593,6 +593,8 @@ CHIP_ERROR BLEManagerImpl::ConfigureAdvertisements(void)
         }
 
         Util_constructClock(&sInstance.clkAdvTimeout, AdvTimeoutHandler, ADV_TIMEOUT, 0, false, (uintptr_t) NULL);
+        Util_constructClock(&sInstance.clkAdvEnableRetry, AdvEnableRetryHandler, ADV_ENABLE_RETRY_INTERVAL_MS, 0, false,
+                            (uintptr_t) NULL);
     }
     if (sInstance.mFlags.Has(Flags::kBLEStackAdvInitialized))
 
@@ -953,16 +955,23 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
             }
 
             // Turn on advertisements
-            if (sInstance.mFlags.Has(Flags::kAdvertisingEnabled) && !sInstance.mFlags.Has(Flags::kAdvertising))
+            if (sInstance.mFlags.Has(Flags::kAdvertisingEnabled) && !sInstance.mFlags.Has(Flags::kAdvertising) &&
+                sInstance._NumConnections() < MAX_NUM_BLE_CONNS)
             {
                 // Send notification to thread manager that CHIPoBLE advertising is starting
 
                 // Enable legacy advertising for set #1
                 status = (bStatus_t) GapAdv_enable(sInstance.advHandleLegacy, GAP_ADV_ENABLE_OPTIONS_USE_MAX, 0);
 
-                // If adverisement fails, keep flags set
-                if (status == SUCCESS)
+                // The controller can report that advertising is already enabled while the application is
+                // reconciling state after a disconnect. Treat that as success as well.
+                if (status == SUCCESS || status == bleAlreadyInRequestedMode)
                 {
+                    sInstance.mAdvEnableRetryCount = 0;
+                    if (Util_isActive(&sInstance.clkAdvEnableRetry))
+                    {
+                        Util_stopClock(&sInstance.clkAdvEnableRetry);
+                    }
 
                     // Start advertisement timeout timer
                     if (sInstance.mFlags.Has(Flags::kFastAdvertisingEnabled))
@@ -978,20 +987,42 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
 
                     sInstance.mFlags.Set(Flags::kAdvertising);
                 }
+                else if (sInstance.mAdvEnableRetryCount < ADV_ENABLE_MAX_RETRIES)
+                {
+                    ++sInstance.mAdvEnableRetryCount;
+                    ChipLogError(DeviceLayer, "BLE state update: GapAdv_enable failed: status=%d; retry %u/%u", status,
+                                 static_cast<unsigned>(sInstance.mAdvEnableRetryCount),
+                                 static_cast<unsigned>(ADV_ENABLE_MAX_RETRIES));
+                    Util_rescheduleClock(&sInstance.clkAdvEnableRetry, ADV_ENABLE_RETRY_INTERVAL_MS);
+                    Util_startClock(&sInstance.clkAdvEnableRetry);
+                }
+                else
+                {
+                    ChipLogError(DeviceLayer, "BLE state update: GapAdv_enable failed: status=%d; retries exhausted", status);
+                }
             }
             // Advertising should be disabled
-            if ((!sInstance.mFlags.Has(Flags::kAdvertisingEnabled)) && sInstance.mFlags.Has(Flags::kAdvertising))
+            if (!sInstance.mFlags.Has(Flags::kAdvertisingEnabled))
             {
-                BLEMGR_LOG("BLEMGR: BLE Process Application Message: ADvertisements disabled");
+                if (Util_isActive(&sInstance.clkAdvEnableRetry))
+                {
+                    Util_stopClock(&sInstance.clkAdvEnableRetry);
+                }
+                sInstance.mAdvEnableRetryCount = 0;
 
-                // Stop advertising
-                GapAdv_disable(sInstance.advHandleLegacy);
-                sInstance.mFlags.Clear(Flags::kAdvertising);
+                if (sInstance.mFlags.Has(Flags::kAdvertising))
+                {
+                    BLEMGR_LOG("BLEMGR: BLE Process Application Message: ADvertisements disabled");
 
-                Util_stopClock(&sInstance.clkAdvTimeout);
+                    // Stop advertising
+                    GapAdv_disable(sInstance.advHandleLegacy);
+                    sInstance.mFlags.Clear(Flags::kAdvertising);
 
-                // reset fast advertising
-                sInstance.mFlags.Set(Flags::kFastAdvertisingEnabled);
+                    Util_stopClock(&sInstance.clkAdvTimeout);
+
+                    // reset fast advertising
+                    sInstance.mFlags.Set(Flags::kFastAdvertisingEnabled);
+                }
             }
         }
     }
@@ -1003,6 +1034,11 @@ void BLEManagerImpl::ProcessEvtHdrMsg(QueuedEvt_t * pMsg)
 #if !CHIP_DEVICE_CONFIG_SUPPORTS_CONCURRENT_CONNECTION
         /* Prevent future BLE advertisements, stop prior to terminating connection
           to guarantee BLE stack does not automatically restart */
+        if (Util_isActive(&sInstance.clkAdvEnableRetry))
+        {
+            Util_stopClock(&sInstance.clkAdvEnableRetry);
+        }
+        sInstance.mAdvEnableRetryCount = 0;
         GapAdv_disable(sInstance.advHandleLegacy);
         sInstance.mFlags.Clear(Flags::kAdvertisingEnabled).Clear(Flags::kAdvertising);
 
@@ -1239,9 +1275,6 @@ void BLEManagerImpl::ProcessGapMessage(gapEventHdr_t * pMsg)
         gapEstLinkReqEvent_t * pPkt = (gapEstLinkReqEvent_t *) pMsg;
         BLEMGR_LOG("BLEMGR: ProcessGapMessage: GAP_LINK_ESTABLISHED_EVENT");
 
-        // Display the amount of current connections
-        uint8_t numActive = (uint8_t) linkDB_NumActive("");
-
         if (pPkt->hdr.status == SUCCESS)
         {
             // Add connection to list and start RSSI
@@ -1252,11 +1285,18 @@ void BLEManagerImpl::ProcessGapMessage(gapEventHdr_t * pMsg)
         DMMPolicy_updateStackState(DMMPolicy_StackRole_BlePeripheral, DMMPOLICY_BLE_HIGH_BANDWIDTH);
 #endif
 
-        if (numActive >= MAX_NUM_BLE_CONNS)
+        if (pPkt->hdr.status == SUCCESS && sInstance._NumConnections() >= MAX_NUM_BLE_CONNS)
         {
-            // Stop advertising since there is no room for more connections
-            BLEMGR_LOG("BLEMGR: BLE event GAP_LINK_ESTABLISHED_EVENT: MAX connections");
-            sInstance.mFlags.Clear(Flags::kAdvertisingEnabled).Clear(Flags::kAdvertising);
+            // The controller stops connectable advertising while the only BLE connection is occupied. Keep the
+            // application's advertising request so a C3-only connection can resume advertising after it disconnects.
+            BLEMGR_LOG("BLEMGR: BLE event GAP_LINK_ESTABLISHED_EVENT: MAX connections, advertising paused");
+            sInstance.mFlags.Clear(Flags::kAdvertising);
+
+            if (Util_isActive(&sInstance.clkAdvEnableRetry))
+            {
+                Util_stopClock(&sInstance.clkAdvEnableRetry);
+            }
+            sInstance.mAdvEnableRetryCount = 0;
         }
 
         /* Stop advertisement timeout timer */
@@ -1273,15 +1313,25 @@ void BLEManagerImpl::ProcessGapMessage(gapEventHdr_t * pMsg)
         gapTerminateLinkEvent_t * pPkt = (gapTerminateLinkEvent_t *) pMsg;
         BLEMGR_LOG("BLEMGR: ProcessGapMessage: GAP_LINK_TERMINATED_EVENT, reason: %d", pPkt->reason);
 
+        BLE_CONNECTION_OBJECT connectionObject = nullptr;
+        uint8_t connIndex                       = sInstance.GetBLEConnIndex(pPkt->connectionHandle);
+        if (connIndex < MAX_NUM_BLE_CONNS)
+        {
+            // Matter BLE endpoints use the address of the handle in connList as their stable connection object.
+            // Preserve that address before clearing the entry; pPkt belongs to temporary stack event storage.
+            connectionObject = static_cast<void *>(&sInstance.connList[connIndex].connHandle);
+        }
+
         // Remove the connection from the list and disable RSSI if needed
         RemoveBLEConn(pPkt->connectionHandle);
 
         ChipDeviceEvent event;
         event.Type                           = DeviceEventType::kCHIPoBLEConnectionError;
-        event.CHIPoBLEConnectionError.ConId  = (void *) &pPkt->connectionHandle;
+        event.CHIPoBLEConnectionError.ConId  = connectionObject;
         event.CHIPoBLEConnectionError.Reason = BLE_ERROR_REMOTE_DEVICE_DISCONNECTED;
         PlatformMgr().PostEventOrDie(&event);
 
+        sInstance.mAdvEnableRetryCount = 0;
         DriveBLEState();
 
         break;
@@ -1956,6 +2006,17 @@ void BLEManagerImpl::AdvTimeoutHandler(uintptr_t arg)
             sInstance.mFlags.Clear(Flags::kAdvertisingEnabled);
         }
         /* Send event to process state change request */
+        DriveBLEState();
+    }
+}
+
+void BLEManagerImpl::AdvEnableRetryHandler(uintptr_t arg)
+{
+    BLEMGR_LOG("BLEMGR: AdvEnableRetryHandler");
+
+    if (sInstance.mFlags.Has(Flags::kAdvertisingEnabled) && !sInstance.mFlags.Has(Flags::kAdvertising) &&
+        sInstance._NumConnections() < MAX_NUM_BLE_CONNS)
+    {
         DriveBLEState();
     }
 }

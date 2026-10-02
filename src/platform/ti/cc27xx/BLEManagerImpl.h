@@ -84,6 +84,10 @@ using namespace chip::Ble;
 // 15 Minute Advertisement CHIP Timeout period
 #define ADV_TIMEOUT (900000)
 
+// Delay between retries when the controller temporarily rejects an advertising enable request.
+#define ADV_ENABLE_RETRY_INTERVAL_MS (100)
+#define ADV_ENABLE_MAX_RETRIES (3)
+
 #define STATE_CHANGE_EVT 0
 #define CHAR_CHANGE_EVT 1
 #define CHIPOBLE_CHAR_CHANGE_EVT 2
@@ -299,6 +303,8 @@ private:
 
     ClockP_Struct clkRpaRead;
     ClockP_Struct clkAdvTimeout;
+    ClockP_Struct clkAdvEnableRetry;
+    uint8_t mAdvEnableRetryCount = 0;
     // Memory to pass RPA read event ID to clock handler
     ClockEventData_t argRpaRead = { .event = READ_RPA_EVT };
 
@@ -332,6 +338,7 @@ private:
     static void advCallback(uint32_t event, void * pBuf, uintptr_t arg);
     static void ClockHandler(uintptr_t arg);
     static void AdvTimeoutHandler(uintptr_t arg);
+    static void AdvEnableRetryHandler(uintptr_t arg);
     static void FastAdvTimeoutHandler(uintptr_t arg);
     static void CHIPoBLEProfile_charValueChangeCB(uint8_t paramId, uint16_t len, uint16_t connHandle);
 #if CHIPOBLE_ENABLE_C3
