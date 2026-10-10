@@ -213,6 +213,7 @@ jobs:
                           ti_cc2755_evb=true
                           chip_enable_ota_requestor=false
                           chip_generate_link_map_file=true
+                          target_ldflags=[\"-Wl,--print-memory-usage\"]
                           chip_openthread_ftd=true
                           chip_progress_logging=true
                           chip_enable_additional_data_advertising=true
@@ -290,6 +291,16 @@ jobs:
                       cp "$BUILD_DIR/gen/sysconfig/ti_drivers_config.h" "$ARTIFACT_DIR/sysconfig/"
                       cp "$BUILD_DIR/gen/sysconfig/ti_utils_build_linker.cmd.genmap" "$ARTIFACT_DIR/sysconfig/"
                   '
+
+            - name: Upload CC2755 linker diagnostics
+              uses: actions/upload-artifact@v4
+              if: ${{ always() && !env.ACT }}
+              with:
+                  name: cc2755-evb-linker-diagnostics
+                  if-no-files-found: ignore
+                  path: |
+                      out/ti-cc2755-evb-lighting-ftd/chip-LP_EM_CC2755P20-lighting-example.out.map
+                      out/ti-cc2755-evb-lighting-ftd/gen/sysconfig/ti_utils_build_linker.cmd.genmap
 
             - name: Upload CC2755 EVB build artifacts
               uses: actions/upload-artifact@v4

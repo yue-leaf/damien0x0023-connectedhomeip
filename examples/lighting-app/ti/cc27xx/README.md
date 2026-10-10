@@ -92,6 +92,15 @@ Identity data is captured before the Matter event loop starts, and runtime
 updates overwrite a single queued snapshot containing independent network,
 light, Identify, commissioning, and backlight fields. Identical status updates
 and backlight toggles do not redraw the page.
+Before the LCD task starts, the startup codes and identity fields are converted
+directly into immutable renderer state; no duplicate raw startup buffers are
+retained. The scanline is a local buffer within the existing 2048-byte LCD task
+stack, not an additional static SRAM allocation. Host tests enforce a 640-byte
+static-storage ceiling for DisplayManager, a 640-byte host compiler frame-size
+limit for the LCD task implementation, and verify that startup inputs can be
+discarded immediately after Start. The frame check excludes TI driver callees;
+hardware stack high-water marks still need
+to be checked while commissioning, scanning, and updating the display.
 Transient row-write failures hide the incomplete frame and retry up to three
 times, waiting 250 ms between attempts. After that, the worker waits for another
 state/backlight update instead of polling indefinitely. A new update during a
@@ -110,6 +119,9 @@ use a host C/C++ compiler:
 ```sh
 python3 examples/lighting-app/ti/cc27xx/tests/run_display_tests.py
 ```
+
+Both workflows print GNU linker memory-region usage and upload linker map and
+SysConfig memory-map diagnostics even when the firmware build fails.
 
 The tests also emit sample pairing/error and connected/offline/Identify status
 pages as PPM images, including maximum-length and unavailable identity fields.

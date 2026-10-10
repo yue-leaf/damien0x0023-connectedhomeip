@@ -37,6 +37,7 @@ def main():
     renderer = output / ("test-onboarding-screen" + suffix)
     manager = output / ("test-display-manager" + suffix)
     status = output / ("test-status-screen" + suffix)
+    display_object = output / "display-manager.o"
     subprocess.run([args.cxx, *flags, str(tests / "TestOnboardingScreen.cpp"), str(source / "OnboardingScreen.cpp"),
                     str(qr_object), "-o", str(renderer)], check=True)
     subprocess.run([str(renderer), str(output / "onboarding.ppm"), str(output / "invalid-factory-data.ppm")], check=True)
@@ -45,8 +46,12 @@ def main():
     subprocess.run([str(status), *[str(output / (name + ".ppm")) for name in
                                   ["status-connected", "status-offline", "status-identify", "status-long-fields", "status-unavailable"]]],
                    check=True)
+    # Check the production LCD task's own frames, not the much larger test harness.
+    # This host check does not include TI driver callees or replace board measurements.
+    subprocess.run([args.cxx, *flags, "-Os", "-Wframe-larger-than=640", "-fstack-usage", "-I", str(tests / "stubs"),
+                    "-c", str(source / "DisplayManager.cpp"), "-o", str(display_object)], check=True)
     subprocess.run([args.cxx, *flags, "-I", str(tests / "stubs"), str(tests / "TestDisplayManager.cpp"),
-                    str(source / "DisplayManager.cpp"), str(source / "OnboardingScreen.cpp"), str(source / "StatusScreen.cpp"),
+                    str(display_object), str(source / "OnboardingScreen.cpp"), str(source / "StatusScreen.cpp"),
                     str(qr_object), "-o", str(manager)], check=True)
     for scenario in ["uncommissioned", "commissioned", "invalid", "failure", "status-failure", "auto-retry",
                      "retry-exhausted", "partial-frame", "retry-update"]:

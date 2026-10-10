@@ -123,6 +123,9 @@ CHIP_ERROR St7789Display::DrawImage(uint16_t x, uint16_t y, uint16_t width, uint
 
 int main(int argc, char ** argv)
 {
+    static_assert(sizeof(DisplayManager) <= 640, "LCD static storage exceeds the CC2755R10 budget");
+    if (argc > 1 && strcmp(argv[1], "uncommissioned") == 0)
+        printf("DisplayManager static storage: %zu bytes\n", sizeof(DisplayManager));
     auto & manager = DisplayManager::GetInstance();
     OnboardingCodes codes;
     strcpy(codes.qrCode, "MT:Y3.13Y2N00KA0648G00");
@@ -167,6 +170,13 @@ int main(int argc, char ** argv)
     sSimulateTimeouts = autoRetry || exhausted;
     sDrawFailures     = autoRetry ? 2 : 0;
     assert(manager.Start(codes, commissioned || statusFailure, info) == CHIP_NO_ERROR);
+    // Start consumes the caller's buffers synchronously; later mutations must
+    // not alter either the initial page or a subsequent commissioning rollback.
+    OnboardingCodes savedCodes = codes;
+    memset(codes.qrCode, 'X', sizeof(codes.qrCode));
+    memset(codes.manualCode, 'X', sizeof(codes.manualCode));
+    memset(info.serialNumber, 'X', sizeof(info.serialNumber));
+    memset(info.softwareVersion, 'X', sizeof(info.softwareVersion));
     if (autoRetry || exhausted)
     {
         sActions.push_back([&] {
@@ -296,7 +306,7 @@ int main(int argc, char ** argv)
         sActions.push_back([&] {
             assert(sRows == 1440 && !sBacklight && sFills == 0);
             OnboardingScreen pairing;
-            pairing.Init(codes);
+            pairing.Init(savedCodes);
             uint8_t row[480];
             for (uint16_t y = 0; y < 240; ++y)
             {

@@ -52,11 +52,8 @@ private:
     QueueHandle_t mQueue = nullptr;
     TaskHandle_t mTask   = nullptr;
     St7789Display mDisplay;
-    OnboardingCodes mOnboardingCodes;
     OnboardingScreen mOnboardingScreen;
-    DeviceDisplayInfo mDeviceInfo;
     StatusScreen mStatusScreen;
-    uint8_t mRowBuffer[OnboardingScreen::kWidth * 2];
     Snapshot mDesiredSnapshot;
     Snapshot mRenderedSnapshot;
     bool mDisplayInitialized = false;

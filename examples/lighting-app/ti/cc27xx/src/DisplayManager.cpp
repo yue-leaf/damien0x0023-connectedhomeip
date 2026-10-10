@@ -20,6 +20,7 @@
 #include <lib/core/ErrorStr.h>
 
 namespace {
+static_assert(sizeof(DisplayManager) <= 640, "LCD static storage exceeds the CC2755R10 budget");
 constexpr uint32_t kDisplayTaskStackSize   = 2048;
 constexpr UBaseType_t kDisplayTaskPriority = tskIDLE_PRIORITY + 1;
 constexpr unsigned kMaxRenderAttempts      = 3;
@@ -45,9 +46,12 @@ CHIP_ERROR DisplayManager::Start(const OnboardingCodes & codes, bool commissione
         return CHIP_ERROR_NO_MEMORY;
     }
 
-    // The payload is immutable after startup. Only the LCD task encodes/draws it.
-    mOnboardingCodes              = codes;
-    mDeviceInfo                   = info;
+    // Consume startup inputs before publishing the task; retain no raw copies.
+    if (!mOnboardingScreen.Init(codes) && codes.valid)
+    {
+        PLAT_LOG("LCD QR encoding failed; displaying factory-data error");
+    }
+    mStatusScreen.Init(info);
     mDesiredSnapshot.commissioned = commissioned;
     xQueueOverwrite(mQueue, &mDesiredSnapshot);
 
@@ -117,11 +121,6 @@ void DisplayManager::TaskMain(void * context)
 
 void DisplayManager::Run()
 {
-    if (!mOnboardingScreen.Init(mOnboardingCodes) && mOnboardingCodes.valid)
-    {
-        PLAT_LOG("LCD QR encoding failed; displaying factory-data error");
-    }
-    mStatusScreen.Init(mDeviceInfo);
     CHIP_ERROR error    = mDisplay.Init();
     mDisplayInitialized = (error == CHIP_NO_ERROR);
     if (error != CHIP_NO_ERROR)
@@ -171,6 +170,8 @@ void DisplayManager::Run()
 
 CHIP_ERROR DisplayManager::Render(const Snapshot & snapshot)
 {
+    // Reuse the already reserved LCD task stack, not a second static scanline.
+    uint8_t rowBuffer[OnboardingScreen::kWidth * 2];
     static_assert(St7789Display::kWidth == OnboardingScreen::kWidth && St7789Display::kHeight == OnboardingScreen::kHeight,
                   "LCD geometry mismatch");
     static_assert(StatusScreen::kWidth == St7789Display::kWidth && StatusScreen::kHeight == St7789Display::kHeight,
@@ -179,13 +180,13 @@ CHIP_ERROR DisplayManager::Render(const Snapshot & snapshot)
     {
         if (snapshot.commissioned)
         {
-            mStatusScreen.RenderRow(y, mRowBuffer, snapshot.status);
+            mStatusScreen.RenderRow(y, rowBuffer, snapshot.status);
         }
         else
         {
-            mOnboardingScreen.RenderRow(y, mRowBuffer);
+            mOnboardingScreen.RenderRow(y, rowBuffer);
         }
-        CHIP_ERROR error = mDisplay.DrawImage(0, y, OnboardingScreen::kWidth, 1, mRowBuffer);
+        CHIP_ERROR error = mDisplay.DrawImage(0, y, OnboardingScreen::kWidth, 1, rowBuffer);
         if (error != CHIP_NO_ERROR)
         {
             return error;
