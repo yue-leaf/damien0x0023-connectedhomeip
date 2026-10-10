@@ -19,6 +19,7 @@
  * custom CC2755 EVB pinout.
  */
 var isCc2755Evb = (undefined != argv[6]) && (argv[6] === "true");
+var isCc2755R10Evb = isCc2755Evb && system.deviceData.deviceId.match(/cc2755r10/i);
 
 /* Modules */
 var AESCCM      = scripting.addModule("/ti/drivers/AESCCM");
@@ -60,6 +61,8 @@ var EvbLcdDc;
 var EvbLcdReset;
 var EvbLcdBacklight;
 var EvbLcdSpi;
+var EvbRfSwitchPower;
+var EvbRfSwitchSelect;
 var RNG1        = RNG.addInstance();
 var RNG2        = RNG.addInstance();
 var RNG3        = RNG.addInstance();
@@ -77,6 +80,12 @@ if (isCc2755Evb)
     EvbLcdReset    = GPIO.addInstance();
     EvbLcdBacklight = GPIO.addInstance();
     EvbLcdSpi      = SPI.addInstance();
+
+    if (isCc2755R10Evb)
+    {
+        EvbRfSwitchPower  = GPIO.addInstance();
+        EvbRfSwitchSelect = GPIO.addInstance();
+    }
 }
 else
 {
@@ -109,17 +118,17 @@ Button2.gpioPin.$name               = "CONFIG_GPIO_BTN2";
 if (isCc2755Evb)
 {
     Button1.pull                    = "External";
-    Button1.button.$assign          = "DIO19";
+    Button1.button.$assign          = "DIO19_A6";
     Button2.pull                    = "External";
-    Button2.button.$assign          = "DIO20";
+    Button2.button.$assign          = "DIO20_A5";
 
     Button3.$name                   = "CONFIG_BTN_AUX_1";
     Button3.pull                    = "External";
-    Button3.button.$assign          = "DIO18";
+    Button3.button.$assign          = "DIO18_A7";
 
     Button4.$name                   = "CONFIG_BTN_AUX_2";
     Button4.pull                    = "External";
-    Button4.button.$assign          = "DIO17";
+    Button4.button.$assign          = "DIO17_A8";
 }
 else
 {
@@ -230,7 +239,24 @@ if (isCc2755Evb)
     EvbLcdSpi.defaultTxBufferValue      = "0xFF";
     EvbLcdSpi.spi.sclkPin.$assign       = "DIO15";
     EvbLcdSpi.spi.picoPin.$assign       = "DIO11";
-    EvbLcdSpi.spi.pociPin.$assign       = "DIO28";
+    EvbLcdSpi.spi.pociPin.$assign       = "DIO28_A0";
+
+    if (isCc2755R10Evb)
+    {
+        /* The SR-275505CC1N uses DIO21 to power its antenna switch and
+         * DIO22 to select OUTPUT1. Power stays low until the board-level
+         * initialization registers its standby callbacks.
+         */
+        EvbRfSwitchPower.$name                   = "CONFIG_GPIO_RF_SWITCH_POWER";
+        EvbRfSwitchPower.mode                    = "Output";
+        EvbRfSwitchPower.initialOutputState      = "Low";
+        EvbRfSwitchPower.gpioPin.$assign         = "DIO21_A4";
+
+        EvbRfSwitchSelect.$name                  = "CONFIG_GPIO_RF_SWITCH_SELECT";
+        EvbRfSwitchSelect.mode                   = "Output";
+        EvbRfSwitchSelect.initialOutputState     = "Low";
+        EvbRfSwitchSelect.gpioPin.$assign        = "DIO22_A3";
+    }
 
     /* These pins intentionally follow the custom CC2755 EVB schematic rather
      * than the selected LaunchPad hardware assignments.
@@ -247,6 +273,12 @@ if (isCc2755Evb)
     scripting.suppress(launchPadConflict, EvbLcdDc, "gpioPin");
     scripting.suppress(launchPadConflict, EvbLcdReset, "gpioPin");
     scripting.suppress(launchPadConflict, EvbLcdBacklight, "gpioPin");
+
+    if (isCc2755R10Evb)
+    {
+        scripting.suppress(launchPadConflict, EvbRfSwitchPower, "gpioPin");
+        scripting.suppress(launchPadConflict, EvbRfSwitchSelect, "gpioPin");
+    }
 }
 else
 {

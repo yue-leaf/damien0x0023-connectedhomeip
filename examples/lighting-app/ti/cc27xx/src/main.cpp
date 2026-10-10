@@ -22,6 +22,9 @@
 
 #include "AppConfig.h"
 #include "AppTask.h"
+#if defined(TI_CC2755_R10_EVB_RF_SWITCH)
+#include "BoardRfSwitch.h"
+#endif
 
 #include <FreeRTOS.h>
 
@@ -67,6 +70,10 @@ int main(void)
     Board_init();
 
     GPIO_init();
+
+#if defined(TI_CC2755_R10_EVB_RF_SWITCH)
+    BoardRfSwitch::Init();
+#endif
 
     NVS_init();
 

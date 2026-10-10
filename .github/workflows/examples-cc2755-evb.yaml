@@ -171,12 +171,14 @@ jobs:
 
                       make -C "$TI_SDK_DIR" build-gcc \
                           CMAKE="$CMAKE_BIN" \
+                          GENERATOR=Ninja \
                           GCC_ARMCOMPILER="$GCC_ARMCOMPILER" \
                           TICLANG_ARMCOMPILER= \
                           IAR_ARMCOMPILER=
 
                       make -C "$TI_SDK_DIR" build-ticlang \
                           CMAKE="$CMAKE_BIN" \
+                          GENERATOR=Ninja \
                           GCC_ARMCOMPILER= \
                           TICLANG_ARMCOMPILER="$TI_ARMCLANG_ROOT" \
                           IAR_ARMCOMPILER=
@@ -253,6 +255,7 @@ jobs:
                           "CONFIG_GPIO_LCD_BACKLIGHT 0"
                           "CONFIG_GPIO_SPI_LCD_SCLK 15"
                           "CONFIG_GPIO_SPI_LCD_PICO 11"
+                          "CONFIG_GPIO_SPI_LCD_POCI 28"
                           "CONFIG_GPIO_BTN_LEFT_INPUT 19"
                           "CONFIG_GPIO_BTN_RIGHT_INPUT 20"
                           "CONFIG_GPIO_BTN_AUX_1_INPUT 18"

@@ -25,8 +25,6 @@ parser.add_argument('--secure-dest-path', help="destination path for the secure 
 
 args = parser.parse_args()
 
-ret = False
-
 if os.getenv('_PW_ACTUAL_ENVIRONMENT_ROOT'):
     CHIP_ENV_ROOT = os.getenv('_PW_ACTUAL_ENVIRONMENT_ROOT')
 else:
@@ -60,46 +58,39 @@ make_command = ["make", "-C", args.sdk, "CMAKE=cmake", "GCC_ARMCOMPILER=" +
                 GCC_ARMCOMPILER_PATH, "IAR_ARMCOMPILER=", "TICLANG_ARMCOMPILER=", "GENERATOR=Ninja"]
 
 
-pid = os.fork()
-if pid:
-    status = os.wait()
-    if os.path.exists(source_file_drivers):
-        shutil.copy(source_file_drivers, dest_path)
-    else:
-        print("Driver does not exist or path is incorrect.")
-        sys.exit(2)
+res = subprocess.run(make_command, capture_output=True, encoding="utf8")
+if res.returncode != 0:
+    print("!!!!!!!!!!!! EXEC FAILED !!!!!!!!!!!!!!!!")
+    print("!!!!!!!!!!!!!!! STDOUT !!!!!!!!!!!!!!!!!!")
+    print(res.stdout)
+    print("!!!!!!!!!!!!!!! STDERR !!!!!!!!!!!!!!!!!!")
+    print(res.stderr)
+    print("res.returncode: %d" % res.returncode)
+    sys.exit(1)
 
-    if os.path.exists(source_file_driverlib):
-        shutil.copy(source_file_driverlib, dest_path)
-    else:
-        print("Driverlib does not exist or path is incorrect.")
-        sys.exit(2)
-
-
-    if source_file_hsm is not None:
-        if os.path.exists(source_file_hsm):
-            shutil.copy(source_file_hsm, dest_path)
-        else:
-            print("HSM Library does not exist or path is incorrect.")
-            sys.exit(2)
-
-    if secure_src_file is not None and secure_dest_path is not None:
-        # Copy the secure source file to the destination path
-        if os.path.exists(secure_src_file):
-            shutil.copy(secure_src_file, secure_dest_path)
-        else:
-            print("Secure source file does not exist or path is incorrect.")
-            sys.exit(2)
-
+# Do not copy stale archives after a failed SDK build.
+if os.path.exists(source_file_drivers):
+    shutil.copy(source_file_drivers, dest_path)
 else:
-    make_command = ["make", "-C", args.sdk, "CMAKE=cmake", "GCC_ARMCOMPILER=" +
-                    GCC_ARMCOMPILER_PATH, "IAR_ARMCOMPILER=", "TICLANG_ARMCOMPILER=", "GENERATOR=Ninja"]
-    res = subprocess.run(make_command, capture_output=True, encoding="utf8")
-    if res.returncode != 0:
-        print("!!!!!!!!!!!! EXEC FAILED !!!!!!!!!!!!!!!!")
-        print("!!!!!!!!!!!!!!! STDOUT !!!!!!!!!!!!!!!!!!")
-        print("%s" % res.stdout)
-        print("!!!!!!!!!!!!!!! STDERR !!!!!!!!!!!!!!!!!!")
-        print("%s" % res.stderr)
-        print("res.returncode: %d", res.returncode)
-        sys.exit(1)
+    print("Driver does not exist or path is incorrect.")
+    sys.exit(2)
+
+if os.path.exists(source_file_driverlib):
+    shutil.copy(source_file_driverlib, dest_path)
+else:
+    print("Driverlib does not exist or path is incorrect.")
+    sys.exit(2)
+
+if source_file_hsm is not None:
+    if os.path.exists(source_file_hsm):
+        shutil.copy(source_file_hsm, dest_path)
+    else:
+        print("HSM Library does not exist or path is incorrect.")
+        sys.exit(2)
+
+if secure_src_file is not None and secure_dest_path is not None:
+    if os.path.exists(secure_src_file):
+        shutil.copy(secure_src_file, secure_dest_path)
+    else:
+        print("Secure source file does not exist or path is incorrect.")
+        sys.exit(2)
