@@ -43,6 +43,7 @@
  
  #include <lib/support/CHIPMem.h>
  #include <lib/support/CHIPPlatformMemory.h>
+ #include <lib/support/CodeUtils.h>
  #include <lib/core/ErrorStr.h>
  
  #ifdef ENABLE_CHIP_SHELL
@@ -84,7 +85,9 @@
  #define IDENTIFY_TRIGGER_EFFECT_OKAY 2
  #define IDENTIFY_TRIGGER_EFFECT_FINISH_STOP 3
  
+#if !defined(TI_CC2755_EVB)
  static uint32_t identify_trigger_effect = IDENTIFY_TRIGGER_EFFECT_FINISH_STOP;
+#endif
  
  #define LIGHTING_APPLICATION_IDENTIFY_ENDPOINT 1
  
@@ -159,6 +162,9 @@
              if (fabricTable.GetPendingNewFabricIndex() == fabricIndex)
              {
                  PLAT_LOG("Pending fabric rolled back (index=%u); resuming BLE commissioning", fabricIndex);
+#if defined(TI_CC2755_EVB)
+                 DisplayManager::GetInstance().SetNetworkStatus(DisplayNetworkStatus::kUnknown, false);
+#endif
                  return;
              }
 
@@ -178,19 +184,81 @@
 
 #if defined(TI_CC2755_EVB)
  namespace {
- DisplayManager::State GetNetworkDisplayState()
+ void IdentifyEffectTimeout(chip::System::Layer *, void * context)
  {
-     if (Server::GetInstance().GetFabricTable().FabricCount() == 0)
+     auto * identify = static_cast<::Identify *>(context);
+     // Do not end a normal Identify command that superseded a one-shot effect.
+     if (!identify->mActive)
      {
-         return DisplayManager::State::kCommissionable;
+         AppTask::IdentifyStopHandler(identify);
      }
-     return ThreadStackMgrImpl().IsThreadAttached() ? DisplayManager::State::kThreadAttached :
-                                                      DisplayManager::State::kThreadDetached;
+ }
+
+ bool HasCommissionedFabric()
+ {
+     const auto & fabrics = Server::GetInstance().GetFabricTable();
+     // AddNOC's pending fabric is not a completed pairing and may be rolled back.
+     const uint8_t pending = fabrics.GetPendingNewFabricIndex() == kUndefinedFabricIndex ? 0 : 1;
+     return fabrics.FabricCount() > pending;
+ }
+
+ DisplayNetworkStatus GetNetworkDisplayStatus()
+ {
+     static bool wasAttached = false;
+     if (ThreadStackMgrImpl().IsThreadAttached())
+     {
+         wasAttached = true;
+         return DisplayNetworkStatus::kConnected;
+     }
+     return ThreadStackMgrImpl().IsThreadEnabled() && !wasAttached ? DisplayNetworkStatus::kConnecting :
+                                                                   DisplayNetworkStatus::kDisconnected;
  }
 
  void PostNetworkDisplayState()
  {
-     DisplayManager::GetInstance().PostState(GetNetworkDisplayState());
+     DisplayManager::GetInstance().SetNetworkStatus(GetNetworkDisplayStatus(), HasCommissionedFabric());
+ }
+
+ void PrepareDeviceDisplayInfo(DeviceDisplayInfo & info)
+ {
+     static_assert(sizeof(info.serialNumber) == ConfigurationManager::kMaxSerialNumberLength + 1,
+                   "LCD serial-number buffer must match Matter");
+     static_assert(sizeof(info.softwareVersion) == ConfigurationManager::kMaxSoftwareVersionStringLength + 1,
+                   "LCD software-version buffer must match Matter");
+#ifdef TI_FACTORY_DATA
+     FactoryDataProvider & provider = FactoryDataProvider::GetDefaultInstance();
+     info.vendorIdValid = provider.GetVendorId(info.vendorId) == CHIP_NO_ERROR;
+     info.productIdValid = provider.GetProductId(info.productId) == CHIP_NO_ERROR;
+     info.serialNumberValid = provider.GetSerialNumber(info.serialNumber, sizeof(info.serialNumber)) == CHIP_NO_ERROR;
+#endif
+     info.softwareVersionValid = ConfigurationMgr().GetSoftwareVersionString(info.softwareVersion, sizeof(info.softwareVersion)) ==
+         CHIP_NO_ERROR;
+     info.softwareVersionNumberValid = ConfigurationMgr().GetSoftwareVersion(info.softwareVersionNumber) == CHIP_NO_ERROR;
+ }
+
+ CHIP_ERROR PrepareOnboardingCodes(OnboardingCodes & codes)
+ {
+#ifdef TI_FACTORY_DATA
+     // Read the factory provider directly: never fall back to an example PIN.
+     FactoryDataProvider & provider = FactoryDataProvider::GetDefaultInstance();
+     PayloadContents payload;
+     payload.rendezvousInformation.SetValue(RendezvousInformationFlags(RendezvousInformationFlag::kBLE));
+     uint16_t discriminator = 0;
+     ReturnErrorOnFailure(provider.GetSetupPasscode(payload.setUpPINCode));
+     ReturnErrorOnFailure(provider.GetSetupDiscriminator(discriminator));
+     ReturnErrorOnFailure(provider.GetVendorId(payload.vendorID));
+     ReturnErrorOnFailure(provider.GetProductId(payload.productID));
+     payload.discriminator.SetLongValue(discriminator);
+     MutableCharSpan qrCode(codes.qrCode);
+     MutableCharSpan manualCode(codes.manualCode);
+     ReturnErrorOnFailure(GetQRCode(qrCode, payload));
+     ReturnErrorOnFailure(GetManualPairingCode(manualCode, payload));
+     codes.valid = true;
+     return CHIP_NO_ERROR;
+#else
+     (void) codes;
+     return CHIP_ERROR_NOT_IMPLEMENTED;
+#endif
  }
  } // namespace
 #endif
@@ -285,7 +353,7 @@
  {
 #if defined(TI_CC2755_EVB)
      BoardRgbLed::GetInstance().SetIdentify(true);
-     DisplayManager::GetInstance().PostState(DisplayManager::State::kIdentify);
+     DisplayManager::GetInstance().SetIdentify(true);
 #else
  #if (LED_ENABLE == 1)
      LED_setOn(sAppGreenHandle, LED_BRIGHTNESS_MAX);
@@ -299,8 +367,7 @@
  {
 #if defined(TI_CC2755_EVB)
      BoardRgbLed::GetInstance().SetIdentify(false);
-     DisplayManager::GetInstance().PostState(LightMgr().IsLightOn() ? DisplayManager::State::kLightOn :
-                                                                            DisplayManager::State::kLightOff);
+     DisplayManager::GetInstance().SetIdentify(false);
 #else
  #if (LED_ENABLE == 1)
      LED_stopBlinking(sAppGreenHandle);
@@ -316,7 +383,7 @@
      case DeviceEventType::kCHIPoBLEConnectionEstablished:
          PLAT_LOG("CHIPoBLE connection established");
 #if defined(TI_CC2755_EVB)
-         DisplayManager::GetInstance().PostState(DisplayManager::State::kCommissioning);
+         PostNetworkDisplayState();
 #endif
          break;
  
@@ -333,6 +400,11 @@
          PostNetworkDisplayState();
 #endif
          break;
+#if defined(TI_CC2755_EVB)
+     case DeviceEventType::kFailSafeTimerExpired:
+         PostNetworkDisplayState();
+         break;
+#endif
      case DeviceEventType::kThreadStateChange:
          PLAT_LOG("Thread State Change");
          bool isThreadAttached = ThreadStackMgrImpl().IsThreadAttached();
@@ -341,7 +413,7 @@
          {
              PLAT_LOG("Device is on the Thread Network");
 #if defined(TI_CC2755_EVB)
-             DisplayManager::GetInstance().PostState(DisplayManager::State::kThreadAttached);
+             PostNetworkDisplayState();
 #endif
  #if CHIP_DEVICE_CONFIG_ENABLE_OTA_REQUESTOR
              if (isAppStarting)
@@ -383,8 +455,17 @@
     {
 
         PLAT_LOG("PlatformMgr().InitChipStack() failed");
+#if defined(TI_CC2755_EVB)
+        // Keep invalid provisioning fail-closed, but let the LCD error page run.
+        (void) DisplayManager::GetInstance().Start();
+        while (true)
+        {
+            vTaskDelay(pdMS_TO_TICKS(1000));
+        }
+#else
         while (1)
             ;
+#endif
     }
 
 #ifdef TI_FACTORY_DATA
@@ -496,18 +577,22 @@
              ;
      }
  
-     ret = PlatformMgr().StartEventLoopTask();
-     if (ret != CHIP_NO_ERROR)
-     {
-         PLAT_LOG("PlatformMgr().StartEventLoopTask() failed");
-         while (1)
-             ;
-     }
- 
-     PlatformMgr().AddEventHandler(DeviceEventCallback, reinterpret_cast<intptr_t>(nullptr));
-
 #if defined(TI_CC2755_EVB)
-     ret = DisplayManager::GetInstance().Start();
+     // Capture factory data before the Matter event loop starts. The LCD worker
+     // receives only immutable strings and never reads the Matter stack itself.
+     OnboardingCodes onboardingCodes;
+     DeviceDisplayInfo displayInfo;
+     PrepareDeviceDisplayInfo(displayInfo);
+     const bool commissioned = HasCommissionedFabric();
+     if (!commissioned)
+     {
+         ret = PrepareOnboardingCodes(onboardingCodes);
+         if (ret != CHIP_NO_ERROR)
+         {
+             PLAT_LOG("Cannot prepare LCD onboarding codes: %s", chip::ErrorStr(ret));
+         }
+     }
+     ret = DisplayManager::GetInstance().Start(onboardingCodes, commissioned, displayInfo);
      if (ret != CHIP_NO_ERROR)
      {
          PLAT_LOG("DisplayManager start failed: %s", chip::ErrorStr(ret));
@@ -515,8 +600,22 @@
      else
      {
          PostNetworkDisplayState();
+         bool initialLightOn = false;
+         if (Clusters::OnOff::Attributes::OnOff::Get(LIGHTING_APPLICATION_IDENTIFY_ENDPOINT, &initialLightOn) ==
+             Protocols::InteractionModel::Status::Success)
+         {
+             DisplayManager::GetInstance().SetLightOn(initialLightOn);
+         }
      }
 #endif
+     PlatformMgr().AddEventHandler(DeviceEventCallback, reinterpret_cast<intptr_t>(nullptr));
+     ret = PlatformMgr().StartEventLoopTask();
+     if (ret != CHIP_NO_ERROR)
+     {
+         PLAT_LOG("PlatformMgr().StartEventLoopTask() failed");
+         while (1)
+             ;
+     }
  
      uiInit();
  
@@ -533,6 +632,7 @@
 
 #if defined(TI_CC2755_EVB)
      BoardRgbLed::GetInstance().SetLightOn(LightMgr().IsLightOn());
+     DisplayManager::GetInstance().SetLightOn(LightMgr().IsLightOn());
 #endif
 
      ConfigurationMgr().LogDeviceConfig();
@@ -797,6 +897,9 @@
 #endif
  
      case AppEvent::kEventType_IdentifyStart:
+#if defined(TI_CC2755_EVB)
+         identify_TakeAction();
+#else
          switch (identify_trigger_effect)
          {
          case IDENTIFY_TRIGGER_EFFECT_BLINK:
@@ -811,15 +914,12 @@
          default:
              break;
          }
+#endif
          PLAT_LOG("Identify started");
          break;
  
      case AppEvent::kEventType_Identify:
-#if defined(TI_CC2755_EVB)
-         PLAT_LOG("Identify command received");
-         BoardRgbLed::GetInstance().SetIdentify(true);
-         DisplayManager::GetInstance().PostState(DisplayManager::State::kIdentify);
-#elif (LED_ENABLE == 1)
+#if !defined(TI_CC2755_EVB) && (LED_ENABLE == 1)
          PLAT_LOG("Identify cmd received, will blink green led three times now");
          LED_startBlinking(sAppGreenHandle, 250, 3);
 #endif
@@ -843,15 +943,25 @@
      }
  }
  
- void AppTask::IdentifyStartHandler(::Identify *)
+ void AppTask::IdentifyStartHandler(::Identify * identify)
  {
+#if defined(TI_CC2755_EVB)
+     SystemLayer().CancelTimer(IdentifyEffectTimeout, identify);
+#else
+     (void) identify;
+#endif
      AppEvent event;
      event.Type = AppEvent::kEventType_IdentifyStart;
      sAppTask.PostEvent(&event);
  }
  
- void AppTask::IdentifyStopHandler(::Identify *)
+ void AppTask::IdentifyStopHandler(::Identify * identify)
  {
+#if defined(TI_CC2755_EVB)
+     SystemLayer().CancelTimer(IdentifyEffectTimeout, identify);
+#else
+     (void) identify;
+#endif
      AppEvent event;
      event.Type = AppEvent::kEventType_IdentifyStop;
      sAppTask.PostEvent(&event);
@@ -859,6 +969,33 @@
  
  void AppTask::TriggerIdentifyEffectHandler(::Identify * identify)
  {
+#if defined(TI_CC2755_EVB)
+     uint32_t durationMs = 0;
+     switch (identify->mCurrentEffectIdentifier)
+     {
+     case Clusters::Identify::EffectIdentifierEnum::kBlink:
+     case Clusters::Identify::EffectIdentifierEnum::kOkay:
+         durationMs = 1000;
+         break;
+     case Clusters::Identify::EffectIdentifierEnum::kBreathe:
+         durationMs = 15000;
+         break;
+     case Clusters::Identify::EffectIdentifierEnum::kFinishEffect:
+     case Clusters::Identify::EffectIdentifierEnum::kStopEffect:
+         IdentifyStopHandler(identify);
+         return;
+     default:
+         PLAT_LOG("Unsupported Identify effect");
+         return;
+     }
+     IdentifyStartHandler(identify);
+     CHIP_ERROR error = SystemLayer().StartTimer(chip::System::Clock::Milliseconds32(durationMs), IdentifyEffectTimeout, identify);
+     if (error != CHIP_NO_ERROR)
+     {
+         PLAT_LOG("Cannot schedule Identify effect end: %s", chip::ErrorStr(error));
+         IdentifyStopHandler(identify);
+     }
+#else
      switch (identify->mCurrentEffectIdentifier)
      {
      case Clusters::Identify::EffectIdentifierEnum::kBlink:
@@ -892,6 +1029,7 @@
      default:
          PLAT_LOG("No identifier effect");
      }
+#endif
  }
  
  // Action initiated callback
@@ -912,7 +1050,7 @@
      PLAT_LOG("Light On completed");
 #if defined(TI_CC2755_EVB)
      BoardRgbLed::GetInstance().SetLightOn(true);
-     DisplayManager::GetInstance().PostState(DisplayManager::State::kLightOn);
+     DisplayManager::GetInstance().SetLightOn(true);
 #else
  #if (LED_ENABLE == 1)
      LED_stopBlinking(sAppRedHandle);
@@ -939,7 +1077,7 @@
      PLAT_LOG("Light Off completed");
 #if defined(TI_CC2755_EVB)
      BoardRgbLed::GetInstance().SetLightOn(false);
-     DisplayManager::GetInstance().PostState(DisplayManager::State::kLightOff);
+     DisplayManager::GetInstance().SetLightOn(false);
 #else
  #if (LED_ENABLE == 1)
      LED_stopBlinking(sAppRedHandle);

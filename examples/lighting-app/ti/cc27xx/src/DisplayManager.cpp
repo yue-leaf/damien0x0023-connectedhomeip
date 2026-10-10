@@ -20,18 +20,10 @@
 #include <lib/core/ErrorStr.h>
 
 namespace {
-constexpr uint32_t kDisplayTaskStackSize = 2048;
+constexpr uint32_t kDisplayTaskStackSize   = 2048;
 constexpr UBaseType_t kDisplayTaskPriority = tskIDLE_PRIORITY + 1;
-
-constexpr uint16_t kColorBooting        = 0x0010;
-constexpr uint16_t kColorCommissionable = 0xFD20;
-constexpr uint16_t kColorCommissioning  = 0x07FF;
-constexpr uint16_t kColorThreadAttached = 0x07E0;
-constexpr uint16_t kColorThreadDetached = 0xF800;
-constexpr uint16_t kColorLightOn        = 0xFFFF;
-constexpr uint16_t kColorLightOff       = 0x0000;
-constexpr uint16_t kColorIdentify       = 0xF81F;
-constexpr uint16_t kColorError          = 0xF800;
+constexpr unsigned kMaxRenderAttempts      = 3;
+constexpr TickType_t kRenderRetryDelay     = pdMS_TO_TICKS(250);
 } // namespace
 
 DisplayManager & DisplayManager::GetInstance()
@@ -40,7 +32,7 @@ DisplayManager & DisplayManager::GetInstance()
     return instance;
 }
 
-CHIP_ERROR DisplayManager::Start()
+CHIP_ERROR DisplayManager::Start(const OnboardingCodes & codes, bool commissioned, const DeviceDisplayInfo & info)
 {
     if (mTask != nullptr)
     {
@@ -53,6 +45,12 @@ CHIP_ERROR DisplayManager::Start()
         return CHIP_ERROR_NO_MEMORY;
     }
 
+    // The payload is immutable after startup. Only the LCD task encodes/draws it.
+    mOnboardingCodes              = codes;
+    mDeviceInfo                   = info;
+    mDesiredSnapshot.commissioned = commissioned;
+    xQueueOverwrite(mQueue, &mDesiredSnapshot);
+
     if (xTaskCreate(TaskMain, "LCD", kDisplayTaskStackSize / sizeof(StackType_t), this, kDisplayTaskPriority, &mTask) != pdPASS)
     {
         vQueueDelete(mQueue);
@@ -62,16 +60,41 @@ CHIP_ERROR DisplayManager::Start()
     return CHIP_NO_ERROR;
 }
 
-void DisplayManager::PostState(State state)
+void DisplayManager::SetNetworkStatus(DisplayNetworkStatus network, bool commissioned)
 {
     if (mQueue == nullptr)
     {
         return;
     }
     taskENTER_CRITICAL();
-    mDesiredState     = state;
-    Snapshot snapshot = { mDesiredState, mDesiredBacklightEnabled };
-    xQueueOverwrite(mQueue, &snapshot);
+    mDesiredSnapshot.status.network = network;
+    mDesiredSnapshot.commissioned   = commissioned;
+    xQueueOverwrite(mQueue, &mDesiredSnapshot);
+    taskEXIT_CRITICAL();
+}
+
+void DisplayManager::SetLightOn(bool lightOn)
+{
+    if (mQueue == nullptr)
+    {
+        return;
+    }
+    taskENTER_CRITICAL();
+    mDesiredSnapshot.status.lightOn    = lightOn;
+    mDesiredSnapshot.status.lightKnown = true;
+    xQueueOverwrite(mQueue, &mDesiredSnapshot);
+    taskEXIT_CRITICAL();
+}
+
+void DisplayManager::SetIdentify(bool identifying)
+{
+    if (mQueue == nullptr)
+    {
+        return;
+    }
+    taskENTER_CRITICAL();
+    mDesiredSnapshot.status.identifying = identifying;
+    xQueueOverwrite(mQueue, &mDesiredSnapshot);
     taskEXIT_CRITICAL();
 }
 
@@ -82,9 +105,8 @@ void DisplayManager::ToggleBacklight()
         return;
     }
     taskENTER_CRITICAL();
-    mDesiredBacklightEnabled = !mDesiredBacklightEnabled;
-    Snapshot snapshot        = { mDesiredState, mDesiredBacklightEnabled };
-    xQueueOverwrite(mQueue, &snapshot);
+    mDesiredSnapshot.backlightEnabled = !mDesiredSnapshot.backlightEnabled;
+    xQueueOverwrite(mQueue, &mDesiredSnapshot);
     taskEXIT_CRITICAL();
 }
 
@@ -95,79 +117,83 @@ void DisplayManager::TaskMain(void * context)
 
 void DisplayManager::Run()
 {
+    if (!mOnboardingScreen.Init(mOnboardingCodes) && mOnboardingCodes.valid)
+    {
+        PLAT_LOG("LCD QR encoding failed; displaying factory-data error");
+    }
+    mStatusScreen.Init(mDeviceInfo);
     CHIP_ERROR error    = mDisplay.Init();
     mDisplayInitialized = (error == CHIP_NO_ERROR);
-    if (mDisplayInitialized)
-    {
-        error = Render(State::kBooting);
-        if (error == CHIP_NO_ERROR)
-        {
-            mDisplay.SetBacklight(true);
-        }
-    }
     if (error != CHIP_NO_ERROR)
     {
         PLAT_LOG("LCD initialization failed: %s", chip::ErrorStr(error));
     }
 
     Snapshot snapshot;
+    unsigned renderAttempts = 0;
+    bool retryPending       = false;
     while (true)
     {
-        if (xQueueReceive(mQueue, &snapshot, portMAX_DELAY) != pdTRUE || !mDisplayInitialized)
+        Snapshot update;
+        const bool updated = xQueueReceive(mQueue, &update, retryPending ? kRenderRetryDelay : portMAX_DELAY) == pdTRUE;
+        if (updated)
+        {
+            snapshot       = update;
+            renderAttempts = 0;
+        }
+        if ((!updated && !retryPending) || !mDisplayInitialized)
         {
             continue;
         }
 
-        if (snapshot.backlightEnabled != mBacklightEnabled)
+        const bool redraw = !mHasRendered || snapshot.commissioned != mRenderedSnapshot.commissioned ||
+            (snapshot.commissioned && !(snapshot.status == mRenderedSnapshot.status));
+        if (redraw)
         {
-            mBacklightEnabled = snapshot.backlightEnabled;
-            mDisplay.SetBacklight(mBacklightEnabled);
-        }
-
-        if (snapshot.state != mState)
-        {
-            mState = snapshot.state;
-            error  = Render(mState);
+            error        = Render(snapshot);
+            mHasRendered = (error == CHIP_NO_ERROR);
+            ++renderAttempts;
+            retryPending = !mHasRendered && renderAttempts < kMaxRenderAttempts;
             if (error != CHIP_NO_ERROR)
             {
+                // Never illuminate a partially written pairing/status page.
+                mDisplay.SetBacklight(false);
                 PLAT_LOG("LCD refresh failed: %s", chip::ErrorStr(error));
             }
         }
+        if (mHasRendered && (redraw || snapshot.backlightEnabled != mRenderedSnapshot.backlightEnabled))
+        {
+            mDisplay.SetBacklight(snapshot.backlightEnabled);
+        }
+        mRenderedSnapshot = snapshot;
     }
 }
 
-CHIP_ERROR DisplayManager::Render(State state)
+CHIP_ERROR DisplayManager::Render(const Snapshot & snapshot)
 {
-    uint16_t color = kColorError;
-    switch (state)
+    static_assert(St7789Display::kWidth == OnboardingScreen::kWidth && St7789Display::kHeight == OnboardingScreen::kHeight,
+                  "LCD geometry mismatch");
+    static_assert(StatusScreen::kWidth == St7789Display::kWidth && StatusScreen::kHeight == St7789Display::kHeight,
+                  "Status page geometry mismatch");
+    for (uint16_t y = 0; y < OnboardingScreen::kHeight; ++y)
     {
-    case State::kBooting:
-        color = kColorBooting;
-        break;
-    case State::kCommissionable:
-        color = kColorCommissionable;
-        break;
-    case State::kCommissioning:
-        color = kColorCommissioning;
-        break;
-    case State::kThreadAttached:
-        color = kColorThreadAttached;
-        break;
-    case State::kThreadDetached:
-        color = kColorThreadDetached;
-        break;
-    case State::kLightOn:
-        color = kColorLightOn;
-        break;
-    case State::kLightOff:
-        color = kColorLightOff;
-        break;
-    case State::kIdentify:
-        color = kColorIdentify;
-        break;
-    case State::kError:
-        color = kColorError;
-        break;
+        if (snapshot.commissioned)
+        {
+            mStatusScreen.RenderRow(y, mRowBuffer, snapshot.status);
+        }
+        else
+        {
+            mOnboardingScreen.RenderRow(y, mRowBuffer);
+        }
+        CHIP_ERROR error = mDisplay.DrawImage(0, y, OnboardingScreen::kWidth, 1, mRowBuffer);
+        if (error != CHIP_NO_ERROR)
+        {
+            return error;
+        }
+        if (y % 8 == 7)
+        {
+            vTaskDelay(1);
+        }
     }
-    return mDisplay.Fill(color);
+    return CHIP_NO_ERROR;
 }

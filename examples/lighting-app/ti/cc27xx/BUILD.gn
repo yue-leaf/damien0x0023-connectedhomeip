@@ -107,9 +107,12 @@ ti_simplelink_executable("lighting_app") {
 
   if (ti_cc2755_evb) {
     defines += [ "TI_CC2755_EVB" ]
+    deps += [ "${chip_root}/examples/common/QRCode:QRCode" ]
     sources += [
       "${project_dir}/src/BoardRgbLed.cpp",
       "${project_dir}/src/DisplayManager.cpp",
+      "${project_dir}/src/OnboardingScreen.cpp",
+      "${project_dir}/src/StatusScreen.cpp",
       "${project_dir}/src/St7789Display.cpp",
     ]
 

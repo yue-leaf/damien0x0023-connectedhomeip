@@ -46,7 +46,10 @@ void MatterPostAttributeChangeCallback(const chip::app::ConcreteAttributePath & 
     {
         ChipLogProgress(Zcl, "Identify attribute ID: " ChipLogFormatMEI " Type: %u Value: %u, length %u",
                         ChipLogValueMEI(attributeId), type, *value, size);
+#if !defined(TI_CC2755_EVB)
+        // EVB uses Identify start/stop callbacks, not every countdown/type write.
         LightMgr().IdentifyEventHandler();
+#endif
     }
     else if (clusterId == Groups::Id)
     {

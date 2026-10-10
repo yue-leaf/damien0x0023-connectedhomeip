@@ -58,10 +58,70 @@ described below:
 The custom CC2755R10 EVB adds a common-anode RGB status LED, four buttons, and
 a 240 x 240 ST7789 LCD. SW1 and SW2 retain the standard lighting application
 behavior, SW3 toggles the light, and SW4 toggles the LCD backlight. The LCD
-uses solid status colors for commissioning, Thread attachment/detachment,
-On/Off, and Identify states. Device-side Matter OTA is disabled because this
+shows the Matter mark, a device-specific QR code, and the standard 11-digit
+manual pairing code while uncommissioned. These codes are generated from the
+factory-data passcode, discriminator, VID, and PID; no example PIN is used as a
+fallback. Missing or invalid data displays `FACTORY DATA INVALID` without a QR
+code. Invalid factory data that prevents stack initialization also keeps Matter
+startup stopped while allowing the LCD error page to run.
+
+The pairing page remains visible during Thread attachment and local light
+changes until a fabric is committed. Commissioning completion switches to a
+white-background status page headed `TI-Light`, with independent `Network` and
+`Light` fields, factory-data `VID`, `PID`, and `SN`, and the running firmware's
+`SW Version` string and numeric version. Thread connectivity is not an Internet
+or controller-online indicator. The network field displays `Connecting` on an
+enabled Thread stack before its first attachment, `Thread Connected` when
+attached, and `Disconnected` after connection loss or when Thread is disabled.
+Unread state displays `Unknown`; unavailable identity fields display
+`Unavailable` without substituting example values. An `Identifying` hint appears
+without replacing the network, light state, or identity fields, and is cleared
+by the existing Identify-stop event. An already
+commissioned device does not show the initial pairing code on an ordinary reboot;
+factory reset restores the pairing page. SW4 still controls the backlight.
+
+The status page uses English labels and a compact printable-ASCII bitmap font.
+The full 32-character SN wraps over two lines. Software version strings wrap;
+exceptionally long versions use smaller glyphs to keep the complete string and
+numeric version within 240 x 240 pixels. The title is a fixed product name,
+not the controller-editable Matter NodeLabel.
+
+The LCD worker renders one 480-byte RGB565 row at a time and yields between
+groups of rows. It never reads the factory provider or Matter fabric table.
+Identity data is captured before the Matter event loop starts, and runtime
+updates overwrite a single queued snapshot containing independent network,
+light, Identify, commissioning, and backlight fields. Identical status updates
+and backlight toggles do not redraw the page.
+Transient row-write failures hide the incomplete frame and retry up to three
+times, waiting 250 ms between attempts. After that, the worker waits for another
+state/backlight update instead of polling indefinitely. A new update during a
+retry replaces the entire pending snapshot, preserving all independent fields.
+One-shot Blink/Okay Identify indicators end after one second, and Breathe after
+15 seconds. A normal timed Identify command cancels a previous one-shot timer,
+so that an old effect cannot clear a newer Identify session.
+Device-side Matter OTA is disabled because this
 EVB does not provide the external flash used by the standard CC27xx OTA image
 processor.
+
+Both EVB workflows run host-only LCD tests before the TI build. To run those
+tests without compiling firmware, initialize `examples/common/QRCode/repo` and
+use a host C/C++ compiler:
+
+```sh
+python3 examples/lighting-app/ti/cc27xx/tests/run_display_tests.py
+```
+
+The tests also emit sample pairing/error and connected/offline/Identify status
+pages as PPM images, including maximum-length and unavailable identity fields.
+They check row bounds, QR quiet zones, independent state updates, page switching,
+backlight behavior, automatic retries, retry exhaustion, partial-frame hiding,
+and recovery from display-write failures. These host tests
+do not replace the GitHub TI firmware build or validation of scanning, state
+updates, and readability on a physical EVB. The Matter mark is
+a monochrome conversion of the [CSA-published asset](https://csa-iot.org/wp-content/uploads/2021/12/matter.svg),
+prepared by `tools/generate_matter_logo.py`. Trademark and logo usage still follow
+[CSA guidelines](https://csa-iot.org/all-solutions/matter/digital-media-kit/);
+displaying the mark does not establish product certification.
 
 ## Building
 

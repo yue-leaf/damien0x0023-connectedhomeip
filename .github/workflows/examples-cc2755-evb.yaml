@@ -86,6 +86,12 @@ jobs:
                   platform: cc27xx
                   extra-submodule-parameters: " --recursive"
 
+            - name: Test LCD pairing and status display
+              shell: bash
+              run: |
+                  python3 examples/lighting-app/ti/cc27xx/tests/run_display_tests.py \
+                      --output-dir "$RUNNER_TEMP/cc2755p20-lcd-tests"
+
             - name: Install TI SysConfig 1.28.0
               shell: bash
               run: |

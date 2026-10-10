@@ -16,7 +16,9 @@
 
 #pragma once
 
+#include "OnboardingScreen.h"
 #include "St7789Display.h"
+#include "StatusScreen.h"
 
 #include <FreeRTOS.h>
 #include <queue.h>
@@ -25,44 +27,38 @@
 class DisplayManager
 {
 public:
-    enum class State : uint8_t
-    {
-        kBooting,
-        kCommissionable,
-        kCommissioning,
-        kThreadAttached,
-        kThreadDetached,
-        kLightOn,
-        kLightOff,
-        kIdentify,
-        kError,
-    };
-
     static DisplayManager & GetInstance();
 
-    CHIP_ERROR Start();
-    void PostState(State state);
+    CHIP_ERROR Start(const OnboardingCodes & codes = {}, bool commissioned = false, const DeviceDisplayInfo & info = {});
+    void SetNetworkStatus(DisplayNetworkStatus network, bool commissioned);
+    void SetLightOn(bool lightOn);
+    void SetIdentify(bool identifying);
     void ToggleBacklight();
 
 private:
     struct Snapshot
     {
-        State state;
-        bool backlightEnabled;
+        DisplayStatus status;
+        bool backlightEnabled = true;
+        bool commissioned     = false;
     };
 
     DisplayManager() = default;
 
     static void TaskMain(void * context);
     void Run();
-    CHIP_ERROR Render(State state);
+    CHIP_ERROR Render(const Snapshot & snapshot);
 
     QueueHandle_t mQueue = nullptr;
     TaskHandle_t mTask   = nullptr;
     St7789Display mDisplay;
-    State mDesiredState           = State::kBooting;
-    State mState                  = State::kBooting;
-    bool mDesiredBacklightEnabled = true;
-    bool mBacklightEnabled       = true;
-    bool mDisplayInitialized     = false;
+    OnboardingCodes mOnboardingCodes;
+    OnboardingScreen mOnboardingScreen;
+    DeviceDisplayInfo mDeviceInfo;
+    StatusScreen mStatusScreen;
+    uint8_t mRowBuffer[OnboardingScreen::kWidth * 2];
+    Snapshot mDesiredSnapshot;
+    Snapshot mRenderedSnapshot;
+    bool mDisplayInitialized = false;
+    bool mHasRendered        = false;
 };
