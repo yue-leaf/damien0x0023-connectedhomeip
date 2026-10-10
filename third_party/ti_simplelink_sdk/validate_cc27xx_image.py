@@ -37,6 +37,13 @@ DEVICE_LAYOUTS = {
         "protected_flash_end": 0x00100000,
         "ccfg_chip_erase_retain_address": 0x4E02003C,
     },
+    "cc2755r10": {
+        "factory_data_address": 0x000E7000,
+        "nvs_address": 0x000E1000,
+        "protected_flash_start": 0x000DC000,
+        "protected_flash_end": 0x00100000,
+        "ccfg_chip_erase_retain_address": 0x4E02003C,
+    },
     "cc2755p20": {
         "factory_data_address": 0x001E7000,
         "nvs_address": 0x001E1000,

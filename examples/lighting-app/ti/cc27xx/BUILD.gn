@@ -42,8 +42,9 @@ ti_sysconfig("sysconfig") {
   sources = [ "${chip_root}/examples/platform/ti/sysconfig/chip_cc27xx.syscfg" ]
 
   if (ti_cc2755_evb) {
-    assert(ti_simplelink_board == "LP_EM_CC2755P20",
-           "ti_cc2755_evb requires LP_EM_CC2755P20")
+    assert(ti_simplelink_board == "LP_EM_CC2755P20" ||
+               ti_simplelink_board == "LP_EM_CC2755R10_BG",
+           "ti_cc2755_evb requires LP_EM_CC2755P20 or LP_EM_CC2755R10_BG")
     assert(!chip_enable_ota_requestor,
            "CC2755 EVB has no external OTA flash; keep chip_enable_ota_requestor=false")
     script_args = "true"

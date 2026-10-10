@@ -109,17 +109,17 @@ Button2.gpioPin.$name               = "CONFIG_GPIO_BTN2";
 if (isCc2755Evb)
 {
     Button1.pull                    = "External";
-    Button1.button.$assign          = "boosterpack.38";
+    Button1.button.$assign          = "DIO19";
     Button2.pull                    = "External";
-    Button2.button.$assign          = "boosterpack.30";
+    Button2.button.$assign          = "DIO20";
 
     Button3.$name                   = "CONFIG_BTN_AUX_1";
     Button3.pull                    = "External";
-    Button3.button.$assign          = "boosterpack.31";
+    Button3.button.$assign          = "DIO18";
 
     Button4.$name                   = "CONFIG_BTN_AUX_2";
     Button4.pull                    = "External";
-    Button4.button.$assign          = "boosterpack.32";
+    Button4.button.$assign          = "DIO17";
 }
 else
 {
@@ -135,7 +135,7 @@ for(var setting in ccfgSettings)
     CCFG[setting] = ccfgSettings[setting];
 }
 
-if (system.deviceData.deviceId.match(/cc2745r10/i))
+if (system.deviceData.deviceId.match(/cc2745r10|cc2755r10/i))
 {
     /* Retain the flash tail containing PSA ITS and the remaining persistent
      * Matter/HSM data during a program load. Sectors 256-511 use one retain
@@ -194,58 +194,59 @@ if (isCc2755Evb)
     EvbRgbRed.$name                     = "CONFIG_GPIO_RGB_RED";
     EvbRgbRed.mode                      = "Output";
     EvbRgbRed.initialOutputState        = "High";
-    EvbRgbRed.gpioPin.$assign           = "boosterpack.7";
+    EvbRgbRed.gpioPin.$assign           = "DIO3";
 
     EvbRgbGreen.$name                   = "CONFIG_GPIO_RGB_GREEN";
     EvbRgbGreen.mode                    = "Output";
     EvbRgbGreen.initialOutputState      = "High";
-    EvbRgbGreen.gpioPin.$assign         = "boosterpack.14";
+    EvbRgbGreen.gpioPin.$assign         = "DIO4";
 
     EvbRgbBlue.$name                    = "CONFIG_GPIO_RGB_BLUE";
     EvbRgbBlue.mode                     = "Output";
     EvbRgbBlue.initialOutputState       = "High";
-    EvbRgbBlue.gpioPin.$assign          = "boosterpack.15";
+    EvbRgbBlue.gpioPin.$assign          = "DIO5";
 
     EvbLcdCs.$name                      = "CONFIG_GPIO_LCD_CS";
     EvbLcdCs.mode                       = "Output";
     EvbLcdCs.initialOutputState         = "High";
-    EvbLcdCs.gpioPin.$assign            = "boosterpack.36";
+    EvbLcdCs.gpioPin.$assign            = "DIO16";
 
     EvbLcdDc.$name                      = "CONFIG_GPIO_LCD_DC";
     EvbLcdDc.mode                       = "Output";
     EvbLcdDc.initialOutputState         = "High";
-    EvbLcdDc.gpioPin.$assign            = "boosterpack.19";
+    EvbLcdDc.gpioPin.$assign            = "DIO12";
 
     EvbLcdReset.$name                   = "CONFIG_GPIO_LCD_RESET";
     EvbLcdReset.mode                    = "Output";
     EvbLcdReset.initialOutputState      = "High";
-    EvbLcdReset.gpioPin.$assign         = "boosterpack.18";
+    EvbLcdReset.gpioPin.$assign         = "DIO7";
 
     EvbLcdBacklight.$name               = "CONFIG_GPIO_LCD_BACKLIGHT";
     EvbLcdBacklight.mode                = "Output";
     EvbLcdBacklight.initialOutputState  = "Low";
-    EvbLcdBacklight.gpioPin.$assign     = "boosterpack.40";
+    EvbLcdBacklight.gpioPin.$assign     = "DIO0";
 
     EvbLcdSpi.$name                     = "CONFIG_SPI_LCD";
     EvbLcdSpi.defaultTxBufferValue      = "0xFF";
-    EvbLcdSpi.spi.sclkPin.$assign       = "boosterpack.35";
-    EvbLcdSpi.spi.picoPin.$assign       = "boosterpack.39";
-    EvbLcdSpi.spi.pociPin.$assign       = "boosterpack.10";
+    EvbLcdSpi.spi.sclkPin.$assign       = "DIO15";
+    EvbLcdSpi.spi.picoPin.$assign       = "DIO11";
+    EvbLcdSpi.spi.pociPin.$assign       = "DIO28";
 
     /* These pins intentionally follow the custom CC2755 EVB schematic rather
-     * than the LP_EM_CC2755P20 LaunchPad hardware assignments.
+     * than the selected LaunchPad hardware assignments.
      */
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to MX25R8035F SPI Flash Chip Select on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", Button1, "button");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad Button BTN-1 \\(Left\\) on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", Button2, "button");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad CAN Bus on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", Button3, "button");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad CAN Bus on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", Button4, "button");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad SPI Bus on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", EvbRgbRed, "gpioPin");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad SPI Bus on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", EvbRgbGreen, "gpioPin");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad SPI Bus on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", EvbRgbBlue, "gpioPin");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad LED Red on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", EvbLcdCs, "gpioPin");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad LED Green on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", EvbLcdDc, "gpioPin");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad SPI Bus Chip Select on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", EvbLcdReset, "gpioPin");
-    scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to LaunchPad Button BTN-2 \\(Right\\) on the CC2755P20 Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@", EvbLcdBacklight, "gpioPin");
+    const launchPadConflict = "Connected to hardware,@@@.+?@@@ is connected to .+? on the CC2755.+? Development Platform\\. Consider selecting it in 'use hardware' above\\. @@@.+?@@@";
+    scripting.suppress(launchPadConflict, Button1, "button");
+    scripting.suppress(launchPadConflict, Button2, "button");
+    scripting.suppress(launchPadConflict, Button3, "button");
+    scripting.suppress(launchPadConflict, Button4, "button");
+    scripting.suppress(launchPadConflict, EvbRgbRed, "gpioPin");
+    scripting.suppress(launchPadConflict, EvbRgbGreen, "gpioPin");
+    scripting.suppress(launchPadConflict, EvbRgbBlue, "gpioPin");
+    scripting.suppress(launchPadConflict, EvbLcdCs, "gpioPin");
+    scripting.suppress(launchPadConflict, EvbLcdDc, "gpioPin");
+    scripting.suppress(launchPadConflict, EvbLcdReset, "gpioPin");
+    scripting.suppress(launchPadConflict, EvbLcdBacklight, "gpioPin");
 }
 else
 {
@@ -286,6 +287,10 @@ ble.advSet1.advParam1.$name                               = "ti_ble5stack_broadc
 if (deviceId.match(/cc2745r10/i))
 {
     ble.rfDesign                                 = "LP_EM_CC2745R10_Q1";
+}
+else if (deviceId.match(/cc2755r10/i))
+{
+    ble.rfDesign                                 = "LP_EM_CC2755R10_BG";
 }
 else if (deviceId.match(/cc2755p20/i))
 {

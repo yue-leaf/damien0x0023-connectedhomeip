@@ -16,11 +16,6 @@ name: Build example - TI CC2755 EVB
 
 on:
     workflow_dispatch:
-    push:
-        branches:
-            - ti-cc2755-tcc
-        tags:
-            - 'v*'
 
 concurrency:
     group: ${{ github.ref }}-${{ github.workflow }}-${{ (github.event_name == 'workflow_dispatch' && github.run_number) || github.sha }}

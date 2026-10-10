@@ -168,9 +168,9 @@ template("ti_sysconfig") {
     defines = [
       "CC23X0",
     ]
-    if(ti_simplelink_board == "LP_EM_CC2745R10_Q1"){
+    if (ti_simplelink_soc_family == "cc27xxx10") {
       defines += ["DeviceFamily_CC27XXX10"]
-    } else if (ti_simplelink_board == "LP_EM_CC2755P20"){
+    } else if (ti_simplelink_soc_family == "cc27xxx20") {
       defines += ["DeviceFamily_CC27XXX20"]
     }
   }
@@ -315,11 +315,7 @@ template("ti_simplelink_sdk") {
       ]
 
       if (ti_simplelink_device_family == "cc27xx") {
-        if (ti_simplelink_board == "LP_EM_CC2745R10_Q1") {
-          cc27xx_secure_family = "cc27xxx10"
-        } else if (ti_simplelink_board == "LP_EM_CC2755P20") {
-          cc27xx_secure_family = "cc27xxx20"
-        }
+        cc27xx_secure_family = ti_simplelink_soc_family
       }
 
       if (defined(cc27xx_secure_family)) {
@@ -376,10 +372,10 @@ template("ti_simplelink_sdk") {
         "CC23X0",
       ]
 
-      if(ti_simplelink_board == "LP_EM_CC2745R10_Q1"){
-      defines += ["DeviceFamily_CC27XXX10"]
-      } else if (ti_simplelink_board == "LP_EM_CC2755P20"){
-      defines += ["DeviceFamily_CC27XXX20"]
+      if (ti_simplelink_soc_family == "cc27xxx10") {
+        defines += [ "DeviceFamily_CC27XXX10" ]
+      } else if (ti_simplelink_soc_family == "cc27xxx20") {
+        defines += [ "DeviceFamily_CC27XXX20" ]
       }
     }
 
@@ -473,11 +469,10 @@ template("ti_simplelink_sdk") {
         "${target_gen_dir}/driverlib." + driverlibExt,
       ]
 
-      if(ti_simplelink_board == "LP_EM_CC2745R10_Q1"){
-        libs += [ "${target_gen_dir}/secure_drivers_cc27xxx10.a" ,"${target_gen_dir}/hsmddk_cc27xxx10_its.a" ]
-      } else if (ti_simplelink_board == "LP_EM_CC2755P20"){
-        libs += [ "${target_gen_dir}/secure_drivers_cc27xxx20.a" ,"${target_gen_dir}/hsmddk_cc27xxx20_its.a" ]
-      }
+      libs += [
+        "${target_gen_dir}/secure_drivers_${ti_simplelink_soc_family}.a",
+        "${target_gen_dir}/hsmddk_${ti_simplelink_soc_family}_its.a",
+      ]
     }
 
     group("external_library") {
@@ -841,13 +836,13 @@ template("ti_simplelink_sdk") {
       "FREERTOS",
     ]
 
-    if(ti_simplelink_board == "LP_EM_CC2745R10_Q1"){
+    if (ti_simplelink_soc_family == "cc27xxx10") {
       libs += [
         "${ti_simplelink_sdk_root}/source/ti/drivers/rcl/lib/gcc/m33f/rcl_cc27xxx10.a",
         "${ti_simplelink_sdk_root}/source/ti/devices/cc27xxx10/rf_patches/lib/gcc/m33f/lrf_cc27xxx10.a",
         "${ti_simplelink_sdk_root}/source/third_party/psa_crypto/lib/ticlang/m33f/psa_crypto_cc27xx.a",
-        ]
-    } else if (ti_simplelink_board == "LP_EM_CC2755P20"){
+      ]
+    } else if (ti_simplelink_soc_family == "cc27xxx20") {
       libs += [
         "${ti_simplelink_sdk_root}/source/ti/drivers/rcl/lib/gcc/m33f/rcl_cc27xxx20.a",
         "${ti_simplelink_sdk_root}/source/ti/devices/cc27xxx20/rf_patches/lib/gcc/m33f/lrf_cc27xxx20.a",
@@ -869,10 +864,10 @@ template("ti_simplelink_sdk") {
       "USE_HSM",
     ]
 
-    if(ti_simplelink_board == "LP_EM_CC2745R10_Q1"){
-      defines += ["DeviceFamily_CC27XXX10"]
-    } else if (ti_simplelink_board == "LP_EM_CC2755P20"){
-      defines += ["DeviceFamily_CC27XXX20"]
+    if (ti_simplelink_soc_family == "cc27xxx10") {
+      defines += [ "DeviceFamily_CC27XXX10" ]
+    } else if (ti_simplelink_soc_family == "cc27xxx20") {
+      defines += [ "DeviceFamily_CC27XXX20" ]
     }
 
     include_dirs += [

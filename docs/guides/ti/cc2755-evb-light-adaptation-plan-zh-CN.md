@@ -1,20 +1,20 @@
-# CC2755P20 EVB Matter Light 固件完整适配方案
+# CC2755R10 EVB Matter Light 固件完整适配方案
 
 ## 1. 文档目的
 
-本文给出将本仓库 TI CC27xx Matter Lighting 示例适配到 CC2755P20
+本文给出将本仓库 TI CC27xx Matter Lighting 示例适配到 CC2755R10
 定制 EVB 的完整实施方案。目标硬件带有 240 x 240 LCD、共阳 RGB LED、
 四个按键和调试 UART；量产固件还需要兼容 Factory Data、PSA/HSM、Secure
 Boot 和 Matter OTA 流程。
 
 本文是实施设计和验收基线，不表示相关代码已经完成。所有地址、引脚和构建
-结果在进入量产前都必须通过 CC2755P20 真机及最终量产烧录链路验证。
+结果在进入量产前都必须通过 CC2755R10 真机及最终量产烧录链路验证。
 
 ## 2. 适配目标
 
 完成适配后，固件应满足以下要求：
 
-1. 在 CC2755P20 EVB 上正常启动 Matter Lighting 应用。
+1. 在 CC2755R10 EVB 上正常启动 Matter Lighting 应用。
 2. 支持 BLE 配网和 Thread 入网，能够被 Matter Controller 控制。
 3. 使用板载共阳 RGB LED 表示灯光状态和 Identify 状态。
 4. 支持四个板载按键，保留配网、开关和恢复出厂等关键操作。
@@ -44,8 +44,9 @@ Boot 和 Matter OTA 流程。
 ti_simplelink_board = "LP_EM_CC2745R10_Q1"
 ```
 
-仓库已经包含 `LP_EM_CC2755P20` 的 GN、链接脚本和部分 SysConfig 分支，
-因此不需要新建完整的 CC27xx 平台端口，但需要增加定制 EVB 的板级资源配置。
+仓库已经包含 CC27xx x10 系列的 GN、链接脚本和 SysConfig 基础配置，
+因此不需要新建完整的平台端口，但需要增加 `LP_EM_CC2755R10_BG` 板型映射
+和定制 EVB 的板级资源配置。
 
 ### 3.2 LCD 参考工程
 
@@ -70,7 +71,7 @@ C:\Users\DELL\Desktop\matter\TI\2755_Lcd_TI_Demo_board\
 | SPI | 8 MHz，Mode 0，8 bit，阻塞传输 |
 
 参考工程可作为 LCD 初始化序列、SPI 参数和 EVB 引脚分配的来源，但不能直接
-作为 Matter 工程导入，因为目标工程使用 CC2755P20、FreeRTOS、GN/GCC 和
+作为 Matter 工程导入，因为目标工程使用 CC2755R10、FreeRTOS、GN/GCC 和
 Matter 自己的任务模型。
 
 ### 3.3 版本要求
@@ -169,10 +170,10 @@ Matter 操作、LCD 刷新或长时间日志输出。
 `LP_EM_CC2745R10_Q1`。EVB 构建必须显式使用：
 
 ```gn
-ti_simplelink_board = "LP_EM_CC2755P20"
+ti_simplelink_board = "LP_EM_CC2755R10_BG"
 ```
 
-不建议为了 EVB 直接覆盖所有 P20 LaunchPad 配置。定制板配置应有独立开关或
+不建议为了 EVB 直接覆盖 TI 参考板配置。定制板配置应有独立开关或
 独立 SysConfig 文件，保证上游标准开发板仍能构建。
 
 ### 6.2 默认 LED 和按键冲突
@@ -196,31 +197,24 @@ EVB 构建必须解除该硬件绑定。由于 `OTAImageProcessorImpl` 当前通
 在没有确定 OTA 存储介质前，不允许仅为了通过 SysConfig 而把外部 NVS 随意
 映射到未连接引脚。
 
-### 6.4 P20 PSA/HSM 地址不一致
+### 6.4 R10 PSA/HSM 地址布局
 
-当前 P20 链接脚本已经定义：
+CC2755R10 使用 1 MiB x10 Flash 布局：
 
-- Matter NVS：`0x1E1000`，长度 `0x6000`
-- Factory Data：`0x1E7000`，长度 `0x1000`
-- HSM 保留区从 `0x1E8000` 起
+- PSA ITS：`0x000DF000`，长度 `0x2000`
+- Matter NVS：`0x000E1000`，长度 `0x6000`
+- Factory Data：`0x000E7000`，长度 `0x1000`
+- HSM 保留区从 `0x000E8000` 起
 
-但是以下位置仍硬编码 P10/x10 地址：
-
-- `chip_cc27xx.syscfg` 中 `CryptoKeyKeyStore_PSA.flashOffset = 0x000DF000`
-- `FactoryDataProvider.cpp` 中 PSA ITS 为 `0x000DF000`
-- `FactoryDataProvider.cpp` 中 NVS 为 `0x000E1000`
-
-这会导致 P20 的链接布局、PSA ITS 和运行时安全检查不一致，是量产流程的
-阻断项。必须按设备容量选择地址，并由编译期断言验证：
+应用必须在 `0x000DC000` 前结束，并通过 CCFG 的
+`chipEraseRetain_mainSectors256_511` 保留 Flash 尾部。该字段位于
+`0x4E02003C`，期望值为 `0xFF800000`。构建流程必须验证：
 
 ```text
-P20 PSA ITS end == P20 Matter NVS start
-P20 Matter NVS end == P20 Factory Data start
-P20 Factory Data end <= P20 HSM reserved start
+R10 PSA ITS end == R10 Matter NVS start
+R10 Matter NVS end == R10 Factory Data start
+R10 Factory Data end <= R10 HSM reserved start
 ```
-
-具体 PSA ITS 起始地址必须根据 TI 9.20.01.21 SDK 的 P20 HSM/KeyStore 要求、
-擦除扇区大小和临时烧录固件布局共同确定，不能只把地址机械地加 `0x100000`。
 
 ### 6.5 Matter Lighting 行为不完整
 
@@ -272,7 +266,7 @@ Matter Controller / Local Buttons
 - EVB 构建命令同时指定：
 
 ```gn
-ti_simplelink_board = "LP_EM_CC2755P20"
+ti_simplelink_board = "LP_EM_CC2755R10_BG"
 ti_cc2755_evb = true
 ```
 
@@ -281,7 +275,7 @@ ti_cc2755_evb = true
 复用 `examples/platform/ti/sysconfig/chip_cc27xx.syscfg`，由
 `examples/lighting-app/ti/cc27xx/BUILD.gn` 在 `ti_cc2755_evb=true` 时
 传入专用脚本参数并启用 EVB 外设和引脚。标准构建传入 `false`，不会让
-`LP_EM_CC2755P20` LaunchPad 自动变成定制 EVB 引脚。
+`LP_EM_CC2755R10_BG` 参考板自动变成定制 EVB 引脚。
 
 EVB SysConfig 必须包含：
 
@@ -290,7 +284,7 @@ EVB SysConfig 必须包含：
 - 三路共阳 RGB 输出，初始电平为高。
 - 四个外部上拉、低电平有效按键。
 - 调试 UART。
-- P20 正确的 PSA KeyStore/ITS 地址。
+- R10 正确的 PSA KeyStore/ITS 地址。
 - 不绑定 LaunchPad MX25R8035F。
 
 若直接从标准 `chip_cc27xx.syscfg` 派生文件，应定期对照上游安全、BLE 和射频
@@ -444,7 +438,7 @@ BLE 或 Thread 使用的定时器发生冲突。共阳极极性必须只在本�
 ### 9.1 统一地址来源
 
 不应继续在 SysConfig、C++ 和链接脚本中分别维护无法关联的数字地址。建议增加
-P10/P20 平台地址定义，并至少让以下组件使用同一组值：
+x10/x20 平台地址定义，并至少让以下组件使用同一组值：
 
 - Linker script
 - CryptoKeyKeyStore_PSA SysConfig 配置
@@ -452,23 +446,23 @@ P10/P20 平台地址定义，并至少让以下组件使用同一组值：
 - 临时烧录/Provisioning 固件
 - CI 镜像布局验证脚本
 
-如果 SysConfig 不能直接引用 C/C++ 头文件，则由同一构建参数选择 P10/P20 地址，
+如果 SysConfig 不能直接引用 C/C++ 头文件，则由同一构建参数选择 x10/x20 地址，
 并在 CI 中解析 map 文件和生成配置进行交叉检查。
 
-### 9.2 P20 布局验收
+### 9.2 R10 布局验收
 
 构建后必须从 `.map`、`.hex` 和 SysConfig 生成文件确认：
 
 1. 应用正文未进入 NVS、Factory Data 或 HSM 区域。
 2. PSA ITS 不与应用或 Matter NVS 重叠。
 3. `CONFIG_NVSINTERNAL` 与链接脚本 `.nvs` 地址一致。
-4. `.factory_data` 位于 `0x1E7000`，长度不超过 `0x1000`。
+4. `.factory_data` 位于 `0xE7000`，长度不超过 `0x1000`。
 5. HSM 固件和保留扇区不会被普通应用下载擦除。
 6. 恢复出厂只清理 Matter 可变数据，不清除 DAC 私钥和 Factory Data。
 
 ### 9.3 Secure Boot
 
-外部签名流程应使用最终 P20 镜像执行，而不是沿用 CC2745 文件名或板型假设。
+外部签名流程应使用最终 R10 镜像执行，而不是沿用 CC2745 文件名或板型假设。
 签名后至少检查：
 
 - 镜像目标芯片和入口地址正确。
@@ -496,7 +490,7 @@ P10/P20 平台地址定义，并至少让以下组件使用同一组值：
 
 ```bash
 gn gen out/cc2755-evb --args='\
-  ti_simplelink_board="LP_EM_CC2755P20" \
+  ti_simplelink_board="LP_EM_CC2755R10_BG" \
   ti_cc2755_evb=true \
   custom_factory_data=true \
   ti_dac_key_use_psa_hsm=true \
@@ -504,7 +498,7 @@ gn gen out/cc2755-evb --args='\
 ninja -C out/cc2755-evb
 ```
 
-首次实现时应同时保留一个标准 CC2745 或 P20 LaunchPad 构建，防止公共平台修改
+首次实现时应同时保留一个标准 CC2745 或 P20 构建，防止公共平台修改
 产生回归。
 
 ### 10.2 CI 检查项
@@ -559,17 +553,17 @@ ninja -C out/cc2755-evb
 
 ## 12. 分阶段实施与验收标准
 
-### 阶段 A：P20 基线构建
+### 阶段 A：R10 基线构建
 
 工作内容：
 
-- 切换 `LP_EM_CC2755P20`。
-- 修复 P20 PSA/NVS/Factory Data 地址一致性。
+- 切换 `LP_EM_CC2755R10_BG`。
+- 验证 R10 PSA/NVS/Factory Data 地址一致性。
 - 生成并检查 map/hex。
 
 验收标准：
 
-- P20 Matter light 可构建和启动。
+- R10 Matter light 可构建和启动。
 - BLE、Thread 和基本 OnOff 正常。
 - Flash 区域检查全部通过。
 
@@ -630,7 +624,7 @@ ninja -C out/cc2755-evb
 
 | 风险 | 影响 | 缓解措施 |
 | --- | --- | --- |
-| P10 Demo 与 P20 目标差异 | 生成配置或驱动资源不一致 | 只复用驱动逻辑，使用 P20 SysConfig 重新生成 |
+| P10 Demo 与 R10 目标差异 | 生成配置或驱动资源不一致 | 只复用驱动逻辑，使用 R10 SysConfig 重新生成 |
 | LCD 整屏刷新阻塞 | Matter/Thread 超时或掉线 | 独立低优先级任务，合并状态，优先局部刷新 |
 | 外部 Flash 引脚冲突 | RGB、按键或 OTA 不可用 | EVB 禁用默认外部 NVS，单独设计 OTA 存储 |
 | PSA 地址硬编码 | 覆盖密钥、NVS 或 HSM | 统一地址来源，map/hex 自动检查 |
@@ -643,7 +637,7 @@ ninja -C out/cc2755-evb
 
 建议按以下顺序提交，便于审查和回退：
 
-1. `ti: fix CC2755P20 persistent storage layout`
+1. `ti: add CC2755R10 persistent storage layout`
 2. `ti: add CC2755 EVB SysConfig and board IO`
 3. `ti: add ST7789 display driver`
 4. `ti: add asynchronous display manager`
@@ -656,14 +650,14 @@ ninja -C out/cc2755-evb
 
 ## 15. 完成定义
 
-只有同时满足以下条件，才能认为 CC2755P20 EVB 适配完成：
+只有同时满足以下条件，才能认为 CC2755R10 EVB 适配完成：
 
 - EVB 专用构建在本地和 CI 均通过。
 - LCD、RGB、四按键和 UART 真机验证通过。
 - Android/iOS Matter 配网及 Thread 控制通过。
 - OnOff、Identify、本地按键和显示状态一致。
 - LCD 刷新不会阻断 Matter、BLE 或 Thread。
-- P20 Flash 布局经过 map/hex 自动检查和人工复核。
+- R10 Flash 布局经过 map/hex 自动检查和人工复核。
 - Factory Data、DAC Key、PSA/HSM 和恢复出厂流程验证通过。
 - Secure Boot 签名镜像验证通过。
 - OTA 能力已完成验证，或者在产品范围和构建配置中明确关闭。
