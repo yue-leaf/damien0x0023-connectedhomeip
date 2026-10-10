@@ -1,0 +1,295 @@
+# Copyright (c) 2026 Project CHIP Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Build example - TI CC2755 EVB
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - ti-cc2755-tcc
+        tags:
+            - 'v*'
+
+concurrency:
+    group: ${{ github.ref }}-${{ github.workflow }}-${{ (github.event_name == 'workflow_dispatch' && github.run_number) || github.sha }}
+    cancel-in-progress: true
+
+env:
+    CHIP_NO_LOG_TIMESTAMPS: true
+
+jobs:
+    cc2755_evb:
+        name: cc2755_evb
+        runs-on: ubuntu-latest
+        if: github.actor != 'restyled-io[bot]'
+
+        container:
+            image: ghcr.io/project-chip/chip-build-ti:81
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install ZAP
+              shell: bash
+              run: |
+                  ZAP_VERSION="$(cat scripts/setup/zap.version)"
+                  case "$(uname -m)" in
+                      x86_64) ZAP_FLAVOR=linux-x64 ;;
+                      aarch64 | arm64) ZAP_FLAVOR=linux-arm64 ;;
+                      *) echo "Unsupported ZAP platform: $(uname -sm)" && exit 1 ;;
+                  esac
+
+                  ZAP_ROOT="${RUNNER_TEMP:-/tmp}/zap"
+                  ZAP_ARCHIVE="${RUNNER_TEMP:-/tmp}/zap.zip"
+                  rm -rf "$ZAP_ROOT"
+                  mkdir -p "$ZAP_ROOT"
+                  wget -q -O "$ZAP_ARCHIVE" "https://github.com/project-chip/zap/releases/download/${ZAP_VERSION}/zap-${ZAP_FLAVOR}.zip"
+                  python3 - "$ZAP_ARCHIVE" "$ZAP_ROOT" <<'PY'
+                  import sys
+                  import zipfile
+
+                  archive, output = sys.argv[1:]
+                  with zipfile.ZipFile(archive) as zap:
+                      zap.extractall(output)
+                  PY
+                  chmod +x "$ZAP_ROOT/zap-cli"
+                  echo "ZAP_INSTALL_PATH=$ZAP_ROOT" >> "$GITHUB_ENV"
+
+                  python3 - <<'PY'
+                  import json
+
+                  path = "scripts/setup/environment.json"
+                  with open(path, encoding="utf-8") as config_file:
+                      config = json.load(config_file)
+
+                  config["cipd_package_files"] = [
+                      package for package in config["cipd_package_files"]
+                      if package != "scripts/setup/zap.json"
+                  ]
+
+                  with open(path, "w", encoding="utf-8") as config_file:
+                      json.dump(config, config_file, indent=4)
+                      config_file.write("\n")
+                  PY
+
+            - name: Checkout submodules & Bootstrap
+              uses: ./.github/actions/checkout-submodules-and-bootstrap
+              with:
+                  platform: cc27xx
+                  extra-submodule-parameters: " --recursive"
+
+            - name: Install TI SysConfig 1.28.0
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  SYSCONFIG_ROOT=/opt/ti/sysconfig_1.28.0
+                  SYSCONFIG_INSTALLER="${RUNNER_TEMP:-/tmp}/sysconfig-1.28.0_4712-setup.run"
+                  SYSCONFIG_URL="https://software-dl.ti.com/ccs/esd/sysconfig/sysconfig-1.28.0_4712-setup.run"
+
+                  if [ ! -x "$SYSCONFIG_ROOT/sysconfig_cli.sh" ]; then
+                      wget -q -O "$SYSCONFIG_INSTALLER" "$SYSCONFIG_URL"
+                      chmod +x "$SYSCONFIG_INSTALLER"
+                      "$SYSCONFIG_INSTALLER" --mode unattended --prefix "$SYSCONFIG_ROOT"
+                  fi
+                  "$SYSCONFIG_ROOT/sysconfig_cli.sh" --version
+                  echo "TI_SYSCONFIG_ROOT=$SYSCONFIG_ROOT" >> "$GITHUB_ENV"
+
+            - name: Install TI-validated Arm GCC
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  TOOLCHAIN_NAME=arm-gnu-toolchain-12.3.rel1-x86_64-arm-none-eabi
+                  TOOLCHAIN_ROOT="${RUNNER_TEMP:-/tmp}/${TOOLCHAIN_NAME}"
+                  TOOLCHAIN_ARCHIVE="${RUNNER_TEMP:-/tmp}/${TOOLCHAIN_NAME}.tar.xz"
+                  TOOLCHAIN_URL="https://developer.arm.com/-/media/Files/downloads/gnu/12.3.rel1/binrel/${TOOLCHAIN_NAME}.tar.xz"
+                  TOOLCHAIN_SHA256=12a2815644318ebcceaf84beabb665d0924b6e79e21048452c5331a56332b309
+
+                  if [ ! -x "$TOOLCHAIN_ROOT/bin/arm-none-eabi-gcc" ]; then
+                      wget -q -O "$TOOLCHAIN_ARCHIVE" "$TOOLCHAIN_URL"
+                      echo "$TOOLCHAIN_SHA256  $TOOLCHAIN_ARCHIVE" | sha256sum --check --strict
+                      tar -xJf "$TOOLCHAIN_ARCHIVE" -C "${RUNNER_TEMP:-/tmp}"
+                  fi
+                  echo "TI_ARM_GCC_ROOT=$TOOLCHAIN_ROOT" >> "$GITHUB_ENV"
+
+            - name: Install TI Arm Clang
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  TOOLCHAIN_NAME=ti-cgt-armllvm_4.0.4.LTS
+                  TOOLCHAIN_ROOT="${RUNNER_TEMP:-/tmp}/${TOOLCHAIN_NAME}"
+                  TOOLCHAIN_INSTALLER="${RUNNER_TEMP:-/tmp}/ti_cgt_armllvm_4.0.4.LTS_linux-x64_installer.bin"
+                  TOOLCHAIN_URL="https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-ayxs93eZNN/4.0.4.LTS/ti_cgt_armllvm_4.0.4.LTS_linux-x64_installer.bin"
+                  TOOLCHAIN_SHA256=98c60ecc259a07a54be6fcc0f55990332f493bfe5dad460c0ba83963f5dcb06f
+
+                  if [ ! -x "$TOOLCHAIN_ROOT/bin/tiarmclang" ]; then
+                      wget -q -O "$TOOLCHAIN_INSTALLER" "$TOOLCHAIN_URL"
+                      echo "$TOOLCHAIN_SHA256  $TOOLCHAIN_INSTALLER" | sha256sum --check --strict
+                      chmod +x "$TOOLCHAIN_INSTALLER"
+                      "$TOOLCHAIN_INSTALLER" --mode unattended --prefix "$TOOLCHAIN_ROOT"
+                  fi
+
+                  TI_ARMCLANG_BIN=$(find "$TOOLCHAIN_ROOT" -type f -path '*/bin/tiarmclang' -perm -u+x -print -quit)
+                  test -n "$TI_ARMCLANG_BIN"
+                  TOOLCHAIN_ROOT=$(dirname "$(dirname "$(readlink -f "$TI_ARMCLANG_BIN")")")
+                  "$TOOLCHAIN_ROOT/bin/tiarmclang" --version
+                  echo "TI_ARMCLANG_ROOT=$TOOLCHAIN_ROOT" >> "$GITHUB_ENV"
+
+            - name: Build and validate CC2755 EVB lighting example
+              shell: bash
+              run: |
+                  scripts/run_in_build_env.sh '
+                      set -euo pipefail
+
+                      export PATH="${TI_ARM_GCC_ROOT}/bin:${TI_ARMCLANG_ROOT}/bin:$PATH"
+                      BUILD_DIR=out/ti-cc2755-evb-lighting-ftd
+                      ARTIFACT_DIR=out/artifacts/ti-cc2755-evb-lighting-ftd
+                      APP_NAME=chip-LP_EM_CC2755P20-lighting-example
+                      TI_SDK_DIR=third_party/ti_simplelink_sdk/repo_cc23xx_cc27xx
+                      EXPECTED_TI_SDK_COMMIT=68ca021502383f367d0bf2a5517fdd0dcb0ef909
+
+                      test "$(arm-none-eabi-gcc -dumpfullversion)" = "12.3.1"
+                      "$TI_ARMCLANG_ROOT/bin/tiarmclang" --version | grep -F "4.0.4.LTS"
+
+                      ACTUAL_TI_SDK_COMMIT=$(git -C "$TI_SDK_DIR" rev-parse HEAD)
+                      if [ "$ACTUAL_TI_SDK_COMMIT" != "$EXPECTED_TI_SDK_COMMIT" ]; then
+                          echo "Unexpected TI SDK commit: $ACTUAL_TI_SDK_COMMIT" >&2
+                          exit 1
+                      fi
+
+                      GCC_BIN=$(command -v arm-none-eabi-gcc)
+                      GCC_ARMCOMPILER=$(dirname "$(dirname "$(readlink -f "$GCC_BIN")")")
+                      CMAKE_BIN=$(command -v cmake)
+                      export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
+
+                      make -C "$TI_SDK_DIR" build-gcc \
+                          CMAKE="$CMAKE_BIN" \
+                          GCC_ARMCOMPILER="$GCC_ARMCOMPILER" \
+                          TICLANG_ARMCOMPILER= \
+                          IAR_ARMCOMPILER=
+
+                      make -C "$TI_SDK_DIR" build-ticlang \
+                          CMAKE="$CMAKE_BIN" \
+                          GCC_ARMCOMPILER= \
+                          TICLANG_ARMCOMPILER="$TI_ARMCLANG_ROOT" \
+                          IAR_ARMCOMPILER=
+
+                      REQUIRED_TI_LIBRARIES=(
+                          source/ti/drivers/lib/gcc/m33f/drivers_cc27xxx20.a
+                          source/ti/devices/cc27xxx20/driverlib/lib/gcc/driverlib.a
+                          source/ti/drivers/secure/lib/ticlang/m33f/secure_drivers_cc27xxx20.a
+                          source/third_party/hsmddk/lib/ticlang/m33f/hsmddk_cc27xxx20_its.a
+                          source/ti/drivers/rcl/lib/gcc/m33f/rcl_cc27xxx20.a
+                          source/ti/devices/cc27xxx20/rf_patches/lib/gcc/m33f/lrf_cc27xxx20.a
+                          source/third_party/psa_crypto/lib/ticlang/m33f/psa_crypto_cc27xx.a
+                          source/ti/ble/lib/CC27XXX10/OneLib/lib/ticlang/m33f/OneLib.a
+                          source/ti/ble/lib/CC27XXX10/StackWrapper/lib/ticlang/m33f/StackWrapper.a
+                      )
+                      for library in "${REQUIRED_TI_LIBRARIES[@]}"; do
+                          test -s "$TI_SDK_DIR/$library" || {
+                              echo "Required TI SDK library is missing: $library" >&2
+                              exit 1
+                          }
+                      done
+
+                      gn gen "$BUILD_DIR" --root=examples/lighting-app/ti/cc27xx --args="
+                          ti_sysconfig_root=\"${TI_SYSCONFIG_ROOT}\"
+                          ti_simplelink_board=\"LP_EM_CC2755P20\"
+                          ti_cc2755_evb=true
+                          chip_enable_ota_requestor=false
+                          chip_generate_link_map_file=true
+                          chip_openthread_ftd=true
+                          chip_progress_logging=true
+                          chip_enable_additional_data_advertising=true
+                          chip_enable_rotating_device_id=true
+                          custom_factory_data=true
+                          ti_dac_key_use_psa_hsm=true
+                          target_defines=[
+                              \"TI_ATTESTATION_CREDENTIALS=1\",
+                              \"TI_CC27XX_FREERTOS_HEAP_SIZE=43008\",
+                          ]
+                      "
+                      ninja -C "$BUILD_DIR" \
+                          "${APP_NAME}.out" \
+                          "${APP_NAME}-without-factory-data.hex"
+
+                      cmp "$BUILD_DIR/gen/secure_drivers_cc27xxx20.a" \
+                          "$TI_SDK_DIR/source/ti/drivers/secure/lib/ticlang/m33f/secure_drivers_cc27xxx20.a"
+                      cmp "$BUILD_DIR/gen/hsmddk_cc27xxx20_its.a" \
+                          "$TI_SDK_DIR/source/third_party/hsmddk/lib/ticlang/m33f/hsmddk_cc27xxx20_its.a"
+
+                      arm-none-eabi-nm "$BUILD_DIR/${APP_NAME}.out" |
+                          grep -E "^[0-9a-fA-F]+[[:space:]]+T[[:space:]]+tfm_hal_its_fs_info$"
+                      arm-none-eabi-strings "$BUILD_DIR/${APP_NAME}.out" |
+                          grep -F "ChipOBLE C3 Char"
+
+                      python3 third_party/ti_simplelink_sdk/validate_cc27xx_image.py \
+                          --device cc2755p20 \
+                          --map "$BUILD_DIR/${APP_NAME}.out.map" \
+                          --hex "$BUILD_DIR/${APP_NAME}-without-factory-data.hex"
+
+                      MAP_FILE="$BUILD_DIR/${APP_NAME}.out.map"
+                      grep -Eq "^FLASH[[:space:]]+0x0+[[:space:]]+0x0*1dc000[[:space:]]" "$MAP_FILE"
+                      grep -Eq "^FLASH_PSA_KEYSTORE[[:space:]]+0x0*1df000[[:space:]]+0x0*2000[[:space:]]" "$MAP_FILE"
+                      grep -Eq "^FLASH_NVS[[:space:]]+0x0*1e1000[[:space:]]+0x0*6000[[:space:]]" "$MAP_FILE"
+                      grep -Eq "^FLASH_FACTORY_DATA[[:space:]]+0x0*1e7000[[:space:]]+0x0*1000[[:space:]]" "$MAP_FILE"
+
+                      SYSCONFIG_HEADER="$BUILD_DIR/gen/sysconfig/ti_drivers_config.h"
+                      test -s "$SYSCONFIG_HEADER"
+                      PIN_DEFINES=(
+                          "CONFIG_GPIO_RGB_RED 3"
+                          "CONFIG_GPIO_RGB_GREEN 4"
+                          "CONFIG_GPIO_RGB_BLUE 5"
+                          "CONFIG_GPIO_LCD_CS 16"
+                          "CONFIG_GPIO_LCD_DC 12"
+                          "CONFIG_GPIO_LCD_RESET 7"
+                          "CONFIG_GPIO_LCD_BACKLIGHT 0"
+                          "CONFIG_GPIO_SPI_LCD_SCLK 15"
+                          "CONFIG_GPIO_SPI_LCD_PICO 11"
+                          "CONFIG_GPIO_BTN_LEFT_INPUT 19"
+                          "CONFIG_GPIO_BTN_RIGHT_INPUT 20"
+                          "CONFIG_GPIO_BTN_AUX_1_INPUT 18"
+                          "CONFIG_GPIO_BTN_AUX_2_INPUT 17"
+                      )
+                      for definition in "${PIN_DEFINES[@]}"; do
+                          grep -Eq "^#define[[:space:]]+${definition%% *}[[:space:]]+${definition##* }$" "$SYSCONFIG_HEADER"
+                      done
+                      if grep -F "CONFIG_NVSEXTERNAL" "$SYSCONFIG_HEADER"; then
+                          echo "CC2755 EVB must not bind the LaunchPad external flash" >&2
+                          exit 1
+                      fi
+
+                      arm-none-eabi-objcopy -O binary --only-section=.ccfg \
+                          "$BUILD_DIR/${APP_NAME}.out" "$BUILD_DIR/${APP_NAME}-ccfg.bin"
+                      arm-none-eabi-objcopy -O binary --only-section=.scfg \
+                          "$BUILD_DIR/${APP_NAME}.out" "$BUILD_DIR/${APP_NAME}-scfg.bin"
+                      python3 -c "import sys; from pathlib import Path; ccfg=Path(sys.argv[1]).read_bytes(); scfg=Path(sys.argv[2]).read_bytes(); assert len(ccfg)==2048; assert len(scfg)==1024; assert int.from_bytes(ccfg[0x4c:0x50], byteorder=\"little\")==0xff800000" \
+                          "$BUILD_DIR/${APP_NAME}-ccfg.bin" "$BUILD_DIR/${APP_NAME}-scfg.bin"
+
+                      mkdir -p "$ARTIFACT_DIR/sysconfig"
+                      cp "$BUILD_DIR/${APP_NAME}.out" "$ARTIFACT_DIR/"
+                      cp "$BUILD_DIR/${APP_NAME}.out.map" "$ARTIFACT_DIR/"
+                      cp "$BUILD_DIR/${APP_NAME}.hex" "$ARTIFACT_DIR/"
+                      cp "$BUILD_DIR/${APP_NAME}-without-factory-data.hex" "$ARTIFACT_DIR/"
+                      cp "$BUILD_DIR/gen/sysconfig/ti_drivers_config.h" "$ARTIFACT_DIR/sysconfig/"
+                      cp "$BUILD_DIR/gen/sysconfig/ti_utils_build_linker.cmd.genmap" "$ARTIFACT_DIR/sysconfig/"
+                  '
+
+            - name: Upload CC2755 EVB build artifacts
+              uses: actions/upload-artifact@v4
+              if: ${{ !env.ACT }}
+              with:
+                  name: cc2755-evb-lighting-unsigned
+                  path: out/artifacts/ti-cc2755-evb-lighting-ftd/

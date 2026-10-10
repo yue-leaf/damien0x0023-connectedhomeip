@@ -76,6 +76,10 @@ private:
 
     static void ButtonLeftEventHandler(Button_Handle handle, Button_EventMask events);
     static void ButtonRightEventHandler(Button_Handle handle, Button_EventMask events);
+#if defined(TI_CC2755_EVB)
+    static void ButtonAux1EventHandler(Button_Handle handle, Button_EventMask events);
+    static void ButtonAux2EventHandler(Button_Handle handle, Button_EventMask events);
+#endif
     static void TimerEventHandler(void * p_context);
 
     enum Function_t

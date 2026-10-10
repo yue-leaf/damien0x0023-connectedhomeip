@@ -35,12 +35,18 @@ INCLUDE ti_utils_build_linker.cmd.genmap
 STACKSIZE = 3096;
 /*0x18000 HSM FW Size*/
 
-/* FLASH END WITH HSM: 0x1E8000*/
+/* Application flash ends before the erase-retain block at 0x1DC000. */
+/* 0x1DC000-0x1DEFFF is erase-retain alignment padding. */
+/* PSA KeyStore: 0x1DF000-0x1E0FFF */
+/* Matter NVS:   0x1E1000-0x1E6FFF */
+/* 0x1E7000-0x1E7FFF remains reserved for factory data. */
 
 MEMORY
 {
-    /* If device has HSM FW the last part of Flash is reserved for it */
-    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0x1E8000
+    /* Reserve persistent data and HSM firmware above application flash. */
+    FLASH (RX) : ORIGIN = ti_utils_build_GenMap_FLASH0_BASE, LENGTH = 0x1DC000
+    FLASH_PSA_KEYSTORE (R) : ORIGIN = 0x1DF000, LENGTH = 0x2000
+    FLASH_NVS (R) : ORIGIN = 0x1E1000, LENGTH = 0x6000
 
     /*
      * Customer Configuration Area and Bootloader Backdoor configuration in
@@ -247,7 +253,7 @@ SECTIONS {
     /* 12 pages of NV Memory (0x800 each)  */
     .nvs (0x1E1000) (NOLOAD) : AT (0x1E1000) ALIGN(0x800) {
         *(.nvs)
-    } > REGION_TEXT
+    } > FLASH_NVS
 
     .ccfg : {
         KEEP (*(.ccfg))

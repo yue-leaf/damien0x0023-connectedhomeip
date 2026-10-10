@@ -19,6 +19,10 @@
  #include "AppTask.h"
  #include "AppConfig.h"
  #include "AppEvent.h"
+#if defined(TI_CC2755_EVB)
+ #include "BoardRgbLed.h"
+ #include "DisplayManager.h"
+#endif
  
  #include "FreeRTOS.h"
  
@@ -171,6 +175,25 @@
  using namespace ::chip::app;
  using namespace ::chip::Credentials;
  using namespace ::chip::DeviceLayer;
+
+#if defined(TI_CC2755_EVB)
+ namespace {
+ DisplayManager::State GetNetworkDisplayState()
+ {
+     if (Server::GetInstance().GetFabricTable().FabricCount() == 0)
+     {
+         return DisplayManager::State::kCommissionable;
+     }
+     return ThreadStackMgrImpl().IsThreadAttached() ? DisplayManager::State::kThreadAttached :
+                                                      DisplayManager::State::kThreadDetached;
+ }
+
+ void PostNetworkDisplayState()
+ {
+     DisplayManager::GetInstance().PostState(GetNetworkDisplayState());
+ }
+ } // namespace
+#endif
  
  static TaskHandle_t sAppTaskHandle;
  static QueueHandle_t sAppEventQueue;
@@ -180,6 +203,10 @@
  #endif
  static Button_Handle sAppLeftHandle;
  static Button_Handle sAppRightHandle;
+#if defined(TI_CC2755_EVB)
+ static Button_Handle sAppAux1Handle;
+ static Button_Handle sAppAux2Handle;
+#endif
  static DeviceInfoProviderImpl sExampleDeviceInfoProvider;
  
  AppTask AppTask::sAppTask;
@@ -256,19 +283,30 @@
  // Identify take action
  void identify_TakeAction(void)
  {
+#if defined(TI_CC2755_EVB)
+     BoardRgbLed::GetInstance().SetIdentify(true);
+     DisplayManager::GetInstance().PostState(DisplayManager::State::kIdentify);
+#else
  #if (LED_ENABLE == 1)
      LED_setOn(sAppGreenHandle, LED_BRIGHTNESS_MAX);
      LED_startBlinking(sAppGreenHandle, 1000, LED_BLINK_FOREVER);
  #endif // LED_ENABLE
+#endif
  }
  
  // Identify stop action
  void identify_StopAction(void)
  {
+#if defined(TI_CC2755_EVB)
+     BoardRgbLed::GetInstance().SetIdentify(false);
+     DisplayManager::GetInstance().PostState(LightMgr().IsLightOn() ? DisplayManager::State::kLightOn :
+                                                                            DisplayManager::State::kLightOff);
+#else
  #if (LED_ENABLE == 1)
      LED_stopBlinking(sAppGreenHandle);
      LED_setOff(sAppGreenHandle);
  #endif // LED_ENABLE
+#endif
  }
  
  void DeviceEventCallback(const ChipDeviceEvent * event, intptr_t arg)
@@ -277,14 +315,23 @@
      {
      case DeviceEventType::kCHIPoBLEConnectionEstablished:
          PLAT_LOG("CHIPoBLE connection established");
+#if defined(TI_CC2755_EVB)
+         DisplayManager::GetInstance().PostState(DisplayManager::State::kCommissioning);
+#endif
          break;
  
      case DeviceEventType::kCHIPoBLEConnectionClosed:
          PLAT_LOG("CHIPoBLE disconnected");
+#if defined(TI_CC2755_EVB)
+         PostNetworkDisplayState();
+#endif
          break;
  
      case DeviceEventType::kCommissioningComplete:
          PLAT_LOG("Commissioning complete");
+#if defined(TI_CC2755_EVB)
+         PostNetworkDisplayState();
+#endif
          break;
      case DeviceEventType::kThreadStateChange:
          PLAT_LOG("Thread State Change");
@@ -293,6 +340,9 @@
          if (isThreadAttached)
          {
              PLAT_LOG("Device is on the Thread Network");
+#if defined(TI_CC2755_EVB)
+             DisplayManager::GetInstance().PostState(DisplayManager::State::kThreadAttached);
+#endif
  #if CHIP_DEVICE_CONFIG_ENABLE_OTA_REQUESTOR
              if (isAppStarting)
              {
@@ -301,6 +351,12 @@
              }
  #endif
          }
+#if defined(TI_CC2755_EVB)
+         else
+         {
+             PostNetworkDisplayState();
+         }
+#endif
          break;
      }
  }
@@ -449,6 +505,18 @@
      }
  
      PlatformMgr().AddEventHandler(DeviceEventCallback, reinterpret_cast<intptr_t>(nullptr));
+
+#if defined(TI_CC2755_EVB)
+     ret = DisplayManager::GetInstance().Start();
+     if (ret != CHIP_NO_ERROR)
+     {
+         PLAT_LOG("DisplayManager start failed: %s", chip::ErrorStr(ret));
+     }
+     else
+     {
+         PostNetworkDisplayState();
+     }
+#endif
  
      uiInit();
  
@@ -462,7 +530,11 @@
      }
  
      LightMgr().SetCallbacks(ActionInitiated, ActionCompleted);
- 
+
+#if defined(TI_CC2755_EVB)
+     BoardRgbLed::GetInstance().SetLightOn(LightMgr().IsLightOn());
+#endif
+
      ConfigurationMgr().LogDeviceConfig();
  
      bool isThreadEnabled = ThreadStackMgrImpl().IsThreadEnabled();
@@ -654,6 +726,7 @@
          actor = aEvent->LightEvent.Actor;
          LightMgr().IsLightOn() ? LightMgr().InitiateAction(actor, LightingManager::OFF_ACTION)
                                 : LightMgr().InitiateAction(actor, LightingManager::ON_ACTION);
+         break;
      }
      case AppEvent::kEventType_ButtonLeft:
          if (AppEvent::kAppEventButtonType_Clicked == aEvent->ButtonEvent.Type)
@@ -704,6 +777,24 @@
              }
          }
          break;
+
+#if defined(TI_CC2755_EVB)
+     case AppEvent::kEventType_ButtonAux1:
+         if (AppEvent::kAppEventButtonType_Clicked == aEvent->ButtonEvent.Type)
+         {
+             actor = AppEvent::kEventType_ButtonAux1;
+             LightMgr().IsLightOn() ? LightMgr().InitiateAction(actor, LightingManager::OFF_ACTION)
+                                    : LightMgr().InitiateAction(actor, LightingManager::ON_ACTION);
+         }
+         break;
+
+     case AppEvent::kEventType_ButtonAux2:
+         if (AppEvent::kAppEventButtonType_Clicked == aEvent->ButtonEvent.Type)
+         {
+             DisplayManager::GetInstance().ToggleBacklight();
+         }
+         break;
+#endif
  
      case AppEvent::kEventType_IdentifyStart:
          switch (identify_trigger_effect)
@@ -724,11 +815,14 @@
          break;
  
      case AppEvent::kEventType_Identify:
-         // blink LED
+#if defined(TI_CC2755_EVB)
+         PLAT_LOG("Identify command received");
+         BoardRgbLed::GetInstance().SetIdentify(true);
+         DisplayManager::GetInstance().PostState(DisplayManager::State::kIdentify);
+#elif (LED_ENABLE == 1)
          PLAT_LOG("Identify cmd received, will blink green led three times now");
- #if (LED_ENABLE == 1)
          LED_startBlinking(sAppGreenHandle, 250, 3);
- #endif
+#endif
          break;
  
      case AppEvent::kEventType_IdentifyStop:
@@ -804,40 +898,54 @@
  void uiTurnOn(void)
  {
      PLAT_LOG("Light On initiated");
+#if !defined(TI_CC2755_EVB)
  #if (LED_ENABLE == 1)
      LED_setOn(sAppRedHandle, LED_BRIGHTNESS_MAX);
      LED_startBlinking(sAppRedHandle, 110 /* ms */, LED_BLINK_FOREVER);
  #endif // LED_ENABLE
+#endif
  }
  
  // Action completed callback
  void uiTurnedOn(void)
  {
      PLAT_LOG("Light On completed");
+#if defined(TI_CC2755_EVB)
+     BoardRgbLed::GetInstance().SetLightOn(true);
+     DisplayManager::GetInstance().PostState(DisplayManager::State::kLightOn);
+#else
  #if (LED_ENABLE == 1)
      LED_stopBlinking(sAppRedHandle);
      LED_setOn(sAppRedHandle, LED_BRIGHTNESS_MAX);
  #endif // LED_ENABLE
+#endif
  }
  
  // Action initiated callback
  void uiTurnOff(void)
  {
      PLAT_LOG("Light Off initiated");
+#if !defined(TI_CC2755_EVB)
  #if (LED_ENABLE == 1)
      LED_setOn(sAppRedHandle, LED_BRIGHTNESS_MAX);
      LED_startBlinking(sAppRedHandle, 110 /* ms */, LED_BLINK_FOREVER);
  #endif // LED_ENABLE
+#endif
  }
  
  // Action completed callback
  void uiTurnedOff(void)
  {
      PLAT_LOG("Light Off completed");
+#if defined(TI_CC2755_EVB)
+     BoardRgbLed::GetInstance().SetLightOn(false);
+     DisplayManager::GetInstance().PostState(DisplayManager::State::kLightOff);
+#else
  #if (LED_ENABLE == 1)
      LED_stopBlinking(sAppRedHandle);
      LED_setOff(sAppRedHandle);
  #endif // LED_ENABLE
+#endif
  }
  
  #if (BUTTON_ENABLE == 1)
@@ -880,10 +988,39 @@
          /* Failed to post the message */
      }
  }
+
+#if defined(TI_CC2755_EVB)
+ void AppTask::ButtonAux1EventHandler(Button_Handle handle, Button_EventMask events)
+ {
+     AppEvent event;
+     event.Type             = AppEvent::kEventType_ButtonAux1;
+     event.ButtonEvent.Type = (events & Button_EV_CLICKED) ? AppEvent::kAppEventButtonType_Clicked :
+                                                             AppEvent::kAppEventButtonType_LongClicked;
+     if (xQueueSendFromISR(sAppEventQueue, &event, NULL) != pdPASS)
+     {
+         /* Failed to post the message. */
+     }
+ }
+
+ void AppTask::ButtonAux2EventHandler(Button_Handle handle, Button_EventMask events)
+ {
+     AppEvent event;
+     event.Type             = AppEvent::kEventType_ButtonAux2;
+     event.ButtonEvent.Type = (events & Button_EV_CLICKED) ? AppEvent::kAppEventButtonType_Clicked :
+                                                             AppEvent::kAppEventButtonType_LongClicked;
+     if (xQueueSendFromISR(sAppEventQueue, &event, NULL) != pdPASS)
+     {
+         /* Failed to post the message. */
+     }
+ }
+#endif
  #endif // BUTTON_ENABLE
  
  void AppTask::uiInit(void)
  {
+#if defined(TI_CC2755_EVB)
+     BoardRgbLed::GetInstance().Init();
+#else
  #if (LED_ENABLE == 1)
  
      LED_Params ledParams;
@@ -900,6 +1037,7 @@
      sAppGreenHandle = LED_open(CONFIG_LED_GREEN, &ledParams);
      LED_setOff(sAppGreenHandle);
  #endif // LED ENABLE
+#endif
  
  #if (BUTTON_ENABLE == 1)
      Button_Params buttonParams;
@@ -912,12 +1050,38 @@
      buttonParams.buttonEventMask   = Button_EV_CLICKED | Button_EV_LONGCLICKED;
      buttonParams.longPressDuration = 1000U; // ms
      sAppLeftHandle                 = Button_open(CONFIG_BTN_LEFT, &buttonParams);
-     Button_setCallback(sAppLeftHandle, ButtonLeftEventHandler);
+     if (sAppLeftHandle != nullptr)
+     {
+         Button_setCallback(sAppLeftHandle, ButtonLeftEventHandler);
+     }
  
      Button_Params_init(&buttonParams);
      buttonParams.buttonEventMask   = Button_EV_CLICKED | Button_EV_LONGCLICKED;
      buttonParams.longPressDuration = 1000U; // ms
      sAppRightHandle                = Button_open(CONFIG_BTN_RIGHT, &buttonParams);
-     Button_setCallback(sAppRightHandle, ButtonRightEventHandler);
+     if (sAppRightHandle != nullptr)
+     {
+         Button_setCallback(sAppRightHandle, ButtonRightEventHandler);
+     }
+
+#if defined(TI_CC2755_EVB)
+     Button_Params_init(&buttonParams);
+     buttonParams.buttonEventMask   = Button_EV_CLICKED | Button_EV_LONGCLICKED;
+     buttonParams.longPressDuration = 1000U;
+     sAppAux1Handle                 = Button_open(CONFIG_BTN_AUX_1, &buttonParams);
+     if (sAppAux1Handle != nullptr)
+     {
+         Button_setCallback(sAppAux1Handle, ButtonAux1EventHandler);
+     }
+
+     Button_Params_init(&buttonParams);
+     buttonParams.buttonEventMask   = Button_EV_CLICKED | Button_EV_LONGCLICKED;
+     buttonParams.longPressDuration = 1000U;
+     sAppAux2Handle                 = Button_open(CONFIG_BTN_AUX_2, &buttonParams);
+     if (sAppAux2Handle != nullptr)
+     {
+         Button_setCallback(sAppAux2Handle, ButtonAux2EventHandler);
+     }
+#endif
  #endif // BUTTON ENABLE
  }

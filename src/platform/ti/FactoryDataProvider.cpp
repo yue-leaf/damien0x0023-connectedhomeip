@@ -32,9 +32,14 @@
 #include <third_party/hsmddk/include/Integration/Adapter_ITS/incl/tfm_hal_its.h>
 
 namespace {
+#if defined(DeviceFamily_CC27XXX20)
+constexpr uint32_t kTiPsaItsBase = 0x001DF000u;
+constexpr uint32_t kTiNvsBase    = 0x001E1000u;
+#else
 constexpr uint32_t kTiPsaItsBase = 0x000DF000u;
-constexpr size_t kTiPsaItsSize   = 0x00002000u;
 constexpr uint32_t kTiNvsBase    = 0x000E1000u;
+#endif
+constexpr size_t kTiPsaItsSize = 0x00002000u;
 
 static_assert(kTiPsaItsBase + kTiPsaItsSize == kTiNvsBase, "PSA ITS must end immediately before Matter NVS");
 } // namespace

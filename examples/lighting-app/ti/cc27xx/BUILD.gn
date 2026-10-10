@@ -37,6 +37,16 @@ ti_simplelink_sdk("sdk") {
 ti_sysconfig("sysconfig") {
   sources = [ "${chip_root}/examples/platform/ti/sysconfig/chip_cc27xx.syscfg" ]
 
+  if (ti_cc2755_evb) {
+    assert(ti_simplelink_board == "LP_EM_CC2755P20",
+           "ti_cc2755_evb requires LP_EM_CC2755P20")
+    assert(!chip_enable_ota_requestor,
+           "CC2755 EVB has no external OTA flash; keep chip_enable_ota_requestor=false")
+    script_args = "true"
+  } else {
+    script_args = "false"
+  }
+
   outputs = [
     "ti_radio_config.c",
     "ti_radio_config.h",
@@ -89,6 +99,15 @@ ti_simplelink_executable("lighting_app") {
     "${chip_root}/third_party/openthread:openthread",
   ]
   defines = []
+
+  if (ti_cc2755_evb) {
+    defines += [ "TI_CC2755_EVB" ]
+    sources += [
+      "${project_dir}/src/BoardRgbLed.cpp",
+      "${project_dir}/src/DisplayManager.cpp",
+      "${project_dir}/src/St7789Display.cpp",
+    ]
+  }
 
   if (custom_factory_data) {
     defines += [ "TI_FACTORY_DATA" ]

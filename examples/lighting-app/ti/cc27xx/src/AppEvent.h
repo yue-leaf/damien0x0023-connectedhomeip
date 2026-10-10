@@ -29,6 +29,8 @@ struct AppEvent
         kEventType_None = 0,
         kEventType_ButtonLeft,
         kEventType_ButtonRight,
+        kEventType_ButtonAux1,
+        kEventType_ButtonAux2,
         kEventType_AppEvent,
         kEventType_IdentifyStart,
         kEventType_IdentifyStop,

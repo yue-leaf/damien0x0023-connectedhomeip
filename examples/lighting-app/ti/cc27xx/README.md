@@ -26,7 +26,8 @@ The CC27xx lighting example application provides a working demonstration of a
 connected light device. This uses the open-source Matter implementation and the
 Texas Instruments SimpleLink™ F3 software development kit.
 
-This example is enabled to build for CC2745R10-Q1 devices.
+This example is enabled to build for CC2745R10-Q1 devices and the custom
+CC2755P20 EVB when its board flag is selected explicitly.
 
 The lighting example is intended to serve both as a means to explore the
 workings of Matter, as well as a template for creating real products based on
@@ -53,6 +54,14 @@ described below:
 | ------------------------------------------------ | ------------------------ |
 | Left Button (`BTN-1`) Press (less than 1000 ms)  | User Active Mode Trigger |
 | Right Button (`BTN-2`) Press (less than 1000 ms) | Light is toggled         |
+
+The custom CC2755P20 EVB adds a common-anode RGB status LED, four buttons, and
+a 240 x 240 ST7789 LCD. SW1 and SW2 retain the standard lighting application
+behavior, SW3 toggles the light, and SW4 toggles the LCD backlight. The LCD
+uses solid status colors for commissioning, Thread attachment/detachment,
+On/Off, and Identify states. Device-side Matter OTA is disabled because this
+EVB does not provide the external flash used by the standard CC27xx OTA image
+processor.
 
 ## Building
 
@@ -103,6 +112,17 @@ Ninja to build the executable.
     ```
     ti_simplelink_board = LP_EM_CC2755P20
     ```
+
+    The custom CC2755P20 EVB additionally requires `ti_cc2755_evb=true`,
+    SysConfig 1.28.0, and `chip_enable_ota_requestor=false`. For example:
+
+    ```
+    $ gn gen out/cc2755-evb --args='ti_sysconfig_root="$HOME/ti/sysconfig_1.28.0" ti_simplelink_board="LP_EM_CC2755P20" ti_cc2755_evb=true chip_enable_ota_requestor=false custom_factory_data=true ti_dac_key_use_psa_hsm=true'
+    $ ninja -C out/cc2755-evb
+    ```
+
+    GitHub Actions builds and validates this target with
+    `.github/workflows/examples-cc2755-evb.yaml`.
 
 -   Run the build to produce a default executable. By default on Linux both the
     TI SimpleLink SDK and SysConfig are located in a `ti` folder in the user's
