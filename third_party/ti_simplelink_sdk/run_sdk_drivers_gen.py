@@ -32,7 +32,9 @@ if os.getenv('_PW_ACTUAL_ENVIRONMENT_ROOT'):
 else:
     CHIP_ENV_ROOT = os.path.join(args.chip_root, ".environment")
 
-GCC_ARMCOMPILER_PATH = os.path.join(CHIP_ENV_ROOT, "cipd", "packages", "arm")
+GCC_ARMCOMPILER_PATH = os.getenv("TI_ARM_GCC_ROOT") or os.path.join(
+    CHIP_ENV_ROOT, "cipd", "packages", "arm"
+)
 
 if not os.path.isdir(GCC_ARMCOMPILER_PATH):
     print("Compiler Path is invalid: " + GCC_ARMCOMPILER_PATH)
