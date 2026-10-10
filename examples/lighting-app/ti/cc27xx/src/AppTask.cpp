@@ -197,7 +197,7 @@
  
  static TaskHandle_t sAppTaskHandle;
  static QueueHandle_t sAppEventQueue;
- #if (LED_ENABLE == 1)
+ #if (LED_ENABLE == 1) && !defined(TI_CC2755_EVB)
  static LED_Handle sAppRedHandle;
  static LED_Handle sAppGreenHandle;
  #endif
