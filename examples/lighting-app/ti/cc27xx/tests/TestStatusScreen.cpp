@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include "StatusFontData.h"
 #include "StatusScreen.h"
 
 #include <assert.h>
@@ -53,6 +54,18 @@ bool HasInk(const Frame & frame, int top, int bottom)
     return false;
 }
 
+template <size_t Height>
+void CheckGlyph(const Frame & frame, int left, int top, int width, const uint16_t (&glyph)[Height])
+{
+    for (size_t y = 0; y < Height; ++y)
+        for (int x = 0; x < width; ++x)
+        {
+            const size_t offset  = (static_cast<size_t>(top) + y) * 480 + static_cast<size_t>((left + x) * 2);
+            const uint16_t pixel = static_cast<uint16_t>(frame[offset] * 256 + frame[offset + 1]);
+            assert(pixel == ((glyph[y] & (1U << x)) ? 0x0000 : 0xFFFF));
+        }
+}
+
 void WritePreview(const Frame & frame, const char * path)
 {
     FILE * file = fopen(path, "wb");
@@ -78,8 +91,8 @@ int main(int argc, char ** argv)
     info.productId     = 0x8001;
     info.vendorIdValid = info.productIdValid = info.serialNumberValid = true;
     info.softwareVersionValid = info.softwareVersionNumberValid = true;
-    strcpy(info.serialNumber, "TI2755R10-20261011-0001");
-    strcpy(info.softwareVersion, "1.0.0");
+    strcpy(info.serialNumber, "0123456789ABCDEF0123456789ABCDEF");
+    strcpy(info.softwareVersion, "1.0.1+1");
     info.softwareVersionNumber = 1;
     StatusScreen screen;
     screen.Init(info);
@@ -87,36 +100,42 @@ int main(int argc, char ** argv)
     status.network    = DisplayNetworkStatus::kConnected;
     status.lightKnown = status.lightOn = true;
     Frame connected                    = Render(screen, status);
-    assert(HasInk(connected, 10, 31) && HasInk(connected, 50, 64) && HasInk(connected, 75, 96));
-    assert(HasInk(connected, 117, 129) && HasInk(connected, 157, 169) && HasInk(connected, 209, 221));
+    assert(HasInk(connected, 6, 34) && HasInk(connected, 40, 58) && HasInk(connected, 64, 92));
+    assert(HasInk(connected, 100, 118) && HasInk(connected, 140, 178) && HasInk(connected, 200, 218));
+    CheckGlyph(connected, 10, 140, 9, StatusFont::kBody['0' - 32]);
+    CheckGlyph(connected, 10, 160, 9, StatusFont::kBody['0' - 32]);
+    CheckGlyph(connected, 175, 160, 9, StatusFont::kBody['F' - 32]);
 
     info.vendorId  = 0;
     info.productId = UINT16_MAX;
     screen.Init(info);
-    CheckChange(connected, Render(screen, status), 117, 129);
+    CheckChange(connected, Render(screen, status), 100, 118);
     info.vendorId              = 0xFFF1;
     info.productId             = 0x8001;
     info.softwareVersionNumber = UINT32_MAX;
     screen.Init(info);
-    CheckChange(connected, Render(screen, status), 209, 235);
+    CheckChange(connected, Render(screen, status), 200, 238);
     info.softwareVersionNumber      = 1;
     info.softwareVersionNumberValid = false;
     screen.Init(info);
-    CheckChange(connected, Render(screen, status), 209, 235);
+    CheckChange(connected, Render(screen, status), 200, 238);
     info.softwareVersionNumberValid = true;
     screen.Init(info);
 
     status.network     = DisplayNetworkStatus::kDisconnected;
     Frame disconnected = Render(screen, status);
-    CheckChange(connected, disconnected, 50, 64);
+    CheckChange(connected, disconnected, 40, 58);
     status.lightOn = false;
     Frame off      = Render(screen, status);
-    CheckChange(disconnected, off, 75, 96);
+    CheckChange(disconnected, off, 64, 92);
     status.identifying = true;
     Frame identifying  = Render(screen, status);
-    CheckChange(off, identifying, 33, 43);
+    CheckChange(off, identifying, 16, 28);
+    // Identify must not overwrite any part of the large product title.
+    for (int y = 6; y < 34; ++y)
+        assert(memcmp(off.data() + y * 480, identifying.data() + y * 480, 166 * 2) == 0);
     status.network = DisplayNetworkStatus::kConnecting;
-    CheckChange(identifying, Render(screen, status), 50, 64);
+    CheckChange(identifying, Render(screen, status), 40, 58);
     status.network = DisplayNetworkStatus::kUnknown;
     Render(screen, status);
     status.lightKnown = false;
@@ -129,10 +148,45 @@ int main(int argc, char ** argv)
     info.softwareVersionNumber = UINT32_MAX;
     screen.Init(info);
     Frame longFields = Render(screen, status);
-    assert(HasInk(longFields, 171, 183) && HasInk(longFields, 227, 234));
-    // The wrapped final SN character is Z, whose top row has all five columns set.
-    for (int x = 10; x < 16; ++x)
-        assert(longFields[171 * 480 + static_cast<size_t>(x * 2)] != 0xFF);
+    assert(HasInk(longFields, 160, 178) && HasInk(longFields, 226, 238));
+    CheckGlyph(longFields, 175, 160, 9, StatusFont::kBody['Z' - 32]);
+    CheckGlyph(longFields, 186, 226, 7, StatusFont::kCompact[')' - 32]);
+
+    // Exercise both font choices at every line boundary without losing the tail.
+    info.softwareVersionNumberValid = false;
+    for (size_t length : { 1U, 20U, 21U, 40U, 41U, 54U, 55U, 64U })
+    {
+        memset(info.softwareVersion, 'W', length);
+        info.softwareVersion[length - 1] = 'Z';
+        info.softwareVersion[length]     = '\0';
+        screen.Init(info);
+        Frame wrapped        = Render(screen, status);
+        const bool compact   = length > 40;
+        const size_t columns = compact ? 27 : 20;
+        const int x          = 10 + static_cast<int>((length - 1) % columns) * (compact ? 8 : 11);
+        const int y          = 200 + static_cast<int>((length - 1) / columns) * (compact ? 13 : 20);
+        if (compact)
+            CheckGlyph(wrapped, x, y, 7, StatusFont::kCompact['Z' - 32]);
+        else
+            CheckGlyph(wrapped, x, y, 9, StatusFont::kBody['Z' - 32]);
+    }
+
+    // Every printable ASCII glyph is native-size and fits in its SN cell.
+    for (int c = 32; c <= 126; ++c)
+    {
+        memset(info.serialNumber, c, 32);
+        screen.Init(info);
+        Frame ascii = Render(screen, status);
+        CheckGlyph(ascii, 10, 140, 9, StatusFont::kBody[c - 32]);
+        CheckGlyph(ascii, 175, 160, 9, StatusFont::kBody[c - 32]);
+        for (int y = 140; y < 178; ++y)
+            for (int x : { 19, 20, 184, 185 })
+                assert(ascii[static_cast<size_t>(y * 480 + x * 2)] == 0xFF);
+    }
+    info.serialNumber[0] = '\x01';
+    info.serialNumber[1] = '\0';
+    screen.Init(info);
+    CheckGlyph(Render(screen, status), 10, 140, 9, StatusFont::kBody['?' - 32]);
 
     info.serialNumberValid = info.softwareVersionValid = false;
     screen.Init(info);
@@ -148,7 +202,9 @@ int main(int argc, char ** argv)
     assert(Render(screen, status) == missingStrings);
     screen.Init({});
     Frame unavailable = Render(screen, status);
-    assert(HasInk(unavailable, 117, 129) && HasInk(unavailable, 157, 169) && HasInk(unavailable, 209, 221));
+    assert(HasInk(unavailable, 100, 118) && HasInk(unavailable, 140, 158) && HasInk(unavailable, 200, 218));
+    CheckGlyph(unavailable, 50, 100, 9, StatusFont::kBody['-' - 32]);
+    CheckGlyph(unavailable, 165, 100, 9, StatusFont::kBody['-' - 32]);
 
     if (argc == 6)
     {

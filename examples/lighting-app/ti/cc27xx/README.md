@@ -71,20 +71,30 @@ white-background status page headed `TI-Light`, with independent `Network` and
 `Light` fields, factory-data `VID`, `PID`, and `SN`, and the running firmware's
 `SW Version` string and numeric version. Thread connectivity is not an Internet
 or controller-online indicator. The network field displays `Connecting` on an
-enabled Thread stack before its first attachment, `Thread Connected` when
+enabled Thread stack before its first attachment, `Connected` when
 attached, and `Disconnected` after connection loss or when Thread is disabled.
 Unread state displays `Unknown`; unavailable identity fields display
-`Unavailable` without substituting example values. An `Identifying` hint appears
+`Unavailable` (`--` for VID/PID) without substituting example values. An `Identify` hint appears
 without replacing the network, light state, or identity fields, and is cleared
 by the existing Identify-stop event. An already
 commissioned device does not show the initial pairing code on an ordinary reboot;
 factory reset restores the pairing page. SW4 still controls the backlight.
 
-The status page uses English labels and a compact printable-ASCII bitmap font.
-The full 32-character SN wraps over two lines. Software version strings wrap;
-exceptionally long versions use smaller glyphs to keep the complete string and
-numeric version within 240 x 240 pixels. The title is a fixed product name,
+The status page uses English labels and native-size printable-ASCII bitmap
+fonts: 9 x 18 body cells with two pixels of character spacing, and 16 x 28
+title/light-state cells. No non-integer font scaling is performed. The full
+32-character SN wraps at 16 characters per line. Software versions use up to
+two 20-character body-font lines; values longer than 40 characters use three
+27-character lines of separately rasterized 7 x 12 glyphs. The complete string
+and numeric version stay within 240 x 240 pixels. Text is black and labels are
+dark gray on white. The title is a fixed product name,
 not the controller-editable Matter NodeLabel.
+
+The TI LCD Mono glyph tables occupy less than 7 KiB of read-only Flash, with no
+new SRAM buffers. Firmware builds consume the checked-in `src/StatusFontData.h`
+without a font-generation dependency. The font's SIL OFL license is in
+`fonts/OFL.txt` and included in both EVB firmware artifacts. See `fonts/README.md`
+and `tools/generate_status_font.py` for regeneration details.
 
 The LCD worker renders one 480-byte RGB565 row at a time and yields between
 groups of rows. It never reads the factory provider or Matter fabric table.

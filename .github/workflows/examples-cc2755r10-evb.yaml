@@ -291,7 +291,8 @@ jobs:
                       python3 -c "import sys; from pathlib import Path; ccfg=Path(sys.argv[1]).read_bytes(); scfg=Path(sys.argv[2]).read_bytes(); assert len(ccfg)==2048; assert len(scfg)==1024; assert int.from_bytes(ccfg[8:12], byteorder=\"little\")==128; assert int.from_bytes(ccfg[0x3c:0x40], byteorder=\"little\")==0xff800000" \
                           "$BUILD_DIR/${APP_NAME}-ccfg.bin" "$BUILD_DIR/${APP_NAME}-scfg.bin"
 
-                      mkdir -p "$ARTIFACT_DIR/sysconfig"
+                      mkdir -p "$ARTIFACT_DIR/sysconfig" "$ARTIFACT_DIR/licenses"
+                      cp examples/lighting-app/ti/cc27xx/fonts/OFL.txt "$ARTIFACT_DIR/licenses/TI-LCD-Mono-OFL.txt"
                       cp "$BUILD_DIR/${APP_NAME}.out" "$ARTIFACT_DIR/"
                       cp "$BUILD_DIR/${APP_NAME}.out.map" "$ARTIFACT_DIR/"
                       cp "$BUILD_DIR/${APP_NAME}.hex" "$ARTIFACT_DIR/"
