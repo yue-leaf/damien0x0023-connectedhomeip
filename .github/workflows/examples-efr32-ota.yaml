@@ -30,14 +30,16 @@ env:
   CHIP_NO_LOG_TIMESTAMPS: true
   SILABS_BOARD: "BRD2703A"
   APP_NAME: "matter-silabs-lighting"
-  OTA_SOFTWARE_VERSION: "3"
-  OTA_SOFTWARE_VERSION_STRING: "3.0.0"
+  OTA_SOFTWARE_VERSION: "4"
+  OTA_SOFTWARE_VERSION_STRING: "4.0.0"
   MIN_APPLICABLE_SOFTWARE_VERSION: "1"
   OTA_VENDOR_ID: "0xFFF2"
   OTA_PRODUCT_ID: "0x8001"
   INTERNAL_STORAGE_SLOT_START: "0x080EC000"
   INTERNAL_STORAGE_SLOT_SIZE_BYTES: "548864"
-  COMMANDER_DOWNLOAD_URL: "https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip"
+  # Official Silicon Labs Arduino package index: simplicitycommander 1.16.4, Linux x86_64.
+  COMMANDER_DOWNLOAD_URL: "https://github.com/SiliconLabs/arduino/releases/download/2.0.0/Commander_linux_x86_64_1v16p4b1564.tar.zst"
+  COMMANDER_SHA256: "0d1a2136a824c2f3e9953573502cb80ff459647f41df04d17a30e42140432f8a"
 
 jobs:
   efr32-ota:
@@ -76,49 +78,39 @@ jobs:
       - name: Install Simplicity Commander
         shell: bash
         run: |
-          COMMANDER_ZIP="$RUNNER_TEMP/SimplicityCommander-Linux.zip"
-          COMMANDER_PACKAGE_DIR="$RUNNER_TEMP/SimplicityCommander-Linux"
+          COMMANDER_ARCHIVE="$RUNNER_TEMP/Commander_linux_x86_64_1v16p4b1564.tar.zst"
           COMMANDER_INSTALL_DIR="$RUNNER_TEMP/simplicity-commander"
 
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             ca-certificates \
-            bzip2 \
             curl \
             file \
             libqt5widgets5 \
-            unzip
+            zstd
           rm -rf /var/lib/apt/lists/*
 
-          curl --fail --location --show-error --retry 5 --retry-all-errors \
+          curl --fail --location --show-error --retry 5 \
             --connect-timeout 30 --max-time 600 \
             "$COMMANDER_DOWNLOAD_URL" \
-            --output "$COMMANDER_ZIP"
-          ls -lh "$COMMANDER_ZIP"
-          file "$COMMANDER_ZIP"
-          unzip -q "$COMMANDER_ZIP" -d "$COMMANDER_PACKAGE_DIR"
+            --output "$COMMANDER_ARCHIVE"
+          echo "$COMMANDER_SHA256  $COMMANDER_ARCHIVE" | sha256sum --check --strict
+          ls -lh "$COMMANDER_ARCHIVE"
+          file "$COMMANDER_ARCHIVE"
 
           mkdir -p "$COMMANDER_INSTALL_DIR"
-          COMMANDER_ARCHIVE="$(find "$COMMANDER_PACKAGE_DIR" -type f -iname 'Commander-cli_linux_x86_64*.tar.bz' -print -quit)"
-          if [ -z "$COMMANDER_ARCHIVE" ]; then
-            COMMANDER_ARCHIVE="$(find "$COMMANDER_PACKAGE_DIR" -type f \( -iname '*.tar' -o -iname '*.tar.gz' -o -iname '*.tgz' -o -iname '*.tar.xz' -o -iname '*.tar.bz' -o -iname '*.tar.bz2' \) -print -quit)"
-          fi
-          if [ -n "$COMMANDER_ARCHIVE" ]; then
-            echo "Using Commander archive: $COMMANDER_ARCHIVE"
-            tar -xf "$COMMANDER_ARCHIVE" -C "$COMMANDER_INSTALL_DIR"
-          fi
+          tar --zstd -xf "$COMMANDER_ARCHIVE" -C "$COMMANDER_INSTALL_DIR"
 
-          COMMANDER_BIN="$(find "$COMMANDER_INSTALL_DIR" "$COMMANDER_PACKAGE_DIR" -type f \( -name commander -o -name commander.sh -o -name commander-cli \) -print -quit)"
+          COMMANDER_BIN="$(find "$COMMANDER_INSTALL_DIR" -type f -name commander -print -quit)"
           if [ -z "$COMMANDER_BIN" ]; then
             echo "::error::Unable to find commander binary in downloaded Simplicity Commander package"
-            find "$COMMANDER_PACKAGE_DIR" -maxdepth 4 -type f | sort
+            find "$COMMANDER_INSTALL_DIR" -maxdepth 4 -type f | sort
             exit 1
           fi
           chmod +x "$COMMANDER_BIN"
-          ln -sf "$COMMANDER_BIN" "$COMMANDER_INSTALL_DIR/commander"
-          echo "$COMMANDER_INSTALL_DIR" >> "$GITHUB_PATH"
-          echo "COMMANDER_PATH=$COMMANDER_INSTALL_DIR/commander" >> "$GITHUB_ENV"
-          "$COMMANDER_INSTALL_DIR/commander" --version
+          echo "$(dirname "$COMMANDER_BIN")" >> "$GITHUB_PATH"
+          echo "COMMANDER_PATH=$COMMANDER_BIN" >> "$GITHUB_ENV"
+          "$COMMANDER_BIN" --version
 
       - name: Build Lighting App with Matter software version 2
         shell: bash
