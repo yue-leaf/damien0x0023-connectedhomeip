@@ -103,6 +103,9 @@ void OTAConfig::Init()
     // Periodic query timeout must be set prior to requestor being initialized
     gRequestorUser.SetPeriodicQueryTimeout(OTA_PERIODIC_TIMEOUT);
 
+    // Negotiate 512-byte BDX blocks to limit Thread fragmentation.
+    gRequestorUser.SetMaxDownloadBlockSize(512);
+
 #if CHIP_DEVICE_CONFIG_ENABLE_MULTI_OTA_REQUESTOR
     auto & imageProcessor = chip::OTAMultiImageProcessorImpl::GetDefaultInstance();
 #else
